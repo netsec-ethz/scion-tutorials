@@ -1,6 +1,9 @@
 site_name: SCION Tutorials
 site_description: A collection of tutorial pages for SCION
 
+site_dir: docs
+docs_dir: content
+
 theme:
     name: null
     custom_dir: 'mkdocs-material/material'
