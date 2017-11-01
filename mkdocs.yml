@@ -1,0 +1,62 @@
+site_name: SCION Tutorials
+site_description: A collection of tutorial pages for SCION
+
+theme:
+    name: null
+    custom_dir: 'mkdocs-material/material'
+
+    include_search_page: false
+    search_index_only: true
+    
+    language: en
+    feature:
+      tabs: false
+    palette:
+      primary:
+      accent:
+    font:
+      text: Roboto
+      code: Roboto Mono
+    favicon: assets/images/favicon.ico
+    logo:
+      icon: "\uE80C"
+
+markdown_extensions:
+    - admonition
+    - codehilite
+    - meta
+    - toc:
+        permalink: true
+
+
+copyright: 'Copyright &copy 2017, Network Security Group, ETH Zurich'
+
+# Options
+extra:
+  search:
+    languages: 'en'
+
+  social:
+    - type: globe
+      link: https://www.scion-architecture.net/
+    - type: github-alt
+      link: https://github.com/netsec-ethz/
+
+pages:
+    - Home: index.md
+    - Native Setup:
+      - Ubuntu 16.04 x86-64: native_setup/ubuntu_x86_build.md
+      - Raspberry PI - Raspbian: native_setup/rpi_raspbian.md
+    - Virtual machine setup:
+      - VPN based setup: virtual_machine_setup/dynamic_ip.md
+      - Static IP setup: virtual_machine_setup/static_ip.md
+    - General SCION configuration:
+      - Verifying installation: general_scion_configuration/verifying_scion_installation.md
+      - VPN configuration: general_scion_configuration/vpn_setup.md
+      - Running on local topology: general_scion_configuration/local_top.md
+      - Configuring path selection: general_scion_configuration/influence_path_selection.md
+      - Configuring SCION IP gateway: general_scion_configuration/setup_sig.md
+    - Sample projects:
+      - Read temperature sensor over SCION network: sample_projects/fetch_temperature.md
+      - Access video camera over SCION network: sample_projects/access_camera.md
+      - Using multipath in SCION: sample_projects/multipath.md
