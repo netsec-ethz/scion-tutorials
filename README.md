@@ -1,3 +1,0 @@
-# SCION Tutorial page
-
-
