@@ -1,5 +1,3 @@
-title: Home
-
 # Welcome to SCION Tutorials
 
 ## Introduction
