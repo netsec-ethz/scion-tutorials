@@ -6,7 +6,7 @@ This website provides step by step instructions on how to install and run SCION 
 
 ## Getting started
 
-You can install SCION on different platforms, also you can use preconfigured SCION virtual machine. 
+SCION can run on different platforms: 
 
 - Natively 
     1. Desktop installation - [Ubuntu 16.04 x86](native_setup/ubuntu_x86_build)
@@ -14,3 +14,12 @@ You can install SCION on different platforms, also you can use preconfigured SCI
 - Running SCION Virtual machine
     1. Setup for machines without static public IP address [VPN based setup](virtual_machine_setup/dynamic_ip/)
     2. Setup for machines with static public IP address [Static IP setup](virtual_machine_setup/static_ip/) 
+
+## Running and connecting to SCION infrastructure
+
+- Running [local SCION topology](/general_scion_configuration/local_top) 
+- Connecting to [SCIONLab network](/general_scion_configuration/vpn_setup)
+
+## Using SCION
+
+- Visualizing network topology: [SCION viz](/general_scion_configuration/scion_viz) 

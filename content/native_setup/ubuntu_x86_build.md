@@ -63,7 +63,7 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
     If the machine doesn't have generated ssh keys or ssh keys are not assigned to github account, checkout will fail with following error: `Permission denied (publickey)`. There are two ways to resolve this problem:
 
     1. Changing checkout using ssh to https: 
-    ```shell
+    ```
     git config --global url.https://github.com/.insteadOf git@github.com:
     ```
     2. Assign SSH keys to Github account, detailed instruction can be found on [Github help](https:/    /help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
