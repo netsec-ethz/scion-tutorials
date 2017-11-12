@@ -1,5 +1,9 @@
 # SCION tutorials page
 
+Website is deployed on [Github Pages](https://netsec-ethz.github.io/scion-tutorials/)
+
+## About
+
 SCION tutorial pages are written in markdown and they are placed in `content` directory. HTML website is generated using [MkDocs](http://www.mkdocs.org/)
 
 Generated HTML website is placed in `docs` directory.
