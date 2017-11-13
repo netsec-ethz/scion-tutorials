@@ -2,17 +2,17 @@
 
 ## Introduction
 
-After running SCION infrastructure it is necessary to verify its correctly working.
+After running your SCION infrastructure, it is necessary to verify tha it is working correctly.
 
-There are several methods of doing this few of them are described in this post.
+There are several methods of doing this. Some of them are described in this post.
 
 ## Running SCION-viz
 
-Recommended way of verifying correct SCION infrastructure deployment is running visualization tool [SCION-viz](/general_scion_configuration/scion_viz)
+The recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCION-viz](/general_scion_configuration/scion_viz)
 
 ## Inspecting log files
 
-SCION log files can be accessed with following command:
+The SCION log files can be accessed with the following command:
 
 ```shell
 tail -f $GOPATH/src/github.com/netsec-ethz/scion/logs/bs*.DEBUG
@@ -23,10 +23,10 @@ tail -f $GOPATH/src/github.com/netsec-ethz/scion/logs/bs*.DEBUG
 TBA
 
 !!! Tip
-    If you are running SCION virtual machine image you can display logs by running:
+    If you are running the SCION virtual machine image, you can display the logs by running:
 
     ```
     checkbeacons
     ```
 
-    from any directory
+	from any directory

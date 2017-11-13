@@ -3,31 +3,32 @@
 
 ## Introduction
 
-SCION-viz is a web based visualization tool of SCION topology. Connecting to a running infrastructure instance it reads necessary information about topology.
+SCION-viz is a web-based visualization tool of the SCION topology. Connecting to a running infrastructure instance, it reads necessary information about the network topology.
 
 ## Prerequisites 
 
-In order to run SCION-viz you must have SCION infrastructure up and running.
+In order to run SCION-viz, you must have your SCION infrastructure up and running.
 
 !!! tip "SCION VM setup"
-    If you are using SCION VM then SCION-viz is already installed and running as a service. You can access it over [localhost:8000](http://localhost:8000)
+    If you are using SCION VM, then SCION-viz is already installed and running as a service. You can access it over [localhost:8000](http://localhost:8000)
+    This port is automatically forwarded inside the VM, so you can access SCION-viz from your normal host machine.
 
-SCION-viz uses libraries that are located in `python` directory of scion repository. In order to make those libraries visible we need to export `PYTHONPATH` environment variable. 
+SCION-viz uses libraries that are located in the `python` directory of the SCION repository. In order to make those libraries visible, we need to export the `PYTHONPATH` environment variable.
 
 ```shell
 echo 'export PYTHONPATH="$GOPATH/src/github.com/netsec-ethz/scion/python:$PYTHONPATH"' >> ~/.profile
 source ~/.profile
 ```
 
-Navigate to root scion directory:
+## Installation
+
+Navigate to the root SCION directory:
 
 ```shell
 cd $GOPATH/src/github.com/netsec-ethz/scion
 ```
 
-## Installation 
-
-Checkout project and install dependencies:
+Checkout the project and install the dependencies:
 
 ```shell
 cd sub
@@ -42,13 +43,15 @@ python3 ./manage.py migrate
 To run SCION-viz:
 
 ```shell
-python3 ./manage.py runserver 0.0.0.0:8080
+python3 ./manage.py runserver 0.0.0.0:8000
 ```
+You can replace the port (8000) by any other that suits your taste.
 
 !!! Tip
-    Make sure that SCION infrastructure is running in order to see meaningful results
+    Make sure that your SCION infrastructure is running in order to see meaningful results.
+    In particular, SCION-viz requires the `sciond` process to be running.
 
-To verify that setup is working go to [localhost:8080](http://localhost:8080). Result should be similar to following:
+To verify that the setup is working correctly, visit [localhost:8000](http://localhost:8000). The result should be similar to the following:
 
 ![SCION-viz](/images/scion_viz.png)
 
