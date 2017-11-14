@@ -2,24 +2,24 @@
 
 ## Introduction
 
-This website provides step by step instructions on how to install and run SCION infrastructure. Also it provides list of interesting projects that are using SCION infrastructure for communication.
+This website provides step-by-step instructions on how to install and run the SCION infrastructure. It also provides a list of interesting projects that are using the SCION infrastructure for communication.
 
 ## Getting started
 
-SCION can run on different platforms: 
+SCION can run on different platforms:
 
-- Natively 
-    1. Desktop installation - [Ubuntu 16.04 x86](native_setup/ubuntu_x86_build)
-    2. Raspberry PI build - [Raspbian](native_setup/rpi_raspbian)
-- Running SCION Virtual machine
-    1. Setup for machines without static public IP address [VPN based setup](virtual_machine_setup/dynamic_ip/)
-    2. Setup for machines with static public IP address [Static IP setup](virtual_machine_setup/static_ip/) 
+- Natively
+    1. Desktop installation &ndash; [Ubuntu 16.04 x86](native_setup/ubuntu_x86_build)
+    2. Raspberry Pi build &ndash; [Raspbian](native_setup/rpi_raspbian)
+- In a virtual machine
+    1. Setup for machines without static public IP address &ndash; [VPN based setup](virtual_machine_setup/dynamic_ip/)
+    2. Setup for machines with static public IP address &ndash; [Static IP setup](virtual_machine_setup/static_ip/)
 
-## Running and connecting to SCION infrastructure
+## Running and connecting to the SCION infrastructure
 
-- Running [local SCION topology](/general_scion_configuration/local_top) 
-- Connecting to [SCIONLab network](/general_scion_configuration/vpn_setup)
+- Running a [local SCION topology](/general_scion_configuration/local_top)
+- Connecting to the [SCIONLab network](/general_scion_configuration/vpn_setup)
 
 ## Using SCION
 
-- Visualizing network topology: [SCION viz](/general_scion_configuration/scion_viz) 
+- Visualizing the network topology &ndash; [SCION viz](/general_scion_configuration/scion_viz)

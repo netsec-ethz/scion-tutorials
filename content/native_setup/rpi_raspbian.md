@@ -1,21 +1,21 @@
-# Building SCION for Raspberry PI - Raspbian
+# Building SCION for a Raspberry Pi &ndash; Raspbian
 
 ## Introduction
 
-SCION infrastructure can be run on IoT devices like Raspberry PI. Building SCION for Raspberry PI is similar to regular x86 build, although there are few additional steps required to make everything work.
+The SCION infrastructure can also be run on IoT devices like a Raspberry Pi. Building SCION for a Raspberry Pi is similar to the [regular x86 build](ubuntu_x86_build), although there are a few additional steps required to make everything work.
 
 ## Prerequisites
 
-In this tutorial we assume that you already have Raspberry PI running Raspbian. In order to install Raspbian, please follow [installation guide](https://www.raspberrypi.org/downloads/raspbian/)
+In this tutorial, we assume that you already have a Raspberry Pi running Raspbian. In order to install Raspbian, please follow the [installation guide](https://www.raspberrypi.org/downloads/raspbian/).
 
 !!! note "Update packages to latest version"
-    It is recommended to update packages in your package
+    It is recommended to update all packages before starting the installation process of SCION:
 
     ```
     sudo apt update && sudo apt upgrade
     ```
 
-## Installing necessary tools
+## Install necessary tools
 
 ### Install necessary packages
 
@@ -23,9 +23,9 @@ In this tutorial we assume that you already have Raspberry PI running Raspbian. 
 sudo apt install git openvpn
 ```
 
-### Install GO
+### Install Go
 
-In order to run SCION, go version `1.8.x` is required. You can download and install go with following commands:
+In order to run SCION, Go version `1.8.x` is required. You can download and install go with following commands:
 
 ```shell
 wget https://storage.googleapis.com/golang/go1.8.5.linux-armv6l.tar.gz
@@ -35,9 +35,9 @@ echo 'PATH=$PATH:/usr/local/go/bin' >> ~/.profile
 source ~/.profile
 ```
 
-### Configure GO workspace
+### Configure Go workspace
 
-After installation of Go tools, it is necessary to create go workspace with following commands:
+After the installation of Go tools, it is necessary to create a go workspace with the following commands:
 
 ```shell
 echo 'export GOPATH="$HOME/go"' >> ~/.profile
@@ -59,9 +59,9 @@ cd scion
 ```
 
 !!! warning "Troubleshooting"
-    If the machine doesn't have generated ssh keys or ssh keys are not assigned to github account, checkout will fail with following error: `Permission denied (publickey)`. There are two ways to resolve this problem:
+    If the machine doesn't have generated SSH keys or the SSH keys are not assigned to a github account, the checkout will fail with the error `Permission denied (publickey)`. There are two ways to resolve this problem:
 
-    1. Changing checkout using ssh to https: 
+    1. Changing the checkout using ssh to https:
     ```
     git config --global url.https://github.com/.insteadOf git@github.com:
     ```

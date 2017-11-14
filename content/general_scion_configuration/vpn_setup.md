@@ -1,3 +1,3 @@
-# Configuring VPN client
+# Connecting to SCIONLab via VPN
 
 TBA
