@@ -1,12 +1,12 @@
-# Running SCION infrastructure on a local topology 
+# Running the SCION infrastructure on a local topology
 
 ## Introduction
 
-This tutorial will guide you through the steps required to generate a local topology and run SCION. 
+This tutorial will guide you through the steps required to generate a local topology and run SCION.
 
 ## Prerequisites
 
-This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow [How to build SCION on Ubuntu 16.04 x86-64](ubuntu_x86_build)
+This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow [How to build SCION on Ubuntu 16.04 x86-64](ubuntu_x86_build).
 
 ## Topology
 

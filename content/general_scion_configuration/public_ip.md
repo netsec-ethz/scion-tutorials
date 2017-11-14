@@ -1,3 +1,3 @@
-# Running SCIONLab with with static IP address
+# Connecting to SCIONLab with a static public IP address
 
 TBA

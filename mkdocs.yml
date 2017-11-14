@@ -10,7 +10,7 @@ theme:
 
     include_search_page: false
     search_index_only: true
-    
+
     language: en
     feature:
       tabs: false
@@ -49,20 +49,20 @@ pages:
     - Home: index.md
     - How to setup on different platforms:
       - Ubuntu 16.04 x86-64: native_setup/ubuntu_x86_build.md
-      - Raspberry PI - Raspbian: native_setup/rpi_raspbian.md
-      - Virtual machine with VPN: virtual_machine_setup/dynamic_ip.md
-      - Virtual machine with public IP: virtual_machine_setup/static_ip.md
-      - Verifying installation: general_scion_configuration/verifying_scion_installation.md
+      - Raspberry PI &ndash; Raspbian: native_setup/rpi_raspbian.md
+      - Virtual machine via VPN: virtual_machine_setup/dynamic_ip.md
+      - Virtual machine with static public IP: virtual_machine_setup/static_ip.md
+      - Verifying the installation: general_scion_configuration/verifying_scion_installation.md
     - How to connect:
-      - Running SCION on local topology: general_scion_configuration/local_top.md
-      - Set up an AS and connect to SCION network: general_scion_configuration/vpn_setup.md
-      - Set up an endhost and connect to local AS: general_scion_configuration/vpn_setup.md
-      - VPN configuration: general_scion_configuration/vpn_setup.md
+      - Running SCION on a local topology: general_scion_configuration/local_top.md
+      - Set up an AS and connect to the SCION network: general_scion_configuration/public_ip.md
+      - Connect to the SCION network via VPN: general_scion_configuration/vpn_setup.md
+      - Set up an endhost and connect to a local AS: general_scion_configuration/vpn_setup.md
 
     - How to use:
       - Visualization tool (SCION-viz): general_scion_configuration/scion_viz.md
-      - Read temperature sensor over SCION network: sample_projects/fetch_temperature.md
-      - Access video camera over SCION network: sample_projects/access_camera.md
-      - Using multipath in SCION: sample_projects/multipath.md      
+      - Read a temperature sensor over the SCION network: sample_projects/fetch_temperature.md
+      - Access a video camera over the SCION network: sample_projects/access_camera.md
+      - Using multipath in SCION: sample_projects/multipath.md
       - Configuring path selection: general_scion_configuration/influence_path_selection.md
-      - Configuring SCION IP gateway: general_scion_configuration/setup_sig.md
+      - Configuring the SCION IP gateway: general_scion_configuration/setup_sig.md

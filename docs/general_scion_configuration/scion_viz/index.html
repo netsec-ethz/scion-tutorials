@@ -199,8 +199,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../native_setup/rpi_raspbian/" title="Raspberry PI - Raspbian" class="md-nav__link">
-      Raspberry PI - Raspbian
+    <a href="../../native_setup/rpi_raspbian/" title="Raspberry PI &ndash; Raspbian" class="md-nav__link">
+      Raspberry PI &ndash; Raspbian
     </a>
   </li>
 
@@ -211,8 +211,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../virtual_machine_setup/dynamic_ip/" title="Virtual machine with VPN" class="md-nav__link">
-      Virtual machine with VPN
+    <a href="../../virtual_machine_setup/dynamic_ip/" title="Virtual machine via VPN" class="md-nav__link">
+      Virtual machine via VPN
     </a>
   </li>
 
@@ -223,8 +223,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../virtual_machine_setup/static_ip/" title="Virtual machine with public IP" class="md-nav__link">
-      Virtual machine with public IP
+    <a href="../../virtual_machine_setup/static_ip/" title="Virtual machine with static public IP" class="md-nav__link">
+      Virtual machine with static public IP
     </a>
   </li>
 
@@ -235,8 +235,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../verifying_scion_installation/" title="Verifying installation" class="md-nav__link">
-      Verifying installation
+    <a href="../verifying_scion_installation/" title="Verifying the installation" class="md-nav__link">
+      Verifying the installation
     </a>
   </li>
 
@@ -271,8 +271,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../local_top/" title="Running SCION on local topology" class="md-nav__link">
-      Running SCION on local topology
+    <a href="../local_top/" title="Running SCION on a local topology" class="md-nav__link">
+      Running SCION on a local topology
     </a>
   </li>
 
@@ -283,8 +283,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../vpn_setup/" title="Set up an AS and connect to SCION network" class="md-nav__link">
-      Set up an AS and connect to SCION network
+    <a href="../public_ip/" title="Set up an AS and connect to the SCION network" class="md-nav__link">
+      Set up an AS and connect to the SCION network
     </a>
   </li>
 
@@ -295,8 +295,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../vpn_setup/" title="Set up an endhost and connect to local AS" class="md-nav__link">
-      Set up an endhost and connect to local AS
+    <a href="../vpn_setup/" title="Connect to the SCION network via VPN" class="md-nav__link">
+      Connect to the SCION network via VPN
     </a>
   </li>
 
@@ -307,8 +307,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../vpn_setup/" title="VPN configuration" class="md-nav__link">
-      VPN configuration
+    <a href="../vpn_setup/" title="Set up an endhost and connect to a local AS" class="md-nav__link">
+      Set up an endhost and connect to a local AS
     </a>
   </li>
 
@@ -421,8 +421,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sample_projects/fetch_temperature/" title="Read temperature sensor over SCION network" class="md-nav__link">
-      Read temperature sensor over SCION network
+    <a href="../../sample_projects/fetch_temperature/" title="Read a temperature sensor over the SCION network" class="md-nav__link">
+      Read a temperature sensor over the SCION network
     </a>
   </li>
 
@@ -433,8 +433,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../sample_projects/access_camera/" title="Access video camera over SCION network" class="md-nav__link">
-      Access video camera over SCION network
+    <a href="../../sample_projects/access_camera/" title="Access a video camera over the SCION network" class="md-nav__link">
+      Access a video camera over the SCION network
     </a>
   </li>
 
@@ -469,8 +469,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../setup_sig/" title="Configuring SCION IP gateway" class="md-nav__link">
-      Configuring SCION IP gateway
+    <a href="../setup_sig/" title="Configuring the SCION IP gateway" class="md-nav__link">
+      Configuring the SCION IP gateway
     </a>
   </li>
 
@@ -552,26 +552,27 @@
                 
                 <h1 id="installing-and-running-scion-viz">Installing and running SCION-viz<a class="headerlink" href="#installing-and-running-scion-viz" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>SCION-viz is a web based visualization tool of SCION topology. Connecting to a running infrastructure instance it reads necessary information about topology.</p>
+<p>SCION-viz is a web-based visualization tool of the SCION topology. Connecting to a running infrastructure instance, it reads necessary information about the network topology.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>In order to run SCION-viz you must have SCION infrastructure up and running.</p>
+<p>In order to run SCION-viz, you must have your SCION infrastructure up and running.</p>
 <div class="admonition tip">
 <p class="admonition-title">SCION VM setup</p>
-<p>If you are using SCION VM then SCION-viz is already installed and running as a service. You can access it over <a href="http://localhost:8000">localhost:8000</a></p>
+<p>If you are using SCION VM, then SCION-viz is already installed and running as a service. You can access it over <a href="http://localhost:8000">localhost:8000</a>
+This port is automatically forwarded inside the VM, so you can access SCION-viz from your normal host machine.</p>
 </div>
-<p>SCION-viz uses libraries that are located in <code>python</code> directory of scion repository. In order to make those libraries visible we need to export <code>PYTHONPATH</code> environment variable. </p>
+<p>SCION-viz uses libraries that are located in the <code>python</code> directory of the SCION repository. In order to make those libraries visible, we need to export the <code>PYTHONPATH</code> environment variable.</p>
 <div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$GOPATH/src/github.com/netsec-ethz/scion/python:$PYTHONPATH&quot;&#39;</span> &gt;&gt; ~/.profile
 <span class="nb">source</span> ~/.profile
 </pre></div>
 
 
-<p>Navigate to root scion directory:</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>Navigate to the root SCION directory:</p>
 <div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz/scion
 </pre></div>
 
 
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p>Checkout project and install dependencies:</p>
+<p>Checkout the project and install the dependencies:</p>
 <div class="codehilite"><pre><span></span><span class="nb">cd</span> sub
 git clone git@github.com:netsec-ethz/scion-viz
 <span class="nb">cd</span> scion-viz/python/web
@@ -582,15 +583,17 @@ python3 ./manage.py migrate
 
 <h2 id="running">Running<a class="headerlink" href="#running" title="Permanent link">&para;</a></h2>
 <p>To run SCION-viz:</p>
-<div class="codehilite"><pre><span></span>python3 ./manage.py runserver <span class="m">0</span>.0.0.0:8080
+<div class="codehilite"><pre><span></span>python3 ./manage.py runserver <span class="m">0</span>.0.0.0:8000
 </pre></div>
 
 
+<p>You can replace the port (8000) by any other that suits your taste.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Make sure that SCION infrastructure is running in order to see meaningful results</p>
+<p>Make sure that your SCION infrastructure is running in order to see meaningful results.
+In particular, SCION-viz requires the <code>sciond</code> process to be running.</p>
 </div>
-<p>To verify that setup is working go to <a href="http://localhost:8080">localhost:8080</a>. Result should be similar to following:</p>
+<p>To verify that the setup is working correctly, visit <a href="http://localhost:8000">localhost:8000</a>. The result should be similar to the following:</p>
 <p><img alt="SCION-viz" src="../../images/scion_viz.png" /></p>
 <h2 id="using-scion-viz">Using SCION-viz<a class="headerlink" href="#using-scion-viz" title="Permanent link">&para;</a></h2>
 <p>TBA</p>

@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome to SCION Tutorials\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis website provides step by step instructions on how to install and run SCION infrastructure. Also it provides list of interesting projects that are using SCION infrastructure for communication.\n\n\nGetting started\n\u00b6\n\n\nSCION can run on different platforms: \n\n\n\n\nNatively \n\n\nDesktop installation - \nUbuntu 16.04 x86\n\n\nRaspberry PI build - \nRaspbian\n\n\n\n\n\n\nRunning SCION Virtual machine\n\n\nSetup for machines without static public IP address \nVPN based setup\n\n\nSetup for machines with static public IP address \nStatic IP setup\n \n\n\n\n\n\n\n\n\nRunning and connecting to SCION infrastructure\n\u00b6\n\n\n\n\nRunning \nlocal SCION topology\n \n\n\nConnecting to \nSCIONLab network\n\n\n\n\nUsing SCION\n\u00b6\n\n\n\n\nVisualizing network topology: \nSCION viz",
+            "text": "Welcome to SCION Tutorials\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis website provides step-by-step instructions on how to install and run the SCION infrastructure. It also provides a list of interesting projects that are using the SCION infrastructure for communication.\n\n\nGetting started\n\u00b6\n\n\nSCION can run on different platforms:\n\n\n\n\nNatively\n\n\nDesktop installation \u2013 \nUbuntu 16.04 x86\n\n\nRaspberry Pi build \u2013 \nRaspbian\n\n\n\n\n\n\nIn a virtual machine\n\n\nSetup for machines without static public IP address \u2013 \nVPN based setup\n\n\nSetup for machines with static public IP address \u2013 \nStatic IP setup\n\n\n\n\n\n\n\n\nRunning and connecting to the SCION infrastructure\n\u00b6\n\n\n\n\nRunning a \nlocal SCION topology\n\n\nConnecting to the \nSCIONLab network\n\n\n\n\nUsing SCION\n\u00b6\n\n\n\n\nVisualizing the network topology \u2013 \nSCION viz",
             "title": "Home"
         },
         {
@@ -12,27 +12,27 @@
         },
         {
             "location": "/#introduction",
-            "text": "This website provides step by step instructions on how to install and run SCION infrastructure. Also it provides list of interesting projects that are using SCION infrastructure for communication.",
+            "text": "This website provides step-by-step instructions on how to install and run the SCION infrastructure. It also provides a list of interesting projects that are using the SCION infrastructure for communication.",
             "title": "Introduction"
         },
         {
             "location": "/#getting-started",
-            "text": "SCION can run on different platforms:    Natively   Desktop installation -  Ubuntu 16.04 x86  Raspberry PI build -  Raspbian    Running SCION Virtual machine  Setup for machines without static public IP address  VPN based setup  Setup for machines with static public IP address  Static IP setup",
+            "text": "SCION can run on different platforms:   Natively  Desktop installation \u2013  Ubuntu 16.04 x86  Raspberry Pi build \u2013  Raspbian    In a virtual machine  Setup for machines without static public IP address \u2013  VPN based setup  Setup for machines with static public IP address \u2013  Static IP setup",
             "title": "Getting started"
         },
         {
-            "location": "/#running-and-connecting-to-scion-infrastructure",
-            "text": "Running  local SCION topology    Connecting to  SCIONLab network",
-            "title": "Running and connecting to SCION infrastructure"
+            "location": "/#running-and-connecting-to-the-scion-infrastructure",
+            "text": "Running a  local SCION topology  Connecting to the  SCIONLab network",
+            "title": "Running and connecting to the SCION infrastructure"
         },
         {
             "location": "/#using-scion",
-            "text": "Visualizing network topology:  SCION viz",
+            "text": "Visualizing the network topology \u2013  SCION viz",
             "title": "Using SCION"
         },
         {
             "location": "/native_setup/ubuntu_x86_build/",
-            "text": "Building SCION on Ubuntu 16.04 x86-64\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis tutorial will guide you through steps required to install SCION on Ubuntu 16.04. This also includes steps required to install necessary packages. For details on how to build SCION on RaspberryPI please take a look at \nHow to build SCION for Raspberry PI\n\n\nPrerequisites\n\u00b6\n\n\nFollowing steps will guide you through installation of required tools necessary for running SCION.\n\n\n\n\nTip\n\n\nYou can skip prerequisites if you have Go workspaces already configured on your machine.\n\n\n\n\nStep One - install Go\n\u00b6\n\n\nIn order to run SCION you must have Go version 1.8.x installed. Download \nGo tools\n and extract them in \n/usr/local\n with following command (with root permissions):\n\n\ntar -C /usr/local -xzf go1.8.5.linux-amd64.tar.gz\n\n\n\n\n\nand add newly extracted binaries to PATH:\n\n\necho\n \n'PATH=$PATH:/usr/local/go/bin'\n >> ~/.profile\n\nsource\n ~/.profile\n\n\n\n\n\nTest your Go installation with following command:\n\n\ngo version\n\n\n\n\n\nAnd output should be: \ngo version go1.8.5 linux/amd64\n\n\nStep Two - configuring Go workspace\n\u00b6\n\n\nAfter installation of Go tools, it is necessary to setup \nGo workspace\n. Following commands will create default workspace at \n~/go\n and export it as \n$GOPATH\n environment variable.\n\n\necho\n \n'export GOPATH=\"$HOME/go\"'\n >> ~/.profile\n\nsource\n ~/.profile\nmkdir -p \n\"\n$GOPATH\n/bin\"\n\n\necho\n \n'PATH=$PATH:$GOPATH/bin'\n >> ~/.profile\n\nsource\n ~/.profile\n\n\n\n\n\nSCION Installation\n\u00b6\n\n\nStep One - Checkout repository\n\u00b6\n\n\nAfter go workspace has been configured, we can checkout SCION repository with all dependencies using following command:\n\n\nmkdir -p \n\"\n$GOPATH\n/src/github.com/netsec-ethz\"\n\n\ncd\n \n\"\n$GOPATH\n/src/github.com/netsec-ethz\"\n\ngit clone --recursive -b scionlab git@github.com:netsec-ethz/scion\n\n\n\n\n\n\n\nTroubleshooting\n\n\nIf the machine doesn't have generated ssh keys or ssh keys are not assigned to github account, checkout will fail with following error: \nPermission denied (publickey)\n. There are two ways to resolve this problem:\n\n\n\n\nChanging checkout using ssh to https: \n\ngit config --global url.https://github.com/.insteadOf git@github.com:\n\n\nAssign SSH keys to Github account, detailed instruction can be found on \nGithub help\n\n\n\n\n\n\nThis will clone SCION and resolve dependencies in appropriate directory in Go workspace. It is necessary to navigate to the newly downloaded repository for finishing the configuration.\n\n\ncd\n \n$GOPATH\n/src/github.com/netsec-ethz/scion\n\n\n\n\n\nStep Two - Finish installing required packages\n\u00b6\n\n\nInstalling dependencies is fairly simple, while in root of \nscion\n repository it is necessary to execute following command:\n\n\n./env/deps\n\n\n\n\n\nThis will finish installing required dependencies and system packages.\n\n\nStep Three - Configure host Zookeeper instance\n\u00b6\n\n\nReplacing \n/etc/zookeeper/conf/zoo.cfg\n with file \ndocker/zoo.cfg\n is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves ZK performance (at the cost of reliability, so it should only be done in a testing environment). \n\n\ncp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg\n\n\n\n\n\nNext steps\n\u00b6\n\n\nAfter finishing installation of SCION there are different ways of running different topologies. Following tutorials will cover this in details.\n\n\n\n\nRunning topology locally\n - Generate sample topology and run SCION\n\n\nRunning topology on SCION Lab with public IP address\n - Connects to already running SCION topology \n\n\nRunning topology on SCION Lab without public IP address\n - Connects to already running SCION topology through OpenVPN tunnel.",
+            "text": "Building SCION on Ubuntu 16.04 x86-64\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis tutorial will guide you through the steps required to install SCION on Ubuntu 16.04. This also includes the steps required to install the necessary packages. For details on how to build SCION on a Raspberry Pi, please take a look at \nhow to build SCION on a Raspberry Pi\n.\n\n\nPrerequisites\n\u00b6\n\n\nThe following steps will guide you through the installation of the tools necessary for running SCION.\n\n\n\n\nTip\n\n\nYou can skip prerequisites if you have your Go workspaces already configured on your machine.\n\n\n\n\nStep One \u2013 install Go\n\u00b6\n\n\nIn order to run SCION, you must have Go version 1.8.x installed. Download \nGo tools\n and extract them in \n/usr/local\n with the following command (with root permissions):\n\n\ntar -C /usr/local -xzf go1.8.5.linux-amd64.tar.gz\n\n\n\n\n\nThen, add the newly extracted binaries to \n$PATH\n:\n\n\necho\n \n'PATH=$PATH:/usr/local/go/bin'\n >> ~/.profile\n\nsource\n ~/.profile\n\n\n\n\n\nTest your Go installation with the following command:\n\n\ngo version\n\n\n\n\n\nThe output should be \ngo version go1.8.5 linux/amd64\n.\n\n\nStep Two \u2013 configure your Go workspace\n\u00b6\n\n\nAfter the installation of Go tools, it is necessary to set up your \nGo workspace\n. The following commands will create a default workspace at \n~/go\n and export it as the \n$GOPATH\n environment variable:\n\n\necho\n \n'export GOPATH=\"$HOME/go\"'\n >> ~/.profile\n\nsource\n ~/.profile\nmkdir -p \n\"\n$GOPATH\n/bin\"\n\n\necho\n \n'PATH=$PATH:$GOPATH/bin'\n >> ~/.profile\n\nsource\n ~/.profile\n\n\n\n\n\nSCION installation\n\u00b6\n\n\nStep One \u2013 clone the SCION repository\n\u00b6\n\n\nAfter the Go workspace has been configured, we can checkout the SCION repository from github.com with all dependencies using the following commands:\n\n\nmkdir -p \n\"\n$GOPATH\n/src/github.com/netsec-ethz\"\n\n\ncd\n \n\"\n$GOPATH\n/src/github.com/netsec-ethz\"\n\ngit clone --recursive -b scionlab git@github.com:netsec-ethz/scion\n\n\n\n\n\n\n\nTroubleshooting\n\n\nIf the machine doesn't have generated SSH keys or the SSH keys are not assigned to the github account, the checkout will fail with the error \nPermission denied (publickey)\n. There are two ways to resolve this problem:\n\n\n\n\nChanging the checkout using ssh to https:\n\ngit config --global url.https://github.com/.insteadOf git@github.com:\n\n\nAssign SSH keys to Github account, detailed instruction can be found on \nGithub help\n\n\n\n\n\n\nThis will clone SCION and resolve dependencies in the appropriate directory in the Go workspace. It is necessary to navigate to the newly downloaded repository for finishing the configuration:\n\n\ncd\n \n$GOPATH\n/src/github.com/netsec-ethz/scion\n\n\n\n\n\nStep Two \u2013 finish installing the required packages\n\u00b6\n\n\nIn order to instal dependencies, simply issue the following command while in the root directory of the SCION installation:\n\n\n./env/deps\n\n\n\n\n\nThis will finish installing the required dependencies and system packages.\n\n\nStep Three \u2013 configure the host Zookeeper instance\n\u00b6\n\n\nReplacing \n/etc/zookeeper/conf/zoo.cfg\n with the file \ndocker/zoo.cfg\n is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves the performance of Zookeeper (at the cost of reliability, so it should only be done in a testing environment).\n\n\ncp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg\n\n\n\n\n\nNext steps\n\u00b6\n\n\nAfter finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:\n\n\n\n\nRunning a local network topology\n \u2013 Generate a sample topology and run SCION locally\n\n\nConnecting to SCIONLab with a static public IP address\n \u2013 Connect to the already running SCION topology\n\n\nConnecting to SCIONLab without a static public IP address\n \u2013 Connect to the already running SCION topology through an OpenVPN tunnel",
             "title": "Ubuntu 16.04 x86-64"
         },
         {
@@ -42,73 +42,73 @@
         },
         {
             "location": "/native_setup/ubuntu_x86_build/#introduction",
-            "text": "This tutorial will guide you through steps required to install SCION on Ubuntu 16.04. This also includes steps required to install necessary packages. For details on how to build SCION on RaspberryPI please take a look at  How to build SCION for Raspberry PI",
+            "text": "This tutorial will guide you through the steps required to install SCION on Ubuntu 16.04. This also includes the steps required to install the necessary packages. For details on how to build SCION on a Raspberry Pi, please take a look at  how to build SCION on a Raspberry Pi .",
             "title": "Introduction"
         },
         {
             "location": "/native_setup/ubuntu_x86_build/#prerequisites",
-            "text": "Following steps will guide you through installation of required tools necessary for running SCION.   Tip  You can skip prerequisites if you have Go workspaces already configured on your machine.",
+            "text": "The following steps will guide you through the installation of the tools necessary for running SCION.   Tip  You can skip prerequisites if you have your Go workspaces already configured on your machine.",
             "title": "Prerequisites"
         },
         {
             "location": "/native_setup/ubuntu_x86_build/#step-one-install-go",
-            "text": "In order to run SCION you must have Go version 1.8.x installed. Download  Go tools  and extract them in  /usr/local  with following command (with root permissions):  tar -C /usr/local -xzf go1.8.5.linux-amd64.tar.gz  and add newly extracted binaries to PATH:  echo   'PATH=$PATH:/usr/local/go/bin'  >> ~/.profile source  ~/.profile  Test your Go installation with following command:  go version  And output should be:  go version go1.8.5 linux/amd64",
-            "title": "Step One - install Go"
+            "text": "In order to run SCION, you must have Go version 1.8.x installed. Download  Go tools  and extract them in  /usr/local  with the following command (with root permissions):  tar -C /usr/local -xzf go1.8.5.linux-amd64.tar.gz  Then, add the newly extracted binaries to  $PATH :  echo   'PATH=$PATH:/usr/local/go/bin'  >> ~/.profile source  ~/.profile  Test your Go installation with the following command:  go version  The output should be  go version go1.8.5 linux/amd64 .",
+            "title": "Step One &ndash; install Go"
         },
         {
-            "location": "/native_setup/ubuntu_x86_build/#step-two-configuring-go-workspace",
-            "text": "After installation of Go tools, it is necessary to setup  Go workspace . Following commands will create default workspace at  ~/go  and export it as  $GOPATH  environment variable.  echo   'export GOPATH=\"$HOME/go\"'  >> ~/.profile source  ~/.profile\nmkdir -p  \" $GOPATH /bin\"  echo   'PATH=$PATH:$GOPATH/bin'  >> ~/.profile source  ~/.profile",
-            "title": "Step Two - configuring Go workspace"
+            "location": "/native_setup/ubuntu_x86_build/#step-two-configure-your-go-workspace",
+            "text": "After the installation of Go tools, it is necessary to set up your  Go workspace . The following commands will create a default workspace at  ~/go  and export it as the  $GOPATH  environment variable:  echo   'export GOPATH=\"$HOME/go\"'  >> ~/.profile source  ~/.profile\nmkdir -p  \" $GOPATH /bin\"  echo   'PATH=$PATH:$GOPATH/bin'  >> ~/.profile source  ~/.profile",
+            "title": "Step Two &ndash; configure your Go workspace"
         },
         {
             "location": "/native_setup/ubuntu_x86_build/#scion-installation",
             "text": "",
-            "title": "SCION Installation"
+            "title": "SCION installation"
         },
         {
-            "location": "/native_setup/ubuntu_x86_build/#step-one-checkout-repository",
-            "text": "After go workspace has been configured, we can checkout SCION repository with all dependencies using following command:  mkdir -p  \" $GOPATH /src/github.com/netsec-ethz\"  cd   \" $GOPATH /src/github.com/netsec-ethz\" \ngit clone --recursive -b scionlab git@github.com:netsec-ethz/scion   Troubleshooting  If the machine doesn't have generated ssh keys or ssh keys are not assigned to github account, checkout will fail with following error:  Permission denied (publickey) . There are two ways to resolve this problem:   Changing checkout using ssh to https:  git config --global url.https://github.com/.insteadOf git@github.com:  Assign SSH keys to Github account, detailed instruction can be found on  Github help    This will clone SCION and resolve dependencies in appropriate directory in Go workspace. It is necessary to navigate to the newly downloaded repository for finishing the configuration.  cd   $GOPATH /src/github.com/netsec-ethz/scion",
-            "title": "Step One - Checkout repository"
+            "location": "/native_setup/ubuntu_x86_build/#step-one-clone-the-scion-repository",
+            "text": "After the Go workspace has been configured, we can checkout the SCION repository from github.com with all dependencies using the following commands:  mkdir -p  \" $GOPATH /src/github.com/netsec-ethz\"  cd   \" $GOPATH /src/github.com/netsec-ethz\" \ngit clone --recursive -b scionlab git@github.com:netsec-ethz/scion   Troubleshooting  If the machine doesn't have generated SSH keys or the SSH keys are not assigned to the github account, the checkout will fail with the error  Permission denied (publickey) . There are two ways to resolve this problem:   Changing the checkout using ssh to https: git config --global url.https://github.com/.insteadOf git@github.com:  Assign SSH keys to Github account, detailed instruction can be found on  Github help    This will clone SCION and resolve dependencies in the appropriate directory in the Go workspace. It is necessary to navigate to the newly downloaded repository for finishing the configuration:  cd   $GOPATH /src/github.com/netsec-ethz/scion",
+            "title": "Step One &ndash; clone the SCION repository"
         },
         {
-            "location": "/native_setup/ubuntu_x86_build/#step-two-finish-installing-required-packages",
-            "text": "Installing dependencies is fairly simple, while in root of  scion  repository it is necessary to execute following command:  ./env/deps  This will finish installing required dependencies and system packages.",
-            "title": "Step Two - Finish installing required packages"
+            "location": "/native_setup/ubuntu_x86_build/#step-two-finish-installing-the-required-packages",
+            "text": "In order to instal dependencies, simply issue the following command while in the root directory of the SCION installation:  ./env/deps  This will finish installing the required dependencies and system packages.",
+            "title": "Step Two &ndash; finish installing the required packages"
         },
         {
-            "location": "/native_setup/ubuntu_x86_build/#step-three-configure-host-zookeeper-instance",
-            "text": "Replacing  /etc/zookeeper/conf/zoo.cfg  with file  docker/zoo.cfg  is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves ZK performance (at the cost of reliability, so it should only be done in a testing environment).   cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg",
-            "title": "Step Three - Configure host Zookeeper instance"
+            "location": "/native_setup/ubuntu_x86_build/#step-three-configure-the-host-zookeeper-instance",
+            "text": "Replacing  /etc/zookeeper/conf/zoo.cfg  with the file  docker/zoo.cfg  is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves the performance of Zookeeper (at the cost of reliability, so it should only be done in a testing environment).  cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg",
+            "title": "Step Three &ndash; configure the host Zookeeper instance"
         },
         {
             "location": "/native_setup/ubuntu_x86_build/#next-steps",
-            "text": "After finishing installation of SCION there are different ways of running different topologies. Following tutorials will cover this in details.   Running topology locally  - Generate sample topology and run SCION  Running topology on SCION Lab with public IP address  - Connects to already running SCION topology   Running topology on SCION Lab without public IP address  - Connects to already running SCION topology through OpenVPN tunnel.",
+            "text": "After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:   Running a local network topology  \u2013 Generate a sample topology and run SCION locally  Connecting to SCIONLab with a static public IP address  \u2013 Connect to the already running SCION topology  Connecting to SCIONLab without a static public IP address  \u2013 Connect to the already running SCION topology through an OpenVPN tunnel",
             "title": "Next steps"
         },
         {
             "location": "/native_setup/rpi_raspbian/",
-            "text": "Building SCION for Raspberry PI - Raspbian\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nSCION infrastructure can be run on IoT devices like Raspberry PI. Building SCION for Raspberry PI is similar to regular x86 build, although there are few additional steps required to make everything work.\n\n\nPrerequisites\n\u00b6\n\n\nIn this tutorial we assume that you already have Raspberry PI running Raspbian. In order to install Raspbian, please follow \ninstallation guide\n\n\n\n\nUpdate packages to latest version\n\n\nIt is recommended to update packages in your package\n\n\nsudo apt update && sudo apt upgrade\n\n\n\n\nInstalling necessary tools\n\u00b6\n\n\nInstall necessary packages\n\u00b6\n\n\nsudo apt install git openvpn\n\n\n\n\n\nInstall GO\n\u00b6\n\n\nIn order to run SCION, go version \n1.8.x\n is required. You can download and install go with following commands:\n\n\nwget https://storage.googleapis.com/golang/go1.8.5.linux-armv6l.tar.gz\nsudo tar -C /usr/local -xzf go1.8.5.linux-armv6l.tar.gz\n\n\necho\n \n'PATH=$PATH:/usr/local/go/bin'\n >> ~/.profile\n\nsource\n ~/.profile\n\n\n\n\n\nConfigure GO workspace\n\u00b6\n\n\nAfter installation of Go tools, it is necessary to create go workspace with following commands:\n\n\necho\n \n'export GOPATH=\"$HOME/go\"'\n >> ~/.profile\n\nsource\n ~/.profile\nmkdir -p \n\"\n$GOPATH\n/bin\"\n\n\necho\n \n'PATH=$PATH:$GOPATH/bin'\n >> ~/.profile\n\nsource\n ~/.profile\n\n\n\n\n\nInstall SCION\n\u00b6\n\n\nmkdir -p \n\"\n$GOPATH\n/src/github.com/netsec-ethz\"\n\n\ncd\n \n\"\n$GOPATH\n/src/github.com/netsec-ethz\"\n\n\ngit clone --recursive -b scionlab git@github.com:netsec-ethz/scion\n\ncd\n scion\n\n\n\n\n\n\n\nTroubleshooting\n\n\nIf the machine doesn't have generated ssh keys or ssh keys are not assigned to github account, checkout will fail with following error: \nPermission denied (publickey)\n. There are two ways to resolve this problem:\n\n\n\n\nChanging checkout using ssh to https: \n\ngit config --global url.https://github.com/.insteadOf git@github.com:\n\n\nAssign SSH keys to Github account, detailed instruction can be found on \nGithub help\n\n\n\n\n\n\ngit checkout -b arm-modified\nwget https://gist.githubusercontent.com/FR4NK-W/cc6661f420fe5e9805d5b9cdb9c41b1b/raw/7dc3b60b86b4c148c2706e3da82eee8d557bbd45/patches_checksum_bench.patch\nwget https://gist.githubusercontent.com/FR4NK-W/fb7a4b171ab3d5121b6492b9b664fd47/raw/ddeeb8f2337c64f027955e070df6ef34ff26bf9a/patches_dispatcher.patch\n\npatch ./c/lib/scion/checksum_bench.c ./patches_checksum_bench.patch\nrm c/lib/scion/checksum_bench.c.orig\npatch ./c/dispatcher/dispatcher.c ./patches_dispatcher.patch\nrm c/dispatcher/dispatcher.c.orig\n\n\n\n\n\ngit commit -am \n\"Modified to compile on ARM systems\"\n\nbash -c \n'yes | GO_INSTALL=true ./env/deps'\n\n\n\n\n\n\nsudo cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg\n./scion.sh build",
-            "title": "Raspberry PI - Raspbian"
+            "text": "Building SCION for a Raspberry Pi \u2013 Raspbian\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThe SCION infrastructure can also be run on IoT devices like a Raspberry Pi. Building SCION for a Raspberry Pi is similar to the \nregular x86 build\n, although there are a few additional steps required to make everything work.\n\n\nPrerequisites\n\u00b6\n\n\nIn this tutorial, we assume that you already have a Raspberry Pi running Raspbian. In order to install Raspbian, please follow the \ninstallation guide\n.\n\n\n\n\nUpdate packages to latest version\n\n\nIt is recommended to update all packages before starting the installation process of SCION:\n\n\nsudo apt update && sudo apt upgrade\n\n\n\n\nInstall necessary tools\n\u00b6\n\n\nInstall necessary packages\n\u00b6\n\n\nsudo apt install git openvpn\n\n\n\n\n\nInstall Go\n\u00b6\n\n\nIn order to run SCION, Go version \n1.8.x\n is required. You can download and install go with following commands:\n\n\nwget https://storage.googleapis.com/golang/go1.8.5.linux-armv6l.tar.gz\nsudo tar -C /usr/local -xzf go1.8.5.linux-armv6l.tar.gz\n\n\necho\n \n'PATH=$PATH:/usr/local/go/bin'\n >> ~/.profile\n\nsource\n ~/.profile\n\n\n\n\n\nConfigure Go workspace\n\u00b6\n\n\nAfter the installation of Go tools, it is necessary to create a go workspace with the following commands:\n\n\necho\n \n'export GOPATH=\"$HOME/go\"'\n >> ~/.profile\n\nsource\n ~/.profile\nmkdir -p \n\"\n$GOPATH\n/bin\"\n\n\necho\n \n'PATH=$PATH:$GOPATH/bin'\n >> ~/.profile\n\nsource\n ~/.profile\n\n\n\n\n\nInstall SCION\n\u00b6\n\n\nmkdir -p \n\"\n$GOPATH\n/src/github.com/netsec-ethz\"\n\n\ncd\n \n\"\n$GOPATH\n/src/github.com/netsec-ethz\"\n\n\ngit clone --recursive -b scionlab git@github.com:netsec-ethz/scion\n\ncd\n scion\n\n\n\n\n\n\n\nTroubleshooting\n\n\nIf the machine doesn't have generated SSH keys or the SSH keys are not assigned to a github account, the checkout will fail with the error \nPermission denied (publickey)\n. There are two ways to resolve this problem:\n\n\n\n\nChanging the checkout using ssh to https:\n\ngit config --global url.https://github.com/.insteadOf git@github.com:\n\n\nAssign SSH keys to Github account, detailed instruction can be found on \nGithub help\n\n\n\n\n\n\ngit checkout -b arm-modified\nwget https://gist.githubusercontent.com/FR4NK-W/cc6661f420fe5e9805d5b9cdb9c41b1b/raw/7dc3b60b86b4c148c2706e3da82eee8d557bbd45/patches_checksum_bench.patch\nwget https://gist.githubusercontent.com/FR4NK-W/fb7a4b171ab3d5121b6492b9b664fd47/raw/ddeeb8f2337c64f027955e070df6ef34ff26bf9a/patches_dispatcher.patch\n\npatch ./c/lib/scion/checksum_bench.c ./patches_checksum_bench.patch\nrm c/lib/scion/checksum_bench.c.orig\npatch ./c/dispatcher/dispatcher.c ./patches_dispatcher.patch\nrm c/dispatcher/dispatcher.c.orig\n\n\n\n\n\ngit commit -am \n\"Modified to compile on ARM systems\"\n\nbash -c \n'yes | GO_INSTALL=true ./env/deps'\n\n\n\n\n\n\nsudo cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg\n./scion.sh build",
+            "title": "Raspberry PI &ndash; Raspbian"
         },
         {
-            "location": "/native_setup/rpi_raspbian/#building-scion-for-raspberry-pi-raspbian",
+            "location": "/native_setup/rpi_raspbian/#building-scion-for-a-raspberry-pi-raspbian",
             "text": "",
-            "title": "Building SCION for Raspberry PI - Raspbian"
+            "title": "Building SCION for a Raspberry Pi &ndash; Raspbian"
         },
         {
             "location": "/native_setup/rpi_raspbian/#introduction",
-            "text": "SCION infrastructure can be run on IoT devices like Raspberry PI. Building SCION for Raspberry PI is similar to regular x86 build, although there are few additional steps required to make everything work.",
+            "text": "The SCION infrastructure can also be run on IoT devices like a Raspberry Pi. Building SCION for a Raspberry Pi is similar to the  regular x86 build , although there are a few additional steps required to make everything work.",
             "title": "Introduction"
         },
         {
             "location": "/native_setup/rpi_raspbian/#prerequisites",
-            "text": "In this tutorial we assume that you already have Raspberry PI running Raspbian. In order to install Raspbian, please follow  installation guide   Update packages to latest version  It is recommended to update packages in your package  sudo apt update && sudo apt upgrade",
+            "text": "In this tutorial, we assume that you already have a Raspberry Pi running Raspbian. In order to install Raspbian, please follow the  installation guide .   Update packages to latest version  It is recommended to update all packages before starting the installation process of SCION:  sudo apt update && sudo apt upgrade",
             "title": "Prerequisites"
         },
         {
-            "location": "/native_setup/rpi_raspbian/#installing-necessary-tools",
+            "location": "/native_setup/rpi_raspbian/#install-necessary-tools",
             "text": "",
-            "title": "Installing necessary tools"
+            "title": "Install necessary tools"
         },
         {
             "location": "/native_setup/rpi_raspbian/#install-necessary-packages",
@@ -117,88 +117,88 @@
         },
         {
             "location": "/native_setup/rpi_raspbian/#install-go",
-            "text": "In order to run SCION, go version  1.8.x  is required. You can download and install go with following commands:  wget https://storage.googleapis.com/golang/go1.8.5.linux-armv6l.tar.gz\nsudo tar -C /usr/local -xzf go1.8.5.linux-armv6l.tar.gz echo   'PATH=$PATH:/usr/local/go/bin'  >> ~/.profile source  ~/.profile",
-            "title": "Install GO"
+            "text": "In order to run SCION, Go version  1.8.x  is required. You can download and install go with following commands:  wget https://storage.googleapis.com/golang/go1.8.5.linux-armv6l.tar.gz\nsudo tar -C /usr/local -xzf go1.8.5.linux-armv6l.tar.gz echo   'PATH=$PATH:/usr/local/go/bin'  >> ~/.profile source  ~/.profile",
+            "title": "Install Go"
         },
         {
             "location": "/native_setup/rpi_raspbian/#configure-go-workspace",
-            "text": "After installation of Go tools, it is necessary to create go workspace with following commands:  echo   'export GOPATH=\"$HOME/go\"'  >> ~/.profile source  ~/.profile\nmkdir -p  \" $GOPATH /bin\"  echo   'PATH=$PATH:$GOPATH/bin'  >> ~/.profile source  ~/.profile",
-            "title": "Configure GO workspace"
+            "text": "After the installation of Go tools, it is necessary to create a go workspace with the following commands:  echo   'export GOPATH=\"$HOME/go\"'  >> ~/.profile source  ~/.profile\nmkdir -p  \" $GOPATH /bin\"  echo   'PATH=$PATH:$GOPATH/bin'  >> ~/.profile source  ~/.profile",
+            "title": "Configure Go workspace"
         },
         {
             "location": "/native_setup/rpi_raspbian/#install-scion",
-            "text": "mkdir -p  \" $GOPATH /src/github.com/netsec-ethz\"  cd   \" $GOPATH /src/github.com/netsec-ethz\" \n\ngit clone --recursive -b scionlab git@github.com:netsec-ethz/scion cd  scion   Troubleshooting  If the machine doesn't have generated ssh keys or ssh keys are not assigned to github account, checkout will fail with following error:  Permission denied (publickey) . There are two ways to resolve this problem:   Changing checkout using ssh to https:  git config --global url.https://github.com/.insteadOf git@github.com:  Assign SSH keys to Github account, detailed instruction can be found on  Github help    git checkout -b arm-modified\nwget https://gist.githubusercontent.com/FR4NK-W/cc6661f420fe5e9805d5b9cdb9c41b1b/raw/7dc3b60b86b4c148c2706e3da82eee8d557bbd45/patches_checksum_bench.patch\nwget https://gist.githubusercontent.com/FR4NK-W/fb7a4b171ab3d5121b6492b9b664fd47/raw/ddeeb8f2337c64f027955e070df6ef34ff26bf9a/patches_dispatcher.patch\n\npatch ./c/lib/scion/checksum_bench.c ./patches_checksum_bench.patch\nrm c/lib/scion/checksum_bench.c.orig\npatch ./c/dispatcher/dispatcher.c ./patches_dispatcher.patch\nrm c/dispatcher/dispatcher.c.orig  git commit -am  \"Modified to compile on ARM systems\" \nbash -c  'yes | GO_INSTALL=true ./env/deps'   sudo cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg\n./scion.sh build",
+            "text": "mkdir -p  \" $GOPATH /src/github.com/netsec-ethz\"  cd   \" $GOPATH /src/github.com/netsec-ethz\" \n\ngit clone --recursive -b scionlab git@github.com:netsec-ethz/scion cd  scion   Troubleshooting  If the machine doesn't have generated SSH keys or the SSH keys are not assigned to a github account, the checkout will fail with the error  Permission denied (publickey) . There are two ways to resolve this problem:   Changing the checkout using ssh to https: git config --global url.https://github.com/.insteadOf git@github.com:  Assign SSH keys to Github account, detailed instruction can be found on  Github help    git checkout -b arm-modified\nwget https://gist.githubusercontent.com/FR4NK-W/cc6661f420fe5e9805d5b9cdb9c41b1b/raw/7dc3b60b86b4c148c2706e3da82eee8d557bbd45/patches_checksum_bench.patch\nwget https://gist.githubusercontent.com/FR4NK-W/fb7a4b171ab3d5121b6492b9b664fd47/raw/ddeeb8f2337c64f027955e070df6ef34ff26bf9a/patches_dispatcher.patch\n\npatch ./c/lib/scion/checksum_bench.c ./patches_checksum_bench.patch\nrm c/lib/scion/checksum_bench.c.orig\npatch ./c/dispatcher/dispatcher.c ./patches_dispatcher.patch\nrm c/dispatcher/dispatcher.c.orig  git commit -am  \"Modified to compile on ARM systems\" \nbash -c  'yes | GO_INSTALL=true ./env/deps'   sudo cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg\n./scion.sh build",
             "title": "Install SCION"
         },
         {
             "location": "/virtual_machine_setup/dynamic_ip/",
-            "text": "Running SCION in virtual machine - VPN approach\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis tutorial will guide you through steps required to run SCION infrastructure in virtual machine. This tutorial assumes that you don't have static public IP address or cannot receive traffic on UDP port 50000 from outside network, and therefore it will use OpenVPN to proxy traffic.\n\n\n\n\nTip\n\n\nIf you have static public IP address and you can receive traffic on UDP port 50000 you should consider \nrunning VM without VPN\n\n\n\n\nPrerequisites\n\u00b6\n\n\nRunning SION in virtual machine requires VirtualBox and Vagrant to be installed on your system.\n\n\nStep One - install VirtualBox\n\u00b6\n\n\nTo install VirtualBox follow steps on \nVirtualBox download page\n for your system. On Ubuntu or similar Linux distro you could also install VirtualBox using packet manager:\n\n\napt-get install virtualbox\n\n\n\n\n\nStep Two - install Vagrant\n\u00b6\n\n\nTo install vagrant follow steps on \nVagrant download page\n for your system. Also on Ubuntu you could install it from packet manager:\n\n\napt-get install vagrant\n\n\n\n\n\nRunning SCION\n\u00b6\n\n\nRunning SCION consists of several steps, registering SCION VM on \nSCIONLab Coordination Service\n, deploying VM and running SCION infrastructure.\n\n\nStep One - Download SCION VM\n\u00b6\n\n\nIn order to download VM with you must login to \nSCIONLab Coordination Service\n, in case you don't have an account follow Registration process.\n\n\nAfter successfully logging in, download VM configuration by clicking on \nCreate and Download SCIONLab VM Configuration\n as presented in image below:\n\n\n\n\nStep Two - Create and run VM\n\u00b6\n\n\nWhen the configuration finishes downloading, extract archive content in separate directory. On a Linux system simply running \ntar\n command will extract contents in separate subdirectory named as your email:\n\n\ntar -xvf scion_lab_*.tar.gz\n\n\n\n\n\nAfter extracting newly downloaded content, navigate to extracted directory. It should have following structure:\n\n\n\u251c\u2500\u2500 client.conf\n\u251c\u2500\u2500 gen\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 dispatcher\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 dispatcher.zlog.conf\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 supervisord.conf\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 ISD1\n\u2502\u00a0\u00a0     \u2514\u2500\u2500 AS1029\n\u2502           \u2514 ...\n\u2502\n\u251c\u2500\u2500 README\n\u251c\u2500\u2500 run.sh\n\u2514\u2500\u2500 Vagrantfile\n\n\n\n\n\nVerifying that structure is the same and begin setup by running: \n\n\n./run.sh\n\n\n\n\n\nYou will be asked for root password, after entering it follow the steps in the installation process.\n\n\nStep Three - Run SCION infrastructure\n\u00b6\n\n\nAfter successful installation of VM, you will be automatically ssh'ed into machine. \n\n\nTo run SCION you should navigate to source directory start infrastructure with following commands:\n\n\ncd\n go/src/github.com/netsec-ethz/scion/\n./scion.sh run\n\n\n\n\n\nNext steps\n\u00b6\n\n\nAfter running SCION infrastructure it is necessary to verify that its running properly. This is covered in tutorial \nVerifying SCION Installation",
-            "title": "Virtual machine with VPN"
+            "text": "Running SCION in a virtual machine \u2013 VPN approach\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis tutorial will guide you through the steps required to run the SCION infrastructure in a virtual machine. This tutorial assumes that you don't have a static public IP address or cannot receive traffic on UDP port 50000 from the outside network, and therefore it will use OpenVPN to proxy traffic.\n\n\n\n\nTip\n\n\nIf you have a static public IP address and you can receive traffic on UDP port 50000, you should consider \nrunning the VM without VPN\n.\n\n\n\n\nPrerequisites\n\u00b6\n\n\nRunning SCION in a virtual machine requires VirtualBox and Vagrant to be installed on your system.\n\n\nStep One \u2013 install VirtualBox\n\u00b6\n\n\nTo install VirtualBox, follow the steps on the \nVirtualBox download page\n for your system. On Ubuntu or similar Linux distributions, you could also install VirtualBox using your packet manager:\n\n\napt-get install virtualbox\n\n\n\n\n\nStep Two \u2013 install Vagrant\n\u00b6\n\n\nTo install Vagrant, follow the steps on the \nVagrant download page\n for your system. Also, on Ubuntu you could install it via your packet manager:\n\n\napt-get install vagrant\n\n\n\n\n\nRunning SCION\n\u00b6\n\n\nRunning SCION consists of several steps, registering a SCION VM on \nSCIONLab Coordination Service\n, deploying the VM, and running the SCION infrastructure.\n\n\nStep One \u2013 download a SCION VM\n\u00b6\n\n\nIn order to download a VM, you must login to \nSCIONLab Coordination Service\n. In case you don't have an account, follow registration process.\n\n\nAfter successfully logging in, download a VM configuration by clicking on \nCreate and Download SCIONLab VM Configuration\n as presented in the image below:\n\n\n\n\nStep Two \u2013 create and run the VM\n\u00b6\n\n\nWhen the configuration finishes downloading, extract the archive content in a separate directory. On a Linux system, simply running \ntar\n command will extract the contents in a separate subdirectory named as your email:\n\n\ntar -xvf scion_lab_*.tar.gz\n\n\n\n\n\nAfter extracting the newly downloaded content, navigate to the extracted directory. It should have the following structure:\n\n\n\u251c\u2500\u2500 client.conf\n\u251c\u2500\u2500 gen\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 dispatcher\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 dispatcher.zlog.conf\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 supervisord.conf\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 ISD1\n\u2502\u00a0\u00a0     \u2514\u2500\u2500 AS1029\n\u2502           \u2514 ...\n\u2502\n\u251c\u2500\u2500 README\n\u251c\u2500\u2500 run.sh\n\u2514\u2500\u2500 Vagrantfile\n\n\n\n\n\nInitiate the setup by running:\n\n\nvagrant box add scion/ubuntu-16.04-64-scion\nvagrant box update\nvagrant up\n\n\n\n\n\nYou will be asked for your password. The installation process will take around 10 minutes.\n\n\nStep Three \u2013 run the SCION infrastructure\n\u00b6\n\n\nAfter the successful installation of the VM, you can connect to the VM via SSH:\n\n\nvagrant ssh\n\n\n\n\n\nThe SCION infrastructure is automatically startet at boot time of your VM. You can control it using the \nscion.sh\n script located at \n~/go/src/github.com/netsec-ethz/scion/\n.\n\n\nNext steps\n\u00b6\n\n\nAfter running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial \nVerifying SCION Installation\n.",
+            "title": "Virtual machine via VPN"
         },
         {
-            "location": "/virtual_machine_setup/dynamic_ip/#running-scion-in-virtual-machine-vpn-approach",
+            "location": "/virtual_machine_setup/dynamic_ip/#running-scion-in-a-virtual-machine-vpn-approach",
             "text": "",
-            "title": "Running SCION in virtual machine - VPN approach"
+            "title": "Running SCION in a virtual machine &ndash; VPN approach"
         },
         {
             "location": "/virtual_machine_setup/dynamic_ip/#introduction",
-            "text": "This tutorial will guide you through steps required to run SCION infrastructure in virtual machine. This tutorial assumes that you don't have static public IP address or cannot receive traffic on UDP port 50000 from outside network, and therefore it will use OpenVPN to proxy traffic.   Tip  If you have static public IP address and you can receive traffic on UDP port 50000 you should consider  running VM without VPN",
+            "text": "This tutorial will guide you through the steps required to run the SCION infrastructure in a virtual machine. This tutorial assumes that you don't have a static public IP address or cannot receive traffic on UDP port 50000 from the outside network, and therefore it will use OpenVPN to proxy traffic.   Tip  If you have a static public IP address and you can receive traffic on UDP port 50000, you should consider  running the VM without VPN .",
             "title": "Introduction"
         },
         {
             "location": "/virtual_machine_setup/dynamic_ip/#prerequisites",
-            "text": "Running SION in virtual machine requires VirtualBox and Vagrant to be installed on your system.",
+            "text": "Running SCION in a virtual machine requires VirtualBox and Vagrant to be installed on your system.",
             "title": "Prerequisites"
         },
         {
             "location": "/virtual_machine_setup/dynamic_ip/#step-one-install-virtualbox",
-            "text": "To install VirtualBox follow steps on  VirtualBox download page  for your system. On Ubuntu or similar Linux distro you could also install VirtualBox using packet manager:  apt-get install virtualbox",
-            "title": "Step One - install VirtualBox"
+            "text": "To install VirtualBox, follow the steps on the  VirtualBox download page  for your system. On Ubuntu or similar Linux distributions, you could also install VirtualBox using your packet manager:  apt-get install virtualbox",
+            "title": "Step One &ndash; install VirtualBox"
         },
         {
             "location": "/virtual_machine_setup/dynamic_ip/#step-two-install-vagrant",
-            "text": "To install vagrant follow steps on  Vagrant download page  for your system. Also on Ubuntu you could install it from packet manager:  apt-get install vagrant",
-            "title": "Step Two - install Vagrant"
+            "text": "To install Vagrant, follow the steps on the  Vagrant download page  for your system. Also, on Ubuntu you could install it via your packet manager:  apt-get install vagrant",
+            "title": "Step Two &ndash; install Vagrant"
         },
         {
             "location": "/virtual_machine_setup/dynamic_ip/#running-scion",
-            "text": "Running SCION consists of several steps, registering SCION VM on  SCIONLab Coordination Service , deploying VM and running SCION infrastructure.",
+            "text": "Running SCION consists of several steps, registering a SCION VM on  SCIONLab Coordination Service , deploying the VM, and running the SCION infrastructure.",
             "title": "Running SCION"
         },
         {
-            "location": "/virtual_machine_setup/dynamic_ip/#step-one-download-scion-vm",
-            "text": "In order to download VM with you must login to  SCIONLab Coordination Service , in case you don't have an account follow Registration process.  After successfully logging in, download VM configuration by clicking on  Create and Download SCIONLab VM Configuration  as presented in image below:",
-            "title": "Step One - Download SCION VM"
+            "location": "/virtual_machine_setup/dynamic_ip/#step-one-download-a-scion-vm",
+            "text": "In order to download a VM, you must login to  SCIONLab Coordination Service . In case you don't have an account, follow registration process.  After successfully logging in, download a VM configuration by clicking on  Create and Download SCIONLab VM Configuration  as presented in the image below:",
+            "title": "Step One &ndash; download a SCION VM"
         },
         {
-            "location": "/virtual_machine_setup/dynamic_ip/#step-two-create-and-run-vm",
-            "text": "When the configuration finishes downloading, extract archive content in separate directory. On a Linux system simply running  tar  command will extract contents in separate subdirectory named as your email:  tar -xvf scion_lab_*.tar.gz  After extracting newly downloaded content, navigate to extracted directory. It should have following structure:  \u251c\u2500\u2500 client.conf\n\u251c\u2500\u2500 gen\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 dispatcher\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 dispatcher.zlog.conf\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 supervisord.conf\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 ISD1\n\u2502\u00a0\u00a0     \u2514\u2500\u2500 AS1029\n\u2502           \u2514 ...\n\u2502\n\u251c\u2500\u2500 README\n\u251c\u2500\u2500 run.sh\n\u2514\u2500\u2500 Vagrantfile  Verifying that structure is the same and begin setup by running:   ./run.sh  You will be asked for root password, after entering it follow the steps in the installation process.",
-            "title": "Step Two - Create and run VM"
+            "location": "/virtual_machine_setup/dynamic_ip/#step-two-create-and-run-the-vm",
+            "text": "When the configuration finishes downloading, extract the archive content in a separate directory. On a Linux system, simply running  tar  command will extract the contents in a separate subdirectory named as your email:  tar -xvf scion_lab_*.tar.gz  After extracting the newly downloaded content, navigate to the extracted directory. It should have the following structure:  \u251c\u2500\u2500 client.conf\n\u251c\u2500\u2500 gen\n\u2502\u00a0\u00a0 \u251c\u2500\u2500 dispatcher\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u251c\u2500\u2500 dispatcher.zlog.conf\n\u2502\u00a0\u00a0 \u2502\u00a0\u00a0 \u2514\u2500\u2500 supervisord.conf\n\u2502\u00a0\u00a0 \u2514\u2500\u2500 ISD1\n\u2502\u00a0\u00a0     \u2514\u2500\u2500 AS1029\n\u2502           \u2514 ...\n\u2502\n\u251c\u2500\u2500 README\n\u251c\u2500\u2500 run.sh\n\u2514\u2500\u2500 Vagrantfile  Initiate the setup by running:  vagrant box add scion/ubuntu-16.04-64-scion\nvagrant box update\nvagrant up  You will be asked for your password. The installation process will take around 10 minutes.",
+            "title": "Step Two &ndash; create and run the VM"
         },
         {
-            "location": "/virtual_machine_setup/dynamic_ip/#step-three-run-scion-infrastructure",
-            "text": "After successful installation of VM, you will be automatically ssh'ed into machine.   To run SCION you should navigate to source directory start infrastructure with following commands:  cd  go/src/github.com/netsec-ethz/scion/\n./scion.sh run",
-            "title": "Step Three - Run SCION infrastructure"
+            "location": "/virtual_machine_setup/dynamic_ip/#step-three-run-the-scion-infrastructure",
+            "text": "After the successful installation of the VM, you can connect to the VM via SSH:  vagrant ssh  The SCION infrastructure is automatically startet at boot time of your VM. You can control it using the  scion.sh  script located at  ~/go/src/github.com/netsec-ethz/scion/ .",
+            "title": "Step Three &ndash; run the SCION infrastructure"
         },
         {
             "location": "/virtual_machine_setup/dynamic_ip/#next-steps",
-            "text": "After running SCION infrastructure it is necessary to verify that its running properly. This is covered in tutorial  Verifying SCION Installation",
+            "text": "After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial  Verifying SCION Installation .",
             "title": "Next steps"
         },
         {
             "location": "/virtual_machine_setup/static_ip/",
-            "text": "Running SCION in virtual machine\n\u00b6\n\n\nTBA",
-            "title": "Virtual machine with public IP"
+            "text": "Running SCION in a virtual machine \u2013 static public IP address\n\u00b6\n\n\n\n\nWarning\n\n\nIf you \ndo not\n have a static public IP address or you cannot receive traffic on UDP port 50000, you should instead \nconnect to the SCION network via VPN\n.\n\n\n\n\nSimply follow all the steps in the \ntutorial for a vpn-based setup\n until \nStep One \u2013 download a SCION VM\n\n\nThere, instead of directly clicking on \nCreate and Download SCIONLab VM Configuration\n, first select \nMy host has a static public IP address and can receive traffic at port 50000.\n and enter your host's public IP address in the input field.\n\n\nAfterwards, follow all subsequent steps in the \ntutorial for a vpn-based setup\n.\n\n\n\n\nTroubleshooting\n\n\nMake sure that your router properly forwards UDP port 50000 to the machine where the SCION VM is running.",
+            "title": "Virtual machine with static public IP"
         },
         {
-            "location": "/virtual_machine_setup/static_ip/#running-scion-in-virtual-machine",
-            "text": "TBA",
-            "title": "Running SCION in virtual machine"
+            "location": "/virtual_machine_setup/static_ip/#running-scion-in-a-virtual-machine-static-public-ip-address",
+            "text": "Warning  If you  do not  have a static public IP address or you cannot receive traffic on UDP port 50000, you should instead  connect to the SCION network via VPN .   Simply follow all the steps in the  tutorial for a vpn-based setup  until  Step One \u2013 download a SCION VM  There, instead of directly clicking on  Create and Download SCIONLab VM Configuration , first select  My host has a static public IP address and can receive traffic at port 50000.  and enter your host's public IP address in the input field.  Afterwards, follow all subsequent steps in the  tutorial for a vpn-based setup .   Troubleshooting  Make sure that your router properly forwards UDP port 50000 to the machine where the SCION VM is running.",
+            "title": "Running SCION in a virtual machine &ndash; static public IP address"
         },
         {
             "location": "/general_scion_configuration/verifying_scion_installation/",
-            "text": "Verifying SCION installation\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nAfter running SCION infrastructure it is necessary to verify its correctly working.\n\n\nThere are several methods of doing this few of them are described in this post.\n\n\nRunning SCION-viz\n\u00b6\n\n\nRecommended way of verifying correct SCION infrastructure deployment is running visualization tool \nSCION-viz\n\n\nInspecting log files\n\u00b6\n\n\nSCION log files can be accessed with following command:\n\n\ntail -f \n$GOPATH\n/src/github.com/netsec-ethz/scion/logs/bs*.DEBUG\n\n\n\n\n\nWhat to look for?\n\u00b6\n\n\nTBA\n\n\n\n\nTip\n\n\nIf you are running SCION virtual machine image you can display logs by running:\n\n\ncheckbeacons\n\n\nfrom any directory",
-            "title": "Verifying installation"
+            "text": "Verifying SCION installation\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nAfter running your SCION infrastructure, it is necessary to verify tha it is working correctly.\n\n\nThere are several methods of doing this. Some of them are described in this post.\n\n\nRunning SCION-viz\n\u00b6\n\n\nThe recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool \nSCION-viz\n\n\nInspecting log files\n\u00b6\n\n\nThe SCION log files can be accessed with the following command:\n\n\ntail -f \n$GOPATH\n/src/github.com/netsec-ethz/scion/logs/bs*.DEBUG\n\n\n\n\n\nWhat to look for?\n\u00b6\n\n\nTBA\n\n\n\n\nTip\n\n\nIf you are running the SCION virtual machine image, you can display the logs by running:\n\n\ncheckbeacons\n\n\nfrom any directory",
+            "title": "Verifying the installation"
         },
         {
             "location": "/general_scion_configuration/verifying_scion_installation/#verifying-scion-installation",
@@ -207,92 +207,92 @@
         },
         {
             "location": "/general_scion_configuration/verifying_scion_installation/#introduction",
-            "text": "After running SCION infrastructure it is necessary to verify its correctly working.  There are several methods of doing this few of them are described in this post.",
+            "text": "After running your SCION infrastructure, it is necessary to verify tha it is working correctly.  There are several methods of doing this. Some of them are described in this post.",
             "title": "Introduction"
         },
         {
             "location": "/general_scion_configuration/verifying_scion_installation/#running-scion-viz",
-            "text": "Recommended way of verifying correct SCION infrastructure deployment is running visualization tool  SCION-viz",
+            "text": "The recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool  SCION-viz",
             "title": "Running SCION-viz"
         },
         {
             "location": "/general_scion_configuration/verifying_scion_installation/#inspecting-log-files",
-            "text": "SCION log files can be accessed with following command:  tail -f  $GOPATH /src/github.com/netsec-ethz/scion/logs/bs*.DEBUG",
+            "text": "The SCION log files can be accessed with the following command:  tail -f  $GOPATH /src/github.com/netsec-ethz/scion/logs/bs*.DEBUG",
             "title": "Inspecting log files"
         },
         {
             "location": "/general_scion_configuration/verifying_scion_installation/#what-to-look-for",
-            "text": "TBA   Tip  If you are running SCION virtual machine image you can display logs by running:  checkbeacons  from any directory",
+            "text": "TBA   Tip  If you are running the SCION virtual machine image, you can display the logs by running:  checkbeacons  from any directory",
             "title": "What to look for?"
         },
         {
             "location": "/general_scion_configuration/local_top/",
-            "text": "Running SCION infrastructure on local topology\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis tutorial will guide you through steps required to generate local topology and run SCION. \n\n\nPrerequisites\n\u00b6\n\n\nThis tutorial assumes that SCION is already installed on your system. If this is not the case, please follow \nHow to build SCION on Ubuntu 16.04 x86-64\n\n\nTopology\n\u00b6\n\n\nBefore continuing with following steps, you should first navigate to scion root directory:\n\n\ncd\n \n$GOPATH\n/src/github.com/netsec-ethz/scion\n\n\n\n\n\nSCION installation comes with command to generate default local topology. Topology is defined in directory \ntopology\n and its depicted in following figure.\n\n\n\n\nTo generate default topology it is sufficient to run\n\n\n./scion.sh topology\n\n\n\n\n\nThis command will generate topology information in \ngen\n directory. Structure of gen directory will be:\n\n\n ./gen/ISD{X}/AS{Y}/\n     {elem}{X}-{Y}-{Z}/\n         as.yml\n         path_policy.yml\n         supervisord.conf\n         topology.yml\n         certs/\n             ISD{X}-AS{Y}-V0.crt\n             ISD{X}-V0.trc\n         keys/\n             as-sig.key\n\n\n\n\n\n This command will delete previous \ngen\n directory, if necessary back it up before! \n\n\nNote about topology definition in \ntopology/Default.topo\n\n\n\n\n\n\ndefaults.subnet\n (optional): override the default subnet of \n127.0.0.0/8\n.\n\n\n\n\n\n\ncore\n (optional): specify if this is a core AS or not (defaults to 'false').\n\n\n\n\n\n\nbeacon_servers\n, \ncertificate_servers\n, \npath_servers\n, (all optional):\n  number of such servers in a specific AS (override the default value 1).\n\n\n\n\n\n\nlinks\n: keys are \nISD_ID-AS_ID\n (format also used for the keys of the JSON\n  file itself) and values can either be \nPARENT\n, \nCHILD\n, \nPEER\n, or\n  \nCORE\n.\n\n\n\n\n\n\nRunning SCION\n\u00b6\n\n\nRunning SCION infrastructure:\n\n\n./scion.sh run\n\n\n\n\n\nStopping SCION infrastructure:\n\n\n./scion.sh stop\n\n\n\n\n\nTesting the infrastructure:\n\n\n./scion.sh \ntest\n\n\n\n\n\n\nNext steps\n\u00b6\n\n\nAfter running SCION infrastructure it is necessary to verify that its running properly. This is covered in tutorial \nVerifying SCION Installation",
-            "title": "Running SCION on local topology"
+            "text": "Running the SCION infrastructure on a local topology\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis tutorial will guide you through the steps required to generate a local topology and run SCION.\n\n\nPrerequisites\n\u00b6\n\n\nThis tutorial assumes that SCION is already installed on your system. If this is not the case, please follow \nHow to build SCION on Ubuntu 16.04 x86-64\n.\n\n\nTopology\n\u00b6\n\n\nBefore continuing with the following steps, you should first navigate to the SCION root directory:\n\n\ncd\n \n$GOPATH\n/src/github.com/netsec-ethz/scion\n\n\n\n\n\nThe SCION installation comes with a command to generate the default local topology. The topology is defined in the directory \ntopology\n and it is depicted in the following figure.\n\n\n\n\nTo generate the default topology, it is sufficient to run\n\n\n./scion.sh topology\n\n\n\n\n\nThis command will generate the topology information in the \ngen\n directory. The structure of the \ngen\n directory will be:\n\n\n ./gen/ISD{X}/AS{Y}/\n     {elem}{X}-{Y}-{Z}/\n         as.yml\n         path_policy.yml\n         supervisord.conf\n         topology.yml\n         certs/\n             ISD{X}-AS{Y}-V0.crt\n             ISD{X}-V0.trc\n         keys/\n             as-sig.key\n\n\n\n\n\n This command will delete any previous \ngen\n directory. Make sure to back it up before, if necessary! \n\n\nSome notes about the topology definition in \ntopology/Default.topo\n\n\n\n\n\n\ndefaults.subnet\n (optional): override the default subnet of \n127.0.0.0/8\n.\n\n\n\n\n\n\ncore\n (optional): specify if this is a core AS or not (defaults to 'false').\n\n\n\n\n\n\nbeacon_servers\n, \ncertificate_servers\n, \npath_servers\n, (all optional):\n  number of such servers in a specific AS (override the default value 1).\n\n\n\n\n\n\nlinks\n: keys are \nISD_ID-AS_ID\n (format also used for the keys of the JSON\n  file itself) and values can either be \nPARENT\n, \nCHILD\n, \nPEER\n, or\n  \nCORE\n.\n\n\n\n\n\n\nRunning SCION\n\u00b6\n\n\nRunning the SCION infrastructure:\n\n\n./scion.sh run\n\n\n\n\n\nStopping the SCION infrastructure:\n\n\n./scion.sh stop\n\n\n\n\n\nTesting the infrastructure:\n\n\n./scion.sh \ntest\n\n\n\n\n\n\nNext steps\n\u00b6\n\n\nAfter running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial \nVerifying SCION Installation",
+            "title": "Running SCION on a local topology"
         },
         {
-            "location": "/general_scion_configuration/local_top/#running-scion-infrastructure-on-local-topology",
+            "location": "/general_scion_configuration/local_top/#running-the-scion-infrastructure-on-a-local-topology",
             "text": "",
-            "title": "Running SCION infrastructure on local topology"
+            "title": "Running the SCION infrastructure on a local topology"
         },
         {
             "location": "/general_scion_configuration/local_top/#introduction",
-            "text": "This tutorial will guide you through steps required to generate local topology and run SCION.",
+            "text": "This tutorial will guide you through the steps required to generate a local topology and run SCION.",
             "title": "Introduction"
         },
         {
             "location": "/general_scion_configuration/local_top/#prerequisites",
-            "text": "This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow  How to build SCION on Ubuntu 16.04 x86-64",
+            "text": "This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow  How to build SCION on Ubuntu 16.04 x86-64 .",
             "title": "Prerequisites"
         },
         {
             "location": "/general_scion_configuration/local_top/#topology",
-            "text": "Before continuing with following steps, you should first navigate to scion root directory:  cd   $GOPATH /src/github.com/netsec-ethz/scion  SCION installation comes with command to generate default local topology. Topology is defined in directory  topology  and its depicted in following figure.   To generate default topology it is sufficient to run  ./scion.sh topology  This command will generate topology information in  gen  directory. Structure of gen directory will be:   ./gen/ISD{X}/AS{Y}/\n     {elem}{X}-{Y}-{Z}/\n         as.yml\n         path_policy.yml\n         supervisord.conf\n         topology.yml\n         certs/\n             ISD{X}-AS{Y}-V0.crt\n             ISD{X}-V0.trc\n         keys/\n             as-sig.key   This command will delete previous  gen  directory, if necessary back it up before!   Note about topology definition in  topology/Default.topo    defaults.subnet  (optional): override the default subnet of  127.0.0.0/8 .    core  (optional): specify if this is a core AS or not (defaults to 'false').    beacon_servers ,  certificate_servers ,  path_servers , (all optional):\n  number of such servers in a specific AS (override the default value 1).    links : keys are  ISD_ID-AS_ID  (format also used for the keys of the JSON\n  file itself) and values can either be  PARENT ,  CHILD ,  PEER , or\n   CORE .",
+            "text": "Before continuing with the following steps, you should first navigate to the SCION root directory:  cd   $GOPATH /src/github.com/netsec-ethz/scion  The SCION installation comes with a command to generate the default local topology. The topology is defined in the directory  topology  and it is depicted in the following figure.   To generate the default topology, it is sufficient to run  ./scion.sh topology  This command will generate the topology information in the  gen  directory. The structure of the  gen  directory will be:   ./gen/ISD{X}/AS{Y}/\n     {elem}{X}-{Y}-{Z}/\n         as.yml\n         path_policy.yml\n         supervisord.conf\n         topology.yml\n         certs/\n             ISD{X}-AS{Y}-V0.crt\n             ISD{X}-V0.trc\n         keys/\n             as-sig.key   This command will delete any previous  gen  directory. Make sure to back it up before, if necessary!   Some notes about the topology definition in  topology/Default.topo    defaults.subnet  (optional): override the default subnet of  127.0.0.0/8 .    core  (optional): specify if this is a core AS or not (defaults to 'false').    beacon_servers ,  certificate_servers ,  path_servers , (all optional):\n  number of such servers in a specific AS (override the default value 1).    links : keys are  ISD_ID-AS_ID  (format also used for the keys of the JSON\n  file itself) and values can either be  PARENT ,  CHILD ,  PEER , or\n   CORE .",
             "title": "Topology"
         },
         {
             "location": "/general_scion_configuration/local_top/#running-scion",
-            "text": "Running SCION infrastructure:  ./scion.sh run  Stopping SCION infrastructure:  ./scion.sh stop  Testing the infrastructure:  ./scion.sh  test",
+            "text": "Running the SCION infrastructure:  ./scion.sh run  Stopping the SCION infrastructure:  ./scion.sh stop  Testing the infrastructure:  ./scion.sh  test",
             "title": "Running SCION"
         },
         {
             "location": "/general_scion_configuration/local_top/#next-steps",
-            "text": "After running SCION infrastructure it is necessary to verify that its running properly. This is covered in tutorial  Verifying SCION Installation",
+            "text": "After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial  Verifying SCION Installation",
             "title": "Next steps"
         },
         {
-            "location": "/general_scion_configuration/vpn_setup/",
-            "text": "Configuring VPN client\n\u00b6\n\n\nTBA",
-            "title": "Set up an AS and connect to SCION network"
+            "location": "/general_scion_configuration/public_ip/",
+            "text": "Connecting to SCIONLab with a static public IP address\n\u00b6\n\n\nTBA",
+            "title": "Set up an AS and connect to the SCION network"
         },
         {
-            "location": "/general_scion_configuration/vpn_setup/#configuring-vpn-client",
+            "location": "/general_scion_configuration/public_ip/#connecting-to-scionlab-with-a-static-public-ip-address",
             "text": "TBA",
-            "title": "Configuring VPN client"
-        },
-        {
-            "location": "/general_scion_configuration/vpn_setup/",
-            "text": "Configuring VPN client\n\u00b6\n\n\nTBA",
-            "title": "Set up an endhost and connect to local AS"
-        },
-        {
-            "location": "/general_scion_configuration/vpn_setup/#configuring-vpn-client",
-            "text": "TBA",
-            "title": "Configuring VPN client"
+            "title": "Connecting to SCIONLab with a static public IP address"
         },
         {
             "location": "/general_scion_configuration/vpn_setup/",
-            "text": "Configuring VPN client\n\u00b6\n\n\nTBA",
-            "title": "VPN configuration"
+            "text": "Connecting to SCIONLab via VPN\n\u00b6\n\n\nTBA",
+            "title": "Connect to the SCION network via VPN"
         },
         {
-            "location": "/general_scion_configuration/vpn_setup/#configuring-vpn-client",
+            "location": "/general_scion_configuration/vpn_setup/#connecting-to-scionlab-via-vpn",
             "text": "TBA",
-            "title": "Configuring VPN client"
+            "title": "Connecting to SCIONLab via VPN"
+        },
+        {
+            "location": "/general_scion_configuration/vpn_setup/",
+            "text": "Connecting to SCIONLab via VPN\n\u00b6\n\n\nTBA",
+            "title": "Set up an endhost and connect to a local AS"
+        },
+        {
+            "location": "/general_scion_configuration/vpn_setup/#connecting-to-scionlab-via-vpn",
+            "text": "TBA",
+            "title": "Connecting to SCIONLab via VPN"
         },
         {
             "location": "/general_scion_configuration/scion_viz/",
-            "text": "Installing and running SCION-viz\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nSCION-viz is a web based visualization tool of SCION topology. Connecting to a running infrastructure instance it reads necessary information about topology.\n\n\nPrerequisites\n\u00b6\n\n\nIn order to run SCION-viz you must have SCION infrastructure up and running.\n\n\n\n\nSCION VM setup\n\n\nIf you are using SCION VM then SCION-viz is already installed and running as a service. You can access it over \nlocalhost:8000\n\n\n\n\nSCION-viz uses libraries that are located in \npython\n directory of scion repository. In order to make those libraries visible we need to export \nPYTHONPATH\n environment variable. \n\n\necho\n \n'export PYTHONPATH=\"$GOPATH/src/github.com/netsec-ethz/scion/python:$PYTHONPATH\"'\n >> ~/.profile\n\nsource\n ~/.profile\n\n\n\n\n\nNavigate to root scion directory:\n\n\ncd\n \n$GOPATH\n/src/github.com/netsec-ethz/scion\n\n\n\n\n\nInstallation\n\u00b6\n\n\nCheckout project and install dependencies:\n\n\ncd\n sub\ngit clone git@github.com:netsec-ethz/scion-viz\n\ncd\n scion-viz/python/web\npip3 install --user --require-hashes -r requirements.txt\npython3 ./manage.py migrate\n\n\n\n\n\nRunning\n\u00b6\n\n\nTo run SCION-viz:\n\n\npython3 ./manage.py runserver \n0\n.0.0.0:8080\n\n\n\n\n\n\n\nTip\n\n\nMake sure that SCION infrastructure is running in order to see meaningful results\n\n\n\n\nTo verify that setup is working go to \nlocalhost:8080\n. Result should be similar to following:\n\n\n\n\nUsing SCION-viz\n\u00b6\n\n\nTBA",
+            "text": "Installing and running SCION-viz\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nSCION-viz is a web-based visualization tool of the SCION topology. Connecting to a running infrastructure instance, it reads necessary information about the network topology.\n\n\nPrerequisites\n\u00b6\n\n\nIn order to run SCION-viz, you must have your SCION infrastructure up and running.\n\n\n\n\nSCION VM setup\n\n\nIf you are using SCION VM, then SCION-viz is already installed and running as a service. You can access it over \nlocalhost:8000\n\nThis port is automatically forwarded inside the VM, so you can access SCION-viz from your normal host machine.\n\n\n\n\nSCION-viz uses libraries that are located in the \npython\n directory of the SCION repository. In order to make those libraries visible, we need to export the \nPYTHONPATH\n environment variable.\n\n\necho\n \n'export PYTHONPATH=\"$GOPATH/src/github.com/netsec-ethz/scion/python:$PYTHONPATH\"'\n >> ~/.profile\n\nsource\n ~/.profile\n\n\n\n\n\nInstallation\n\u00b6\n\n\nNavigate to the root SCION directory:\n\n\ncd\n \n$GOPATH\n/src/github.com/netsec-ethz/scion\n\n\n\n\n\nCheckout the project and install the dependencies:\n\n\ncd\n sub\ngit clone git@github.com:netsec-ethz/scion-viz\n\ncd\n scion-viz/python/web\npip3 install --user --require-hashes -r requirements.txt\npython3 ./manage.py migrate\n\n\n\n\n\nRunning\n\u00b6\n\n\nTo run SCION-viz:\n\n\npython3 ./manage.py runserver \n0\n.0.0.0:8000\n\n\n\n\n\nYou can replace the port (8000) by any other that suits your taste.\n\n\n\n\nTip\n\n\nMake sure that your SCION infrastructure is running in order to see meaningful results.\nIn particular, SCION-viz requires the \nsciond\n process to be running.\n\n\n\n\nTo verify that the setup is working correctly, visit \nlocalhost:8000\n. The result should be similar to the following:\n\n\n\n\nUsing SCION-viz\n\u00b6\n\n\nTBA",
             "title": "Visualization tool (SCION-viz)"
         },
         {
@@ -302,22 +302,22 @@
         },
         {
             "location": "/general_scion_configuration/scion_viz/#introduction",
-            "text": "SCION-viz is a web based visualization tool of SCION topology. Connecting to a running infrastructure instance it reads necessary information about topology.",
+            "text": "SCION-viz is a web-based visualization tool of the SCION topology. Connecting to a running infrastructure instance, it reads necessary information about the network topology.",
             "title": "Introduction"
         },
         {
             "location": "/general_scion_configuration/scion_viz/#prerequisites",
-            "text": "In order to run SCION-viz you must have SCION infrastructure up and running.   SCION VM setup  If you are using SCION VM then SCION-viz is already installed and running as a service. You can access it over  localhost:8000   SCION-viz uses libraries that are located in  python  directory of scion repository. In order to make those libraries visible we need to export  PYTHONPATH  environment variable.   echo   'export PYTHONPATH=\"$GOPATH/src/github.com/netsec-ethz/scion/python:$PYTHONPATH\"'  >> ~/.profile source  ~/.profile  Navigate to root scion directory:  cd   $GOPATH /src/github.com/netsec-ethz/scion",
+            "text": "In order to run SCION-viz, you must have your SCION infrastructure up and running.   SCION VM setup  If you are using SCION VM, then SCION-viz is already installed and running as a service. You can access it over  localhost:8000 \nThis port is automatically forwarded inside the VM, so you can access SCION-viz from your normal host machine.   SCION-viz uses libraries that are located in the  python  directory of the SCION repository. In order to make those libraries visible, we need to export the  PYTHONPATH  environment variable.  echo   'export PYTHONPATH=\"$GOPATH/src/github.com/netsec-ethz/scion/python:$PYTHONPATH\"'  >> ~/.profile source  ~/.profile",
             "title": "Prerequisites"
         },
         {
             "location": "/general_scion_configuration/scion_viz/#installation",
-            "text": "Checkout project and install dependencies:  cd  sub\ngit clone git@github.com:netsec-ethz/scion-viz cd  scion-viz/python/web\npip3 install --user --require-hashes -r requirements.txt\npython3 ./manage.py migrate",
+            "text": "Navigate to the root SCION directory:  cd   $GOPATH /src/github.com/netsec-ethz/scion  Checkout the project and install the dependencies:  cd  sub\ngit clone git@github.com:netsec-ethz/scion-viz cd  scion-viz/python/web\npip3 install --user --require-hashes -r requirements.txt\npython3 ./manage.py migrate",
             "title": "Installation"
         },
         {
             "location": "/general_scion_configuration/scion_viz/#running",
-            "text": "To run SCION-viz:  python3 ./manage.py runserver  0 .0.0.0:8080   Tip  Make sure that SCION infrastructure is running in order to see meaningful results   To verify that setup is working go to  localhost:8080 . Result should be similar to following:",
+            "text": "To run SCION-viz:  python3 ./manage.py runserver  0 .0.0.0:8000  You can replace the port (8000) by any other that suits your taste.   Tip  Make sure that your SCION infrastructure is running in order to see meaningful results.\nIn particular, SCION-viz requires the  sciond  process to be running.   To verify that the setup is working correctly, visit  localhost:8000 . The result should be similar to the following:",
             "title": "Running"
         },
         {
@@ -328,7 +328,7 @@
         {
             "location": "/sample_projects/fetch_temperature/",
             "text": "Read temperature sensor over SCION network\n\u00b6\n\n\nTBA",
-            "title": "Read temperature sensor over SCION network"
+            "title": "Read a temperature sensor over the SCION network"
         },
         {
             "location": "/sample_projects/fetch_temperature/#read-temperature-sensor-over-scion-network",
@@ -338,7 +338,7 @@
         {
             "location": "/sample_projects/access_camera/",
             "text": "Access video camera over SCION network\n\u00b6\n\n\nTBA",
-            "title": "Access video camera over SCION network"
+            "title": "Access a video camera over the SCION network"
         },
         {
             "location": "/sample_projects/access_camera/#access-video-camera-over-scion-network",
@@ -368,7 +368,7 @@
         {
             "location": "/general_scion_configuration/setup_sig/",
             "text": "Configuring SCION IP Gateway\n\u00b6\n\n\nTBA",
-            "title": "Configuring SCION IP gateway"
+            "title": "Configuring the SCION IP gateway"
         },
         {
             "location": "/general_scion_configuration/setup_sig/#configuring-scion-ip-gateway",

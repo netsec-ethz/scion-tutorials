@@ -1,18 +1,18 @@
-# Building SCION for Raspberry PI - Ubuntu MATE
+# Building SCION on a Raspberry PI &ndash; Ubuntu MATE
 
 ## Introduction
 
-SCION infrastructure can be run on IoT devices like Raspberry PI. Building SCION for Raspberry PI is similar to regular x86 build, although there are few additional steps required to make everything work.
+The SCION infrastructure can also be run on IoT devices like a Raspberry Pi. Building SCION for a Raspberry Pi is similar to the [regular x86 build](ubuntu_x86_build), although there are a few additional steps required to make everything work.
 
 ## Prerequisites
 
-In this tutorial we assume that you already have Raspberry PI running Ubuntu MATE. In order to install Ubuntu MATE, please follow [installation guide](https://ubuntu-mate.org/raspberry-pi/)
+In this tutorial we assume that you already have Raspberry PI running Ubuntu MATE. In order to install Ubuntu MATE, please follow the [installation guide](https://ubuntu-mate.org/raspberry-pi/).
 
 !!! note "Update packages to latest version"
-    It is recommended to update packages in your package
+    It is recommended to update all packages before starting the installation process of SCION:
 
     ```
     sudo apt update && sudo apt upgrade
     ```
 
-## Installing necessary tools
+## Install necessary tools
