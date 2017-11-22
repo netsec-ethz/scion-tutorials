@@ -64,7 +64,11 @@ After extracting the newly downloaded content, navigate to the extracted directo
 └── Vagrantfile
 ```
 
+<<<<<<< HEAD
 Initiate the setup by running:
+=======
+Verifying that structure is the same and begin setup by running:
+>>>>>>> 9d79e17aefbf092d7fa1eaf5ad7560832d9e2971
 
 ```shell
 vagrant box add scion/ubuntu-16.04-64-scion
@@ -76,7 +80,13 @@ You will be asked for your password. The installation process will take around 1
 
 ### Step Three &ndash; run the SCION infrastructure
 
+<<<<<<< HEAD
 After the successful installation of the VM, you can connect to the VM via SSH:
+=======
+After successful installation of VM, you will be automatically ssh'ed into machine.
+
+To run SCION you should navigate to source directory start infrastructure with following commands:
+>>>>>>> 9d79e17aefbf092d7fa1eaf5ad7560832d9e2971
 
 ```shell
 vagrant ssh
@@ -86,4 +96,4 @@ The SCION infrastructure is automatically startet at boot time of your VM. You c
 
 ## Next steps
 
-After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation).
+After running SCION infrastructure it is necessary to verify that its running properly. This is covered in tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation)
