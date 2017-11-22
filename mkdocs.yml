@@ -66,3 +66,7 @@ pages:
       - Using multipath in SCION: sample_projects/multipath.md
       - Configuring path selection: general_scion_configuration/influence_path_selection.md
       - Configuring the SCION IP gateway: general_scion_configuration/setup_sig.md
+    - AS Visualization:
+      - Running AS Visualizations: as_visualization/running_asviz.md
+      - Browser AS Visualization: as_visualization/browser_asviz.md
+      - Command-line AS Visualization: as_visualization/command_asviz.md
