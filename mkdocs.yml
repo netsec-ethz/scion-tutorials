@@ -63,3 +63,7 @@ pages:
       - Read temperature sensor over SCION network: sample_projects/fetch_temperature.md
       - Access video camera over SCION network: sample_projects/access_camera.md
       - Using multipath in SCION: sample_projects/multipath.md
+    - AS Visualization:
+      - Running AS Visualizations: as_visualization/running_asviz.md
+      - Browser AS Visualization: as_visualization/browser_asviz.md
+      - Command-line AS Visualization: as_visualization/command_asviz.md

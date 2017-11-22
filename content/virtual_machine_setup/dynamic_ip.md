@@ -64,7 +64,7 @@ After extracting newly downloaded content, navigate to extracted directory. It s
 └── Vagrantfile
 ```
 
-Verifying that structure is the same and begin setup by running: 
+Verifying that structure is the same and begin setup by running:
 
 ```shell
 ./run.sh
@@ -74,7 +74,7 @@ You will be asked for root password, after entering it follow the steps in the i
 
 ### Step Three - Run SCION infrastructure
 
-After successful installation of VM, you will be automatically ssh'ed into machine. 
+After successful installation of VM, you will be automatically ssh'ed into machine.
 
 To run SCION you should navigate to source directory start infrastructure with following commands:
 
