@@ -9,35 +9,16 @@ This tutorial will guide you through the steps required to install SCION on Ubun
 
 The following steps will guide you through the installation of the tools necessary for running SCION.
 
-!!! tip
-    You can skip prerequisites if you have your Go workspaces already configured on your machine.
-
 ### Step One &ndash; install Go
 
-In order to run SCION, you must have Go version 1.8.x installed. Download [Go tools](https://golang.org/doc/install?download=go1.8.5.linux-amd64.tar.gz "Go binary for x86-64") and extract them in `/usr/local` with the following command (with root permissions):
-
-```shell
-tar -C /usr/local -xzf go1.8.5.linux-amd64.tar.gz
-```
-
-Then, add the newly extracted binaries to `$PATH`:
-
-```shell
-echo 'PATH=$PATH:/usr/local/go/bin' >> ~/.profile
-source ~/.profile
-```
-
-Test your Go installation with the following command:
-
-```shell
-go version
-```
-
-The output should be `go version go1.8.5 linux/amd64`.
+In order to run SCION, you must have Go version 1.8.x installed. Installation will automatically install right GO version, but that might break other Go software that you are running.
 
 ### Step Two &ndash; configure your Go workspace
 
-After the installation of Go tools, it is necessary to set up your [Go workspace](https://golang.org/doc/code.html#GOPATH "Go workspace"). The following commands will create a default workspace at `~/go` and export it as the `$GOPATH` environment variable:
+!!! tip
+    You can skip this step if you have Go workspaces already configured on your machine.
+
+It is necessary to set up your [Go workspace](https://golang.org/doc/code.html#GOPATH "Go workspace"). The following commands will create a default workspace at `~/go` and export it as the `$GOPATH` environment variable:
 
 ```shell
 echo 'export GOPATH="$HOME/go"' >> ~/.profile
@@ -79,8 +60,11 @@ cd $GOPATH/src/github.com/netsec-ethz/scion
 In order to instal dependencies, simply issue the following command while in the root directory of the SCION installation:
 
 ```shell
-./env/deps
+bash -c 'yes | GO_INSTALL=true ./env/deps'
 ```
+
+!!! note
+    You might be asked for sudo password after running the command
 
 This will finish installing the required dependencies and system packages.
 
