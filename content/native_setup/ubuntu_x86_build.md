@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This tutorial will guide you through the steps required to install SCION on Ubuntu 16.04. This also includes the steps required to install the necessary packages. For details on how to build SCION on a Raspberry Pi, please take a look at [how to build SCION on a Raspberry Pi](rpi_raspbian.md).
+This tutorial will guide you through the steps required to install SCION on Ubuntu 16.04. This also includes the steps required to install the necessary packages. For details on how to build SCION on a Raspberry Pi, please take a look at [how to build SCION on a Raspberry Pi](rpi_ubuntu.md).
 
 ## Prerequisites
 

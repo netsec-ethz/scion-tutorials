@@ -36,7 +36,7 @@
     
     
       
-        <title>Raspberry PI &ndash; Raspbian - SCION Tutorials</title>
+        <title>Raspberry PI &ndash; Ubuntu - SCION Tutorials</title>
       
     
     
@@ -92,7 +92,7 @@
                 </span>
               
             
-            Raspberry PI &ndash; Raspbian
+            Raspberry PI &ndash; Ubuntu
           
         </span>
       </div>
@@ -210,11 +210,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        Raspberry PI &ndash; Raspbian
+        Raspberry PI &ndash; Ubuntu
       </label>
     
-    <a href="./" title="Raspberry PI &ndash; Raspbian" class="md-nav__link md-nav__link--active">
-      Raspberry PI &ndash; Raspbian
+    <a href="./" title="Raspberry PI &ndash; Ubuntu" class="md-nav__link md-nav__link--active">
+      Raspberry PI &ndash; Ubuntu
     </a>
     
       
@@ -257,13 +257,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#install-go" title="Install Go" class="md-nav__link">
-    Install Go
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#configure-go-workspace" title="Configure Go workspace" class="md-nav__link">
     Configure Go workspace
   </a>
@@ -278,6 +271,40 @@
         <li class="md-nav__item">
   <a href="#install-scion" title="Install SCION" class="md-nav__link">
     Install SCION
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-one-clone-the-scion-repository" title="Step One &ndash; clone the SCION repository" class="md-nav__link">
+    Step One &ndash; clone the SCION repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-two-finish-installing-the-required-packages" title="Step Two &ndash; finish installing the required packages" class="md-nav__link">
+    Step Two &ndash; finish installing the required packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-three-configure-the-host-zookeeper-instance" title="Step Three &ndash; configure the host Zookeeper instance" class="md-nav__link">
+    Step Three &ndash; configure the host Zookeeper instance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" title="Next steps" class="md-nav__link">
+    Next steps
   </a>
   
 </li>
@@ -422,18 +449,6 @@
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../general_scion_configuration/scion_viz/" title="Visualization tool (SCION-viz)" class="md-nav__link">
-      Visualization tool (SCION-viz)
-    </a>
-  </li>
-
         
           
           
@@ -610,13 +625,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#install-go" title="Install Go" class="md-nav__link">
-    Install Go
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#configure-go-workspace" title="Configure Go workspace" class="md-nav__link">
     Configure Go workspace
   </a>
@@ -631,6 +639,40 @@
         <li class="md-nav__item">
   <a href="#install-scion" title="Install SCION" class="md-nav__link">
     Install SCION
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-one-clone-the-scion-repository" title="Step One &ndash; clone the SCION repository" class="md-nav__link">
+    Step One &ndash; clone the SCION repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-two-finish-installing-the-required-packages" title="Step Two &ndash; finish installing the required packages" class="md-nav__link">
+    Step Two &ndash; finish installing the required packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-three-configure-the-host-zookeeper-instance" title="Step Three &ndash; configure the host Zookeeper instance" class="md-nav__link">
+    Step Three &ndash; configure the host Zookeeper instance
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" title="Next steps" class="md-nav__link">
+    Next steps
   </a>
   
 </li>
@@ -654,7 +696,7 @@
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>The SCION infrastructure can also be run on IoT devices like a Raspberry Pi. Building SCION for a Raspberry Pi is similar to the <a href="../ubuntu_x86_build">regular x86 build</a>, although there are a few additional steps required to make everything work.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>In this tutorial, we assume that you already have a Raspberry Pi running Raspbian. In order to install Raspbian, please follow the <a href="https://www.raspberrypi.org/downloads/raspbian/">installation guide</a>.</p>
+<p>In this tutorial, we assume that you already have a Raspberry Pi running Ubuntu MATE (or similar Ubuntu Xenial based distribution). In order to install Ubuntu MATE, please follow the <a href="https://ubuntu-mate.org/raspberry-pi/">installation guide</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Update packages to latest version</p>
 <p>It is recommended to update all packages before starting the installation process of SCION:</p>
@@ -666,18 +708,12 @@
 </pre></div>
 
 
-<h3 id="install-go">Install Go<a class="headerlink" href="#install-go" title="Permanent link">&para;</a></h3>
-<p>In order to run SCION, Go version <code>1.8.x</code> is required. You can download and install go with following commands:</p>
-<div class="codehilite"><pre><span></span>wget https://storage.googleapis.com/golang/go1.8.5.linux-armv6l.tar.gz
-sudo tar -C /usr/local -xzf go1.8.5.linux-armv6l.tar.gz
-
-<span class="nb">echo</span> <span class="s1">&#39;PATH=$PATH:/usr/local/go/bin&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-</pre></div>
-
-
 <h3 id="configure-go-workspace">Configure Go workspace<a class="headerlink" href="#configure-go-workspace" title="Permanent link">&para;</a></h3>
-<p>After the installation of Go tools, it is necessary to create a go workspace with the following commands:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can skip this step if you have Go workspaces already configured.</p>
+</div>
+<p>It is necessary to set up your <a href="https://golang.org/doc/code.html#GOPATH" title="Go workspace">Go workspace</a>. The following commands will create a default workspace at <code>~/go</code> and export it as the <code>$GOPATH</code> environment variable:</p>
 <div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export GOPATH=&quot;$HOME/go&quot;&#39;</span> &gt;&gt; ~/.profile
 <span class="nb">source</span> ~/.profile
 mkdir -p <span class="s2">&quot;</span><span class="nv">$GOPATH</span><span class="s2">/bin&quot;</span>
@@ -687,23 +723,24 @@ mkdir -p <span class="s2">&quot;</span><span class="nv">$GOPATH</span><span clas
 
 
 <h2 id="install-scion">Install SCION<a class="headerlink" href="#install-scion" title="Permanent link">&para;</a></h2>
+<h3 id="step-one-clone-the-scion-repository">Step One &ndash; clone the SCION repository<a class="headerlink" href="#step-one-clone-the-scion-repository" title="Permanent link">&para;</a></h3>
+<p>After the Go workspace has been configured, we can checkout the SCION repository from github.com with all dependencies using the following commands:</p>
 <div class="codehilite"><pre><span></span>mkdir -p <span class="s2">&quot;</span><span class="nv">$GOPATH</span><span class="s2">/src/github.com/netsec-ethz&quot;</span>
 <span class="nb">cd</span> <span class="s2">&quot;</span><span class="nv">$GOPATH</span><span class="s2">/src/github.com/netsec-ethz&quot;</span>
-
 git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
-<span class="nb">cd</span> scion
 </pre></div>
 
 
 <div class="admonition warning">
 <p class="admonition-title">Troubleshooting</p>
-<p>If the machine doesn't have generated SSH keys or the SSH keys are not assigned to a github account, the checkout will fail with the error <code>Permission denied (publickey)</code>. There are two ways to resolve this problem:</p>
+<p>If the machine doesn't have generated SSH keys or the SSH keys are not assigned to the github account, the checkout will fail with the error <code>Permission denied (publickey)</code>. There are two ways to resolve this problem:</p>
 <ol>
 <li>Changing the checkout using ssh to https:
 <code>git config --global url.https://github.com/.insteadOf git@github.com:</code></li>
 <li>Assign SSH keys to Github account, detailed instruction can be found on <a href="https:/    /help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/">Github help</a></li>
 </ol>
 </div>
+<p>On ARM architecture it is necessary to apply two patches in following way:</p>
 <div class="codehilite"><pre><span></span>git checkout -b arm-modified
 wget https://gist.githubusercontent.com/FR4NK-W/cc6661f420fe5e9805d5b9cdb9c41b1b/raw/7dc3b60b86b4c148c2706e3da82eee8d557bbd45/patches_checksum_bench.patch
 wget https://gist.githubusercontent.com/FR4NK-W/fb7a4b171ab3d5121b6492b9b664fd47/raw/ddeeb8f2337c64f027955e070df6ef34ff26bf9a/patches_dispatcher.patch
@@ -715,14 +752,36 @@ rm c/dispatcher/dispatcher.c.orig
 </pre></div>
 
 
+<p>In order to make it easier to track, we can commit patched changes:</p>
 <div class="codehilite"><pre><span></span>git commit -am <span class="s2">&quot;Modified to compile on ARM systems&quot;</span>
 bash -c <span class="s1">&#39;yes | GO_INSTALL=true ./env/deps&#39;</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>sudo cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
-./scion.sh build
+<h3 id="step-two-finish-installing-the-required-packages">Step Two &ndash; finish installing the required packages<a class="headerlink" href="#step-two-finish-installing-the-required-packages" title="Permanent link">&para;</a></h3>
+<p>In order to instal dependencies, simply issue the following command while in the root directory of the SCION installation:</p>
+<div class="codehilite"><pre><span></span>bash -c <span class="s1">&#39;yes | GO_INSTALL=true ./env/deps&#39;</span>
 </pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You might be asked for sudo password after running the command</p>
+</div>
+<p>This will finish installing the required dependencies and system packages.</p>
+<h3 id="step-three-configure-the-host-zookeeper-instance">Step Three &ndash; configure the host Zookeeper instance<a class="headerlink" href="#step-three-configure-the-host-zookeeper-instance" title="Permanent link">&para;</a></h3>
+<p>Replacing <code>/etc/zookeeper/conf/zoo.cfg</code> with the file <code>docker/zoo.cfg</code> is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves the performance of Zookeeper (at the cost of reliability, so it should only be done in a testing environment).</p>
+<div class="codehilite"><pre><span></span>cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
+</pre></div>
+
+
+<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:</p>
+<ol>
+<li><a href="../../general_scion_configuration/local_top">Running a local network topology</a> &ndash; Generate a sample topology and run SCION locally</li>
+<li><a href="../../general_scion_configuration/public_ip">Connecting to SCIONLab with a static public IP address</a> &ndash; Connect to the already running SCION topology</li>
+<li><a href="../../general_scion_configuration/vpn_setup">Connecting to SCIONLab without a static public IP address</a> &ndash; Connect to the already running SCION topology through an OpenVPN tunnel</li>
+</ol>
                 
                   
                 

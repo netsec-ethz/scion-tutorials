@@ -60,12 +60,12 @@ pages:
       - Set up an endhost and connect to a local AS: general_scion_configuration/vpn_setup.md
 
     - How to use:
-      - Visualization tool (SCION-viz): general_scion_configuration/scion_viz.md
       - Read a temperature sensor over the SCION network: sample_projects/fetch_temperature.md
       - Access a video camera over the SCION network: sample_projects/access_camera.md
       - Using multipath in SCION: sample_projects/multipath.md
       - Configuring path selection: general_scion_configuration/influence_path_selection.md
       - Configuring the SCION IP gateway: general_scion_configuration/setup_sig.md
+      
     - AS Visualization:
       - Running AS Visualizations: as_visualization/running_asviz.md
       - Browser AS Visualization: as_visualization/browser_asviz.md

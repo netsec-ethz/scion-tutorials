@@ -22,4 +22,4 @@ SCION can run on different platforms:
 
 ## Using SCION
 
-- Visualizing the network topology &ndash; [SCION viz](/general_scion_configuration/scion_viz)
+- Visualizing the network topology &ndash; [SCION viz](/as_visualization/running_asviz)

@@ -18,7 +18,7 @@
     </url>
         
     <url>
-     <loc>/native_setup/rpi_raspbian/</loc>
+     <loc>/native_setup/rpi_ubuntu/</loc>
      <lastmod>2017-11-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -72,12 +72,6 @@
     
 
     
-        
-    <url>
-     <loc>/general_scion_configuration/scion_viz/</loc>
-     <lastmod>2017-11-23</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
         
     <url>
      <loc>/sample_projects/fetch_temperature/</loc>
