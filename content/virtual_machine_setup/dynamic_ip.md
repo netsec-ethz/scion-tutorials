@@ -13,7 +13,7 @@ Running SCION in a virtual machine requires VirtualBox and Vagrant to be install
 
 ### Step One &ndash; install VirtualBox
 
-To install VirtualBox, follow the steps on the [VirtualBox download page](https://www.virtualbox.org/wiki/Downloads) for your system. On Ubuntu or similar Linux distributions, you could also install VirtualBox using your packet manager:
+To install VirtualBox, follow the steps on the [VirtualBox download page](https://www.virtualbox.org/wiki/Downloads) for your system. On Ubuntu or similar Linux distributions, you could also install VirtualBox using your package manager:
 
 ```shell
 apt-get install virtualbox
@@ -21,7 +21,7 @@ apt-get install virtualbox
 
 ### Step Two &ndash; install Vagrant
 
-To install Vagrant, follow the steps on the [Vagrant download page](https://www.vagrantup.com/downloads.html) for your system. Also, on Ubuntu you could install it via your packet manager:
+To install Vagrant, follow the steps on the [Vagrant download page](https://www.vagrantup.com/downloads.html) for your system. Also, on Ubuntu you could install it via your package manager:
 
 ```shell
 apt-get install vagrant
@@ -33,9 +33,9 @@ Running SCION consists of several steps, registering a SCION VM on [SCIONLab Coo
 
 ### Step One &ndash; download a SCION VM
 
-In order to download a VM, you must login to [SCIONLab Coordination Service](https://coord.scionproto.net). In case you don't have an account, follow registration process.
+In order to download a VM, you must login to [SCIONLab Coordination Service](https://coord.scionproto.net). In case you don't yet have an account, follow the registration process.
 
-After successfully logging in, download a VM configuration by clicking on *Create and Download SCIONLab VM Configuration* as presented in the image below:
+After logging in, download a VM configuration by clicking on *Create and Download SCIONLab VM Configuration* as presented in the image below:
 
 ![SCIONLab download page](/images/scionlab_download_vm_openvpn_setup.png)
 
@@ -64,7 +64,7 @@ After extracting the newly downloaded content, navigate to the extracted directo
 └── Vagrantfile
 ```
 
-Verifying that structure is the same and begin setup by running:
+Verifying that the structure is the same, you can begin the setup by running:
 
 ```shell
 vagrant box add scion/ubuntu-16.04-64-scion
@@ -78,13 +78,13 @@ You will be asked for your password. The installation process will take around 1
 
 After successful installation of VM, you will be automatically ssh'ed into machine.
 
-To run SCION you should navigate to source directory start infrastructure with following commands:
+To run SCION you can navigate to the source directory and start the infrastructure with following commands:
 
 ```shell
 vagrant ssh
 ```
 
-The SCION infrastructure is automatically startet at boot time of your VM. You can control it using the `scion.sh` script located at `~/go/src/github.com/netsec-ethz/scion/`.
+The SCION infrastructure is automatically started at boot time of your VM. You can control it using the `scion.sh` script located at `~/go/src/github.com/netsec-ethz/scion/`. You can easily get to that directory with `cd $SC`.
 
 ## Next steps
 
