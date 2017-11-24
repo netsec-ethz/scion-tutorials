@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,31 +13,31 @@
         
     <url>
      <loc>/native_setup/ubuntu_x86_build/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/native_setup/rpi_ubuntu/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/virtual_machine_setup/dynamic_ip/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/virtual_machine_setup/static_ip/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/general_scion_configuration/verifying_scion_installation/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -47,25 +47,25 @@
         
     <url>
      <loc>/general_scion_configuration/local_top/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/general_scion_configuration/public_ip/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/general_scion_configuration/vpn_setup/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/general_scion_configuration/vpn_setup/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -75,31 +75,31 @@
         
     <url>
      <loc>/sample_projects/fetch_temperature/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/sample_projects/access_camera/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/sample_projects/multipath/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/general_scion_configuration/influence_path_selection/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/general_scion_configuration/setup_sig/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -109,19 +109,19 @@
         
     <url>
      <loc>/as_visualization/running_asviz/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/as_visualization/browser_asviz/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/as_visualization/command_asviz/</loc>
-     <lastmod>2017-11-23</lastmod>
+     <lastmod>2017-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

@@ -10,7 +10,7 @@ SCION can run on different platforms:
 
 - Natively
     1. Desktop installation &ndash; [Ubuntu 16.04 x86](native_setup/ubuntu_x86_build)
-    2. Raspberry Pi build &ndash; [Raspbian](native_setup/rpi_raspbian)
+    2. Raspberry Pi build &ndash; [Ubuntu MATE](native_setup/rpi_ubuntu)
 - In a virtual machine
     1. Setup for machines without static public IP address &ndash; [VPN based setup](virtual_machine_setup/dynamic_ip/)
     2. Setup for machines with static public IP address &ndash; [Static IP setup](virtual_machine_setup/static_ip/)

@@ -48,6 +48,7 @@ After the Go workspace has been configured, we can checkout the SCION repository
 mkdir -p "$GOPATH/src/github.com/netsec-ethz"
 cd "$GOPATH/src/github.com/netsec-ethz"
 git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
+cd scion
 ```
 
 !!! warning "Troubleshooting"
