@@ -49,13 +49,24 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
     ```
     2. Assign SSH keys to Github account, detailed instruction can be found on [Github help](https:/    /help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 
-This will clone SCION and resolve dependencies in the appropriate directory in the Go workspace. It is necessary to navigate to the newly downloaded repository for finishing the configuration:
+This will clone SCION appropriate directory in the Go workspace. We will create export environment variable `SP` that will point to SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:
 
 ```shell
-cd $GOPATH/src/github.com/netsec-ethz/scion
+echo 'export SP="$GOPATH/src/github.com/netsec-ethz/scion"' >> ~/.profile
+source ~/.profile
+cd $SP
 ```
 
-### Step Two &ndash; finish installing the required packages
+### Step Two &ndash; configure python path variable
+
+Some SCION components like SCIONviz require Python libraries which are located in scion root directory. In order to make them accessible, exporting `PYTHONPATH` environment variable is required:
+
+```shell
+echo 'export PYTHONPATH="${SP}/python:${SP}"' >> ~/.profile
+source ~/.profile
+```
+
+### Step Three &ndash; finish installing the required packages
 
 In order to instal dependencies, simply issue the following command while in the root directory of the SCION installation:
 
@@ -68,7 +79,7 @@ bash -c 'yes | GO_INSTALL=true ./env/deps'
 
 This will finish installing the required dependencies and system packages.
 
-### Step Three &ndash; configure the host Zookeeper instance
+### Step Four &ndash; configure the host Zookeeper instance
 
 Replacing `/etc/zookeeper/conf/zoo.cfg` with the file `docker/zoo.cfg` is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves the performance of Zookeeper (at the cost of reliability, so it should only be done in a testing environment).
 
