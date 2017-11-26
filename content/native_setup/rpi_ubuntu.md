@@ -102,7 +102,7 @@ bash -c 'yes | GO_INSTALL=true ./env/deps'
 Some SCION components like SCIONviz require Python libraries which are located in scion root directory. In order to make them accessible, exporting `PYTHONPATH` environment variable is required:
 
 ```shell
-echo 'export PYTHONPATH="${SP}/python:${SP}"' >> ~/.profile
+echo 'export PYTHONPATH="$SP/python:$SP"' >> ~/.profile
 source ~/.profile
 ```
 

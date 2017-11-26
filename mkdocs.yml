@@ -70,3 +70,7 @@ pages:
       - Running AS Visualizations: as_visualization/running_asviz.md
       - Browser AS Visualization: as_visualization/browser_asviz.md
       - Command-line AS Visualization: as_visualization/command_asviz.md
+
+    - Scion tricks:
+      - Updating gen directory: scion_tricks/changing_gen_dir.md
+      - Updating SCION: scion_tricks/updating_scion.md

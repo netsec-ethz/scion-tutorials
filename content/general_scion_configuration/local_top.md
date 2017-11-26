@@ -6,17 +6,17 @@ This tutorial will guide you through the steps required to generate a local topo
 
 ## Prerequisites
 
-This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow [How to build SCION on Ubuntu 16.04 x86-64](ubuntu_x86_build).
+This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow [How to build SCION on Ubuntu 16.04 x86-64](/native_setup/ubuntu_x86_build) or [How to build SCION on Raspberry PI](/native_setup/rpi_ubuntu).
 
-## Topology
+## Generating topology
 
 Before continuing with the following steps, you should first navigate to the SCION root directory:
 
 ```shell
-cd $GOPATH/src/github.com/netsec-ethz/scion
+cd $SP
 ```
 
-The SCION installation comes with a command to generate the default local topology. The topology is defined in the directory `topology` and it is depicted in the following figure.
+SCION installation comes with a command to generate the local topology from 'topo' configuration files. Default topology is defined in `topology/Default.topo` and it is depicted in the following figure.
 
 ![Default topology](/images/default_topology.png)
 
@@ -41,6 +41,15 @@ This command will generate the topology information in the `gen` directory. The 
          keys/
              as-sig.key
 ```
+
+!!! warning "Running smaller topology"
+    Running default SCION topology **requires significant amount of system resources**. This might not be possible on IoT devices like Raspberry PI or Virtual machines. For this reason using smaller topology is recommended. To generate smaller topology you can use predefined  definition of tiny topology in following way:
+
+    ```
+    ./scion.sh topology -c topology/Tiny.topo
+    ```
+
+    After changing contents of `gen` directory it is necessary to [restart SCION infrastructure](/scion_tricks/changing_gen_dir/#restarting-scion-infrastructure)
 
 ** This command will delete any previous `gen` directory. Make sure to back it up before, if necessary! **
 
