@@ -30,13 +30,13 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       
-        <link rel="shortcut icon" href="../../assets/images/favicon.png">
+        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
       <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
     
     
       
-        <title>Set up an endhost and connect to a local AS - SCION Tutorials</title>
+        <title>Set up an AS and connect to the SCION network via VPN - SCION Tutorials</title>
       
     
     
@@ -88,11 +88,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  How to connect
+                  Connecting to SCION
                 </span>
               
             
-            Set up an endhost and connect to a local AS
+            Set up an AS and connect to the SCION network via VPN
           
         </span>
       </div>
@@ -172,11 +172,59 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
-      How to setup on different platforms
+      How to run SCION VM
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
-        How to setup on different platforms
+        How to run SCION VM
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../virtual_machine_setup/dynamic_ip/" title="Virtual machine with VPN" class="md-nav__link">
+      Virtual machine with VPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../virtual_machine_setup/static_ip/" title="Virtual machine with static public IP" class="md-nav__link">
+      Virtual machine with static public IP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      How to install SCION manually on different platforms
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        How to install SCION manually on different platforms
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -199,44 +247,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../native_setup/rpi_ubuntu/" title="Raspberry PI &ndash; Ubuntu" class="md-nav__link">
-      Raspberry PI &ndash; Ubuntu
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../virtual_machine_setup/dynamic_ip/" title="Virtual machine via VPN" class="md-nav__link">
-      Virtual machine via VPN
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../virtual_machine_setup/static_ip/" title="Virtual machine with static public IP" class="md-nav__link">
-      Virtual machine with static public IP
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../verifying_scion_installation/" title="Verifying the installation" class="md-nav__link">
-      Verifying the installation
+    <a href="../../native_setup/rpi_ubuntu/" title="Ubuntu MATE Raspberry PI" class="md-nav__link">
+      Ubuntu MATE Raspberry PI
     </a>
   </li>
 
@@ -255,14 +267,14 @@
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
-    <label class="md-nav__link" for="nav-3">
-      How to connect
+    <label class="md-nav__link" for="nav-4">
+      Connecting to SCION
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        How to connect
+      <label class="md-nav__title" for="nav-4">
+        Connecting to SCION
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -295,25 +307,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-    <a href="./" title="Connect to the SCION network via VPN" class="md-nav__link md-nav__link--active">
-      Connect to the SCION network via VPN
-    </a>
-    
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -324,10 +317,98 @@
       
     
     
-    <a href="./" title="Set up an endhost and connect to a local AS" class="md-nav__link md-nav__link--active">
-      Set up an endhost and connect to a local AS
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Set up an AS and connect to the SCION network via VPN
+      </label>
+    
+    <a href="./" title="Set up an AS and connect to the SCION network via VPN" class="md-nav__link md-nav__link--active">
+      Set up an AS and connect to the SCION network via VPN
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-one-installing-openvpn" title="Step One - installing OpenVPN" class="md-nav__link">
+    Step One - installing OpenVPN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-two-downloading-scion-lab-configuration" title="Step Two - downloading SCION Lab configuration" class="md-nav__link">
+    Step Two - downloading SCION Lab configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-three-connecting-to-openvpn-server" title="Step Three - Connecting to OpenVPN server" class="md-nav__link">
+    Step Three - Connecting to OpenVPN server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-four-copying-scion-lab-configuration" title="Step Four - copying SCION Lab configuration" class="md-nav__link">
+    Step Four - copying SCION Lab configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-five-restarting-scion-infrastructure" title="Step Five - Restarting SCION infrastructure" class="md-nav__link">
+    Step Five - Restarting SCION infrastructure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" title="Next steps" class="md-nav__link">
+    Next steps
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setup_endhost/" title="Set up SCION endhost and connect to local AS" class="md-nav__link">
+      Set up SCION endhost and connect to local AS
+    </a>
   </li>
 
         
@@ -343,13 +424,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
-    <label class="md-nav__link" for="nav-4">
+    <label class="md-nav__link" for="nav-5">
       How to use
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
+      <label class="md-nav__title" for="nav-5">
         How to use
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -427,13 +508,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
-    <label class="md-nav__link" for="nav-5">
+    <label class="md-nav__link" for="nav-6">
       AS Visualization
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
+      <label class="md-nav__title" for="nav-6">
         AS Visualization
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -480,6 +561,66 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Scion tricks
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Scion tricks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../verifying_scion_installation/" title="Verifying the installation" class="md-nav__link">
+      Verifying the installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scion_tricks/changing_gen_dir/" title="Updating gen directory" class="md-nav__link">
+      Updating gen directory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scion_tricks/updating_scion/" title="Updating SCION" class="md-nav__link">
+      Updating SCION
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -497,6 +638,69 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-one-installing-openvpn" title="Step One - installing OpenVPN" class="md-nav__link">
+    Step One - installing OpenVPN
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-two-downloading-scion-lab-configuration" title="Step Two - downloading SCION Lab configuration" class="md-nav__link">
+    Step Two - downloading SCION Lab configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-three-connecting-to-openvpn-server" title="Step Three - Connecting to OpenVPN server" class="md-nav__link">
+    Step Three - Connecting to OpenVPN server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-four-copying-scion-lab-configuration" title="Step Four - copying SCION Lab configuration" class="md-nav__link">
+    Step Four - copying SCION Lab configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-five-restarting-scion-infrastructure" title="Step Five - Restarting SCION infrastructure" class="md-nav__link">
+    Step Five - Restarting SCION infrastructure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" title="Next steps" class="md-nav__link">
+    Next steps
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -509,7 +713,116 @@
                 
                 
                 <h1 id="connecting-to-scionlab-via-vpn">Connecting to SCIONLab via VPN<a class="headerlink" href="#connecting-to-scionlab-via-vpn" title="Permanent link">&para;</a></h1>
-<p>TBA</p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>This tutorial will cover steps required for connecting already running SCION infrastructure to SCION lab, doing so you will be running one SCION autonomous system. </p>
+<p>For the purpose of this tutorial, we assume that you don't have static public IP address, or that your machine cannot receive UDP traffic on port 50000 from internet. If this is not the case, you should consider following <a href="../../general_scion_configuration/public_ip">Connecting to SCION Lab with public IP</a></p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>In order to follow this tutorial, we will assume that you already installed SCION infrastructure and that you are able to <a href="../../general_scion_configuration/local_top">run local topology</a>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you are running one of the SCION Virtual machine setups, configuration covered in this tutorial is already implemented in the system image. </p>
+</div>
+<h2 id="step-one-installing-openvpn">Step One - installing OpenVPN<a class="headerlink" href="#step-one-installing-openvpn" title="Permanent link">&para;</a></h2>
+<p>In order to circumvent problem of not having publicly accessible IP address, we can tunnel SCION traffic to an exit node that has it, using OpenVPN.</p>
+<p>In order to install openvpn client, you can simply run:</p>
+<div class="codehilite"><pre><span></span>sudo apt install openvpn
+</pre></div>
+
+
+<h2 id="step-two-downloading-scion-lab-configuration">Step Two - downloading SCION Lab configuration<a class="headerlink" href="#step-two-downloading-scion-lab-configuration" title="Permanent link">&para;</a></h2>
+<p>In order to download necessary configuration you must login to <a href="https://coord.scionproto.net/#/login">SCION Coordination Service</a>. In case you don't yet have an account, follow the registration process.</p>
+<div class="admonition note">
+<p>Since current version of <em>Coordination Service</em> only generates VM configuration scripts, we will use them in following steps to configure running SCION infrastructure.</p>
+</div>
+<p>After logging in, download a VM configuration by clicking on <strong>Create and Download SCIONLab VM Configuration</strong> as presented in the image below:</p>
+<p><img alt="SCIONLab download page" src="../../images/scionlab_download_vm_openvpn_setup.png" /></p>
+<p>Navigate to download directory and extract archive content:</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/Downloads
+tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
+<span class="nb">cd</span> &lt;user_email&gt;
+</pre></div>
+
+
+<p>Extracted content should have following file structure:</p>
+<div class="codehilite"><pre><span></span>├── client.conf
+├── gen
+│   ├── dispatcher
+│   │   ├── dispatcher.zlog.conf
+│   │   └── supervisord.conf
+│   └── ISD1
+│       └── ...
+├── README.md
+├── run.sh
+├── scion.service
+├── scion-viz.service
+└── Vagrantfile
+</pre></div>
+
+
+<p>For the purpose of this tutorial we will just need:</p>
+<ul>
+<li>file <code>client.conf</code> - client OpenVPN configuration</li>
+<li>directory <code>gen</code> - SCION infrastructure configuration</li>
+</ul>
+<h2 id="step-three-connecting-to-openvpn-server">Step Three - Connecting to OpenVPN server<a class="headerlink" href="#step-three-connecting-to-openvpn-server" title="Permanent link">&para;</a></h2>
+<p>Adding VPN configuration is done by copying files in openvpn directory:</p>
+<div class="codehilite"><pre><span></span>sudo cp client.conf /etc/openvpn
+sudo chmod <span class="m">600</span> /etc/openvpn/client.conf
+</pre></div>
+
+
+<p>Starting OpenVPN service, and enabling it to run on startup is done in following way:</p>
+<div class="codehilite"><pre><span></span>systemctl start openvpn@client
+systemctl <span class="nb">enable</span> openvpn@client
+</pre></div>
+
+
+<p>After this, you should verify that new <code>tun</code> interface is added. </p>
+<p>Running </p>
+<div class="codehilite"><pre><span></span>ip a
+</pre></div>
+
+
+<p>should display newly added interface, in this case <code>tun0</code>:</p>
+<div class="codehilite"><pre><span></span><span class="mi">9</span><span class="o">:</span> <span class="n">tun0</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">POINTOPOINT</span><span class="o">,</span><span class="n">MULTICAST</span><span class="o">,</span><span class="n">NOARP</span><span class="o">,</span><span class="n">UP</span><span class="o">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span> <span class="n">mtu</span> <span class="mi">1500</span> <span class="n">qdisc</span> <span class="n">pfifo_fast</span> <span class="n">state</span> <span class="n">UNKNOWN</span> <span class="n">group</span> <span class="k">default</span> <span class="n">qlen</span> <span class="mi">100</span>
+    <span class="n">link</span><span class="o">/</span><span class="n">none</span> 
+    <span class="n">inet</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">8.40</span><span class="o">/</span><span class="mi">24</span> <span class="n">brd</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">8.255</span> <span class="n">scope</span> <span class="n">global</span> <span class="n">tun0</span>
+       <span class="n">valid_lft</span> <span class="n">forever</span> <span class="n">preferred_lft</span> <span class="n">forever</span>
+    <span class="n">inet6</span> <span class="n">fe80</span><span class="o">::</span><span class="mi">2337</span><span class="o">:</span><span class="n">a0c4</span><span class="o">:</span><span class="mi">7</span><span class="n">fa7</span><span class="o">:</span><span class="mi">78</span><span class="n">b3</span><span class="o">/</span><span class="mi">64</span> <span class="n">scope</span> <span class="n">link</span> <span class="n">flags</span> <span class="mi">800</span> 
+       <span class="n">valid_lft</span> <span class="n">forever</span> <span class="n">preferred_lft</span> <span class="n">forever</span>
+</pre></div>
+
+
+<p>In this case client's OpenVPN IP address is: <code>10.0.8.40</code>, this address might vary on different setups, please keep a not of yours.</p>
+<h2 id="step-four-copying-scion-lab-configuration">Step Four - copying SCION Lab configuration<a class="headerlink" href="#step-four-copying-scion-lab-configuration" title="Permanent link">&para;</a></h2>
+<p>Before copying new configuration to your SCION directory, you should delete the old one. If necessary back it up previously.</p>
+<div class="codehilite"><pre><span></span>rm -rf <span class="nv">$SP</span>/gen
+</pre></div>
+
+
+<p>Copy new configuration and navigate to SCION root directory:</p>
+<div class="codehilite"><pre><span></span>cp -r gen <span class="nv">$SP</span>/
+<span class="nb">cd</span> <span class="nv">$SP</span>
+</pre></div>
+
+
+<p>Because <code>gen</code> directory downloaded from Coordination Service is customized for VM IP addresses (<code>10.0.2.15</code>), we need to replace them with address obtained from OpenVPN on current system. In following commands we will assume that OpenVPN IP address is: <code>10.0.8.40</code> but you should use the value obtained in previous step:</p>
+<div class="codehilite"><pre><span></span>find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.0.8.40/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
+find ./gen/ -name <span class="s2">&quot;*.yml&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.0.8.40/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
+find ./gen/ -name <span class="s2">&quot;*.conf&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.0.8.40/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
+</pre></div>
+
+
+<h2 id="step-five-restarting-scion-infrastructure">Step Five - Restarting SCION infrastructure<a class="headerlink" href="#step-five-restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
+<p>After OpenVPN connection is established and new configuration is copied, you need to restart infrastructure in following way:</p>
+<div class="codehilite"><pre><span></span>./scion.sh stop
+~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
+./scion.sh run
+</pre></div>
+
+
+<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="../../general_scion_configuration/verifying_scion_installation">Verifying SCION Installation</a></p>
                 
                   
                 

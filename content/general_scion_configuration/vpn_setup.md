@@ -4,7 +4,7 @@
 
 This tutorial will cover steps required for connecting already running SCION infrastructure to SCION lab, doing so you will be running one SCION autonomous system. 
 
-For the purpose of this tutorial, we assume that you don't have static public IP address, or that your machine cannot receive traffic on port 50000 from internet. If this is not the case, you should consider following [Connecting to SCION Lab with public IP](/general_scion_configuration/public_ip)
+For the purpose of this tutorial, we assume that you don't have static public IP address, or that your machine cannot receive UDP traffic on port 50000 from internet. If this is not the case, you should consider following [Connecting to SCION Lab with public IP](/general_scion_configuration/public_ip)
 
 ## Prerequisites
 

@@ -30,13 +30,13 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       
-        <link rel="shortcut icon" href="../../assets/images/favicon.png">
+        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
       <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
     
     
       
-        <title>Raspberry PI &ndash; Ubuntu - SCION Tutorials</title>
+        <title>Ubuntu MATE Raspberry PI - SCION Tutorials</title>
       
     
     
@@ -88,11 +88,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  How to setup on different platforms
+                  How to install SCION manually on different platforms
                 </span>
               
             
-            Raspberry PI &ndash; Ubuntu
+            Ubuntu MATE Raspberry PI
           
         </span>
       </div>
@@ -166,19 +166,67 @@
       
       
 
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      How to run SCION VM
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        How to run SCION VM
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../virtual_machine_setup/dynamic_ip/" title="Virtual machine with VPN" class="md-nav__link">
+      Virtual machine with VPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../virtual_machine_setup/static_ip/" title="Virtual machine with static public IP" class="md-nav__link">
+      Virtual machine with static public IP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
-    <label class="md-nav__link" for="nav-2">
-      How to setup on different platforms
+    <label class="md-nav__link" for="nav-3">
+      How to install SCION manually on different platforms
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-2">
-        How to setup on different platforms
+      <label class="md-nav__title" for="nav-3">
+        How to install SCION manually on different platforms
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -210,11 +258,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        Raspberry PI &ndash; Ubuntu
+        Ubuntu MATE Raspberry PI
       </label>
     
-    <a href="./" title="Raspberry PI &ndash; Ubuntu" class="md-nav__link md-nav__link--active">
-      Raspberry PI &ndash; Ubuntu
+    <a href="./" title="Ubuntu MATE Raspberry PI" class="md-nav__link md-nav__link--active">
+      Ubuntu MATE Raspberry PI
     </a>
     
       
@@ -284,15 +332,29 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-two-finish-installing-the-required-packages" title="Step Two &ndash; finish installing the required packages" class="md-nav__link">
-    Step Two &ndash; finish installing the required packages
+  <a href="#step-two-apply-necessary-patches" title="Step Two &ndash; apply necessary patches" class="md-nav__link">
+    Step Two &ndash; apply necessary patches
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-three-configure-the-host-zookeeper-instance" title="Step Three &ndash; configure the host Zookeeper instance" class="md-nav__link">
-    Step Three &ndash; configure the host Zookeeper instance
+  <a href="#step-three-configure-python-path-variable" title="Step Three &ndash; configure python path variable" class="md-nav__link">
+    Step Three &ndash; configure python path variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-four-finish-installing-the-required-packages" title="Step Four &ndash; finish installing the required packages" class="md-nav__link">
+    Step Four &ndash; finish installing the required packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-five-configure-the-host-zookeeper-instance" title="Step Five &ndash; configure the host Zookeeper instance" class="md-nav__link">
+    Step Five &ndash; configure the host Zookeeper instance
   </a>
   
 </li>
@@ -318,42 +380,6 @@
   </li>
 
         
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../virtual_machine_setup/dynamic_ip/" title="Virtual machine via VPN" class="md-nav__link">
-      Virtual machine via VPN
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../virtual_machine_setup/static_ip/" title="Virtual machine with static public IP" class="md-nav__link">
-      Virtual machine with static public IP
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../general_scion_configuration/verifying_scion_installation/" title="Verifying the installation" class="md-nav__link">
-      Verifying the installation
-    </a>
-  </li>
-
-        
       </ul>
     </nav>
   </li>
@@ -366,14 +392,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
-    <label class="md-nav__link" for="nav-3">
-      How to connect
+    <label class="md-nav__link" for="nav-4">
+      Connecting to SCION
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-3">
-        How to connect
+      <label class="md-nav__title" for="nav-4">
+        Connecting to SCION
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -408,8 +434,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../general_scion_configuration/vpn_setup/" title="Connect to the SCION network via VPN" class="md-nav__link">
-      Connect to the SCION network via VPN
+    <a href="../../general_scion_configuration/vpn_setup/" title="Set up an AS and connect to the SCION network via VPN" class="md-nav__link">
+      Set up an AS and connect to the SCION network via VPN
     </a>
   </li>
 
@@ -420,8 +446,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../general_scion_configuration/vpn_setup/" title="Set up an endhost and connect to a local AS" class="md-nav__link">
-      Set up an endhost and connect to a local AS
+    <a href="../../general_scion_configuration/setup_endhost/" title="Set up SCION endhost and connect to local AS" class="md-nav__link">
+      Set up SCION endhost and connect to local AS
     </a>
   </li>
 
@@ -438,13 +464,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
-    <label class="md-nav__link" for="nav-4">
+    <label class="md-nav__link" for="nav-5">
       How to use
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
+      <label class="md-nav__title" for="nav-5">
         How to use
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -522,13 +548,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
-    <label class="md-nav__link" for="nav-5">
+    <label class="md-nav__link" for="nav-6">
       AS Visualization
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
+      <label class="md-nav__title" for="nav-6">
         AS Visualization
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -566,6 +592,66 @@
   <li class="md-nav__item">
     <a href="../../as_visualization/command_asviz/" title="Command-line AS Visualization" class="md-nav__link">
       Command-line AS Visualization
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Scion tricks
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Scion tricks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general_scion_configuration/verifying_scion_installation/" title="Verifying the installation" class="md-nav__link">
+      Verifying the installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scion_tricks/changing_gen_dir/" title="Updating gen directory" class="md-nav__link">
+      Updating gen directory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scion_tricks/updating_scion/" title="Updating SCION" class="md-nav__link">
+      Updating SCION
     </a>
   </li>
 
@@ -652,15 +738,29 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-two-finish-installing-the-required-packages" title="Step Two &ndash; finish installing the required packages" class="md-nav__link">
-    Step Two &ndash; finish installing the required packages
+  <a href="#step-two-apply-necessary-patches" title="Step Two &ndash; apply necessary patches" class="md-nav__link">
+    Step Two &ndash; apply necessary patches
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-three-configure-the-host-zookeeper-instance" title="Step Three &ndash; configure the host Zookeeper instance" class="md-nav__link">
-    Step Three &ndash; configure the host Zookeeper instance
+  <a href="#step-three-configure-python-path-variable" title="Step Three &ndash; configure python path variable" class="md-nav__link">
+    Step Three &ndash; configure python path variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-four-finish-installing-the-required-packages" title="Step Four &ndash; finish installing the required packages" class="md-nav__link">
+    Step Four &ndash; finish installing the required packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-five-configure-the-host-zookeeper-instance" title="Step Five &ndash; configure the host Zookeeper instance" class="md-nav__link">
+    Step Five &ndash; configure the host Zookeeper instance
   </a>
   
 </li>
@@ -692,7 +792,7 @@
               
                 
                 
-                <h1 id="building-scion-for-a-raspberry-pi-raspbian">Building SCION for a Raspberry Pi &ndash; Raspbian<a class="headerlink" href="#building-scion-for-a-raspberry-pi-raspbian" title="Permanent link">&para;</a></h1>
+                <h1 id="building-scion-for-a-raspberry-pi-ubuntu-mate">Building SCION for a Raspberry Pi &ndash; Ubuntu MATE<a class="headerlink" href="#building-scion-for-a-raspberry-pi-ubuntu-mate" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>The SCION infrastructure can also be run on IoT devices like a Raspberry Pi. Building SCION for a Raspberry Pi is similar to the <a href="../ubuntu_x86_build">regular x86 build</a>, although there are a few additional steps required to make everything work.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
@@ -704,7 +804,7 @@
 </div>
 <h2 id="install-necessary-tools">Install necessary tools<a class="headerlink" href="#install-necessary-tools" title="Permanent link">&para;</a></h2>
 <h3 id="install-necessary-packages">Install necessary packages<a class="headerlink" href="#install-necessary-packages" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span>sudo apt install git openvpn
+<div class="codehilite"><pre><span></span>sudo apt install git
 </pre></div>
 
 
@@ -728,7 +828,6 @@ mkdir -p <span class="s2">&quot;</span><span class="nv">$GOPATH</span><span clas
 <div class="codehilite"><pre><span></span>mkdir -p <span class="s2">&quot;</span><span class="nv">$GOPATH</span><span class="s2">/src/github.com/netsec-ethz&quot;</span>
 <span class="nb">cd</span> <span class="s2">&quot;</span><span class="nv">$GOPATH</span><span class="s2">/src/github.com/netsec-ethz&quot;</span>
 git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
-<span class="nb">cd</span> scion
 </pre></div>
 
 
@@ -741,6 +840,14 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
 <li>Assign SSH keys to Github account, detailed instruction can be found on <a href="https:/    /help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/">Github help</a></li>
 </ol>
 </div>
+<p>This will clone SCION appropriate directory in the Go workspace. We will create export environment variable <code>SP</code> that will point to SCION root directory. </p>
+<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export SP=&quot;$GOPATH/src/github.com/netsec-ethz/scion&quot;&#39;</span> &gt;&gt; ~/.profile
+<span class="nb">source</span> ~/.profile
+<span class="nb">cd</span> <span class="nv">$SP</span>
+</pre></div>
+
+
+<h3 id="step-two-apply-necessary-patches">Step Two &ndash; apply necessary patches<a class="headerlink" href="#step-two-apply-necessary-patches" title="Permanent link">&para;</a></h3>
 <p>On ARM architecture it is necessary to apply two patches in following way:</p>
 <div class="codehilite"><pre><span></span>git checkout -b arm-modified
 wget https://gist.githubusercontent.com/FR4NK-W/cc6661f420fe5e9805d5b9cdb9c41b1b/raw/7dc3b60b86b4c148c2706e3da82eee8d557bbd45/patches_checksum_bench.patch
@@ -759,7 +866,20 @@ bash -c <span class="s1">&#39;yes | GO_INSTALL=true ./env/deps&#39;</span>
 </pre></div>
 
 
-<h3 id="step-two-finish-installing-the-required-packages">Step Two &ndash; finish installing the required packages<a class="headerlink" href="#step-two-finish-installing-the-required-packages" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Troubleshooting</p>
+<p>If git identity is not configured, commits won't be possible. Configuring users identity on newly installed git can be done in following way:  </p>
+<p><code>git config --global user.name "John Doe" &amp;&amp; 
+git config --global user.email johndoe@example.com</code></p>
+</div>
+<h3 id="step-three-configure-python-path-variable">Step Three &ndash; configure python path variable<a class="headerlink" href="#step-three-configure-python-path-variable" title="Permanent link">&para;</a></h3>
+<p>Some SCION components like SCIONviz require Python libraries which are located in scion root directory. In order to make them accessible, exporting <code>PYTHONPATH</code> environment variable is required:</p>
+<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SP/python:$SP&quot;&#39;</span> &gt;&gt; ~/.profile
+<span class="nb">source</span> ~/.profile
+</pre></div>
+
+
+<h3 id="step-four-finish-installing-the-required-packages">Step Four &ndash; finish installing the required packages<a class="headerlink" href="#step-four-finish-installing-the-required-packages" title="Permanent link">&para;</a></h3>
 <p>In order to instal dependencies, simply issue the following command while in the root directory of the SCION installation:</p>
 <div class="codehilite"><pre><span></span>bash -c <span class="s1">&#39;yes | GO_INSTALL=true ./env/deps&#39;</span>
 </pre></div>
@@ -770,7 +890,7 @@ bash -c <span class="s1">&#39;yes | GO_INSTALL=true ./env/deps&#39;</span>
 <p>You might be asked for sudo password after running the command</p>
 </div>
 <p>This will finish installing the required dependencies and system packages.</p>
-<h3 id="step-three-configure-the-host-zookeeper-instance">Step Three &ndash; configure the host Zookeeper instance<a class="headerlink" href="#step-three-configure-the-host-zookeeper-instance" title="Permanent link">&para;</a></h3>
+<h3 id="step-five-configure-the-host-zookeeper-instance">Step Five &ndash; configure the host Zookeeper instance<a class="headerlink" href="#step-five-configure-the-host-zookeeper-instance" title="Permanent link">&para;</a></h3>
 <p>Replacing <code>/etc/zookeeper/conf/zoo.cfg</code> with the file <code>docker/zoo.cfg</code> is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves the performance of Zookeeper (at the cost of reliability, so it should only be done in a testing environment).</p>
 <div class="codehilite"><pre><span></span>cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
 </pre></div>
