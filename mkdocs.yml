@@ -78,3 +78,5 @@ pages:
       - Verifying the installation: general_scion_configuration/verifying_scion_installation.md
       - Updating gen directory: scion_tricks/changing_gen_dir.md
       - Updating SCION: scion_tricks/updating_scion.md
+    - SCIONLab:
+      - SCION box first steps: scionlab/scionlab.md
