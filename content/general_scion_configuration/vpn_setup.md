@@ -107,14 +107,14 @@ In this case client's OpenVPN IP address is: `10.0.8.40`, this address might var
 Before copying new configuration to your SCION directory, you should delete the old one. If necessary back it up previously.
 
 ```shell
-rm -rf $SP/gen
+rm -rf $SC/gen
 ```
 
 Copy new configuration and navigate to SCION root directory:
 
 ```shell
-cp -r gen $SP/
-cd $SP
+cp -r gen $SC/
+cd $SC
 ```
 
 Because `gen` directory downloaded from Coordination Service is customized for VM IP addresses (`10.0.2.15`), we need to replace them with address obtained from OpenVPN on current system. In following commands we will assume that OpenVPN IP address is: `10.0.8.40` but you should use the value obtained in previous step:

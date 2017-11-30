@@ -796,13 +796,13 @@ systemctl <span class="nb">enable</span> openvpn@client
 <p>In this case client's OpenVPN IP address is: <code>10.0.8.40</code>, this address might vary on different setups, please keep a not of yours.</p>
 <h2 id="step-four-copying-scion-lab-configuration">Step Four - copying SCION Lab configuration<a class="headerlink" href="#step-four-copying-scion-lab-configuration" title="Permanent link">&para;</a></h2>
 <p>Before copying new configuration to your SCION directory, you should delete the old one. If necessary back it up previously.</p>
-<div class="codehilite"><pre><span></span>rm -rf <span class="nv">$SP</span>/gen
+<div class="codehilite"><pre><span></span>rm -rf <span class="nv">$SC</span>/gen
 </pre></div>
 
 
 <p>Copy new configuration and navigate to SCION root directory:</p>
-<div class="codehilite"><pre><span></span>cp -r gen <span class="nv">$SP</span>/
-<span class="nb">cd</span> <span class="nv">$SP</span>
+<div class="codehilite"><pre><span></span>cp -r gen <span class="nv">$SC</span>/
+<span class="nb">cd</span> <span class="nv">$SC</span>
 </pre></div>
 
 

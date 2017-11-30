@@ -804,15 +804,15 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
 </ol>
 </div>
 <p>This will clone SCION appropriate directory in the Go workspace. We will create export environment variable <code>SP</code> that will point to SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:</p>
-<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export SP=&quot;$GOPATH/src/github.com/netsec-ethz/scion&quot;&#39;</span> &gt;&gt; ~/.profile
+<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export SC=&quot;$GOPATH/src/github.com/netsec-ethz/scion&quot;&#39;</span> &gt;&gt; ~/.profile
 <span class="nb">source</span> ~/.profile
-<span class="nb">cd</span> <span class="nv">$SP</span>
+<span class="nb">cd</span> <span class="nv">$SC</span>
 </pre></div>
 
 
 <h3 id="step-two-configure-python-path-variable">Step Two &ndash; configure python path variable<a class="headerlink" href="#step-two-configure-python-path-variable" title="Permanent link">&para;</a></h3>
 <p>Some SCION components like SCIONviz require Python libraries which are located in scion root directory. In order to make them accessible, exporting <code>PYTHONPATH</code> environment variable is required:</p>
-<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SP/python:$SP&quot;&#39;</span> &gt;&gt; ~/.profile
+<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SC/python:$SC&quot;&#39;</span> &gt;&gt; ~/.profile
 <span class="nb">source</span> ~/.profile
 </pre></div>
 

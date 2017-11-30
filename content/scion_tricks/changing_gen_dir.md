@@ -15,6 +15,8 @@ Content for this directory can be created in several ways:
 Every time `gen` directory is changed, it is necessary to restart SCION infrastructure so changes will take effect. This is done with following commands:
 
 ```shell
+cd $SC
+
 ./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
 ./scion.sh run

@@ -13,7 +13,7 @@ This tutorial assumes that SCION is already installed on your system. If this is
 Before continuing with the following steps, you should first navigate to the SCION root directory:
 
 ```shell
-cd $SP
+cd $SC
 ```
 
 SCION installation comes with a command to generate the local topology from 'topo' configuration files. Default topology is defined in `topology/Default.topo` and it is depicted in the following figure.

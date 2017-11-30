@@ -62,9 +62,9 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
 This will clone SCION appropriate directory in the Go workspace. We will create export environment variable `SP` that will point to SCION root directory. 
 
 ```shell
-echo 'export SP="$GOPATH/src/github.com/netsec-ethz/scion"' >> ~/.profile
+echo 'export SC="$GOPATH/src/github.com/netsec-ethz/scion"' >> ~/.profile
 source ~/.profile
-cd $SP
+cd $SC
 ```
 
 ### Step Two &ndash; apply necessary patches
@@ -86,7 +86,6 @@ In order to make it easier to track, we can commit patched changes:
 
 ```shell
 git commit -am "Modified to compile on ARM systems"
-bash -c 'yes | GO_INSTALL=true ./env/deps'
 ```
 
 !!! warning "Troubleshooting"
@@ -102,7 +101,7 @@ bash -c 'yes | GO_INSTALL=true ./env/deps'
 Some SCION components like SCIONviz require Python libraries which are located in scion root directory. In order to make them accessible, exporting `PYTHONPATH` environment variable is required:
 
 ```shell
-echo 'export PYTHONPATH="$SP/python:$SP"' >> ~/.profile
+echo 'export PYTHONPATH="$SC/python:$SC"' >> ~/.profile
 source ~/.profile
 ```
 

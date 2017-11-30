@@ -15,7 +15,7 @@ The recommended way of verifying a correct SCION infrastructure deployment is ru
 The SCION log files can be accessed with the following command:
 
 ```shell
-tail -f $GOPATH/src/github.com/netsec-ethz/scion/logs/bs*.DEBUG
+tail -f $SC/logs/bs*.DEBUG
 ```
 
 ### What to look for?

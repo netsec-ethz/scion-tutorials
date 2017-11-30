@@ -9,7 +9,7 @@ As SCION is hosted on git, updating to latest version is simple as `pull`-ing ch
 To download newest version first navigate to SCION root directory:
 
 ```shell
-cd $SP
+cd $SC
 ```
 
 and pull newest changes from `scionlab` branch:

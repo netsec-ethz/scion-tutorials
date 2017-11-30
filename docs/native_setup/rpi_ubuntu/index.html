@@ -841,9 +841,9 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
 </ol>
 </div>
 <p>This will clone SCION appropriate directory in the Go workspace. We will create export environment variable <code>SP</code> that will point to SCION root directory. </p>
-<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export SP=&quot;$GOPATH/src/github.com/netsec-ethz/scion&quot;&#39;</span> &gt;&gt; ~/.profile
+<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export SC=&quot;$GOPATH/src/github.com/netsec-ethz/scion&quot;&#39;</span> &gt;&gt; ~/.profile
 <span class="nb">source</span> ~/.profile
-<span class="nb">cd</span> <span class="nv">$SP</span>
+<span class="nb">cd</span> <span class="nv">$SC</span>
 </pre></div>
 
 
@@ -862,7 +862,6 @@ rm c/dispatcher/dispatcher.c.orig
 
 <p>In order to make it easier to track, we can commit patched changes:</p>
 <div class="codehilite"><pre><span></span>git commit -am <span class="s2">&quot;Modified to compile on ARM systems&quot;</span>
-bash -c <span class="s1">&#39;yes | GO_INSTALL=true ./env/deps&#39;</span>
 </pre></div>
 
 
@@ -874,7 +873,7 @@ git config --global user.email johndoe@example.com</code></p>
 </div>
 <h3 id="step-three-configure-python-path-variable">Step Three &ndash; configure python path variable<a class="headerlink" href="#step-three-configure-python-path-variable" title="Permanent link">&para;</a></h3>
 <p>Some SCION components like SCIONviz require Python libraries which are located in scion root directory. In order to make them accessible, exporting <code>PYTHONPATH</code> environment variable is required:</p>
-<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SP/python:$SP&quot;&#39;</span> &gt;&gt; ~/.profile
+<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SC/python:$SC&quot;&#39;</span> &gt;&gt; ~/.profile
 <span class="nb">source</span> ~/.profile
 </pre></div>
 

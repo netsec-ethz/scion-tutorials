@@ -58,14 +58,14 @@ For the purpose of this tutorial we will just need:
 Before copying new configuration to your SCION directory, you should delete the old one. If necessary back it up previously.
 
 ```shell
-rm -rf $SP/gen
+rm -rf $SC/gen
 ```
 
 Copy new configuration and navigate to SCION root directory:
 
 ```shell
-cp -r gen $SP/
-cd $SP
+cp -r gen $SC/
+cd $SC
 ```
 
 ## Step Three - Restarting SCION infrastructure
