@@ -594,6 +594,41 @@
             "location": "/scion_tricks/updating_scion/#getting-the-latest-version",
             "text": "To download newest version first navigate to SCION root directory:  cd   $SC   and pull newest changes from  scionlab  branch:  git pull origin scionlab  If git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:  ./scion.sh stop\n~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown\n./scion.sh run",
             "title": "Getting the latest version"
+        },
+        {
+            "location": "/scionlab/scionlab/",
+            "text": "SCIONLab\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis tutorial introduces you to SCIONLab, shows you what you can do with a device connected to a SCION attachment point and with a PCEngines device you might request \nhere\n in particular.\n\n\nSetting up the PCEngines device\n\u00b6\n\n\nYou received the preconfigured PCEngines device. In the best case, the setup is as single as connecting the device to a network with Internet connectivity via the labelled network interface (the one closest to the serial interface).\nYou can then check on the scion-coordinator on you \nuser page\n that you device status is online.\n\n\n\n\nHint\n\n\nIn case you local network implements MAC filtering, you need to request your network administrator to allow the PCEngines device to access the network. You will find the MAC address of the device on a sticker next to the network interface.\n\n\nThe SCION boxes use OpenVPN to connect to SCION attachment points in case you selected this options. Hence OpenVPN needs to be able to make outgoing connections to its attachment point on port 1194. Since the exact address of the attachment point varies depending on your region and might change over time, please request assistance on the user group if you need it to whitelist it.\n\n\n\n\nMake user of the device\n\u00b6\n\n\nThe SCION is running a full AS connected to the SCIONLab infrastructure. This means the device is running the following services: a border router, a beacon server, a certificate server, a path server and a SIBRA server. You can read about the function of each service in the \nSCION book\n.\nIn addition, SCION boxes also run ithe SCIONviz server which allows you to visualize the paths you AS knows about. You can connect to SCIONviz by connecting a regular IP device to one of the remaining interfaces. The open the webpage http://172.16.1.1:8000 and the SCIONviz will load. For instructions on how to use SCIONviz, please see the \nSCIONviz tutorial\n (but make sure to use the address mentioned here).\n\n\nSetup an endhost and connect it via the SCION box\n\u00b6\n\n\nSetup an endhost and configure it as described in \nConfiguring SCION endhost topology\n.\nThen connect the machine to one of the secondary interfaces of you SCION box. Your devices will be allocated a local address.\n\n\nNext steps\n\u00b6\n\n\nCheck out the \nSCION code base\n and start contributing.",
+            "title": "SCION box first steps"
+        },
+        {
+            "location": "/scionlab/scionlab/#scionlab",
+            "text": "",
+            "title": "SCIONLab"
+        },
+        {
+            "location": "/scionlab/scionlab/#introduction",
+            "text": "This tutorial introduces you to SCIONLab, shows you what you can do with a device connected to a SCION attachment point and with a PCEngines device you might request  here  in particular.",
+            "title": "Introduction"
+        },
+        {
+            "location": "/scionlab/scionlab/#setting-up-the-pcengines-device",
+            "text": "You received the preconfigured PCEngines device. In the best case, the setup is as single as connecting the device to a network with Internet connectivity via the labelled network interface (the one closest to the serial interface).\nYou can then check on the scion-coordinator on you  user page  that you device status is online.   Hint  In case you local network implements MAC filtering, you need to request your network administrator to allow the PCEngines device to access the network. You will find the MAC address of the device on a sticker next to the network interface.  The SCION boxes use OpenVPN to connect to SCION attachment points in case you selected this options. Hence OpenVPN needs to be able to make outgoing connections to its attachment point on port 1194. Since the exact address of the attachment point varies depending on your region and might change over time, please request assistance on the user group if you need it to whitelist it.",
+            "title": "Setting up the PCEngines device"
+        },
+        {
+            "location": "/scionlab/scionlab/#make-user-of-the-device",
+            "text": "The SCION is running a full AS connected to the SCIONLab infrastructure. This means the device is running the following services: a border router, a beacon server, a certificate server, a path server and a SIBRA server. You can read about the function of each service in the  SCION book .\nIn addition, SCION boxes also run ithe SCIONviz server which allows you to visualize the paths you AS knows about. You can connect to SCIONviz by connecting a regular IP device to one of the remaining interfaces. The open the webpage http://172.16.1.1:8000 and the SCIONviz will load. For instructions on how to use SCIONviz, please see the  SCIONviz tutorial  (but make sure to use the address mentioned here).",
+            "title": "Make user of the device"
+        },
+        {
+            "location": "/scionlab/scionlab/#setup-an-endhost-and-connect-it-via-the-scion-box",
+            "text": "Setup an endhost and configure it as described in  Configuring SCION endhost topology .\nThen connect the machine to one of the secondary interfaces of you SCION box. Your devices will be allocated a local address.",
+            "title": "Setup an endhost and connect it via the SCION box"
+        },
+        {
+            "location": "/scionlab/scionlab/#next-steps",
+            "text": "Check out the  SCION code base  and start contributing.",
+            "title": "Next steps"
         }
     ]
 }
