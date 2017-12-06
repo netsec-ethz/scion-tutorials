@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome to SCION Tutorials\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis website provides step-by-step instructions on how to install and run the SCION infrastructure. It also provides a list of interesting projects that are using the SCION infrastructure for communication.\n\n\nGetting started\n\u00b6\n\n\nThere are generally two ways of installing and running SCION infrastructure. First way is by downloading and running preconfigured Virtual Machines (VM) while second way is manual installation. We will cover both ways in tutorials.\n\n\nRunning SCION infrastructure in VM\n\u00b6\n\n\nEasiest way to run SCION is by running preconfigured SCION Virtual Machine. Following tutorials are covering necessary steps for that:\n\n\n\n\nRunning SCION VM over OpenVPN\n\n\nRunning SCION VM with static public IP\n\n\n\n\nConfiguring SCION infrastructure manually\n\u00b6\n\n\nFollowing tutorials cover how to install, configure and run SCION infrastructure in a step-by-step manner. \n\n\n1. Installing SCION on different platforms:\n\u00b6\n\n\n\n\nInstalling SCION on Ubuntu 16.04 x86 machine\n\n\nInstalling SCION on Ubuntu MATE 16.04 - Raspberry PI\n\n\n\n\n2. Setting up SCION topology\n\u00b6\n\n\n\n\nConfiguring local topology\n\n\nConfiguring AS and connecting to SCION network for devices with public static IP\n\n\nConfiguring AS and connecting to SCION network using OpenVPN\n\n\nConfiguring SCION endhost\n\n\n\n\nUsing SCION in projects\n\u00b6\n\n\nTBA",
+            "text": "Welcome to SCION Tutorials\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis website provides step-by-step instructions on how to install and run the SCION infrastructure. It also provides a list of interesting projects that are using the SCION infrastructure for communication.\n\n\nGetting started\n\u00b6\n\n\nThere are generally two ways of installing and running SCION infrastructure. The first way is by downloading and running a preconfigured Virtual Machine (VM), while the second way is manual installation on an Ubuntu 16.04 platform. We cover both ways in this tutorial.\n\n\nWe suggest exploring the \n\n\nRunning SCION infrastructure in VM\n\u00b6\n\n\nEasiest way to run SCION is by running preconfigured SCION Virtual Machine. Following tutorials are covering necessary steps for that:\n\n\n\n\nRunning SCION VM over OpenVPN\n\n\nRunning SCION VM with static public IP\n\n\n\n\nConfiguring SCION infrastructure manually\n\u00b6\n\n\nFollowing tutorials cover how to install, configure and run SCION infrastructure in a step-by-step manner. \n\n\n1. Installing SCION on different platforms:\n\u00b6\n\n\n\n\nInstalling SCION on Ubuntu 16.04 x86 machine\n\n\nInstalling SCION on Ubuntu MATE 16.04 - Raspberry PI\n\n\n\n\n2. Setting up SCION topology\n\u00b6\n\n\n\n\nConfiguring local topology\n\n\nConfiguring AS and connecting to SCION network for devices with public static IP\n\n\nConfiguring AS and connecting to SCION network using OpenVPN\n\n\nConfiguring SCION endhost\n\n\n\n\nUsing SCION in projects\n\u00b6\n\n\n\n\nFetching sensor readings or time stamps\n\n\nFetching a camera image over the SCION network\n\n\nRunning the bandwidthtester application\n\n\nRunning AS Visualization\n\n\nBrowser AS Visualization\n\n\nCommand-line AS Visualization\n\n\n\n\nSCION tips and tricks\n\u00b6\n\n\n\n\nVerifying the installation\n\n\nUpdating gen directory\n\n\nUpdating SCION to a new version\n\n\n\n\nSCIONLab specifics\n\u00b6\n\n\n\n\nSCION box first steps",
             "title": "Home"
         },
         {
@@ -17,7 +17,7 @@
         },
         {
             "location": "/#getting-started",
-            "text": "There are generally two ways of installing and running SCION infrastructure. First way is by downloading and running preconfigured Virtual Machines (VM) while second way is manual installation. We will cover both ways in tutorials.",
+            "text": "There are generally two ways of installing and running SCION infrastructure. The first way is by downloading and running a preconfigured Virtual Machine (VM), while the second way is manual installation on an Ubuntu 16.04 platform. We cover both ways in this tutorial.  We suggest exploring the",
             "title": "Getting started"
         },
         {
@@ -42,8 +42,18 @@
         },
         {
             "location": "/#using-scion-in-projects",
-            "text": "TBA",
+            "text": "Fetching sensor readings or time stamps  Fetching a camera image over the SCION network  Running the bandwidthtester application  Running AS Visualization  Browser AS Visualization  Command-line AS Visualization",
             "title": "Using SCION in projects"
+        },
+        {
+            "location": "/#scion-tips-and-tricks",
+            "text": "Verifying the installation  Updating gen directory  Updating SCION to a new version",
+            "title": "SCION tips and tricks"
+        },
+        {
+            "location": "/#scionlab-specifics",
+            "text": "SCION box first steps",
+            "title": "SCIONLab specifics"
         },
         {
             "location": "/virtual_machine_setup/dynamic_ip/",
@@ -376,54 +386,64 @@
             "title": "Configuring SCION endhost topology"
         },
         {
-            "location": "/sample_projects/fetch_temperature/",
-            "text": "Read temperature sensor over SCION network\n\u00b6\n\n\nTBA",
+            "location": "/sample_projects/fetch_sensor_readings/",
+            "text": "Read sensor readings over SCION network\n\u00b6\n\n\nThe \nsensorapp application\n contains fetcher and server applications for sensor readings, using the SCION network. The application is very simple, and sends a single packet to request the information, and obtains typically a single packet in response containing the readings.\n\n\nsensorfetcher\n\u00b6\n\n\nTo install sensorfetcher:\n\n\ngo get github.com/perrig/scionlab/sensorapp/sensorfetcher\n\n\n\n\n\nThe \nsensorfetcher\n application sends a 0-length SCION UDP packet to the \nsensorserver\n application to fetch the sensor readings. A string is returned containing all the sensor readings. To keep the application as simple as possible, no reliability is built in -- in case of packet loss, the user needs to abort and re-try.\n\n\nTo run the \nsensorfetcher\n application, you will need to express your local host's address as a SCION address (in the format \nISD-AS,[IPv4]:port\n) and specify the address of a sensor server, for instance \n1-6,[192.33.93.173]:42003\n. The local ISD and AS number can be seen for instance from files in the logs directory: \nbr1-1006-1.log\n indicates that we are in AS 1006 in ISD 1. Another way is to look at the gen directory, which in this case contains a subdirectory calles \nISD1\n, which contains a subdirectory \nAS1006\n. The IPv4 address represents the local address the application binds to, and the local port number can be freely selected as any available port.\n\n\nAn example server is at \n1-6,[192.33.93.173]:42003\n, its readings can be fetched as follows (need to replace client address with actual client address, with an arbitrary free port):\n\n\nsensorfetcher -s \n1\n-6,\n[\n192\n.33.93.173\n]\n:42003 -c \n1\n-1006,\n[\n10\n.0.2.15\n]\n:42001\n\n\n\n\n\nsensorserver\n\u00b6\n\n\nTo install sensorserver:\n\n\ngo get github.com/perrig/scionlab/sensorapp/sensorserver\n\n\n\n\n\nWe use sensors from Tinkerforge, and the \nsensorreader.py\n Python application fetches the sensor values and writes them to \nstdout\n. The \nsensorserver\n application collects the readings, and serves them as a string to client requests. To start, we use the following command:\n\n\npython3 \n${\nGOPATH\n}\n/src/github.com/perrig/scionlab/sensorapp/sensorserver/sensorreader.py \n|\n sensorserver -s \n1\n-6,\n[\n192\n.33.93.173\n]\n:42003 \n&\n\n\n\n\n\n\nIf you do not have any sensors information you can report, then you can use a simple time application that reports the current time on your system:\n\n\npython3 \n${\nGOPATH\n}\n/src/github.com/perrig/scionlab/sensorapp/sensorserver/timereader.py \n|\n sensorserver -s \n1\n-6,\n[\n192\n.33.93.173\n]\n:42003 \n&",
             "title": "Read a temperature sensor over the SCION network"
         },
         {
-            "location": "/sample_projects/fetch_temperature/#read-temperature-sensor-over-scion-network",
-            "text": "TBA",
-            "title": "Read temperature sensor over SCION network"
+            "location": "/sample_projects/fetch_sensor_readings/#read-sensor-readings-over-scion-network",
+            "text": "The  sensorapp application  contains fetcher and server applications for sensor readings, using the SCION network. The application is very simple, and sends a single packet to request the information, and obtains typically a single packet in response containing the readings.",
+            "title": "Read sensor readings over SCION network"
+        },
+        {
+            "location": "/sample_projects/fetch_sensor_readings/#sensorfetcher",
+            "text": "To install sensorfetcher:  go get github.com/perrig/scionlab/sensorapp/sensorfetcher  The  sensorfetcher  application sends a 0-length SCION UDP packet to the  sensorserver  application to fetch the sensor readings. A string is returned containing all the sensor readings. To keep the application as simple as possible, no reliability is built in -- in case of packet loss, the user needs to abort and re-try.  To run the  sensorfetcher  application, you will need to express your local host's address as a SCION address (in the format  ISD-AS,[IPv4]:port ) and specify the address of a sensor server, for instance  1-6,[192.33.93.173]:42003 . The local ISD and AS number can be seen for instance from files in the logs directory:  br1-1006-1.log  indicates that we are in AS 1006 in ISD 1. Another way is to look at the gen directory, which in this case contains a subdirectory calles  ISD1 , which contains a subdirectory  AS1006 . The IPv4 address represents the local address the application binds to, and the local port number can be freely selected as any available port.  An example server is at  1-6,[192.33.93.173]:42003 , its readings can be fetched as follows (need to replace client address with actual client address, with an arbitrary free port):  sensorfetcher -s  1 -6, [ 192 .33.93.173 ] :42003 -c  1 -1006, [ 10 .0.2.15 ] :42001",
+            "title": "sensorfetcher"
+        },
+        {
+            "location": "/sample_projects/fetch_sensor_readings/#sensorserver",
+            "text": "To install sensorserver:  go get github.com/perrig/scionlab/sensorapp/sensorserver  We use sensors from Tinkerforge, and the  sensorreader.py  Python application fetches the sensor values and writes them to  stdout . The  sensorserver  application collects the readings, and serves them as a string to client requests. To start, we use the following command:  python3  ${ GOPATH } /src/github.com/perrig/scionlab/sensorapp/sensorserver/sensorreader.py  |  sensorserver -s  1 -6, [ 192 .33.93.173 ] :42003  &   If you do not have any sensors information you can report, then you can use a simple time application that reports the current time on your system:  python3  ${ GOPATH } /src/github.com/perrig/scionlab/sensorapp/sensorserver/timereader.py  |  sensorserver -s  1 -6, [ 192 .33.93.173 ] :42003  &",
+            "title": "sensorserver"
         },
         {
             "location": "/sample_projects/access_camera/",
-            "text": "Access video camera over SCION network\n\u00b6\n\n\nTBA",
+            "text": "Access camera images over SCION network\n\u00b6\n\n\nThe \ncamerapp application\n contains image fetcher and server applications, using the SCION network. Documentation on the code is available in the \nREADME.md\n.\n\n\nimagefetcher\n\u00b6\n\n\nTo install imagefetcher:\n\n\ngo get github.com/perrig/scionlab/camerapp/imagefetcher\n\n\n\n\n\nTo use the image fetcher, you will need to pass your local host's address as a SCION address (in the format \nISD-AS,[IPv4]:port\n) and specify the address of an image server, for instance \n1-1011,[192.33.93.166]:42002\n. The local ISD and AS number can be seen for instance from files in the logs directory: \nbr1-1006-1.log\n indicates that we are in AS 1006 in ISD 1. Another way is to look at the gen directory, which in this case contains a subdirectory calles \nISD1\n, which contains a subdirectory \nAS1006\n. The IPv4 address represents the local address the application binds to, and the local port number can be freely selected as any available port. A sample image server that can be contacted by the client is set up at \n1-1011,[192.33.93.166]:42002\n.\n\n\nThe client address is passed with \n-c\n and the server address with \n-s\n:\n\n\nimagefetcher -s \n1\n-1011,\n[\n192\n.33.93.166\n]\n:42002 -c \n1\n-1006,\n[\n10\n.0.2.15\n]\n:42001\n\n\n\n\n\nThe fetched image is then saved in the local directory.\n\n\nimageserver\n\u00b6\n\n\nTo install imageserver:\n\n\ngo get github.com/perrig/scionlab/camerapp/imageserver\n\n\n\n\n\nThe \nimageserver\n application keeps looking for \n.jpg\n files in the current directory, and offers them for download to clients on the SCION network. The assumption is that the application is used in conjunction with an application that periodically writes an image to the file system. After an amount of time (currently set to 10 minutes), the image files are deleted to limit the amount of storage used.\n\n\nIncluded is a simple \npaparazzi.py\n application, which reads and saves the camera image on a Raspberry Pi. The system is launched as follows:\n\n\npython3 \n${\nGOPATH\n}\n/src/github.com/perrig/scionlab/camerapp/imageserver/paparazzi.py \n&\n\nimageserver -s \n1\n-1011,\n[\n192\n.33.93.166\n]\n:42002 \n&",
             "title": "Access a video camera over the SCION network"
         },
         {
-            "location": "/sample_projects/access_camera/#access-video-camera-over-scion-network",
-            "text": "TBA",
-            "title": "Access video camera over SCION network"
+            "location": "/sample_projects/access_camera/#access-camera-images-over-scion-network",
+            "text": "The  camerapp application  contains image fetcher and server applications, using the SCION network. Documentation on the code is available in the  README.md .",
+            "title": "Access camera images over SCION network"
         },
         {
-            "location": "/sample_projects/multipath/",
-            "text": "Using multipath in SCION\n\u00b6\n\n\nTBA",
-            "title": "Using multipath in SCION"
+            "location": "/sample_projects/access_camera/#imagefetcher",
+            "text": "To install imagefetcher:  go get github.com/perrig/scionlab/camerapp/imagefetcher  To use the image fetcher, you will need to pass your local host's address as a SCION address (in the format  ISD-AS,[IPv4]:port ) and specify the address of an image server, for instance  1-1011,[192.33.93.166]:42002 . The local ISD and AS number can be seen for instance from files in the logs directory:  br1-1006-1.log  indicates that we are in AS 1006 in ISD 1. Another way is to look at the gen directory, which in this case contains a subdirectory calles  ISD1 , which contains a subdirectory  AS1006 . The IPv4 address represents the local address the application binds to, and the local port number can be freely selected as any available port. A sample image server that can be contacted by the client is set up at  1-1011,[192.33.93.166]:42002 .  The client address is passed with  -c  and the server address with  -s :  imagefetcher -s  1 -1011, [ 192 .33.93.166 ] :42002 -c  1 -1006, [ 10 .0.2.15 ] :42001  The fetched image is then saved in the local directory.",
+            "title": "imagefetcher"
         },
         {
-            "location": "/sample_projects/multipath/#using-multipath-in-scion",
-            "text": "TBA",
-            "title": "Using multipath in SCION"
+            "location": "/sample_projects/access_camera/#imageserver",
+            "text": "To install imageserver:  go get github.com/perrig/scionlab/camerapp/imageserver  The  imageserver  application keeps looking for  .jpg  files in the current directory, and offers them for download to clients on the SCION network. The assumption is that the application is used in conjunction with an application that periodically writes an image to the file system. After an amount of time (currently set to 10 minutes), the image files are deleted to limit the amount of storage used.  Included is a simple  paparazzi.py  application, which reads and saves the camera image on a Raspberry Pi. The system is launched as follows:  python3  ${ GOPATH } /src/github.com/perrig/scionlab/camerapp/imageserver/paparazzi.py  & \nimageserver -s  1 -1011, [ 192 .33.93.166 ] :42002  &",
+            "title": "imageserver"
         },
         {
-            "location": "/general_scion_configuration/influence_path_selection/",
-            "text": "Configuring path selection\n\u00b6\n\n\nTBA",
-            "title": "Configuring path selection"
+            "location": "/sample_projects/bwtester/",
+            "text": "The bwtester application\n\u00b6\n\n\nThe \nbandwidth testing application \nbwtester\n enables a variety of bandwidth tests on the SCION network. Installation and usage are described below. Documentation of the code and protocol are described in the bwtester's \nREADME.md\n.\n\n\nbwtestclient\n\u00b6\n\n\nTo install bwtestclient:\n\n\ngo get github.com/perrig/scionlab/bwtester/bwtestclient\n\n\n\n\n\nYou can test the application as follows, replacing the client address with your own address after the \n-c\n option (you can select any available port number for the client):\n\n\nbwtestclient -s \n1\n-6,\n[\n192\n.33.93.173\n]\n:30100 -c \n1\n-1006,\n[\n10\n.0.2.15\n]\n:30102\n\n\n\n\n\nA sample server is installed at \n1-6,[192.33.93.173]:30100\n.\n\n\nThe application supports specification of the test duration (up to 10 seconds), the packet size to be used (at least 4 bytes), and the total number of packets that will be sent. For instance, \n5,100,10\n specifies that 10 packets of size 100 bytes will be sent over 5 seconds. The parameters for the test in the client-to-server direction are specified with \n-cs\n, and the server-to-client direction with \n-sc\n. So for instance to send 1 Mbps for 10 seconds from the client to the server, and 10 Mbps from the server to the client, you can use this command:\n\n\nbwtestclient -s \n1\n-6,\n[\n192\n.33.93.173\n]\n:30100 -c \n1\n-1006,\n[\n10\n.0.2.15\n]\n:30102 -cs \n10\n,1000,1250 -sc \n10\n,1000,12500\n\n\n\n\n\nbwtestserver\n\u00b6\n\n\nTo install bwtestserver:\n\n\ngo get github.com/perrig/scionlab/bwtester/bwtestserver\n\n\n\n\n\nThe server is started as follows, where the address needs to be adjusted as for other applications:\n\n\nbwtestserver -s \n1\n-6,\n[\n192\n.33.93.173\n]\n:30100 \n&",
+            "title": "Bandwidth tester application"
         },
         {
-            "location": "/general_scion_configuration/influence_path_selection/#configuring-path-selection",
-            "text": "TBA",
-            "title": "Configuring path selection"
+            "location": "/sample_projects/bwtester/#the-bwtester-application",
+            "text": "The  bandwidth testing application  bwtester  enables a variety of bandwidth tests on the SCION network. Installation and usage are described below. Documentation of the code and protocol are described in the bwtester's  README.md .",
+            "title": "The bwtester application"
         },
         {
-            "location": "/general_scion_configuration/setup_sig/",
-            "text": "Configuring SCION IP Gateway\n\u00b6\n\n\nTBA",
-            "title": "Configuring the SCION IP gateway"
+            "location": "/sample_projects/bwtester/#bwtestclient",
+            "text": "To install bwtestclient:  go get github.com/perrig/scionlab/bwtester/bwtestclient  You can test the application as follows, replacing the client address with your own address after the  -c  option (you can select any available port number for the client):  bwtestclient -s  1 -6, [ 192 .33.93.173 ] :30100 -c  1 -1006, [ 10 .0.2.15 ] :30102  A sample server is installed at  1-6,[192.33.93.173]:30100 .  The application supports specification of the test duration (up to 10 seconds), the packet size to be used (at least 4 bytes), and the total number of packets that will be sent. For instance,  5,100,10  specifies that 10 packets of size 100 bytes will be sent over 5 seconds. The parameters for the test in the client-to-server direction are specified with  -cs , and the server-to-client direction with  -sc . So for instance to send 1 Mbps for 10 seconds from the client to the server, and 10 Mbps from the server to the client, you can use this command:  bwtestclient -s  1 -6, [ 192 .33.93.173 ] :30100 -c  1 -1006, [ 10 .0.2.15 ] :30102 -cs  10 ,1000,1250 -sc  10 ,1000,12500",
+            "title": "bwtestclient"
         },
         {
-            "location": "/general_scion_configuration/setup_sig/#configuring-scion-ip-gateway",
-            "text": "TBA",
-            "title": "Configuring SCION IP Gateway"
+            "location": "/sample_projects/bwtester/#bwtestserver",
+            "text": "To install bwtestserver:  go get github.com/perrig/scionlab/bwtester/bwtestserver  The server is started as follows, where the address needs to be adjusted as for other applications:  bwtestserver -s  1 -6, [ 192 .33.93.173 ] :30100  &",
+            "title": "bwtestserver"
         },
         {
             "location": "/as_visualization/running_asviz/",

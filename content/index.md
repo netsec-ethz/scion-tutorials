@@ -6,7 +6,9 @@ This website provides step-by-step instructions on how to install and run the SC
 
 ## Getting started
 
-There are generally two ways of installing and running SCION infrastructure. First way is by downloading and running preconfigured Virtual Machines (VM) while second way is manual installation. We will cover both ways in tutorials.
+There are generally two ways of installing and running SCION infrastructure. The first way is by downloading and running a preconfigured Virtual Machine (VM), while the second way is manual installation on an Ubuntu 16.04 platform. We cover both ways in this tutorial.
+
+We suggest exploring the 
 
 ## Running SCION infrastructure in VM
 
@@ -33,4 +35,19 @@ Following tutorials cover how to install, configure and run SCION infrastructure
 
 ## Using SCION in projects
 
-TBA
+* [Fetching sensor readings or time stamps](/sample_projects/fetch_sensor_readings.md)
+* [Fetching a camera image over the SCION network](/sample_projects/access_camera.md)
+* [Running the bandwidthtester application](/sample_projects/bwtester.md)
+* [Running AS Visualization](/as_visualization/running_asviz.md)
+* [Browser AS Visualization](/as_visualization/browser_asviz.md)
+* [Command-line AS Visualization](/as_visualization/command_asviz.md)
+
+## SCION tips and tricks
+
+* [Verifying the installation](/general_scion_configuration/verifying_scion_installation.md)
+* [Updating gen directory](/scion_tricks/changing_gen_dir.md)
+* [Updating SCION to a new version](/scion_tricks/updating_scion.md)
+
+## SCIONLab specifics
+
+* [SCION box first steps](/scionlab/scionlab.md)
