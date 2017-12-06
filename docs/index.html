@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="./assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
     
     
       
@@ -229,6 +229,20 @@
         <li class="md-nav__item">
   <a href="#using-scion-in-projects" title="Using SCION in projects" class="md-nav__link">
     Using SCION in projects
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scion-tips-and-tricks" title="SCION tips and tricks" class="md-nav__link">
+    SCION tips and tricks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scionlab-specifics" title="SCIONLab specifics" class="md-nav__link">
+    SCIONLab specifics
   </a>
   
 </li>
@@ -435,7 +449,7 @@
 
 
   <li class="md-nav__item">
-    <a href="sample_projects/fetch_temperature/" title="Read a temperature sensor over the SCION network" class="md-nav__link">
+    <a href="sample_projects/fetch_sensor_readings/" title="Read a temperature sensor over the SCION network" class="md-nav__link">
       Read a temperature sensor over the SCION network
     </a>
   </li>
@@ -459,59 +473,11 @@
 
 
   <li class="md-nav__item">
-    <a href="sample_projects/multipath/" title="Using multipath in SCION" class="md-nav__link">
-      Using multipath in SCION
+    <a href="sample_projects/bwtester/" title="Bandwidth tester application" class="md-nav__link">
+      Bandwidth tester application
     </a>
   </li>
 
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="general_scion_configuration/influence_path_selection/" title="Configuring path selection" class="md-nav__link">
-      Configuring path selection
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="general_scion_configuration/setup_sig/" title="Configuring the SCION IP gateway" class="md-nav__link">
-      Configuring the SCION IP gateway
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
-    
-    <label class="md-nav__link" for="nav-6">
-      AS Visualization
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
-        AS Visualization
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
         
           
           
@@ -561,14 +527,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
-    <label class="md-nav__link" for="nav-7">
-      Scion tricks
+    <label class="md-nav__link" for="nav-6">
+      SCION tips and tricks
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
-        Scion tricks
+      <label class="md-nav__title" for="nav-6">
+        SCION tips and tricks
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -621,13 +587,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
-    <label class="md-nav__link" for="nav-8">
+    <label class="md-nav__link" for="nav-7">
       SCIONLab
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-8">
+      <label class="md-nav__title" for="nav-7">
         SCIONLab
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -725,6 +691,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#scion-tips-and-tricks" title="SCION tips and tricks" class="md-nav__link">
+    SCION tips and tricks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scionlab-specifics" title="SCIONLab specifics" class="md-nav__link">
+    SCIONLab specifics
+  </a>
+  
+</li>
+      
       
       
     </ul>
@@ -744,7 +724,8 @@
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This website provides step-by-step instructions on how to install and run the SCION infrastructure. It also provides a list of interesting projects that are using the SCION infrastructure for communication.</p>
 <h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<p>There are generally two ways of installing and running SCION infrastructure. First way is by downloading and running preconfigured Virtual Machines (VM) while second way is manual installation. We will cover both ways in tutorials.</p>
+<p>There are generally two ways of installing and running SCION infrastructure. The first way is by downloading and running a preconfigured Virtual Machine (VM), while the second way is manual installation on an Ubuntu 16.04 platform. We cover both ways in this tutorial.</p>
+<p>We suggest exploring the </p>
 <h2 id="running-scion-infrastructure-in-vm">Running SCION infrastructure in VM<a class="headerlink" href="#running-scion-infrastructure-in-vm" title="Permanent link">&para;</a></h2>
 <p>Easiest way to run SCION is by running preconfigured SCION Virtual Machine. Following tutorials are covering necessary steps for that:</p>
 <ul>
@@ -766,7 +747,24 @@
 <li><a href="./general_scion_configuration/setup_endhost">Configuring SCION endhost</a></li>
 </ul>
 <h2 id="using-scion-in-projects">Using SCION in projects<a class="headerlink" href="#using-scion-in-projects" title="Permanent link">&para;</a></h2>
-<p>TBA</p>
+<ul>
+<li><a href="sample_projects/fetch_sensor_readings/">Fetching sensor readings or time stamps</a></li>
+<li><a href="sample_projects/access_camera/">Fetching a camera image over the SCION network</a></li>
+<li><a href="sample_projects/bwtester/">Running the bandwidthtester application</a></li>
+<li><a href="as_visualization/running_asviz/">Running AS Visualization</a></li>
+<li><a href="as_visualization/browser_asviz/">Browser AS Visualization</a></li>
+<li><a href="as_visualization/command_asviz/">Command-line AS Visualization</a></li>
+</ul>
+<h2 id="scion-tips-and-tricks">SCION tips and tricks<a class="headerlink" href="#scion-tips-and-tricks" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="general_scion_configuration/verifying_scion_installation/">Verifying the installation</a></li>
+<li><a href="scion_tricks/changing_gen_dir/">Updating gen directory</a></li>
+<li><a href="scion_tricks/updating_scion/">Updating SCION to a new version</a></li>
+</ul>
+<h2 id="scionlab-specifics">SCIONLab specifics<a class="headerlink" href="#scionlab-specifics" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="scionlab/scionlab/">SCION box first steps</a></li>
+</ul>
                 
                   
                 
@@ -816,7 +814,7 @@
     
       <script src="./assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.1",url:{base:"."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:"."}})</script>
       
     
     

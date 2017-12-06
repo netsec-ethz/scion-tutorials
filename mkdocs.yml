@@ -63,20 +63,17 @@ pages:
       - Set up SCION endhost and connect to local AS: general_scion_configuration/setup_endhost.md
 
     - How to use:
-      - Read a temperature sensor over the SCION network: sample_projects/fetch_temperature.md
+      - Read a temperature sensor over the SCION network: sample_projects/fetch_sensor_readings.md
       - Access a video camera over the SCION network: sample_projects/access_camera.md
-      - Using multipath in SCION: sample_projects/multipath.md
-      - Configuring path selection: general_scion_configuration/influence_path_selection.md
-      - Configuring the SCION IP gateway: general_scion_configuration/setup_sig.md
-      
-    - AS Visualization:
+      - Bandwidth tester application: sample_projects/bwtester.md
       - Running AS Visualizations: as_visualization/running_asviz.md
       - Browser AS Visualization: as_visualization/browser_asviz.md
       - Command-line AS Visualization: as_visualization/command_asviz.md
 
-    - Scion tricks:
+    - SCION tips and tricks:
       - Verifying the installation: general_scion_configuration/verifying_scion_installation.md
       - Updating gen directory: scion_tricks/changing_gen_dir.md
       - Updating SCION: scion_tricks/updating_scion.md
+
     - SCIONLab:
       - SCION box first steps: scionlab/scionlab.md
