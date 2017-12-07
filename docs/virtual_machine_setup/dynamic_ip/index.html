@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
     
     
       
@@ -761,12 +761,14 @@
 <p>Running SCION in a virtual machine requires VirtualBox and Vagrant to be installed on your system.</p>
 <h3 id="step-one-install-virtualbox">Step One &ndash; install VirtualBox<a class="headerlink" href="#step-one-install-virtualbox" title="Permanent link">&para;</a></h3>
 <p>To install VirtualBox, follow the steps on the <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox download page</a> for your system. On Ubuntu or similar Linux distributions, you could also install VirtualBox using your package manager:</p>
-<pre class="codehilite"><code class="language-shell">apt-get install virtualbox</code></pre>
+<div class="codehilite"><pre><span></span>apt-get install virtualbox
+</pre></div>
 
 
 <h3 id="step-two-install-vagrant">Step Two &ndash; install Vagrant<a class="headerlink" href="#step-two-install-vagrant" title="Permanent link">&para;</a></h3>
 <p>To install Vagrant, follow the steps on the <a href="https://www.vagrantup.com/downloads.html">Vagrant download page</a> for your system. Also, on Ubuntu you could install it via your package manager:</p>
-<pre class="codehilite"><code class="language-shell">apt-get install vagrant</code></pre>
+<div class="codehilite"><pre><span></span>apt-get install vagrant
+</pre></div>
 
 
 <h2 id="running-scion">Running SCION<a class="headerlink" href="#running-scion" title="Permanent link">&para;</a></h2>
@@ -777,11 +779,12 @@
 <p><img alt="SCIONLab download page" src="../../images/scionlab_download_vm_openvpn_setup.png" /></p>
 <h3 id="step-two-create-and-run-the-vm">Step Two &ndash; create and run the VM<a class="headerlink" href="#step-two-create-and-run-the-vm" title="Permanent link">&para;</a></h3>
 <p>When the configuration finishes downloading, extract the archive content in a separate directory. On a Linux system, simply running <code>tar</code> command will extract the contents in a separate subdirectory named as your email:</p>
-<pre class="codehilite"><code class="language-shell">tar -xvf scion_lab_*.tar.gz</code></pre>
+<div class="codehilite"><pre><span></span>tar -xvf scion_lab_*.tar.gz
+</pre></div>
 
 
 <p>After extracting the newly downloaded content, navigate to the extracted directory. It should have the following structure:</p>
-<pre class="codehilite"><code>├── client.conf
+<div class="codehilite"><pre><span></span>├── client.conf
 ├── gen
 │   ├── dispatcher
 │   │   ├── dispatcher.zlog.conf
@@ -792,20 +795,23 @@
 │
 ├── README
 ├── run.sh
-└── Vagrantfile</code></pre>
+└── Vagrantfile
+</pre></div>
 
 
 <p>Verifying that the structure is the same, you can begin the setup by running:</p>
-<pre class="codehilite"><code class="language-shell">vagrant box add scion/ubuntu-16.04-64-scion
+<div class="codehilite"><pre><span></span>vagrant box add scion/ubuntu-16.04-64-scion
 vagrant box update
-vagrant up</code></pre>
+vagrant up
+</pre></div>
 
 
 <p>You will be asked for your password. The installation process will take around 10 minutes.</p>
 <h3 id="step-three-run-the-scion-infrastructure">Step Three &ndash; run the SCION infrastructure<a class="headerlink" href="#step-three-run-the-scion-infrastructure" title="Permanent link">&para;</a></h3>
 <p>After successful installation of VM, you will be automatically ssh'ed into machine.</p>
 <p>To run SCION you can navigate to the source directory and start the infrastructure with following commands:</p>
-<pre class="codehilite"><code class="language-shell">vagrant ssh</code></pre>
+<div class="codehilite"><pre><span></span>vagrant ssh
+</pre></div>
 
 
 <p>The SCION infrastructure is automatically started at boot time of your VM. You can control it using the <code>scion.sh</code> script located at <code>~/go/src/github.com/netsec-ethz/scion/</code>. You can easily get to that directory with <code>cd $SC</code>.</p>
@@ -860,7 +866,7 @@ vagrant up</code></pre>
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.1",url:{base:"../.."}})</script>
       
     
     
