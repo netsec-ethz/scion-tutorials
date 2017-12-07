@@ -57,7 +57,7 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
     ```
     git config --global url.https://github.com/.insteadOf git@github.com:
     ```
-    2. Assign SSH keys to Github account, detailed instruction can be found on [Github help](https:/    /help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
+    2. Assign SSH keys to Github account, detailed instruction can be found on [Github help](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 
 This will clone SCION appropriate directory in the Go workspace. We will create export environment variable `SP` that will point to SCION root directory. 
 

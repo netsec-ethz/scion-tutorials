@@ -21,7 +21,7 @@ In addition, SCION boxes also run ithe SCIONviz server which allows you to visua
 
 ## Setup an endhost and connect it via the SCION box
 
-Setup an endhost and configure it as described in [Configuring SCION endhost topology](/scion-tutorials/general\_scion\_configuration/setup\_endhost/).
+Setup an endhost and configure it as described in [Configuring SCION endhost topology](/general\_scion\_configuration/setup\_endhost/).
 Then connect the machine to one of the secondary interfaces of you SCION box. Your devices will be allocated a local address.
 
 ## Next steps
