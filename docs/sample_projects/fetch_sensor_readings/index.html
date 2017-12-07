@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
     
     
       
@@ -297,6 +297,18 @@
   <li class="md-nav__item">
     <a href="../../general_scion_configuration/public_ip/" title="Set up an AS and connect to the SCION network" class="md-nav__link">
       Set up an AS and connect to the SCION network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general_scion_configuration/public_ip_nat/" title="Set up an AS and connect to the SCION network behind a NAT" class="md-nav__link">
+      Set up an AS and connect to the SCION network behind a NAT
     </a>
   </li>
 
@@ -639,7 +651,7 @@
 <p>The <code>sensorfetcher</code> application sends a 0-length SCION UDP packet to the <code>sensorserver</code> application to fetch the sensor readings. A string is returned containing all the sensor readings. To keep the application as simple as possible, no reliability is built in -- in case of packet loss, the user needs to abort and re-try.</p>
 <p>To run the <code>sensorfetcher</code> application, you will need to express your local host's address as a SCION address (in the format <code>ISD-AS,[IPv4]:port</code>) and specify the address of a sensor server, for instance <code>1-6,[192.33.93.173]:42003</code>. The local ISD and AS number can be seen for instance from files in the logs directory: <code>br1-1006-1.log</code> indicates that we are in AS 1006 in ISD 1. Another way is to look at the gen directory, which in this case contains a subdirectory calles <code>ISD1</code>, which contains a subdirectory <code>AS1006</code>. The IPv4 address represents the local address the application binds to, and the local port number can be freely selected as any available port.</p>
 <p>An example server is at <code>1-6,[192.33.93.173]:42003</code>, its readings can be fetched as follows (need to replace client address with actual client address, with an arbitrary free port):</p>
-<div class="codehilite"><pre><span></span>sensorfetcher -s <span class="m">1</span>-6,<span class="o">[</span><span class="m">192</span>.33.93.173<span class="o">]</span>:42003 -c <span class="m">1</span>-1006,<span class="o">[</span><span class="m">10</span>.0.2.15<span class="o">]</span>:42001
+<div class="codehilite"><pre><span></span>sensorfetcher -s 1-6,<span class="o">[</span>192.33.93.173<span class="o">]</span>:42003 -c 1-1006,<span class="o">[</span>10.0.2.15<span class="o">]</span>:42001
 </pre></div>
 
 
@@ -650,12 +662,12 @@
 
 
 <p>We use sensors from Tinkerforge, and the <code>sensorreader.py</code> Python application fetches the sensor values and writes them to <code>stdout</code>. The <code>sensorserver</code> application collects the readings, and serves them as a string to client requests. To start, we use the following command:</p>
-<div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/perrig/scionlab/sensorapp/sensorserver/sensorreader.py <span class="p">|</span> sensorserver -s <span class="m">1</span>-6,<span class="o">[</span><span class="m">192</span>.33.93.173<span class="o">]</span>:42003 <span class="p">&amp;</span>
+<div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/perrig/scionlab/sensorapp/sensorserver/sensorreader.py <span class="p">|</span> sensorserver -s 1-6,<span class="o">[</span>192.33.93.173<span class="o">]</span>:42003 <span class="p">&amp;</span>
 </pre></div>
 
 
 <p>If you do not have any sensors information you can report, then you can use a simple time application that reports the current time on your system:</p>
-<div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/perrig/scionlab/sensorapp/sensorserver/timereader.py <span class="p">|</span> sensorserver -s <span class="m">1</span>-6,<span class="o">[</span><span class="m">192</span>.33.93.173<span class="o">]</span>:42003 <span class="p">&amp;</span>
+<div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/perrig/scionlab/sensorapp/sensorserver/timereader.py <span class="p">|</span> sensorserver -s 1-6,<span class="o">[</span>192.33.93.173<span class="o">]</span>:42003 <span class="p">&amp;</span>
 </pre></div>
                 
                   
@@ -706,7 +718,7 @@
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
     
     
