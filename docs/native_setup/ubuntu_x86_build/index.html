@@ -777,21 +777,19 @@
 <p>You can skip this step if you have Go workspaces already configured on your machine.</p>
 </div>
 <p>It is necessary to set up your <a href="https://golang.org/doc/code.html#GOPATH" title="Go workspace">Go workspace</a>. The following commands will create a default workspace at <code>~/go</code> and export it as the <code>$GOPATH</code> environment variable:</p>
-<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export GOPATH=&quot;$HOME/go&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-mkdir -p <span class="s2">&quot;</span><span class="nv">$GOPATH</span><span class="s2">/bin&quot;</span>
-<span class="nb">echo</span> <span class="s1">&#39;PATH=$PATH:$GOPATH/bin&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export GOPATH=&quot;$HOME/go&quot;' &gt;&gt; ~/.profile
+source ~/.profile
+mkdir -p &quot;$GOPATH/bin&quot;
+echo 'PATH=$PATH:$GOPATH/bin' &gt;&gt; ~/.profile
+source ~/.profile</code></pre>
 
 
 <h2 id="scion-installation">SCION installation<a class="headerlink" href="#scion-installation" title="Permanent link">&para;</a></h2>
 <h3 id="step-one-clone-the-scion-repository">Step One &ndash; clone the SCION repository<a class="headerlink" href="#step-one-clone-the-scion-repository" title="Permanent link">&para;</a></h3>
 <p>After the Go workspace has been configured, we can checkout the SCION repository from github.com with all dependencies using the following commands:</p>
-<div class="codehilite"><pre><span></span>mkdir -p <span class="s2">&quot;</span><span class="nv">$GOPATH</span><span class="s2">/src/github.com/netsec-ethz&quot;</span>
-<span class="nb">cd</span> <span class="s2">&quot;</span><span class="nv">$GOPATH</span><span class="s2">/src/github.com/netsec-ethz&quot;</span>
-git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
-</pre></div>
+<pre class="codehilite"><code class="language-shell">mkdir -p &quot;$GOPATH/src/github.com/netsec-ethz&quot;
+cd &quot;$GOPATH/src/github.com/netsec-ethz&quot;
+git clone --recursive -b scionlab git@github.com:netsec-ethz/scion</code></pre>
 
 
 <div class="admonition warning">
@@ -804,23 +802,20 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
 </ol>
 </div>
 <p>This will clone SCION appropriate directory in the Go workspace. We will create export environment variable <code>SP</code> that will point to SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:</p>
-<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export SC=&quot;$GOPATH/src/github.com/netsec-ethz/scion&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-<span class="nb">cd</span> <span class="nv">$SC</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export SC=&quot;$GOPATH/src/github.com/netsec-ethz/scion&quot;' &gt;&gt; ~/.profile
+source ~/.profile
+cd $SC</code></pre>
 
 
 <h3 id="step-two-configure-python-path-variable">Step Two &ndash; configure python path variable<a class="headerlink" href="#step-two-configure-python-path-variable" title="Permanent link">&para;</a></h3>
 <p>Some SCION components like SCIONviz require Python libraries which are located in scion root directory. In order to make them accessible, exporting <code>PYTHONPATH</code> environment variable is required:</p>
-<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SC/python:$SC&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export PYTHONPATH=&quot;$SC/python:$SC&quot;' &gt;&gt; ~/.profile
+source ~/.profile</code></pre>
 
 
 <h3 id="step-three-finish-installing-the-required-packages">Step Three &ndash; finish installing the required packages<a class="headerlink" href="#step-three-finish-installing-the-required-packages" title="Permanent link">&para;</a></h3>
 <p>In order to instal dependencies, simply issue the following command while in the root directory of the SCION installation:</p>
-<div class="codehilite"><pre><span></span>bash -c <span class="s1">&#39;yes | GO_INSTALL=true ./env/deps&#39;</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">bash -c 'yes | GO_INSTALL=true ./env/deps'</code></pre>
 
 
 <div class="admonition note">
@@ -830,8 +825,7 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
 <p>This will finish installing the required dependencies and system packages.</p>
 <h3 id="step-four-configure-the-host-zookeeper-instance">Step Four &ndash; configure the host Zookeeper instance<a class="headerlink" href="#step-four-configure-the-host-zookeeper-instance" title="Permanent link">&para;</a></h3>
 <p>Replacing <code>/etc/zookeeper/conf/zoo.cfg</code> with the file <code>docker/zoo.cfg</code> is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves the performance of Zookeeper (at the cost of reliability, so it should only be done in a testing environment).</p>
-<div class="codehilite"><pre><span></span>cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>

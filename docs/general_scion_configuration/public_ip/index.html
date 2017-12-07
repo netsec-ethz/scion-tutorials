@@ -702,14 +702,13 @@
 <p>After logging in, select "My Host has a static public IP address and can receive traffic at port 50000" checkbox and enter your public IP in the text field. Afterwards click on <strong>Create and Download SCIONLab VM Configuration</strong> as presented in the image below:</p>
 <p><img alt="SCIONLab download page" src="../../images/scionlab_download_vm_static_ip_setup.png" /></p>
 <p>Navigate to download directory and extract archive content:</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/Downloads
+<pre class="codehilite"><code class="language-shell">cd ~/Downloads
 tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
-<span class="nb">cd</span> &lt;user_email&gt;
-</pre></div>
+cd &lt;user_email&gt;</code></pre>
 
 
 <p>Extracted content should have following file structure:</p>
-<div class="codehilite"><pre><span></span>├── gen
+<pre class="codehilite"><code>├── gen
 │   ├── dispatcher
 │   │   ├── dispatcher.zlog.conf
 │   │   └── supervisord.conf
@@ -719,8 +718,7 @@ tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
 ├── run.sh
 ├── scion.service
 ├── scion-viz.service
-└── Vagrantfile
-</pre></div>
+└── Vagrantfile</code></pre>
 
 
 <p>For the purpose of this tutorial we will just need:</p>
@@ -729,22 +727,19 @@ tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
 </ul>
 <h2 id="step-two-copying-scion-lab-configuration">Step Two - copying SCION Lab configuration<a class="headerlink" href="#step-two-copying-scion-lab-configuration" title="Permanent link">&para;</a></h2>
 <p>Before copying new configuration to your SCION directory, you should delete the old one. If necessary back it up previously.</p>
-<div class="codehilite"><pre><span></span>rm -rf <span class="nv">$SC</span>/gen
-</pre></div>
+<pre class="codehilite"><code class="language-shell">rm -rf $SC/gen</code></pre>
 
 
 <p>Copy new configuration and navigate to SCION root directory:</p>
-<div class="codehilite"><pre><span></span>cp -r gen <span class="nv">$SC</span>/
-<span class="nb">cd</span> <span class="nv">$SC</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cp -r gen $SC/
+cd $SC</code></pre>
 
 
 <h2 id="step-three-restarting-scion-infrastructure">Step Three - Restarting SCION infrastructure<a class="headerlink" href="#step-three-restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
 <p>After new configuration is copied, you need to restart infrastructure in following way:</p>
-<div class="codehilite"><pre><span></span>./scion.sh stop
+<pre class="codehilite"><code class="language-shell">./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run
-</pre></div>
+./scion.sh run</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>

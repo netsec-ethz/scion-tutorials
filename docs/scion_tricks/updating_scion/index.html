@@ -633,20 +633,17 @@
 <p>As SCION is hosted on git, updating to latest version is simple as <code>pull</code>-ing changes.</p>
 <h2 id="getting-the-latest-version">Getting the latest version<a class="headerlink" href="#getting-the-latest-version" title="Permanent link">&para;</a></h2>
 <p>To download newest version first navigate to SCION root directory:</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd $SC</code></pre>
 
 
 <p>and pull newest changes from <code>scionlab</code> branch:</p>
-<div class="codehilite"><pre><span></span>git pull origin scionlab
-</pre></div>
+<pre class="codehilite"><code class="language-shell">git pull origin scionlab</code></pre>
 
 
 <p>If git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:</p>
-<div class="codehilite"><pre><span></span>./scion.sh stop
+<pre class="codehilite"><code class="language-shell">./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run
-</pre></div>
+./scion.sh run</code></pre>
                 
                   
                 
