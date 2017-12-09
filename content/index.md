@@ -14,8 +14,8 @@ We suggest exploring the tips and tricks section below to learn how to use the i
 
 The easiest way to run SCION is by running a preconfigured SCION Virtual Machine on a commodity OS (MacOS, Windows). The following tutorials are covering the necessary steps.
 
-* [Running SCION VM over OpenVPN](/virtual_machine_setup/dynamic_ip)
-* [Running SCION VM with static public IP](/virtual_machine_setup/static_ip)
+* [Running SCION VM over OpenVPN](/virtual_machine_setup/dynamic_ip/)
+* [Running SCION VM with static public IP](/virtual_machine_setup/static_ip/)
 
 ## Configuring SCION infrastructure manually
 
@@ -23,16 +23,16 @@ The following tutorials cover how to install, configure, and run a SCION infrast
 
 ### 1. Installing SCION on different platforms:
 
-* [Installing SCION on Ubuntu 16.04 x86 machine](native_setup/ubuntu_x86_build)
-* [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](native_setup/rpi_ubuntu)
+* [Installing SCION on Ubuntu 16.04 x86 machine](native_setup/ubuntu_x86_build/)
+* [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](native_setup/rpi_ubuntu/)
 
 ### 2. Setting up SCION topology
 
-* [Configuring local topology](/general_scion_configuration/local_top)
-* [Configuring AS and connecting to SCION network for devices with public static IP](/general_scion_configuration/public_ip)
-* [Configuring AS and connecting to SCION network for devices with public static IP behind a NAT](/general_scion_configuration/public_ip_nat)
-* [Configuring AS and connecting to SCION network using OpenVPN](/general_scion_configuration/vpn_setup)
-* [Configuring SCION endhost](/general_scion_configuration/setup_endhost)
+* [Configuring local topology](/general_scion_configuration/local_top/)
+* [Configuring AS and connecting to SCION network for devices with public static IP](/general_scion_configuration/public_ip/)
+* [Configuring AS and connecting to SCION network for devices with public static IP behind a NAT](/general_scion_configuration/public_ip_nat/)
+* [Configuring AS and connecting to SCION network using OpenVPN](/general_scion_configuration/vpn_setup/)
+* [Configuring SCION endhost](/general_scion_configuration/setup_endhost/)
 
 ## Using SCION in projects
 

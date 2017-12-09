@@ -4,11 +4,11 @@
 
 This tutorial will cover steps required for connecting already running SCION infrastructure to SCION lab, doing so you will be running one SCION autonomous system. 
 
-For the purpose of this tutorial, we assume that you don't have static public IP address, or that your machine cannot receive UDP traffic on port 50000 from internet. If this is not the case, you should consider following [Connecting to SCION Lab with public IP](/general_scion_configuration/public_ip)
+For the purpose of this tutorial, we assume that you don't have static public IP address, or that your machine cannot receive UDP traffic on port 50000 from internet. If this is not the case, you should consider following [Connecting to SCION Lab with public IP](/general_scion_configuration/public_ip/)
 
 ## Prerequisites
 
-In order to follow this tutorial, we will assume that you already installed SCION infrastructure and that you are able to [run local topology](/general_scion_configuration/local_top).
+In order to follow this tutorial, we will assume that you already installed SCION infrastructure and that you are able to [run local topology](/general_scion_configuration/local_top/).
 
 !!! hint
     If you are running one of the SCION Virtual machine setups, configuration covered in this tutorial is already implemented in the system image. 
@@ -137,4 +137,4 @@ After OpenVPN connection is established and new configuration is copied, you nee
 
 ## Next steps
 
-After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation)
+After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation/)

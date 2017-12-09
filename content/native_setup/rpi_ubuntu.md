@@ -130,6 +130,6 @@ cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
 
 After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:
 
-1. [Running a local network topology](/general_scion_configuration/local_top) &ndash; Generate a sample topology and run SCION locally
-2. [Connecting to SCIONLab with a static public IP address](/general_scion_configuration/public_ip) &ndash; Connect to the already running SCION topology
-2. [Connecting to SCIONLab without a static public IP address](/general_scion_configuration/vpn_setup) &ndash; Connect to the already running SCION topology through an OpenVPN tunnel
+1. [Running a local network topology](/general_scion_configuration/local_top/) &ndash; Generate a sample topology and run SCION locally
+2. [Connecting to SCIONLab with a static public IP address](/general_scion_configuration/public_ip/) &ndash; Connect to the already running SCION topology
+2. [Connecting to SCIONLab without a static public IP address](/general_scion_configuration/vpn_setup/) &ndash; Connect to the already running SCION topology through an OpenVPN tunnel

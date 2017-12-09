@@ -26,4 +26,4 @@ Then connect the machine to one of the secondary interfaces of you SCION box. Yo
 
 ## Next steps
 
-Check out the [SCION code base](https://github.com/netsec-ethz/scion) and start contributing.
+Check out the [SCION code base](https://github.com/netsec-ethz/scion/) and start contributing.

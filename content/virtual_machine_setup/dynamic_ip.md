@@ -5,7 +5,7 @@
 This tutorial will guide you through the steps required to run the SCION infrastructure in a virtual machine. This tutorial assumes that you don't have a static public IP address or cannot receive traffic on UDP port 50000 from the outside network, and therefore it will use OpenVPN to proxy traffic.
 
 !!! tip
-    If you have a static public IP address and you can receive traffic on UDP port 50000, you should consider [running the VM without VPN](static_ip).
+    If you have a static public IP address and you can receive traffic on UDP port 50000, you should consider [running the VM without VPN](static_ip/).
 
 ## Prerequisites
 
@@ -88,4 +88,4 @@ The SCION infrastructure is automatically started at boot time of your VM. You c
 
 ## Next steps
 
-After running SCION infrastructure it is necessary to verify that its running properly. This is covered in tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation)
+After running SCION infrastructure it is necessary to verify that its running properly. This is covered in tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation/)

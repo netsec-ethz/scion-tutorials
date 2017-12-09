@@ -3,14 +3,14 @@
 
 ## Introduction
 
-The machine should be set up as described in the [tutorial of the host with a public IP address](/general_scion_configuration/public_ip). Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.
+The machine should be set up as described in the [tutorial of the host with a public IP address](/general_scion_configuration/public_ip/). Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.
 
 !!! hint
-    Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the [OpenVPN connection tutorial](/general_scion_configuration/vpn_setup).
+    Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the [OpenVPN connection tutorial](/general_scion_configuration/vpn_setup/).
 
 ## Setup
 
-The first step is to complete the installation of the basic system as explained in the earlier [tutorial of the host with a public IP address](/general_scion_configuration/public_ip).
+The first step is to complete the installation of the basic system as explained in the earlier [tutorial of the host with a public IP address](/general_scion_configuration/public_ip/).
 
 The second step is to find out the internal IP address of your host, as well as the external IP address outside the NAT.
 

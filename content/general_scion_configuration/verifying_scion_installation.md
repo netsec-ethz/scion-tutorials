@@ -8,7 +8,7 @@ There are several methods of doing this. Some of them are described in this post
 
 ## Running SCION-viz
 
-The recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCION-viz](/as_visualization/running_asviz)
+The recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCION-viz](/as_visualization/running_asviz/)
 
 ## Inspecting log files
 
