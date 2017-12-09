@@ -630,13 +630,13 @@
                 
                 <h1 id="connecting-to-scionlab-where-the-network-has-a-static-public-ip-address-but-the-machine-itself-is-behind-a-nat">Connecting to SCIONLab where the network has a static public IP address, but the machine itself is behind a NAT<a class="headerlink" href="#connecting-to-scionlab-where-the-network-has-a-static-public-ip-address-but-the-machine-itself-is-behind-a-nat" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>The machine should be set up as described in the <a href="../../general_scion_configuration/public_ip">tutorial of the host with a public IP address</a>. Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.</p>
+<p>The machine should be set up as described in the <a href="../../general_scion_configuration/public_ip/">tutorial of the host with a public IP address</a>. Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the <a href="../../general_scion_configuration/vpn_setup">OpenVPN connection tutorial</a>.</p>
+<p>Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the <a href="../../general_scion_configuration/vpn_setup/">OpenVPN connection tutorial</a>.</p>
 </div>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
-<p>The first step is to complete the installation of the basic system as explained in the earlier <a href="../../general_scion_configuration/public_ip">tutorial of the host with a public IP address</a>.</p>
+<p>The first step is to complete the installation of the basic system as explained in the earlier <a href="../../general_scion_configuration/public_ip/">tutorial of the host with a public IP address</a>.</p>
 <p>The second step is to find out the internal IP address of your host, as well as the external IP address outside the NAT.</p>
 <p>Several web sites offer a service that displays the external IP address of a host, for instance <a href="http://whatismyip.host/">whatismyip</a>. You can provide the displayed IPv4 address on the SCIONLab web site.</p>
 <p>The internal IPv4 address can be found with <code>ifconfig</code> and spotting the address of the main network connection.</p>
