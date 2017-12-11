@@ -36,7 +36,7 @@
     
     
       
-        <title>Virtual machine with static public IP - SCION Tutorials</title>
+        <title>Adding Wireshark dissector - SCION Tutorials</title>
       
     
     
@@ -88,11 +88,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  How to run SCION VM
+                  SCION tips and tricks
                 </span>
               
             
-            Virtual machine with static public IP
+            Adding Wireshark dissector
           
         </span>
       </div>
@@ -166,12 +166,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       How to run SCION VM
@@ -189,7 +187,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../dynamic_ip/" title="Virtual machine with VPN" class="md-nav__link">
+    <a href="../../virtual_machine_setup/dynamic_ip/" title="Virtual machine with VPN" class="md-nav__link">
       Virtual machine with VPN
     </a>
   </li>
@@ -199,20 +197,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-    <a href="./" title="Virtual machine with static public IP" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../virtual_machine_setup/static_ip/" title="Virtual machine with static public IP" class="md-nav__link">
       Virtual machine with static public IP
     </a>
-    
   </li>
 
         
@@ -453,10 +442,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       SCION tips and tricks
@@ -486,7 +477,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../scion_tricks/changing_gen_dir/" title="Updating gen directory" class="md-nav__link">
+    <a href="../changing_gen_dir/" title="Updating gen directory" class="md-nav__link">
       Updating gen directory
     </a>
   </li>
@@ -498,7 +489,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../scion_tricks/updating_scion/" title="Updating SCION" class="md-nav__link">
+    <a href="../updating_scion/" title="Updating SCION" class="md-nav__link">
       Updating SCION
     </a>
   </li>
@@ -508,11 +499,108 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../scion_tricks/wireshark/" title="Adding Wireshark dissector" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Adding Wireshark dissector
+      </label>
+    
+    <a href="./" title="Adding Wireshark dissector" class="md-nav__link md-nav__link--active">
       Adding Wireshark dissector
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-wireshark" title="Install Wireshark" class="md-nav__link">
+    Install Wireshark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-tshark" title="Install Tshark" class="md-nav__link">
+    Install Tshark
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-one-finding-plugin-directory" title="Step One - Finding plugin directory" class="md-nav__link">
+    Step One - Finding plugin directory
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wireshark" title="Wireshark" class="md-nav__link">
+    Wireshark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tshark" title="Tshark" class="md-nav__link">
+    Tshark
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-two-adding-plugin" title="Step Two - Adding plugin" class="md-nav__link">
+    Step Two - Adding plugin
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -574,6 +662,81 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-wireshark" title="Install Wireshark" class="md-nav__link">
+    Install Wireshark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-tshark" title="Install Tshark" class="md-nav__link">
+    Install Tshark
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-one-finding-plugin-directory" title="Step One - Finding plugin directory" class="md-nav__link">
+    Step One - Finding plugin directory
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wireshark" title="Wireshark" class="md-nav__link">
+    Wireshark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tshark" title="Tshark" class="md-nav__link">
+    Tshark
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-two-adding-plugin" title="Step Two - Adding plugin" class="md-nav__link">
+    Step Two - Adding plugin
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -585,18 +748,68 @@
               
                 
                 
-                <h1 id="running-scion-in-a-virtual-machine-static-public-ip-address">Running SCION in a virtual machine &ndash; static public IP address<a class="headerlink" href="#running-scion-in-a-virtual-machine-static-public-ip-address" title="Permanent link">&para;</a></h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>If you <em>do not</em> have a static public IP address or you cannot receive traffic on UDP port 50000, you should instead <a href="../dynamic_ip/">connect to the SCION network via VPN</a>.</p>
+                <h1 id="adding-wireshark-and-tshark-scion-protocol-dissector">Adding Wireshark and Tshark SCION protocol dissector<a class="headerlink" href="#adding-wireshark-and-tshark-scion-protocol-dissector" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>In this tutorial we will add SCION protocol dissector in Wireshark and Tshark. This will allow easier an more intuitive debugging
+of SCION protocol. You can read more on what protocol dissector does on <a href="https://www.wireshark.org/docs/wsdg_html_chunked/ChapterDissection.html#ChDissectWorks">Wireshark docs</a></p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>In order to continue this tutorial, we will assume that you already have Wireshark or Tshark installed on your system.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Running Wireshark is recommended on machines with graphical interface. </p>
 </div>
-<p>Simply follow all the steps in the <a href="../dynamic_ip/">tutorial for a vpn-based setup</a> until <em>Step One &ndash; download a SCION VM</em></p>
-<p>There, instead of directly clicking on <em>Create and Download SCIONLab VM Configuration</em>, first select <em>My host has a static public IP address and can receive traffic at port 50000.</em> and enter your host's public IP address in the input field.</p>
-<p>Afterwards, follow all subsequent steps in the <a href="../dynamic_ip/">tutorial for a vpn-based setup</a>.</p>
-<div class="admonition warning">
-<p class="admonition-title">Troubleshooting</p>
-<p>Make sure that your router properly forwards UDP port 50000 to the machine where the SCION VM is running.</p>
-</div>
+<h3 id="install-wireshark">Install Wireshark<a class="headerlink" href="#install-wireshark" title="Permanent link">&para;</a></h3>
+<p>In order to install Wireshark, follow installation guide on <a href="https://www.wireshark.org/">Wireshark website</a> for your platform. 
+Alternatively on Ubuntu system you can run following commands:</p>
+<div class="codehilite"><pre><span></span>sudo add-apt-repository ppa:wireshark-dev/stable
+sudo apt-get update
+sudo apt-get install wireshark
+</pre></div>
+
+
+<h3 id="install-tshark">Install Tshark<a class="headerlink" href="#install-tshark" title="Permanent link">&para;</a></h3>
+<p>In case you want to install Tshark on Ubuntu simply run:</p>
+<div class="codehilite"><pre><span></span>sudo apt install tshark
+</pre></div>
+
+
+<h2 id="step-one-finding-plugin-directory">Step One - Finding plugin directory<a class="headerlink" href="#step-one-finding-plugin-directory" title="Permanent link">&para;</a></h2>
+<p>We need to find directory in which Wireshark or Tshark are looking for plugins so we can place SCION plugin there.</p>
+<h3 id="wireshark">Wireshark<a class="headerlink" href="#wireshark" title="Permanent link">&para;</a></h3>
+<p>From <strong>Help</strong> menu select <strong>About Wireshark</strong> and in newly opened window select <strong>Folders</strong> tab. 
+There are paths to global and local plugin directory.</p>
+<p>In this tutorial we will use global plugin directory which is usually:</p>
+<div class="codehilite"><pre><span></span>/usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6
+</pre></div>
+
+
+<p>Plugins from global plugin directory are available to all users, while local is only for currently running user.</p>
+<h3 id="tshark">Tshark<a class="headerlink" href="#tshark" title="Permanent link">&para;</a></h3>
+<p>In order to find the directory where Tshark is loading plugins from we can run following command:</p>
+<div class="codehilite"><pre><span></span>tshark -G plugins
+</pre></div>
+
+
+<p>Output will look something like this:</p>
+<div class="codehilite"><pre><span></span>opcua.so    1.1.0   dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/opcua.so
+irda.so 0.0.6   dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/irda.so
+mate.so 1.0.0a  dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/mate.so
+...
+</pre></div>
+
+
+<p>Examining output we can conclude that plugins are being loaded from </p>
+<div class="codehilite"><pre><span></span>/usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/
+</pre></div>
+
+
+<p>So we will use that for our plugin directory.</p>
+<h2 id="step-two-adding-plugin">Step Two - Adding plugin<a class="headerlink" href="#step-two-adding-plugin" title="Permanent link">&para;</a></h2>
+<p>Wireshark/Tshark plugin is located in SCION project at <code>tools/wireshark/scion.lua</code>.</p>
+<p>It is necessary to download <code>scion.lua</code> file and place it in plugin directory acquired in previous step.</p>
+<p>In Ubuntu system this can be done with following command:</p>
+<div class="codehilite"><pre><span></span>sudo wget -P /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/ https://raw.githubusercontent.com/scionproto/scion/master/tools/wireshark/scion.lua
+</pre></div>
                 
                   
                 

@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome to SCION Tutorials\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis website provides step-by-step instructions on how to install and run the SCION infrastructure. It also provides a list of interesting projects that are using the SCION infrastructure for communication.\n\n\nGetting started\n\u00b6\n\n\nThere are generally two ways of installing and running SCION infrastructure. The first way is by downloading and running a preconfigured Virtual Machine (VM), while the second way is manual installation on an Ubuntu 16.04 platform. We cover both approaches in this tutorial.\n\n\nWe suggest exploring the tips and tricks section below to learn how to use the infrastructure.\n\n\nRunning SCION infrastructure in a VM\n\u00b6\n\n\nThe easiest way to run SCION is by running a preconfigured SCION Virtual Machine on a commodity OS (MacOS, Windows). The following tutorials are covering the necessary steps.\n\n\n\n\nRunning SCION VM over OpenVPN\n\n\nRunning SCION VM with static public IP\n\n\n\n\nConfiguring SCION infrastructure manually\n\u00b6\n\n\nThe following tutorials cover how to install, configure, and run a SCION infrastructure in a step-by-step manner on a dedicated Ubuntu 16.04 host (without a VM).\n\n\n1. Installing SCION on different platforms:\n\u00b6\n\n\n\n\nInstalling SCION on Ubuntu 16.04 x86 machine\n\n\nInstalling SCION on Ubuntu MATE 16.04 - Raspberry PI\n\n\n\n\n2. Setting up SCION topology\n\u00b6\n\n\n\n\nConfiguring local topology\n\n\nConfiguring AS and connecting to SCION network for devices with public static IP\n\n\nConfiguring AS and connecting to SCION network for devices with public static IP behind a NAT\n\n\nConfiguring AS and connecting to SCION network using OpenVPN\n\n\nConfiguring SCION endhost\n\n\n\n\nUsing SCION in projects\n\u00b6\n\n\n\n\nFetching sensor readings or time stamps\n\n\nFetching a camera image over the SCION network\n\n\nRunning the bandwidthtester application\n\n\nRunning AS Visualization\n\n\nBrowser AS Visualization\n\n\nCommand-line AS Visualization\n\n\n\n\nSCION tips and tricks\n\u00b6\n\n\n\n\nVerifying the installation\n\n\nUpdating gen directory\n\n\nUpdating SCION to a new version\n\n\n\n\nSCIONLab specifics\n\u00b6\n\n\n\n\nSCION box first steps",
+            "text": "Welcome to SCION Tutorials\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nThis website provides step-by-step instructions on how to install and run the SCION infrastructure. It also provides a list of interesting projects that are using the SCION infrastructure for communication.\n\n\nGetting started\n\u00b6\n\n\nThere are generally two ways of installing and running SCION infrastructure. The first way is by downloading and running a preconfigured Virtual Machine (VM), while the second way is manual installation on an Ubuntu 16.04 platform. We cover both approaches in this tutorial.\n\n\nWe suggest exploring the tips and tricks section below to learn how to use the infrastructure.\n\n\nRunning SCION infrastructure in a VM\n\u00b6\n\n\nThe easiest way to run SCION is by running a preconfigured SCION Virtual Machine on a commodity OS (MacOS, Windows). The following tutorials are covering the necessary steps.\n\n\n\n\nRunning SCION VM over OpenVPN\n\n\nRunning SCION VM with static public IP\n\n\n\n\nConfiguring SCION infrastructure manually\n\u00b6\n\n\nThe following tutorials cover how to install, configure, and run a SCION infrastructure in a step-by-step manner on a dedicated Ubuntu 16.04 host (without a VM).\n\n\n1. Installing SCION on different platforms:\n\u00b6\n\n\n\n\nInstalling SCION on Ubuntu 16.04 x86 machine\n\n\nInstalling SCION on Ubuntu MATE 16.04 - Raspberry PI\n\n\n\n\n2. Setting up SCION topology\n\u00b6\n\n\n\n\nConfiguring local topology\n\n\nConfiguring AS and connecting to SCION network for devices with public static IP\n\n\nConfiguring AS and connecting to SCION network for devices with public static IP behind a NAT\n\n\nConfiguring AS and connecting to SCION network using OpenVPN\n\n\nConfiguring SCION endhost\n\n\n\n\nUsing SCION in projects\n\u00b6\n\n\n\n\nFetching sensor readings or time stamps\n\n\nFetching a camera image over the SCION network\n\n\nRunning the bandwidthtester application\n\n\nRunning AS Visualization\n\n\nBrowser AS Visualization\n\n\nCommand-line AS Visualization\n\n\n\n\nSCION tips and tricks\n\u00b6\n\n\n\n\nVerifying the installation\n\n\nUpdating gen directory\n\n\nUpdating SCION to a new version\n\n\nAdding Wireshark or Tshark dissector plugin\n\n\n\n\nSCIONLab specifics\n\u00b6\n\n\n\n\nSCION box first steps",
             "title": "Home"
         },
         {
@@ -47,7 +47,7 @@
         },
         {
             "location": "/#scion-tips-and-tricks",
-            "text": "Verifying the installation  Updating gen directory  Updating SCION to a new version",
+            "text": "Verifying the installation  Updating gen directory  Updating SCION to a new version  Adding Wireshark or Tshark dissector plugin",
             "title": "SCION tips and tricks"
         },
         {
@@ -634,6 +634,56 @@
             "location": "/scion_tricks/updating_scion/#getting-the-latest-version",
             "text": "To download newest version first navigate to SCION root directory:  cd   $SC   and pull newest changes from  scionlab  branch:  git pull origin scionlab  If git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:  ./scion.sh stop\n~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown\n./scion.sh run",
             "title": "Getting the latest version"
+        },
+        {
+            "location": "/scion_tricks/wireshark/",
+            "text": "Adding Wireshark and Tshark SCION protocol dissector\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nIn this tutorial we will add SCION protocol dissector in Wireshark and Tshark. This will allow easier an more intuitive debugging\nof SCION protocol. You can read more on what protocol dissector does on \nWireshark docs\n\n\nPrerequisites\n\u00b6\n\n\nIn order to continue this tutorial, we will assume that you already have Wireshark or Tshark installed on your system.\n\n\n\n\nTip\n\n\nRunning Wireshark is recommended on machines with graphical interface. \n\n\n\n\nInstall Wireshark\n\u00b6\n\n\nIn order to install Wireshark, follow installation guide on \nWireshark website\n for your platform. \nAlternatively on Ubuntu system you can run following commands:\n\n\nsudo add-apt-repository ppa:wireshark-dev/stable\nsudo apt-get update\nsudo apt-get install wireshark\n\n\n\n\n\nInstall Tshark\n\u00b6\n\n\nIn case you want to install Tshark on Ubuntu simply run:\n\n\nsudo apt install tshark\n\n\n\n\n\nStep One - Finding plugin directory\n\u00b6\n\n\nWe need to find directory in which Wireshark or Tshark are looking for plugins so we can place SCION plugin there.\n\n\nWireshark\n\u00b6\n\n\nFrom \nHelp\n menu select \nAbout Wireshark\n and in newly opened window select \nFolders\n tab. \nThere are paths to global and local plugin directory.\n\n\nIn this tutorial we will use global plugin directory which is usually:\n\n\n/usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6\n\n\n\n\n\nPlugins from global plugin directory are available to all users, while local is only for currently running user.\n\n\nTshark\n\u00b6\n\n\nIn order to find the directory where Tshark is loading plugins from we can run following command:\n\n\ntshark -G plugins\n\n\n\n\n\nOutput will look something like this:\n\n\nopcua.so    1.1.0   dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/opcua.so\nirda.so 0.0.6   dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/irda.so\nmate.so 1.0.0a  dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/mate.so\n...\n\n\n\n\n\nExamining output we can conclude that plugins are being loaded from \n\n\n/usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/\n\n\n\n\n\nSo we will use that for our plugin directory.\n\n\nStep Two - Adding plugin\n\u00b6\n\n\nWireshark/Tshark plugin is located in SCION project at \ntools/wireshark/scion.lua\n.\n\n\nIt is necessary to download \nscion.lua\n file and place it in plugin directory acquired in previous step.\n\n\nIn Ubuntu system this can be done with following command:\n\n\nsudo wget -P /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/ https://raw.githubusercontent.com/scionproto/scion/master/tools/wireshark/scion.lua",
+            "title": "Adding Wireshark dissector"
+        },
+        {
+            "location": "/scion_tricks/wireshark/#adding-wireshark-and-tshark-scion-protocol-dissector",
+            "text": "",
+            "title": "Adding Wireshark and Tshark SCION protocol dissector"
+        },
+        {
+            "location": "/scion_tricks/wireshark/#introduction",
+            "text": "In this tutorial we will add SCION protocol dissector in Wireshark and Tshark. This will allow easier an more intuitive debugging\nof SCION protocol. You can read more on what protocol dissector does on  Wireshark docs",
+            "title": "Introduction"
+        },
+        {
+            "location": "/scion_tricks/wireshark/#prerequisites",
+            "text": "In order to continue this tutorial, we will assume that you already have Wireshark or Tshark installed on your system.   Tip  Running Wireshark is recommended on machines with graphical interface.",
+            "title": "Prerequisites"
+        },
+        {
+            "location": "/scion_tricks/wireshark/#install-wireshark",
+            "text": "In order to install Wireshark, follow installation guide on  Wireshark website  for your platform. \nAlternatively on Ubuntu system you can run following commands:  sudo add-apt-repository ppa:wireshark-dev/stable\nsudo apt-get update\nsudo apt-get install wireshark",
+            "title": "Install Wireshark"
+        },
+        {
+            "location": "/scion_tricks/wireshark/#install-tshark",
+            "text": "In case you want to install Tshark on Ubuntu simply run:  sudo apt install tshark",
+            "title": "Install Tshark"
+        },
+        {
+            "location": "/scion_tricks/wireshark/#step-one-finding-plugin-directory",
+            "text": "We need to find directory in which Wireshark or Tshark are looking for plugins so we can place SCION plugin there.",
+            "title": "Step One - Finding plugin directory"
+        },
+        {
+            "location": "/scion_tricks/wireshark/#wireshark",
+            "text": "From  Help  menu select  About Wireshark  and in newly opened window select  Folders  tab. \nThere are paths to global and local plugin directory.  In this tutorial we will use global plugin directory which is usually:  /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6  Plugins from global plugin directory are available to all users, while local is only for currently running user.",
+            "title": "Wireshark"
+        },
+        {
+            "location": "/scion_tricks/wireshark/#tshark",
+            "text": "In order to find the directory where Tshark is loading plugins from we can run following command:  tshark -G plugins  Output will look something like this:  opcua.so    1.1.0   dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/opcua.so\nirda.so 0.0.6   dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/irda.so\nmate.so 1.0.0a  dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/mate.so\n...  Examining output we can conclude that plugins are being loaded from   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/  So we will use that for our plugin directory.",
+            "title": "Tshark"
+        },
+        {
+            "location": "/scion_tricks/wireshark/#step-two-adding-plugin",
+            "text": "Wireshark/Tshark plugin is located in SCION project at  tools/wireshark/scion.lua .  It is necessary to download  scion.lua  file and place it in plugin directory acquired in previous step.  In Ubuntu system this can be done with following command:  sudo wget -P /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/ https://raw.githubusercontent.com/scionproto/scion/master/tools/wireshark/scion.lua",
+            "title": "Step Two - Adding plugin"
         },
         {
             "location": "/scionlab/scionlab/",
