@@ -396,14 +396,54 @@
             "title": "Next steps"
         },
         {
-            "location": "/general_scion_configuration/setup_endhost/",
-            "text": "Configuring SCION endhost topology\n\u00b6\n\n\nTBA",
+            "location": "/general_scion_configuration/endhost_vm_as/",
+            "text": "Connecting endhost to AS running in SCION VM\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nIn this tutorial we will cover steps necessary to configure SCION on endhost that will connect to already configured AS. \nThis is useful in situations where you don't want to run complete AS infrastructure, but rather forward traffic to AS. \nThis page covers situation where host machine is running SCION VM and external device wants to connect to it, figure below depicts \nsuch a situation. \n\n\n\n\nFor the sake of simplicity, we will assume that Host's IP address is 10.42.0.1 and endhost's IP address is 10.42.0.180 in rest of the tutorial. \nIP addresses are likely to be different in different networks, so use appropriate values.\n\n\n\n\nWarning\n\n\nThis tutorial doesn't cover case in which enhost runs on host and tries to connect to VM's AS. \n\n\n\n\nPrerequisites\n\u00b6\n\n\nIn this tutorial we assume you already installed SCION VM on your machine. If that is not the case, please follow one of the following tutorials:\n\n\n\n\nRunning SCION VM with dynamic IP\n\n\nRunning SCION VM with static IP\n\n\n\n\nAssumption is that you know IP addresses of host and endhost system.\n\n\nFor this tutorial we will also need to install several utilities:\n\n\nsudo apt install netfilter-persistent iptables-persistent\n\n\n\n\n\nStep One - Installing SCION on endhost\n\u00b6\n\n\nAny platform that runs SCION can be used as an endhost. To install SCION on different platforms you can follow one of the tutorials:\n\n\n\n\nInstalling SCION on Ubuntu 16.04 x86 machine\n\n\nInstalling SCION on Ubuntu MATE 16.04 - Raspberry PI\n\n\n\n\nStep Two - Copy initial configuration\n\u00b6\n\n\nAfter SCION infrastructure is successfully installed on your endhost device, we can start the configuration process. First of all we need to stop currently running scion topology and remove old \ngen\n directory.\n\n\ncd\n \n$SC\n\n./scion.sh stop\nrm -rf gen\n\n\n\n\n\nNext step is to make sure both endhost and SCION VM share the same \ngen\n directory. This can be done in several ways, easiest is copying it directly from SCION VM. \n\n\nExecuting following command from VM should be enough to copy complete \ngen\n directory to endhost:\n\n\nscp -r /home/ubuntu/go/src/github.com/netsec-ethz/scion/gen endhost_user@10.42.0.180:/home/endhost_user/go/src/github.com/netsec-ethz/scion/gen\n\n\n\n\n\n\n\nWarning\n\n\nPlease replace \nendhost_user\n with appropriate user on endhost and IP address 10.42.0.180 with actual IP address.\n\n\n\n\nStep Three - Remove unnecessary services\n\u00b6\n\n\nNext step is to disable unnecessary services, like border router, beacon server etc. on endhost device. This can be done by editing configuration file on \nendhost's system\n:\n\n\nvim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/supervisord.conf\n\n\n\n\n\nIt is sufficient to remove last 2 lines that look similar to this:\n\n\n[group:as1-1029]\n\n\nprograms\n \n=\n \nbr1-1029-1,bs1-1029-1,cs1-1029-1,ps1-1029-1,sd1-1029\n\n\n\n\n\n\nIn the same file edit following line:\n\n\ncommand = bash -c 'exec bin/sciond \"--api-addr\" \"/run/shm/sciond/....\n\n\n\n\n\nBy adding additional \naddr\n argument to look like this:\n\n\ncommand = bash -c 'exec bin/sciond \"--addr\" \"10.42.0.180\" \"--api-addr\" \"/run/shm/sciond/\n\n\n\n\n\nMake sure you replace \n10.42.0.180\n to correct endhost's IP address.\n\n\nNext we need to remove all directories except \nendhost\n from \n$SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/\n directory. \n\n\nrm -rf *-*\n\n\n\n\n\nStep Four - Iptable rules\n\u00b6\n\n\nConfiguration files we copied from VM in first step contain address \n10.0.2.15\n. This address is not accessible outside VM and we need to rewrite it to host's IP so packets get routed in right way. This can be done with iptables.\n\n\nsudo iptables -t nat -A OUTPUT -m udp -p udp -d \n10\n.0.2.15 -j DNAT --to-destination \n10\n.42.0.1\n\nsudo netfilter-persistent save\n\n\n\n\n\nStep Five - Restart SCION\n\u00b6\n\n\nLast step is to reload configuration and restart SCION.\n\n\n~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown\n./scion.sh run\n\n\n\n\n\nNext steps\n\u00b6\n\n\nBest way to verify endhost configuration is by running properly is by running some demo applications:\n\n\n\n\nFetching sensor readings or time stamps\n\n\nFetching a camera image over the SCION network\n\n\nRunning the bandwidthtester application",
             "title": "Set up SCION endhost and connect to local AS"
         },
         {
-            "location": "/general_scion_configuration/setup_endhost/#configuring-scion-endhost-topology",
-            "text": "TBA",
-            "title": "Configuring SCION endhost topology"
+            "location": "/general_scion_configuration/endhost_vm_as/#connecting-endhost-to-as-running-in-scion-vm",
+            "text": "",
+            "title": "Connecting endhost to AS running in SCION VM"
+        },
+        {
+            "location": "/general_scion_configuration/endhost_vm_as/#introduction",
+            "text": "In this tutorial we will cover steps necessary to configure SCION on endhost that will connect to already configured AS. \nThis is useful in situations where you don't want to run complete AS infrastructure, but rather forward traffic to AS. \nThis page covers situation where host machine is running SCION VM and external device wants to connect to it, figure below depicts \nsuch a situation.    For the sake of simplicity, we will assume that Host's IP address is 10.42.0.1 and endhost's IP address is 10.42.0.180 in rest of the tutorial.  IP addresses are likely to be different in different networks, so use appropriate values.   Warning  This tutorial doesn't cover case in which enhost runs on host and tries to connect to VM's AS.",
+            "title": "Introduction"
+        },
+        {
+            "location": "/general_scion_configuration/endhost_vm_as/#prerequisites",
+            "text": "In this tutorial we assume you already installed SCION VM on your machine. If that is not the case, please follow one of the following tutorials:   Running SCION VM with dynamic IP  Running SCION VM with static IP   Assumption is that you know IP addresses of host and endhost system.  For this tutorial we will also need to install several utilities:  sudo apt install netfilter-persistent iptables-persistent",
+            "title": "Prerequisites"
+        },
+        {
+            "location": "/general_scion_configuration/endhost_vm_as/#step-one-installing-scion-on-endhost",
+            "text": "Any platform that runs SCION can be used as an endhost. To install SCION on different platforms you can follow one of the tutorials:   Installing SCION on Ubuntu 16.04 x86 machine  Installing SCION on Ubuntu MATE 16.04 - Raspberry PI",
+            "title": "Step One - Installing SCION on endhost"
+        },
+        {
+            "location": "/general_scion_configuration/endhost_vm_as/#step-two-copy-initial-configuration",
+            "text": "After SCION infrastructure is successfully installed on your endhost device, we can start the configuration process. First of all we need to stop currently running scion topology and remove old  gen  directory.  cd   $SC \n./scion.sh stop\nrm -rf gen  Next step is to make sure both endhost and SCION VM share the same  gen  directory. This can be done in several ways, easiest is copying it directly from SCION VM.   Executing following command from VM should be enough to copy complete  gen  directory to endhost:  scp -r /home/ubuntu/go/src/github.com/netsec-ethz/scion/gen endhost_user@10.42.0.180:/home/endhost_user/go/src/github.com/netsec-ethz/scion/gen   Warning  Please replace  endhost_user  with appropriate user on endhost and IP address 10.42.0.180 with actual IP address.",
+            "title": "Step Two - Copy initial configuration"
+        },
+        {
+            "location": "/general_scion_configuration/endhost_vm_as/#step-three-remove-unnecessary-services",
+            "text": "Next step is to disable unnecessary services, like border router, beacon server etc. on endhost device. This can be done by editing configuration file on  endhost's system :  vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/supervisord.conf  It is sufficient to remove last 2 lines that look similar to this:  [group:as1-1029]  programs   =   br1-1029-1,bs1-1029-1,cs1-1029-1,ps1-1029-1,sd1-1029   In the same file edit following line:  command = bash -c 'exec bin/sciond \"--api-addr\" \"/run/shm/sciond/....  By adding additional  addr  argument to look like this:  command = bash -c 'exec bin/sciond \"--addr\" \"10.42.0.180\" \"--api-addr\" \"/run/shm/sciond/  Make sure you replace  10.42.0.180  to correct endhost's IP address.  Next we need to remove all directories except  endhost  from  $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/  directory.   rm -rf *-*",
+            "title": "Step Three - Remove unnecessary services"
+        },
+        {
+            "location": "/general_scion_configuration/endhost_vm_as/#step-four-iptable-rules",
+            "text": "Configuration files we copied from VM in first step contain address  10.0.2.15 . This address is not accessible outside VM and we need to rewrite it to host's IP so packets get routed in right way. This can be done with iptables.  sudo iptables -t nat -A OUTPUT -m udp -p udp -d  10 .0.2.15 -j DNAT --to-destination  10 .42.0.1\n\nsudo netfilter-persistent save",
+            "title": "Step Four - Iptable rules"
+        },
+        {
+            "location": "/general_scion_configuration/endhost_vm_as/#step-five-restart-scion",
+            "text": "Last step is to reload configuration and restart SCION.  ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown\n./scion.sh run",
+            "title": "Step Five - Restart SCION"
+        },
+        {
+            "location": "/general_scion_configuration/endhost_vm_as/#next-steps",
+            "text": "Best way to verify endhost configuration is by running properly is by running some demo applications:   Fetching sensor readings or time stamps  Fetching a camera image over the SCION network  Running the bandwidthtester application",
+            "title": "Next steps"
         },
         {
             "location": "/sample_projects/fetch_sensor_readings/",

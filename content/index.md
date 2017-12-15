@@ -32,7 +32,7 @@ The following tutorials cover how to install, configure, and run a SCION infrast
 * [Configuring AS and connecting to SCION network for devices with public static IP](/general_scion_configuration/public_ip/)
 * [Configuring AS and connecting to SCION network for devices with public static IP behind a NAT](/general_scion_configuration/public_ip_nat/)
 * [Configuring AS and connecting to SCION network using OpenVPN](/general_scion_configuration/vpn_setup/)
-* [Configuring SCION endhost](/general_scion_configuration/setup_endhost/)
+* [Configuring SCION endhost](/general_scion_configuration/endhost_vm_as.md)
 
 ## Using SCION in projects
 

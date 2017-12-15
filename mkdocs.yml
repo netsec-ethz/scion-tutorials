@@ -61,7 +61,8 @@ pages:
       - Set up an AS and connect to the SCION network: general_scion_configuration/public_ip.md
       - Set up an AS and connect to the SCION network behind a NAT: general_scion_configuration/public_ip_nat.md
       - Set up an AS and connect to the SCION network via VPN: general_scion_configuration/vpn_setup.md
-      - Set up SCION endhost and connect to local AS: general_scion_configuration/setup_endhost.md
+      - Set up SCION endhost and connect to local AS: general_scion_configuration/endhost_vm_as.md
+      
 
     - How to use:
       - Read a temperature sensor over the SCION network: sample_projects/fetch_sensor_readings.md
