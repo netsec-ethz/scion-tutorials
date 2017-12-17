@@ -100,7 +100,7 @@ should display newly added interface, in this case `tun0`:
        valid_lft forever preferred_lft forever
 ```
 
-In this case client's OpenVPN IP address is: `10.0.8.40`, this address might vary on different setups, please keep a not of yours.
+In this case client's OpenVPN IP address is: `10.0.8.40`.
 
 ## Step Four - copying SCION Lab configuration
 
@@ -117,12 +117,22 @@ cp -r gen $SC/
 cd $SC
 ```
 
-Because `gen` directory downloaded from Coordination Service is customized for VM IP addresses (`10.0.2.15`), we need to replace them with address obtained from OpenVPN on current system. In following commands we will assume that OpenVPN IP address is: `10.0.8.40` but you should use the value obtained in previous step:
+Because `gen` directory downloaded from Coordination Service is customized for VM IP addresses (`10.0.2.15`), we need to replace every occurrence of that IP with actual IP address of a running system.
+
+Finding out actual IP address of running system can be done by running following command:
 
 ```shell
-find ./gen/ -name "*.json" -exec sed -i "s/10.0.2.15/10.0.8.40/g" '{}' \;
-find ./gen/ -name "*.yml" -exec sed -i "s/10.0.2.15/10.0.8.40/g" '{}' \;
-find ./gen/ -name "*.conf" -exec sed -i "s/10.0.2.15/10.0.8.40/g" '{}' \;
+ip a
+```
+
+and using IP address from appropriate physical interface that is used for connecting to the network. 
+
+In following steps we will assume that IP address is `10.42.0.180`, but you should replace it accordingly with value acquired from previous step.
+
+```shell
+find ./gen/ -name "*.json" -exec sed -i "s/10.0.2.15/10.42.0.180/g" '{}' \;
+find ./gen/ -name "*.yml" -exec sed -i "s/10.0.2.15/10.42.0.180/g" '{}' \;
+find ./gen/ -name "*.conf" -exec sed -i "s/10.0.2.15/10.42.0.180/g" '{}' \;
 ```
 
 ## Step Five - Restarting SCION infrastructure

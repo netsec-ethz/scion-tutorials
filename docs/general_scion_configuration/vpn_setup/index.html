@@ -418,7 +418,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../endhost_vm_as/" title="Set up SCION endhost and connect to local AS" class="md-nav__link">
+    <a href="../setup_endhost/" title="Set up SCION endhost and connect to local AS" class="md-nav__link">
       Set up SCION endhost and connect to local AS
     </a>
   </li>
@@ -805,7 +805,7 @@ systemctl <span class="nb">enable</span> openvpn@client
 </pre></div>
 
 
-<p>In this case client's OpenVPN IP address is: <code>10.0.8.40</code>, this address might vary on different setups, please keep a not of yours.</p>
+<p>In this case client's OpenVPN IP address is: <code>10.0.8.40</code>.</p>
 <h2 id="step-four-copying-scion-lab-configuration">Step Four - copying SCION Lab configuration<a class="headerlink" href="#step-four-copying-scion-lab-configuration" title="Permanent link">&para;</a></h2>
 <p>Before copying new configuration to your SCION directory, you should delete the old one. If necessary back it up previously.</p>
 <div class="codehilite"><pre><span></span>rm -rf <span class="nv">$SC</span>/gen
@@ -818,10 +818,17 @@ systemctl <span class="nb">enable</span> openvpn@client
 </pre></div>
 
 
-<p>Because <code>gen</code> directory downloaded from Coordination Service is customized for VM IP addresses (<code>10.0.2.15</code>), we need to replace them with address obtained from OpenVPN on current system. In following commands we will assume that OpenVPN IP address is: <code>10.0.8.40</code> but you should use the value obtained in previous step:</p>
-<div class="codehilite"><pre><span></span>find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.0.8.40/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
-find ./gen/ -name <span class="s2">&quot;*.yml&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.0.8.40/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
-find ./gen/ -name <span class="s2">&quot;*.conf&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.0.8.40/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
+<p>Because <code>gen</code> directory downloaded from Coordination Service is customized for VM IP addresses (<code>10.0.2.15</code>), we need to replace every occurrence of that IP with actual IP address of a running system.</p>
+<p>Finding out actual IP address of running system can be done by running following command:</p>
+<div class="codehilite"><pre><span></span>ip a
+</pre></div>
+
+
+<p>and using IP address from appropriate physical interface that is used for connecting to the network. </p>
+<p>In following steps we will assume that IP address is <code>10.42.0.180</code>, but you should replace it accordingly with value acquired from previous step.</p>
+<div class="codehilite"><pre><span></span>find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
+find ./gen/ -name <span class="s2">&quot;*.yml&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
+find ./gen/ -name <span class="s2">&quot;*.conf&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
 </pre></div>
 
 
