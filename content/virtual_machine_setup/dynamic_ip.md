@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This tutorial will guide you through the steps required to run the SCION infrastructure in a virtual machine. This tutorial assumes that you don't have a static public IP address or cannot receive traffic on UDP port 50000 from the outside network, and therefore it will use OpenVPN to proxy traffic.
+This tutorial will guide you through the steps required to run the SCION infrastructure in a virtual machine. This tutorial assumes that you don't have a static public IP address or cannot receive traffic on UDP port 50000 from the outside network, and therefore it will use OpenVPN to connect to the neighboring AS border router.
 
 !!! tip
     If you have a static public IP address and you can receive traffic on UDP port 50000, you should consider [running the VM without VPN](static_ip/).
@@ -16,7 +16,7 @@ Running SCION in a virtual machine requires VirtualBox and Vagrant to be install
 To install VirtualBox, follow the steps on the [VirtualBox download page](https://www.virtualbox.org/wiki/Downloads) for your system. On Ubuntu or similar Linux distributions, you could also install VirtualBox using your package manager:
 
 ```shell
-apt-get install virtualbox
+sudo apt-get install virtualbox
 ```
 
 ### Step Two &ndash; install Vagrant
@@ -24,12 +24,12 @@ apt-get install virtualbox
 To install Vagrant, follow the steps on the [Vagrant download page](https://www.vagrantup.com/downloads.html) for your system. Also, on Ubuntu you could install it via your package manager:
 
 ```shell
-apt-get install vagrant
+sudo apt-get install vagrant
 ```
 
 ## Running SCION
 
-Running SCION consists of several steps, registering a SCION VM on [SCIONLab Coordination Service](https://coord.scionproto.net), deploying the VM, and running the SCION infrastructure.
+Running SCION consists of several steps: registering a SCION VM on [SCIONLab Coordination Service](https://coord.scionproto.net), deploying the VM, and running the SCION infrastructure.
 
 ### Step One &ndash; download a SCION VM
 
@@ -41,13 +41,28 @@ After logging in, download a VM configuration by clicking on *Create and Downloa
 
 ### Step Two &ndash; create and run the VM
 
-When the configuration finishes downloading, extract the archive content in a separate directory. On a Linux system, simply running `tar` command will extract the contents in a separate subdirectory named as your email:
-
+Create a directory that will host your SCIONLab content. For instance:
 ```shell
-tar -xvf scion_lab_*.tar.gz
+mkdir ~/scionlab
 ```
 
-After extracting the newly downloaded content, navigate to the extracted directory. It should have the following structure:
+When the configuration finishes downloading, move the contents to your SCIONLab directory, for instance (adjust based on your setup and download directory):
+```shell
+cd ~/scionlab
+mv ~/Download/scion_lab_*.tar* .
+```
+
+Next, extract the archive content. On a Linux system, simply running `tar` command will extract the contents:
+```shell
+tar -xvzf scion_lab_*.tar.gz
+```
+
+If your downloader automatically uncompressed the downloaded file, the `.gz` extension is missing, and you can extract the contents with:
+```shell
+tar -xvf scion_lab_*.tar
+```
+
+After extraction, the extracted directory has the following structure:
 
 ```
 ├── client.conf
@@ -64,9 +79,10 @@ After extracting the newly downloaded content, navigate to the extracted directo
 └── Vagrantfile
 ```
 
-Verifying that the structure is the same, you can begin the setup by running:
+Verifying the structure, you can begin the setup by running, replacing `youremailaddress` with your correct address:
 
 ```shell
+cd youremailaddress
 vagrant box add scion/ubuntu-16.04-64-scion
 vagrant box update
 vagrant up
@@ -76,9 +92,7 @@ You will be asked for your password. The installation process will take around 1
 
 ### Step Three &ndash; run the SCION infrastructure
 
-After successful installation of VM, you will be automatically ssh'ed into machine.
-
-To run SCION you can navigate to the source directory and start the infrastructure with following commands:
+After successful installation of the VM, you can ssh into your VM:
 
 ```shell
 vagrant ssh
@@ -86,6 +100,12 @@ vagrant ssh
 
 The SCION infrastructure is automatically started at boot time of your VM. You can control it using the `scion.sh` script located at `~/go/src/github.com/netsec-ethz/scion/`. You can easily get to that directory with `cd $SC`.
 
+To shut the system down, you can type `sudo shutdown now` inside the VM, or `vagrant halt` in the host terminal.
+
+After the installation, to start the VM, you can use `vagrant up`, followed by `vagrant ssh` to start a VM shell.
+
 ## Next steps
 
-After running SCION infrastructure it is necessary to verify that its running properly. This is covered in tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation/)
+After running SCION infrastructure it is necessary to verify that it is running properly. This is covered in tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation/)
+
+When the infrastructure is properly running, you have established your SCION AS, congratulations! You can now follow the tutorials listed on the [main page](https://netsec-ethz.github.io/scion-tutorials/) under "Using SCION in projects".

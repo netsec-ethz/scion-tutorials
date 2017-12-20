@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This tutorial will guide you through the steps required to generate a local topology and run SCION.
+This tutorial will guide you through the steps required to generate a local topology and run a SCION network locally on your system.
 
 ## Prerequisites
 
@@ -16,11 +16,24 @@ Before continuing with the following steps, you should first navigate to the SCI
 cd $SC
 ```
 
-SCION installation comes with a command to generate the local topology from 'topo' configuration files. Default topology is defined in `topology/Default.topo` and it is depicted in the following figure.
+The SCION installation comes with a command to generate the local topology from 'topo' configuration files. A default topology is defined in `topology/Default.topo` and it is depicted in the following figure:
 
 ![Default topology](/images/default_topology.png)
 
-To generate the default topology, it is sufficient to run
+!!! warning "Creating a topology overwrites the existing installation"
+    When running the topology command deletes the current topology, which is stored in the gen folder. We thus advise to back up the current gen directory **before** calling the topology creation command.
+
+	In case the gen folder was accidentally overwritten, you need to re-establish it after running the local topology if you want to get back to your previous installation. In case of re-creating the SCIONLab topology running in a VM, re-establishing is easy:
+	```shell
+	cd $SC
+	rm -rf gen
+	cp -r /vagrant/gen .
+	```
+
+!!! tip "Reset runtime environment after topology changes"
+    Every time a new topology is instantiated, the SCION runtime environment needs to be reset as described [here](/scion_tricks/changing_gen_dir/#restarting-scion-infrastructure).
+
+To generate the default topology, you can run
 
 ```shell
 ./scion.sh topology
@@ -42,16 +55,12 @@ This command will generate the topology information in the `gen` directory. The 
              as-sig.key
 ```
 
-!!! warning "Running smaller topology"
-    Running default SCION topology **requires significant amount of system resources**. This might not be possible on IoT devices like Raspberry PI or Virtual machines. For this reason using smaller topology is recommended. To generate smaller topology you can use predefined  definition of tiny topology in following way:
+!!! warning "Running large topology"
+    Running the default SCION topology **requires significant amount of system resources**. This might not be possible on IoT devices like Raspberry PI or on a resource-limited virtual machine. For this reason, using a smaller topology is recommended. To generate a small topology with only a single ISD and 3 ASes, you can use the predefined definition of tiny topology as follows:
 
     ```
     ./scion.sh topology -c topology/Tiny.topo
     ```
-
-    After changing contents of `gen` directory it is necessary to [restart SCION infrastructure](/scion_tricks/changing_gen_dir/#restarting-scion-infrastructure)
-
-** This command will delete any previous `gen` directory. Make sure to back it up before, if necessary! **
 
 Some notes about the topology definition in `topology/Default.topo`
 
@@ -89,4 +98,4 @@ Testing the infrastructure:
 
 ## Next steps
 
-After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation/)
+After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation/).
