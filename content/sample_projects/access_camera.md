@@ -18,7 +18,7 @@ imagefetcher -s 1-1011,[192.33.93.166]:42002 -c 1-1006,[10.0.2.15]:42001
 ```
 
 The fetched image is then saved in the local directory. A sample image is shown below:
-![Sample image out of the window of office CAB E76](/images/office-20171218-10:48:37.jpg)
+![Sample image out of the window of office CAB E76](/images/office-20171217.jpg)
 
 ## imageserver
 

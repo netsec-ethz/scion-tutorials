@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
     
     
       
@@ -813,7 +813,7 @@ rm -rf gen
 
 <h2 id="step-three-remove-unnecessary-services">Step Three - Remove unnecessary services<a class="headerlink" href="#step-three-remove-unnecessary-services" title="Permanent link">&para;</a></h2>
 <p>The next step is to disable unnecessary SCION services, like the border router, beacon server, etc., on the endhost device. This can be done by editing configuration file on the <strong>endhost's system</strong>:</p>
-<div class="codehilite"><pre><span></span>vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/supervisord.conf
+<div class="codehilite"><pre><span></span><span class="x">vim </span><span class="p">$</span><span class="nv">SC</span><span class="x">/gen/ISD</span><span class="err">{</span><span class="x">ISD_NUMBER}/AS</span><span class="err">{</span><span class="x">AS_NUMBER}/supervisord.conf</span>
 </pre></div>
 
 
@@ -848,7 +848,7 @@ rm -rf *-*
 <p>Configuration files we copied from VM in first step contain address <code>10.0.2.15</code>. This address is not accessible outside the VM and we need to rewrite it to the host's IP address, so that packets get routed correctly. This can be done with iptables.</p>
 <div class="codehilite"><pre><span></span>sudo apt install netfilter-persistent iptables-persistent
 
-sudo iptables -t nat -A OUTPUT -m udp -p udp -d <span class="m">10</span>.0.2.15 -j DNAT --to-destination <span class="m">10</span>.42.0.1
+sudo iptables -t nat -A OUTPUT -m udp -p udp -d 10.0.2.15 -j DNAT --to-destination 10.42.0.1
 
 sudo netfilter-persistent save
 </pre></div>
@@ -917,7 +917,7 @@ sudo netfilter-persistent save
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
     
     
