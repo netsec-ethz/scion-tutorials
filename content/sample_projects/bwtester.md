@@ -31,7 +31,7 @@ To install bwtestserver:
 go get github.com/perrig/scionlab/bwtester/bwtestserver
 ```
 
-The server is started as follows, where the address needs to be adjusted as for other applications:
+The server is started as follows, where the address needs to be adjusted based on the (ISD, AS, IP) parameters of the host it runs on:
 
 ```shell
 bwtestserver -s 1-6,[192.33.93.173]:30100 &
