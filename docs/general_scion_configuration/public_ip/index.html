@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
     
     
       
@@ -698,29 +698,33 @@
                 
                 <h1 id="connecting-to-scionlab-with-a-static-public-ip-address">Connecting to SCIONLab with a static public IP address<a class="headerlink" href="#connecting-to-scionlab-with-a-static-public-ip-address" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>This tutorial will cover steps required for connecting already running SCION infrastructure to SCION lab, doing so you will be running one SCION autonomous system. </p>
-<p>For the purpose of this tutorial, we assume that you <strong>have</strong> a static public IP address and that your machine can receive UDP traffic from internet over port 50000. If this is not the case, please follow <a href="../../general_scion_configuration/vpn_setup">Connecting to SCION Lab over VPN</a></p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>In order to follow this tutorial, we will assume that you already installed SCION infrastructure and that you are able to <a href="../../general_scion_configuration/local_top">run local topology</a>.</p>
+<p>This tutorial will cover the steps required for connecting a SCION installation to SCIONLab. In the end, you will be running one SCION autonomous system connected to the SCIONLab network.</p>
+<p>For the purpose of this tutorial, we assume that you <strong>have</strong> a static public IP address and that your machine can receive UDP traffic from the Internet on port 50000. If this is not the case, please follow <a href="../../general_scion_configuration/vpn_setup">Connecting to SCION Lab over OpenVPN</a></p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>If you are running one of the SCION Virtual machine setups, configuration covered in this tutorial is already implemented in the system image. </p>
+<p>Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the <a href="../../general_scion_configuration/vpn_setup/">OpenVPN connection tutorial</a>.</p>
+</div>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>In order to follow this tutorial, we will assume that you already installed the SCION infrastructure and that you are able to <a href="../../general_scion_configuration/local_top">run a local topology</a>.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If you are running one of the SCION Virtual Machine setups, the configuration covered in this tutorial is already implemented in the system image, so you don't need the steps described here.</p>
 </div>
 <h2 id="step-one-downloading-scion-lab-configuration">Step One - downloading SCION Lab configuration<a class="headerlink" href="#step-one-downloading-scion-lab-configuration" title="Permanent link">&para;</a></h2>
 <p>In order to download necessary configuration you must login to <a href="https://coord.scionproto.net/#/login">SCION Coordination Service</a>. In case you don't yet have an account, follow the registration process.</p>
 <div class="admonition note">
-<p>Since current version of <em>Coordination Service</em> only generates VM configuration scripts, we will use them in following steps to configure running SCION infrastructure.</p>
+<p>Since the current version of the <em>Coordination Service</em> only generates VM configuration scripts, we will use them in the following steps to configure running a SCION infrastructure on a native system.</p>
 </div>
 <p>After logging in, select "My Host has a static public IP address and can receive traffic at port 50000" checkbox and enter your public IP in the text field. Afterwards click on <strong>Create and Download SCIONLab VM Configuration</strong> as presented in the image below:</p>
 <p><img alt="SCIONLab download page" src="../../images/scionlab_download_vm_static_ip_setup.png" /></p>
-<p>Navigate to download directory and extract archive content:</p>
+<p>Navigate to the download directory and extract the archived content:</p>
 <div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/Downloads
-tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
+tar -xvzf scion_lab_&lt;user_email&gt;.tar.gz
 <span class="nb">cd</span> &lt;user_email&gt;
 </pre></div>
 
 
-<p>Extracted content should have following file structure:</p>
+<p>The extracted content should have the following file structure:</p>
 <div class="codehilite"><pre><span></span>├── gen
 │   ├── dispatcher
 │   │   ├── dispatcher.zlog.conf
@@ -735,10 +739,7 @@ tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
 </pre></div>
 
 
-<p>For the purpose of this tutorial we will just need:</p>
-<ul>
-<li>directory <code>gen</code> - SCION infrastructure configuration</li>
-</ul>
+<p>For the purpose of this tutorial we will just need the directory <code>gen</code>, which contains the SCION infrastructure configuration.</p>
 <h2 id="step-two-copying-scion-lab-configuration">Step Two - copying SCION Lab configuration<a class="headerlink" href="#step-two-copying-scion-lab-configuration" title="Permanent link">&para;</a></h2>
 <p>Before copying new configuration to your SCION directory, you should delete the old one. If necessary back it up previously.</p>
 <div class="codehilite"><pre><span></span>rm -rf <span class="nv">$SC</span>/gen
@@ -752,7 +753,7 @@ tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
 
 
 <h2 id="step-three-restarting-scion-infrastructure">Step Three - Restarting SCION infrastructure<a class="headerlink" href="#step-three-restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
-<p>After new configuration is copied, you need to restart infrastructure in following way:</p>
+<p>After the new configuration is copied, you need to restart the infrastructure in the following way:</p>
 <div class="codehilite"><pre><span></span>./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
 ./scion.sh run
@@ -760,7 +761,7 @@ tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="../../general_scion_configuration/verifying_scion_installation/">Verifying SCION Installation</a></p>
+<p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="../../general_scion_configuration/verifying_scion_installation/">Verifying SCION Installation</a>.</p>
                 
                   
                 
@@ -810,7 +811,7 @@ tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
     
     

@@ -51,15 +51,15 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
 ```
 
 !!! warning "Troubleshooting"
-    If the machine doesn't have generated SSH keys or the SSH keys are not assigned to the github account, the checkout will fail with the error `Permission denied (publickey)`. There are two ways to resolve this problem:
+    If your account does not have an SSH key and that SSH key is not assigned to the github account, the checkout will fail with the error `Permission denied (publickey)`. There are two ways to resolve this problem:
 
-    1. Changing the checkout using ssh to https:
+    1. Changing the checkout using https instead of ssh:
     ```
     git config --global url.https://github.com/.insteadOf git@github.com:
     ```
-    2. Assign SSH keys to Github account, detailed instruction can be found on [Github help](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
+    2. Assign an SSH key to your Github account, detailed instructions can be found on [Github help](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/).
 
-This will clone SCION appropriate directory in the Go workspace. We will create export environment variable `SP` that will point to SCION root directory. 
+This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable `SC` that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:
 
 ```shell
 echo 'export SC="$GOPATH/src/github.com/netsec-ethz/scion"' >> ~/.profile
@@ -69,7 +69,7 @@ cd $SC
 
 ### Step Two &ndash; apply necessary patches
 
-On ARM architecture it is necessary to apply two patches in following way:
+On ARM architectures, it is necessary to apply two patches as followings:
 
 ```shell
 git checkout -b arm-modified
@@ -78,27 +78,29 @@ wget https://gist.githubusercontent.com/FR4NK-W/fb7a4b171ab3d5121b6492b9b664fd47
 
 patch ./c/lib/scion/checksum_bench.c ./patches_checksum_bench.patch
 rm c/lib/scion/checksum_bench.c.orig
+rm patches_checksum_bench.patch
 patch ./c/dispatcher/dispatcher.c ./patches_dispatcher.patch
 rm c/dispatcher/dispatcher.c.orig
+rm patches_dispatcher.patch
 ```
 
-In order to make it easier to track, we can commit patched changes:
+In order to enable updating the system, we commit the patched changes into the local arm-modified branch:
 
 ```shell
 git commit -am "Modified to compile on ARM systems"
 ```
 
 !!! warning "Troubleshooting"
-    If git identity is not configured, commits won't be possible. Configuring users identity on newly installed git can be done in following way:  
+    If your git identity is not configured, commits won't be possible. Configuring the user identity on a newly installed git can be done as follows:
 
-    ```
-    git config --global user.name "John Doe" && 
-    git config --global user.email johndoe@example.com
-    ```
+```shell
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+```
 
-### Step Three &ndash; configure python path variable
+### Step Three &ndash; configure Python path variable
 
-Some SCION components like SCIONviz require Python libraries which are located in scion root directory. In order to make them accessible, exporting `PYTHONPATH` environment variable is required:
+Some SCION components like SCIONviz require Python libraries which are located in the scion root directory. In order to make them accessible, exporting the `PYTHONPATH` environment variable is required:
 
 ```shell
 echo 'export PYTHONPATH="$SC/python:$SC"' >> ~/.profile
@@ -114,7 +116,7 @@ bash -c 'yes | GO_INSTALL=true ./env/deps'
 ```
 
 !!! note
-    You might be asked for sudo password after running the command
+    You might be asked to enter the sudo password after running the command
 
 This will finish installing the required dependencies and system packages.
 
@@ -131,5 +133,6 @@ cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
 After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:
 
 1. [Running a local network topology](/general_scion_configuration/local_top/) &ndash; Generate a sample topology and run SCION locally
-2. [Connecting to SCIONLab with a static public IP address](/general_scion_configuration/public_ip/) &ndash; Connect to the already running SCION topology
-2. [Connecting to SCIONLab without a static public IP address](/general_scion_configuration/vpn_setup/) &ndash; Connect to the already running SCION topology through an OpenVPN tunnel
+1. [Connecting to SCIONLab with a static public IP address](/general_scion_configuration/public_ip/) &ndash; Connect to the already running SCION topology.
+1. [Connecting to SCIONLab with a static public IP address, but behind a NAT](/general_scion_configuration/public_ip_nat/)
+1. [Connecting to SCIONLab without a static public IP address](/general_scion_configuration/vpn_setup/) &ndash; Connect to the already running SCION topology through an OpenVPN tunnel.

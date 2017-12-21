@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
     
     
       
@@ -368,15 +368,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#running-as-in-scion-vm" title="Running AS in SCION VM" class="md-nav__link">
-    Running AS in SCION VM
+  <a href="#running-as-infrastructure-executes-in-a-vm" title="Running AS infrastructure executes in a VM" class="md-nav__link">
+    Running AS infrastructure executes in a VM
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#running-as-natively" title="Running AS natively" class="md-nav__link">
-    Running AS natively
+  <a href="#running-as-infrastructure-natively-on-a-system" title="Running AS infrastructure natively on a system" class="md-nav__link">
+    Running AS infrastructure natively on a system
   </a>
   
 </li>
@@ -682,15 +682,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#running-as-in-scion-vm" title="Running AS in SCION VM" class="md-nav__link">
-    Running AS in SCION VM
+  <a href="#running-as-infrastructure-executes-in-a-vm" title="Running AS infrastructure executes in a VM" class="md-nav__link">
+    Running AS infrastructure executes in a VM
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#running-as-natively" title="Running AS natively" class="md-nav__link">
-    Running AS natively
+  <a href="#running-as-infrastructure-natively-on-a-system" title="Running AS infrastructure natively on a system" class="md-nav__link">
+    Running AS infrastructure natively on a system
   </a>
   
 </li>
@@ -764,62 +764,56 @@
               
                 
                 
-                <h1 id="set-up-scino-endhost-and-connect-to-local-as">Set up SCINO endhost and connect to local AS<a class="headerlink" href="#set-up-scino-endhost-and-connect-to-local-as" title="Permanent link">&para;</a></h1>
+                <h1 id="set-up-scion-endhost-and-connect-to-local-as-infrastructure">Set up SCION endhost and connect to local AS infrastructure<a class="headerlink" href="#set-up-scion-endhost-and-connect-to-local-as-infrastructure" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>In this tutorial we will cover steps necessary to configure SCION endhost that will connect to already running SCION AS. 
-This is useful in situations where you don't want to run complete AS infrastructure, but rather forward traffic to AS.</p>
-<p>Depending on how SCION AS is run, steps in configuring endhost will slightly differ.</p>
-<h3 id="running-as-in-scion-vm">Running AS in SCION VM<a class="headerlink" href="#running-as-in-scion-vm" title="Permanent link">&para;</a></h3>
-<p>First way is running SCION AS as part of SCION virtual machine (VM), following figure depicts such a scenario.</p>
+<p>In this tutorial we will cover the steps necessary to configure a SCION endhost that will connect to an already running SCION AS. 
+This is useful in situations where your host can take advantage of an existing local SCION infrastructure.</p>
+<p>Depending on how the SCION AS is set up, the steps for configuring the endhost will slightly differ.</p>
+<h3 id="running-as-infrastructure-executes-in-a-vm">Running AS infrastructure executes in a VM<a class="headerlink" href="#running-as-infrastructure-executes-in-a-vm" title="Permanent link">&para;</a></h3>
+<p>In the first way, the SCION AS runs inside a virtual machine (VM). The following figure depicts this scenario.</p>
 <p><img alt="SCION AS in virtual machine" src="../../images/vm_endhost_setup.png" /></p>
-<p>Installation steps are covered in following tutorials:</p>
+<p>The installation steps of the AS are covered in the following tutorials:</p>
 <ul>
 <li><a href="../../virtual_machine_setup/dynamic_ip/">Running SCION VM with dynamic IP</a></li>
 <li><a href="../../virtual_machine_setup/static_ip/">Running SCION VM with static IP</a></li>
 </ul>
-<h3 id="running-as-natively">Running AS natively<a class="headerlink" href="#running-as-natively" title="Permanent link">&para;</a></h3>
-<p>Second way is running SCION AS natively on a host machine, following figure depicts such a scenario.</p>
+<h3 id="running-as-infrastructure-natively-on-a-system">Running AS infrastructure natively on a system<a class="headerlink" href="#running-as-infrastructure-natively-on-a-system" title="Permanent link">&para;</a></h3>
+<p>In the second way, the SCION AS is executing natively on a host machine. The following figure depicts this scenario.</p>
 <p><img alt="SCION running natively" src="../../images/native_endhost_setup.png" /></p>
-<p>Installation steps can be found in following tutorial pages:</p>
+<p>The installation steps for this setup is described in the following tutorial pages:</p>
 <ul>
 <li><a href="../../native_setup/ubuntu_x86_build/">Installing SCION on Ubuntu 16.04 x86 machine</a></li>
 <li><a href="../../native_setup/rpi_ubuntu/">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></li>
+<li><a href="../../general_scion_configuration/public_ip/">Configuring AS and connecting to SCION network for devices with public static IP</a></li>
+<li><a href="../../general_scion_configuration/public_ip_nat/">Configuring AS and connecting to SCION network for devices with public static IP behind a NAT</a></li>
+<li><a href="../../general_scion_configuration/vpn_setup/">Configuring AS and connecting to SCION network using OpenVPN</a></li>
 </ul>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>For the sake of simplicity, we will assume that Host's IP address is 10.42.0.1 and endhost's IP address is 10.42.0.180 in rest of the tutorial. It is necessary for you to find correct IP addresses of for your devices and replace them accordingly in following steps.</p>
-<p>If you are running SCION VM as your AS, you will need to install <code>iptable</code> utilities on your <strong>endhost</strong> device by running following command:</p>
-<div class="codehilite"><pre><span></span>sudo apt install netfilter-persistent iptables-persistent
-</pre></div>
-
-
+<p>For the sake of simplicity, we will assume in the remainder of the tutorial that the SCION AS infrastructure host's IP address is 10.42.0.1, and the endhost's IP address is 10.42.0.180. It is necessary for you to find the correct IP addresses of your devices and replace them accordingly in the following steps.</p>
 <h2 id="step-one-installing-scion-on-endhost">Step One - Installing SCION on endhost<a class="headerlink" href="#step-one-installing-scion-on-endhost" title="Permanent link">&para;</a></h2>
 <p>Any platform that runs SCION can be used as an endhost. To install SCION on different platforms you can follow one of the tutorials:</p>
 <ul>
 <li><a href="../../native_setup/ubuntu_x86_build/">Installing SCION on Ubuntu 16.04 x86 machine</a></li>
 <li><a href="../../native_setup/rpi_ubuntu/">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></li>
 </ul>
-<p>Other SCION VM can also be configured to be used as endhost.</p>
+<p>Also, SCION VMs can be configured to be used as endhost.</p>
 <h2 id="step-two-copy-initial-configuration">Step Two - Copy initial configuration<a class="headerlink" href="#step-two-copy-initial-configuration" title="Permanent link">&para;</a></h2>
-<p>After SCION infrastructure is successfully installed on your endhost device, we can start the configuration process. First of all we need to stop currently running scion topology and remove old <code>gen</code> directory.</p>
+<p>After the SCION environment is successfully installed on your endhost device, we can start the configuration process. First of all, we need to stop the currently running SCION environment and remove the old <code>gen</code> directory.</p>
 <div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
 ./scion.sh stop
 rm -rf gen
 </pre></div>
 
 
-<p>Next step is to make sure both endhost and SCION VM share the same configuration i.e. same <code>gen</code> directory. This can be done in several ways, easiest is copying it directly from AS system. </p>
-<p>Executing following command from <strong>SCION AS</strong> should be enough to copy complete <code>gen</code> directory to endhost:</p>
+<p>The next step is to make sure both endhost and SCION AS share the same AS configuration, i.e., the same <code>gen</code> directory. This can be done in several ways, but the easiest is to copy it directly from the AS system. </p>
+<p>Executing the following command from <strong>SCION AS</strong> copies the complete <code>gen</code> directory to endhost. Note that you will need to replace <strong>endhost_user</strong> with appropriate user name on the endhost, <strong>as_user</strong> with the appropriate user name from the system running the SCION AS, and the IP address 10.42.0.180 with the actual IP address of the endhost device.</p>
 <div class="codehilite"><pre><span></span>scp -r /home/as_user/go/src/github.com/netsec-ethz/scion/gen endhost_user@10.42.0.180:/home/endhost_user/go/src/github.com/netsec-ethz/scion/gen
 </pre></div>
 
 
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>You will need to replace <strong>endhost_user</strong> with appropriate user on endhost, <strong>as_user</strong> with appropriate user from SCION AS and IP address 10.42.0.180 with actual IP address of the endhost device.</p>
-</div>
 <h2 id="step-three-remove-unnecessary-services">Step Three - Remove unnecessary services<a class="headerlink" href="#step-three-remove-unnecessary-services" title="Permanent link">&para;</a></h2>
-<p>Next step is to disable unnecessary services, like border router, beacon server etc. on endhost device. This can be done by editing configuration file on <strong>endhost's system</strong>:</p>
-<div class="codehilite"><pre><span></span>vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/supervisord.conf
+<p>The next step is to disable unnecessary SCION services, like the border router, beacon server, etc., on the endhost device. This can be done by editing configuration file on the <strong>endhost's system</strong>:</p>
+<div class="codehilite"><pre><span></span><span class="x">vim </span><span class="p">$</span><span class="nv">SC</span><span class="x">/gen/ISD</span><span class="err">{</span><span class="x">ISD_NUMBER}/AS</span><span class="err">{</span><span class="x">AS_NUMBER}/supervisord.conf</span>
 </pre></div>
 
 
@@ -849,10 +843,12 @@ rm -rf *-*
 <h2 id="step-four-iptable-rules">Step Four - Iptable rules<a class="headerlink" href="#step-four-iptable-rules" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>This step is only necessary if you are running AS in SCION virtual machine</strong> if this is not the case, proceed to step five.</p>
+<p><strong>This step is only necessary if you are running the AS SCION infrastructure inside a Virtual Machine</strong>. If this is not the case, proceed to step five.</p>
 </div>
-<p>Configuration files we copied from VM in first step contain address <code>10.0.2.15</code>. This address is not accessible outside VM and we need to rewrite it to host's IP so packets get routed in right way. This can be done with iptables.</p>
-<div class="codehilite"><pre><span></span>sudo iptables -t nat -A OUTPUT -m udp -p udp -d <span class="m">10</span>.0.2.15 -j DNAT --to-destination <span class="m">10</span>.42.0.1
+<p>Configuration files we copied from VM in first step contain address <code>10.0.2.15</code>. This address is not accessible outside the VM and we need to rewrite it to the host's IP address, so that packets get routed correctly. This can be done with iptables.</p>
+<div class="codehilite"><pre><span></span>sudo apt install netfilter-persistent iptables-persistent
+
+sudo iptables -t nat -A OUTPUT -m udp -p udp -d 10.0.2.15 -j DNAT --to-destination 10.42.0.1
 
 sudo netfilter-persistent save
 </pre></div>
@@ -866,7 +862,7 @@ sudo netfilter-persistent save
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>Best way to verify endhost configuration is by running properly is by running some demo applications:</p>
+<p>The best way to verify endhost configuration is by running properly is by running some demo applications:</p>
 <ul>
 <li><a href="../../sample_projects/fetch_sensor_readings/">Fetching sensor readings or time stamps</a></li>
 <li><a href="../../sample_projects/access_camera/">Fetching a camera image over the SCION network</a></li>
@@ -921,7 +917,7 @@ sudo netfilter-persistent save
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
     
     

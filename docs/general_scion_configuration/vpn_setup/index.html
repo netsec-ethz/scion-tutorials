@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
     
     
       
@@ -390,8 +390,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-five-restarting-scion-infrastructure" title="Step Five - Restarting SCION infrastructure" class="md-nav__link">
-    Step Five - Restarting SCION infrastructure
+  <a href="#step-five-restarting-scion-infrastructure" title="Step Five - Restarting SCION Infrastructure" class="md-nav__link">
+    Step Five - Restarting SCION Infrastructure
   </a>
   
 </li>
@@ -696,8 +696,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-five-restarting-scion-infrastructure" title="Step Five - Restarting SCION infrastructure" class="md-nav__link">
-    Step Five - Restarting SCION infrastructure
+  <a href="#step-five-restarting-scion-infrastructure" title="Step Five - Restarting SCION Infrastructure" class="md-nav__link">
+    Step Five - Restarting SCION Infrastructure
   </a>
   
 </li>
@@ -726,36 +726,36 @@
                 
                 <h1 id="connecting-to-scionlab-via-vpn">Connecting to SCIONLab via VPN<a class="headerlink" href="#connecting-to-scionlab-via-vpn" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>This tutorial will cover steps required for connecting already running SCION infrastructure to SCION lab, doing so you will be running one SCION autonomous system. </p>
-<p>For the purpose of this tutorial, we assume that you don't have static public IP address, or that your machine cannot receive UDP traffic on port 50000 from internet. If this is not the case, you should consider following <a href="../../general_scion_configuration/public_ip/">Connecting to SCION Lab with public IP</a></p>
+<p>This tutorial will cover the steps required for connecting a SCION installation to SCIONLab. In the end, you will be running one SCION autonomous system connected to the SCIONLab network.</p>
+<p>For the purpose of this tutorial, we assume that you do not have static public IP address, or that your machine cannot receive UDP traffic on port 50000 from the Internet. If this is not the case, you should consider the tutorial <a href="../../general_scion_configuration/public_ip/">Connecting to SCION Lab with public IP</a> or <a href="../../general_scion_configuration/public_ip_nat/">Connecting to SCION Lab with public IP behind a NAT</a>.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>In order to follow this tutorial, we will assume that you already installed SCION infrastructure and that you are able to <a href="../../general_scion_configuration/local_top/">run local topology</a>.</p>
+<p>In order to follow this tutorial, we will assume that you already installed the SCION infrastructure and that you are able to <a href="../../general_scion_configuration/local_top/">run a local topology</a>.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>If you are running one of the SCION Virtual machine setups, configuration covered in this tutorial is already implemented in the system image. </p>
+<p>If you are running one of the SCION Virtual Machine setups, the configuration covered in this tutorial is already implemented in the system image, so you don't need the steps described here.</p>
 </div>
 <h2 id="step-one-installing-openvpn">Step One - installing OpenVPN<a class="headerlink" href="#step-one-installing-openvpn" title="Permanent link">&para;</a></h2>
-<p>In order to circumvent problem of not having publicly accessible IP address, we can tunnel SCION traffic to an exit node that has it, using OpenVPN.</p>
-<p>In order to install openvpn client, you can simply run:</p>
+<p>In order to circumvent the problem of not having a publicly accessible IP address, we create an OpenVPN tunnel to carry the SCION traffic between the two SCION border routers.</p>
+<p>In order to install the openvpn client, you can simply run:</p>
 <div class="codehilite"><pre><span></span>sudo apt install openvpn
 </pre></div>
 
 
 <h2 id="step-two-downloading-scion-lab-configuration">Step Two - downloading SCION Lab configuration<a class="headerlink" href="#step-two-downloading-scion-lab-configuration" title="Permanent link">&para;</a></h2>
-<p>In order to download necessary configuration you must login to <a href="https://coord.scionproto.net/#/login">SCION Coordination Service</a>. In case you don't yet have an account, follow the registration process.</p>
+<p>In order to download the necessary configuration you must login to <a href="https://coord.scionproto.net/#/login">SCION Coordination Service</a>. In case you don't yet have an account, follow the registration process.</p>
 <div class="admonition note">
-<p>Since current version of <em>Coordination Service</em> only generates VM configuration scripts, we will use them in following steps to configure running SCION infrastructure.</p>
+<p>Since the current version of the <em>Coordination Service</em> only generates VM configuration scripts, we will use them in the following steps to configure the running SCION infrastructure.</p>
 </div>
 <p>After logging in, download a VM configuration by clicking on <strong>Create and Download SCIONLab VM Configuration</strong> as presented in the image below:</p>
 <p><img alt="SCIONLab download page" src="../../images/scionlab_download_vm_openvpn_setup.png" /></p>
-<p>Navigate to download directory and extract archive content:</p>
+<p>Navigate to the download directory and extract the archive content:</p>
 <div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/Downloads
 tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
 <span class="nb">cd</span> &lt;user_email&gt;
 </pre></div>
 
 
-<p>Extracted content should have following file structure:</p>
+<p>The extracted content should have the following file structure:</p>
 <div class="codehilite"><pre><span></span>├── client.conf
 ├── gen
 │   ├── dispatcher
@@ -777,25 +777,24 @@ tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
 <li>directory <code>gen</code> - SCION infrastructure configuration</li>
 </ul>
 <h2 id="step-three-connecting-to-openvpn-server">Step Three - Connecting to OpenVPN server<a class="headerlink" href="#step-three-connecting-to-openvpn-server" title="Permanent link">&para;</a></h2>
-<p>Adding VPN configuration is done by copying files in openvpn directory:</p>
+<p>Adding the OpenVPN configuration is accomplished by copying files to the openvpn directory:</p>
 <div class="codehilite"><pre><span></span>sudo cp client.conf /etc/openvpn
 sudo chmod <span class="m">600</span> /etc/openvpn/client.conf
 </pre></div>
 
 
-<p>Starting OpenVPN service, and enabling it to run on startup is done in following way:</p>
+<p>Next, we need to automatically launch the OpenVPN service on startup of the system:</p>
 <div class="codehilite"><pre><span></span>systemctl start openvpn@client
 systemctl <span class="nb">enable</span> openvpn@client
 </pre></div>
 
 
-<p>After this, you should verify that new <code>tun</code> interface is added. </p>
-<p>Running </p>
+<p>After this, you should verify that new <code>tun</code> interface is added. The command:</p>
 <div class="codehilite"><pre><span></span>ip a
 </pre></div>
 
 
-<p>should display newly added interface, in this case <code>tun0</code>:</p>
+<p>should display the newly added interface, in this case <code>tun0</code> as in this example:</p>
 <div class="codehilite"><pre><span></span><span class="mi">9</span><span class="o">:</span> <span class="n">tun0</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">POINTOPOINT</span><span class="o">,</span><span class="n">MULTICAST</span><span class="o">,</span><span class="n">NOARP</span><span class="o">,</span><span class="n">UP</span><span class="o">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span> <span class="n">mtu</span> <span class="mi">1500</span> <span class="n">qdisc</span> <span class="n">pfifo_fast</span> <span class="n">state</span> <span class="n">UNKNOWN</span> <span class="n">group</span> <span class="k">default</span> <span class="n">qlen</span> <span class="mi">100</span>
     <span class="n">link</span><span class="o">/</span><span class="n">none</span> 
     <span class="n">inet</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">8.40</span><span class="o">/</span><span class="mi">24</span> <span class="n">brd</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">8.255</span> <span class="n">scope</span> <span class="n">global</span> <span class="n">tun0</span>
@@ -805,9 +804,9 @@ systemctl <span class="nb">enable</span> openvpn@client
 </pre></div>
 
 
-<p>In this case client's OpenVPN IP address is: <code>10.0.8.40</code>.</p>
+<p>In this case, the client's OpenVPN IP address is: <code>10.0.8.40</code>.</p>
 <h2 id="step-four-copying-scion-lab-configuration">Step Four - copying SCION Lab configuration<a class="headerlink" href="#step-four-copying-scion-lab-configuration" title="Permanent link">&para;</a></h2>
-<p>Before copying new configuration to your SCION directory, you should delete the old one. If necessary back it up previously.</p>
+<p>Before copying the new configuration to your SCION directory, you should delete the old one. If necessary back it up previously.</p>
 <div class="codehilite"><pre><span></span>rm -rf <span class="nv">$SC</span>/gen
 </pre></div>
 
@@ -818,22 +817,22 @@ systemctl <span class="nb">enable</span> openvpn@client
 </pre></div>
 
 
-<p>Because <code>gen</code> directory downloaded from Coordination Service is customized for VM IP addresses (<code>10.0.2.15</code>), we need to replace every occurrence of that IP with actual IP address of a running system.</p>
-<p>Finding out actual IP address of running system can be done by running following command:</p>
+<p>Because the <code>gen</code> directory downloaded from the Coordination Service is customized for VM IP addresses (<code>10.0.2.15</code>), we need to replace every occurrence of that IP with the actual IP address of our system.</p>
+<p>Finding out the actual IP address of our system can be done by running the following command:</p>
 <div class="codehilite"><pre><span></span>ip a
 </pre></div>
 
 
-<p>and using IP address from appropriate physical interface that is used for connecting to the network. </p>
-<p>In following steps we will assume that IP address is <code>10.42.0.180</code>, but you should replace it accordingly with value acquired from previous step.</p>
+<p>and using the IP address of the appropriate physical interface that is used for connecting to the network. </p>
+<p>In following steps we will assume that IP address is <code>10.42.0.180</code>, but you should replace it accordingly with value acquired in the previous step.</p>
 <div class="codehilite"><pre><span></span>find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
 find ./gen/ -name <span class="s2">&quot;*.yml&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
 find ./gen/ -name <span class="s2">&quot;*.conf&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
 </pre></div>
 
 
-<h2 id="step-five-restarting-scion-infrastructure">Step Five - Restarting SCION infrastructure<a class="headerlink" href="#step-five-restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
-<p>After OpenVPN connection is established and new configuration is copied, you need to restart infrastructure in following way:</p>
+<h2 id="step-five-restarting-scion-infrastructure">Step Five - Restarting SCION Infrastructure<a class="headerlink" href="#step-five-restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
+<p>After the OpenVPN connection is established and the new configuration is copied, you need to restart the infrastructure as follows:</p>
 <div class="codehilite"><pre><span></span>./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
 ./scion.sh run
@@ -841,7 +840,7 @@ find ./gen/ -name <span class="s2">&quot;*.conf&quot;</span> -exec sed -i <span 
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="../../general_scion_configuration/verifying_scion_installation/">Verifying SCION Installation</a></p>
+<p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="../../general_scion_configuration/verifying_scion_installation/">Verifying SCION Installation</a>.</p>
                 
                   
                 
@@ -891,7 +890,7 @@ find ./gen/ -name <span class="s2">&quot;*.conf&quot;</span> -exec sed -i <span 
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
     
     
