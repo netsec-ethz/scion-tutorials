@@ -12,10 +12,11 @@ To download newest version first navigate to SCION root directory:
 cd $SC
 ```
 
-and pull newest changes from `scionlab` branch:
+fetch newest changes from remote `scionlab` branch and rebase:
 
 ```shell
-git pull origin scionlab
+git fetch origin scionlab
+git rebase origin/scionlab
 ```
 
 If git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:
