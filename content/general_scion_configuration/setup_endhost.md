@@ -34,7 +34,12 @@ The installation steps for this setup is described in the following tutorial pag
 
 ## Prerequisites
 
-For the sake of simplicity, we will assume in the remainder of the tutorial that the SCION AS infrastructure host's IP address is 10.42.0.1, and the endhost's IP address is 10.42.0.180. It is necessary for you to find the correct IP addresses of your devices and replace them accordingly in the following steps.
+Throughout this setup we will use host and endhost IP addresses on both machines. In order to make everything easier to follow it is necessary to create two environment variables `HOST_IP` and `ENDHOST_IP` with respective addresses on **both machines** as they will be used throughout this setup. Execute following commands replacing correct IP addresses with correct ones:
+
+```shell
+export HOST_IP="10.42.0.1"
+export ENDHOST_IP="10.42.0.180"
+``` 
 
 ## Step One - Installing SCION on endhost
 
@@ -57,10 +62,10 @@ rm -rf gen
 
 The next step is to make sure both endhost and SCION AS share the same AS configuration, i.e., the same `gen` directory. This can be done in several ways, but the easiest is to copy it directly from the AS system. 
 
-Executing the following command from **SCION AS** copies the complete `gen` directory to endhost. Note that you will need to replace **endhost_user** with appropriate user name on the endhost, **as_user** with the appropriate user name from the system running the SCION AS, and the IP address 10.42.0.180 with the actual IP address of the endhost device.
+Executing the following command from **SCION AS** copies the complete `gen` directory to endhost. Note that you will need to replace **endhost_user** with appropriate user name on the endhost.
 
 ```shell
-scp -r /home/as_user/go/src/github.com/netsec-ethz/scion/gen endhost_user@10.42.0.180:/home/endhost_user/go/src/github.com/netsec-ethz/scion/gen
+scp -r ${SC}/gen endhost_user@${ENDHOST_IP}:/home/endhost_user/go/src/github.com/netsec-ethz/scion/gen
 ```
 
 ## Step Three - Remove unnecessary services
@@ -109,7 +114,7 @@ Configuration files we copied from VM in first step contain address `10.0.2.15`.
 ```shell
 sudo apt install netfilter-persistent iptables-persistent
 
-sudo iptables -t nat -A OUTPUT -m udp -p udp -d 10.0.2.15 -j DNAT --to-destination 10.42.0.1
+sudo iptables -t nat -A OUTPUT -m udp -p udp -d 10.0.2.15 -j DNAT --to-destination ${HOST_IP}
 
 sudo netfilter-persistent save
 ```

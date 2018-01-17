@@ -801,7 +801,12 @@ This is useful in situations where your host can take advantage of an existing l
 <li><a href="../../general_scion_configuration/vpn_setup/">Configuring AS and connecting to SCION network using OpenVPN</a></li>
 </ul>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>For the sake of simplicity, we will assume in the remainder of the tutorial that the SCION AS infrastructure host's IP address is 10.42.0.1, and the endhost's IP address is 10.42.0.180. It is necessary for you to find the correct IP addresses of your devices and replace them accordingly in the following steps.</p>
+<p>Throughout this setup we will use host and endhost IP addresses on both machines. In order to make everything easier to follow it is necessary to create two environment variables <code>HOST_IP</code> and <code>ENDHOST_IP</code> with respective addresses on <strong>both machines</strong> as they will be used throughout this setup. Execute following commands replacing correct IP addresses with correct ones:</p>
+<div class="codehilite"><pre><span></span><span class="nb">export</span> <span class="nv">HOST_IP</span><span class="o">=</span><span class="s2">&quot;10.42.0.1&quot;</span>
+<span class="nb">export</span> <span class="nv">ENDHOST_IP</span><span class="o">=</span><span class="s2">&quot;10.42.0.180&quot;</span>
+</pre></div>
+
+
 <h2 id="step-one-installing-scion-on-endhost">Step One - Installing SCION on endhost<a class="headerlink" href="#step-one-installing-scion-on-endhost" title="Permanent link">&para;</a></h2>
 <p>Any platform that runs SCION can be used as an endhost. To install SCION on different platforms you can follow one of the tutorials:</p>
 <ul>
@@ -818,8 +823,8 @@ rm -rf gen
 
 
 <p>The next step is to make sure both endhost and SCION AS share the same AS configuration, i.e., the same <code>gen</code> directory. This can be done in several ways, but the easiest is to copy it directly from the AS system. </p>
-<p>Executing the following command from <strong>SCION AS</strong> copies the complete <code>gen</code> directory to endhost. Note that you will need to replace <strong>endhost_user</strong> with appropriate user name on the endhost, <strong>as_user</strong> with the appropriate user name from the system running the SCION AS, and the IP address 10.42.0.180 with the actual IP address of the endhost device.</p>
-<div class="codehilite"><pre><span></span>scp -r /home/as_user/go/src/github.com/netsec-ethz/scion/gen endhost_user@10.42.0.180:/home/endhost_user/go/src/github.com/netsec-ethz/scion/gen
+<p>Executing the following command from <strong>SCION AS</strong> copies the complete <code>gen</code> directory to endhost. Note that you will need to replace <strong>endhost_user</strong> with appropriate user name on the endhost.</p>
+<div class="codehilite"><pre><span></span>scp -r <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/gen endhost_user@<span class="si">${</span><span class="nv">ENDHOST_IP</span><span class="si">}</span>:/home/endhost_user/go/src/github.com/netsec-ethz/scion/gen
 </pre></div>
 
 
@@ -860,7 +865,7 @@ rm -rf *-*
 <p>Configuration files we copied from VM in first step contain address <code>10.0.2.15</code>. This address is not accessible outside the VM and we need to rewrite it to the host's IP address, so that packets get routed correctly. This can be done with iptables.</p>
 <div class="codehilite"><pre><span></span>sudo apt install netfilter-persistent iptables-persistent
 
-sudo iptables -t nat -A OUTPUT -m udp -p udp -d <span class="m">10</span>.0.2.15 -j DNAT --to-destination <span class="m">10</span>.42.0.1
+sudo iptables -t nat -A OUTPUT -m udp -p udp -d <span class="m">10</span>.0.2.15 -j DNAT --to-destination <span class="si">${</span><span class="nv">HOST_IP</span><span class="si">}</span>
 
 sudo netfilter-persistent save
 </pre></div>
