@@ -132,6 +132,7 @@ cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
 
 After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:
 
+1. [Configure SCION to run on system boot](/scion_tricks/setup_startup.md) &ndash; Use systemd to run SCION and SCION-viz when system is started.
 1. [Running a local network topology](/general_scion_configuration/local_top/) &ndash; Generate a sample topology and run SCION locally
 1. [Connecting to SCIONLab with a static public IP address](/general_scion_configuration/public_ip/) &ndash; Connect to the already running SCION topology.
 1. [Connecting to SCIONLab with a static public IP address, but behind a NAT](/general_scion_configuration/public_ip_nat/)

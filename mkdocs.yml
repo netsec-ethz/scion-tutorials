@@ -74,6 +74,7 @@ pages:
 
     - SCION tips and tricks:
       - Verifying the installation: general_scion_configuration/verifying_scion_installation.md
+      - Running SCION on system boot: scion_tricks/setup_startup.md
       - Updating gen directory: scion_tricks/changing_gen_dir.md
       - Updating SCION: scion_tricks/updating_scion.md
       - Adding Wireshark dissector: scion_tricks/wireshark.md
