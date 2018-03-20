@@ -34,9 +34,9 @@ source ~/.profile
 After the Go workspace has been configured, we can check out the SCION repository from github.com with all dependencies using the following commands:
 
 ```shell
-mkdir -p "$GOPATH/src/github.com/netsec-ethz"
-cd "$GOPATH/src/github.com/netsec-ethz"
-git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
+mkdir -p "$GOPATH/src/github.com/scionproto"
+cd "$GOPATH/src/github.com/scionproto"
+git clone --recursive git@github.com:scionproto/scion
 ```
 
 !!! warning "Troubleshooting"
@@ -51,7 +51,7 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
 This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable `SC` that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:
 
 ```shell
-echo 'export SC="$GOPATH/src/github.com/netsec-ethz/scion"' >> ~/.profile
+echo 'export SC="$GOPATH/src/github.com/scionproto/scion"' >> ~/.profile
 source ~/.profile
 cd $SC
 ```
