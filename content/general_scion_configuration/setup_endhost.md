@@ -65,7 +65,7 @@ The next step is to make sure both endhost and SCION AS share the same AS config
 Executing the following command from **SCION AS** copies the complete `gen` directory to endhost. Note that you will need to replace **endhost_user** with appropriate user name on the endhost.
 
 ```shell
-scp -r ${SC}/gen endhost_user@${ENDHOST_IP}:/home/endhost_user/go/src/github.com/netsec-ethz/scion/gen
+scp -r ${SC}/gen endhost_user@${ENDHOST_IP}:/home/endhost_user/go/src/github.com/scionproto/scion/gen
 ```
 
 ## Step Three - Remove unnecessary services
