@@ -45,9 +45,9 @@ source ~/.profile
 After the Go workspace has been configured, we can checkout the SCION repository from github.com with all dependencies using the following commands:
 
 ```shell
-mkdir -p "$GOPATH/src/github.com/netsec-ethz"
-cd "$GOPATH/src/github.com/netsec-ethz"
-git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
+mkdir -p "$GOPATH/src/github.com/scionproto/scion"
+cd "$GOPATH/src/github.com/scionproto/scion"
+git clone --recursive -b scionlab git@github.com:netsec-ethz/netsec-scion .
 ```
 
 !!! warning "Troubleshooting"
