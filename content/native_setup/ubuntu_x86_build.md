@@ -51,7 +51,7 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/scion
 This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable `SC` that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:
 
 ```shell
-echo 'export SC="$GOPATH/src/github.com/netsec-ethz/scion"' >> ~/.profile
+echo 'export SC="$GOPATH/src/github.com/scionproto/scion"' >> ~/.profile
 source ~/.profile
 cd $SC
 ```

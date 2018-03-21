@@ -1,7 +1,7 @@
 # Command-line AS Visualization
 
 ```shell
-cd ~/go/src/github.com/netsec-ethz/scion/
+cd ~/go/src/github.com/scionproto/scion/
 ```
 
 ```shell
@@ -221,7 +221,7 @@ SCION AS Viewer
 (src) 1-1045 =======================> None (dst)
 /run/shm/sciond/sd1-1045.sock
 Starting sciond at /run/shm/sciond/sd1-1045.sock
-/home/ubuntu/go/src/github.com/netsec-ethz/scion/gen/ISD1/AS1045/endhost/path_policy.yml
+/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD1/AS1045/endhost/path_policy.yml
 ---
 BestSetSize: 5
 CandidatesSetSize: 20
@@ -256,7 +256,7 @@ SCION AS Viewer
 (src) 1-1045 =======================> None (dst)
 /run/shm/sciond/sd1-1045.sock
 Starting sciond at /run/shm/sciond/sd1-1045.sock
-/home/ubuntu/go/src/github.com/netsec-ethz/scion/gen/ISD1/AS1045/endhost/as.yml
+/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD1/AS1045/endhost/as.yml
 CertChainVersion: 0
 MasterASKey: VrMpfgsWBxZZuhhSQoIUlg==
 PropagateTime: 5
@@ -271,7 +271,7 @@ SCION AS Viewer
 (src) 1-1045 =======================> None (dst)
 /run/shm/sciond/sd1-1045.sock
 Starting sciond at /run/shm/sciond/sd1-1045.sock
-/home/ubuntu/go/src/github.com/netsec-ethz/scion/gen/ISD1/AS1045/endhost/certs/ISD1-AS1045-V0.crt
+/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD1/AS1045/endhost/certs/ISD1-AS1045-V0.crt
 {
     "0": {
         "EncAlgorithm": "curve25519xsalsa20poly1305",
@@ -313,7 +313,7 @@ SCION AS Viewer
 (src) 1-1045 =======================> None (dst)
 /run/shm/sciond/sd1-1045.sock
 Starting sciond at /run/shm/sciond/sd1-1045.sock
-/home/ubuntu/go/src/github.com/netsec-ethz/scion/gen/ISD1/AS1045/endhost/certs/ISD1-V0.trc
+/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD1/AS1045/endhost/certs/ISD1-V0.trc
 {
     "QuorumCAs": 3,
     "Signatures": {

@@ -98,7 +98,7 @@ After successful installation of the VM, you can ssh into your VM:
 vagrant ssh
 ```
 
-The SCION infrastructure is automatically started at boot time of your VM. You can control it using the `scion.sh` script located at `~/go/src/github.com/netsec-ethz/scion/`. You can easily get to that directory with `cd $SC`.
+The SCION infrastructure is automatically started at boot time of your VM. You can control it using the `scion.sh` script located at `~/go/src/github.com/scionproto/scion/`. You can easily get to that directory with `cd $SC`.
 
 To shut the system down, you can type `sudo shutdown now` inside the VM, or `vagrant halt` in the host terminal.
 
