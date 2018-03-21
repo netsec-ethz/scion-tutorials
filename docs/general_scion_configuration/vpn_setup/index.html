@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
     
     
       
@@ -749,8 +749,7 @@
 <h2 id="step-one-installing-openvpn">Step One - installing OpenVPN<a class="headerlink" href="#step-one-installing-openvpn" title="Permanent link">&para;</a></h2>
 <p>In order to circumvent the problem of not having a publicly accessible IP address, we create an OpenVPN tunnel to carry the SCION traffic between the two SCION border routers.</p>
 <p>In order to install the openvpn client, you can simply run:</p>
-<div class="codehilite"><pre><span></span>sudo apt install openvpn
-</pre></div>
+<pre class="codehilite"><code class="language-shell">sudo apt install openvpn</code></pre>
 
 
 <h2 id="step-two-downloading-scion-lab-configuration">Step Two - downloading SCION Lab configuration<a class="headerlink" href="#step-two-downloading-scion-lab-configuration" title="Permanent link">&para;</a></h2>
@@ -761,14 +760,13 @@
 <p>After logging in, download a VM configuration by clicking on <strong>Create and Download SCIONLab VM Configuration</strong> as presented in the image below:</p>
 <p><img alt="SCIONLab download page" src="../../images/scionlab_download_vm_openvpn_setup.png" /></p>
 <p>Navigate to the download directory and extract the archive content:</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/Downloads
+<pre class="codehilite"><code class="language-shell">cd ~/Downloads
 tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
-<span class="nb">cd</span> &lt;user_email&gt;
-</pre></div>
+cd &lt;user_email&gt;</code></pre>
 
 
 <p>The extracted content should have the following file structure:</p>
-<div class="codehilite"><pre><span></span>├── client.conf
+<pre class="codehilite"><code>├── client.conf
 ├── gen
 │   ├── dispatcher
 │   │   ├── dispatcher.zlog.conf
@@ -779,8 +777,7 @@ tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
 ├── run.sh
 ├── scion.service
 ├── scion-viz.service
-└── Vagrantfile
-</pre></div>
+└── Vagrantfile</code></pre>
 
 
 <p>For the purpose of this tutorial we will just need:</p>
@@ -790,65 +787,56 @@ tar -vxzf scion_lab_&lt;user_email&gt;.tar.gz
 </ul>
 <h2 id="step-three-connecting-to-openvpn-server">Step Three - Connecting to OpenVPN server<a class="headerlink" href="#step-three-connecting-to-openvpn-server" title="Permanent link">&para;</a></h2>
 <p>Adding the OpenVPN configuration is accomplished by copying files to the openvpn directory:</p>
-<div class="codehilite"><pre><span></span>sudo cp client.conf /etc/openvpn
-sudo chmod <span class="m">600</span> /etc/openvpn/client.conf
-</pre></div>
+<pre class="codehilite"><code class="language-shell">sudo cp client.conf /etc/openvpn
+sudo chmod 600 /etc/openvpn/client.conf</code></pre>
 
 
 <p>Next, we need to automatically launch the OpenVPN service on startup of the system:</p>
-<div class="codehilite"><pre><span></span>systemctl start openvpn@client
-systemctl <span class="nb">enable</span> openvpn@client
-</pre></div>
+<pre class="codehilite"><code class="language-shell">systemctl start openvpn@client
+systemctl enable openvpn@client</code></pre>
 
 
 <p>After this, you should verify that new <code>tun</code> interface is added. The command:</p>
-<div class="codehilite"><pre><span></span>ip a
-</pre></div>
+<pre class="codehilite"><code class="language-shell">ip a</code></pre>
 
 
 <p>should display the newly added interface, in this case <code>tun0</code> as in this example:</p>
-<div class="codehilite"><pre><span></span><span class="mi">9</span><span class="o">:</span> <span class="n">tun0</span><span class="o">:</span> <span class="o">&lt;</span><span class="n">POINTOPOINT</span><span class="o">,</span><span class="n">MULTICAST</span><span class="o">,</span><span class="n">NOARP</span><span class="o">,</span><span class="n">UP</span><span class="o">,</span><span class="n">LOWER_UP</span><span class="o">&gt;</span> <span class="n">mtu</span> <span class="mi">1500</span> <span class="n">qdisc</span> <span class="n">pfifo_fast</span> <span class="n">state</span> <span class="n">UNKNOWN</span> <span class="n">group</span> <span class="k">default</span> <span class="n">qlen</span> <span class="mi">100</span>
-    <span class="n">link</span><span class="o">/</span><span class="n">none</span> 
-    <span class="n">inet</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">8.40</span><span class="o">/</span><span class="mi">24</span> <span class="n">brd</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">8.255</span> <span class="n">scope</span> <span class="n">global</span> <span class="n">tun0</span>
-       <span class="n">valid_lft</span> <span class="n">forever</span> <span class="n">preferred_lft</span> <span class="n">forever</span>
-    <span class="n">inet6</span> <span class="n">fe80</span><span class="o">::</span><span class="mi">2337</span><span class="o">:</span><span class="n">a0c4</span><span class="o">:</span><span class="mi">7</span><span class="n">fa7</span><span class="o">:</span><span class="mi">78</span><span class="n">b3</span><span class="o">/</span><span class="mi">64</span> <span class="n">scope</span> <span class="n">link</span> <span class="n">flags</span> <span class="mi">800</span> 
-       <span class="n">valid_lft</span> <span class="n">forever</span> <span class="n">preferred_lft</span> <span class="n">forever</span>
-</pre></div>
+<pre class="codehilite"><code>9: tun0: &lt;POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 100
+    link/none 
+    inet 10.0.8.40/24 brd 10.0.8.255 scope global tun0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::2337:a0c4:7fa7:78b3/64 scope link flags 800 
+       valid_lft forever preferred_lft forever</code></pre>
 
 
 <p>In this case, the client's OpenVPN IP address is: <code>10.0.8.40</code>.</p>
 <h2 id="step-four-copying-scion-lab-configuration">Step Four - copying SCION Lab configuration<a class="headerlink" href="#step-four-copying-scion-lab-configuration" title="Permanent link">&para;</a></h2>
 <p>Before copying the new configuration to your SCION directory, you should delete the old one. If necessary back it up previously.</p>
-<div class="codehilite"><pre><span></span>rm -rf <span class="nv">$SC</span>/gen
-</pre></div>
+<pre class="codehilite"><code class="language-shell">rm -rf $SC/gen</code></pre>
 
 
 <p>Copy new configuration and navigate to SCION root directory:</p>
-<div class="codehilite"><pre><span></span>cp -r gen <span class="nv">$SC</span>/
-<span class="nb">cd</span> <span class="nv">$SC</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cp -r gen $SC/
+cd $SC</code></pre>
 
 
 <p>Because the <code>gen</code> directory downloaded from the Coordination Service is customized for VM IP addresses (<code>10.0.2.15</code>), we need to replace every occurrence of that IP with the actual IP address of our system.</p>
 <p>Finding out the actual IP address of our system can be done by running the following command:</p>
-<div class="codehilite"><pre><span></span>ip a
-</pre></div>
+<pre class="codehilite"><code class="language-shell">ip a</code></pre>
 
 
 <p>and using the IP address of the appropriate physical interface that is used for connecting to the network. </p>
 <p>In following steps we will assume that IP address is <code>10.42.0.180</code>, but you should replace it accordingly with value acquired in the previous step.</p>
-<div class="codehilite"><pre><span></span>find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
-find ./gen/ -name <span class="s2">&quot;*.yml&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
-find ./gen/ -name <span class="s2">&quot;*.conf&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">find ./gen/ -name &quot;*.json&quot; -exec sed -i &quot;s/10.0.2.15/10.42.0.180/g&quot; '{}' \;
+find ./gen/ -name &quot;*.yml&quot; -exec sed -i &quot;s/10.0.2.15/10.42.0.180/g&quot; '{}' \;
+find ./gen/ -name &quot;*.conf&quot; -exec sed -i &quot;s/10.0.2.15/10.42.0.180/g&quot; '{}' \;</code></pre>
 
 
 <h2 id="step-five-restarting-scion-infrastructure">Step Five - Restarting SCION Infrastructure<a class="headerlink" href="#step-five-restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
 <p>After the OpenVPN connection is established and the new configuration is copied, you need to restart the infrastructure as follows:</p>
-<div class="codehilite"><pre><span></span>./scion.sh stop
+<pre class="codehilite"><code class="language-shell">./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run
-</pre></div>
+./scion.sh run</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
@@ -902,7 +890,7 @@ find ./gen/ -name <span class="s2">&quot;*.conf&quot;</span> -exec sed -i <span 
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
       
     
     
