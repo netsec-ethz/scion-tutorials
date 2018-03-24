@@ -834,7 +834,7 @@ rm -rf gen</code></pre>
 
 <p>The next step is to make sure both endhost and SCION AS share the same AS configuration, i.e., the same <code>gen</code> directory. This can be done in several ways, but the easiest is to copy it directly from the AS system. </p>
 <p>Executing the following command from <strong>SCION AS</strong> copies the complete <code>gen</code> directory to endhost. Note that you will need to replace <strong>endhost_user</strong> with appropriate user name on the endhost.</p>
-<pre class="codehilite"><code class="language-shell">scp -r ${SC}/gen endhost_user@${ENDHOST_IP}:/home/endhost_user/go/src/github.com/netsec-ethz/scion/gen</code></pre>
+<pre class="codehilite"><code class="language-shell">scp -r ${SC}/gen endhost_user@${ENDHOST_IP}:/home/endhost_user/go/src/github.com/scionproto/scion/gen</code></pre>
 
 
 <h2 id="step-three-remove-unnecessary-services">Step Three - Remove unnecessary services<a class="headerlink" href="#step-three-remove-unnecessary-services" title="Permanent link">&para;</a></h2>
