@@ -31,6 +31,7 @@ The following tutorials cover how to install, configure, and run a SCION infrast
 
 * [Installing SCION on Ubuntu 16.04 x86](native_setup/ubuntu_x86_build/)
 * [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](native_setup/rpi_ubuntu/)
+* [Installing SCION on an Android device](native_setup/android/)
 
 ### 2. Setting up SCION topology
 

@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
     
     
       
@@ -249,6 +249,18 @@
   <li class="md-nav__item">
     <a href="../../native_setup/rpi_ubuntu/" title="Ubuntu MATE Raspberry PI" class="md-nav__link">
       Ubuntu MATE Raspberry PI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../native_setup/android/" title="Android devices" class="md-nav__link">
+      Android devices
     </a>
   </li>
 
@@ -721,23 +733,21 @@
 <p>We will create <a href="https://www.freedesktop.org/wiki/Software/systemd/">systemd</a> service that will be configured to run SCION infrastructure on system boot.</p>
 <h3 id="step-one-get-template-service-files">Step One - Get template service files<a class="headerlink" href="#step-one-get-template-service-files" title="Permanent link">&para;</a></h3>
 <p>To avoid creating service files from scratch, we can download templates from <a href="https://github.com/netsec-ethz/scion-coord/tree/master/vagrant">SCION Lab</a> repository and customize them for current system. Downloaded template files have value <code>_USER_</code> instead of real system user so we will have to adjust it. Complete process can be finished with following commands:</p>
-<div class="codehilite"><pre><span></span>mkdir -p /tmp/scion_services
-<span class="nb">cd</span> /tmp/scion_services
+<pre class="codehilite"><code class="language-shell">mkdir -p /tmp/scion_services
+cd /tmp/scion_services
 
 wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/vagrant/scion.service
 wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/vagrant/scion-viz.service
 
-sed -i <span class="s2">&quot;s/_USER_/</span><span class="nv">$USER</span><span class="s2">/g&quot;</span> *.service
-</pre></div>
+sed -i &quot;s/_USER_/$USER/g&quot; *.service</code></pre>
 
 
 <h3 id="step-two-register-services-with-systemd">Step Two - Register services with systemd<a class="headerlink" href="#step-two-register-services-with-systemd" title="Permanent link">&para;</a></h3>
 <p>We need to copy newly created services to systemd directory and enable them. This can be done with following commands:</p>
-<div class="codehilite"><pre><span></span>sudo cp *.service /etc/systemd/system/
+<pre class="codehilite"><code class="language-shell">sudo cp *.service /etc/systemd/system/
 
-sudo systemctl <span class="nb">enable</span> scion.service
-sudo systemctl <span class="nb">enable</span> scion-viz.service
-</pre></div>
+sudo systemctl enable scion.service
+sudo systemctl enable scion-viz.service</code></pre>
 
 
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
@@ -791,7 +801,7 @@ sudo systemctl <span class="nb">enable</span> scion-viz.service
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
       
     
     

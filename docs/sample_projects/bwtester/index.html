@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.1, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
     
     
       
@@ -249,6 +249,18 @@
   <li class="md-nav__item">
     <a href="../../native_setup/rpi_ubuntu/" title="Ubuntu MATE Raspberry PI" class="md-nav__link">
       Ubuntu MATE Raspberry PI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../native_setup/android/" title="Android devices" class="md-nav__link">
+      Android devices
     </a>
   </li>
 
@@ -656,30 +668,25 @@
 <p>The <a href="https://github.com/perrig/scionlab/">bandwidth testing application <code>bwtester</code></a> enables a variety of bandwidth tests on the SCION network. Installation and usage are described below. Documentation of the code and protocol are described in the bwtester's <a href="https://github.com/perrig/scionlab/blob/master/bwtester/README.md">README.md</a>.</p>
 <h2 id="bwtestclient">bwtestclient<a class="headerlink" href="#bwtestclient" title="Permanent link">&para;</a></h2>
 <p>To install bwtestclient:</p>
-<div class="codehilite"><pre><span></span>go get github.com/perrig/scionlab/bwtester/bwtestclient
-</pre></div>
+<pre class="codehilite"><code class="language-shell">go get github.com/perrig/scionlab/bwtester/bwtestclient</code></pre>
 
 
 <p>You can test the application as follows, replacing the client address with your own address after the <code>-c</code> option (you can select any available port number for the client):</p>
-<div class="codehilite"><pre><span></span>bwtestclient -s <span class="m">1</span>-6,<span class="o">[</span><span class="m">192</span>.33.93.173<span class="o">]</span>:30100 -c <span class="m">1</span>-1006,<span class="o">[</span><span class="m">10</span>.0.2.15<span class="o">]</span>:30102
-</pre></div>
+<pre class="codehilite"><code class="language-shell">bwtestclient -s 1-6,[192.33.93.173]:30100 -c 1-1006,[10.0.2.15]:30102</code></pre>
 
 
 <p>A sample server is installed at <code>1-6,[192.33.93.173]:30100</code>.</p>
 <p>The application supports specification of the test duration (up to 10 seconds), the packet size to be used (at least 4 bytes), and the total number of packets that will be sent. For instance, <code>5,100,10</code> specifies that 10 packets of size 100 bytes will be sent over 5 seconds. The parameters for the test in the client-to-server direction are specified with <code>-cs</code>, and the server-to-client direction with <code>-sc</code>. So for instance to send 1 Mbps for 10 seconds from the client to the server, and 10 Mbps from the server to the client, you can use this command:</p>
-<div class="codehilite"><pre><span></span>bwtestclient -s <span class="m">1</span>-6,<span class="o">[</span><span class="m">192</span>.33.93.173<span class="o">]</span>:30100 -c <span class="m">1</span>-1006,<span class="o">[</span><span class="m">10</span>.0.2.15<span class="o">]</span>:30102 -cs <span class="m">10</span>,1000,1250 -sc <span class="m">10</span>,1000,12500
-</pre></div>
+<pre class="codehilite"><code class="language-shell">bwtestclient -s 1-6,[192.33.93.173]:30100 -c 1-1006,[10.0.2.15]:30102 -cs 10,1000,1250 -sc 10,1000,12500</code></pre>
 
 
 <h2 id="bwtestserver">bwtestserver<a class="headerlink" href="#bwtestserver" title="Permanent link">&para;</a></h2>
 <p>To install bwtestserver:</p>
-<div class="codehilite"><pre><span></span>go get github.com/perrig/scionlab/bwtester/bwtestserver
-</pre></div>
+<pre class="codehilite"><code class="language-shell">go get github.com/perrig/scionlab/bwtester/bwtestserver</code></pre>
 
 
 <p>The server is started as follows, where the address needs to be adjusted based on the (ISD, AS, IP) parameters of the host it runs on:</p>
-<div class="codehilite"><pre><span></span>bwtestserver -s <span class="m">1</span>-6,<span class="o">[</span><span class="m">192</span>.33.93.173<span class="o">]</span>:30100 <span class="p">&amp;</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">bwtestserver -s 1-6,[192.33.93.173]:30100 &amp;</code></pre>
                 
                   
                 
@@ -729,7 +736,7 @@
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
       
     
     
