@@ -994,12 +994,13 @@ python setup.py install</code></pre>
 <div class="admonition warning">
 <p class="admonition-title">Supervisor</p>
 <p>In case the pip installation of the package "Supervisor" fails, you can install it manually:</p>
-<p><code>shell
-curl -O https://pypi.python.org/packages/44/60/698e54b4a4a9b956b2d709b4b7b676119c833d811d53ee2500f1b5e96dc3/supervisor-3.3.4.tar.gz
+</div>
+<pre class="codehilite"><code class="language-shell">curl -O https://pypi.python.org/packages/44/60/698e54b4a4a9b956b2d709b4b7b676119c833d811d53ee2500f1b5e96dc3/supervisor-3.3.4.tar.gz
 tar -xzf supervisor-3.3.4.tar.gz
 cd supervisor-3.3.4/
-python2 setup.py install</code></p>
-</div>
+python2 setup.py install</code></pre>
+
+
 <h4 id="scion-go-dependencies">SCION Go dependencies<a class="headerlink" href="#scion-go-dependencies" title="Permanent link">&para;</a></h4>
 <p>With Go correctly installed it is easy to install the SCION dependencies as well:</p>
 <pre class="codehilite"><code class="language-shell">cd $SC/env/go
