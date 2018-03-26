@@ -21,7 +21,7 @@ pkg install -y termux-setup-storage termux-exec ssh git python python2 clang mak
 
 ### Configure Go workspace
 
-SCION requires a specific Go version. Termux' Go package is usually ahead of the required version. You can build the required packages yourself (e.g. using [termux-packages](https://github.com/termux/termux-packages)) or use the prebuilt package from the SCION repository:
+SCION requires a specific Go version. The Termux Go package is usually ahead of the required version. You can build the required packages yourself (e.g., using [termux-packages](https://github.com/termux/termux-packages)) or use the prebuilt package from the SCION repository:
 
 ```shell
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/golang-doc_2%3A1.9.4_aarch64.deb
@@ -105,7 +105,7 @@ Back in the `capnproto-c++-0.6.1/` root directory run:
 ./configure TMPDIR=$PREFIX/usr/tmp
 make PREFIX=$PREFIX
 ```
-To sucessfully install the libraries, modify the `Makefile` script with an editor (e.g. `vim` or `nano`).
+To sucessfully install the libraries, modify the `Makefile` script with an editor (e.g., `vim` or `nano`).
 Change line `877` like so:
 ```diff
 -prefix = /usr/local
@@ -133,7 +133,7 @@ make PREFIX=$PREFIX install
 
 #### uthash
 
-Install the [uthash](https://troydhanson.github.io/uthash/) library in your `home/` directory:
+Install the [uthash](https://troydhanson.github.io/uthash/) library from your `home/` directory:
 ```shell
 curl -o uthash-master.zip https://codeload.github.com/troydhanson/uthash/zip/master
 unzip uthash-master.zip

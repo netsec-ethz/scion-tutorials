@@ -881,7 +881,7 @@
 
 
 <h3 id="configure-go-workspace">Configure Go workspace<a class="headerlink" href="#configure-go-workspace" title="Permanent link">&para;</a></h3>
-<p>SCION requires a specific Go version. Termux' Go package is usually ahead of the required version. You can build the required packages yourself (e.g. using <a href="https://github.com/termux/termux-packages">termux-packages</a>) or use the prebuilt package from the SCION repository:</p>
+<p>SCION requires a specific Go version. The Termux Go package is usually ahead of the required version. You can build the required packages yourself (e.g., using <a href="https://github.com/termux/termux-packages">termux-packages</a>) or use the prebuilt package from the SCION repository:</p>
 <pre class="codehilite"><code class="language-shell">curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/golang-doc_2%3A1.9.4_aarch64.deb
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/golang_2%3A1.9.4_aarch64.deb
 dpkg -i golang_2:1.9.4_aarch64.deb golang-doc_2:1.9.4_aarch64.deb</code></pre>
@@ -949,7 +949,7 @@ rm debug.c++.patch</code></pre>
 make PREFIX=$PREFIX</code></pre>
 
 
-<p>To sucessfully install the libraries, modify the <code>Makefile</code> script with an editor (e.g. <code>vim</code> or <code>nano</code>).
+<p>To sucessfully install the libraries, modify the <code>Makefile</code> script with an editor (e.g., <code>vim</code> or <code>nano</code>).
 Change line <code>877</code> like so:</p>
 <pre class="codehilite"><code class="language-diff">-prefix = /usr/local
 +prefix = /data/data/com.termux/files/usr/local</code></pre>
@@ -972,7 +972,7 @@ make PREFIX=$PREFIX install</code></pre>
 
 
 <h4 id="uthash">uthash<a class="headerlink" href="#uthash" title="Permanent link">&para;</a></h4>
-<p>Install the <a href="https://troydhanson.github.io/uthash/">uthash</a> library in your <code>home/</code> directory:</p>
+<p>Install the <a href="https://troydhanson.github.io/uthash/">uthash</a> library from your <code>home/</code> directory:</p>
 <pre class="codehilite"><code class="language-shell">curl -o uthash-master.zip https://codeload.github.com/troydhanson/uthash/zip/master
 unzip uthash-master.zip
 cp uthash-master/src/*.h $PREFIX/usr/include
