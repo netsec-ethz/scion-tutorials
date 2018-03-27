@@ -25,7 +25,7 @@ sudo apt install openvpn
 
 ## Step Two - downloading SCION Lab configuration
 
-In order to download the necessary configuration you must login to [SCION Coordination Service](https://coord.scionproto.net/#/login). In case you don't yet have an account, follow the registration process.
+In order to download the necessary configuration you must login to [SCION Coordination Service](https://www.scionlab.org/). In case you don't yet have an account, follow the registration process.
 
 !!! note ""
     Since the current version of the *Coordination Service* only generates VM configuration scripts, we will use them in the following steps to configure the running SCION infrastructure.

@@ -6,7 +6,7 @@ This tutorial will guide you through the steps required to generate a local topo
 
 ## Prerequisites
 
-This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow [How to build SCION on Ubuntu 16.04 x86-64](/native_setup/ubuntu_x86_build) or [How to build SCION on Raspberry PI](/native_setup/rpi_ubuntu/).
+This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow [How to build SCION on Ubuntu 16.04 x86-64](/native_setup/ubuntu_x86_build/) or [How to build SCION on Raspberry PI](/native_setup/rpi_ubuntu/).
 
 ## Generating topology
 

@@ -2,12 +2,12 @@
 
 ## Introduction
 
-This tutorial introduces you to SCIONLab, shows you what you can do with a device connected to a SCION attachment point and with a PCEngines device you might request [here](https://coord.scionproto.net) in particular.
+This tutorial introduces you to SCIONLab, shows you what you can do with a device connected to a SCION attachment point and with a PCEngines device you might request [here](https://www.scionlab.org/) in particular.
 
 ## Setting up the PCEngines device
 
 You received the preconfigured PCEngines device. In the best case, the setup is as single as connecting the device to a network with Internet connectivity via the labelled network interface (the one closest to the serial interface).
-You can then check on the scion-coordinator on you [user page](https://coord.scionproto.net/#/user) that you device status is online.
+You can then check on the scion-coordinator on your [user page](https://www.scionlab.org/#/user) that you device status is online.
     
 !!! hint
     In case you local network implements MAC filtering, you need to request your network administrator to allow the PCEngines device to access the network. You will find the MAC address of the device on a sticker next to the network interface.

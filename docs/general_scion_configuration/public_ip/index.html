@@ -723,19 +723,19 @@
                 <h1 id="connecting-to-scionlab-with-a-static-public-ip-address">Connecting to SCIONLab with a static public IP address<a class="headerlink" href="#connecting-to-scionlab-with-a-static-public-ip-address" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This tutorial will cover the steps required for connecting a SCION installation to SCIONLab. In the end, you will be running one SCION autonomous system connected to the SCIONLab network.</p>
-<p>For the purpose of this tutorial, we assume that you <strong>have</strong> a static public IP address and that your machine can receive UDP traffic from the Internet on port 50000. If this is not the case, please follow <a href="../../general_scion_configuration/vpn_setup">Connecting to SCION Lab over OpenVPN</a></p>
+<p>For the purpose of this tutorial, we assume that you <strong>have</strong> a static public IP address and that your machine can receive UDP traffic from the Internet on port 50000. If this is not the case, please follow <a href="../../general_scion_configuration/vpn_setup/">Connecting to SCION Lab over OpenVPN</a></p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the <a href="../../general_scion_configuration/vpn_setup/">OpenVPN connection tutorial</a>.</p>
 </div>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>In order to follow this tutorial, we will assume that you already installed the SCION infrastructure and that you are able to <a href="../../general_scion_configuration/local_top">run a local topology</a>.</p>
+<p>In order to follow this tutorial, we will assume that you already installed the SCION infrastructure and that you are able to <a href="../../general_scion_configuration/local_top/">run a local topology</a>.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>If you are running one of the SCION Virtual Machine setups, the configuration covered in this tutorial is already implemented in the system image, so you don't need the steps described here.</p>
 </div>
 <h2 id="step-one-downloading-scion-lab-configuration">Step One - downloading SCION Lab configuration<a class="headerlink" href="#step-one-downloading-scion-lab-configuration" title="Permanent link">&para;</a></h2>
-<p>In order to download necessary configuration you must login to <a href="https://coord.scionproto.net/#/login">SCION Coordination Service</a>. In case you don't yet have an account, follow the registration process.</p>
+<p>In order to download necessary configuration you must login to <a href="https://www.scionlab.org/">SCION Coordination Service</a>. In case you don't yet have an account, follow the registration process.</p>
 <div class="admonition note">
 <p>Since the current version of the <em>Coordination Service</em> only generates VM configuration scripts, we will use them in the following steps to configure running a SCION infrastructure on a native system.</p>
 </div>
@@ -800,13 +800,13 @@ cd $SC</code></pre>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy 2017, Network Security Group, ETH Zurich
+            Copyright &copy 2018, Network Security Group, ETH Zurich
           </div>
         
         powered by
         <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
         and
-        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
           Material for MkDocs</a>
       </div>
       

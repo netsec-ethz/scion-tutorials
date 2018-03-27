@@ -7,7 +7,7 @@ Complete configuration for SCION infrastructure is stored in `gen` directory. Th
 Content for this directory can be created in several ways:
 
 - Using topology definition from `topology` directory. *Described in [Running SCION on local topology](/general_scion_configuration/local_top/)*
-- Downloading from [SCIONLab Coordination Service](https://coord.scionproto.net). *Described in [Configuring SCION Lab with OpenVPN](/general_scion_configuration/vpn_setup/).*
+- Downloading from [SCIONLab Coordination Service](https://www.scionlab.org/). *Described in [Configuring SCION Lab with OpenVPN](/general_scion_configuration/vpn_setup/).*
 - Manually creating topology
 
 ## Restarting SCION infrastructure
