@@ -5,7 +5,7 @@
 
 Simply follow all the steps under *Prerequisites* in the [tutorial for a VPN-based setup](dynamic_ip/) until the end of *Step One &ndash; download a SCION VM*.
 
-There, instead of directly clicking on *Create and Download SCIONLab VM Configuration*, first select *My host has a static public IP address and can receive traffic at port 50000.* and enter your host's public IP address in the input field.
+There, instead of directly clicking on *Create and Download SCIONLab VM Configuration*, unselect *Use an OpenVPN connection for this AS* and and enter your host's public IP address in the input field.
 
 Afterwards, follow all subsequent steps in the [tutorial for a VPN-based setup](dynamic_ip/).
 

@@ -59,4 +59,4 @@ The following tutorials cover how to install, configure, and run a SCION infrast
 
 ## SCIONLab specifics
 
-* [SCION box first steps](/scionlab/scionlab.md)
+* [SCION box first steps](/scionbox/scionbox.md)

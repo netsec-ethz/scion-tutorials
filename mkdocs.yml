@@ -80,6 +80,7 @@ pages:
       - Updating SCION: scion_tricks/updating_scion.md
       - Adding Wireshark dissector: scion_tricks/wireshark.md
 
-    - SCIONLab:
-      - SCION box first steps: scionlab/scionlab.md
+    - SCION box:
+      - SCION box first steps: scionbox/scionbox.md
+
 

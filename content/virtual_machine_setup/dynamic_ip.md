@@ -35,7 +35,7 @@ Running SCION consists of several steps: registering a SCION VM on [SCIONLab Coo
 
 In order to download a VM, you must login to [SCIONLab Coordination Service](https://www.scionlab.org/). In case you don't yet have an account, follow the registration process.
 
-After logging in, download a VM configuration by clicking on *Create and Download SCIONLab VM Configuration* as presented in the image below:
+After logging in, create a new AS by clicking on *Generate a new SCIONLab AS*, select a desired attachment point, and choose *Install inside a virtual machine*. Unless your VM has public IP address, choose *Use an OpenVPN connection for this AS*. Then download a VM configuration by clicking on *Create and Download SCIONLab VM Configuration*. A screenshot of the user interface is shown below:
 
 ![SCIONLab download page](/images/scionlab_download_vm_openvpn_setup.png)
 
@@ -76,19 +76,24 @@ After extraction, the extracted directory has the following structure:
 │
 ├── README
 ├── run.sh
+├── scion-viz.service
+├── scion.service
+├── scionupgrade.service
+├── scionupgrade.sh
+├── scionupgrade.timer
 └── Vagrantfile
 ```
 
-Verifying the structure, you can begin the setup by running, replacing `youremailaddress` with your correct address:
+Verifying the structure, you can begin the setup by running, replacing `*` according to the name of your extracted archive:
 
 ```shell
-cd youremailaddress
+cd scion_lab_*
 vagrant box add scion/ubuntu-16.04-64-scion
 vagrant box update
 vagrant up
 ```
 
-You will be asked for your password. The installation process will take around 10 minutes.
+The installation process will take around 10 minutes.
 
 ### Step Three &ndash; run the SCION infrastructure
 

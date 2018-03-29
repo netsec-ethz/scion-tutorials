@@ -1,5 +1,8 @@
 # Connecting to SCIONLab with a static public IP address
 
+!!! warning "Note"
+    This page needs to be updated. Use with care.
+
 ## Introduction
 
 This tutorial will cover the steps required for connecting a SCION installation to SCIONLab. In the end, you will be running one SCION autonomous system connected to the SCIONLab network.

@@ -650,11 +650,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
     
     <label class="md-nav__link" for="nav-7">
-      SCIONLab
+      SCION box
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-7">
-        SCIONLab
+        SCION box
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -665,7 +665,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../scionlab/scionlab/" title="SCION box first steps" class="md-nav__link">
+    <a href="../../scionbox/scionbox/" title="SCION box first steps" class="md-nav__link">
       SCION box first steps
     </a>
   </li>
@@ -809,7 +809,7 @@
 <p>Running SCION consists of several steps: registering a SCION VM on <a href="https://www.scionlab.org/">SCIONLab Coordination Service</a>, deploying the VM, and running the SCION infrastructure.</p>
 <h3 id="step-one-download-a-scion-vm">Step One &ndash; download a SCION VM<a class="headerlink" href="#step-one-download-a-scion-vm" title="Permanent link">&para;</a></h3>
 <p>In order to download a VM, you must login to <a href="https://www.scionlab.org/">SCIONLab Coordination Service</a>. In case you don't yet have an account, follow the registration process.</p>
-<p>After logging in, download a VM configuration by clicking on <em>Create and Download SCIONLab VM Configuration</em> as presented in the image below:</p>
+<p>After logging in, create a new AS by clicking on <em>Generate a new SCIONLab AS</em>, select a desired attachment point, and choose <em>Install inside a virtual machine</em>. Unless your VM has public IP address, choose <em>Use an OpenVPN connection for this AS</em>. Then download a VM configuration by clicking on <em>Create and Download SCIONLab VM Configuration</em>. A screenshot of the user interface is shown below:</p>
 <p><img alt="SCIONLab download page" src="../../images/scionlab_download_vm_openvpn_setup.png" /></p>
 <h3 id="step-two-create-and-run-the-vm">Step Two &ndash; create and run the VM<a class="headerlink" href="#step-two-create-and-run-the-vm" title="Permanent link">&para;</a></h3>
 <p>Create a directory that will host your SCIONLab content. For instance:</p>
@@ -841,17 +841,22 @@ mv ~/Download/scion_lab_*.tar* .</code></pre>
 │
 ├── README
 ├── run.sh
+├── scion-viz.service
+├── scion.service
+├── scionupgrade.service
+├── scionupgrade.sh
+├── scionupgrade.timer
 └── Vagrantfile</code></pre>
 
 
-<p>Verifying the structure, you can begin the setup by running, replacing <code>youremailaddress</code> with your correct address:</p>
-<pre class="codehilite"><code class="language-shell">cd youremailaddress
+<p>Verifying the structure, you can begin the setup by running, replacing <code>*</code> according to the name of your extracted archive:</p>
+<pre class="codehilite"><code class="language-shell">cd scion_lab_*
 vagrant box add scion/ubuntu-16.04-64-scion
 vagrant box update
 vagrant up</code></pre>
 
 
-<p>You will be asked for your password. The installation process will take around 10 minutes.</p>
+<p>The installation process will take around 10 minutes.</p>
 <h3 id="step-three-run-the-scion-infrastructure">Step Three &ndash; run the SCION infrastructure<a class="headerlink" href="#step-three-run-the-scion-infrastructure" title="Permanent link">&para;</a></h3>
 <p>After successful installation of the VM, you can ssh into your VM:</p>
 <pre class="codehilite"><code class="language-shell">vagrant ssh</code></pre>
