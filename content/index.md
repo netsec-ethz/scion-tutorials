@@ -57,6 +57,6 @@ The following tutorials cover how to install, configure, and run a SCION infrast
 * [Updating SCION to a new version](/scion_tricks/updating_scion.md)
 * [Adding Wireshark or Tshark dissector plugin](/scion_tricks/wireshark.md)
 
-## SCIONLab specifics
+## SCION box specifics
 
 * [SCION box first steps](/scionbox/scionbox.md)
