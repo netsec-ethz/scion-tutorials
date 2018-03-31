@@ -2,11 +2,58 @@
 
 ## Introduction
 
-This tutorial will guide you through the steps required to install SCION on an x86 system running Ubuntu 16.04. This also includes the steps required to install the necessary packages. For details on how to build SCION on a Raspberry Pi, please take a look at [how to build SCION on a Raspberry Pi](rpi_ubuntu.md).
+This tutorial will guide you through the steps required to install SCION on an x86 system running Ubuntu 16.04. For details on how to build SCION on a Raspberry Pi, please take a look at [how to build SCION on a Raspberry Pi](rpi_ubuntu.md).
 
-## Prerequisites
+## Easy Way (using the SCION install script)
 
-The following steps will guide you through the installation of the tools necessary for running SCION.
+The easy way to install SCION is to use the SCION install script:
+
+```shell
+wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_install_script.sh
+chmod +x scion_install_script.sh
+```
+
+The SCION install script supports various ways to connect to SCION:
+
+### Running the SCION infrastructure on a local topology
+
+If the SCION install script is executed without any arguments, SCION will be run on a local topology:
+
+```shell
+./scion_install_script.sh
+```
+
+For more information, check out [Running the SCION infrastructure on a local topology](/general_scion_configuration/local_top/).
+
+### Connecting to SCIONLab
+
+Installing a SCION AS and connecting it to SCIONLab requires that you have already downloaded the necessary configuration from the [SCION Coordination Service](https://www.scionlab.org/). To do so, please follow one of the following options, depending on the network configuration of the system on which SCION will be installed:
+
+1. [Connecting to SCIONLab with a static public IP address](/general_scion_configuration/public_ip/)
+1. [Connecting to SCIONLab with a static IP address, but behind a NAT](/general_scion_configuration/public_ip_nat/)
+1. [Connecting to SCIONLab via VPN (without a static IP address)](/general_scion_configuration/vpn_setup/)
+
+The configuration downloaded from the [SCION Coordination Service](https://www.scionlab.org/) includes a `gen` folder that needs to be uploaded to the target system and provided as an argument to the install script:
+
+```shell
+export BIDIR=`pwd`
+./scion_install_script.sh -g $BIDIR/gen/
+```
+
+In case of connecting to SCIONLab via VPN, the OpenVPN client configurationi (`client.conf`), that is included in the configuration downloaded from the [SCION Coordination Service](https://www.scionlab.org/) needs to be provided as argument additionally:
+
+```shell
+export BIDIR=`pwd`
+./scion_install_script.sh -g $BIDIR/gen/ -v $BIDIR/client.conf
+```
+
+### Next Steps
+
+After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation/).
+
+## Advanced Way (manual installation)
+
+The following steps will guide you through the manual installation of the tools necessary for running SCION. 
 
 ### Step One &ndash; install Go
 

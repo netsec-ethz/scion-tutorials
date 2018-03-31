@@ -271,8 +271,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#easy-way-using-the-scion-install-script" title="Easy Way (using the SCION install script)" class="md-nav__link">
+    Easy Way (using the SCION install script)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-the-scion-infrastructure-on-a-local-topology" title="Running the SCION infrastructure on a local topology" class="md-nav__link">
+    Running the SCION infrastructure on a local topology
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-scionlab" title="Connecting to SCIONLab" class="md-nav__link">
+    Connecting to SCIONLab
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-way-manual-installation" title="Advanced Way (manual installation)" class="md-nav__link">
+    Advanced Way (manual installation)
   </a>
   
     <nav class="md-nav">
@@ -711,8 +738,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#easy-way-using-the-scion-install-script" title="Easy Way (using the SCION install script)" class="md-nav__link">
+    Easy Way (using the SCION install script)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#running-the-scion-infrastructure-on-a-local-topology" title="Running the SCION infrastructure on a local topology" class="md-nav__link">
+    Running the SCION infrastructure on a local topology
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting-to-scionlab" title="Connecting to SCIONLab" class="md-nav__link">
+    Connecting to SCIONLab
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-way-manual-installation" title="Advanced Way (manual installation)" class="md-nav__link">
+    Advanced Way (manual installation)
   </a>
   
     <nav class="md-nav">
@@ -802,9 +856,39 @@
                 
                 <h1 id="building-scion-on-ubuntu-1604-x86-64">Building SCION on Ubuntu 16.04 x86-64<a class="headerlink" href="#building-scion-on-ubuntu-1604-x86-64" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>This tutorial will guide you through the steps required to install SCION on an x86 system running Ubuntu 16.04. This also includes the steps required to install the necessary packages. For details on how to build SCION on a Raspberry Pi, please take a look at <a href="../rpi_ubuntu/">how to build SCION on a Raspberry Pi</a>.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>The following steps will guide you through the installation of the tools necessary for running SCION.</p>
+<p>This tutorial will guide you through the steps required to install SCION on an x86 system running Ubuntu 16.04. For details on how to build SCION on a Raspberry Pi, please take a look at <a href="../rpi_ubuntu/">how to build SCION on a Raspberry Pi</a>.</p>
+<h2 id="easy-way-using-the-scion-install-script">Easy Way (using the SCION install script)<a class="headerlink" href="#easy-way-using-the-scion-install-script" title="Permanent link">&para;</a></h2>
+<p>The easy way to install SCION is to use the SCION install script:</p>
+<pre class="codehilite"><code class="language-shell">wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_install_script.sh
+chmod +x scion_install_script.sh</code></pre>
+
+
+<p>The SCION install script supports various ways to connect to SCION:</p>
+<h3 id="running-the-scion-infrastructure-on-a-local-topology">Running the SCION infrastructure on a local topology<a class="headerlink" href="#running-the-scion-infrastructure-on-a-local-topology" title="Permanent link">&para;</a></h3>
+<p>If the SCION install script is executed without any arguments, SCION will be run on a local topology:</p>
+<pre class="codehilite"><code class="language-shell">./scion_install_script.sh</code></pre>
+
+
+<p>For more information, check out <a href="../../general_scion_configuration/local_top/">Running the SCION infrastructure on a local topology</a>.</p>
+<h3 id="connecting-to-scionlab">Connecting to SCIONLab<a class="headerlink" href="#connecting-to-scionlab" title="Permanent link">&para;</a></h3>
+<p>Installing a SCION AS and connecting it to SCIONLab requires that you have already downloaded the necessary configuration from the <a href="https://www.scionlab.org/">SCION Coordination Service</a>. To do so, please follow one of the following options, depending on the network configuration of the system on which SCION will be installed:</p>
+<ol>
+<li><a href="../../general_scion_configuration/public_ip/">Connecting to SCIONLab with a static public IP address</a></li>
+<li><a href="../../general_scion_configuration/public_ip_nat/">Connecting to SCIONLab with a static IP address, but behind a NAT</a></li>
+<li><a href="../../general_scion_configuration/vpn_setup/">Connecting to SCIONLab via VPN (without a static IP address)</a></li>
+</ol>
+<p>The configuration downloaded from the <a href="https://www.scionlab.org/">SCION Coordination Service</a> includes a <code>gen</code> folder that needs to be uploaded to the target system and provided as an argument to the install script:</p>
+<pre class="codehilite"><code class="language-shell">export BIDIR=`pwd`
+./scion_install_script.sh -g $BIDIR/gen/</code></pre>
+
+
+<p>In case of connecting to SCIONLab via VPN, the OpenVPN client configurationi (<code>client.conf</code>), that is included in the configuration downloaded from the <a href="https://www.scionlab.org/">SCION Coordination Service</a> needs to be provided as argument additionally:</p>
+<pre class="codehilite"><code class="language-shell">export BIDIR=`pwd`
+./scion_install_script.sh -g $BIDIR/gen/ -v $BIDIR/client.conf</code></pre>
+
+
+<h2 id="advanced-way-manual-installation">Advanced Way (manual installation)<a class="headerlink" href="#advanced-way-manual-installation" title="Permanent link">&para;</a></h2>
+<p>The following steps will guide you through the manual installation of the tools necessary for running SCION. </p>
 <h3 id="step-one-install-go">Step One &ndash; install Go<a class="headerlink" href="#step-one-install-go" title="Permanent link">&para;</a></h3>
 <p>In order to run SCION, you must have Go version 1.8.x installed. The installation steps below will automatically install the correct GO version, but be aware that if you are running a different Go version or are using a different gopath, the following steps may break other Go software that you are running.</p>
 <h3 id="step-two-configure-your-go-workspace">Step Two &ndash; configure your Go workspace<a class="headerlink" href="#step-two-configure-your-go-workspace" title="Permanent link">&para;</a></h3>
