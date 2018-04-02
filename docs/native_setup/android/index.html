@@ -303,6 +303,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#access-termux-via-ssh" title="Access Termux via SSH" class="md-nav__link">
+    Access Termux via SSH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#install-necessary-packages" title="Install necessary packages" class="md-nav__link">
     Install necessary packages
   </a>
@@ -400,6 +407,26 @@
   <a href="#next-steps" title="Next steps" class="md-nav__link">
     Next steps
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-gen-folder" title="Changes to gen folder" class="md-nav__link">
+    Changes to gen folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpn-connection-to-scionlab" title="VPN Connection to SCIONLab" class="md-nav__link">
+    VPN Connection to SCIONLab
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -753,6 +780,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#access-termux-via-ssh" title="Access Termux via SSH" class="md-nav__link">
+    Access Termux via SSH
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#install-necessary-packages" title="Install necessary packages" class="md-nav__link">
     Install necessary packages
   </a>
@@ -851,6 +885,26 @@
     Next steps
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-gen-folder" title="Changes to gen folder" class="md-nav__link">
+    Changes to gen folder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpn-connection-to-scionlab" title="VPN Connection to SCIONLab" class="md-nav__link">
+    VPN Connection to SCIONLab
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -870,26 +924,30 @@
                 
                 <h1 id="installing-scion-on-an-android-device">Installing SCION on an Android device<a class="headerlink" href="#installing-scion-on-an-android-device" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>It is possible to run SCION on an Android device. For this purpose the <a href="https://github.com/termux/termux-app">Termux</a> app is used, which emulates a Terminal environment with the Linux base system that Android is based upon.</p>
-<p>The Termux app can be downloaded <a href="https://play.google.com/store/apps/details?id=com.termux">on the Google Play Store</a>.</p>
+<p>It is possible to run SCION on an Android device. For this purpose the <a href="https://github.com/termux/termux-app">Termux</a> app is used, which emulates a Terminal environment with the Linux base system that Android is based upon. The Termux app can be downloaded <a href="https://play.google.com/store/apps/details?id=com.termux">on the Google Play Store</a>.</p>
+<p>This tutorial is primarily targeted at running a SCION endhost within Termux. While it is also possible to run an entire SCION AS on an Android device, this currently doesn't run stable within Termux, as it requires Apache Zookeeper, which frequently crashes the Termux environment.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>For the course of this tutorial advanced use of Termux is required. Make yourself familiar with it by reading on the <a href="https://wiki.termux.com/wiki/Main_Page">Wiki</a> about how the app can be used more comfortably.</p>
-<p>The tutorial also expects basic knowledge about how to interact with an Android device through the Android Device Bridge (ADB).</p>
+<p>It is recommended to make yourself familiar with Termux by reading the <a href="https://wiki.termux.com/wiki/Main_Page">Wiki</a> to learn how the app can be used comfortably.</p>
+<p>To install SCION within Termux it is recommended to access the Termux environment via Android Debug Bridge (ADB) or via SSH.</p>
+<h3 id="access-termux-via-ssh">Access Termux via SSH<a class="headerlink" href="#access-termux-via-ssh" title="Permanent link">&para;</a></h3>
+<p>First install the <code>openssh</code> package within Termux with <code>pkg install openssh</code>, then start the server with <code>sshd</code>. Password authentication is not supported, so you need to add your public key to <code>$HOME/.ssh/authorized_keys</code>. The ssh server runs by default on port 8022, so connect to it with <code>ssh -p 8022 DEVICE_IP</code>. You can find the device IP address with <code>ip addr list wlan0</code>. </p>
 <h3 id="install-necessary-packages">Install necessary packages<a class="headerlink" href="#install-necessary-packages" title="Permanent link">&para;</a></h3>
 <p>Install the required packages from within Termux:</p>
-<pre class="codehilite"><code class="language-shell">pkg install -y termux-setup-storage termux-exec ssh git python python2 clang make python-dev libffi-dev openssl-dev openssl-tools</code></pre>
+<pre class="codehilite"><code class="language-shell">apt update &amp;&amp; apt upgrade
+pkg install -y termux-exec git python python2 clang make python-dev libffi-dev openssl-dev openssl-tool curl</code></pre>
 
 
+<p>To access the SD card from Termux, it is required to run <code>termux-setup-storage</code> from the Termux console.</p>
 <h3 id="configure-go-workspace">Configure Go workspace<a class="headerlink" href="#configure-go-workspace" title="Permanent link">&para;</a></h3>
-<p>SCION requires a specific Go version. The Termux Go package is usually ahead of the required version. You can build the required packages yourself (e.g., using <a href="https://github.com/termux/termux-packages">termux-packages</a>) or use the prebuilt package from the SCION repository:</p>
+<p>SCION requires a specific Go version. The Termux Go package may be ahead of that version. The following repository offers prebuilt Go packages in the required version for ARMv8/aarch64 architectures:</p>
 <pre class="codehilite"><code class="language-shell">curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/golang-doc_2%3A1.9.4_aarch64.deb
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/golang_2%3A1.9.4_aarch64.deb
-dpkg -i golang_2:1.9.4_aarch64.deb golang-doc_2:1.9.4_aarch64.deb</code></pre>
+dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb</code></pre>
 
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>There are currently only pre-compiled packages for ARMv8/aarch64 architectures. If you require ARMv7-compatible packages, you must build them yourself through <a href="https://github.com/termux/termux-packages">termux-packages</a>.</p>
+<p>If you require ARMv7-compatible packages, you must build them yourself through <a href="https://github.com/termux/termux-packages">termux-packages</a>.</p>
 </div>
 <p>Setup the Go workspace and add it to your path:</p>
 <pre class="codehilite"><code class="language-shell">echo 'export GOPATH=&quot;$HOME/go&quot;' &gt;&gt; ~/.profile
@@ -901,21 +959,13 @@ source ~/.profile</code></pre>
 
 <h2 id="install-scion">Install SCION<a class="headerlink" href="#install-scion" title="Permanent link">&para;</a></h2>
 <h3 id="step-one-clone-the-scion-repository">Step One &ndash; clone the SCION repository<a class="headerlink" href="#step-one-clone-the-scion-repository" title="Permanent link">&para;</a></h3>
-<p>After the Go workspace has been configured, we can checkout the SCION repository from github.com with all dependencies using the following commands:</p>
+<p>After the Go workspace has been configured, we can checkout SCION with the required Termux modifications from Github using the following commands:</p>
 <pre class="codehilite"><code class="language-shell">mkdir -p &quot;$GOPATH/src/github.com/scionproto/scion&quot;
 cd &quot;$GOPATH/src/github.com/scionproto/scion&quot;
+git config --global url.https://github.com/.insteadOf git@github.com:
 git clone --recursive -b termux-modifications git@github.com:stschwar/scion .</code></pre>
 
 
-<div class="admonition warning">
-<p class="admonition-title">Troubleshooting</p>
-<p>If your account does not have an SSH key and that SSH key is not assigned to the github account, the checkout will fail with the error <code>Permission denied (publickey)</code>. There are two ways to resolve this problem:</p>
-<ol>
-<li>Changing the checkout using https instead of ssh:
-<code>git config --global url.https://github.com/.insteadOf git@github.com:</code></li>
-<li>Assign an SSH key to your Github account, detailed instructions can be found on <a href="https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/">Github help</a>.</li>
-</ol>
-</div>
 <p>This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable <code>SC</code> that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:</p>
 <pre class="codehilite"><code class="language-shell">echo 'export SC=&quot;$GOPATH/src/github.com/scionproto/scion&quot;' &gt;&gt; ~/.profile
 source ~/.profile
@@ -945,28 +995,21 @@ rm debug.c++.patch</code></pre>
 
 
 <p>Back in the <code>capnproto-c++-0.6.1/</code> root directory run:</p>
-<pre class="codehilite"><code class="language-shell">./configure TMPDIR=$PREFIX/usr/tmp
-make PREFIX=$PREFIX</code></pre>
-
-
-<p>To sucessfully install the libraries, modify the <code>Makefile</code> script with an editor (e.g., <code>vim</code> or <code>nano</code>).
-Change line <code>877</code> like so:</p>
-<pre class="codehilite"><code class="language-diff">-prefix = /usr/local
-+prefix = /data/data/com.termux/files/usr/local</code></pre>
-
-
-<p>Finally, run:</p>
-<pre class="codehilite"><code class="language-shell">make PREFIX=$PREFIX install</code></pre>
+<pre class="codehilite"><code class="language-shell">./configure --prefix=$PREFIX TMPDIR=$PREFIX/tmp
+make 
+make install</code></pre>
 
 
 <h4 id="zlog">zlog<a class="headerlink" href="#zlog" title="Permanent link">&para;</a></h4>
-<p>Install <a href="https://github.com/HardySimpson/zlog">zlog</a> by following its install instructions mostly. It requires some more patching:</p>
-<pre class="codehilite"><code class="language-shell">tar -zxf zlog-latest-stable.tar.gz
+<p>Install <a href="https://github.com/HardySimpson/zlog">zlog</a> by following its install instructions mostly. It requires some more patching and the installation of <code>libandroid-glob-dev</code>:</p>
+<pre class="codehilite"><code class="language-shell">curl https://codeload.github.com/HardySimpson/zlog/tar.gz/latest-stable --output zlog-latest-stable.tar.gz
+tar -zxf zlog-latest-stable.tar.gz
 cd zlog-latest-stable/
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/zlog-makefile.patch
 patch zlog-makefile.patch
 rm zlog-makefile.patch
 
+pkg install -y libandroid-glob-dev
 make PREFIX=$PREFIX
 make PREFIX=$PREFIX install</code></pre>
 
@@ -975,20 +1018,16 @@ make PREFIX=$PREFIX install</code></pre>
 <p>Install the <a href="https://troydhanson.github.io/uthash/">uthash</a> library from your <code>home/</code> directory:</p>
 <pre class="codehilite"><code class="language-shell">curl -o uthash-master.zip https://codeload.github.com/troydhanson/uthash/zip/master
 unzip uthash-master.zip
-cp uthash-master/src/*.h $PREFIX/usr/include
+cp uthash-master/src/*.h $PREFIX/include
 rm -rf uthash-master/</code></pre>
 
 
 <h4 id="scion-python-dependencies">SCION Python dependencies<a class="headerlink" href="#scion-python-dependencies" title="Permanent link">&para;</a></h4>
-<p>Most of the Python dependencies can easilly be installed through <code>pip</code>:</p>
-<pre class="codehilite"><code class="language-shell">pip2 install -r env/pip2/requirements.txt
-pip3 install -r env/pip3/requirements.txt</code></pre>
-
-
-<p><strong>python-lz4</strong></p>
-<pre class="codehilite"><code class="language-shell">git clone https://github.com/steeve/python-lz4.git
-cd python-lz4/
-python setup.py install</code></pre>
+<p>Most of the Python dependencies can easily be installed through <code>pip</code>:</p>
+<pre class="codehilite"><code class="language-shell">cd $SC
+pip2 install -r env/pip2/requirements.txt
+pip3 install -r env/pip3/requirements.txt
+TMPDIR=$PREFIX/tmp pip3 install lz4 PyNaCl PyYAML Pygments</code></pre>
 
 
 <div class="admonition warning">
@@ -1013,6 +1052,11 @@ python2 setup.py install</code></pre>
 <li><a href="../../general_scion_configuration/local_top/">Running a local network topology</a> &ndash; Generate a sample topology and run SCION locally</li>
 <li><a href="../../general_scion_configuration/setup_endhost/">Connecting to SCIONLab as an endhost</a> &ndash; Connect to the already running SCION topology as a mobile endhost through an existing SCION setup.</li>
 </ol>
+<h4 id="changes-to-gen-folder">Changes to gen folder<a class="headerlink" href="#changes-to-gen-folder" title="Permanent link">&para;</a></h4>
+<p>Note that in <code>gen/ISDx/AS10xx/supervisord.conf</code> the path of the SCION Deamon socket needs to be changed as follows: <code>"--api-addr" "/data/data/com.termux/files/run/shm/sciond/sdX-10XX.sock"</code>. </p>
+<h4 id="vpn-connection-to-scionlab">VPN Connection to SCIONLab<a class="headerlink" href="#vpn-connection-to-scionlab" title="Permanent link">&para;</a></h4>
+<p>Unfortunately, OpenVPN is not currently supported from within the Termux environment. Alternatively, the Open
+VPN app can be installed to connect to SCIONLab via VPN. The <code>client.conf</code> file that is provided by the SCIONLab coordinator needs to be renamed to <code>client.ovpn</code> before it can be imported into the app. Additionally, the line <code>route 10.0.8.0/24</code> needs to be added to the file.</p>
                 
                   
                 
