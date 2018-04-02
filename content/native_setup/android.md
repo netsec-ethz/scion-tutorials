@@ -1,35 +1,43 @@
 # Installing SCION on an Android device
 
 ## Introduction
-It is possible to run SCION on an Android device. For this purpose the [Termux](https://github.com/termux/termux-app) app is used, which emulates a Terminal environment with the Linux base system that Android is based upon.
+It is possible to run SCION on an Android device. For this purpose the [Termux](https://github.com/termux/termux-app) app is used, which emulates a Terminal environment with the Linux base system that Android is based upon. The Termux app can be downloaded [on the Google Play Store](https://play.google.com/store/apps/details?id=com.termux).
 
-The Termux app can be downloaded [on the Google Play Store](https://play.google.com/store/apps/details?id=com.termux).
+This tutorial is primarily targeted at running a SCION endhost within Termux. While it is also possible to run an entire SCION AS on an Android device, this currently doesn't run stable within Termux, as it requires Apache Zookeeper, which frequently crashes the Termux environment.
 
 ## Prerequisites
 
-For the course of this tutorial advanced use of Termux is required. Make yourself familiar with it by reading on the [Wiki](https://wiki.termux.com/wiki/Main_Page) about how the app can be used more comfortably.
+It is recommended to make yourself familiar with Termux by reading the [Wiki](https://wiki.termux.com/wiki/Main_Page) to learn how the app can be used comfortably.
 
-The tutorial also expects basic knowledge about how to interact with an Android device through the Android Device Bridge (ADB).
+To install SCION within Termux it is recommended to access the Termux environment via Android Debug Bridge (ADB) or via SSH.
+
+### Access Termux via SSH
+
+First install the `openssh` package within Termux with `pkg install openssh`, then start the server with `sshd`. Password authentication is not supported, so you need to add your public key to `$HOME/.ssh/authorized_keys`. The ssh server runs by default on port 8022, so connect to it with `ssh -p 8022 DEVICE_IP`. You can find the device IP address with `ip addr list wlan0`. 
 
 ### Install necessary packages
 
 Install the required packages from within Termux:
 
 ```shell
-pkg install -y termux-setup-storage termux-exec ssh git python python2 clang make python-dev libffi-dev openssl-dev openssl-tools
+apt update && apt upgrade
+pkg install -y termux-exec git python python2 clang make python-dev libffi-dev openssl-dev openssl-tool curl
 ```
+
+To access the SD card from Termux, it is required to run `termux-setup-storage` from the Termux console.
 
 ### Configure Go workspace
 
-SCION requires a specific Go version. The Termux Go package is usually ahead of the required version. You can build the required packages yourself (e.g., using [termux-packages](https://github.com/termux/termux-packages)) or use the prebuilt package from the SCION repository:
+SCION requires a specific Go version. The Termux Go package may be ahead of that version. The following repository offers prebuilt Go packages in the required version for ARMv8/aarch64 architectures:
 
 ```shell
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/golang-doc_2%3A1.9.4_aarch64.deb
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/golang_2%3A1.9.4_aarch64.deb
-dpkg -i golang_2:1.9.4_aarch64.deb golang-doc_2:1.9.4_aarch64.deb
+dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb
 ```
+
 !!! note
-    There are currently only pre-compiled packages for ARMv8/aarch64 architectures. If you require ARMv7-compatible packages, you must build them yourself through [termux-packages](https://github.com/termux/termux-packages).
+    If you require ARMv7-compatible packages, you must build them yourself through [termux-packages](https://github.com/termux/termux-packages).
 
 Setup the Go workspace and add it to your path:
 
@@ -45,22 +53,14 @@ source ~/.profile
 
 ### Step One &ndash; clone the SCION repository
 
-After the Go workspace has been configured, we can checkout the SCION repository from github.com with all dependencies using the following commands:
+After the Go workspace has been configured, we can checkout SCION with the required Termux modifications from Github using the following commands:
 
 ```shell
 mkdir -p "$GOPATH/src/github.com/scionproto/scion"
 cd "$GOPATH/src/github.com/scionproto/scion"
+git config --global url.https://github.com/.insteadOf git@github.com:
 git clone --recursive -b termux-modifications git@github.com:stschwar/scion .
 ```
-
-!!! warning "Troubleshooting"
-    If your account does not have an SSH key and that SSH key is not assigned to the github account, the checkout will fail with the error `Permission denied (publickey)`. There are two ways to resolve this problem:
-
-    1. Changing the checkout using https instead of ssh:
-    ```
-    git config --global url.https://github.com/.insteadOf git@github.com:
-    ```
-    2. Assign an SSH key to your Github account, detailed instructions can be found on [Github help](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/).
 
 This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable `SC` that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:
 
@@ -102,31 +102,24 @@ rm debug.c++.patch
 
 Back in the `capnproto-c++-0.6.1/` root directory run:
 ```shell
-./configure TMPDIR=$PREFIX/usr/tmp
-make PREFIX=$PREFIX
-```
-To sucessfully install the libraries, modify the `Makefile` script with an editor (e.g., `vim` or `nano`).
-Change line `877` like so:
-```diff
--prefix = /usr/local
-+prefix = /data/data/com.termux/files/usr/local
-```
-Finally, run:
-```shell
-make PREFIX=$PREFIX install
+./configure --prefix=$PREFIX TMPDIR=$PREFIX/tmp
+make 
+make install
 ```
 
 #### zlog
 
-Install [zlog](https://github.com/HardySimpson/zlog) by following its install instructions mostly. It requires some more patching:
+Install [zlog](https://github.com/HardySimpson/zlog) by following its install instructions mostly. It requires some more patching and the installation of `libandroid-glob-dev`:
 
 ```shell
+curl https://codeload.github.com/HardySimpson/zlog/tar.gz/latest-stable --output zlog-latest-stable.tar.gz
 tar -zxf zlog-latest-stable.tar.gz
 cd zlog-latest-stable/
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/zlog-makefile.patch
 patch zlog-makefile.patch
 rm zlog-makefile.patch
 
+pkg install -y libandroid-glob-dev
 make PREFIX=$PREFIX
 make PREFIX=$PREFIX install
 ```
@@ -137,22 +130,18 @@ Install the [uthash](https://troydhanson.github.io/uthash/) library from your `h
 ```shell
 curl -o uthash-master.zip https://codeload.github.com/troydhanson/uthash/zip/master
 unzip uthash-master.zip
-cp uthash-master/src/*.h $PREFIX/usr/include
+cp uthash-master/src/*.h $PREFIX/include
 rm -rf uthash-master/
 ```
 
 #### SCION Python dependencies
 
-Most of the Python dependencies can easilly be installed through `pip`:
+Most of the Python dependencies can easily be installed through `pip`:
 ```shell
+cd $SC
 pip2 install -r env/pip2/requirements.txt
 pip3 install -r env/pip3/requirements.txt
-```
-**python-lz4**
-```shell
-git clone https://github.com/steeve/python-lz4.git
-cd python-lz4/
-python setup.py install
+TMPDIR=$PREFIX/tmp pip3 install lz4 PyNaCl PyYAML Pygments
 ```
 !!! warning "Supervisor"
     In case the pip installation of the package "Supervisor" fails, you can install it manually:
@@ -179,3 +168,12 @@ After finishing the installation of SCION, there are different ways of running d
 
 1. [Running a local network topology](/general_scion_configuration/local_top/) &ndash; Generate a sample topology and run SCION locally
 1. [Connecting to SCIONLab as an endhost](/general_scion_configuration/setup_endhost/) &ndash; Connect to the already running SCION topology as a mobile endhost through an existing SCION setup.
+
+#### Changes to gen folder
+
+Note that in `gen/ISDx/AS10xx/supervisord.conf` the path of the SCION Deamon socket needs to be changed as follows: `"--api-addr" "/data/data/com.termux/files/run/shm/sciond/sdX-10XX.sock"`. 
+
+#### VPN Connection to SCIONLab
+
+Unfortunately, OpenVPN is not currently supported from within the Termux environment. Alternatively, the Open
+VPN app can be installed to connect to SCIONLab via VPN. The `client.conf` file that is provided by the SCIONLab coordinator needs to be renamed to `client.ovpn` before it can be imported into the app. Additionally, the line `route 10.0.8.0/24` needs to be added to the file.
