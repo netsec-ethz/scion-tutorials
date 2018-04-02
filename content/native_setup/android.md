@@ -53,13 +53,17 @@ source ~/.profile
 
 ### Step One &ndash; clone the SCION repository
 
-After the Go workspace has been configured, we can checkout SCION with the required Termux modifications from Github using the following commands:
+After the Go workspace has been configured, we can checkout SCION with the required Termux modifications from Github and apply a required patch using the following commands:
 
 ```shell
 mkdir -p "$GOPATH/src/github.com/scionproto/scion"
 cd "$GOPATH/src/github.com/scionproto/scion"
 git config --global url.https://github.com/.insteadOf git@github.com:
 git clone --recursive -b termux-modifications git@github.com:stschwar/scion .
+
+curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/lwip-contrib.patch
+patch sub/lwip-contrib/ports/unix/proj/scion/Makefile lwip-contrib.patch
+rm lwip-contrib.patch
 ```
 
 This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable `SC` that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:
