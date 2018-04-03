@@ -18,6 +18,7 @@ Sample servers are installed at the following locations:
 * `1-16,[192.33.93.173]:30100`
 * `1-1015,[10.0.2.15]:30100`
 * `1-1019,[192.168.1.111]:30100`
+* `3-1034,[141.44.25.146]:30100`
 
 You can test the application as follows, replacing the client address with your own address after the `-c` option (you can select any available port number for the client):
 
