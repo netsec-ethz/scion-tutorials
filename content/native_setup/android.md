@@ -15,9 +15,9 @@ To install SCION within Termux it is recommended to access the Termux environmen
 
 First install the `openssh` package within Termux with `pkg install openssh`, then start the server with `sshd`. Password authentication is not supported, so you need to add your public key to `$HOME/.ssh/authorized_keys`. The ssh server runs by default on port 8022, so connect to it with `ssh -p 8022 DEVICE_IP`. You can find the device IP address with `ip addr list wlan0`. 
 
-For more information:
-['Run an SSH server on your Android with Termux' on glow's blog](https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/)
-['Access Termux via USB' on glow's blog](https://glow.li/technology/2016/9/20/access-termux-via-usb/)
+For more information:  
+[Run an SSH server on your Android with Termux](https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/) on glow's blog  
+[Access Termux via USB](https://glow.li/technology/2016/9/20/access-termux-via-usb/) on glow's blog  
 
 ### Install necessary packages
 
@@ -189,6 +189,7 @@ Note that in `gen/ISDx/AS10xx/supervisord.conf` the path of the SCION Deamon soc
 ### Endhost configuration vs. full AS
 
 It is possible to run the full SCION on Android, it is, however, currently not recommended. The full SCION requires a Zookeeper instance which itself is a Java program. While it is possible to install a Java Virtual Machine in Termux, the actual Termux packages have been disabled or removed due to instabilities with high CPU usage.
+
 If you still want to try the full SCION on an Android phone, we suggest to use a remote Zookeeper instance running on another device and configuring the own SCION topology accordingly.
 
 #### VPN Connection to SCIONLab

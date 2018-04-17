@@ -957,9 +957,9 @@
 <p>To install SCION within Termux it is recommended to access the Termux environment via Android Debug Bridge (ADB) or via SSH.</p>
 <h3 id="access-termux-via-ssh">Access Termux via SSH<a class="headerlink" href="#access-termux-via-ssh" title="Permanent link">&para;</a></h3>
 <p>First install the <code>openssh</code> package within Termux with <code>pkg install openssh</code>, then start the server with <code>sshd</code>. Password authentication is not supported, so you need to add your public key to <code>$HOME/.ssh/authorized_keys</code>. The ssh server runs by default on port 8022, so connect to it with <code>ssh -p 8022 DEVICE_IP</code>. You can find the device IP address with <code>ip addr list wlan0</code>. </p>
-<p>For more information:
-<a href="https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/">'Run an SSH server on your Android with Termux' on glow's blog</a>
-<a href="https://glow.li/technology/2016/9/20/access-termux-via-usb/">'Access Termux via USB' on glow's blog</a></p>
+<p>For more information:<br />
+<a href="https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/">Run an SSH server on your Android with Termux</a> on glow's blog<br />
+<a href="https://glow.li/technology/2016/9/20/access-termux-via-usb/">Access Termux via USB</a> on glow's blog  </p>
 <h3 id="install-necessary-packages">Install necessary packages<a class="headerlink" href="#install-necessary-packages" title="Permanent link">&para;</a></h3>
 <p>Install the required packages from within Termux:</p>
 <pre class="codehilite"><code class="language-shell">apt update &amp;&amp; apt upgrade
@@ -1091,8 +1091,8 @@ python2 setup.py install</code></pre>
 <h4 id="changes-to-gen-folder">Changes to gen folder<a class="headerlink" href="#changes-to-gen-folder" title="Permanent link">&para;</a></h4>
 <p>Note that in <code>gen/ISDx/AS10xx/supervisord.conf</code> the path of the SCION Deamon socket needs to be changed as follows: <code>"--api-addr" "/data/data/com.termux/files/run/shm/sciond/sdX-10XX.sock"</code>. </p>
 <h3 id="endhost-configuration-vs-full-as">Endhost configuration vs. full AS<a class="headerlink" href="#endhost-configuration-vs-full-as" title="Permanent link">&para;</a></h3>
-<p>It is possible to run the full SCION on Android, it is, however, currently not recommended. The full SCION requires a Zookeeper instance which itself is a Java program. While it is possible to install a Java Virtual Machine in Termux, the actual Termux packages have been disabled or removed due to instabilities with high CPU usage.
-If you still want to try the full SCION on an Android phone, we suggest to use a remote Zookeeper instance running on another device and configuring the own SCION topology accordingly.</p>
+<p>It is possible to run the full SCION on Android, it is, however, currently not recommended. The full SCION requires a Zookeeper instance which itself is a Java program. While it is possible to install a Java Virtual Machine in Termux, the actual Termux packages have been disabled or removed due to instabilities with high CPU usage.</p>
+<p>If you still want to try the full SCION on an Android phone, we suggest to use a remote Zookeeper instance running on another device and configuring the own SCION topology accordingly.</p>
 <h4 id="vpn-connection-to-scionlab">VPN Connection to SCIONLab<a class="headerlink" href="#vpn-connection-to-scionlab" title="Permanent link">&para;</a></h4>
 <p>Unfortunately, OpenVPN is not currently supported from within the Termux environment. Alternatively, the Open
 VPN app can be installed to connect to SCIONLab via VPN. The <code>client.conf</code> file that is provided by the SCIONLab coordinator needs to be renamed to <code>client.ovpn</code> before it can be imported into the app. Additionally, the line <code>route 10.0.8.0/24</code> needs to be added to the file.</p>
