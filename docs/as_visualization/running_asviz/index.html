@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
     
     
       
@@ -712,37 +712,33 @@
 <h2 id="1-setup-on-a-local-system">1. Setup on a local system<a class="headerlink" href="#1-setup-on-a-local-system" title="Permanent link">&para;</a></h2>
 <p>If you are using the SCIONLab VM distribution you can skip this step, as SCION-viz is already installed.</p>
 <p>First, check if PYTHONPATH is set: <code>echo $PYTHONPATH</code>. If it is set, ensure that the scion directory and scion/python directories are both included. If they are missing, you can set PYTHONPATH as follows:</p>
-<div class="codehilite"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SC/python:$SC&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export PYTHONPATH=&quot;$SC/python:$SC&quot;' &gt;&gt; ~/.profile
+source ~/.profile</code></pre>
 
 
 <p>Next, you will need to clone the repository as follows:</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>/sub
+<pre class="codehilite"><code class="language-shell">cd $SC/sub
 git clone git@github.com:netsec-ethz/scion-viz
-<span class="nb">cd</span> scion-viz/python/web
+cd scion-viz/python/web
 pip3 install --user --require-hashes -r requirements.txt
-python3 ./manage.py migrate
-</pre></div>
+python3 ./manage.py migrate</code></pre>
 
 
 <h2 id="2-source-update">2. Source Update<a class="headerlink" href="#2-source-update" title="Permanent link">&para;</a></h2>
 <p>This step applies to all uses Local and SCIONLab VM. Update the source for the <code>scion</code> and <code>scion-viz</code> repositories.</p>
-<div class="codehilite"><pre><span></span>./scion.sh stop
+<pre class="codehilite"><code class="language-shell">./scion.sh stop
 ./scion.sh clean
-<span class="nb">cd</span> <span class="nv">$SC</span>
+cd $SC
 git pull
 ./scion.sh run
-<span class="nb">cd</span> sub/scion-viz
-git pull
-</pre></div>
+cd sub/scion-viz
+git pull</code></pre>
 
 
 <h2 id="3-running">3. Running<a class="headerlink" href="#3-running" title="Permanent link">&para;</a></h2>
 <p>To start SCION-viz, you need to provide the local IP address and port number. Note that SCION-viz is automatically started in the SCIONLab VM environment.</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>/sub/scion-viz/python/web
-python3 ./manage.py runserver 10.0.2.15:8000
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd $SC/sub/scion-viz/python/web
+python3 ./manage.py runserver 10.0.2.15:8000</code></pre>
 
 
 <h2 id="4-using">4. Using<a class="headerlink" href="#4-using" title="Permanent link">&para;</a></h2>
@@ -796,7 +792,7 @@ python3 ./manage.py runserver 10.0.2.15:8000
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
       
     
     

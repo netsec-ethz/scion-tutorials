@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
     
     
       
@@ -725,8 +725,7 @@
 <p>This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow <a href="../../native_setup/ubuntu_x86_build/">How to build SCION on Ubuntu 16.04 x86-64</a> or <a href="../../native_setup/rpi_ubuntu/">How to build SCION on Raspberry PI</a>.</p>
 <h2 id="generating-topology">Generating topology<a class="headerlink" href="#generating-topology" title="Permanent link">&para;</a></h2>
 <p>Before continuing with the following steps, you should first navigate to the SCION root directory:</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd $SC</code></pre>
 
 
 <p>The SCION installation comes with a command to generate the local topology from 'topo' configuration files. A default topology is defined in <code>topology/Default.topo</code> and it is depicted in the following figure:</p>
@@ -745,12 +744,11 @@ cp -r /vagrant/gen .</code></p>
 <p>Every time a new topology is instantiated, the SCION runtime environment needs to be reset as described <a href="../../scion_tricks/changing_gen_dir/#restarting-scion-infrastructure">here</a>.</p>
 </div>
 <p>To generate the default topology, you can run</p>
-<div class="codehilite"><pre><span></span>./scion.sh topology
-</pre></div>
+<pre class="codehilite"><code class="language-shell">./scion.sh topology</code></pre>
 
 
 <p>This command will generate the topology information in the <code>gen</code> directory. The structure of the <code>gen</code> directory will be:</p>
-<div class="codehilite"><pre><span></span> ./gen/ISD{X}/AS{Y}/
+<pre class="codehilite"><code> ./gen/ISD{X}/AS{Y}/
      {elem}{X}-{Y}-{Z}/
          as.yml
          path_policy.yml
@@ -760,8 +758,7 @@ cp -r /vagrant/gen .</code></p>
              ISD{X}-AS{Y}-V0.crt
              ISD{X}-V0.trc
          keys/
-             as-sig.key
-</pre></div>
+             as-sig.key</code></pre>
 
 
 <div class="admonition warning">
@@ -789,18 +786,15 @@ cp -r /vagrant/gen .</code></p>
 </ul>
 <h3 id="running-scion">Running SCION<a class="headerlink" href="#running-scion" title="Permanent link">&para;</a></h3>
 <p>Running the SCION infrastructure:</p>
-<div class="codehilite"><pre><span></span>./scion.sh run
-</pre></div>
+<pre class="codehilite"><code class="language-shell">./scion.sh run</code></pre>
 
 
 <p>Stopping the SCION infrastructure:</p>
-<div class="codehilite"><pre><span></span>./scion.sh stop
-</pre></div>
+<pre class="codehilite"><code class="language-shell">./scion.sh stop</code></pre>
 
 
 <p>Testing the infrastructure:</p>
-<div class="codehilite"><pre><span></span>./scion.sh <span class="nb">test</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">./scion.sh test</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
@@ -854,7 +848,7 @@ cp -r /vagrant/gen .</code></p>
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
       
     
     
