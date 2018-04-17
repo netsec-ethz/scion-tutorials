@@ -15,6 +15,10 @@ To install SCION within Termux it is recommended to access the Termux environmen
 
 First install the `openssh` package within Termux with `pkg install openssh`, then start the server with `sshd`. Password authentication is not supported, so you need to add your public key to `$HOME/.ssh/authorized_keys`. The ssh server runs by default on port 8022, so connect to it with `ssh -p 8022 DEVICE_IP`. You can find the device IP address with `ip addr list wlan0`. 
 
+For more information:
+['Run an SSH server on your Android with Termux' on glow's blog](https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/)
+['Access Termux via USB' on glow's blog](https://glow.li/technology/2016/9/20/access-termux-via-usb/)
+
 ### Install necessary packages
 
 Install the required packages from within Termux:
@@ -28,16 +32,21 @@ To access the SD card from Termux, it is required to run `termux-setup-storage` 
 
 ### Configure Go workspace
 
-SCION requires a specific Go version. The Termux Go package may be ahead of that version. The following repository offers prebuilt Go packages in the required version for ARMv8/aarch64 architectures:
+SCION requires a specific Go version. The Termux Go package may be ahead of that version. The following repository offers prebuilt golang packages in the required version for both ARMv7 & ARMv8/aarch64 architectures:
 
+For ARMv7:
 ```shell
-curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/golang-doc_2%3A1.9.4_aarch64.deb
-curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/golang_2%3A1.9.4_aarch64.deb
+curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/arm/golang-doc_2%3A1.9.4_arm.deb
+curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/arm/golang_2%3A1.9.4_arm.deb
 dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb
 ```
 
-!!! note
-    If you require ARMv7-compatible packages, you must build them yourself through [termux-packages](https://github.com/termux/termux-packages).
+For aarch64:
+```shell
+curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/aarch64/golang-doc_2%3A1.9.4_aarch64.deb
+curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/aarch64/golang_2%3A1.9.4_aarch64.deb
+dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb
+```
 
 Setup the Go workspace and add it to your path:
 
@@ -176,6 +185,11 @@ After finishing the installation of SCION, there are different ways of running d
 #### Changes to gen folder
 
 Note that in `gen/ISDx/AS10xx/supervisord.conf` the path of the SCION Deamon socket needs to be changed as follows: `"--api-addr" "/data/data/com.termux/files/run/shm/sciond/sdX-10XX.sock"`. 
+
+### Endhost configuration vs. full AS
+
+It is possible to run the full SCION on Android, it is, however, currently not recommended. The full SCION requires a Zookeeper instance which itself is a Java program. While it is possible to install a Java Virtual Machine in Termux, the actual Termux packages have been disabled or removed due to instabilities with high CPU usage.
+If you still want to try the full SCION on an Android phone, we suggest to use a remote Zookeeper instance running on another device and configuring the own SCION topology accordingly.
 
 #### VPN Connection to SCIONLab
 

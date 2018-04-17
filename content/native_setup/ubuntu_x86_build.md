@@ -57,7 +57,7 @@ The following steps will guide you through the manual installation of the tools 
 
 ### Step One &ndash; install Go
 
-In order to run SCION, you must have Go version 1.8.x installed. The installation steps below will automatically install the correct GO version, but be aware that if you are running a different Go version or are using a different gopath, the following steps may break other Go software that you are running.
+In order to run SCION, you must have Go version 1.9.x installed. The installation steps below will automatically install the correct GO version, but be aware that if you are running a different Go version or are using a different gopath, the following steps may break other Go software that you are running.
 
 ### Step Two &ndash; configure your Go workspace
 
