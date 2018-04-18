@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
     
     
       
@@ -797,12 +797,14 @@
 <p>Running SCION in a virtual machine requires VirtualBox and Vagrant to be installed on your system.</p>
 <h3 id="step-one-install-virtualbox">Step One &ndash; install VirtualBox<a class="headerlink" href="#step-one-install-virtualbox" title="Permanent link">&para;</a></h3>
 <p>To install VirtualBox, follow the steps on the <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox download page</a> for your system. On Ubuntu or similar Linux distributions, you could also install VirtualBox using your package manager:</p>
-<pre class="codehilite"><code class="language-shell">sudo apt-get install virtualbox</code></pre>
+<div class="codehilite"><pre><span></span>sudo apt-get install virtualbox
+</pre></div>
 
 
 <h3 id="step-two-install-vagrant">Step Two &ndash; install Vagrant<a class="headerlink" href="#step-two-install-vagrant" title="Permanent link">&para;</a></h3>
 <p>To install Vagrant, follow the steps on the <a href="https://www.vagrantup.com/downloads.html">Vagrant download page</a> for your system. Also, on Ubuntu you could install it via your package manager:</p>
-<pre class="codehilite"><code class="language-shell">sudo apt-get install vagrant</code></pre>
+<div class="codehilite"><pre><span></span>sudo apt-get install vagrant
+</pre></div>
 
 
 <h2 id="running-scion">Running SCION<a class="headerlink" href="#running-scion" title="Permanent link">&para;</a></h2>
@@ -813,24 +815,28 @@
 <p><img alt="SCIONLab download page" src="../../images/scionlab_download_vm_openvpn_setup.png" /></p>
 <h3 id="step-two-create-and-run-the-vm">Step Two &ndash; create and run the VM<a class="headerlink" href="#step-two-create-and-run-the-vm" title="Permanent link">&para;</a></h3>
 <p>Create a directory that will host your SCIONLab content. For instance:</p>
-<pre class="codehilite"><code class="language-shell">mkdir ~/scionlab</code></pre>
+<div class="codehilite"><pre><span></span>mkdir ~/scionlab
+</pre></div>
 
 
 <p>When the configuration finishes downloading, move the contents to your SCIONLab directory, for instance (adjust based on your setup and download directory):</p>
-<pre class="codehilite"><code class="language-shell">cd ~/scionlab
-mv ~/Download/scion_lab_*.tar* .</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/scionlab
+mv ~/Download/scion_lab_*.tar* .
+</pre></div>
 
 
 <p>Next, extract the archive content. On a Linux system, simply running <code>tar</code> command will extract the contents:</p>
-<pre class="codehilite"><code class="language-shell">tar -xvzf scion_lab_*.tar.gz</code></pre>
+<div class="codehilite"><pre><span></span>tar -xvzf scion_lab_*.tar.gz
+</pre></div>
 
 
 <p>If your downloader automatically uncompressed the downloaded file, the <code>.gz</code> extension is missing, and you can extract the contents with:</p>
-<pre class="codehilite"><code class="language-shell">tar -xvf scion_lab_*.tar</code></pre>
+<div class="codehilite"><pre><span></span>tar -xvf scion_lab_*.tar
+</pre></div>
 
 
 <p>After extraction, the extracted directory has the following structure:</p>
-<pre class="codehilite"><code>├── client.conf
+<div class="codehilite"><pre><span></span>├── client.conf
 ├── gen
 │   ├── dispatcher
 │   │   ├── dispatcher.zlog.conf
@@ -846,20 +852,23 @@ mv ~/Download/scion_lab_*.tar* .</code></pre>
 ├── scionupgrade.service
 ├── scionupgrade.sh
 ├── scionupgrade.timer
-└── Vagrantfile</code></pre>
+└── Vagrantfile
+</pre></div>
 
 
 <p>Verifying the structure, you can begin the setup by running, replacing <code>*</code> according to the name of your extracted archive:</p>
-<pre class="codehilite"><code class="language-shell">cd scion_lab_*
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> scion_lab_*
 vagrant box add scion/ubuntu-16.04-64-scion
 vagrant box update
-vagrant up</code></pre>
+vagrant up
+</pre></div>
 
 
 <p>The installation process will take around 10 minutes.</p>
 <h3 id="step-three-run-the-scion-infrastructure">Step Three &ndash; run the SCION infrastructure<a class="headerlink" href="#step-three-run-the-scion-infrastructure" title="Permanent link">&para;</a></h3>
 <p>After successful installation of the VM, you can ssh into your VM:</p>
-<pre class="codehilite"><code class="language-shell">vagrant ssh</code></pre>
+<div class="codehilite"><pre><span></span>vagrant ssh
+</pre></div>
 
 
 <p>The SCION infrastructure is automatically started at boot time of your VM. You can control it using the <code>scion.sh</code> script located at <code>~/go/src/github.com/scionproto/scion/</code>. You can easily get to that directory with <code>cd $SC</code>.</p>
@@ -917,7 +926,7 @@ vagrant up</code></pre>
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
     
     

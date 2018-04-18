@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
     
     
       
@@ -669,18 +669,21 @@
 <p>As SCION is hosted on git, updating to latest version is simple as <code>pull</code>-ing changes.</p>
 <h2 id="getting-the-latest-version">Getting the latest version<a class="headerlink" href="#getting-the-latest-version" title="Permanent link">&para;</a></h2>
 <p>To download newest version first navigate to SCION root directory:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
+</pre></div>
 
 
 <p>fetch newest changes from remote <code>scionlab</code> branch and rebase:</p>
-<pre class="codehilite"><code class="language-shell">git fetch origin scionlab
-git rebase origin/scionlab</code></pre>
+<div class="codehilite"><pre><span></span>git fetch origin scionlab
+git rebase origin/scionlab
+</pre></div>
 
 
 <p>If git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh stop
+<div class="codehilite"><pre><span></span>./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run</code></pre>
+./scion.sh run
+</pre></div>
                 
                   
                 
@@ -730,7 +733,7 @@ git rebase origin/scionlab</code></pre>
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
     
     
