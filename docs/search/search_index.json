@@ -827,7 +827,7 @@
         },
         {
             "location": "/scion_tricks/updating_scion/",
-            "text": "Updating SCION to newest version\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nAs SCION is hosted on git, updating to latest version is simple as \npull\n-ing changes.\n\n\nGetting the latest version\n\u00b6\n\n\nTo download newest version first navigate to SCION root directory:\n\n\ncd\n $SC\n\n\n\n\n\nfetch newest changes from remote \nscionlab\n branch and rebase:\n\n\ngit fetch origin scionlab\ngit rebase origin/scionlab\n\n\n\n\n\nIf git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:\n\n\n./scion.sh stop\n~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown\n./scion.sh run",
+            "text": "Updating SCION to newest version\n\u00b6\n\n\nIntroduction\n\u00b6\n\n\nOur implementation of SCION is still under development, and ScionLab sometimes upgrades the services to use new features from new versions.\nSome of these changes will break compatibility with past releases. In these cases, we will send an email notifying all the users of such changes.\n\n\nRunning SCION in a VM\n\u00b6\n\n\nIf you run SCION inside a VM, SCION should be kept up to date automatically. With this automatic process you don't have to worry about the updates. Still, if you are interested in knowing how we do it, read the next subsection.\n\n\nHow is my SCION VM kept up to date?\n\u00b6\n\n\nYou can always check that is the case by listing the running timers and looking for the one upgrading SCION:\n\n\nsudo systemctl list-timers\nNEXT                         LEFT        LAST                         PASSED       UNIT                         ACTIVATES\nWed 2018-04-18 16:35:24 UTC  8min left   Wed 2018-04-18 16:25:23 UTC  1min 36s ago scionupgrade.timer           scionupgrade.service\n\n\n\n\n\nThis indicates we have the upgrade service installed. The upgrade service is checking every day that the local git repository is up to date with the \nscionlab\n branch. This is done by \nrebasing\n the local copy on top of the branch:\n\n\ncd\n $SC\ngit fetch origin scionlab\ngit rebase origin/scionlab\n\n\n\n\n\nWe do it this to maximize the changes of successfully updating even if you had local changes done on top.\nThe automatic process will restart SCION if it detected that we downloaded a new version.\n\n\nRunning SCION in a dedicated machine\n\u00b6\n\n\nThis type of installations need manual update. If you received an email from us saying that we are going to update the infrastructure, and that the update contains \nbreaking changes\n, you will need to follow these steps if you want to continue using SCION in ScionLab.\n\n\nManual steps to update\n\u00b6\n\n\nWe can do manually what we automatically do inside the SCION VMs, and these simple steps will update your installation of SCION.\nAs our SCION implementation is hosted on git, updating to the latest version is as simple as \npull\n-ing changes or \nrebase\n-ing.\nTo download the newest version first navigate to SCION root directory:\n\n\ncd\n $SC\n\n\n\n\n\nthen fetch newest changes from remote \nscionlab\n branch and rebase:\n\n\ngit fetch origin scionlab\ngit rebase origin/scionlab\n\n\n\n\n\nIf git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:\n\n\n./scion.sh stop\n~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown\n./scion.sh run\n\n\n\n\n\nYour SCION installation should be now up to date.",
             "title": "Updating SCION"
         },
         {
@@ -837,13 +837,28 @@
         },
         {
             "location": "/scion_tricks/updating_scion/#introduction",
-            "text": "As SCION is hosted on git, updating to latest version is simple as  pull -ing changes.",
+            "text": "Our implementation of SCION is still under development, and ScionLab sometimes upgrades the services to use new features from new versions.\nSome of these changes will break compatibility with past releases. In these cases, we will send an email notifying all the users of such changes.",
             "title": "Introduction"
         },
         {
-            "location": "/scion_tricks/updating_scion/#getting-the-latest-version",
-            "text": "To download newest version first navigate to SCION root directory:  cd  $SC  fetch newest changes from remote  scionlab  branch and rebase:  git fetch origin scionlab\ngit rebase origin/scionlab  If git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:  ./scion.sh stop\n~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown\n./scion.sh run",
-            "title": "Getting the latest version"
+            "location": "/scion_tricks/updating_scion/#running-scion-in-a-vm",
+            "text": "If you run SCION inside a VM, SCION should be kept up to date automatically. With this automatic process you don't have to worry about the updates. Still, if you are interested in knowing how we do it, read the next subsection.",
+            "title": "Running SCION in a VM"
+        },
+        {
+            "location": "/scion_tricks/updating_scion/#how-is-my-scion-vm-kept-up-to-date",
+            "text": "You can always check that is the case by listing the running timers and looking for the one upgrading SCION:  sudo systemctl list-timers\nNEXT                         LEFT        LAST                         PASSED       UNIT                         ACTIVATES\nWed 2018-04-18 16:35:24 UTC  8min left   Wed 2018-04-18 16:25:23 UTC  1min 36s ago scionupgrade.timer           scionupgrade.service  This indicates we have the upgrade service installed. The upgrade service is checking every day that the local git repository is up to date with the  scionlab  branch. This is done by  rebasing  the local copy on top of the branch:  cd  $SC\ngit fetch origin scionlab\ngit rebase origin/scionlab  We do it this to maximize the changes of successfully updating even if you had local changes done on top.\nThe automatic process will restart SCION if it detected that we downloaded a new version.",
+            "title": "How is my SCION VM kept up to date?"
+        },
+        {
+            "location": "/scion_tricks/updating_scion/#running-scion-in-a-dedicated-machine",
+            "text": "This type of installations need manual update. If you received an email from us saying that we are going to update the infrastructure, and that the update contains  breaking changes , you will need to follow these steps if you want to continue using SCION in ScionLab.",
+            "title": "Running SCION in a dedicated machine"
+        },
+        {
+            "location": "/scion_tricks/updating_scion/#manual-steps-to-update",
+            "text": "We can do manually what we automatically do inside the SCION VMs, and these simple steps will update your installation of SCION.\nAs our SCION implementation is hosted on git, updating to the latest version is as simple as  pull -ing changes or  rebase -ing.\nTo download the newest version first navigate to SCION root directory:  cd  $SC  then fetch newest changes from remote  scionlab  branch and rebase:  git fetch origin scionlab\ngit rebase origin/scionlab  If git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:  ./scion.sh stop\n~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown\n./scion.sh run  Your SCION installation should be now up to date.",
+            "title": "Manual steps to update"
         },
         {
             "location": "/scion_tricks/wireshark/",
