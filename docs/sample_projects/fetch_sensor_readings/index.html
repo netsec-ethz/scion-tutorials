@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
     
     
       
@@ -680,7 +680,7 @@
 <p>The <a href="https://github.com/perrig/scionlab/">sensorapp application</a> contains fetcher and server applications for sensor readings, using the SCION network. The application is very simple, and sends a single packet to request the information, and obtains typically a single packet in response containing the readings.</p>
 <h2 id="sensorfetcher">sensorfetcher<a class="headerlink" href="#sensorfetcher" title="Permanent link">&para;</a></h2>
 <p>To install sensorfetcher:</p>
-<div class="codehilite"><pre><span></span>go get github.com/perrig/scionlab/sensorapp/sensorfetcher
+<div class="codehilite"><pre>go get github.com/perrig/scionlab/sensorapp/sensorfetcher
 </pre></div>
 
 
@@ -692,23 +692,23 @@
 <li><code>1-1019,[192.168.1.111]:42003</code></li>
 </ul>
 <p>Their readings can be fetched as follows (need to replace client address with actual client address, with an arbitrary free port):</p>
-<div class="codehilite"><pre><span></span>sensorfetcher -s 1-16,<span class="o">[</span>192.33.93.173<span class="o">]</span>:42003 -c 1-1006,<span class="o">[</span>10.0.2.15<span class="o">]</span>:42001
+<div class="codehilite"><pre>sensorfetcher -s 1-16,<span class="o">[</span>192.33.93.173<span class="o">]</span>:42003 -c 1-1006,<span class="o">[</span>10.0.2.15<span class="o">]</span>:42001
 </pre></div>
 
 
 <h3 id="sensorserver">sensorserver<a class="headerlink" href="#sensorserver" title="Permanent link">&para;</a></h3>
 <p>To install sensorserver:</p>
-<div class="codehilite"><pre><span></span>go get github.com/perrig/scionlab/sensorapp/sensorserver
+<div class="codehilite"><pre>go get github.com/perrig/scionlab/sensorapp/sensorserver
 </pre></div>
 
 
 <p>We use sensors from Tinkerforge, and the <code>sensorreader.py</code> Python application fetches the sensor values and writes them to <code>stdout</code>. The <code>sensorserver</code> application collects the readings, and serves them as a string to client requests. To start, we use the following command:</p>
-<div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/perrig/scionlab/sensorapp/sensorserver/sensorreader.py <span class="p">|</span> sensorserver -s 1-16,<span class="o">[</span>192.33.93.173<span class="o">]</span>:42003 <span class="p">&amp;</span>
+<div class="codehilite"><pre>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/perrig/scionlab/sensorapp/sensorserver/sensorreader.py <span class="p">|</span> sensorserver -s 1-16,<span class="o">[</span>192.33.93.173<span class="o">]</span>:42003 <span class="p">&amp;</span>
 </pre></div>
 
 
 <p>If you do not have any sensor information available, then you can use a simple time application that reports the current time on your system:</p>
-<div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/perrig/scionlab/sensorapp/sensorserver/timereader.py <span class="p">|</span> sensorserver -s 1-16,<span class="o">[</span>192.33.93.173<span class="o">]</span>:42003 <span class="p">&amp;</span>
+<div class="codehilite"><pre>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/perrig/scionlab/sensorapp/sensorserver/timereader.py <span class="p">|</span> sensorserver -s 1-16,<span class="o">[</span>192.33.93.173<span class="o">]</span>:42003 <span class="p">&amp;</span>
 </pre></div>
                 
                   
@@ -759,7 +759,7 @@
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
       
     
     
