@@ -19,6 +19,38 @@ For more information:
 [Run an SSH server on your Android with Termux](https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/) on glow's blog  
 [Access Termux via USB](https://glow.li/technology/2016/9/20/access-termux-via-usb/) on glow's blog  
 
+## SCION App
+
+A SCION App is currently in testing. With this App we try to provide a all-in-one solution, so that the manual setup won't be necessary anymore.
+
+To take part in the test, contact the [project responsible](mailto:stefan_schwarz_de@outlook.com) to get an invite to the App testing group.
+
+When you have been added to the group, you will receive a mail that includes a link to get the App. The App is distributed through HockeyApp currently and it thus requires you to also install the HockeyApp mobile app, which can only be downloaded [from the website](https://hockeyapp.net/apps) (it is not available on the Google Play Store).
+
+#### Install and run SCION in App
+
+To install SCION, run the following command within the Terminal (Wifi connection recommended):
+```shell
+./install
+```
+
+And that’s it! The process takes a while but is fully automatic. At the end, a dialog opens where you will be asked to select your ‘gen’ Folder from internal memory. Select it to continue.
+
+!!! hint
+    If the folder selection doesn't show, run the following script to trigger it manually:
+    `./import_folder`
+
+That means of course, that you need to have your ‘gen’ folder readily configured on your internal storage. Download it directly or push it onto the device with ADB.
+
+!!! warning
+    SCION Android currently only supports an Endhost configuration (as described in this tutorial:[https://netsec-ethz.github.io/scion-tutorials/general_scion_configuration/setup_endhost/](https://netsec-ethz.github.io/scion-tutorials/general_scion_configuration/setup_endhost/))
+
+!!! warning
+    SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described here:
+    [https://netsec-ethz.github.io/scion-tutorials/native_setup/android/#changes-to-gen-folder](https://netsec-ethz.github.io/scion-tutorials/native_setup/android/#changes-to-gen-folder)
+
+## Manual setup
+
 ### Install necessary packages
 
 Install the required packages from within Termux:

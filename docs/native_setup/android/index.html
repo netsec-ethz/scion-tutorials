@@ -310,6 +310,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#scion-app" title="SCION App" class="md-nav__link">
+    SCION App
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-and-run-scion-in-app" title="Install and run SCION in App" class="md-nav__link">
+    Install and run SCION in App
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#install-necessary-packages" title="Install necessary packages" class="md-nav__link">
     Install necessary packages
   </a>
@@ -800,6 +820,26 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#scion-app" title="SCION App" class="md-nav__link">
+    SCION App
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-and-run-scion-in-app" title="Install and run SCION in App" class="md-nav__link">
+    Install and run SCION in App
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#install-necessary-packages" title="Install necessary packages" class="md-nav__link">
     Install necessary packages
   </a>
@@ -960,6 +1000,31 @@
 <p>For more information:<br />
 <a href="https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/">Run an SSH server on your Android with Termux</a> on glow's blog<br />
 <a href="https://glow.li/technology/2016/9/20/access-termux-via-usb/">Access Termux via USB</a> on glow's blog  </p>
+<h3 id="scion-app">SCION App<a class="headerlink" href="#scion-app" title="Permanent link">&para;</a></h3>
+<p>A SCION App is currently in testing. With this App, we try to provide a all-in-one solution, so that the below steps won't be necessary anymore.</p>
+<p>To take part in the test, contact the <a href="mailto:stefan_schwarz_de@outlook.com">project responsible</a> to get an invite to the App testing group.</p>
+<p>When you have been added to the group, you will receive a mail that includes a link to get the App. The App is distributed through HockeyApp currently and it thus requires you to also install the HockeyApp mobile app, which can only be downloaded <a href="https://hockeyapp.net/apps">from the website</a> (it is not available on the Google Play Store).</p>
+<h4 id="install-and-run-scion-in-app">Install and run SCION in App<a class="headerlink" href="#install-and-run-scion-in-app" title="Permanent link">&para;</a></h4>
+<p>To install SCION, run the following command within the Terminal (Wifi connection recommended):</p>
+<pre class="codehilite"><code class="language-shell">./install</code></pre>
+
+
+<p>And that’s it! The process takes a while but is fully automatic. At the end, a dialog opens where you will be asked to select your ‘gen’ Folder from internal memory. Select it to continue.</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If the folder selection doesn't show, run the following script to trigger it manually:
+<code>./import_folder</code></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>That means of course, that you need to have your ‘gen’ folder readily configured.
+SCION Android currently only supports an Endhost configuration (as described in this tutorial:<a href="https://netsec-ethz.github.io/scion-tutorials/general_scion_configuration/setup_endhost/">https://netsec-ethz.github.io/scion-tutorials/general_scion_configuration/setup_endhost/</a>)</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described here:
+<a href="https://netsec-ethz.github.io/scion-tutorials/native_setup/android/#changes-to-gen-folder">https://netsec-ethz.github.io/scion-tutorials/native_setup/android/#changes-to-gen-folder</a></p>
+</div>
 <h3 id="install-necessary-packages">Install necessary packages<a class="headerlink" href="#install-necessary-packages" title="Permanent link">&para;</a></h3>
 <p>Install the required packages from within Termux:</p>
 <pre class="codehilite"><code class="language-shell">apt update &amp;&amp; apt upgrade
