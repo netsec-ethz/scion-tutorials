@@ -49,6 +49,8 @@ export BIDIR=`pwd`
 
 ### Next Steps
 
+The `scion_install_script.sh` execution declares new variable definitions (e.g. `$SC`) in `~/.profile`. It is advised to log out and log in again for them to take effect.
+
 After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation/).
 
 ## Advanced Way (manual installation)
