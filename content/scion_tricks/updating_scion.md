@@ -56,3 +56,7 @@ If git reports that new modifications are downloaded, it is necessary to restart
 ```
 
 Your SCION installation should be now up to date.
+
+## Last step to finish the update
+
+After the update, the applications that are not delivered directly with SCION (e.g. `bwtester` or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. `bwtester` has its own tutorial on how to build it.
