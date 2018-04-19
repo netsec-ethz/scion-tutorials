@@ -75,6 +75,7 @@ On ARM architectures, it is necessary to apply two patches as followings:
 git checkout -b arm-modified
 wget https://gist.githubusercontent.com/FR4NK-W/cc6661f420fe5e9805d5b9cdb9c41b1b/raw/7dc3b60b86b4c148c2706e3da82eee8d557bbd45/patches_checksum_bench.patch
 wget https://gist.githubusercontent.com/FR4NK-W/fb7a4b171ab3d5121b6492b9b664fd47/raw/ddeeb8f2337c64f027955e070df6ef34ff26bf9a/patches_dispatcher.patch
+wget https://gist.githubusercontent.com/juagargi/e58d7cc90c67a475ba9ccab4146ee62c/raw/dad97fd847c96c013becd69afedbd05970f6c496/overflow.patch
 
 patch ./c/lib/scion/checksum_bench.c ./patches_checksum_bench.patch
 rm c/lib/scion/checksum_bench.c.orig
@@ -82,6 +83,8 @@ rm patches_checksum_bench.patch
 patch ./c/dispatcher/dispatcher.c ./patches_dispatcher.patch
 rm c/dispatcher/dispatcher.c.orig
 rm patches_dispatcher.patch
+patch go/lib/infra/transport/udp.go overflow.patch
+rm overflow.patch
 ```
 
 In order to enable updating the system, we commit the patched changes into the local arm-modified branch:

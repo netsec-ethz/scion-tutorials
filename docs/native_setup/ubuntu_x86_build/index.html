@@ -873,14 +873,16 @@
 <p>This tutorial will guide you through the steps required to install SCION on an x86 system running Ubuntu 16.04. For details on how to build SCION on a Raspberry Pi, please take a look at <a href="../rpi_ubuntu/">how to build SCION on a Raspberry Pi</a>.</p>
 <h2 id="easy-way-using-the-scion-install-script">Easy Way (using the SCION install script)<a class="headerlink" href="#easy-way-using-the-scion-install-script" title="Permanent link">&para;</a></h2>
 <p>The easy way to install SCION is to use the SCION install script:</p>
-<pre class="codehilite"><code class="language-shell">wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_install_script.sh
-chmod +x scion_install_script.sh</code></pre>
+<div class="codehilite"><pre>wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_install_script.sh
+chmod +x scion_install_script.sh
+</pre></div>
 
 
 <p>The SCION install script supports various ways to connect to SCION:</p>
 <h3 id="running-the-scion-infrastructure-on-a-local-topology">Running the SCION infrastructure on a local topology<a class="headerlink" href="#running-the-scion-infrastructure-on-a-local-topology" title="Permanent link">&para;</a></h3>
 <p>If the SCION install script is executed without any arguments, SCION will be run on a local topology:</p>
-<pre class="codehilite"><code class="language-shell">./scion_install_script.sh</code></pre>
+<div class="codehilite"><pre>./scion_install_script.sh
+</pre></div>
 
 
 <p>For more information, check out <a href="../../general_scion_configuration/local_top/">Running the SCION infrastructure on a local topology</a>.</p>
@@ -892,16 +894,19 @@ chmod +x scion_install_script.sh</code></pre>
 <li><a href="../../general_scion_configuration/vpn_setup/">Connecting to SCIONLab via VPN (without a static IP address)</a></li>
 </ol>
 <p>The configuration downloaded from the <a href="https://www.scionlab.org/">SCION Coordination Service</a> includes a <code>gen</code> folder that needs to be uploaded to the target system and provided as an argument to the install script:</p>
-<pre class="codehilite"><code class="language-shell">export BIDIR=`pwd`
-./scion_install_script.sh -g $BIDIR/gen/</code></pre>
+<div class="codehilite"><pre><span class="nb">export</span> <span class="nv">BIDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+./scion_install_script.sh -g <span class="nv">$B</span>IDIR/gen/
+</pre></div>
 
 
 <p>In case of connecting to SCIONLab via VPN, the OpenVPN client configurationi (<code>client.conf</code>), that is included in the configuration downloaded from the <a href="https://www.scionlab.org/">SCION Coordination Service</a> needs to be provided as argument additionally:</p>
-<pre class="codehilite"><code class="language-shell">export BIDIR=`pwd`
-./scion_install_script.sh -g $BIDIR/gen/ -v $BIDIR/client.conf</code></pre>
+<div class="codehilite"><pre><span class="nb">export</span> <span class="nv">BIDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
+./scion_install_script.sh -g <span class="nv">$B</span>IDIR/gen/ -v <span class="nv">$B</span>IDIR/client.conf
+</pre></div>
 
 
 <h3 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h3>
+<p>The <code>scion_install_script.sh</code> execution declares new variable definitions (e.g. <code>$SC</code>) in <code>~/.profile</code>. It is advised to log out and log in again for them to take effect.</p>
 <p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="../../general_scion_configuration/verifying_scion_installation/">Verifying SCION Installation</a>.</p>
 <h2 id="advanced-way-manual-installation">Advanced Way (manual installation)<a class="headerlink" href="#advanced-way-manual-installation" title="Permanent link">&para;</a></h2>
 <p>The following steps will guide you through the manual installation of the tools necessary for running SCION. </p>
@@ -913,19 +918,21 @@ chmod +x scion_install_script.sh</code></pre>
 <p>You can skip this step if you already have a Go workspace configured on your machine.</p>
 </div>
 <p>It is necessary to set up your <a href="https://golang.org/doc/code.html#GOPATH" title="Go workspace">Go workspace</a>. The following commands will create a default workspace at <code>~/go</code> and export it as the <code>$GOPATH</code> environment variable:</p>
-<pre class="codehilite"><code class="language-shell">echo 'export GOPATH=&quot;$HOME/go&quot;' &gt;&gt; ~/.profile
-source ~/.profile
-mkdir -p &quot;$GOPATH/bin&quot;
-echo 'PATH=$PATH:$GOPATH/bin' &gt;&gt; ~/.profile
-source ~/.profile</code></pre>
+<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export GOPATH=&quot;$HOME/go&quot;&#39;</span> &gt;&gt; ~/.profile
+<span class="nb">source</span> ~/.profile
+mkdir -p <span class="s2">&quot;</span>$<span class="s2">GOPATH/bin&quot;</span>
+<span class="nb">echo</span> <span class="s1">&#39;PATH=$PATH:$GOPATH/bin&#39;</span> &gt;&gt; ~/.profile
+<span class="nb">source</span> ~/.profile
+</pre></div>
 
 
 <h2 id="scion-installation">SCION installation<a class="headerlink" href="#scion-installation" title="Permanent link">&para;</a></h2>
 <h3 id="step-one-clone-the-scion-repository">Step One &ndash; clone the SCION repository<a class="headerlink" href="#step-one-clone-the-scion-repository" title="Permanent link">&para;</a></h3>
 <p>After the Go workspace has been configured, we can check out the SCION repository from github.com with all dependencies using the following commands:</p>
-<pre class="codehilite"><code class="language-shell">mkdir -p &quot;$GOPATH/src/github.com/scionproto/scion&quot;
-cd &quot;$GOPATH/src/github.com/scionproto/scion&quot;
-git clone --recursive -b scionlab git@github.com:netsec-ethz/netsec-scion .</code></pre>
+<div class="codehilite"><pre>mkdir -p <span class="s2">&quot;</span>$<span class="s2">GOPATH/src/github.com/scionproto/scion&quot;</span>
+<span class="nb">cd</span> <span class="s2">&quot;</span>$<span class="s2">GOPATH/src/github.com/scionproto/scion&quot;</span>
+git clone --recursive -b scionlab git@github.com:netsec-ethz/netsec-scion .
+</pre></div>
 
 
 <div class="admonition warning">
@@ -938,20 +945,23 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/netsec-scion .</cod
 </ol>
 </div>
 <p>This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable <code>SC</code> that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:</p>
-<pre class="codehilite"><code class="language-shell">echo 'export SC=&quot;$GOPATH/src/github.com/scionproto/scion&quot;' &gt;&gt; ~/.profile
-source ~/.profile
-cd $SC</code></pre>
+<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export SC=&quot;$GOPATH/src/github.com/scionproto/scion&quot;&#39;</span> &gt;&gt; ~/.profile
+<span class="nb">source</span> ~/.profile
+<span class="nb">cd</span> $SC
+</pre></div>
 
 
 <h3 id="step-two-configure-python-path-variable">Step Two &ndash; configure Python path variable<a class="headerlink" href="#step-two-configure-python-path-variable" title="Permanent link">&para;</a></h3>
 <p>Some SCION components like SCIONviz require Python libraries which are located in the SCION root directory. In order to make them accessible, the <code>PYTHONPATH</code> environment variable needs to be exported:</p>
-<pre class="codehilite"><code class="language-shell">echo 'export PYTHONPATH=&quot;$SC/python:$SC&quot;' &gt;&gt; ~/.profile
-source ~/.profile</code></pre>
+<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SC/python:$SC&quot;&#39;</span> &gt;&gt; ~/.profile
+<span class="nb">source</span> ~/.profile
+</pre></div>
 
 
 <h3 id="step-three-finish-installing-the-required-packages">Step Three &ndash; finish installing the required packages<a class="headerlink" href="#step-three-finish-installing-the-required-packages" title="Permanent link">&para;</a></h3>
 <p>In order to install all the dependencies, simply issue the following command while in the root directory of the SCION installation:</p>
-<pre class="codehilite"><code class="language-shell">bash -c 'yes | GO_INSTALL=true ./env/deps'</code></pre>
+<div class="codehilite"><pre>bash -c <span class="s1">&#39;yes | GO_INSTALL=true ./env/deps&#39;</span>
+</pre></div>
 
 
 <div class="admonition note">
@@ -961,7 +971,8 @@ source ~/.profile</code></pre>
 <p>This will finish installing the required dependencies and system packages.</p>
 <h3 id="step-four-configure-the-host-zookeeper-instance">Step Four &ndash; configure the host Zookeeper instance<a class="headerlink" href="#step-four-configure-the-host-zookeeper-instance" title="Permanent link">&para;</a></h3>
 <p>Replacing <code>/etc/zookeeper/conf/zoo.cfg</code> with the file <code>docker/zoo.cfg</code> is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves the performance of Zookeeper (at the cost of reliability, so it should only be done in a testing environment).</p>
-<pre class="codehilite"><code class="language-shell">cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg</code></pre>
+<div class="codehilite"><pre>cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
+</pre></div>
 
 
 <h2 id="next-steps_1">Next steps<a class="headerlink" href="#next-steps_1" title="Permanent link">&para;</a></h2>
