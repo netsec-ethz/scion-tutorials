@@ -52,6 +52,8 @@ If git reports that new modifications are downloaded, it is necessary to restart
 ```shell
 ./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
+./scion.sh clean
+./env/deps
 ./scion.sh run
 ```
 
