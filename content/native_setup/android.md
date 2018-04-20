@@ -14,7 +14,7 @@ It is recommended to make yourself familiar with Termux by reading the [Wiki](ht
 !!! hint
     The SCION App is currently in testing. With this App we aim to provide an easy way to install SCION on Android, so that the [manual setup](#manual-setup) won't be necessary anymore.
 
-To install the SCION app, please contact the [Stefan Schwarz](mailto:stefan_schwarz_de@outlook.com) to get an invite to the App testing group.
+To install the SCION app, please contact [Stefan Schwarz](mailto:stefan_schwarz_de@outlook.com) to get an invite to the App testing group.
 
 Once you have been added to the group, you will receive an email with a link to the SCION App. Note that the SCION App is currently distributed through HockeyApp and thus requires to install it as well. This can be done [through the HockeyApp website](https://hockeyapp.net/apps) (it is not available on the Google Play Store).
 
@@ -163,7 +163,7 @@ curl https://codeload.github.com/HardySimpson/zlog/tar.gz/latest-stable --output
 tar -zxf zlog-latest-stable.tar.gz
 cd zlog-latest-stable/
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/zlog-makefile.patch
-patch zlog-makefile.patch
+patch src/makefile zlog-makefile.patch
 rm zlog-makefile.patch
 
 pkg install -y libandroid-glob-dev

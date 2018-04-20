@@ -1001,7 +1001,7 @@
 <p class="admonition-title">Hint</p>
 <p>The SCION App is currently in testing. With this App we aim to provide an easy way to install SCION on Android, so that the <a href="#manual-setup">manual setup</a> won't be necessary anymore.</p>
 </div>
-<p>To install the SCION app, please contact the <a href="mailto:stefan_schwarz_de@outlook.com">Stefan Schwarz</a> to get an invite to the App testing group.</p>
+<p>To install the SCION app, please contact <a href="mailto:stefan_schwarz_de@outlook.com">Stefan Schwarz</a> to get an invite to the App testing group.</p>
 <p>Once you have been added to the group, you will receive an email with a link to the SCION App. Note that the SCION App is currently distributed through HockeyApp and thus requires to install it as well. This can be done <a href="https://hockeyapp.net/apps">through the HockeyApp website</a> (it is not available on the Google Play Store).</p>
 <h4 id="install-scion-with-the-scion-app">Install SCION with the SCION App<a class="headerlink" href="#install-scion-with-the-scion-app" title="Permanent link">&para;</a></h4>
 <p>Once the SCION App has been installed, open it and run the following command within the Terminal (Wifi connection recommended):</p>
@@ -1113,7 +1113,7 @@ make install</code></pre>
 tar -zxf zlog-latest-stable.tar.gz
 cd zlog-latest-stable/
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/zlog-makefile.patch
-patch zlog-makefile.patch
+patch src/makefile zlog-makefile.patch
 rm zlog-makefile.patch
 
 pkg install -y libandroid-glob-dev
