@@ -1,55 +1,57 @@
 # Installing SCION on an Android device
 
 ## Introduction
-It is possible to run SCION on an Android device. For this purpose the [Termux](https://github.com/termux/termux-app) app is used, which emulates a Terminal environment with the Linux base system that Android is based upon. The Termux app can be downloaded [on the Google Play Store](https://play.google.com/store/apps/details?id=com.termux).
+It is possible to run SCION on an Android device. The easiest way is to install [SCION as an Android app](#scion-app). The other alternative is to [manually install SCION on your Android device](#manual-setup). Both variants are based on [Termux](https://github.com/termux/termux-app), which emulates a Terminal environment with the Linux base system that Android is based upon.
 
-This tutorial is primarily targeted at running a SCION endhost within Termux. While it is also possible to run an entire SCION AS on an Android device, this currently doesn't run stable within Termux, as it requires Apache Zookeeper, which frequently crashes the Termux environment.
+This tutorial is primarily targeted at running a SCION endhost on Android. While it is also possible to run an entire SCION AS, this currently doesn't run stable within Termux, as it requires Apache Zookeeper, which frequently crashes the Termux environment as described [here](#endhost-configuration-vs-full-as).
 
 ## Prerequisites
 
 It is recommended to make yourself familiar with Termux by reading the [Wiki](https://wiki.termux.com/wiki/Main_Page) to learn how the app can be used comfortably.
 
-To install SCION within Termux it is recommended to access the Termux environment via Android Debug Bridge (ADB) or via SSH.
+## SCION App
+
+!!! hint
+    The SCION App is currently in testing. With this App we aim to provide an easy way to install SCION on Android, so that the [manual setup](#manual-setup) won't be necessary anymore.
+
+To install the SCION app, please contact the [Stefan Schwarz](mailto:stefan_schwarz_de@outlook.com) to get an invite to the App testing group.
+
+Once you have been added to the group, you will receive an email with a link to the SCION App. Note that the SCION App is currently distributed through HockeyApp and thus requires to install it as well. This can be done [through the HockeyApp website](https://hockeyapp.net/apps) (it is not available on the Google Play Store).
+
+#### Install SCION with the SCION App
+
+Once the SCION App has been installed, open it and run the following command within the Terminal (Wifi connection recommended):
+```shell
+./install
+```
+
+That’s it! The process takes a while but is fully automatic. At the end, a dialog opens which asks to select the ‘gen’ folder from internal memory. Select it to continue.
+
+!!! hint
+    If the folder selection doesn't show up, run the following script to trigger it manually:
+    `./import_folder`
+
+That means of course, that the ‘gen’ folder needs to be readily available on the internal memory. Download it directly or push it onto the device with ADB.
+
+!!! warning
+    SCION for Android currently only supports a SCION endhost configuration, as described [in this tutorial](/general_scion_configuration/setup_endhost/)
+
+!!! warning
+    SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described [here](/native_setup/android/#changes-to-gen-folder)
+
+## Manual setup
+
+To setup SCION on Android manually, the [Termux app](https://play.google.com/store/apps/details?id=com.termux) needs to be installed from the Google Play Store.
+
+To install SCION within Termux it is recommended to access the Termux environment via the Android Debug Bridge (ADB) or via SSH.
 
 ### Access Termux via SSH
 
 First install the `openssh` package within Termux with `pkg install openssh`, then start the server with `sshd`. Password authentication is not supported, so you need to add your public key to `$HOME/.ssh/authorized_keys`. The ssh server runs by default on port 8022, so connect to it with `ssh -p 8022 DEVICE_IP`. You can find the device IP address with `ip addr list wlan0`. 
 
-For more information:  
-[Run an SSH server on your Android with Termux](https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/) on glow's blog  
-[Access Termux via USB](https://glow.li/technology/2016/9/20/access-termux-via-usb/) on glow's blog  
-
-## SCION App
-
-A SCION App is currently in testing. With this App we try to provide a all-in-one solution, so that the manual setup won't be necessary anymore.
-
-To take part in the test, contact the [project responsible](mailto:stefan_schwarz_de@outlook.com) to get an invite to the App testing group.
-
-When you have been added to the group, you will receive a mail that includes a link to get the App. The App is distributed through HockeyApp currently and it thus requires you to also install the HockeyApp mobile app, which can only be downloaded [from the website](https://hockeyapp.net/apps) (it is not available on the Google Play Store).
-
-#### Install and run SCION in App
-
-To install SCION, run the following command within the Terminal (Wifi connection recommended):
-```shell
-./install
-```
-
-And that’s it! The process takes a while but is fully automatic. At the end, a dialog opens where you will be asked to select your ‘gen’ Folder from internal memory. Select it to continue.
-
-!!! hint
-    If the folder selection doesn't show, run the following script to trigger it manually:
-    `./import_folder`
-
-That means of course, that you need to have your ‘gen’ folder readily configured on your internal storage. Download it directly or push it onto the device with ADB.
-
-!!! warning
-    SCION Android currently only supports an Endhost configuration (as described in this tutorial:[https://netsec-ethz.github.io/scion-tutorials/general_scion_configuration/setup_endhost/](https://netsec-ethz.github.io/scion-tutorials/general_scion_configuration/setup_endhost/))
-
-!!! warning
-    SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described here:
-    [https://netsec-ethz.github.io/scion-tutorials/native_setup/android/#changes-to-gen-folder](https://netsec-ethz.github.io/scion-tutorials/native_setup/android/#changes-to-gen-folder)
-
-## Manual setup
+For more information:
+[Run an SSH server on your Android with Termux](https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/)
+[Access Termux via USB](https://glow.li/technology/2016/9/20/access-termux-via-usb/)
 
 ### Install necessary packages
 
@@ -218,13 +220,13 @@ After finishing the installation of SCION, there are different ways of running d
 
 Note that in `gen/ISDx/AS10xx/supervisord.conf` the path of the SCION Deamon socket needs to be changed as follows: `"--api-addr" "/data/data/com.termux/files/run/shm/sciond/sdX-10XX.sock"`. 
 
-### Endhost configuration vs. full AS
+#### VPN Connection to SCIONLab
+
+Unfortunately, OpenVPN is not currently supported from within the Termux environment. Alternatively, the [Open
+VPN app](https://play.google.com/store/apps/details?id=net.openvpn.openvpn) can be installed to connect to SCIONLab via VPN. The `client.conf` file that is provided by the [SCIONLab coordinator](https://www.scionlab.org/) needs to be renamed to `client.ovpn` before it can be imported into the app. Additionally, the line `route 10.0.8.0/24` needs to be added to the file.
+
+#### Endhost configuration vs. full AS
 
 It is possible to run the full SCION on Android, it is, however, currently not recommended. The full SCION requires a Zookeeper instance which itself is a Java program. While it is possible to install a Java Virtual Machine in Termux, the actual Termux packages have been disabled or removed due to instabilities with high CPU usage.
 
 If you still want to try the full SCION on an Android phone, we suggest to use a remote Zookeeper instance running on another device and configuring the own SCION topology accordingly.
-
-#### VPN Connection to SCIONLab
-
-Unfortunately, OpenVPN is not currently supported from within the Termux environment. Alternatively, the Open
-VPN app can be installed to connect to SCIONLab via VPN. The `client.conf` file that is provided by the SCIONLab coordinator needs to be renamed to `client.ovpn` before it can be imported into the app. Additionally, the line `route 10.0.8.0/24` needs to be added to the file.

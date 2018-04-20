@@ -840,8 +840,7 @@
 </div>
 <h2 id="install-necessary-tools">Install necessary tools<a class="headerlink" href="#install-necessary-tools" title="Permanent link">&para;</a></h2>
 <h3 id="install-necessary-packages">Install necessary packages<a class="headerlink" href="#install-necessary-packages" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre>sudo apt install git
-</pre></div>
+<pre class="codehilite"><code class="language-shell">sudo apt install git</code></pre>
 
 
 <h3 id="configure-go-workspace">Configure Go workspace<a class="headerlink" href="#configure-go-workspace" title="Permanent link">&para;</a></h3>
@@ -850,21 +849,19 @@
 <p>You can skip this step if you have Go workspaces already configured.</p>
 </div>
 <p>It is necessary to set up your <a href="https://golang.org/doc/code.html#GOPATH" title="Go workspace">Go workspace</a>. The following commands will create a default workspace at <code>~/go</code> and export it as the <code>$GOPATH</code> environment variable:</p>
-<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export GOPATH=&quot;$HOME/go&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-mkdir -p <span class="s2">&quot;</span>$<span class="s2">GOPATH/bin&quot;</span>
-<span class="nb">echo</span> <span class="s1">&#39;PATH=$PATH:$GOPATH/bin&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export GOPATH=&quot;$HOME/go&quot;' &gt;&gt; ~/.profile
+source ~/.profile
+mkdir -p &quot;$GOPATH/bin&quot;
+echo 'PATH=$PATH:$GOPATH/bin' &gt;&gt; ~/.profile
+source ~/.profile</code></pre>
 
 
 <h2 id="install-scion">Install SCION<a class="headerlink" href="#install-scion" title="Permanent link">&para;</a></h2>
 <h3 id="step-one-clone-the-scion-repository">Step One &ndash; clone the SCION repository<a class="headerlink" href="#step-one-clone-the-scion-repository" title="Permanent link">&para;</a></h3>
 <p>After the Go workspace has been configured, we can checkout the SCION repository from github.com with all dependencies using the following commands:</p>
-<div class="codehilite"><pre>mkdir -p <span class="s2">&quot;</span>$<span class="s2">GOPATH/src/github.com/scionproto/scion&quot;</span>
-<span class="nb">cd</span> <span class="s2">&quot;</span>$<span class="s2">GOPATH/src/github.com/scionproto/scion&quot;</span>
-git clone --recursive -b scionlab git@github.com:netsec-ethz/netsec-scion .
-</pre></div>
+<pre class="codehilite"><code class="language-shell">mkdir -p &quot;$GOPATH/src/github.com/scionproto/scion&quot;
+cd &quot;$GOPATH/src/github.com/scionproto/scion&quot;
+git clone --recursive -b scionlab git@github.com:netsec-ethz/netsec-scion .</code></pre>
 
 
 <div class="admonition warning">
@@ -877,15 +874,14 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/netsec-scion .
 </ol>
 </div>
 <p>This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable <code>SC</code> that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:</p>
-<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export SC=&quot;$GOPATH/src/github.com/scionproto/scion&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-<span class="nb">cd</span> $SC
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export SC=&quot;$GOPATH/src/github.com/scionproto/scion&quot;' &gt;&gt; ~/.profile
+source ~/.profile
+cd $SC</code></pre>
 
 
 <h3 id="step-two-apply-necessary-patches">Step Two &ndash; apply necessary patches<a class="headerlink" href="#step-two-apply-necessary-patches" title="Permanent link">&para;</a></h3>
 <p>On ARM architectures, it is necessary to apply two patches as followings:</p>
-<div class="codehilite"><pre>git checkout -b arm-modified
+<pre class="codehilite"><code class="language-shell">git checkout -b arm-modified
 wget https://gist.githubusercontent.com/FR4NK-W/cc6661f420fe5e9805d5b9cdb9c41b1b/raw/7dc3b60b86b4c148c2706e3da82eee8d557bbd45/patches_checksum_bench.patch
 wget https://gist.githubusercontent.com/FR4NK-W/fb7a4b171ab3d5121b6492b9b664fd47/raw/ddeeb8f2337c64f027955e070df6ef34ff26bf9a/patches_dispatcher.patch
 wget https://gist.githubusercontent.com/juagargi/e58d7cc90c67a475ba9ccab4146ee62c/raw/dad97fd847c96c013becd69afedbd05970f6c496/overflow.patch
@@ -897,35 +893,30 @@ patch ./c/dispatcher/dispatcher.c ./patches_dispatcher.patch
 rm c/dispatcher/dispatcher.c.orig
 rm patches_dispatcher.patch
 patch go/lib/infra/transport/udp.go overflow.patch
-rm overflow.patch
-</pre></div>
+rm overflow.patch</code></pre>
 
 
 <p>In order to enable updating the system, we commit the patched changes into the local arm-modified branch:</p>
-<div class="codehilite"><pre>git commit -am <span class="s2">&quot;Modified to compile on ARM systems&quot;</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">git commit -am &quot;Modified to compile on ARM systems&quot;</code></pre>
 
 
 <div class="admonition warning">
 <p class="admonition-title">Troubleshooting</p>
 <p>If your git identity is not configured, commits won't be possible. Configuring the user identity on a newly installed git can be done as follows:</p>
 </div>
-<div class="codehilite"><pre>git config --global user.name <span class="s2">&quot;John Doe&quot;</span>
-git config --global user.email johndoe@example.com
-</pre></div>
+<pre class="codehilite"><code class="language-shell">git config --global user.name &quot;John Doe&quot;
+git config --global user.email johndoe@example.com</code></pre>
 
 
 <h3 id="step-three-configure-python-path-variable">Step Three &ndash; configure Python path variable<a class="headerlink" href="#step-three-configure-python-path-variable" title="Permanent link">&para;</a></h3>
 <p>Some SCION components like SCIONviz require Python libraries which are located in the scion root directory. In order to make them accessible, exporting the <code>PYTHONPATH</code> environment variable is required:</p>
-<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SC/python:$SC&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export PYTHONPATH=&quot;$SC/python:$SC&quot;' &gt;&gt; ~/.profile
+source ~/.profile</code></pre>
 
 
 <h3 id="step-four-finish-installing-the-required-packages">Step Four &ndash; finish installing the required packages<a class="headerlink" href="#step-four-finish-installing-the-required-packages" title="Permanent link">&para;</a></h3>
 <p>In order to instal dependencies, simply issue the following command while in the root directory of the SCION installation:</p>
-<div class="codehilite"><pre>bash -c <span class="s1">&#39;yes | GO_INSTALL=true ./env/deps&#39;</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">bash -c 'yes | GO_INSTALL=true ./env/deps'</code></pre>
 
 
 <div class="admonition note">
@@ -935,8 +926,7 @@ git config --global user.email johndoe@example.com
 <p>This will finish installing the required dependencies and system packages.</p>
 <h3 id="step-five-configure-the-host-zookeeper-instance">Step Five &ndash; configure the host Zookeeper instance<a class="headerlink" href="#step-five-configure-the-host-zookeeper-instance" title="Permanent link">&para;</a></h3>
 <p>Replacing <code>/etc/zookeeper/conf/zoo.cfg</code> with the file <code>docker/zoo.cfg</code> is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves the performance of Zookeeper (at the cost of reliability, so it should only be done in a testing environment).</p>
-<div class="codehilite"><pre>cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>

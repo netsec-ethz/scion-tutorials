@@ -697,18 +697,16 @@
 </div>
 <p>The fourth step re-maps the IP address of the SCION infrastructure devices to the internal address of your host.</p>
 <p>For this, you can execute the following three commands from your main SCION directory (<code>cd $SC</code> to get there), replacing <code>192.168.1.111</code> with the internal IPv4 address of your host:</p>
-<div class="codehilite"><pre><span class="nb">export</span> <span class="nv">HOST_IP</span><span class="o">=</span>192.168.1.111
-find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/</span><span class="si">${</span><span class="nv">HOST_IP</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
-find ./gen/ -name <span class="s2">&quot;*.yml&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/</span><span class="si">${</span><span class="nv">HOST_IP</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
-find ./gen/ -name <span class="s2">&quot;*.conf&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/</span><span class="si">${</span><span class="nv">HOST_IP</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">export HOST_IP=192.168.1.111
+find ./gen/ -name &quot;*.json&quot; -exec sed -i &quot;s/10.0.2.15/${HOST_IP}/g&quot; '{}' \;
+find ./gen/ -name &quot;*.yml&quot; -exec sed -i &quot;s/10.0.2.15/${HOST_IP}/g&quot; '{}' \;
+find ./gen/ -name &quot;*.conf&quot; -exec sed -i &quot;s/10.0.2.15/${HOST_IP}/g&quot; '{}' \;</code></pre>
 
 
 <p>This completes the installation! You can restart the infrastructure in the following way:</p>
-<div class="codehilite"><pre>./scion.sh stop
+<pre class="codehilite"><code class="language-shell">./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run
-</pre></div>
+./scion.sh run</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>

@@ -689,12 +689,11 @@
 </ul>
 <h2 id="restarting-scion-infrastructure">Restarting SCION infrastructure<a class="headerlink" href="#restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
 <p>Every time <code>gen</code> directory is changed, it is necessary to restart SCION infrastructure so changes will take effect. This is done with following commands:</p>
-<div class="codehilite"><pre><span class="nb">cd</span> $SC
+<pre class="codehilite"><code class="language-shell">cd $SC
 
 ./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run
-</pre></div>
+./scion.sh run</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
