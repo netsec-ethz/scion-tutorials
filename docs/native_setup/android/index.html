@@ -1032,7 +1032,8 @@
 <p>When you have been added to the group, you will receive a mail that includes a link to get the App. The App is distributed through HockeyApp currently and it thus requires you to also install the HockeyApp mobile app, which can only be downloaded <a href="https://hockeyapp.net/apps">from the website</a> (it is not available on the Google Play Store).</p>
 <h4 id="install-and-run-scion-in-app">Install and run SCION in App<a class="headerlink" href="#install-and-run-scion-in-app" title="Permanent link">&para;</a></h4>
 <p>To install SCION, run the following command within the Terminal (Wifi connection recommended):</p>
-<pre class="codehilite"><code class="language-shell">./install</code></pre>
+<div class="codehilite"><pre>./install
+</pre></div>
 
 
 <p>And that’s it! The process takes a while but is fully automatic. At the end, a dialog opens where you will be asked to select your ‘gen’ Folder from internal memory. Select it to continue.</p>
@@ -1054,124 +1055,139 @@
 <h2 id="manual-setup">Manual setup<a class="headerlink" href="#manual-setup" title="Permanent link">&para;</a></h2>
 <h3 id="install-necessary-packages">Install necessary packages<a class="headerlink" href="#install-necessary-packages" title="Permanent link">&para;</a></h3>
 <p>Install the required packages from within Termux:</p>
-<pre class="codehilite"><code class="language-shell">apt update &amp;&amp; apt upgrade
-pkg install -y termux-exec git python python2 clang make python-dev libffi-dev openssl-dev openssl-tool curl</code></pre>
+<div class="codehilite"><pre>apt update <span class="o">&amp;&amp;</span> apt upgrade
+pkg install -y termux-exec git python python2 clang make python-dev libffi-dev openssl-dev openssl-tool curl
+</pre></div>
 
 
 <p>To access the SD card from Termux, it is required to run <code>termux-setup-storage</code> from the Termux console.</p>
 <h3 id="configure-go-workspace">Configure Go workspace<a class="headerlink" href="#configure-go-workspace" title="Permanent link">&para;</a></h3>
 <p>SCION requires a specific Go version. The Termux Go package may be ahead of that version. The following repository offers prebuilt golang packages in the required version for both ARMv7 &amp; ARMv8/aarch64 architectures:</p>
 <p>For ARMv7:</p>
-<pre class="codehilite"><code class="language-shell">curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/arm/golang-doc_2%3A1.9.4_arm.deb
+<div class="codehilite"><pre>curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/arm/golang-doc_2%3A1.9.4_arm.deb
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/arm/golang_2%3A1.9.4_arm.deb
-dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb</code></pre>
+dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb
+</pre></div>
 
 
 <p>For aarch64:</p>
-<pre class="codehilite"><code class="language-shell">curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/aarch64/golang-doc_2%3A1.9.4_aarch64.deb
+<div class="codehilite"><pre>curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/aarch64/golang-doc_2%3A1.9.4_aarch64.deb
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/aarch64/golang_2%3A1.9.4_aarch64.deb
-dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb</code></pre>
+dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb
+</pre></div>
 
 
 <p>Setup the Go workspace and add it to your path:</p>
-<pre class="codehilite"><code class="language-shell">echo 'export GOPATH=&quot;$HOME/go&quot;' &gt;&gt; ~/.profile
-source ~/.profile
-mkdir -p &quot;$GOPATH/bin&quot;
-echo 'PATH=$PATH:$GOPATH/bin' &gt;&gt; ~/.profile
-source ~/.profile</code></pre>
+<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export GOPATH=&quot;$HOME/go&quot;&#39;</span> &gt;&gt; ~/.profile
+<span class="nb">source</span> ~/.profile
+mkdir -p <span class="s2">&quot;</span>$<span class="s2">GOPATH/bin&quot;</span>
+<span class="nb">echo</span> <span class="s1">&#39;PATH=$PATH:$GOPATH/bin&#39;</span> &gt;&gt; ~/.profile
+<span class="nb">source</span> ~/.profile
+</pre></div>
 
 
 <h2 id="install-scion">Install SCION<a class="headerlink" href="#install-scion" title="Permanent link">&para;</a></h2>
 <h3 id="step-one-clone-the-scion-repository">Step One &ndash; clone the SCION repository<a class="headerlink" href="#step-one-clone-the-scion-repository" title="Permanent link">&para;</a></h3>
 <p>After the Go workspace has been configured, we can checkout SCION with the required Termux modifications from Github and apply a required patch using the following commands:</p>
-<pre class="codehilite"><code class="language-shell">mkdir -p &quot;$GOPATH/src/github.com/scionproto/scion&quot;
-cd &quot;$GOPATH/src/github.com/scionproto/scion&quot;
+<div class="codehilite"><pre>mkdir -p <span class="s2">&quot;</span>$<span class="s2">GOPATH/src/github.com/scionproto/scion&quot;</span>
+<span class="nb">cd</span> <span class="s2">&quot;</span>$<span class="s2">GOPATH/src/github.com/scionproto/scion&quot;</span>
 git config --global url.https://github.com/.insteadOf git@github.com:
 git clone --recursive -b termux-modifications git@github.com:stschwar/scion .
 
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/lwip-contrib.patch
 patch sub/lwip-contrib/ports/unix/proj/scion/Makefile lwip-contrib.patch
-rm lwip-contrib.patch</code></pre>
+rm lwip-contrib.patch
+</pre></div>
 
 
 <p>This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable <code>SC</code> that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:</p>
-<pre class="codehilite"><code class="language-shell">echo 'export SC=&quot;$GOPATH/src/github.com/scionproto/scion&quot;' &gt;&gt; ~/.profile
-source ~/.profile
-cd $SC</code></pre>
+<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export SC=&quot;$GOPATH/src/github.com/scionproto/scion&quot;&#39;</span> &gt;&gt; ~/.profile
+<span class="nb">source</span> ~/.profile
+<span class="nb">cd</span> $SC
+</pre></div>
 
 
 <h3 id="step-two-configure-python-path-variable">Step Two &ndash; configure Python path variable<a class="headerlink" href="#step-two-configure-python-path-variable" title="Permanent link">&para;</a></h3>
 <p>Some SCION components like SCIONviz require Python libraries which are located in the SCION root directory. In order to make them accessible, the <code>PYTHONPATH</code> environment variable needs to be exported:</p>
-<pre class="codehilite"><code class="language-shell">echo 'export PYTHONPATH=&quot;$SC/python:$SC&quot;' &gt;&gt; ~/.profile
-source ~/.profile</code></pre>
+<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SC/python:$SC&quot;&#39;</span> &gt;&gt; ~/.profile
+<span class="nb">source</span> ~/.profile
+</pre></div>
 
 
 <h3 id="step-three-install-required-packagespatches">Step Three &ndash; install required packages/patches<a class="headerlink" href="#step-three-install-required-packagespatches" title="Permanent link">&para;</a></h3>
 <p>SCION has an install script to install all necessary dependencies. In the Termux environment, however, this is not yet working. So the dependencies have to be installed manually.</p>
 <h4 id="capn-proto">Cap'n Proto<a class="headerlink" href="#capn-proto" title="Permanent link">&para;</a></h4>
 <p>To install <a href="https://capnproto.org/">Cap'n Proto</a> in Termux run the following commands in the <code>home/</code> directory:</p>
-<pre class="codehilite"><code class="language-shell">curl -O https://capnproto.org/capnproto-c++-0.6.1.tar.gz
+<div class="codehilite"><pre>curl -O https://capnproto.org/capnproto-c++-0.6.1.tar.gz
 tar zxf capnproto-c++-0.6.1.tar.gz
-cd capnproto-c++-0.6.1</code></pre>
+<span class="nb">cd</span> capnproto-c++-0.6.1
+</pre></div>
 
 
 <p>On Termux Cap'n Proto requires some patching to compile:</p>
-<pre class="codehilite"><code class="language-shell">cd src/kj/
+<div class="codehilite"><pre><span class="nb">cd</span> src/kj/
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/capnproto-c++-0.6.1/debug.c++.patch
 patch debug.c++ debug.c++.patch
-rm debug.c++.patch</code></pre>
+rm debug.c++.patch
+</pre></div>
 
 
 <p>Back in the <code>capnproto-c++-0.6.1/</code> root directory run:</p>
-<pre class="codehilite"><code class="language-shell">./configure --prefix=$PREFIX TMPDIR=$PREFIX/tmp
+<div class="codehilite"><pre>./configure --prefix<span class="o">=</span>$PREFIX <span class="nv">TMPDIR</span><span class="o">=</span>$PREFIX/tmp
 make 
-make install</code></pre>
+make install
+</pre></div>
 
 
 <h4 id="zlog">zlog<a class="headerlink" href="#zlog" title="Permanent link">&para;</a></h4>
 <p>Install <a href="https://github.com/HardySimpson/zlog">zlog</a> by following its install instructions mostly. It requires some more patching and the installation of <code>libandroid-glob-dev</code>:</p>
-<pre class="codehilite"><code class="language-shell">curl https://codeload.github.com/HardySimpson/zlog/tar.gz/latest-stable --output zlog-latest-stable.tar.gz
+<div class="codehilite"><pre>curl https://codeload.github.com/HardySimpson/zlog/tar.gz/latest-stable --output zlog-latest-stable.tar.gz
 tar -zxf zlog-latest-stable.tar.gz
-cd zlog-latest-stable/
+<span class="nb">cd</span> zlog-latest-stable/
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/zlog-makefile.patch
 patch zlog-makefile.patch
 rm zlog-makefile.patch
 
 pkg install -y libandroid-glob-dev
-make PREFIX=$PREFIX
-make PREFIX=$PREFIX install</code></pre>
+make <span class="nv">PREFIX</span><span class="o">=</span>$PREFIX
+make <span class="nv">PREFIX</span><span class="o">=</span>$PREFIX install
+</pre></div>
 
 
 <h4 id="uthash">uthash<a class="headerlink" href="#uthash" title="Permanent link">&para;</a></h4>
 <p>Install the <a href="https://troydhanson.github.io/uthash/">uthash</a> library from your <code>home/</code> directory:</p>
-<pre class="codehilite"><code class="language-shell">curl -o uthash-master.zip https://codeload.github.com/troydhanson/uthash/zip/master
+<div class="codehilite"><pre>curl -o uthash-master.zip https://codeload.github.com/troydhanson/uthash/zip/master
 unzip uthash-master.zip
 cp uthash-master/src/*.h $PREFIX/include
-rm -rf uthash-master/</code></pre>
+rm -rf uthash-master/
+</pre></div>
 
 
 <h4 id="scion-python-dependencies">SCION Python dependencies<a class="headerlink" href="#scion-python-dependencies" title="Permanent link">&para;</a></h4>
 <p>Most of the Python dependencies can easily be installed through <code>pip</code>:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC
+<div class="codehilite"><pre><span class="nb">cd</span> $SC
 pip2 install -r env/pip2/requirements.txt
 pip3 install -r env/pip3/requirements.txt
-TMPDIR=$PREFIX/tmp pip3 install lz4 PyNaCl PyYAML Pygments</code></pre>
+<span class="nv">TMPDIR</span><span class="o">=</span>$PREFIX/tmp pip3 install lz4 PyNaCl PyYAML Pygments
+</pre></div>
 
 
 <div class="admonition warning">
 <p class="admonition-title">Supervisor</p>
 <p>In case the pip installation of the package "Supervisor" fails, you can install it manually:</p>
 </div>
-<pre class="codehilite"><code class="language-shell">curl -O https://pypi.python.org/packages/44/60/698e54b4a4a9b956b2d709b4b7b676119c833d811d53ee2500f1b5e96dc3/supervisor-3.3.4.tar.gz
+<div class="codehilite"><pre>curl -O https://pypi.python.org/packages/44/60/698e54b4a4a9b956b2d709b4b7b676119c833d811d53ee2500f1b5e96dc3/supervisor-3.3.4.tar.gz
 tar -xzf supervisor-3.3.4.tar.gz
-cd supervisor-3.3.4/
-python2 setup.py install</code></pre>
+<span class="nb">cd</span> supervisor-3.3.4/
+python2 setup.py install
+</pre></div>
 
 
 <h4 id="scion-go-dependencies">SCION Go dependencies<a class="headerlink" href="#scion-go-dependencies" title="Permanent link">&para;</a></h4>
 <p>With Go correctly installed it is easy to install the SCION dependencies as well:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC/env/go
-./deps</code></pre>
+<div class="codehilite"><pre><span class="nb">cd</span> $SC/env/go
+./deps
+</pre></div>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
