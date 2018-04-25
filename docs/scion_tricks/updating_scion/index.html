@@ -752,15 +752,17 @@ Some of these changes will break compatibility with past releases. In these case
 <p>If you run SCION inside a VM, SCION should be kept up to date automatically. With this automatic process you don't have to worry about the updates. Still, if you are interested in knowing how we do it, read the next subsection.</p>
 <h3 id="how-is-my-scion-vm-kept-up-to-date">How is my SCION VM kept up to date?<a class="headerlink" href="#how-is-my-scion-vm-kept-up-to-date" title="Permanent link">&para;</a></h3>
 <p>You can always check that is the case by listing the running timers and looking for the one upgrading SCION:</p>
-<pre class="codehilite"><code class="language-shell">sudo systemctl list-timers
+<div class="codehilite"><pre>sudo systemctl list-timers
 NEXT                         LEFT        LAST                         PASSED       UNIT                         ACTIVATES
-Wed 2018-04-18 16:35:24 UTC  8min left   Wed 2018-04-18 16:25:23 UTC  1min 36s ago scionupgrade.timer           scionupgrade.service</code></pre>
+Wed 2018-04-18 16:35:24 UTC  8min left   Wed 2018-04-18 16:25:23 UTC  1min 36s ago scionupgrade.timer           scionupgrade.service
+</pre></div>
 
 
 <p>This indicates we have the upgrade service installed. The upgrade service is checking every day that the local git repository is up to date with the <code>scionlab</code> branch. This is done by <em>rebasing</em> the local copy on top of the branch:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC
+<div class="codehilite"><pre><span class="nb">cd</span> $SC
 git fetch origin scionlab
-git rebase origin/scionlab</code></pre>
+git rebase origin/scionlab
+</pre></div>
 
 
 <p>We do it this to maximize the changes of successfully updating even if you had local changes done on top.
@@ -771,20 +773,23 @@ The automatic process will restart SCION if it detected that we downloaded a new
 <p>We can do manually what we automatically do inside the SCION VMs, and these simple steps will update your installation of SCION.
 As our SCION implementation is hosted on git, updating to the latest version is as simple as <code>pull</code>-ing changes or <code>rebase</code>-ing.
 To download the newest version first navigate to SCION root directory:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC</code></pre>
+<div class="codehilite"><pre><span class="nb">cd</span> $SC
+</pre></div>
 
 
 <p>then fetch newest changes from remote <code>scionlab</code> branch and rebase:</p>
-<pre class="codehilite"><code class="language-shell">git fetch origin scionlab
-git rebase origin/scionlab</code></pre>
+<div class="codehilite"><pre>git fetch origin scionlab
+git rebase origin/scionlab
+</pre></div>
 
 
 <p>If git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh stop
+<div class="codehilite"><pre>./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
 ./scion.sh clean
 ./env/deps
-./scion.sh run</code></pre>
+./scion.sh run
+</pre></div>
 
 
 <p>Your SCION installation should be now up to date.</p>
