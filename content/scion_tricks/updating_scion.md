@@ -47,7 +47,32 @@ git fetch origin scionlab
 git rebase origin/scionlab
 ```
 
-If git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:
+#### ARM devices
+
+If this is an ARM devices and we have the sources previously patched (probably they are if this is ARM), we will need to apply another patch
+as explained in [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](../native_setup/rpi_ubuntu/index.html#step-two-apply-necessary-patches)
+
+```shell
+curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/ab6578ed400885bb5ea7767cb10a2686f3e1db6d/arm.patch | patch -p1
+```
+
+You may find some some output informing that some hunks failed to patch. This is typically okay, as it represents portions of code that we had patched before the update and don't need to be patched again. As an example of such output we have:
+
+```shell
+patching file c/dispatcher/dispatcher.c
+Hunk #1 FAILED at 837.
+1 out of 1 hunk FAILED -- saving rejects to file c/dispatcher/dispatcher.c.rej
+patching file c/lib/scion/address.h
+patching file c/lib/scion/checksum_bench.c
+Hunk #1 FAILED at 40.
+Hunk #2 FAILED at 57.
+2 out of 2 hunks FAILED -- saving rejects to file c/lib/scion/checksum_bench.c.rej
+```
+
+
+### Rebuild SCION
+
+If git reports that new modifications were downloaded when we rebased, it is necessary to restart scion infrastructure:
 
 ```shell
 ./scion.sh stop
