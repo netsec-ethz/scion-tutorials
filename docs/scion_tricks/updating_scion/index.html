@@ -579,6 +579,26 @@
     Manual steps to update
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm-devices" title="ARM devices" class="md-nav__link">
+    ARM devices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebuild-scion" title="Rebuild SCION" class="md-nav__link">
+    Rebuild SCION
+  </a>
+  
 </li>
         
       </ul>
@@ -715,6 +735,26 @@
     Manual steps to update
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arm-devices" title="ARM devices" class="md-nav__link">
+    ARM devices
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebuild-scion" title="Rebuild SCION" class="md-nav__link">
+    Rebuild SCION
+  </a>
+  
 </li>
         
       </ul>
@@ -783,7 +823,27 @@ git rebase origin/scionlab
 </pre></div>
 
 
-<p>If git reports that new modifications are downloaded, it is necessary to restart scion infrastructure:</p>
+<h4 id="arm-devices">ARM devices<a class="headerlink" href="#arm-devices" title="Permanent link">&para;</a></h4>
+<p>If this is an ARM devices and we have the sources previously patched (probably they are if this is ARM), we will need to apply another patch
+as explained in <a href="../../native_setup/rpi_ubuntu/index.html#step-two-apply-necessary-patches">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></p>
+<div class="codehilite"><pre>curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/ab6578ed400885bb5ea7767cb10a2686f3e1db6d/arm.patch <span class="p">|</span> patch -p1
+</pre></div>
+
+
+<p>You may find some some output informing that some hunks failed to patch. This is typically okay, as it represents portions of code that we had patched before the update and don't need to be patched again. As an example of such output we have:</p>
+<div class="codehilite"><pre>patching file c/dispatcher/dispatcher.c
+Hunk <span class="c1">#1 FAILED at 837.</span>
+<span class="m">1</span> out of <span class="m">1</span> hunk FAILED -- saving rejects to file c/dispatcher/dispatcher.c.rej
+patching file c/lib/scion/address.h
+patching file c/lib/scion/checksum_bench.c
+Hunk <span class="c1">#1 FAILED at 40.</span>
+Hunk <span class="c1">#2 FAILED at 57.</span>
+<span class="m">2</span> out of <span class="m">2</span> hunks FAILED -- saving rejects to file c/lib/scion/checksum_bench.c.rej
+</pre></div>
+
+
+<h3 id="rebuild-scion">Rebuild SCION<a class="headerlink" href="#rebuild-scion" title="Permanent link">&para;</a></h3>
+<p>If git reports that new modifications were downloaded when we rebased, it is necessary to restart scion infrastructure:</p>
 <div class="codehilite"><pre>./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
 ./scion.sh clean
