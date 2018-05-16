@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
     
     
       
@@ -610,18 +610,18 @@
                 
                 
                 <h1 id="command-line-as-visualization">Command-line AS Visualization<a class="headerlink" href="#command-line-as-visualization" title="Permanent link">&para;</a></h1>
-<div class="codehilite"><pre><span class="nb">cd</span> ~/go/src/github.com/scionproto/scion/
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/go/src/github.com/scionproto/scion/
 </pre></div>
 
 
-<div class="codehilite"><pre>python3 sub/scion-viz/python/as_viewer.py
+<div class="codehilite"><pre><span></span>python3 sub/scion-viz/python/as_viewer.py
 usage: as_viewer.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--addr ADDR<span class="o">]</span> <span class="o">[</span>-t<span class="o">]</span> <span class="o">[</span>-p<span class="o">]</span> <span class="o">[</span>-trc<span class="o">]</span> <span class="o">[</span>-crt<span class="o">]</span> <span class="o">[</span>-c<span class="o">]</span> <span class="o">[</span>-pp<span class="o">]</span>
                     src_isdas <span class="o">[</span>dst_isdas<span class="o">]</span>
 as_viewer.py: error: the following arguments are required: src_isdas
 </pre></div>
 
 
-<div class="codehilite"><pre>python3 sub/scion-viz/python/as_viewer.py -h
+<div class="codehilite"><pre><span></span>python3 sub/scion-viz/python/as_viewer.py -h
 usage: as_viewer.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--addr ADDR<span class="o">]</span> <span class="o">[</span>-t<span class="o">]</span> <span class="o">[</span>-p<span class="o">]</span> <span class="o">[</span>-trc<span class="o">]</span> <span class="o">[</span>-crt<span class="o">]</span> <span class="o">[</span>-c<span class="o">]</span> <span class="o">[</span>-pp<span class="o">]</span>
                     src_isdas <span class="o">[</span>dst_isdas<span class="o">]</span>
 
@@ -643,7 +643,7 @@ optional arguments:
 </pre></div>
 
 
-<div class="codehilite"><pre>python3 sub/scion-viz/python/as_viewer.py 1-1045 -t
+<div class="codehilite"><pre><span></span>python3 sub/scion-viz/python/as_viewer.py 1-1045 -t
 
 SCION AS Viewer
 <span class="o">(</span>src<span class="o">)</span> 1-1045 <span class="o">=======================</span>&gt; None <span class="o">(</span>dst<span class="o">)</span>
@@ -680,7 +680,7 @@ Interface ID: 1
 </pre></div>
 
 
-<div class="codehilite"><pre>python3 sub/scion-viz/python/as_viewer.py 1-1045 2-24 -p
+<div class="codehilite"><pre><span></span>python3 sub/scion-viz/python/as_viewer.py 1-1045 2-24 -p
 
 SCION AS Viewer
 <span class="o">(</span>src<span class="o">)</span> 1-1045 <span class="o">=======================</span>&gt; 2-24 <span class="o">(</span>dst<span class="o">)</span>
@@ -802,7 +802,7 @@ Interfaces Len: 20
 </pre></div>
 
 
-<div class="codehilite"><pre>python3 sub/scion-viz/python/as_viewer.py 1-1045 -h
+<div class="codehilite"><pre><span></span>python3 sub/scion-viz/python/as_viewer.py 1-1045 -h
 usage: as_viewer.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--addr ADDR<span class="o">]</span> <span class="o">[</span>-t<span class="o">]</span> <span class="o">[</span>-p<span class="o">]</span> <span class="o">[</span>-trc<span class="o">]</span> <span class="o">[</span>-crt<span class="o">]</span> <span class="o">[</span>-c<span class="o">]</span> <span class="o">[</span>-pp<span class="o">]</span>
                     src_isdas <span class="o">[</span>dst_isdas<span class="o">]</span>
 
@@ -824,7 +824,7 @@ optional arguments:
 </pre></div>
 
 
-<div class="codehilite"><pre>python3 sub/scion-viz/python/as_viewer.py 1-1045 -pp
+<div class="codehilite"><pre><span></span>python3 sub/scion-viz/python/as_viewer.py 1-1045 -pp
 
 SCION AS Viewer
 <span class="o">(</span>src<span class="o">)</span> 1-1045 <span class="o">=======================</span>&gt; None <span class="o">(</span>dst<span class="o">)</span>
@@ -859,7 +859,7 @@ UpdateAfterTime: 3600
 </pre></div>
 
 
-<div class="codehilite"><pre>python3 sub/scion-viz/python/as_viewer.py 1-1045 -c
+<div class="codehilite"><pre><span></span>python3 sub/scion-viz/python/as_viewer.py 1-1045 -c
 
 SCION AS Viewer
 <span class="o">(</span>src<span class="o">)</span> 1-1045 <span class="o">=======================</span>&gt; None <span class="o">(</span>dst<span class="o">)</span>
@@ -874,7 +874,7 @@ RegisterTime: 5
 </pre></div>
 
 
-<div class="codehilite"><pre>python3 sub/scion-viz/python/as_viewer.py 1-1045 -crt
+<div class="codehilite"><pre><span></span>python3 sub/scion-viz/python/as_viewer.py 1-1045 -crt
 
 SCION AS Viewer
 <span class="o">(</span>src<span class="o">)</span> 1-1045 <span class="o">=======================</span>&gt; None <span class="o">(</span>dst<span class="o">)</span>
@@ -916,7 +916,7 @@ Starting sciond at /run/shm/sciond/sd1-1045.sock
 </pre></div>
 
 
-<div class="codehilite"><pre>python3 sub/scion-viz/python/as_viewer.py 1-1045 -trc
+<div class="codehilite"><pre><span></span>python3 sub/scion-viz/python/as_viewer.py 1-1045 -trc
 
 SCION AS Viewer
 <span class="o">(</span>src<span class="o">)</span> 1-1045 <span class="o">=======================</span>&gt; None <span class="o">(</span>dst<span class="o">)</span>
@@ -1002,7 +1002,7 @@ Starting sciond at /run/shm/sciond/sd1-1045.sock
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
     
     

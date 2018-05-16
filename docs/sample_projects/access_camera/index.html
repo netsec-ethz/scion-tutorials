@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
     
     
       
@@ -668,14 +668,14 @@
 <p>The <a href="https://github.com/perrig/scionlab/">camerapp application</a> contains image fetcher and server applications, using the SCION network. Documentation on the code is available in the <a href="https://github.com/perrig/scionlab/blob/master/camerapp/README.md">README.md</a>.</p>
 <h2 id="imagefetcher">imagefetcher<a class="headerlink" href="#imagefetcher" title="Permanent link">&para;</a></h2>
 <p>To install imagefetcher:</p>
-<div class="codehilite"><pre>go get github.com/perrig/scionlab/camerapp/imagefetcher
+<div class="codehilite"><pre><span></span>go get github.com/perrig/scionlab/camerapp/imagefetcher
 </pre></div>
 
 
-<p>To use the image fetcher, you will need to pass your local host's address as a SCION address (in the format <code>ISD-AS,[IPv4]:port</code>) and specify the address of an image server, for instance <code>1-16,[192.33.93.166]:42002</code>. The local ISD and AS number can be seen for instance from files in the logs directory: <code>br1-1006-1.log</code> indicates that we are in AS 1006 in ISD 1. Another way is to look at the gen directory, which in this case contains a subdirectory calles <code>ISD1</code>, which contains a subdirectory <code>AS1006</code>. The IPv4 address represents the local address the application binds to, and the local port number can be freely selected as any available port.</p>
-<p>A sample image server that can be contacted by any client is set up at <code>1-16,[192.33.93.166]:42002</code>.</p>
+<p>To use the image fetcher, you will need to pass your local host's address as a SCION address (in the format <code>ISD-AS,[IPv4]:port</code>) and specify the address of an image server, for instance <code>1-12,[192.33.93.166]:42002</code>. The local ISD and AS number can be seen for instance from files in the logs directory: <code>br1-1006-1.log</code> indicates that we are in AS 1006 in ISD 1. Another way is to look at the gen directory, which in this case contains a subdirectory calles <code>ISD1</code>, which contains a subdirectory <code>AS1006</code>. The IPv4 address represents the local address the application binds to, and the local port number can be freely selected as any available port.</p>
+<p>A sample image server that can be contacted by any client is set up at <code>1-12,[192.33.93.166]:42002</code>.</p>
 <p>The client address is passed with <code>-c</code> and the server address with <code>-s</code>:</p>
-<div class="codehilite"><pre>imagefetcher -s 1-16,<span class="o">[</span>192.33.93.166<span class="o">]</span>:42002 -c 1-1006,<span class="o">[</span>10.0.2.15<span class="o">]</span>:42001
+<div class="codehilite"><pre><span></span>imagefetcher -s 1-12,<span class="o">[</span>192.33.93.166<span class="o">]</span>:42002 -c 1-1006,<span class="o">[</span>10.0.2.15<span class="o">]</span>:42001
 </pre></div>
 
 
@@ -683,14 +683,14 @@
 <img alt="Sample image out of the window of office CAB E76" src="../../images/office-20171217.jpg" /></p>
 <h2 id="imageserver">imageserver<a class="headerlink" href="#imageserver" title="Permanent link">&para;</a></h2>
 <p>To install imageserver:</p>
-<div class="codehilite"><pre>go get github.com/perrig/scionlab/camerapp/imageserver
+<div class="codehilite"><pre><span></span>go get github.com/perrig/scionlab/camerapp/imageserver
 </pre></div>
 
 
 <p>The <code>imageserver</code> application keeps looking for <code>.jpg</code> files in the current directory, and offers them for download to clients on the SCION network. The assumption is that the application is used in conjunction with an application that periodically writes an image to the file system. After an amount of time (currently set to 10 minutes), the image files are deleted to limit the amount of storage used.</p>
 <p>Included is a simple <code>paparazzi.py</code> application, which reads and saves the camera image on a Raspberry Pi. The system is launched as follows:</p>
-<div class="codehilite"><pre>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/perrig/scionlab/camerapp/imageserver/paparazzi.py <span class="p">&amp;</span>
-imageserver -s 1-16,<span class="o">[</span>192.33.93.166<span class="o">]</span>:42002 <span class="p">&amp;</span>
+<div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/perrig/scionlab/camerapp/imageserver/paparazzi.py <span class="p">&amp;</span>
+imageserver -s 1-12,<span class="o">[</span>192.33.93.166<span class="o">]</span>:42002 <span class="p">&amp;</span>
 </pre></div>
                 
                   
@@ -741,7 +741,7 @@ imageserver -s 1-16,<span class="o">[</span>192.33.93.166<span class="o">]</span
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
     
     
