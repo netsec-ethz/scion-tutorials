@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
     
     
       
@@ -792,14 +792,14 @@ Some of these changes will break compatibility with past releases. In these case
 <p>If you run SCION inside a VM, SCION should be kept up to date automatically. With this automatic process you don't have to worry about the updates. Still, if you are interested in knowing how we do it, read the next subsection.</p>
 <h3 id="how-is-my-scion-vm-kept-up-to-date">How is my SCION VM kept up to date?<a class="headerlink" href="#how-is-my-scion-vm-kept-up-to-date" title="Permanent link">&para;</a></h3>
 <p>You can always check that is the case by listing the running timers and looking for the one upgrading SCION:</p>
-<div class="codehilite"><pre>sudo systemctl list-timers
+<div class="codehilite"><pre><span></span>sudo systemctl list-timers
 NEXT                         LEFT        LAST                         PASSED       UNIT                         ACTIVATES
 Wed 2018-04-18 16:35:24 UTC  8min left   Wed 2018-04-18 16:25:23 UTC  1min 36s ago scionupgrade.timer           scionupgrade.service
 </pre></div>
 
 
 <p>This indicates we have the upgrade service installed. The upgrade service is checking every day that the local git repository is up to date with the <code>scionlab</code> branch. This is done by <em>rebasing</em> the local copy on top of the branch:</p>
-<div class="codehilite"><pre><span class="nb">cd</span> $SC
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
 git fetch origin scionlab
 git rebase origin/scionlab
 </pre></div>
@@ -813,12 +813,12 @@ The automatic process will restart SCION if it detected that we downloaded a new
 <p>We can do manually what we automatically do inside the SCION VMs, and these simple steps will update your installation of SCION.
 As our SCION implementation is hosted on git, updating to the latest version is as simple as <code>pull</code>-ing changes or <code>rebase</code>-ing.
 To download the newest version first navigate to SCION root directory:</p>
-<div class="codehilite"><pre><span class="nb">cd</span> $SC
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
 </pre></div>
 
 
 <p>then fetch newest changes from remote <code>scionlab</code> branch and rebase:</p>
-<div class="codehilite"><pre>git fetch origin scionlab
+<div class="codehilite"><pre><span></span>git fetch origin scionlab
 git rebase origin/scionlab
 </pre></div>
 
@@ -826,12 +826,12 @@ git rebase origin/scionlab
 <h4 id="arm-devices">ARM devices<a class="headerlink" href="#arm-devices" title="Permanent link">&para;</a></h4>
 <p>If this is an ARM devices and we have the sources previously patched (probably they are if this is ARM), we will need to apply another patch
 as explained in <a href="../../native_setup/rpi_ubuntu/index.html#step-two-apply-necessary-patches">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></p>
-<div class="codehilite"><pre>curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/ab6578ed400885bb5ea7767cb10a2686f3e1db6d/arm.patch <span class="p">|</span> patch -p1
+<div class="codehilite"><pre><span></span>curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/ab6578ed400885bb5ea7767cb10a2686f3e1db6d/arm.patch <span class="p">|</span> patch -p1
 </pre></div>
 
 
 <p>You may find some some output informing that some hunks failed to patch. This is typically okay, as it represents portions of code that we had patched before the update and don't need to be patched again. As an example of such output we have:</p>
-<div class="codehilite"><pre>patching file c/dispatcher/dispatcher.c
+<div class="codehilite"><pre><span></span>patching file c/dispatcher/dispatcher.c
 Hunk <span class="c1">#1 FAILED at 837.</span>
 <span class="m">1</span> out of <span class="m">1</span> hunk FAILED -- saving rejects to file c/dispatcher/dispatcher.c.rej
 patching file c/lib/scion/address.h
@@ -844,7 +844,7 @@ Hunk <span class="c1">#2 FAILED at 57.</span>
 
 <h3 id="rebuild-scion">Rebuild SCION<a class="headerlink" href="#rebuild-scion" title="Permanent link">&para;</a></h3>
 <p>If git reports that new modifications were downloaded when we rebased, it is necessary to restart scion infrastructure:</p>
-<div class="codehilite"><pre>./scion.sh stop
+<div class="codehilite"><pre><span></span>./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
 ./scion.sh clean
 ./env/deps
@@ -904,7 +904,7 @@ Hunk <span class="c1">#2 FAILED at 57.</span>
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
       
     
     
