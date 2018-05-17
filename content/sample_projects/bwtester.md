@@ -8,6 +8,7 @@ The [bandwidth testing application `bwtester`](https://github.com/perrig/scionla
 To install bwtestclient and get dependencies as listed in vendor file:
 ```shell
 go get github.com/perrig/scionlab/bwtester/bwtestclient
+cd $GOPATH/src/github.com/perrig/scionlab/
 govendor sync
 ```
 
@@ -37,6 +38,7 @@ bwtestclient -s 1-12,[192.33.93.173]:30100 -c 1-1006,[10.0.2.15]:30102 -cs 10,10
 To install bwtestserver and get dependencies as listed in vendor file:
 ```shell
 go get github.com/perrig/scionlab/bwtester/bwtestserver
+cd $GOPATH/src/github.com/perrig/scionlab/
 govendor sync
 ```
 
