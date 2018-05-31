@@ -32,7 +32,7 @@
       
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.0.1">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
     
     
       
@@ -785,16 +785,14 @@ of SCION protocol. You can read more on what protocol dissector does on <a href=
 <h3 id="install-wireshark">Install Wireshark<a class="headerlink" href="#install-wireshark" title="Permanent link">&para;</a></h3>
 <p>In order to install Wireshark, follow installation guide on <a href="https://www.wireshark.org/">Wireshark website</a> for your platform. 
 Alternatively on Ubuntu system you can run following commands:</p>
-<div class="codehilite"><pre><span></span>sudo add-apt-repository ppa:wireshark-dev/stable
+<pre class="codehilite"><code class="language-shell">sudo add-apt-repository ppa:wireshark-dev/stable
 sudo apt-get update
-sudo apt-get install wireshark
-</pre></div>
+sudo apt-get install wireshark</code></pre>
 
 
 <h3 id="install-tshark">Install Tshark<a class="headerlink" href="#install-tshark" title="Permanent link">&para;</a></h3>
 <p>In case you want to install Tshark on Ubuntu simply run:</p>
-<div class="codehilite"><pre><span></span>sudo apt install tshark
-</pre></div>
+<pre class="codehilite"><code class="language-shell">sudo apt install tshark</code></pre>
 
 
 <h2 id="step-one-finding-plugin-directory">Step One - Finding plugin directory<a class="headerlink" href="#step-one-finding-plugin-directory" title="Permanent link">&para;</a></h2>
@@ -803,28 +801,24 @@ sudo apt-get install wireshark
 <p>From <strong>Help</strong> menu select <strong>About Wireshark</strong> and in newly opened window select <strong>Folders</strong> tab. 
 There are paths to global and local plugin directory.</p>
 <p>In this tutorial we will use global plugin directory which is usually:</p>
-<div class="codehilite"><pre><span></span>/usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6
-</pre></div>
+<pre class="codehilite"><code>/usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6</code></pre>
 
 
 <p>Plugins from global plugin directory are available to all users, while local is only for currently running user.</p>
 <h3 id="tshark">Tshark<a class="headerlink" href="#tshark" title="Permanent link">&para;</a></h3>
 <p>In order to find the directory where Tshark is loading plugins from we can run following command:</p>
-<div class="codehilite"><pre><span></span>tshark -G plugins
-</pre></div>
+<pre class="codehilite"><code>tshark -G plugins</code></pre>
 
 
 <p>Output will look something like this:</p>
-<div class="codehilite"><pre><span></span>opcua.so    1.1.0   dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/opcua.so
+<pre class="codehilite"><code>opcua.so    1.1.0   dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/opcua.so
 irda.so 0.0.6   dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/irda.so
 mate.so 1.0.0a  dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/mate.so
-...
-</pre></div>
+...</code></pre>
 
 
 <p>Examining output we can conclude that plugins are being loaded from </p>
-<div class="codehilite"><pre><span></span>/usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/
-</pre></div>
+<pre class="codehilite"><code>/usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/</code></pre>
 
 
 <p>So we will use that for our plugin directory.</p>
@@ -832,8 +826,7 @@ mate.so 1.0.0a  dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/ma
 <p>Wireshark/Tshark plugin is located in SCION project at <code>tools/wireshark/scion.lua</code>.</p>
 <p>It is necessary to download <code>scion.lua</code> file and place it in plugin directory acquired in previous step.</p>
 <p>In Ubuntu system this can be done with following command:</p>
-<div class="codehilite"><pre><span></span>sudo wget -P /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/ https://raw.githubusercontent.com/scionproto/scion/master/tools/wireshark/scion.lua
-</pre></div>
+<pre class="codehilite"><code>sudo wget -P /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/ https://raw.githubusercontent.com/scionproto/scion/master/tools/wireshark/scion.lua</code></pre>
                 
                   
                 
@@ -883,7 +876,7 @@ mate.so 1.0.0a  dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/ma
     
       <script src="../../assets/javascripts/application-84693e5e49.js"></script>
       
-      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
       
     
     
