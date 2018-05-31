@@ -27,7 +27,7 @@ For more information, check out [Running the SCION infrastructure on a local top
 
 ### Connecting to SCIONLab
 
-Installing a SCION AS and connecting it to SCIONLab requires that you have already downloaded the necessary configuration from the [SCION Coordination Service](https://www.scionlab.org/). To do so, please follow one of the following options, depending on the network configuration of the system on which SCION will be installed:
+Installing a SCION AS and connecting it to SCIONLab requires that you have already downloaded the necessary configuration from the [SCION Coordination Service](https://www.scionlab.org/). To do so, please follow one of the following options, depending on the network configuration of the system on which SCION will be installed until you have the configuration files:
 
 1. [Connecting to SCIONLab with a static public IP address](/general_scion_configuration/public_ip/)
 1. [Connecting to SCIONLab with a static IP address, but behind a NAT](/general_scion_configuration/public_ip_nat/)

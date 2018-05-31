@@ -69,7 +69,7 @@ cd $SC
 
 ### Step Two &ndash; apply necessary patches
 
-On ARM architectures, it is necessary to apply two patches as followings:
+On ARM architectures, it is necessary to apply two patches as follows:
 
 ```shell
 curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/ab6578ed400885bb5ea7767cb10a2686f3e1db6d/arm.patch | patch -p1

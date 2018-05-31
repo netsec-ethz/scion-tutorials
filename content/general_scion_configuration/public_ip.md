@@ -50,6 +50,7 @@ The extracted content should have the following file structure:
 ├── README.md
 ├── run.sh
 ├── scion.service
+├── ...
 ├── scion-viz.service
 └── Vagrantfile
 

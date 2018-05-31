@@ -23,7 +23,7 @@ cd $SC
 git fetch origin scionlab
 git rebase origin/scionlab
 ```
-We do it this to maximize the changes of successfully updating even if you had local changes done on top.
+We do this to maximize the chances of successfully updating even if you had local changes done on top.
 The automatic process will restart SCION if it detected that we downloaded a new version.
 
 ## Running SCION in a dedicated machine
