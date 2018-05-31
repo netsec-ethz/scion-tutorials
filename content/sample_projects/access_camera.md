@@ -9,6 +9,8 @@ To install imagefetcher:
 ```shell
 go get github.com/perrig/scionlab/camerapp/imagefetcher
 ```
+!!! note
+    If you are running SCION in a VM this app is already installed.
 
 To use the image fetcher, you will need to pass your local host's address as a SCION address (in the format `ISD-AS,[IPv4]:port`) and specify the address of an image server, for instance `1-12,[192.33.93.166]:42002`. The local ISD and AS number can be seen for instance from files in the logs directory: `br1-1006-1.log` indicates that we are in AS 1006 in ISD 1. Another way is to look at the gen directory, which in this case contains a subdirectory calles `ISD1`, which contains a subdirectory `AS1006`. The IPv4 address represents the local address the application binds to, and the local port number can be freely selected as any available port.
 

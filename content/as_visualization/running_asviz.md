@@ -4,6 +4,10 @@
 
 SCION-viz is a web-based visualization tool of the SCION topology. Connecting to a running AS infrastructure, it reads and displays information about the network topology.
 
+!!! note
+    If you are running SCION in a VM, SCION-viz is already installed and running.  
+    Skip to step 4 to see how to use it.
+
 ## 1. Setup on a local system
 
 If you are using the SCIONLab VM distribution you can skip this step, as SCION-viz is already installed.
