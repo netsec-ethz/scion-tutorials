@@ -788,6 +788,10 @@
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>Our implementation of SCION is still under development, and ScionLab sometimes upgrades the services to use new features from new versions.
 Some of these changes will break compatibility with past releases. In these cases, we will send an email notifying all the users of such changes.</p>
+<div class="admonition warning">
+<p class="admonition-title">Note</p>
+<p>There is important information at the last section of this page regarding the change of addresses in SCIONLab. If you are running a dedicated machine, you probably want to read it.</p>
+</div>
 <h2 id="running-scion-in-a-vm">Running SCION in a VM<a class="headerlink" href="#running-scion-in-a-vm" title="Permanent link">&para;</a></h2>
 <p>If you run SCION inside a VM, SCION should be kept up to date automatically. With this automatic process you don't have to worry about the updates. Still, if you are interested in knowing how we do it, read the next subsection.</p>
 <h3 id="how-is-my-scion-vm-kept-up-to-date">How is my SCION VM kept up to date?<a class="headerlink" href="#how-is-my-scion-vm-kept-up-to-date" title="Permanent link">&para;</a></h3>
@@ -855,6 +859,16 @@ Hunk <span class="c1">#2 FAILED at 57.</span>
 <p>Your SCION installation should be now up to date.</p>
 <h2 id="last-step-to-finish-the-update">Last step to finish the update<a class="headerlink" href="#last-step-to-finish-the-update" title="Permanent link">&para;</a></h2>
 <p>After the update, the applications that are not delivered directly with SCION (e.g. <code>bwtester</code> or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. <code>bwtester</code> has its own tutorial on how to build it.</p>
+<p>There has been an important update in SCIONLab during the Summer of 2018. All the SCION addresses will be allocated in the segment ffaa:0:0/24 to accommodate a larger number of ASes than originally expected. The representation of the addresses has also changed, following the standard convention now. Details on https://github.com/scionproto/scion/wiki/ISD-and-AS-numbering .
+To update manually your dedicated system, you would get the remap script and run it:</p>
+<div class="codehilite"><pre><span class="nb">cd</span> /tmp
+wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scripts/remap_as_identity.sh
+bash remap_as_identity.sh
+</pre></div>
+
+
+<p>This will complete the AS ID remapping step securely, which is necessary for the AS to work again. The remapping ensures your AS is requesting it by verifying data signed with the AS certificate.
+If you experience a problem with the update, please contact us in the community mailing list. Visit https://groups.google.com/forum/#!forum/scion-community for more details.</p>
                 
                   
                 
