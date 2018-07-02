@@ -5,6 +5,10 @@
 Our implementation of SCION is still under development, and ScionLab sometimes upgrades the services to use new features from new versions.
 Some of these changes will break compatibility with past releases. In these cases, we will send an email notifying all the users of such changes.
 
+!!! warning "Note"
+    There is important information at the last section of this page regarding the change of addresses in SCIONLab. If you are running a dedicated machine, you probably want to read it.
+
+
 ## Running SCION in a VM
 
 If you run SCION inside a VM, SCION should be kept up to date automatically. With this automatic process you don't have to worry about the updates. Still, if you are interested in knowing how we do it, read the next subsection.
@@ -87,3 +91,13 @@ Your SCION installation should be now up to date.
 ## Last step to finish the update
 
 After the update, the applications that are not delivered directly with SCION (e.g. `bwtester` or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. `bwtester` has its own tutorial on how to build it.
+
+There has been an important update in SCIONLab during the Summer of 2018. All the SCION addresses will be allocated in the segment ffaa:0:0/24 to accommodate a larger number of ASes than originally expected. The representation of the addresses has also changed, following the standard convention now. Details on https://github.com/scionproto/scion/wiki/ISD-and-AS-numbering .
+To update manually your dedicated system, you would get the remap script and run it:
+```shell
+cd /tmp
+wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scripts/remap_as_identity.sh
+bash remap_as_identity.sh
+```
+This will complete the AS ID remapping step securely, which is necessary for the AS to work again. The remapping ensures your AS is requesting it by verifying data signed with the AS certificate.
+If you experience a problem with the update, please contact us in the community mailing list. Visit https://groups.google.com/forum/#!forum/scion-community for more details.
