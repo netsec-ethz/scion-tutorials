@@ -680,7 +680,7 @@
                 
                 <h1 id="updating-gen-directory">Updating gen directory<a class="headerlink" href="#updating-gen-directory" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>Complete configuration for SCION infrastructure is stored in <code>gen</code> directory. This includes topology definition, dispatcher, border router and SCION services configuration. It also includes certificates and other unique AS data. </p>
+<p>The complete configuration for SCION infrastructure is stored in <code>gen</code> directory. This includes topology definition, dispatcher, border router and SCION services configuration. It also includes certificates and other unique AS data.</p>
 <p>Content for this directory can be created in several ways:</p>
 <ul>
 <li>Using topology definition from <code>topology</code> directory. <em>Described in <a href="../../general_scion_configuration/local_top/">Running SCION on local topology</a></em></li>
@@ -689,11 +689,12 @@
 </ul>
 <h2 id="restarting-scion-infrastructure">Restarting SCION infrastructure<a class="headerlink" href="#restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
 <p>Every time <code>gen</code> directory is changed, it is necessary to restart SCION infrastructure so changes will take effect. This is done with following commands:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC
+<div class="codehilite"><pre><span class="nb">cd</span> $SC
 
 ./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run</code></pre>
+./scion.sh run
+</pre></div>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>

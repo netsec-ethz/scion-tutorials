@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Complete configuration for SCION infrastructure is stored in `gen` directory. This includes topology definition, dispatcher, border router and SCION services configuration. It also includes certificates and other unique AS data. 
+The complete configuration for SCION infrastructure is stored in `gen` directory. This includes topology definition, dispatcher, border router and SCION services configuration. It also includes certificates and other unique AS data.
 
 Content for this directory can be created in several ways:
 
