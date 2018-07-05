@@ -24,6 +24,13 @@ Sample servers are installed at the following locations:
 * `17-ffaa:1:13,[192.168.1.111]:30100`
 * `19-ffaa:1:22,[141.44.25.146]:30100`
 
+And at the attachment points:
+
+* `17-ffaa:0:1107,[10.0.8.1]:30100`
+* `18-ffaa:0:1202,[10.0.8.1]:30100`
+* `19-ffaa:0:1303,[10.0.8.1]:30100`
+* `20-ffaa:0:1404,[10.0.8.1]:30100`
+
 You can test the application as follows, replacing the client address with your own address after the `-c` option (you can select any available port number for the client):
 
 ```shell

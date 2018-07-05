@@ -686,6 +686,13 @@ govendor sync
 <li><code>17-ffaa:1:13,[192.168.1.111]:30100</code></li>
 <li><code>19-ffaa:1:22,[141.44.25.146]:30100</code></li>
 </ul>
+<p>And at the attachment points:</p>
+<ul>
+<li><code>17-ffaa:0:1107,[10.0.8.1]:30100</code></li>
+<li><code>18-ffaa:0:1202,[10.0.8.1]:30100</code></li>
+<li><code>19-ffaa:0:1303,[10.0.8.1]:30100</code></li>
+<li><code>20-ffaa:0:1404,[10.0.8.1]:30100</code></li>
+</ul>
 <p>You can test the application as follows, replacing the client address with your own address after the <code>-c</code> option (you can select any available port number for the client):</p>
 <div class="codehilite"><pre>bwtestclient -s 17-ffaa:0:1102,<span class="o">[</span>192.33.93.173<span class="o">]</span>:30100 -c 17-ffaa:1:6,<span class="o">[</span>10.0.2.15<span class="o">]</span>:30102
 </pre></div>
