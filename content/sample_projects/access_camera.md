@@ -12,7 +12,7 @@ go get github.com/perrig/scionlab/camerapp/imagefetcher
 !!! note
     If you are running SCION in a VM this app is already installed.
 
-To use the image fetcher, you will need to pass your local host's address as a SCION address (in the format `ISD-AS,[IPv4]:port`) and specify the address of an image server, for instance `17-ffaa:0:1102,[192.33.93.166]:42002`. The local ISD and AS number can be seen for instance from files in the logs directory: `br17-ffaa_0_1102.log` indicates that we are in AS ffaa:0:1102 in ISD 17. Another way is to look at the gen directory, which in this case contains a subdirectory called `ISD17`, which contains a subdirectory `ASffaa_0_1102`. The IPv4 address represents the local address the application binds to, and the local port number can be freely selected as any available port.
+To use the image fetcher, you will need to pass your local host's address as a SCION address (in the format `ISD-AS,[IPv4]:port`) and specify the address of an image server, for instance `17-ffaa:0:1102,[192.33.93.166]:42002`. The local ISD and AS number can be seen for instance from files in the logs directory: `br17-ffaa_0_1102.log` indicates that we are in AS ffaa:0:1102 in ISD 17. Another way is to look at the gen directory, which in this case contains a subdirectory called `ISD17`, which contains subdirectory `ASffaa_0_1102`. The IPv4 address represents the local address the application binds to, and the local port number can be freely selected as any available port.
 
 A sample image server that can be contacted by any client is set up at `17-ffaa:0:1102,[192.33.93.166]:42002`.
 
