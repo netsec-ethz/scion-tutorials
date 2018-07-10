@@ -20,7 +20,7 @@ In this tutorial, we assume that you already have a Raspberry Pi running Ubuntu 
 ### Install necessary packages
 
 ```shell
-sudo apt install git
+sudo apt install git curl
 ```
 
 ### Configure Go workspace
@@ -34,7 +34,7 @@ It is necessary to set up your [Go workspace](https://golang.org/doc/code.html#G
 echo 'export GOPATH="$HOME/go"' >> ~/.profile
 source ~/.profile
 mkdir -p "$GOPATH/bin"
-echo 'PATH=$PATH:$GOPATH/bin' >> ~/.profile
+echo 'PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.profile
 source ~/.profile
 ```
 
@@ -117,7 +117,7 @@ This will finish installing the required dependencies and system packages.
 Replacing `/etc/zookeeper/conf/zoo.cfg` with the file `docker/zoo.cfg` is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves the performance of Zookeeper (at the cost of reliability, so it should only be done in a testing environment).
 
 ```shell
-cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
+sudo cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
 ```
 
 ## Next steps
