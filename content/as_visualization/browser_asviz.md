@@ -6,7 +6,7 @@ After [updating the latest source code and starting the server](/as_visualizatio
 Then, enter the "Source AS" ISD-AS pair of your AS. You can find out your ISD and AS number as described in the tutorial [Fetching sensor readings or time stamps](/sample_projects/fetch_sensor_readings.md). Press "Request Data" to fetch updated data.
 
 ## Viewing the SCION Daemon
-The "Data" pull-down menu option "sciond socket" will bind to a socket to communicate with the SCION Daemon. Alternately, you can override the default IP address of the Daemon, buy entering the address you wish to bind to in the "SCIOND IP Address" text box.
+The "Data" pull-down menu option "sciond socket" will bind to a socket to communicate with the SCION Daemon. Alternately, you can override the default IP address of the Daemon by entering the address you wish to bind to in the "SCIOND IP Address" text box.
 
 ### SCIOND Paths
 Enter the "Destination AS" ISD-AS pair and the maximum number of paths to retrieve in "Max Paths" and press "Update Paths" to view all announced paths to the destination from the source.

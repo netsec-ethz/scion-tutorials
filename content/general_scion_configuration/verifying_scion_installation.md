@@ -2,7 +2,7 @@
 
 ## Introduction
 
-After running your SCION infrastructure, it is necessary to verify tha it is working correctly.
+After running your SCION infrastructure, it is necessary to verify that it is working correctly.
 
 There are several methods of doing this. Some of them are described in this post.
 
