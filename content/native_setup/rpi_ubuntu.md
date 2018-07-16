@@ -72,7 +72,7 @@ cd $SC
 On ARM architectures, it is necessary to apply two patches as follows:
 
 ```shell
-curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/efdbc3ce44544b840d552980c73c220b9697c152/arm-scionlab-update2.patch | patch -p1
+curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/421d8bfecdd225a3b17a18ec1c1e1bf86c436b35/arm-scionlab-update2.patch | patch -p1
 ```
 
 In order to enable updating the system, we commit the patched changes into the local arm-modified branch:

@@ -57,7 +57,7 @@ If this is an ARM devices and we have the sources previously patched (probably t
 as explained in [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](../native_setup/rpi_ubuntu/index.html#step-two-apply-necessary-patches)
 
 ```shell
-curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/efdbc3ce44544b840d552980c73c220b9697c152/arm-scionlab-update2.patch | patch -p1
+curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/421d8bfecdd225a3b17a18ec1c1e1bf86c436b35/arm-scionlab-update2.patch | patch -p1
 ```
 
 You may find some some output informing that some hunks failed to patch. This is typically okay, as it represents portions of code that we had patched before the update and don't need to be patched again. As an example of such output we have:
