@@ -103,4 +103,10 @@ wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scripts/re
 bash remap_as_identity.sh
 ```
 This will complete the AS ID remapping step securely, which is necessary for the AS to work again. The remapping ensures your AS is requesting it by verifying data signed with the AS certificate.
-If you experience a problem with the update, please contact us in the community mailing list. Visit https://groups.google.com/forum/#!forum/scion-community for more details.
+This step should reconfigure your AS in the Coordinator and return a `gen` configuration. 
+
+!!! hint "OpenVPN"
+    If your AS was using openvpn the Coordinator should give you exactly the same IP address as the one you have running in your tunnel interface; but, if you encounter any problem regarding the border router failing to bind to a different IP address, re-download the configuration from the Coordinator and replace the openvpn `/etc/openvpn/client.conf` file with that one inside the downloaded configuration. This will ensure that the IP you obtain at the openvpn tunnel corresponds to that of the `topology.json` file.
+
+
+If you experience a problem with the update, please contact us in the community mailing list. Visit the [SCION Community](https://groups.google.com/forum/#!forum/scion-community) for more details.
