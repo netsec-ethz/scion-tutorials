@@ -25,12 +25,11 @@ The third step is to install port forwarding, so that the two SCION border route
 
 The fourth step re-maps the IP address of the SCION infrastructure devices to the internal address of your host.
 
-For this, you can execute the following three commands from your main SCION directory (`cd $SC` to get there), replacing `192.168.1.111` with the internal IPv4 address of your host:
+For this, you can execute the following commands from your main SCION directory (`cd $SC` to get there), replacing `192.168.1.111` with the internal IPv4 address of your host and `10.0.2.15` with `127.0.0.1` if you configured a dedicated machine:
 ```shell
 export HOST_IP=192.168.1.111
-find ./gen/ -name "*.json" -exec sed -i "s/10.0.2.15/${HOST_IP}/g" '{}' \;
-find ./gen/ -name "*.yml" -exec sed -i "s/10.0.2.15/${HOST_IP}/g" '{}' \;
-find ./gen/ -name "*.conf" -exec sed -i "s/10.0.2.15/${HOST_IP}/g" '{}' \;
+export ORIG_IP=10.0.2.15
+find ./gen/ -name "*.json" -exec sed -i "s/${ORIG_IP}/${HOST_IP}/g" '{}' \;
 ```
 
 This completes the installation! You can restart the infrastructure in the following way:
