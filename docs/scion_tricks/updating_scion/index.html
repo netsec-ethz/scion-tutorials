@@ -869,7 +869,12 @@ bash remap_as_identity.sh
 
 
 <p>This will complete the AS ID remapping step securely, which is necessary for the AS to work again. The remapping ensures your AS is requesting it by verifying data signed with the AS certificate.
-If you experience a problem with the update, please contact us in the community mailing list. Visit https://groups.google.com/forum/#!forum/scion-community for more details.</p>
+This step should reconfigure your AS in the Coordinator and return a <code>gen</code> configuration. </p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>If your AS was using openvpn the Coordinator should give you exactly the same IP address as the one you have running in your tunnel interface, but, if you encounter any problem regarding the border router failing to bind to a different IP address, re-download the configuration from the Coordinator and replace the openvpn <code>/etc/openvpn/client.conf</code> file with that one inside the downloaded configuration. This will ensure that the IP you obtain at the openvpn tunnel corresponds to that of the <code>topology.json</code> file.</p>
+</div>
+<p>If you experience a problem with the update, please contact us in the community mailing list. Visit https://groups.google.com/forum/#!forum/scion-community for more details.</p>
                 
                   
                 
