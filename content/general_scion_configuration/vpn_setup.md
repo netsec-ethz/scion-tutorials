@@ -119,7 +119,7 @@ cp -r gen $SC/
 cd $SC
 ```
 
-Because the `gen` directory downloaded from the Coordination Service is customized for VM IP addresses (`10.0.2.15`), we need to replace every occurrence of that IP with the actual IP address of our system.
+Because the `gen` directory downloaded from the Coordination Service is customized for VM IP addresses (`10.0.2.15`), we need to replace every occurrence of that IP with the actual IP address of our system. If you downloaded the dedicated machine version of the configuration, use `127.0.0.1` instead of `10.0.2.15`.
 
 Finding out the actual IP address of our system can be done by running the following command:
 
@@ -132,9 +132,9 @@ and using the IP address of the appropriate physical interface that is used for 
 In following steps we will assume that IP address is `10.42.0.180`, but you should replace it accordingly with value acquired in the previous step.
 
 ```shell
-find ./gen/ -name "*.json" -exec sed -i "s/10.0.2.15/10.42.0.180/g" '{}' \;
-find ./gen/ -name "*.yml" -exec sed -i "s/10.0.2.15/10.42.0.180/g" '{}' \;
-find ./gen/ -name "*.conf" -exec sed -i "s/10.0.2.15/10.42.0.180/g" '{}' \;
+export HOST_IP=10.42.0.180
+export ORIG_IP=10.0.2.15
+find ./gen/ -name "*.json" -exec sed -i "s/${ORIG_IP}/${HOST_IP}/g" '{}' \;
 ```
 
 ## Step Five - Restarting SCION Infrastructure

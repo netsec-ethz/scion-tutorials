@@ -846,7 +846,7 @@ systemctl <span class="nb">enable</span> openvpn@client
 </pre></div>
 
 
-<p>Because the <code>gen</code> directory downloaded from the Coordination Service is customized for VM IP addresses (<code>10.0.2.15</code>), we need to replace every occurrence of that IP with the actual IP address of our system.</p>
+<p>Because the <code>gen</code> directory downloaded from the Coordination Service is customized for VM IP addresses (<code>10.0.2.15</code>), we need to replace every occurrence of that IP with the actual IP address of our system. If you downloaded the dedicated machine version of the configuration, use <code>127.0.0.1</code> instead of <code>10.0.2.15</code>.</p>
 <p>Finding out the actual IP address of our system can be done by running the following command:</p>
 <div class="codehilite"><pre>ip a
 </pre></div>
@@ -854,9 +854,9 @@ systemctl <span class="nb">enable</span> openvpn@client
 
 <p>and using the IP address of the appropriate physical interface that is used for connecting to the network. </p>
 <p>In following steps we will assume that IP address is <code>10.42.0.180</code>, but you should replace it accordingly with value acquired in the previous step.</p>
-<div class="codehilite"><pre>find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
-find ./gen/ -name <span class="s2">&quot;*.yml&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
-find ./gen/ -name <span class="s2">&quot;*.conf&quot;</span> -exec sed -i <span class="s2">&quot;s/10.0.2.15/10.42.0.180/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
+<div class="codehilite"><pre><span class="nb">export</span> <span class="nv">HOST_IP</span><span class="o">=</span>10.42.0.180
+<span class="nb">export</span> <span class="nv">ORIG_IP</span><span class="o">=</span>10.0.2.15
+find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span class="s2">&quot;s/</span><span class="si">${</span><span class="nv">ORIG_IP</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">HOST_IP</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
 </pre></div>
 
 
