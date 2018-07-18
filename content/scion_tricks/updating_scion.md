@@ -85,7 +85,7 @@ If git reports that new modifications were downloaded when we rebased, it is nec
 ./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
 ./scion.sh clean
-mv ./vendor/vendor.json /tmp && rm -r ./vendor/* && mv /tmp/vendor.json ./vendor/
+mv ./go/vendor/vendor.json /tmp/ && rm -r ./go/vendor/* && mv /tmp/vendor.json ./go/vendor/
 ./env/deps
 ./scion.sh build
 ```
