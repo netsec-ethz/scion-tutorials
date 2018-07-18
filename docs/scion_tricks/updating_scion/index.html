@@ -852,7 +852,7 @@ Hunk <span class="c1">#2 FAILED at 57.</span>
 <div class="codehilite"><pre>./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
 ./scion.sh clean
-mv ./vendor/vendor.json /tmp <span class="o">&amp;&amp;</span> rm -r ./vendor/* <span class="o">&amp;&amp;</span> mv /tmp/vendor.json ./vendor/
+mv ./go/vendor/vendor.json /tmp/ <span class="o">&amp;&amp;</span> rm -r ./go/vendor/* <span class="o">&amp;&amp;</span> mv /tmp/vendor.json ./go/vendor/
 ./env/deps
 ./scion.sh build
 </pre></div>
