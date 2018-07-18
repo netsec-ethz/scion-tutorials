@@ -85,11 +85,21 @@ If git reports that new modifications were downloaded when we rebased, it is nec
 ./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
 ./scion.sh clean
+mv ./vendor/vendor.json /tmp && rm -r ./vendor/* && mv /tmp/vendor.json ./vendor/
 ./env/deps
-./scion.sh run
+./scion.sh build
 ```
 
-Your SCION installation should be now up to date.
+Your SCION installation should be now up to date. Once SCION is built without problems, we can start the AS services again:
+
+```shell
+./scion.sh start
+```
+
+!!! hint "if running services fails"
+    If building SCION succeeded but running the services did not, there might be a misconfiguration in the gen folder. If this was a manual update to support the SCIONLab update done in the summer of 2018, you will probably need to remap the identity of your AS; please keep reading to learn how to do that manually.
+
+And the SCION services will start running.
 
 ## Last step to finish the update
 
