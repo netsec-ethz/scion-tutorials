@@ -16,7 +16,7 @@ SCION runs on a variety of platforms and works with different network configurat
 
 After installation, we suggest exploring the tips and tricks section below to learn how to use the infrastructure.
 
-![SCION installation Flowchart](/images/installation-flowchart.png)
+![SCION installation Flowchart](/images/installation_flowchart.png)
 
 ## Running SCION infrastructure in a VM
 
