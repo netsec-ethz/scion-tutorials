@@ -8,30 +8,33 @@ To get in touch:
 
 * For questions and general comments on SCION-related topics, visit our [SCION community Google group](https://groups.google.com/forum/#!forum/scion-community)
 * For bug reports, please post them on the [scion-coord github site](https://github.com/netsec-ethz/scion-coord)
-* For suggestion on these pages, please post them on the [scion-tutorials github site](https://github.com/netsec-ethz/scion-tutorials)
+* For suggestion on these pages, please post them on the [scion-tutorials GitHub site](https://github.com/netsec-ethz/scion-tutorials)
 
 ## Getting started
 
-There are generally two ways of installing and running SCION infrastructure. The first way is by downloading and running a preconfigured Virtual Machine (VM), while the second way is manual installation on an Ubuntu 16.04 platform. We cover both approaches in this tutorial.
+SCION runs on a variety of platforms and works with different network configurations. We cover all approaches with tutorials. To choose the correct tutorial for your setup, follow the flowchart below to determine the number of the tutorial suited for you.
 
 After installation, we suggest exploring the tips and tricks section below to learn how to use the infrastructure.
+
+![SCION installation Flowchart](/images/installation-flowchart.png)
 
 ## Running SCION infrastructure in a VM
 
 The easiest way to run SCION is by running a preconfigured SCION Virtual Machine on a commodity OS (MacOS, Windows). The following tutorials are covering the necessary steps.
 
-* [Running SCION VM over OpenVPN](/virtual_machine_setup/dynamic_ip/)
-* [Running SCION VM with static public IP](/virtual_machine_setup/static_ip/)
+* [1) Running SCION VM over OpenVPN](/virtual_machine_setup/dynamic_ip/)
+* [2) Running SCION VM with static public IP](/virtual_machine_setup/static_ip/)
 
 ## Configuring SCION infrastructure manually
 
-The following tutorials cover how to install, configure, and run a SCION infrastructure in a step-by-step manner on a dedicated Ubuntu 16.04 host (without a VM).
+The following tutorials cover how to install, configure, and run a SCION infrastructure in a step-by-step manner on a dedicated host (without a VM).
 
 ### 1. Installing SCION on different platforms:
 
-* [Installing SCION on Ubuntu 16.04 x86](native_setup/ubuntu_x86_build/)
-* [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](native_setup/rpi_ubuntu/)
-* [Installing SCION on an Android device](native_setup/android/)
+* [3) Installing SCION on Ubuntu 16.04 x86](native_setup/ubuntu_x86_build/)
+* [4) Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](native_setup/rpi_ubuntu/)
+* 5) This tutorial will be available soon
+* [6)Installing SCION on an Android device](native_setup/android/)
 
 ### 2. Setting up SCION topology
 
