@@ -55,6 +55,7 @@ pages:
     - How to install SCION manually on different platforms:
       - Ubuntu 16.04 x86-64: native_setup/ubuntu_x86_build.md
       - Ubuntu MATE Raspberry PI: native_setup/rpi_ubuntu.md
+      - Images for ARM minicomputers: native_setup/image_builder.md
       - Android devices: native_setup/android.md
 
     - Connecting to SCION:
