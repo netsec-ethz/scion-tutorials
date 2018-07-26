@@ -36,7 +36,7 @@
     
     
       
-        <title>Set up SCION endhost and connect to local AS - SCION Tutorials</title>
+        <title>Images for ARM minicomputers - SCION Tutorials</title>
       
     
     
@@ -88,11 +88,11 @@
             
               
                 <span class="md-header-nav__parent">
-                  Connecting to SCION
+                  How to install SCION manually on different platforms
                 </span>
               
             
-            Set up SCION endhost and connect to local AS
+            Images for ARM minicomputers
           
         </span>
       </div>
@@ -214,10 +214,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       How to install SCION manually on different platforms
@@ -235,7 +237,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../native_setup/ubuntu_x86_build/" title="Ubuntu 16.04 x86-64" class="md-nav__link">
+    <a href="../ubuntu_x86_build/" title="Ubuntu 16.04 x86-64" class="md-nav__link">
       Ubuntu 16.04 x86-64
     </a>
   </li>
@@ -247,106 +249,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../native_setup/rpi_ubuntu/" title="Ubuntu MATE Raspberry PI" class="md-nav__link">
+    <a href="../rpi_ubuntu/" title="Ubuntu MATE Raspberry PI" class="md-nav__link">
       Ubuntu MATE Raspberry PI
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../native_setup/image_builder/" title="Images for ARM minicomputers" class="md-nav__link">
-      Images for ARM minicomputers
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../native_setup/android/" title="Android devices" class="md-nav__link">
-      Android devices
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
-    
-    <label class="md-nav__link" for="nav-4">
-      Connecting to SCION
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Connecting to SCION
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../local_top/" title="Running SCION on a local topology" class="md-nav__link">
-      Running SCION on a local topology
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../public_ip/" title="Set up an AS and connect to the SCION network" class="md-nav__link">
-      Set up an AS and connect to the SCION network
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../public_ip_nat/" title="Set up an AS and connect to the SCION network behind a NAT" class="md-nav__link">
-      Set up an AS and connect to the SCION network behind a NAT
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../vpn_setup/" title="Set up an AS and connect to the SCION network via VPN" class="md-nav__link">
-      Set up an AS and connect to the SCION network via VPN
     </a>
   </li>
 
@@ -366,11 +270,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="toc">
-        Set up SCION endhost and connect to local AS
+        Images for ARM minicomputers
       </label>
     
-    <a href="./" title="Set up SCION endhost and connect to local AS" class="md-nav__link md-nav__link--active">
-      Set up SCION endhost and connect to local AS
+    <a href="./" title="Images for ARM minicomputers" class="md-nav__link md-nav__link--active">
+      Images for ARM minicomputers
     </a>
     
       
@@ -388,67 +292,39 @@
     Introduction
   </a>
   
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-scion" title="Running SCION" class="md-nav__link">
+    Running SCION
+  </a>
+  
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#running-as-infrastructure-executes-in-a-vm" title="Running AS infrastructure executes in a VM" class="md-nav__link">
-    Running AS infrastructure executes in a VM
+  <a href="#step-one-downloading-a-scion-image" title="Step One &ndash; downloading a SCION image" class="md-nav__link">
+    Step One &ndash; downloading a SCION image
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#running-as-infrastructure-natively-on-a-system" title="Running AS infrastructure natively on a system" class="md-nav__link">
-    Running AS infrastructure natively on a system
+  <a href="#step-two-installing-the-image" title="Step Two &ndash; installing the image" class="md-nav__link">
+    Step Two &ndash; installing the image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-three-run-the-scion-infrastructure" title="Step Three &ndash; run the SCION infrastructure" class="md-nav__link">
+    Step Three &ndash; run the SCION infrastructure
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-one-installing-scion-on-endhost" title="Step One - Installing SCION on endhost" class="md-nav__link">
-    Step One - Installing SCION on endhost
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-two-copy-initial-configuration" title="Step Two - Copy initial configuration" class="md-nav__link">
-    Step Two - Copy initial configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-three-remove-unnecessary-services" title="Step Three - Remove unnecessary services" class="md-nav__link">
-    Step Three - Remove unnecessary services
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-four-iptable-rules" title="Step Four - Iptable rules" class="md-nav__link">
-    Step Four - Iptable rules
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-five-restart-scion" title="Step Five - Restart SCION" class="md-nav__link">
-    Step Five - Restart SCION
-  </a>
   
 </li>
       
@@ -465,6 +341,102 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../android/" title="Android devices" class="md-nav__link">
+      Android devices
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Connecting to SCION
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Connecting to SCION
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general_scion_configuration/local_top/" title="Running SCION on a local topology" class="md-nav__link">
+      Running SCION on a local topology
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general_scion_configuration/public_ip/" title="Set up an AS and connect to the SCION network" class="md-nav__link">
+      Set up an AS and connect to the SCION network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general_scion_configuration/public_ip_nat/" title="Set up an AS and connect to the SCION network behind a NAT" class="md-nav__link">
+      Set up an AS and connect to the SCION network behind a NAT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general_scion_configuration/vpn_setup/" title="Set up an AS and connect to the SCION network via VPN" class="md-nav__link">
+      Set up an AS and connect to the SCION network via VPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../general_scion_configuration/setup_endhost/" title="Set up SCION endhost and connect to local AS" class="md-nav__link">
+      Set up SCION endhost and connect to local AS
+    </a>
   </li>
 
         
@@ -594,7 +566,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../verifying_scion_installation/" title="Verifying the installation" class="md-nav__link">
+    <a href="../../general_scion_configuration/verifying_scion_installation/" title="Verifying the installation" class="md-nav__link">
       Verifying the installation
     </a>
   </li>
@@ -714,67 +686,39 @@
     Introduction
   </a>
   
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-scion" title="Running SCION" class="md-nav__link">
+    Running SCION
+  </a>
+  
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#running-as-infrastructure-executes-in-a-vm" title="Running AS infrastructure executes in a VM" class="md-nav__link">
-    Running AS infrastructure executes in a VM
+  <a href="#step-one-downloading-a-scion-image" title="Step One &ndash; downloading a SCION image" class="md-nav__link">
+    Step One &ndash; downloading a SCION image
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#running-as-infrastructure-natively-on-a-system" title="Running AS infrastructure natively on a system" class="md-nav__link">
-    Running AS infrastructure natively on a system
+  <a href="#step-two-installing-the-image" title="Step Two &ndash; installing the image" class="md-nav__link">
+    Step Two &ndash; installing the image
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-three-run-the-scion-infrastructure" title="Step Three &ndash; run the SCION infrastructure" class="md-nav__link">
+    Step Three &ndash; run the SCION infrastructure
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-one-installing-scion-on-endhost" title="Step One - Installing SCION on endhost" class="md-nav__link">
-    Step One - Installing SCION on endhost
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-two-copy-initial-configuration" title="Step Two - Copy initial configuration" class="md-nav__link">
-    Step Two - Copy initial configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-three-remove-unnecessary-services" title="Step Three - Remove unnecessary services" class="md-nav__link">
-    Step Three - Remove unnecessary services
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-four-iptable-rules" title="Step Four - Iptable rules" class="md-nav__link">
-    Step Four - Iptable rules
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-five-restart-scion" title="Step Five - Restart SCION" class="md-nav__link">
-    Step Five - Restart SCION
-  </a>
   
 </li>
       
@@ -800,105 +744,34 @@
               
                 
                 
-                <h1 id="set-up-scion-endhost-and-connect-to-local-as-infrastructure">Set up SCION endhost and connect to local AS infrastructure<a class="headerlink" href="#set-up-scion-endhost-and-connect-to-local-as-infrastructure" title="Permanent link">&para;</a></h1>
+                <h1 id="running-scion-on-an-arm-minicomputer-using-a-prebuilt-image">Running SCION on an ARM minicomputer using a prebuilt image<a class="headerlink" href="#running-scion-on-an-arm-minicomputer-using-a-prebuilt-image" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>In this tutorial we will cover the steps necessary to configure a SCION endhost that will connect to an already running SCION AS. 
-This is useful in situations where your host can take advantage of an existing local SCION infrastructure.</p>
-<p>Depending on how the SCION AS is set up, the steps for configuring the endhost will slightly differ.</p>
-<h3 id="running-as-infrastructure-executes-in-a-vm">Running AS infrastructure executes in a VM<a class="headerlink" href="#running-as-infrastructure-executes-in-a-vm" title="Permanent link">&para;</a></h3>
-<p>In the first way, the SCION AS runs inside a virtual machine (VM). The following figure depicts this scenario.</p>
-<p><img alt="SCION AS in virtual machine" src="../../images/vm_endhost_setup.png" /></p>
-<p>The installation steps of the AS are covered in the following tutorials:</p>
+<p>This tutorial will guide you through the steps required to run the SCION infrastructure on ARM minicomputers such as a Raspberry Pi or an Odroid XU4. The list below shows all currently supported devices and what OS will be installed:</p>
 <ul>
-<li><a href="../../virtual_machine_setup/dynamic_ip/">Running SCION VM with dynamic IP</a></li>
-<li><a href="../../virtual_machine_setup/static_ip/">Running SCION VM with static IP</a></li>
+<li>Raspberry Pi Ubuntu MATE</li>
+<li>Rasbperry Pi 2 Ubuntu</li>
+<li>Raspberry Pi 3 Ubuntu</li>
+<li>Odroid XU4 Ubuntu minimal installation</li>
+<li>Odroid XU4 Ubuntu MATE</li>
 </ul>
-<h3 id="running-as-infrastructure-natively-on-a-system">Running AS infrastructure natively on a system<a class="headerlink" href="#running-as-infrastructure-natively-on-a-system" title="Permanent link">&para;</a></h3>
-<p>In the second way, the SCION AS is executing natively on a host machine. The following figure depicts this scenario.</p>
-<p><img alt="SCION running natively" src="../../images/native_endhost_setup.png" /></p>
-<p>The installation steps for this setup is described in the following tutorial pages:</p>
-<ul>
-<li><a href="../../native_setup/ubuntu_x86_build/">Installing SCION on Ubuntu 16.04 x86 machine</a></li>
-<li><a href="../../native_setup/rpi_ubuntu/">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></li>
-<li><a href="../../general_scion_configuration/public_ip/">Configuring AS and connecting to SCION network for devices with public static IP</a></li>
-<li><a href="../../general_scion_configuration/public_ip_nat/">Configuring AS and connecting to SCION network for devices with public static IP behind a NAT</a></li>
-<li><a href="../../general_scion_configuration/vpn_setup/">Configuring AS and connecting to SCION network using OpenVPN</a></li>
-</ul>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>Throughout this setup we will use host and endhost IP addresses on both machines. In order to make everything easier to follow it is necessary to create two environment variables <code>HOST_IP</code> and <code>ENDHOST_IP</code> with respective addresses on <strong>both machines</strong> as they will be used throughout this setup. Execute following commands replacing correct IP addresses with correct ones:</p>
-<pre class="codehilite"><code class="language-shell">export HOST_IP=&quot;10.42.0.1&quot;
-export ENDHOST_IP=&quot;10.42.0.180&quot;</code></pre>
+<h2 id="running-scion">Running SCION<a class="headerlink" href="#running-scion" title="Permanent link">&para;</a></h2>
+<p>Running SCION consists of several steps: registering an account on <a href="https://www.scionlab.org/">SCIONLab Coordination Service</a>, downloading the image corresponding to your device, installing it, and finally running the SCION infrastructure.</p>
+<h3 id="step-one-downloading-a-scion-image">Step One &ndash; downloading a SCION image<a class="headerlink" href="#step-one-downloading-a-scion-image" title="Permanent link">&para;</a></h3>
+<p>In order to download an image, you must login to <a href="https://www.scionlab.org/">SCIONLab Coordination Service</a>. In case you don't have an account yet, follow the registration process.</p>
+<p>After logging in, create a new AS by clicking on <em>Generate a new SCIONLab AS</em>, select a desired attachment point and give it a label (optional). Choose <em>Install on a dedicated SCION system (for experts)</em>. Unless your device has a static, public routable IP address (not behind a NAT), choose <em>Use an OpenVPN connection for this AS</em>. Otherwise enter the IP address under wich your device can be reached. Then, under <em>Create SCION image for IoT device</em> select your device from the dropdown list and click <em>Build image</em>. The procedure may take a few minutes. After it finishes a download link appears from which you can download your generated image. A screenshot of the user interface is shown below:</p>
+<p><img alt="SCIONLab download page" src="../../images/scionlab_download_image_arm_setup.png" /></p>
+<h3 id="step-two-installing-the-image">Step Two &ndash; installing the image<a class="headerlink" href="#step-two-installing-the-image" title="Permanent link">&para;</a></h3>
+<p>The easiest way to install the image on your device is by using <a href="https://etcher.io/">Etcher</a>. Etcher is a graphical SD card writing tool available for Windows, Linux, and macOS. In Etcher select your downloaded <em>scion.img.bz2</em> file and flash it to your SD card.</p>
+<h3 id="step-three-run-the-scion-infrastructure">Step Three &ndash; run the SCION infrastructure<a class="headerlink" href="#step-three-run-the-scion-infrastructure" title="Permanent link">&para;</a></h3>
+<p>Your device is now ready. You can connect to it via SSH like this (where you replace the IP address with the actual address of your device):</p>
+<pre class="codehilite"><code>    ssh scion@192.168.1.1</code></pre>
 
 
-<h2 id="step-one-installing-scion-on-endhost">Step One - Installing SCION on endhost<a class="headerlink" href="#step-one-installing-scion-on-endhost" title="Permanent link">&para;</a></h2>
-<p>Any platform that runs SCION can be used as an endhost. To install SCION on different platforms you can follow one of the tutorials:</p>
-<ul>
-<li><a href="../../native_setup/ubuntu_x86_build/">Installing SCION on Ubuntu 16.04 x86 machine</a></li>
-<li><a href="../../native_setup/rpi_ubuntu/">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></li>
-</ul>
-<p>Also, SCION VMs can be configured to be used as endhost.</p>
-<h2 id="step-two-copy-initial-configuration">Step Two - Copy initial configuration<a class="headerlink" href="#step-two-copy-initial-configuration" title="Permanent link">&para;</a></h2>
-<p>After the SCION environment is successfully installed on your endhost device, we can start the configuration process. First of all, we need to stop the currently running SCION environment and remove the old <code>gen</code> directory.</p>
-<pre class="codehilite"><code class="language-shell">cd $SC
-./scion.sh stop
-rm -rf gen</code></pre>
-
-
-<p>The next step is to make sure both endhost and SCION AS share the same AS configuration, i.e., the same <code>gen</code> directory. This can be done in several ways, but the easiest is to copy it directly from the AS system. </p>
-<p>Executing the following command from <strong>SCION AS</strong> copies the complete <code>gen</code> directory to endhost. Note that you will need to replace <strong>endhost_user</strong> with appropriate user name on the endhost.</p>
-<pre class="codehilite"><code class="language-shell">scp -r ${SC}/gen endhost_user@${ENDHOST_IP}:/home/endhost_user/go/src/github.com/scionproto/scion/gen</code></pre>
-
-
-<h2 id="step-three-remove-unnecessary-services">Step Three - Remove unnecessary services<a class="headerlink" href="#step-three-remove-unnecessary-services" title="Permanent link">&para;</a></h2>
-<p>The next step is to disable unnecessary SCION services, like the border router, beacon server, etc., on the endhost device. This can be done by editing configuration file on the <strong>endhost's system</strong>:</p>
-<pre class="codehilite"><code>vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/supervisord.conf</code></pre>
-
-
-<p>It is sufficient to remove last 2 lines that look similar to this:</p>
-<pre class="codehilite"><code>[group:as1-1029]
-programs = br1-1029-1,bs1-1029-1,cs1-1029-1,ps1-1029-1,sd1-1029</code></pre>
-
-
-<p>In the same file edit following line:</p>
-<pre class="codehilite"><code>command = bash -c 'exec bin/sciond &quot;--api-addr&quot; &quot;/run/shm/sciond/....</code></pre>
-
-
-<p>By adding additional <code>addr</code> argument to look like this:</p>
-<pre class="codehilite"><code>command = bash -c 'exec bin/sciond &quot;--addr&quot; &quot;10.42.0.180&quot; &quot;--api-addr&quot; &quot;/run/shm/sciond/</code></pre>
-
-
-<p><strong>Make sure you replace <code>10.42.0.180</code> to correct endhost's IP address.</strong></p>
-<p>Next we need to remove all directories except <code>endhost</code> from <code>$SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/</code> directory. </p>
-<pre class="codehilite"><code class="language-shell">cd $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}
-rm -rf *-*</code></pre>
-
-
-<h2 id="step-four-iptable-rules">Step Four - Iptable rules<a class="headerlink" href="#step-four-iptable-rules" title="Permanent link">&para;</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><strong>This step is only necessary if you are running the AS SCION infrastructure inside a Virtual Machine</strong>. If this is not the case, proceed to step five.</p>
-</div>
-<p>Configuration files we copied from VM in first step contain address <code>10.0.2.15</code>. This address is not accessible outside the VM and we need to rewrite it to the host's IP address, so that packets get routed correctly. This can be done with iptables.</p>
-<pre class="codehilite"><code class="language-shell">sudo apt install netfilter-persistent iptables-persistent
-
-sudo iptables -t nat -A OUTPUT -m udp -p udp -d 10.0.2.15 -j DNAT --to-destination ${HOST_IP}
-
-sudo netfilter-persistent save</code></pre>
-
-
-<h2 id="step-five-restart-scion">Step Five - Restart SCION<a class="headerlink" href="#step-five-restart-scion" title="Permanent link">&para;</a></h2>
-<p>Last step is to reload configuration and restart SCION on your endhost system.</p>
-<pre class="codehilite"><code class="language-shell">~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run</code></pre>
-
-
+<p>The password for the scion user is <em>scion</em>. It's recommended to change it after the first login.</p>
+<p>SCION infrastructer and SCION-viz are started automatically on start up.</p>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>The best way to verify endhost configuration is by running properly is by running some demo applications:</p>
-<ul>
-<li><a href="../../sample_projects/fetch_sensor_readings/">Fetching sensor readings or time stamps</a></li>
-<li><a href="../../sample_projects/access_camera/">Fetching a camera image over the SCION network</a></li>
-<li><a href="../../sample_projects/bwtester/">Running the bandwidthtester application</a></li>
-</ul>
+<p>After running SCION infrastructure it is necessary to verify that it is running properly. This is covered in tutorial <a href="../../general_scion_configuration/verifying_scion_installation/">Verifying SCION Installation</a>.</p>
+<p>When the infrastructure is properly running, you have established your SCION AS, congratulations! You can now follow the tutorials listed on the <a href="https://netsec-ethz.github.io/scion-tutorials/">main page</a> under "Using SCION in projects".</p>
                 
                   
                 

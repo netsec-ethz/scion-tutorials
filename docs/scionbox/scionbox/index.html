@@ -259,6 +259,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../native_setup/image_builder/" title="Images for ARM minicomputers" class="md-nav__link">
+      Images for ARM minicomputers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../native_setup/android/" title="Android devices" class="md-nav__link">
       Android devices
     </a>
@@ -602,8 +614,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#make-user-of-the-device" title="Make user of the device" class="md-nav__link">
-    Make user of the device
+  <a href="#make-use-of-the-device" title="Make use of the device" class="md-nav__link">
+    Make use of the device
   </a>
   
 </li>
@@ -671,8 +683,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#make-user-of-the-device" title="Make user of the device" class="md-nav__link">
-    Make user of the device
+  <a href="#make-use-of-the-device" title="Make use of the device" class="md-nav__link">
+    Make use of the device
   </a>
   
 </li>
@@ -721,7 +733,7 @@ You can then check on the scion-coordinator on your <a href="https://www.scionla
 <p>In case you local network implements MAC filtering, you need to request your network administrator to allow the PCEngines device to access the network. You will find the MAC address of the device on a sticker next to the network interface.</p>
 <p>The SCION boxes use OpenVPN to connect to SCION attachment points in case you selected this options. Hence OpenVPN needs to be able to make outgoing connections to its attachment point on port 1194. Since the exact address of the attachment point varies depending on your region and might change over time, please request assistance on the user group if you need it to whitelist it.</p>
 </div>
-<h2 id="make-user-of-the-device">Make user of the device<a class="headerlink" href="#make-user-of-the-device" title="Permanent link">&para;</a></h2>
+<h2 id="make-use-of-the-device">Make use of the device<a class="headerlink" href="#make-use-of-the-device" title="Permanent link">&para;</a></h2>
 <p>The SCION is running a full AS connected to the SCIONLab infrastructure. This means the device is running the following services: a border router, a beacon server, a certificate server, a path server and a SIBRA server. You can read about the function of each service in the <a href="https://www.scion-architecture.net/pdf/SCION-book.pdf">SCION book</a>.
 In addition, SCION boxes also run ithe SCIONviz server which allows you to visualize the paths you AS knows about. You can connect to SCIONviz by connecting a regular IP device to one of the remaining interfaces. The open the webpage http://172.16.1.1:8000 and the SCIONviz will load. For instructions on how to use SCIONviz, please see the <a href="../../as_visualization/browser_asviz/">SCIONviz tutorial</a> (but make sure to use the address mentioned here).</p>
 <h2 id="setup-an-endhost-and-connect-it-via-the-scion-box">Setup an endhost and connect it via the SCION box<a class="headerlink" href="#setup-an-endhost-and-connect-it-via-the-scion-box" title="Permanent link">&para;</a></h2>
