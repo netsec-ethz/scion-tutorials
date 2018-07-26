@@ -31,9 +31,9 @@ sudo apt-get install vagrant
 
 Running SCION consists of several steps: registering a SCION VM on [SCIONLab Coordination Service](https://www.scionlab.org/), deploying the VM, and running the SCION infrastructure.
 
-### Step One &ndash; download a SCION VM
+### Step One &ndash; downloading a SCION VM
 
-In order to download a VM, you must login to [SCIONLab Coordination Service](https://www.scionlab.org/). In case you don't yet have an account, follow the registration process.
+In order to download a VM, you must login to [SCIONLab Coordination Service](https://www.scionlab.org/). In case you don't have an account yet, follow the registration process.
 
 After logging in, create a new AS by clicking on *Generate a new SCIONLab AS*, select a desired attachment point, and choose *Install inside a virtual machine*. Unless your VM has public IP address, choose *Use an OpenVPN connection for this AS*. Then download a VM configuration by clicking on *Create and Download SCIONLab VM Configuration*. A screenshot of the user interface is shown below:
 

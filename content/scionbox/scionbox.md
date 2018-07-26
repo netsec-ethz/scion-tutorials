@@ -17,7 +17,7 @@ You can then check on the scion-coordinator on your [user page](https://www.scio
 
     The SCION boxes use OpenVPN to connect to SCION attachment points in case you selected this options. Hence OpenVPN needs to be able to make outgoing connections to its attachment point on port 1194. Since the exact address of the attachment point varies depending on your region and might change over time, please request assistance on the user group if you need it to whitelist it.
 
-## Make user of the device
+## Make use of the device
 
 The SCION is running a full AS connected to the SCIONLab infrastructure. This means the device is running the following services: a border router, a beacon server, a certificate server, a path server and a SIBRA server. You can read about the function of each service in the [SCION book](https://www.scion-architecture.net/pdf/SCION-book.pdf).
 In addition, SCION boxes also run ithe SCIONviz server which allows you to visualize the paths you AS knows about. You can connect to SCIONviz by connecting a regular IP device to one of the remaining interfaces. The open the webpage http://172.16.1.1:8000 and the SCIONviz will load. For instructions on how to use SCIONviz, please see the [SCIONviz tutorial](/as_visualization/browser_asviz.md) (but make sure to use the address mentioned here).
