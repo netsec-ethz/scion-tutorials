@@ -709,15 +709,17 @@
 </div>
 <p>The fourth step re-maps the IP address of the SCION infrastructure devices to the internal address of your host.</p>
 <p>For this, you can execute the following commands from your main SCION directory (<code>cd $SC</code> to get there), replacing <code>192.168.1.111</code> with the internal IPv4 address of your host and <code>10.0.2.15</code> with <code>127.0.0.1</code> if you configured a dedicated machine:</p>
-<pre class="codehilite"><code class="language-shell">export HOST_IP=192.168.1.111
-export ORIG_IP=10.0.2.15
-find ./gen/ -name &quot;*.json&quot; -exec sed -i &quot;s/${ORIG_IP}/${HOST_IP}/g&quot; '{}' \;</code></pre>
+<div class="codehilite"><pre><span class="nb">export</span> <span class="nv">HOST_IP</span><span class="o">=</span>192.168.1.111
+<span class="nb">export</span> <span class="nv">ORIG_IP</span><span class="o">=</span>10.0.2.15
+find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span class="s2">&quot;s/</span><span class="si">${</span><span class="nv">ORIG_IP</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">HOST_IP</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
+</pre></div>
 
 
 <p>This completes the installation! You can restart the infrastructure in the following way:</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh stop
+<div class="codehilite"><pre>./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run</code></pre>
+./scion.sh run
+</pre></div>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
