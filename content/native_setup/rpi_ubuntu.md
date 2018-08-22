@@ -101,10 +101,21 @@ source ~/.profile
 
 ### Step Four &ndash; finish installing the required packages
 
+The build process is quite demanding in memory, so the machine has to have more than the 1GB of main memory that it comes with. To add one more gigabyte from the swap follow these steps:
+
+```shell
+sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+free -h
+```
+
 In order to instal dependencies, simply issue the following command while in the root directory of the SCION installation:
 
 ```shell
 bash -c 'yes | GO_INSTALL=true ./env/deps'
+./scion.sh build
 ```
 
 !!! note
