@@ -737,7 +737,8 @@
 <p>This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow <a href="../../native_setup/ubuntu_x86_build/">How to build SCION on Ubuntu 16.04 x86-64</a> or <a href="../../native_setup/rpi_ubuntu/">How to build SCION on Raspberry PI</a>.</p>
 <h2 id="generating-topology">Generating topology<a class="headerlink" href="#generating-topology" title="Permanent link">&para;</a></h2>
 <p>Before continuing with the following steps, you should first navigate to the SCION root directory:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC</code></pre>
+<div class="codehilite"><pre><span class="nb">cd</span> $SC
+</pre></div>
 
 
 <p>The SCION installation comes with a command to generate the local topology from 'topo' configuration files. A default topology is defined in <code>topology/Default.topo</code> and it is depicted in the following figure:</p>
@@ -756,11 +757,12 @@ cp -r /vagrant/gen .</code></p>
 <p>Every time a new topology is instantiated, the SCION runtime environment needs to be reset as described <a href="../../scion_tricks/changing_gen_dir/#restarting-scion-infrastructure">here</a>.</p>
 </div>
 <p>To generate the default topology, you can run</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh topology</code></pre>
+<div class="codehilite"><pre>./scion.sh topology
+</pre></div>
 
 
 <p>This command will generate the topology information in the <code>gen</code> directory. The structure of the <code>gen</code> directory will be:</p>
-<pre class="codehilite"><code> ./gen/ISD{X}/AS{Y}/
+<div class="codehilite"><pre> ./gen/ISD{X}/AS{Y}/
      {elem}{X}-{Y}-{Z}/
          as.yml
          path_policy.yml
@@ -770,7 +772,8 @@ cp -r /vagrant/gen .</code></p>
              ISD{X}-AS{Y}-V0.crt
              ISD{X}-V0.trc
          keys/
-             as-sig.key</code></pre>
+             as-sig.key
+</pre></div>
 
 
 <div class="admonition warning">
@@ -798,15 +801,18 @@ cp -r /vagrant/gen .</code></p>
 </ul>
 <h3 id="running-scion">Running SCION<a class="headerlink" href="#running-scion" title="Permanent link">&para;</a></h3>
 <p>Running the SCION infrastructure:</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh run</code></pre>
+<div class="codehilite"><pre>./scion.sh run
+</pre></div>
 
 
 <p>Stopping the SCION infrastructure:</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh stop</code></pre>
+<div class="codehilite"><pre>./scion.sh stop
+</pre></div>
 
 
 <p>Testing the infrastructure:</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh test</code></pre>
+<div class="codehilite"><pre>./scion.sh <span class="nb">test</span>
+</pre></div>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
