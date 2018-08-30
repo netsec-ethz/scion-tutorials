@@ -15,7 +15,9 @@ In summary, the steps you will read about three installation steps, and how to l
 * 4) Log into your Virtual Machine
 
 !!! tip
-    Skip some steps: if your host machine is running MacOS or a Debian based Linux, you could do the first step, and then directly execute the `run.sh` script available within the configuration file you have downloaded from the [SCIONLab Coordination Service](https://www.scionlab.org/). This `run.sh` script will download VirtualBox and Vagrant for you and install them (in Debian-Linux it uses `dpkg` and in MacOS, `Homebrew`), and then it will run the Virtual Machine for you, effectively completing steps 2 and 3. But if something does not work with the script, you don't have the required OS, or you want to do it manually, you can also do all the steps without `run.sh`.
+    Skip some steps: if your host machine is running MacOS or a Debian based Linux, you could do the first step, and then directly execute the `run.sh` script available within the configuration file you have downloaded from the [SCIONLab Coordination Service](https://www.scionlab.org/). This `run.sh` script will download VirtualBox and Vagrant for you and install them (in Debian-Linux it uses `apt-get` and in MacOS, `Homebrew`; you might be asked for your host machine user password when installing), and then it will run the Virtual Machine for you, effectively completing steps 2 and 3. 
+    
+    But if something does not work with the script, you don't have the required OS, or you want to do it manually, you can also do all the steps without `run.sh`.
 
 ## Step One &ndash; downloading a SCION VM
 
