@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this tutorial we will cover the steps necessary to configure a SCION endhost that will connect to an already running SCION AS. 
+In this tutorial we will cover the steps necessary to configure a SCION endhost that will connect to an already running SCION AS.
 This is useful in situations where your host can take advantage of an existing local SCION infrastructure.
 
 Depending on how the SCION AS is set up, the steps for configuring the endhost will slightly differ.
@@ -39,7 +39,7 @@ Throughout this setup we will use host and endhost IP addresses on both machines
 ```shell
 export HOST_IP="10.42.0.1"
 export ENDHOST_IP="10.42.0.180"
-``` 
+```
 
 ## Step One - Installing SCION on endhost
 
@@ -60,7 +60,7 @@ cd $SC
 rm -rf gen
 ```
 
-The next step is to make sure both endhost and SCION AS share the same AS configuration, i.e., the same `gen` directory. This can be done in several ways, but the easiest is to copy it directly from the AS system. 
+The next step is to make sure both endhost and SCION AS share the same AS configuration, i.e., the same `gen` directory. This can be done in several ways, but the easiest is to copy it directly from the AS system.
 
 Executing the following command from **SCION AS** copies the complete `gen` directory to endhost. Note that you will need to replace **endhost_user** with appropriate user name on the endhost.
 
@@ -97,7 +97,7 @@ command = bash -c 'exec bin/sciond "--addr" "10.42.0.180" "--api-addr" "/run/shm
 
 **Make sure you replace `10.42.0.180` to correct endhost's IP address.**
 
-Next we need to remove all directories except `endhost` from `$SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/` directory. 
+Next we need to remove all directories except `endhost` from `$SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/` directory.
 
 ```shell
 cd $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}
@@ -135,3 +135,4 @@ The best way to verify endhost configuration is by running properly is by runnin
 * [Fetching sensor readings or time stamps](/sample_projects/fetch_sensor_readings.md)
 * [Fetching a camera image over the SCION network](/sample_projects/access_camera.md)
 * [Running the bandwidthtester application](/sample_projects/bwtester.md)
+* [SCIONLab Webapp Visualization](/as_visualization/webapp.md)
