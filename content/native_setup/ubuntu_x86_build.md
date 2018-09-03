@@ -4,6 +4,17 @@
 
 This tutorial will guide you through the steps required to install SCION on an x86 system running Ubuntu 16.04. For details on how to build SCION on a Raspberry Pi, please take a look at [how to build SCION on a Raspberry Pi](rpi_ubuntu.md).
 
+!!! note "Note about `sudo`"
+    Many of our build and installation scripts will use `sudo` in them. The user has to belong to the `sudo` group:
+
+    `sudo usermod -aG sudo scionuser`
+
+    And it is highly recommended to enable `sudo` without password:
+
+    `echo 'scionuser ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/99-scionuser-user`
+
+    Remember to replace `scionuser` with your username.
+
 ## Easy Way (using the SCION install script)
 
 The easy way to install SCION is to use the SCION install script:

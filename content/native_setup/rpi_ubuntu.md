@@ -17,6 +17,18 @@ In this tutorial, we assume that you already have a Raspberry Pi running Ubuntu 
 
 ## Install necessary tools
 
+!!! note "Note about `sudo`"
+    Many of our build and installation scripts will use `sudo` in them. The user has to belong to the `sudo` group:
+
+    `sudo usermod -aG sudo scionuser`
+
+    And it is highly recommended to enable `sudo` without password:
+
+    `echo 'scionuser ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/99-scionuser-user`
+
+    Remember to replace `scionuser` with your username.
+
+
 ### Install necessary packages
 
 ```shell
