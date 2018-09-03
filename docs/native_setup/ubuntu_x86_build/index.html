@@ -883,6 +883,14 @@
                 <h1 id="building-scion-on-ubuntu-1604-x86-64">Building SCION on Ubuntu 16.04 x86-64<a class="headerlink" href="#building-scion-on-ubuntu-1604-x86-64" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This tutorial will guide you through the steps required to install SCION on an x86 system running Ubuntu 16.04. For details on how to build SCION on a Raspberry Pi, please take a look at <a href="../rpi_ubuntu/">how to build SCION on a Raspberry Pi</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note about <code>sudo</code></p>
+<p>Many of our build and installation scripts will use <code>sudo</code> in them. The user has to belong to the <code>sudo</code> group:</p>
+<p><code>sudo usermod -aG sudo scionuser</code></p>
+<p>And it is highly recommended to enable <code>sudo</code> without password:</p>
+<p><code>echo 'scionuser ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/99-scionuser-user</code></p>
+<p>Remember to replace <code>scionuser</code> with your username.</p>
+</div>
 <h2 id="easy-way-using-the-scion-install-script">Easy Way (using the SCION install script)<a class="headerlink" href="#easy-way-using-the-scion-install-script" title="Permanent link">&para;</a></h2>
 <p>The easy way to install SCION is to use the SCION install script:</p>
 <div class="codehilite"><pre>wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_install_script.sh

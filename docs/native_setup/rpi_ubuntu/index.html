@@ -851,6 +851,14 @@
 <p><code>sudo apt update &amp;&amp; sudo apt upgrade</code></p>
 </div>
 <h2 id="install-necessary-tools">Install necessary tools<a class="headerlink" href="#install-necessary-tools" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note about <code>sudo</code></p>
+<p>Many of our build and installation scripts will use <code>sudo</code> in them. The user has to belong to the <code>sudo</code> group:</p>
+<p><code>sudo usermod -aG sudo scionuser</code></p>
+<p>And it is highly recommended to enable <code>sudo</code> without password:</p>
+<p><code>echo 'scionuser ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/99-scionuser-user</code></p>
+<p>Remember to replace <code>scionuser</code> with your username.</p>
+</div>
 <h3 id="install-necessary-packages">Install necessary packages<a class="headerlink" href="#install-necessary-packages" title="Permanent link">&para;</a></h3>
 <div class="codehilite"><pre>sudo apt install git curl
 </pre></div>
