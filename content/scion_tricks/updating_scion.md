@@ -54,7 +54,7 @@ git rebase origin/scionlab
 #### ARM devices
 
 If this is an ARM devices and we have the sources previously patched (probably they are if this is ARM), we will need to apply another patch
-as explained in [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](../native_setup/rpi_ubuntu/index.html#step-two-apply-necessary-patches)
+as explained in [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](../native_setup/rpi_ubuntu.md#step-two-apply-necessary-patches)
 
 ```shell
 curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/421d8bfecdd225a3b17a18ec1c1e1bf86c436b35/arm-scionlab-update2.patch | patch -p1

@@ -5,7 +5,7 @@
 This tutorial will guide you through the steps required to run the SCION infrastructure in a virtual machine. This tutorial assumes that you don't have a static public IP address or cannot receive traffic on UDP port 50000 from the outside network, and therefore it will use OpenVPN to connect to the neighboring AS border router.
 
 !!! tip
-    If you have a static public IP address and you can receive traffic on UDP port 50000, you could consider [running the VM without VPN](static_ip/).
+    If you have a static public IP address and you can receive traffic on UDP port 50000, you could consider [running the VM without VPN](static_ip.md).
 
 In summary, the steps you will read about three installation steps, and how to log into your Virtual Machine:
 
