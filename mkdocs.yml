@@ -6,7 +6,9 @@ docs_dir: content
 
 theme:
     name: null
-    custom_dir: 'mkdocs-material/material'
+    # custom_dir: 'mkdocs-material/material'
+    custom_dir: 'mkdocs-material2/material'
+    # name: 'material'
 
     include_search_page: false
     search_index_only: true
