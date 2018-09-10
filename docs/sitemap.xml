@@ -1,174 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    
     <url>
-     <loc>/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
-        
     <url>
-     <loc>/virtual_machine_setup/dynamic_ip/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/virtual_machine_setup/static_ip/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
-    
-        
     <url>
-     <loc>/native_setup/ubuntu_x86_build/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/native_setup/rpi_ubuntu/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/native_setup/image_builder/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/native_setup/android/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
-    
-        
     <url>
-     <loc>/general_scion_configuration/local_top/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/general_scion_configuration/public_ip/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/general_scion_configuration/public_ip_nat/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/general_scion_configuration/vpn_setup/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/general_scion_configuration/setup_endhost/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
-    
-        
     <url>
-     <loc>/sample_projects/fetch_sensor_readings/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/sample_projects/access_camera/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/sample_projects/bwtester/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/as_visualization/running_asviz/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/as_visualization/browser_asviz/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/as_visualization/command_asviz/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
-    
-        
     <url>
-     <loc>/general_scion_configuration/verifying_scion_installation/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/scion_tricks/setup_startup/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/scion_tricks/changing_gen_dir/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/scion_tricks/updating_scion/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
-     <loc>/scion_tricks/wireshark/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
-    
-        
     <url>
-     <loc>/scionbox/scionbox/</loc>
-     <lastmod>2018-09-03</lastmod>
+     <loc>None</loc>
+     <lastmod>2018-09-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
 </urlset>

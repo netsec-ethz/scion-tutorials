@@ -36,7 +36,7 @@
     
     
       
-        <title>Updating gen directory - SCION Tutorials</title>
+        <title>Using multipath in SCION - SCION Tutorials</title>
       
     
     
@@ -87,12 +87,8 @@
           
             
               
-                <span class="md-header-nav__parent">
-                  SCION tips and tricks
-                </span>
-              
             
-            Updating gen directory
+            Using multipath in SCION
           
         </span>
       </div>
@@ -466,12 +462,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       SCION tips and tricks
@@ -511,61 +505,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Updating gen directory
-      </label>
-    
-    <a href="scion_tricks/changing_gen_dir/" title="Updating gen directory" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="scion_tricks/changing_gen_dir/" title="Updating gen directory" class="md-nav__link">
       Updating gen directory
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" title="Introduction" class="md-nav__link">
-    Introduction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#restarting-scion-infrastructure" title="Restarting SCION infrastructure" class="md-nav__link">
-    Restarting SCION infrastructure
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" title="Next steps" class="md-nav__link">
-    Next steps
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -651,34 +595,6 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#introduction" title="Introduction" class="md-nav__link">
-    Introduction
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#restarting-scion-infrastructure" title="Restarting SCION infrastructure" class="md-nav__link">
-    Restarting SCION infrastructure
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#next-steps" title="Next steps" class="md-nav__link">
-    Next steps
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -690,26 +606,8 @@
               
                 
                 
-                <h1 id="updating-gen-directory">Updating gen directory<a class="headerlink" href="#updating-gen-directory" title="Permanent link">&para;</a></h1>
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>The complete configuration for SCION infrastructure is stored in <code>gen</code> directory. This includes topology definition, dispatcher, border router and SCION services configuration. It also includes certificates and other unique AS data.</p>
-<p>Content for this directory can be created in several ways:</p>
-<ul>
-<li>Using topology definition from <code>topology</code> directory. <em>Described in <a href="/general_scion_configuration/local_top/">Running SCION on local topology</a></em></li>
-<li>Downloading from <a href="https://www.scionlab.org/">SCIONLab Coordination Service</a>. <em>Described in <a href="/general_scion_configuration/vpn_setup/">Configuring SCION Lab with OpenVPN</a>.</em></li>
-<li>Manually creating topology</li>
-</ul>
-<h2 id="restarting-scion-infrastructure">Restarting SCION infrastructure<a class="headerlink" href="#restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
-<p>Every time <code>gen</code> directory is changed, it is necessary to restart SCION infrastructure so changes will take effect. This is done with following commands:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC
-
-./scion.sh stop
-~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run</code></pre>
-
-
-<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>After topology has been updated it is recommended to <a href="/general_scion_configuration/verifying_scion_installation/">verify that its working correctly</a></p>
+                <h1 id="using-multipath-in-scion">Using multipath in SCION<a class="headerlink" href="#using-multipath-in-scion" title="Permanent link">&para;</a></h1>
+<p>TBA</p>
                 
                   
                 
