@@ -50,7 +50,12 @@ Therefore the mkdocs-material source code was added as a git *subtree*, so we ca
 
     $ git subtree add -P mkdocs-material --squash https://github.com/squidfunk/mkdocs-material.git 3.0.4
 
-Currently, the only customisation is to change the primary/accent colors in `mkdocs-material/src/assets/stylesheets/_config.scss`.
+Currently, the following customisations have been applied to the theme:
+
+  * Change primary/accent colors
+  * Set favicon
+  * Set font size and margin for title in navigation-panel
+  * Remove next/previous navigation links in footer
 
 Using git subtree will (hopefully) allow to update to newer versions of mkdocs-material if necessary, by running e.g.
 
