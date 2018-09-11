@@ -495,6 +495,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../as_visualization/webapp/" title="SCIONLab Apps Web Visualization" class="md-nav__link">
+      SCIONLab Apps Web Visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../as_visualization/running_asviz/" title="Running AS Visualizations" class="md-nav__link">
       Running AS Visualizations
     </a>
@@ -727,13 +739,15 @@
 </div>
 <p>The fourth step re-maps the IP address of the SCION infrastructure devices to the internal address of your host.</p>
 <p>For this, you can execute the following command from your main SCION directory (<code>cd $SC</code> to get there), replacing <code>192.168.1.24</code> with the internal IPv4 address of your host.</p>
-<pre class="codehilite"><code class="language-shell">BIND_IP=192.168.1.24; sed -e '/&quot;Bind&quot;/{n;n;s/: &quot;.*&quot;/: &quot;'${BIND_IP}'&quot;/}' -i ./gen/*/*/*/topology.json</code></pre>
+<div class="codehilite"><pre><span></span><span class="nv">BIND_IP</span><span class="o">=</span><span class="m">192</span>.168.1.24<span class="p">;</span> sed -e <span class="s1">&#39;/&quot;Bind&quot;/{n;n;s/: &quot;.*&quot;/: &quot;&#39;</span><span class="si">${</span><span class="nv">BIND_IP</span><span class="si">}</span><span class="s1">&#39;&quot;/}&#39;</span> -i ./gen/*/*/*/topology.json
+</pre></div>
 
 
 <p>This completes the installation! You can restart the infrastructure in the following way:</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh stop
+<div class="codehilite"><pre><span></span>./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run</code></pre>
+./scion.sh run
+</pre></div>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>

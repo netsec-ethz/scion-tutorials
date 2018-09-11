@@ -516,6 +516,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../as_visualization/webapp/" title="SCIONLab Apps Web Visualization" class="md-nav__link">
+      SCIONLab Apps Web Visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../as_visualization/running_asviz/" title="Running AS Visualizations" class="md-nav__link">
       Running AS Visualizations
     </a>
@@ -776,13 +788,14 @@
 <p>After logging in, select "My Host has a static public IP address and can receive traffic at port 50000" checkbox and enter your public IP in the text field. Afterwards click on <strong>Create and Download SCIONLab VM Configuration</strong> as presented in the image below:</p>
 <p><img alt="SCIONLab download page" src="../../images/scionlab_download_vm_static_ip_setup.png" /></p>
 <p>Navigate to the download directory and extract the archived content:</p>
-<pre class="codehilite"><code class="language-shell">cd ~/Downloads
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/Downloads
 tar -xvzf scion_lab_&lt;user_email&gt;.tar.gz
-cd &lt;user_email&gt;</code></pre>
+<span class="nb">cd</span> &lt;user_email&gt;
+</pre></div>
 
 
 <p>The extracted content should have the following file structure:</p>
-<pre class="codehilite"><code>├── gen
+<div class="codehilite"><pre><span></span>├── gen
 │   ├── dispatcher
 │   │   ├── dispatcher.zlog.conf
 │   │   └── supervisord.conf
@@ -793,25 +806,29 @@ cd &lt;user_email&gt;</code></pre>
 ├── scion.service
 ├── ...
 ├── scion-viz.service
-└── Vagrantfile</code></pre>
+└── Vagrantfile
+</pre></div>
 
 
 <p>For the purpose of this tutorial we will just need the directory <code>gen</code>, which contains the SCION infrastructure configuration.</p>
 <h2 id="step-two-copying-scion-lab-configuration">Step Two - copying SCION Lab configuration<a class="headerlink" href="#step-two-copying-scion-lab-configuration" title="Permanent link">&para;</a></h2>
 <p>Before copying new configuration to your SCION directory, you should delete the old one. If necessary back it up previously.</p>
-<pre class="codehilite"><code class="language-shell">rm -rf $SC/gen</code></pre>
+<div class="codehilite"><pre><span></span>rm -rf <span class="nv">$SC</span>/gen
+</pre></div>
 
 
 <p>Copy new configuration and navigate to SCION root directory:</p>
-<pre class="codehilite"><code class="language-shell">cp -r gen $SC/
-cd $SC</code></pre>
+<div class="codehilite"><pre><span></span>cp -r gen <span class="nv">$SC</span>/
+<span class="nb">cd</span> <span class="nv">$SC</span>
+</pre></div>
 
 
 <h2 id="step-three-restarting-scion-infrastructure">Step Three - Restarting SCION infrastructure<a class="headerlink" href="#step-three-restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
 <p>After the new configuration is copied, you need to restart the infrastructure in the following way:</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh stop
+<div class="codehilite"><pre><span></span>./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run</code></pre>
+./scion.sh run
+</pre></div>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
