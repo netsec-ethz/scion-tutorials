@@ -41,4 +41,21 @@ Adding a new page consists of 2 steps:
 1. Add a new markdown file in the `content` directory with the page's content
 2. Add page information into the corresponding category with description in `mkdocs.yml` (at the end of the file)
 
+## mkdocs-material customisation
+
+The `mkdocs-material` theme is used for the SCION tutorials page.
+To change the color palette used in this theme, the source code has to be edited (https://github.com/squidfunk/mkdocs-material/issues/874).
+
+Therefore the mkdocs-material source code was added as a git *subtree*, so we can add commits on top:
+
+    $ git subtree add -P mkdocs-material --squash https://github.com/squidfunk/mkdocs-material.git 3.0.4
+
+Currently, the only customisation is to change the primary/accent colors in `mkdocs-material/src/assets/stylesheets/_config.scss`.
+
+Using git subtree will (hopefully) allow to update to newer versions of mkdocs-material if necessary, by running e.g.
+
+    $ git subtree pull -P mkdocs-material --squash https://github.com/squidfunk/mkdocs-material.git <tag>
+
+After updating the mkdocs-material version and re-applying the customisations, the theme has to be rebuilt; you'll need `nodejs>=8` and `npm` installed, then simply run `make` and check in the rebuilt `mkdocs-material/material` folder.
+
 
