@@ -488,6 +488,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../as_visualization/webapp/" title="SCIONLab Apps Web Visualization" class="md-nav__link">
+      SCIONLab Apps Web Visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../as_visualization/running_asviz/" title="Running AS Visualizations" class="md-nav__link">
       Running AS Visualizations
     </a>
@@ -698,9 +710,10 @@
 <p>The <a href="https://github.com/perrig/scionlab/">bandwidth testing application <code>bwtester</code></a> enables a variety of bandwidth tests on the SCION network. Installation and usage are described below. Documentation of the code and protocol are described in the <a href="https://github.com/perrig/scionlab/blob/master/bwtester/README.md">bwtester README</a>.</p>
 <h2 id="bwtestclient">bwtestclient<a class="headerlink" href="#bwtestclient" title="Permanent link">&para;</a></h2>
 <p>To install bwtestclient and get dependencies as listed in vendor file:</p>
-<pre class="codehilite"><code class="language-shell">go get github.com/perrig/scionlab/bwtester/bwtestclient
-cd $GOPATH/src/github.com/perrig/scionlab/
-govendor sync</code></pre>
+<div class="codehilite"><pre><span></span>go get github.com/perrig/scionlab/bwtester/bwtestclient
+<span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/perrig/scionlab/
+govendor sync
+</pre></div>
 
 
 <p>For govendor, see note [1].</p>
@@ -723,33 +736,38 @@ govendor sync</code></pre>
 <li><code>20-ffaa:0:1404,[10.0.8.1]:30100</code></li>
 </ul>
 <p>You can test the application as follows, replacing the client address with your own address after the <code>-c</code> option (you can select any available port number for the client):</p>
-<pre class="codehilite"><code class="language-shell">bwtestclient -s 17-ffaa:0:1102,[192.33.93.177]:30100 -c 17-ffaa:1:6,[10.0.2.15]:30102</code></pre>
+<div class="codehilite"><pre><span></span>bwtestclient -s <span class="m">17</span>-ffaa:0:1102,<span class="o">[</span><span class="m">192</span>.33.93.177<span class="o">]</span>:30100 -c <span class="m">17</span>-ffaa:1:6,<span class="o">[</span><span class="m">10</span>.0.2.15<span class="o">]</span>:30102
+</pre></div>
 
 
 <p>The application supports specification of the test duration (up to 10 seconds), the packet size to be used (at least 4 bytes), the total number of packets that will be sent, and the target bandwidth. For instance, <code>5,100,10,1600bps</code> specifies that 10 packets of size 100 bytes will be sent over 5 seconds, resulting in a bandwidth of 1600bps. The question mark <code>?</code> character can be used as wildcard for any of these parameters. Its value is then computed according to the other parameters. The parameters for the test in the client-to-server direction are specified with <code>-cs</code>, and the server-to-client direction with <code>-sc</code>. So for instance to send 1 Mbps for 10 seconds from the client to the server, and 10 Mbps from the server to the client, you can use this command:</p>
-<pre class="codehilite"><code class="language-shell">bwtestclient -s 17-ffaa:0:1102,[192.33.93.177]:30100 -c 17-ffaa:1:6,[10.0.2.15]:30102 -cs 10,1000,1250,1Mbps -sc 10,1000,12500,10Mbps</code></pre>
+<div class="codehilite"><pre><span></span>bwtestclient -s <span class="m">17</span>-ffaa:0:1102,<span class="o">[</span><span class="m">192</span>.33.93.177<span class="o">]</span>:30100 -c <span class="m">17</span>-ffaa:1:6,<span class="o">[</span><span class="m">10</span>.0.2.15<span class="o">]</span>:30102 -cs <span class="m">10</span>,1000,1250,1Mbps -sc <span class="m">10</span>,1000,12500,10Mbps
+</pre></div>
 
 
 <p>For more information run the application without arguments to print its usage.</p>
 <h2 id="bwtestserver">bwtestserver<a class="headerlink" href="#bwtestserver" title="Permanent link">&para;</a></h2>
 <p>To install bwtestserver and get dependencies as listed in vendor file:</p>
-<pre class="codehilite"><code class="language-shell">go get github.com/perrig/scionlab/bwtester/bwtestserver
-cd $GOPATH/src/github.com/perrig/scionlab/
-govendor sync</code></pre>
+<div class="codehilite"><pre><span></span>go get github.com/perrig/scionlab/bwtester/bwtestserver
+<span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/perrig/scionlab/
+govendor sync
+</pre></div>
 
 
 <p>For govendor, see note [1].</p>
 <p>The server is started as follows, where the address needs to be adjusted as for other applications:</p>
-<pre class="codehilite"><code class="language-shell">bwtestserver -s 17-ffaa:0:1102,[192.33.93.177]:30100 &amp;</code></pre>
+<div class="codehilite"><pre><span></span>bwtestserver -s <span class="m">17</span>-ffaa:0:1102,<span class="o">[</span><span class="m">192</span>.33.93.177<span class="o">]</span>:30100 <span class="p">&amp;</span>
+</pre></div>
 
 
 <hr />
 <p>[1] govendor: govendor is already installed by the main SCION installation with the supported version. If you don't have govendor installed, you can do so using the following steps:</p>
-<pre class="codehilite"><code class="language-shell">mkdir $GOPATH/kardianos; cd $GOPATH/kardianos/
+<div class="codehilite"><pre><span></span>mkdir <span class="nv">$GOPATH</span>/kardianos<span class="p">;</span> <span class="nb">cd</span> <span class="nv">$GOPATH</span>/kardianos/
 git clone https://github.com/kardianos/govendor.git
-cd ./govendor/
-git fetch; git checkout fbbc78e8d1b533dfcf81c2a4be2cec2617a926f7
-go install -v</code></pre>
+<span class="nb">cd</span> ./govendor/
+git fetch<span class="p">;</span> git checkout fbbc78e8d1b533dfcf81c2a4be2cec2617a926f7
+go install -v
+</pre></div>
                 
                   
                 
@@ -785,13 +803,13 @@ go install -v</code></pre>
           </a>
         
         
-          <a href="../../as_visualization/running_asviz/" title="Running AS Visualizations" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../as_visualization/webapp/" title="SCIONLab Apps Web Visualization" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Running AS Visualizations
+                SCIONLab Apps Web Visualization
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

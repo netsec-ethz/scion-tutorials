@@ -49,6 +49,7 @@ The following tutorials cover how to install, configure, and run a SCION infrast
 * [Fetching sensor readings or time stamps](/sample_projects/fetch_sensor_readings.md)
 * [Fetching a camera image over the SCION network](/sample_projects/access_camera.md)
 * [Running the bandwidthtester application](/sample_projects/bwtester.md)
+* [SCIONLab Webapp Visualization](/as_visualization/webapp.md)
 * [Running AS Visualization](/as_visualization/running_asviz.md)
 * [Browser AS Visualization](/as_visualization/browser_asviz.md)
 * [Command-line AS Visualization](/as_visualization/command_asviz.md)

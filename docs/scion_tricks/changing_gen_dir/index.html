@@ -441,6 +441,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../as_visualization/webapp/" title="SCIONLab Apps Web Visualization" class="md-nav__link">
+      SCIONLab Apps Web Visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../as_visualization/running_asviz/" title="Running AS Visualizations" class="md-nav__link">
       Running AS Visualizations
     </a>
@@ -719,11 +731,12 @@
 </ul>
 <h2 id="restarting-scion-infrastructure">Restarting SCION infrastructure<a class="headerlink" href="#restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
 <p>Every time <code>gen</code> directory is changed, it is necessary to restart SCION infrastructure so changes will take effect. This is done with following commands:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
 
 ./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run</code></pre>
+./scion.sh run
+</pre></div>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
