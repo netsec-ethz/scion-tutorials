@@ -21,6 +21,10 @@
       
         <meta name="lang:search.language" content="en">
       
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
         <meta name="lang:search.result.none" content="No matching documents">
       
         <meta name="lang:search.result.one" content="1 matching document">
@@ -29,10 +33,8 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      
-        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -40,24 +42,26 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/application-13fe57a5cd.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.c974ac60.css">
+      
       
     
     
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
       
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
   </head>
   
-    <body>
+    <body dir="ltr">
   
     <svg class="md-svg">
       <defs>
@@ -65,9 +69,14 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#updating-scion-to-newest-version" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -80,34 +89,36 @@
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
-                <span class="md-header-nav__parent">
-                  SCION tips and tricks
-                </span>
-              
+              <span class="md-header-nav__topic">
+                SCION Tutorials
+              </span>
+              <span class="md-header-nav__topic">
+                Updating SCION
+              </span>
             
-            Updating SCION
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
             
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
-      <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -131,6 +142,9 @@
     
     <div class="md-container">
       
+        
+      
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -139,12 +153,12 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="SCION Tutorials" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
-    </span>
+    </a>
     SCION Tutorials
   </label>
   
@@ -528,12 +542,12 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         Updating SCION
       </label>
     
@@ -548,7 +562,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -624,6 +638,8 @@
   </a>
   
 </li>
+      
+      
       
       
       
@@ -704,7 +720,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -783,6 +799,8 @@
       
       
       
+      
+      
     </ul>
   
 </nav>
@@ -808,17 +826,15 @@ Some of these changes will break compatibility with past releases. In these case
 <p>If you run SCION inside a VM, SCION should be kept up to date automatically. With this automatic process you don't have to worry about the updates. Still, if you are interested in knowing how we do it, read the next subsection.</p>
 <h3 id="how-is-my-scion-vm-kept-up-to-date">How is my SCION VM kept up to date?<a class="headerlink" href="#how-is-my-scion-vm-kept-up-to-date" title="Permanent link">&para;</a></h3>
 <p>You can always check that is the case by listing the running timers and looking for the one upgrading SCION:</p>
-<div class="codehilite"><pre>sudo systemctl list-timers
+<pre class="codehilite"><code class="language-shell">sudo systemctl list-timers
 NEXT                         LEFT        LAST                         PASSED       UNIT                         ACTIVATES
-Wed 2018-04-18 16:35:24 UTC  8min left   Wed 2018-04-18 16:25:23 UTC  1min 36s ago scionupgrade.timer           scionupgrade.service
-</pre></div>
+Wed 2018-04-18 16:35:24 UTC  8min left   Wed 2018-04-18 16:25:23 UTC  1min 36s ago scionupgrade.timer           scionupgrade.service</code></pre>
 
 
 <p>This indicates we have the upgrade service installed. The upgrade service is checking every day that the local git repository is up to date with the <code>scionlab</code> branch. This is done by <em>rebasing</em> the local copy on top of the branch:</p>
-<div class="codehilite"><pre><span class="nb">cd</span> $SC
+<pre class="codehilite"><code class="language-shell">cd $SC
 git fetch origin scionlab
-git rebase origin/scionlab
-</pre></div>
+git rebase origin/scionlab</code></pre>
 
 
 <p>We do this to maximize the chances of successfully updating even if you had local changes done on top.
@@ -829,50 +845,44 @@ The automatic process will restart SCION if it detected that we downloaded a new
 <p>We can do manually what we automatically do inside the SCION VMs, and these simple steps will update your installation of SCION.
 As our SCION implementation is hosted on git, updating to the latest version is as simple as <code>pull</code>-ing changes or <code>rebase</code>-ing.
 To download the newest version first navigate to SCION root directory:</p>
-<div class="codehilite"><pre><span class="nb">cd</span> $SC
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd $SC</code></pre>
 
 
 <p>then fetch newest changes from remote <code>scionlab</code> branch and rebase:</p>
-<div class="codehilite"><pre>git fetch origin scionlab
-git rebase origin/scionlab
-</pre></div>
+<pre class="codehilite"><code class="language-shell">git fetch origin scionlab
+git rebase origin/scionlab</code></pre>
 
 
 <h4 id="arm-devices">ARM devices<a class="headerlink" href="#arm-devices" title="Permanent link">&para;</a></h4>
 <p>If this is an ARM devices and we have the sources previously patched (probably they are if this is ARM), we will need to apply another patch
-as explained in <a href="../../native_setup/rpi_ubuntu/index.html#step-two-apply-necessary-patches">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></p>
-<div class="codehilite"><pre>curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/421d8bfecdd225a3b17a18ec1c1e1bf86c436b35/arm-scionlab-update2.patch <span class="p">|</span> patch -p1
-</pre></div>
+as explained in <a href="../../native_setup/rpi_ubuntu/#step-two-apply-necessary-patches">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></p>
+<pre class="codehilite"><code class="language-shell">curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/421d8bfecdd225a3b17a18ec1c1e1bf86c436b35/arm-scionlab-update2.patch | patch -p1</code></pre>
 
 
 <p>You may find some some output informing that some hunks failed to patch. This is typically okay, as it represents portions of code that we had patched before the update and don't need to be patched again. As an example of such output we have:</p>
-<div class="codehilite"><pre>patching file c/dispatcher/dispatcher.c
-Hunk <span class="c1">#1 FAILED at 837.</span>
-<span class="m">1</span> out of <span class="m">1</span> hunk FAILED -- saving rejects to file c/dispatcher/dispatcher.c.rej
+<pre class="codehilite"><code class="language-shell">patching file c/dispatcher/dispatcher.c
+Hunk #1 FAILED at 837.
+1 out of 1 hunk FAILED -- saving rejects to file c/dispatcher/dispatcher.c.rej
 patching file c/lib/scion/address.h
 patching file c/lib/scion/checksum_bench.c
-Hunk <span class="c1">#1 FAILED at 40.</span>
-Hunk <span class="c1">#2 FAILED at 57.</span>
-<span class="m">2</span> out of <span class="m">2</span> hunks FAILED -- saving rejects to file c/lib/scion/checksum_bench.c.rej
-</pre></div>
+Hunk #1 FAILED at 40.
+Hunk #2 FAILED at 57.
+2 out of 2 hunks FAILED -- saving rejects to file c/lib/scion/checksum_bench.c.rej</code></pre>
 
 
 <p>If the patch fails to apply, ensure you check out a clean version of the <code>scionlab</code> branch and patch from there.</p>
 <h3 id="rebuild-scion">Rebuild SCION<a class="headerlink" href="#rebuild-scion" title="Permanent link">&para;</a></h3>
 <p>If git reports that new modifications were downloaded when we rebased, it is necessary to restart scion infrastructure:</p>
-<div class="codehilite"><pre>./scion.sh stop
+<pre class="codehilite"><code class="language-shell">./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
 ./scion.sh clean
-mv ./go/vendor/vendor.json /tmp/ <span class="o">&amp;&amp;</span> rm -r ./go/vendor/* <span class="o">&amp;&amp;</span> mv /tmp/vendor.json ./go/vendor/
+mv ./go/vendor/vendor.json /tmp/ &amp;&amp; rm -r ./go/vendor/* &amp;&amp; mv /tmp/vendor.json ./go/vendor/
 ./env/deps
-./scion.sh build
-</pre></div>
+./scion.sh build</code></pre>
 
 
 <p>Your SCION installation should be now up to date. Once SCION is built without problems, we can start the AS services again:</p>
-<div class="codehilite"><pre>./scion.sh start
-</pre></div>
+<pre class="codehilite"><code class="language-shell">./scion.sh start</code></pre>
 
 
 <div class="admonition hint">
@@ -884,10 +894,9 @@ mv ./go/vendor/vendor.json /tmp/ <span class="o">&amp;&amp;</span> rm -r ./go/ve
 <p>After the update, the applications that are not delivered directly with SCION (e.g. <code>bwtester</code> or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. <code>bwtester</code> has its own tutorial on how to build it.</p>
 <p>There has been an important update in SCIONLab during the Summer of 2018. All the SCION addresses will be allocated in the segment ffaa:0:0/24 to accommodate a larger number of ASes than originally expected. The representation of the addresses has also changed, following the standard convention now. Details on https://github.com/scionproto/scion/wiki/ISD-and-AS-numbering .
 To update manually your dedicated system, you would get the remap script and run it:</p>
-<div class="codehilite"><pre><span class="nb">cd</span> /tmp
+<pre class="codehilite"><code class="language-shell">cd /tmp
 wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scripts/remap_as_identity.sh
-bash remap_as_identity.sh
-</pre></div>
+bash remap_as_identity.sh</code></pre>
 
 
 <p>This will complete the AS ID remapping step securely, which is necessary for the AS to work again. The remapping ensures your AS is requesting it by verifying data signed with the AS certificate.
@@ -903,6 +912,8 @@ This step should reconfigure your AS in the Coordinator and return a <code>gen</
               
               
                 
+
+
               
             </article>
           </div>
@@ -911,6 +922,42 @@ This step should reconfigure your AS in the Coordinator and return a <code>gen</
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../changing_gen_dir/" title="Updating gen directory" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Updating gen directory
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../wireshark/" title="Adding Wireshark dissector" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Adding Wireshark dissector
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -920,16 +967,15 @@ This step should reconfigure your AS in the Coordinator and return a <code>gen</
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
         
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="https://www.scion-architecture.net/" class="md-footer-social__link fa fa-globe"></a>
     
@@ -944,9 +990,9 @@ This step should reconfigure your AS in the Coordinator and return a <code>gen</
       
     </div>
     
-      <script src="../../assets/javascripts/application-84693e5e49.js"></script>
+      <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     

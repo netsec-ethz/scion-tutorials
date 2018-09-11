@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -30,17 +30,28 @@
   // [tablet landscape +]: Add space for table of contents
   @include break-from-device(tablet landscape) {
     margin-right: 24.2rem;
+
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      margin-right: initial;
+      margin-left: 24.2rem;
+    }
   }
 
   // [screen +]: Add space for table of contents
   @include break-from-device(screen) {
     margin-left: 24.2rem;
+
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      margin-right: 24.2rem;
+    }
   }
 
   // Define spacing
   &__inner {
     margin: 0 1.6rem 2.4rem;
-    padding-top: 2.4rem;
+    padding-top: 1.2rem;
 
     // [screen +]: Increase horizontal spacing
     @include break-from-device(screen) {

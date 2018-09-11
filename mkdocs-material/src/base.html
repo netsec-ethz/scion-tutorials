@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -40,9 +40,9 @@
       <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
       <!-- Page description -->
-      {% if page and page.meta.description %}
+      {% if page and page.meta and page.meta.description %}
         <meta name="description"
-            content="{{ page.meta.description | first }}" />
+            content="{{ page.meta.description }}" />
       {% elif config.site_description %}
         <meta name="description" content="{{ config.site_description }}" />
       {% endif %}
@@ -53,7 +53,7 @@
       {% endif %}
 
       <!-- Page author -->
-      {% if page and page.meta.author %}
+      {% if page and page.meta and page.meta.author %}
         <meta name="author" content="{{ page.meta.author | first }}" />
       {% elif config.site_author %}
         <meta name="author" content="{{ config.site_author }}" />
@@ -64,6 +64,8 @@
         "clipboard.copy",
         "clipboard.copied",
         "search.language",
+        "search.pipeline.stopwords",
+        "search.pipeline.trimmer",
         "search.result.none",
         "search.result.one",
         "search.result.other",
@@ -73,13 +75,8 @@
       {% endfor %}
 
       <!-- Favicon -->
-      {% if config.site_favicon %}
-        <link rel="shortcut icon"
-            href="{{ base_url }}/{{ config.site_favicon }}">
-      {% else %}
-        <link rel="shortcut icon"
-            href="{{ base_url }}/assets/images/favicon.png">
-      {% endif %}
+      <link rel="shortcut icon"
+          href="{{ config.theme.favicon | url }}">
 
       <!-- Generator banner -->
       <meta name="generator"
@@ -88,8 +85,8 @@
 
     <!-- Site title -->
     {% block htmltitle %}
-      {% if page and page.meta.title %}
-        <title>{{ page.meta.title | first }}</title>
+      {% if page and page.meta and page.meta.title %}
+        <title>{{ page.meta.title }}</title>
       {% elif page and page.title and not page.is_homepage %}
         <title>{{ page.title }} - {{ config.site_name }}</title>
       {% else %}
@@ -97,28 +94,40 @@
       {% endif %}
     {% endblock %}
 
-    <!-- JavaScript libraries -->
-    {% block libs %}
-      <script src="{{ base_url }}/assets/javascripts/modernizr.js"></script>
-    {% endblock %}
-
     <!-- Stylesheets -->
     {% block styles %}
 
       <!-- Theme-related stylesheets -->
       <link rel="stylesheet" type="text/css"
-          href="{{ base_url }}/assets/stylesheets/application.css" />
+          href="{{ 'assets/stylesheets/application.css' | url }}" />
 
       <!-- Extra color palette -->
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" type="text/css"
-            href="{{ base_url }}/assets/stylesheets/application.palette.css" />
+            href="{{ 'assets/stylesheets/application-palette.css' | url }}" />
       {% endif %}
+
+      <!-- Theme-color meta tag for Android -->
+      {% if palette.primary %}
+        {% import "partials/palette.html" as map %}
+        {% set primary = map.primary(
+          palette.primary | replace(" ", "-") | lower
+        ) %}
+        <meta name="theme-color" content="{{ primary }}" />
+      {% endif %}
+    {% endblock %}
+
+    <!-- JavaScript libraries -->
+    {% block libs %}
+      <script src="{{ 'assets/javascripts/modernizr.js' | url }}"></script>
     {% endblock %}
 
     <!-- Webfonts -->
     {% block fonts %}
+
+      <!-- Load fonts from Google -->
       {% if font != false %}
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
         <link rel="stylesheet" type="text/css"
             href="https://fonts.googleapis.com/css?family={{
               font.text | replace(' ', '+')  + ':300,400,400i,700|' +
@@ -135,35 +144,30 @@
           }
         </style>
       {% endif %}
-
-      <!-- Material icons as a default iconset -->
-      <link rel="stylesheet" type="text/css"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     {% endblock %}
 
+    <!-- Material icons as iconset -->
+    <link rel="stylesheet" type="text/css"
+        href="{{ 'assets/fonts/material-icons.css' | url }}" />
+
     <!-- Custom stylesheets -->
-    {% for path in extra_css %}
-      <link rel="stylesheet" type="text/css" href="{{ path }}" />
+    {% for path in config["extra_css"] %}
+      <link rel="stylesheet" type="text/css" href="{{ path | url }}" />
     {% endfor %}
 
     <!-- Custom front matter -->
     {% block extrahead %}{% endblock %}
   </head>
 
-  <!-- Integrate color palette, if defined -->
+  <!-- Text direction and color palette, if defined -->
   {% if palette.primary or palette.accent %}
     {% set primary = palette.primary | replace(" ", "-") | lower %}
     {% set accent  = palette.accent  | replace(" ", "-") | lower %}
-    {% if palette.primary and palette.accent %}
-      <body data-md-color-primary="{{ primary }}"
-          data-md-color-accent="{{ accent }}">
-    {% elif palette.primary %}
-      <body data-md-color-primary="{{ primary }}">
-    {% elif palette.accent %}
-      <body data-md-color-accent="{{ accent }}">
-    {% endif %}
+    <body dir="{{ lang.t('direction') }}"
+        data-md-color-primary="{{ primary }}"
+        data-md-color-accent="{{ accent }}">
   {% else %}
-    <body>
+    <body dir="{{ lang.t('direction') }}">
   {% endif %}
 
     <!-- Hidden container for inline SVGs -->
@@ -172,7 +176,7 @@
 
         <!--
           Check whether the repository is hosted on one of the supported code
-          hosting platforms (Github, Gitlab or Bitbucket) to show icon.
+          hosting platforms (GitHub, GitLab or Bitbucket) to show icon.
         -->
         {% set platform = config.extra.repo_icon or config.repo_url %}
         {% if "github" in platform %}
@@ -185,14 +189,25 @@
       </defs>
     </svg>
 
-    <!-- State toggles -->
+    <!--
+      State toggles - we need to set autocomplete="off" in order to reset the
+      drawer on back button invocation in some browsers
+    -->
     <input class="md-toggle" data-md-toggle="drawer"
-        type="checkbox" id="drawer" />
+        type="checkbox" id="__drawer" autocomplete="off" />
     <input class="md-toggle" data-md-toggle="search"
-        type="checkbox" id="search" />
+        type="checkbox" id="__search" autocomplete="off" />
 
     <!-- Overlay for expanded drawer -->
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+
+    <!-- Render "skip to content" link -->
+    {% if page.toc | first is defined %}
+      <a href="{{ (page.toc | first).url | url }}" tabindex="1"
+          class="md-skip">
+        {{ lang.t('skip.link.title') }}
+      </a>
+    {% endif %}
 
     <!-- Application header -->
     {% block header %}
@@ -201,6 +216,13 @@
 
     <!-- Container, necessary for web-application context -->
     <div class="md-container">
+
+      <!-- Hero teaser -->
+      {% block hero %}
+        {% if page and page.meta and page.meta.hero %}
+          {% include "partials/hero.html" with context %}
+        {% endif %}
+      {% endblock %}
 
       <!-- Tabs with outline -->
       {% if feature.tabs %}
@@ -247,7 +269,7 @@
               {% block content %}
 
                 <!-- Edit button, if URL was defined -->
-                {% if config.edit_uri %}
+                {% if page.edit_url %}
                   <a href="{{ page.edit_url }}"
                       title="{{ lang.t('edit.link.title') }}"
                       class="md-icon md-content__icon">&#xE3C9;<!-- edit --></a>
@@ -267,25 +289,25 @@
 
                 <!-- Source files -->
                 {% block source %}
-                  {% if page.meta.source %}
+                  {% if page and page.meta and page.meta.source %}
                     <h2 id="__source">{{ lang.t("meta.source") }}</h2>
-                    {% set path = (page.meta.path | default([""]) | first) %}
-                    {% for file in page.meta.source %}
-                      <a href="{{ [config.repo_url, path, file] | join('/') }}"
-                          title="{{ file }}" class="md-source-file">
-                        {{ file }}
-                      </a>
-                    {% endfor %}
+                    {% set repo = config.repo_url %}
+                    {% if repo | last == "/" %}
+                      {% set repo = repo[:-1] %}
+                    {% endif %}
+                    {% set path = page.meta.path | default([""]) %}
+                    {% set file = page.meta.source %}
+                    <a href="{{ [repo, path, file] | join('/') }}"
+                        title="{{ file }}" class="md-source-file">
+                      {{ file }}
+                    </a>
                   {% endif %}
                 {% endblock %}
               {% endblock %}
 
               <!-- Disqus integration -->
               {% block disqus %}
-                {% if config.extra.disqus and not page.is_homepage %}
-                  <h2 id="__comments">{{ lang.t("meta.comments") }}</h2>
-                  {% include "partials/disqus.html" %}
-                {% endif %}
+                {% include "partials/integrations/disqus.html" %}
               {% endblock %}
             </article>
           </div>
@@ -300,24 +322,27 @@
 
     <!-- Theme-related JavaScript -->
     {% block scripts %}
-      <script src="{{ base_url }}/assets/javascripts/application.js"></script>
+      <script src="{{ 'assets/javascripts/application.js' | url }}"></script>
 
       <!-- Load additional languages for search -->
       {% if lang.t("search.language") != "en" %}
         {% set languages = lang.t("search.language").split(",") %}
         {% if languages | length and languages[0] != "" %}
-          {% set path = base_url + "/assets/javascripts/lunr" %}
-          <script src="{{ path }}/lunr.stemmer.support.js"></script>
+          {% set path = "assets/javascripts/lunr/" %}
+          <script src="{{ (path ~ 'lunr.stemmer.support.js') | url }}"></script>
           {% for language in languages | map("trim") %}
             {% if language != "en" %}
               {% if language == "jp" %}
-                <script src="{{ path }}/tinyseg.js"></script>
+                <script src="{{ (path ~ 'tinyseg.js') | url }}"></script>
               {% endif %}
-              <script src="{{ path }}/lunr.{{ language }}.js"></script>
+              {% if language in ($md-lunr-languages$) %}
+                <script src="{{ (path ~ 'lunr.' ~ language ~ '.js') | url }}">
+                </script>
+              {% endif %}
             {% endif %}
           {% endfor %}
           {% if languages | length > 1 %}
-            <script src="{{ path }}/lunr.multi.js"></script>
+            <script src="{{ (path ~ 'lunr.multi.js') | url }}"></script>
           {% endif %}
         {% endif %}
       {% endif %}
@@ -331,50 +356,15 @@
           }
         });
       </script>
-      {% for path in extra_javascript %}
-        <script src="{{ path }}"></script>
+      {% for path in config["extra_javascript"] %}
+        <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}
 
     <!-- Analytic scripts -->
     {% block analytics %}
       {% if config.google_analytics %}
-      <script>
-        (function(i,s,o,g,r,a,m){
-          i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||
-          []).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;
-          m.parentNode.insertBefore(a,m)
-        })(window, document,
-          "script", "https://www.google-analytics.com/analytics.js", "ga");
-
-        /* General initialization */
-        ga("create",
-          "{{ config.google_analytics[0] }}",
-          "{{ config.google_analytics[1] }}");
-        ga("set", "anonymizeIp", true);
-        ga("send", "pageview");
-
-        /* Track outbound links */
-        var links = document.getElementsByTagName("a");
-        Array.prototype.map.call(links, function(item) {
-          if (item.host != document.location.host) {
-            item.addEventListener("click", function() {
-              var action = item.getAttribute("data-md-action") || "follow";
-              ga("send", "event", "outbound", action, item.href);
-            });
-          }
-        });
-
-        /* Register handler to log search on blur */
-        var query = document.forms.search.query;
-        query.addEventListener("blur", function() {
-          if (this.value) {
-            var path = document.location.pathname;
-            ga("send", "pageview", path + "?q=" + this.value);
-          }
-        });
-      </script>
+        {% include "partials/integrations/analytics.html" %}
       {% endif %}
     {% endblock %}
   </body>

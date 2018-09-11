@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -51,11 +51,10 @@ const truncate = (string, n) => {
  * Return the meta tag value for the given key
  *
  * @param {string} key - Meta name
- * @param {string} [_] - Stop Flow complaining (TODO)
  *
  * @return {string} Meta content value
  */
-const translate = (key, _) => { // eslint-disable-line no-unused-vars
+const translate = key => {
   const meta = document.getElementsByName(`lang:${key}`)[0]
   if (!(meta instanceof HTMLMetaElement))
     throw new ReferenceError
@@ -171,16 +170,25 @@ export default class Result {
         /* Create stack and index */
         this.stack_ = []
         this.index_ = lunr(function() {
+          const filters = {
+            "search.pipeline.trimmer": lunr.trimmer,
+            "search.pipeline.stopwords": lunr.stopWordFilter
+          }
+
+          /* Disable stop words filter and trimmer, if desired */
+          const pipeline = Object.keys(filters).reduce((result, name) => {
+            if (!translate(name).match(/^false$/i))
+              result.push(filters[name])
+            return result
+          }, [])
 
           /* Remove stemmer, as it cripples search experience */
           this.pipeline.reset()
-          this.pipeline.add(
-            lunr.trimmer,
-            lunr.stopWordFilter
-          )
+          if (pipeline)
+            this.pipeline.add(...pipeline)
 
           /* Set up alternate search languages */
-          if (lang.length === 1 && lang[0] !== "en") {
+          if (lang.length === 1 && lang[0] !== "en" && lunr[lang[0]]) {
             this.use(lunr[lang[0]])
           } else if (lang.length > 1) {
             this.use(lunr.multiLanguage(...lang))
@@ -277,7 +285,7 @@ export default class Result {
         const article = (
           <li class="md-search-result__item">
             <a href={doc.location} title={doc.title}
-              class="md-search-result__link">
+              class="md-search-result__link" tabindex="-1">
               <article class="md-search-result__article
                     md-search-result__article--document">
                 <h1 class="md-search-result__title">
@@ -298,7 +306,8 @@ export default class Result {
             const section = this.docs_.get(item.ref)
             article.appendChild(
               <a href={section.location} title={section.title}
-                class="md-search-result__link" data-md-rel="anchor">
+                class="md-search-result__link" data-md-rel="anchor"
+                tabindex="-1">
                 <article class="md-search-result__article">
                   <h1 class="md-search-result__title">
                     {{ __html: section.title.replace(match, highlight) }}
@@ -330,21 +339,27 @@ export default class Result {
       /* Bind click handlers for anchors */
       const anchors = this.list_.querySelectorAll("[data-md-rel=anchor]")
       Array.prototype.forEach.call(anchors, anchor => {
-        anchor.addEventListener("click", ev2 => {
-          const toggle = document.querySelector("[data-md-toggle=search]")
-          if (!(toggle instanceof HTMLInputElement))
-            throw new ReferenceError
-          if (toggle.checked) {
-            toggle.checked = false
-            toggle.dispatchEvent(new CustomEvent("change"))
-          }
+        ["click", "keydown"].forEach(action => {
+          anchor.addEventListener(action, ev2 => {
+            if (action === "keydown" && ev2.keyCode !== 13)
+              return
 
-          /* Hack: prevent default, as the navigation needs to be delayed due
-             to the search body lock on mobile */
-          ev2.preventDefault()
-          setTimeout(() => {
-            document.location.href = anchor.href
-          }, 100)
+            /* Close search */
+            const toggle = document.querySelector("[data-md-toggle=search]")
+            if (!(toggle instanceof HTMLInputElement))
+              throw new ReferenceError
+            if (toggle.checked) {
+              toggle.checked = false
+              toggle.dispatchEvent(new CustomEvent("change"))
+            }
+
+            /* Hack: prevent default, as the navigation needs to be delayed due
+               to the search body lock on mobile */
+            ev2.preventDefault()
+            setTimeout(() => {
+              document.location.href = anchor.href
+            }, 100)
+          })
         })
       })
 

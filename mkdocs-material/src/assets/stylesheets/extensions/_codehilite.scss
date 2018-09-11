@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -253,7 +253,7 @@ $codehilite-whitespace: transparent;
     }
   }
 
-  // If not using Pygments, code will be under pre>code
+  // If not using Pygments, code will be under pre > code
   pre.codehilite {
     overflow: visible;
 
@@ -298,13 +298,6 @@ $codehilite-whitespace: transparent;
     // Add spacing to line number container
     .linenodiv {
       padding: 1.05rem 1.2rem;
-
-      // Stretch the line number container vertically, so it always aligns with
-      // the code container, even when there's a scrollbar.
-      &,
-      & > pre {
-        height: 100%;
-      }
     }
 
     // Disable user selection, so code can be easily copied without
@@ -348,7 +341,7 @@ $codehilite-whitespace: transparent;
     }
   }
 
-  // Full-width container
+  // Full-width container on top-level
   > .codehilitetable {
     box-shadow: none;
 
@@ -366,9 +359,15 @@ $codehilite-whitespace: transparent;
     }
   }
 
-  // When pymdownx.superfences is enabled but codehilite is disabled, the
-  // outer container gets this class name by default.
+  // When pymdownx.superfences is enabled but codehilite is disabled,
+  // pymdownx.highlight will be used. When this happens, the outer
+  // container and tables get this class names by default.
   .highlight {
     @extend .codehilite;
+  }
+
+  // Same as above, but for code blocks with line numbers enabled
+  .highlighttable {
+    @extend .codehilitetable;
   }
 }

@@ -1,3 +1,239 @@
+mkdocs-material-3.0.4 (2018-09-03)
+
+  * Updated Dutch translations
+  * Fixed #856: Removed preconnect meta tag if Google Fonts are disabled
+
+mkdocs-material-3.0.3 (2018-08-07)
+
+  * Fixed #841: Additional path levels for extra CSS and JS
+
+mkdocs-material-3.0.2 (2018-08-06)
+
+  * Fixed #839: Lunr.js stemmer imports incorrect
+
+mkdocs-material-3.0.1 (2018-08-05)
+
+  * Fixed #838: Search result links incorrect
+
+mkdocs-material-3.0.0 (2018-08-05)
+
+  * Upgraded MkDocs to 1.0
+  * Upgraded Python in official Docker image to 3.6
+  * Added Serbian and Serbo-Croatian translations
+
+mkdocs-material-2.9.4 (2018-07-29)
+
+  * Fixed build error after MkDocs upgrade
+
+mkdocs-material-2.9.3 (2018-07-29)
+
+  * Added link to home for logo in drawer
+  * Fixed dependency problems between MkDocs and Tornado
+
+mkdocs-material-2.9.2 (2018-06-29)
+
+  * Added Hindi and Czech translations
+
+mkdocs-material-2.9.1 (2018-06-18)
+
+  * Added support for different spellings for theme color
+  * Fixed #799: Added support for web font minification in production
+  * Fixed #800: Added .highlighttable as an alias for .codehilitetable
+
+mkdocs-material-2.9.0 (2018-06-13)
+
+  * Added support for theme color on Android
+  * Fixed #796: Rendering of nested tabbed code blocks
+
+mkdocs-material-2.8.0 (2018-06-10)
+
+  * Added support for grouping code blocks with tabs
+  * Added Material and FontAwesome icon fonts to distribution files (GDPR)
+  * Added note on compliance with GDPR
+  * Added Slovak translations
+  * Fixed #790: Prefixed id attributes with "__" to avoid name clashes
+
+mkdocs-material-2.7.3 (2018-04-26)
+
+  * Added Finnish translations
+
+mkdocs-material-2.7.2 (2018-04-09)
+
+  * Fixed rendering issue for details on Edge
+
+mkdocs-material-2.7.1 (2018-03-21)
+
+  * Added Galician translations
+  * Fixed #730: Scroll chasing error on home page if Disqus is enabled
+  * Fixed #736: Reset drawer and search upon back button invocation
+
+mkdocs-material-2.7.0 (2018-03-06)
+
+  * Added ability to set absolute URL for logo
+  * Added Hebrew translations
+
+mkdocs-material-2.6.6 (2018-02-22)
+
+  * Added preconnect for Google Fonts for faster loading
+  * Fixed #710: With tabs sidebar disappears if JavaScript is not available
+
+mkdocs-material-2.6.5 (2018-02-22)
+
+  * Reverted --dev-addr flag removal from Dockerfile
+
+mkdocs-material-2.6.4 (2018-02-21)
+
+  * Added Catalan translations
+  * Fixed incorrect margins for buttons in Firefox and Safari
+  * Replaced package manager yarn with npm 5.6
+  * Reverted GitHub stars rounding method
+  * Removed --dev-addr flag from Dockerfile for Windows compatibility
+
+mkdocs-material-2.6.3 (2018-02-18)
+
+  * Added Vietnamese translations
+
+mkdocs-material-2.6.2 (2018-02-12)
+
+  * Added Arabic translations
+  * Fixed incorrect rounding of amount of GitHub stars
+  * Fixed double-layered borders for tables
+
+mkdocs-material-2.6.1 (2018-02-11)
+
+  * Added ability to override Disqus integration using metadata
+  * Fixed #690: Duplicate slashes in source file URLs
+  * Fixed #696: Active page highlight not working with default palette
+  * Adjusted German translations
+
+mkdocs-material-2.6.0 (2018-02-02)
+
+  * Moved default search configuration to default translation (English)
+  * Added support to automatically set text direction from translation
+  * Added support to disable search stop word filter in translation
+  * Added support to disable search trimmer in translation
+  * Added Persian translations
+  * Fixed support for Polish search
+  * Fixed disappearing GitHub, GitLab and Bitbucket repository icons
+
+mkdocs-material-2.5.5 (2018-01-31)
+
+  * Added Hungarian translations
+
+mkdocs-material-2.5.4 (2018-01-29)
+
+  * Fixed #683: gh-deploy fails inside Docker
+
+mkdocs-material-2.5.3 (2018-01-25)
+
+  * Added Ukrainian translations
+
+mkdocs-material-2.5.2 (2018-01-22)
+
+  * Added default search language mappings for all localizations
+  * Fixed #673: Error loading non-existent search language
+  * Fixed #675: Uncaught reference error when search plugin disabled
+
+mkdocs-material-2.5.1 (2018-01-20)
+
+  * Fixed permalink for main headline
+  * Improved missing translation handling with English as a fallback
+  * Improved accessibility with skip-to-content link
+
+mkdocs-material-2.5.0 (2018-01-13)
+
+  * Added support for right-to-left languages
+
+mkdocs-material-2.4.0 (2018-01-11)
+
+  * Added focus state for clipboard buttons
+  * Fixed #400: Search bar steals tab focus
+  * Fixed search not closing on ENTER when result is selected
+  * Fixed search not closing when losing focus due to TAB
+  * Fixed collapsed navigation links getting focus
+  * Fixed outline being cut off on TAB focus of navigation links
+  * Fixed bug with first search result navigation being ignored
+  * Removed search result navigation via TAB (use UP and DOWN)
+  * Removed outline resets for links
+  * Improved general tabbing behavior on desktop
+
+mkdocs-material-2.3.0 (2018-01-09)
+
+  * Added example (synonym: snippet) style for Admonition
+  * Added synonym abstract for summary style for Admonition
+
+mkdocs-material-2.2.6 (2017-12-27)
+
+  * Added Turkish translations
+  * Fixed unclickable area below header in case JavaScript is not available
+
+mkdocs-material-2.2.5 (2017-12-18)
+
+  * Fixed #639: Broken default favicon
+
+mkdocs-material-2.2.4 (2017-12-18)
+
+  * Fixed #638: Build breaks with Jinja < 2.9
+
+mkdocs-material-2.2.3 (2017-12-13)
+
+  * Fixed #630: Admonition sets padding on any last child
+  * Adjusted Chinese (Traditional) translations
+
+mkdocs-material-2.2.2 (2017-12-08)
+
+  * Added Dutch translations
+  * Adjusted targeted link and footnote offsets
+  * Simplified Admonition styles and fixed padding bug
+
+mkdocs-material-2.2.1 (2017-12-02)
+
+  * Fixed #616: Minor styling error with title-only admonition blocks
+  * Removed border for table of contents and improved spacing
+
+mkdocs-material-2.2.0 (2017-11-22)
+
+  * Added support for hero teaser
+  * Added Portuguese translations
+  * Fixed #586: Footnote backref target offset regression
+  * Fixed #605: Search stemmers not correctly loaded
+
+mkdocs-material-2.1.1 (2017-11-21)
+
+  * Replaced deprecated babel-preset-es2015 with babel-preset-env
+  * Refactored Gulp build pipeline with Webpack
+  * Removed right border on sidebars
+  * Fixed broken color transition on header
+
+mkdocs-material-2.1.0 (2017-11-19)
+
+  * Added support for white as a primary color
+  * Added support for sliding site name and title
+  * Fixed redundant clipboard button when using line numbers on code blocks
+  * Improved header appearance by making it taller
+  * Improved tabs appearance
+  * Improved CSS customizability by leveraging inheritance
+  * Removed scroll shadows via background-attachment
+  * Removed breadcrumbs from header
+
+mkdocs-material-2.0.4 (2017-11-05)
+
+  * Fixed details not opening with footnote reference
+
+mkdocs-material-2.0.3 (2017-11-05)
+
+  * Added Japanese translations
+  * Fixed #540: Jumping to anchor inside details doesn't open it
+  * Fixed active link colors in footer
+
+mkdocs-material-2.0.2 (2017-11-01)
+
+  * Added Russian translations
+  * Fixed #542: Horizontal scrollbar between 1220px and 1234px
+  * Fixed #553: Metadata values only rendering first character
+  * Fixed #558: Flash of unstyled content
+  * Fixed favicon regression caused by deprecation upstream
+
 mkdocs-material-2.0.1 (2017-10-31)
 
   * Fixed error when initializing search

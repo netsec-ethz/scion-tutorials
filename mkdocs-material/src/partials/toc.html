@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -38,7 +38,7 @@
 
   <!-- Render item list -->
   {% if toc_ | first is defined %}
-    <label class="md-nav__title" for="toc">{{ lang.t("toc.title") }}</label>
+    <label class="md-nav__title" for="__toc">{{ lang.t("toc.title") }}</label>
     <ul class="md-nav__list" data-md-scrollfix>
       {% for toc_item in toc_ %}
         {% include "partials/toc-item.html" %}
@@ -54,8 +54,14 @@
         </li>
       {% endif %}
 
+      <!-- Set from config but allow override -->
+      {% set disqus = config.extra.disqus %}
+      {% if page and page.meta and page.meta.disqus is string %}
+        {% set disqus = page.meta.disqus %}
+      {% endif %}
+
       <!-- Disqus integration -->
-      {% if config.extra.disqus and not page.is_homepage %}
+      {% if not page.is_homepage and disqus %}
         <li class="md-nav__item">
           <a href="#__comments" title="{{ lang.t('meta.comments') }}"
               class="md-nav__link md-nav__link--active">

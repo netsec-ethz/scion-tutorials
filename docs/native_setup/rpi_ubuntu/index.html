@@ -21,6 +21,10 @@
       
         <meta name="lang:search.language" content="en">
       
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
         <meta name="lang:search.result.none" content="No matching documents">
       
         <meta name="lang:search.result.one" content="1 matching document">
@@ -29,10 +33,8 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      
-        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -40,24 +42,26 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/application-13fe57a5cd.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.c974ac60.css">
+      
       
     
     
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
       
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
   </head>
   
-    <body>
+    <body dir="ltr">
   
     <svg class="md-svg">
       <defs>
@@ -65,9 +69,14 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#building-scion-for-a-raspberry-pi-ubuntu-mate" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -80,34 +89,36 @@
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
-                <span class="md-header-nav__parent">
-                  How to install SCION manually on different platforms
-                </span>
-              
+              <span class="md-header-nav__topic">
+                SCION Tutorials
+              </span>
+              <span class="md-header-nav__topic">
+                Ubuntu MATE Raspberry PI
+              </span>
             
-            Ubuntu MATE Raspberry PI
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
             
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
-      <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -131,6 +142,9 @@
     
     <div class="md-container">
       
+        
+      
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -139,12 +153,12 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="SCION Tutorials" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
-    </span>
+    </a>
     SCION Tutorials
   </label>
   
@@ -252,12 +266,12 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         Ubuntu MATE Raspberry PI
       </label>
     
@@ -272,7 +286,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -370,6 +384,8 @@
   </a>
   
 </li>
+      
+      
       
       
       
@@ -726,7 +742,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -827,6 +843,8 @@
       
       
       
+      
+      
     </ul>
   
 </nav>
@@ -860,8 +878,7 @@
 <p>Remember to replace <code>scionuser</code> with your username.</p>
 </div>
 <h3 id="install-necessary-packages">Install necessary packages<a class="headerlink" href="#install-necessary-packages" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre>sudo apt install git curl
-</pre></div>
+<pre class="codehilite"><code class="language-shell">sudo apt install git curl</code></pre>
 
 
 <h3 id="configure-go-workspace">Configure Go workspace<a class="headerlink" href="#configure-go-workspace" title="Permanent link">&para;</a></h3>
@@ -870,21 +887,19 @@
 <p>You can skip this step if you have Go workspaces already configured.</p>
 </div>
 <p>It is necessary to set up your <a href="https://golang.org/doc/code.html#GOPATH" title="Go workspace">Go workspace</a>. The following commands will create a default workspace at <code>~/go</code> and export it as the <code>$GOPATH</code> environment variable:</p>
-<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export GOPATH=&quot;$HOME/go&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-mkdir -p <span class="s2">&quot;</span>$<span class="s2">GOPATH/bin&quot;</span>
-<span class="nb">echo</span> <span class="s1">&#39;PATH=$PATH:/usr/local/go/bin:$GOPATH/bin&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export GOPATH=&quot;$HOME/go&quot;' &gt;&gt; ~/.profile
+source ~/.profile
+mkdir -p &quot;$GOPATH/bin&quot;
+echo 'PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' &gt;&gt; ~/.profile
+source ~/.profile</code></pre>
 
 
 <h2 id="install-scion">Install SCION<a class="headerlink" href="#install-scion" title="Permanent link">&para;</a></h2>
 <h3 id="step-one-clone-the-scion-repository">Step One &ndash; clone the SCION repository<a class="headerlink" href="#step-one-clone-the-scion-repository" title="Permanent link">&para;</a></h3>
 <p>After the Go workspace has been configured, we can checkout the SCION repository from github.com with all dependencies using the following commands:</p>
-<div class="codehilite"><pre>mkdir -p <span class="s2">&quot;</span>$<span class="s2">GOPATH/src/github.com/scionproto/scion&quot;</span>
-<span class="nb">cd</span> <span class="s2">&quot;</span>$<span class="s2">GOPATH/src/github.com/scionproto/scion&quot;</span>
-git clone --recursive -b scionlab git@github.com:netsec-ethz/netsec-scion .
-</pre></div>
+<pre class="codehilite"><code class="language-shell">mkdir -p &quot;$GOPATH/src/github.com/scionproto/scion&quot;
+cd &quot;$GOPATH/src/github.com/scionproto/scion&quot;
+git clone --recursive -b scionlab git@github.com:netsec-ethz/netsec-scion .</code></pre>
 
 
 <div class="admonition warning">
@@ -897,54 +912,47 @@ git clone --recursive -b scionlab git@github.com:netsec-ethz/netsec-scion .
 </ol>
 </div>
 <p>This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable <code>SC</code> that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:</p>
-<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export SC=&quot;$GOPATH/src/github.com/scionproto/scion&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-<span class="nb">cd</span> $SC
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export SC=&quot;$GOPATH/src/github.com/scionproto/scion&quot;' &gt;&gt; ~/.profile
+source ~/.profile
+cd $SC</code></pre>
 
 
 <h3 id="step-two-apply-necessary-patches">Step Two &ndash; apply necessary patches<a class="headerlink" href="#step-two-apply-necessary-patches" title="Permanent link">&para;</a></h3>
 <p>On ARM architectures, it is necessary to apply two patches as follows:</p>
-<div class="codehilite"><pre>curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/421d8bfecdd225a3b17a18ec1c1e1bf86c436b35/arm-scionlab-update2.patch <span class="p">|</span> patch -p1
-</pre></div>
+<pre class="codehilite"><code class="language-shell">curl https://gist.githubusercontent.com/juagargi/f007a3a80058895d81a72651af32cb44/raw/421d8bfecdd225a3b17a18ec1c1e1bf86c436b35/arm-scionlab-update2.patch | patch -p1</code></pre>
 
 
 <p>In order to enable updating the system, we commit the patched changes into the local arm-modified branch:</p>
-<div class="codehilite"><pre>git commit -am <span class="s2">&quot;Modified to compile on ARM systems&quot;</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">git commit -am &quot;Modified to compile on ARM systems&quot;</code></pre>
 
 
 <div class="admonition warning">
 <p class="admonition-title">Troubleshooting</p>
 <p>If your git identity is not configured, commits won't be possible. Configuring the user identity on a newly installed git can be done as follows:</p>
 </div>
-<div class="codehilite"><pre><span class="nb">cd</span> $SC
-git config user.name <span class="s2">&quot;John Doe&quot;</span>
-git config user.email johndoe@example.com
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd $SC
+git config user.name &quot;John Doe&quot;
+git config user.email johndoe@example.com</code></pre>
 
 
 <h3 id="step-three-configure-python-path-variable">Step Three &ndash; configure Python path variable<a class="headerlink" href="#step-three-configure-python-path-variable" title="Permanent link">&para;</a></h3>
 <p>Some SCION components like SCIONviz require Python libraries which are located in the scion root directory. In order to make them accessible, exporting the <code>PYTHONPATH</code> environment variable is required:</p>
-<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SC/python:$SC&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export PYTHONPATH=&quot;$SC/python:$SC&quot;' &gt;&gt; ~/.profile
+source ~/.profile</code></pre>
 
 
 <h3 id="step-four-finish-installing-the-required-packages">Step Four &ndash; finish installing the required packages<a class="headerlink" href="#step-four-finish-installing-the-required-packages" title="Permanent link">&para;</a></h3>
 <p>The build process is quite demanding in memory, so the machine has to have more than the 1GB of main memory that it comes with. To add one more gigabyte from the swap follow these steps:</p>
-<div class="codehilite"><pre>sudo fallocate -l 1G /swapfile
-sudo chmod <span class="m">600</span> /swapfile
+<pre class="codehilite"><code class="language-shell">sudo fallocate -l 1G /swapfile
+sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
-free -h
-</pre></div>
+free -h</code></pre>
 
 
 <p>In order to instal dependencies, simply issue the following command while in the root directory of the SCION installation:</p>
-<div class="codehilite"><pre>bash -c <span class="s1">&#39;yes | GO_INSTALL=true ./env/deps&#39;</span>
-./scion.sh build
-</pre></div>
+<pre class="codehilite"><code class="language-shell">bash -c 'yes | GO_INSTALL=true ./env/deps'
+./scion.sh build</code></pre>
 
 
 <div class="admonition note">
@@ -954,18 +962,17 @@ free -h
 <p>This will finish installing the required dependencies and system packages.</p>
 <h3 id="step-five-configure-the-host-zookeeper-instance">Step Five &ndash; configure the host Zookeeper instance<a class="headerlink" href="#step-five-configure-the-host-zookeeper-instance" title="Permanent link">&para;</a></h3>
 <p>Replacing <code>/etc/zookeeper/conf/zoo.cfg</code> with the file <code>docker/zoo.cfg</code> is recommended. This has the standard parameters set, as well as using a ram disk for the data log, which greatly improves the performance of Zookeeper (at the cost of reliability, so it should only be done in a testing environment).</p>
-<div class="codehilite"><pre>sudo cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
-</pre></div>
+<pre class="codehilite"><code class="language-shell">sudo cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:</p>
 <ol>
 <li><a href="../../scion_tricks/setup_startup/">Configure SCION to run on system boot</a> &ndash; Use systemd to run SCION and SCION-viz when the system is started.</li>
-<li><a href="../../general_scion_configuration/local_top/">Running a local network topology</a> &ndash; Generate a sample topology and run SCION locally</li>
-<li><a href="../../general_scion_configuration/public_ip/">Connecting to SCIONLab with a static public IP address</a> &ndash; Connect to the already running SCION topology.</li>
-<li><a href="../../general_scion_configuration/public_ip_nat/">Connecting to SCIONLab with a static public IP address, but behind a NAT</a></li>
-<li><a href="../../general_scion_configuration/vpn_setup/">Connecting to SCIONLab without a static public IP address</a> &ndash; Connect to the already running SCION topology through an OpenVPN tunnel.</li>
+<li><a href="/general_scion_configuration/local_top/">Running a local network topology</a> &ndash; Generate a sample topology and run SCION locally</li>
+<li><a href="/general_scion_configuration/public_ip/">Connecting to SCIONLab with a static public IP address</a> &ndash; Connect to the already running SCION topology.</li>
+<li><a href="/general_scion_configuration/public_ip_nat/">Connecting to SCIONLab with a static public IP address, but behind a NAT</a></li>
+<li><a href="/general_scion_configuration/vpn_setup/">Connecting to SCIONLab without a static public IP address</a> &ndash; Connect to the already running SCION topology through an OpenVPN tunnel.</li>
 </ol>
                 
                   
@@ -973,6 +980,8 @@ free -h
               
               
                 
+
+
               
             </article>
           </div>
@@ -981,6 +990,42 @@ free -h
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../ubuntu_x86_build/" title="Ubuntu 16.04 x86-64" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Ubuntu 16.04 x86-64
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../image_builder/" title="Images for ARM minicomputers" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Images for ARM minicomputers
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -990,16 +1035,15 @@ free -h
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
         
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="https://www.scion-architecture.net/" class="md-footer-social__link fa fa-globe"></a>
     
@@ -1014,9 +1058,9 @@ free -h
       
     </div>
     
-      <script src="../../assets/javascripts/application-84693e5e49.js"></script>
+      <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     

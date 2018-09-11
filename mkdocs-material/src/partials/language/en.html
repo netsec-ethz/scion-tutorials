@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -23,6 +23,7 @@
 <!-- Translations: English -->
 {% macro t(key) %}{{ {
   "language": "en",
+  "direction": "ltr",
   "clipboard.copy": "Copy to clipboard",
   "clipboard.copied": "Copied to clipboard",
   "edit.link.title": "Edit this page",
@@ -30,12 +31,16 @@
   "footer.next": "Next",
   "meta.comments": "Comments",
   "meta.source": "Source",
+  "search.language": "en",
+  "search.pipeline.stopwords": true,
+  "search.pipeline.trimmer": true,
   "search.placeholder": "Search",
   "search.result.placeholder": "Type to start searching",
   "search.result.none": "No matching documents",
   "search.result.one": "1 matching document",
   "search.result.other": "# matching documents",
   "search.tokenizer": "[\s\-]+",
+  "skip.link.title": "Skip to content",
   "source.link.title": "Go to repository",
   "toc.title": "Table of contents"
 }[key] }}{% endmacro %}

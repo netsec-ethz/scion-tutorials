@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -54,15 +54,6 @@ if [ "$FILES" ]; then
     exit 1
   else
     echo -e "\x1B[32m✓\x1B[0m Linter"
-  fi
-
-  # If flow terminated with errors, abort commit
-  yarn run flow --silent
-  if [ $? -gt 0 ]; then
-    echo -e "\x1B[31m✗\x1B[0m Flow - \x1B[31m$MESSAGE\x1B[0m"
-    exit 1
-  else
-    echo -e "\x1B[32m✓\x1B[0m Flow"
   fi
 fi
 

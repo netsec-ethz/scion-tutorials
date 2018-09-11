@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -38,6 +38,12 @@
       position: absolute;
       top: 0.45em;
       left: -2em;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        right: -2em;
+        left: initial;
+      }
     }
   }
 
@@ -55,6 +61,12 @@
       font-size: 1.25em;
       content: "\E835"; // check_box_outline_blank
       vertical-align: -0.25em;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        right: -1.25em;
+        left: initial;
+      }
     }
 
     // Checkbox icon in checked state

@@ -21,6 +21,10 @@
       
         <meta name="lang:search.language" content="en">
       
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
         <meta name="lang:search.result.none" content="No matching documents">
       
         <meta name="lang:search.result.one" content="1 matching document">
@@ -29,10 +33,8 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      
-        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -40,24 +42,26 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/application-13fe57a5cd.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.c974ac60.css">
+      
       
     
     
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
       
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
   </head>
   
-    <body>
+    <body dir="ltr">
   
     <svg class="md-svg">
       <defs>
@@ -65,9 +69,14 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#running-scion-in-a-virtual-machine-vpn-approach" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -80,34 +89,36 @@
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
-                <span class="md-header-nav__parent">
-                  How to run SCION VM
-                </span>
-              
+              <span class="md-header-nav__topic">
+                SCION Tutorials
+              </span>
+              <span class="md-header-nav__topic">
+                Virtual machine with VPN
+              </span>
             
-            Virtual machine with VPN
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
             
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
-      <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -131,6 +142,9 @@
     
     <div class="md-container">
       
+        
+      
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -139,12 +153,12 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="SCION Tutorials" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
-    </span>
+    </a>
     SCION Tutorials
   </label>
   
@@ -192,12 +206,12 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         Virtual machine with VPN
       </label>
     
@@ -212,7 +226,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -289,6 +303,8 @@
   </a>
   
 </li>
+      
+      
       
       
       
@@ -705,7 +721,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -785,6 +801,8 @@
       
       
       
+      
+      
     </ul>
   
 </nav>
@@ -823,19 +841,16 @@
 <p><img alt="SCIONLab download page" src="../../images/scionlab_download_vm_openvpn_setup.png" /></p>
 <p>You have downloaded the configuration directory in the form of a compressed tar file (<code>tgz</code>). </p>
 <p>You will need to uncompress this folder. For this, create a directory that will host your SCIONLab content. For instance:</p>
-<div class="codehilite"><pre>mkdir ~/scionlab
-</pre></div>
+<pre class="codehilite"><code class="language-shell">mkdir ~/scionlab</code></pre>
 
 
 <p>And move the contents to your SCIONLab directory, in the example:</p>
-<div class="codehilite"><pre><span class="nb">cd</span> ~/scionlab
-mv ~/Download/scion_lab_my_filename.tar.gz .
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd ~/scionlab
+mv ~/Download/scion_lab_my_filename.tar.gz .</code></pre>
 
 
 <p>Next, extract the archive content. On a Linux system, simply running <code>tar</code> command will extract the contents:</p>
-<div class="codehilite"><pre>tar -xvzf scion_lab_my_filename.tar.gz
-</pre></div>
+<pre class="codehilite"><code class="language-shell">tar -xvzf scion_lab_my_filename.tar.gz</code></pre>
 
 
 <div class="admonition tip">
@@ -843,12 +858,11 @@ mv ~/Download/scion_lab_my_filename.tar.gz .
 <p>If you experience any issue while extracting or uncompressing the file, check if your browser has uncompress it for you by typing <code>file scion_lab_*.t*</code></p>
 </div>
 <p>If your downloader automatically uncompressed the downloaded file, the <code>.gz</code> extension is many times missing, or the type of the file not specifying compressed. You can extract the contents with:</p>
-<div class="codehilite"><pre>tar -xvf scion_lab_my_filename.tar
-</pre></div>
+<pre class="codehilite"><code class="language-shell">tar -xvf scion_lab_my_filename.tar</code></pre>
 
 
 <p>After extraction, the extracted directory has the following structure:</p>
-<div class="codehilite"><pre>my_filename
+<pre class="codehilite"><code>my_filename
 ├── client.conf
 ├── gen
 │   ├── dispatcher
@@ -865,8 +879,7 @@ mv ~/Download/scion_lab_my_filename.tar.gz .
 ├── scionupgrade.service
 ├── scionupgrade.sh
 ├── scionupgrade.timer
-└── Vagrantfile
-</pre></div>
+└── Vagrantfile</code></pre>
 
 
 <p>It is now when you can execute <code>run.sh</code>, as we have mentioned in the introduction, and skip the next two steps. Otherwise, keep on reading.</p>
@@ -874,23 +887,20 @@ mv ~/Download/scion_lab_my_filename.tar.gz .
 <p>You need to this only once in your host machine; if you have already done it, skip this step. Running SCION in a virtual machine requires VirtualBox and Vagrant to be installed on your system. </p>
 <h3 id="install-virtualbox">Install VirtualBox<a class="headerlink" href="#install-virtualbox" title="Permanent link">&para;</a></h3>
 <p>To install VirtualBox, follow the steps on the <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox download page</a> for your system. On Ubuntu or similar Linux distributions, you could also install VirtualBox using your package manager:</p>
-<div class="codehilite"><pre>sudo apt-get install virtualbox
-</pre></div>
+<pre class="codehilite"><code class="language-shell">sudo apt-get install virtualbox</code></pre>
 
 
 <h3 id="install-vagrant">Install Vagrant<a class="headerlink" href="#install-vagrant" title="Permanent link">&para;</a></h3>
 <p>To install Vagrant, follow the steps on the <a href="https://www.vagrantup.com/downloads.html">Vagrant download page</a> for your system. Also, on Ubuntu you could install it via your package manager:</p>
-<div class="codehilite"><pre>sudo apt-get install vagrant
-</pre></div>
+<pre class="codehilite"><code class="language-shell">sudo apt-get install vagrant</code></pre>
 
 
 <h2 id="step-three-run-the-virtual-machine">Step Three &ndash; run the Virtual Machine<a class="headerlink" href="#step-three-run-the-virtual-machine" title="Permanent link">&para;</a></h2>
 <p>Verifying the structure, you can begin the setup by running:</p>
-<div class="codehilite"><pre><span class="nb">cd</span> my_filename
+<pre class="codehilite"><code class="language-shell">cd my_filename
 vagrant box add scion/ubuntu-16.04-64-scion
 vagrant box update
-vagrant up
-</pre></div>
+vagrant up</code></pre>
 
 
 <p>The installation process will take around 10 minutes. </p>
@@ -908,15 +918,14 @@ vagrant up
 </div>
 <h2 id="step-four-use-the-scion-virtual-machine">Step Four &ndash; Use the SCION Virtual Machine<a class="headerlink" href="#step-four-use-the-scion-virtual-machine" title="Permanent link">&para;</a></h2>
 <p>After successful installation of the VM, you can ssh into your VM:</p>
-<div class="codehilite"><pre>vagrant ssh
-</pre></div>
+<pre class="codehilite"><code class="language-shell">vagrant ssh</code></pre>
 
 
 <p>The SCION infrastructure is automatically started at boot time of your VM. You can control it using the <code>scion.sh</code> script located at <code>~/go/src/github.com/scionproto/scion/</code>. You can easily get to that directory with <code>cd $SC</code>.</p>
 <p>To shut the system down, you can type <code>sudo shutdown now</code> inside the VM, or <code>vagrant halt</code> in the host terminal.</p>
 <p>After the installation, to start the VM, you can use <code>vagrant up</code>, followed by <code>vagrant ssh</code> to start a VM shell.</p>
 <h2 id="almost-done-validate-and-more">Almost Done: Validate and More<a class="headerlink" href="#almost-done-validate-and-more" title="Permanent link">&para;</a></h2>
-<p>After running SCION infrastructure it is necessary to verify that it is running properly. This is covered in tutorial <a href="../../general_scion_configuration/verifying_scion_installation/">Verifying SCION Installation</a>.</p>
+<p>After running SCION infrastructure it is necessary to verify that it is running properly. This is covered in tutorial <a href="/general_scion_configuration/verifying_scion_installation/">Verifying SCION Installation</a>.</p>
 <p>When the infrastructure is properly running, you have established your SCION AS, congratulations! You can now follow the tutorials listed on the <a href="https://netsec-ethz.github.io/scion-tutorials/">main page</a> under "Using SCION in projects".</p>
                 
                   
@@ -924,6 +933,8 @@ vagrant up
               
               
                 
+
+
               
             </article>
           </div>
@@ -932,6 +943,42 @@ vagrant up
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../.." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Home
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../static_ip/" title="Virtual machine with static public IP" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Virtual machine with static public IP
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -941,16 +988,15 @@ vagrant up
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
         
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="https://www.scion-architecture.net/" class="md-footer-social__link fa fa-globe"></a>
     
@@ -965,9 +1011,9 @@ vagrant up
       
     </div>
     
-      <script src="../../assets/javascripts/application-84693e5e49.js"></script>
+      <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     

@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -19,6 +19,8 @@
 /// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 /// DEALINGS
 ////
+
+// stylelint-disable no-duplicate-selectors
 
 // ----------------------------------------------------------------------------
 // Rules
@@ -69,12 +71,6 @@ input {
 a {
   color: inherit;
   text-decoration: none;
-
-  // Remove outline on focused or active links
-  &:active,
-  &:hover {
-    outline-width: 0;
-  }
 }
 
 // Normalize font-size in all browsers
@@ -108,7 +104,7 @@ img {
 
 // Reset table styles
 table {
-  border-collapse: collapse;
+  border-collapse: separate;
   border-spacing: 0;
 }
 
@@ -121,9 +117,10 @@ th {
 
 // Reset (native) button styles
 button {
+  margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
+  outline-style: none;
   background: transparent;
   font-size: inherit;
 }

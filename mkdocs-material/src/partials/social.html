@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -23,9 +23,8 @@
 <!-- Social links in footer -->
 {% if config.extra.social %}
   <div class="md-footer-social">
-    {% set path = "ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" %}
     <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/{{ path }}">
+        href="{{ base_url }}/assets/fonts/font-awesome.css" />
     {% for social in config.extra.social %}
       <a href="{{ social.link }}" class="md-footer-social__link
             fa fa-{{ social.type }}"></a>

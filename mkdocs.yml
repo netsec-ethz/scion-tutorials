@@ -45,7 +45,7 @@ extra:
     - type: github-alt
       link: https://github.com/netsec-ethz/
 
-pages:
+nav:
     - Home: index.md
 
     - How to run SCION VM:

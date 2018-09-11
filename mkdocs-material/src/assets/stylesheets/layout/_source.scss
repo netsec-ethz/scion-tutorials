@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -65,6 +65,12 @@
   line-height: 1.2;
   white-space: nowrap;
 
+  // Adjust for RTL languages
+  [dir="rtl"] & {
+    padding-right: initial;
+    padding-left: 1.2rem;
+  }
+
   // Hovered source container
   &:hover {
     opacity: 0.7;
@@ -93,12 +99,26 @@
       height: 2.4rem;
       margin-top: 1.2rem;
       margin-left: 1.2rem;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        margin-right: 1.2rem;
+        margin-left: initial;
+      }
     }
 
     // Correct alignment, if icon is present
     + .md-source__repository {
       margin-left: -4.4rem;
       padding-left: 4rem;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        margin-right: -4.4rem;
+        margin-left: initial;
+        padding-right: 4rem;
+        padding-left: initial;
+      }
     }
   }
 
@@ -133,6 +153,11 @@
   &__fact {
     float: left;
 
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      float: right;
+    }
+
     // Show after the data was loaded
     [data-md-state="done"] & {
       animation: md-source__fact--done 0.4s ease-out;
@@ -157,7 +182,7 @@
   margin: 1em 0.5em 1em 0;
   padding-right: 0.5rem;
   border-radius: 0.2rem;
-  background: $md-color-black--lightest;
+  background-color: $md-color-black--lightest;
   font-size: ms(-1);
   list-style-type: none;
   cursor: pointer;
@@ -170,7 +195,7 @@
     display: inline-block;
     margin-right: 0.5rem;
     padding: 0.5rem;
-    background: $md-color-black--lighter;
+    background-color: $md-color-black--lighter;
     color: $md-color-white;
     font-size: ms(0);
     content: "\E86F"; // code
@@ -203,7 +228,7 @@
 
     // Icon
     &::before {
-      background: $md-color-accent;
+      background-color: $md-color-accent;
     }
   }
 }

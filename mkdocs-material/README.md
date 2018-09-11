@@ -1,15 +1,12 @@
 [![Travis][travis-image]][travis-link]
 [![Gitter][gitter-image]][gitter-link]
-[![Codacy][codacy-image]][codacy-link]
 [![Docker][docker-image]][docker-link]
 [![PyPI][pypi-image]][pypi-link]
 
   [travis-image]: https://travis-ci.org/squidfunk/mkdocs-material.svg?branch=master
   [travis-link]: https://travis-ci.org/squidfunk/mkdocs-material
-  [gitter-image]: https://img.shields.io/gitter/room/squidfunk/mkdocs-material.svg
+  [gitter-image]: https://badges.gitter.im/squidfunk/mkdocs-material.svg
   [gitter-link]: https://gitter.im/squidfunk/mkdocs-material
-  [codacy-image]: https://api.codacy.com/project/badge/Grade/fe07aa1fa91d453cb69711d3885c5d7e
-  [codacy-link]: https://www.codacy.com/app/squidfunk/mkdocs-material?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=squidfunk/mkdocs-material&amp;utm_campaign=Badge_Grade
   [docker-image]: https://img.shields.io/docker/pulls/squidfunk/mkdocs-material.svg
   [docker-link]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [pypi-image]: https://img.shields.io/pypi/v/mkdocs-material.svg
@@ -19,10 +16,10 @@
 
 A Material Design theme for [MkDocs][1].
 
-[![Material for MkDocs](docs/images/material.png)][2]
+[![Material for MkDocs](docs/assets/images/material.png)][2]
 
-  [1]: http://www.mkdocs.org
-  [2]: http://squidfunk.github.io/mkdocs-material/
+  [1]: https://www.mkdocs.org
+  [2]: https://squidfunk.github.io/mkdocs-material/
 
 ## Quick start
 
@@ -42,8 +39,8 @@ theme:
 ## What to expect
 
 * Responsive design and fluid layout for all kinds of screens and devices,
-  designed to serve your project documentation in a user-friendly way with
-  optimal readability.
+  designed to serve your project documentation in a user-friendly way in 31
+  languages with optimal readability.
 
 * Easily customizable primary and accent color, fonts, favicon and logo;
   straight forward localization through theme extension; integrated with Google
@@ -54,13 +51,13 @@ theme:
   highlighting and lazy loading.
 
 For detailed installation instructions and a demo, visit
-http://squidfunk.github.io/mkdocs-material/
+https://squidfunk.github.io/mkdocs-material/
 
 ## License
 
 **MIT License**
 
-Copyright (c) 2016-2017 Martin Donath
+Copyright (c) 2016-2018 Martin Donath
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to

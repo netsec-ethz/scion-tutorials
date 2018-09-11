@@ -21,6 +21,10 @@
       
         <meta name="lang:search.language" content="en">
       
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
         <meta name="lang:search.result.none" content="No matching documents">
       
         <meta name="lang:search.result.one" content="1 matching document">
@@ -29,10 +33,8 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      
-        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -40,24 +42,26 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/application-13fe57a5cd.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.c974ac60.css">
+      
       
     
     
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
       
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
   </head>
   
-    <body>
+    <body dir="ltr">
   
     <svg class="md-svg">
       <defs>
@@ -65,9 +69,14 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#connecting-to-scionlab-where-the-network-has-a-static-public-ip-address-but-the-machine-itself-is-behind-a-network-address-translation-nat-device" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -80,34 +89,36 @@
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
-                <span class="md-header-nav__parent">
-                  Connecting to SCION
-                </span>
-              
+              <span class="md-header-nav__topic">
+                SCION Tutorials
+              </span>
+              <span class="md-header-nav__topic">
+                Set up an AS and connect to the SCION network behind a NAT
+              </span>
             
-            Set up an AS and connect to the SCION network behind a NAT
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
             
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
-      <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -131,6 +142,9 @@
     
     <div class="md-container">
       
+        
+      
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -139,12 +153,12 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="SCION Tutorials" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
-    </span>
+    </a>
     SCION Tutorials
   </label>
   
@@ -336,12 +350,12 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         Set up an AS and connect to the SCION network behind a NAT
       </label>
     
@@ -356,7 +370,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -379,6 +393,8 @@
   </a>
   
 </li>
+      
+      
       
       
       
@@ -651,7 +667,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -677,6 +693,8 @@
       
       
       
+      
+      
     </ul>
   
 </nav>
@@ -692,44 +710,42 @@
                 
                 <h1 id="connecting-to-scionlab-where-the-network-has-a-static-public-ip-address-but-the-machine-itself-is-behind-a-network-address-translation-nat-device">Connecting to SCIONLab where the network has a static public IP address, but the machine itself is behind a Network Address Translation (NAT) device<a class="headerlink" href="#connecting-to-scionlab-where-the-network-has-a-static-public-ip-address-but-the-machine-itself-is-behind-a-network-address-translation-nat-device" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>The machine should be set up as described in the <a href="../../general_scion_configuration/public_ip/">tutorial of the host with a public IP address</a>. Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.</p>
+<p>The machine should be set up as described in the <a href="/general_scion_configuration/public_ip/">tutorial of the host with a public IP address</a>. Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the <a href="../../general_scion_configuration/vpn_setup/">OpenVPN connection tutorial</a>.</p>
+<p>Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the <a href="/general_scion_configuration/vpn_setup/">OpenVPN connection tutorial</a>.</p>
 </div>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <p>The first step is to find out the internal IP address of your host, as well as the external IP address outside the NAT.</p>
 <p>Several web sites offer a service that displays the external IP address of a host, for instance <a href="http://whatismyip.host/">whatismyip</a>. You will need to provide the displayed IPv4 address on the SCIONLab web site in the second step.</p>
 <p>The internal IPv4 address can be found with <code>ifconfig</code> and spotting the address of the main network connection.</p>
-<p>The second step is to complete Steps 1 and 2 of the installation of the basic system as explained in the earlier <a href="../../general_scion_configuration/public_ip/">tutorial of the host with a public IP address</a>, using the external IP address found in the previous step.</p>
+<p>The second step is to complete Steps 1 and 2 of the installation of the basic system as explained in the earlier <a href="/general_scion_configuration/public_ip/">tutorial of the host with a public IP address</a>, using the external IP address found in the previous step.</p>
 <p>The third step is to install port forwarding, so that the two SCION border routers can communicate. Ideally, you can set up port forwarding on your NAT device for UDP port 50000 to the internal IPv4 address of your system. If you also need to specify the IP address and UDP of the other border router that originates the packets, you can look at the <code>topology.json</code> file in your gen folder, for instance at this location: <code>gen/ISD1/AS1026/br1-1026-1/</code>, adjusting the ISD and AS numbers to your case. In that file, search for the term <code>Remote</code>, which specifies the IP address and UDP port from which the connecting packets originate.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Some networks have several layers of NATs. In those cases, you will need to set up port forwarding for each NAT layer (specifying at each layer the IPv4 address of the next NAT device).</p>
 </div>
 <p>The fourth step re-maps the IP address of the SCION infrastructure devices to the internal address of your host.</p>
-<p>For this, you can execute the following commands from your main SCION directory (<code>cd $SC</code> to get there), replacing <code>192.168.1.111</code> with the internal IPv4 address of your host and <code>10.0.2.15</code> with <code>127.0.0.1</code> if you configured a dedicated machine:</p>
-<div class="codehilite"><pre><span class="nb">export</span> <span class="nv">HOST_IP</span><span class="o">=</span>192.168.1.111
-<span class="nb">export</span> <span class="nv">ORIG_IP</span><span class="o">=</span>10.0.2.15
-find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span class="s2">&quot;s/</span><span class="si">${</span><span class="nv">ORIG_IP</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">HOST_IP</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="s1">&#39;{}&#39;</span> <span class="se">\;</span>
-</pre></div>
+<p>For this, you can execute the following command from your main SCION directory (<code>cd $SC</code> to get there), replacing <code>192.168.1.24</code> with the internal IPv4 address of your host.</p>
+<pre class="codehilite"><code class="language-shell">BIND_IP=192.168.1.24; sed -e '/&quot;Bind&quot;/{n;n;s/: &quot;.*&quot;/: &quot;'${BIND_IP}'&quot;/}' -i ./gen/*/*/*/topology.json</code></pre>
 
 
 <p>This completes the installation! You can restart the infrastructure in the following way:</p>
-<div class="codehilite"><pre>./scion.sh stop
+<pre class="codehilite"><code class="language-shell">./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run
-</pre></div>
+./scion.sh run</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="../../general_scion_configuration/verifying_scion_installation/">Verifying SCION Installation</a>.</p>
+<p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="/general_scion_configuration/verifying_scion_installation/">Verifying SCION Installation</a>.</p>
                 
                   
                 
               
               
                 
+
+
               
             </article>
           </div>
@@ -738,6 +754,42 @@ find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span 
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../public_ip/" title="Set up an AS and connect to the SCION network" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Set up an AS and connect to the SCION network
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../vpn_setup/" title="Set up an AS and connect to the SCION network via VPN" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Set up an AS and connect to the SCION network via VPN
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -747,16 +799,15 @@ find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span 
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
         
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="https://www.scion-architecture.net/" class="md-footer-social__link fa fa-globe"></a>
     
@@ -771,9 +822,9 @@ find ./gen/ -name <span class="s2">&quot;*.json&quot;</span> -exec sed -i <span 
       
     </div>
     
-      <script src="../../assets/javascripts/application-84693e5e49.js"></script>
+      <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     

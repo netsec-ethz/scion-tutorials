@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -26,5 +26,5 @@ CHANGED="$(git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD)"
 # Perform install and prune of NPM dependencies if package.json changed
 if $(echo "$CHANGED" | grep --quiet package.json); then
   echo -e "\x1B[33m!\x1B[0m Updating dependencies"
-  yarn install
+  npm install
 fi

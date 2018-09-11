@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -33,19 +33,21 @@
 
     position: relative;
     margin: 1.5625em 0;
-    padding: 1.2rem;
+    padding: 0 1.2rem;
     border-left: 0.4rem solid $clr-blue-a200;
     border-radius: 0.2rem;
     font-size: ms(-1);
+    overflow: auto;
 
-    // Remove spacing on first element
-    :first-child {
-      margin-top: 0;
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      border-right: 0.4rem solid $clr-blue-a200;
+      border-left: none;
     }
 
-    // Remove spacing on last element
-    html & :last-child {
-      margin-bottom: 0;
+    // Adjust spacing on last element
+    html & > :last-child {
+      margin-bottom: 1.2rem;
     }
 
     // Adjust margin for nested admonition blocks
@@ -55,11 +57,21 @@
 
     // Title
     > .admonition-title {
-      margin: -1.2rem -1.2rem 0;
+      margin: 0 -1.2rem;
       padding: 0.8rem 1.2rem 0.8rem 4rem;
       border-bottom: 0.1rem solid transparentize($clr-blue-a200, 0.9);
       background-color: transparentize($clr-blue-a200, 0.9);
       font-weight: 700;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        padding: 0.8rem 4rem 0.8rem 1.2rem;
+      }
+
+      // Reset spacing, if title is the only element
+      &:last-child {
+        margin-bottom: 0;
+      }
 
       // Icon
       &::before {
@@ -70,12 +82,18 @@
         color: $clr-blue-a200;
         font-size: 2rem;
         content: "\E3C9"; // edit
+
+        // Adjust for RTL languages
+        [dir="rtl"] & {
+          right: 1.2rem;
+          left: initial;
+        }
       }
     }
 
     // Build representational classes
     @each $names, $appearance in (
-      summary tldr: $clr-light-blue-a400 "\E8D2", // subject
+      abstract summary tldr: $clr-light-blue-a400 "\E8D2", // subject
       info todo: $clr-cyan-a700 "\E88E", // info
       tip hint important : $clr-teal-a700 "\E80E", // whatshot
       success check done: $clr-green-a700 "\E876", // done
@@ -84,6 +102,7 @@
       failure fail missing: $clr-red-a200 "\E14C", // clear
       danger error: $clr-red-a400 "\E3E7", // flash_on
       bug: $clr-pink-a400 "\E868", // bug_report
+      example: $clr-deep-purple-a400 "\E242", // format_list_numbered
       quote cite: $clr-grey "\E244" // format_quote
     ) {
       $tint: nth($appearance, 1);
@@ -92,11 +111,16 @@
       // Define base class
       &%#{nth($names, 1)},
       &.#{nth($names, 1)} {
-        border-left: 0.4rem solid $tint;
+        border-left-color: $tint;
+
+        // Adjust for RTL languages
+        [dir="rtl"] & {
+          border-right-color: $tint;
+        }
 
         // Title
         > .admonition-title {
-          border-bottom: 0.1rem solid transparentize($tint, 0.9);
+          border-bottom-color: 0.1rem solid transparentize($tint, 0.9);
           background-color: transparentize($tint, 0.9);
 
           // Icon

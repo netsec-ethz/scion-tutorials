@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -22,7 +22,7 @@
 site_name: Material for MkDocs
 site_description: A Material Design theme for MkDocs
 site_author: Martin Donath
-site_url: http://squidfunk.github.io/mkdocs-material/
+site_url: https://squidfunk.github.io/mkdocs-material/
 
 # Repository
 repo_name: squidfunk/mkdocs-material
@@ -30,12 +30,16 @@ repo_url: https://github.com/squidfunk/mkdocs-material
 edit_uri: ""
 
 # Copyright
-copyright: 'Copyright &copy; 2016 - 2017 Martin Donath'
+copyright: 'Copyright &copy; 2016 - 2018 Martin Donath'
 
-# Theme directory
+# Configuration
 theme:
   name: null
   custom_dir: material
+
+  # 404 page
+  static_templates:
+    - 404.html
 
   # Don't include MkDocs' JavaScript
   include_search_page: false
@@ -44,17 +48,18 @@ theme:
   # Default values, taken from mkdocs_theme.yml
   language: en
   feature:
-    tabs: false
+    tabs: true
   palette:
-    primary:
-    accent:
+    primary: indigo
+    accent: indigo
   font:
     text: Roboto
     code: Roboto Mono
+  favicon: assets/images/favicon.png
   logo:
-    icon: school
+    icon: "\uE80C"
 
-# Options
+# Customization
 extra:
   social:
     - type: globe
@@ -85,6 +90,7 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg
   - pymdownx.inlinehilite
+  - pymdownx.keys
   - pymdownx.magiclink
   - pymdownx.mark
   - pymdownx.smartsymbols
@@ -94,7 +100,7 @@ markdown_extensions:
   - pymdownx.tilde
 
 # Page tree
-pages:
+nav:
   - Material: index.md
   - Getting started: getting-started.md
   - Extensions:
@@ -106,7 +112,9 @@ pages:
     - PyMdown: extensions/pymdown.md
   - Specimen: specimen.md
   - Customization: customization.md
+  - Compliance with GDPR: compliance.md
   - Release notes: release-notes.md
+  - Author's notes: authors-notes.md
   - Contributing: contributing.md
   - License: license.md
 
@@ -114,7 +122,3 @@ pages:
 google_analytics:
   - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
   - auto
-
-# Just for testing
-extra_javascript:
-  - http://ginseng-analytics.com/analytics.js

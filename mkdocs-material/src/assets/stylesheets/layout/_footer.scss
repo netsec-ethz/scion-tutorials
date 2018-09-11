@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -65,6 +65,11 @@
       width: 25%;
       float: left;
 
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        float: right;
+      }
+
       // Title
       .md-footer-nav__title {
 
@@ -80,6 +85,12 @@
       width: 75%;
       float: right;
       text-align: right;
+
+      // Adjust for RTL languages
+      [dir="rtl"] & {
+        float: left;
+        text-align: left;
+      }
     }
   }
 
@@ -112,7 +123,7 @@
 
 // Non-navigational information
 .md-footer-meta {
-  background: opacify($md-color-black, 0.025);
+  background-color: opacify($md-color-black, 0.025);
 
   // Set spacing
   &__inner {
@@ -123,6 +134,12 @@
   // Use a decent color for non-hovered links and ensure specificity
   html &.md-typeset a {
     color: $md-color-white--light;
+
+    // Focused or hovered link
+    &:focus,
+    &:hover {
+      color: $md-color-white;
+    }
   }
 }
 
@@ -137,6 +154,11 @@
   @include break-from-device(tablet portrait) {
     max-width: 75%;
     float: left;
+
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      float: right;
+    }
   }
 
   // Highlight copyright information
@@ -154,6 +176,11 @@
   @include break-from-device(tablet portrait) {
     padding: 1.2rem 0;
     float: right;
+
+    // Adjust for RTL languages
+    [dir="rtl"] & {
+      float: left;
+    }
   }
 
   // Link with icon
@@ -167,11 +194,6 @@
     // Adjust line-height to match height for correct alignment
     &::before {
       line-height: 1.9;
-    }
-
-    // Active link
-    &:hover::before {
-      color: $md-color-white;
     }
   }
 }

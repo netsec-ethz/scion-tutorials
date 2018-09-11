@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The SCION infrastructure can also be run on IoT devices like a Raspberry Pi. Building SCION for a Raspberry Pi is similar to the [regular x86 build](ubuntu_x86_build/), although there are a few additional steps required to make everything work.
+The SCION infrastructure can also be run on IoT devices like a Raspberry Pi. Building SCION for a Raspberry Pi is similar to the [regular x86 build](ubuntu_x86_build.md), although there are a few additional steps required to make everything work.
 
 ## Prerequisites
 

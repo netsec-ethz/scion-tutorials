@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -45,6 +45,7 @@
 @import "layout/clipboard";
 @import "layout/content";
 @import "layout/header";
+@import "layout/hero";
 @import "layout/footer";
 @import "layout/nav";
 @import "layout/search";
@@ -62,6 +63,7 @@
 @import "extensions/pymdown/details";
 @import "extensions/pymdown/emoji";
 @import "extensions/pymdown/inlinehilite";
+@import "extensions/pymdown/superfences";
 @import "extensions/pymdown/tasklist";
 
 @import "shame";

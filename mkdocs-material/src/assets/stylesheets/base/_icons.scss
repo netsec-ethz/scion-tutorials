@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2017 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2018 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -19,6 +19,8 @@
 /// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 /// DEALINGS
 ////
+
+// stylelint-disable font-family-no-missing-generic-family-keyword
 
 // ----------------------------------------------------------------------------
 // Rules
@@ -60,6 +62,20 @@
   ) {
     &--#{$name}::before {
       content: $ligature;
+    }
+  }
+
+  // Adjust for RTL languages
+  [dir="rtl"] & {
+
+    // Flip ligatures for arrows
+    @each $ligature, $name in (
+      "\E5C8": "arrow-back", // arrow_forward
+      "\E5C4": "arrow-forward" // arrow_back
+    ) {
+      &--#{$name}::before {
+        content: $ligature;
+      }
     }
   }
 }

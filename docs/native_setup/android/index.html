@@ -21,6 +21,10 @@
       
         <meta name="lang:search.language" content="en">
       
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
         <meta name="lang:search.result.none" content="No matching documents">
       
         <meta name="lang:search.result.one" content="1 matching document">
@@ -29,10 +33,8 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      
-        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -40,24 +42,26 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/application-13fe57a5cd.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.c974ac60.css">
+      
       
     
     
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
       
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
   </head>
   
-    <body>
+    <body dir="ltr">
   
     <svg class="md-svg">
       <defs>
@@ -65,9 +69,14 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#installing-scion-on-an-android-device" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -80,34 +89,36 @@
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
-                <span class="md-header-nav__parent">
-                  How to install SCION manually on different platforms
-                </span>
-              
+              <span class="md-header-nav__topic">
+                SCION Tutorials
+              </span>
+              <span class="md-header-nav__topic">
+                Android devices
+              </span>
             
-            Android devices
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
             
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
-      <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -131,6 +142,9 @@
     
     <div class="md-container">
       
+        
+      
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -139,12 +153,12 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="SCION Tutorials" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
-    </span>
+    </a>
     SCION Tutorials
   </label>
   
@@ -276,12 +290,12 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         Android devices
       </label>
     
@@ -296,7 +310,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -475,6 +489,8 @@
     </nav>
   
 </li>
+      
+      
       
       
       
@@ -807,7 +823,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -989,6 +1005,8 @@
       
       
       
+      
+      
     </ul>
   
 </nav>
@@ -1017,8 +1035,7 @@
 <p>Once you have been added to the group, you will receive an email with a link to the SCION App. Note that the SCION App is currently distributed through HockeyApp and thus requires to install it as well. This can be done <a href="https://hockeyapp.net/apps">through the HockeyApp website</a> (it is not available on the Google Play Store).</p>
 <h4 id="install-scion-with-the-scion-app">Install SCION with the SCION App<a class="headerlink" href="#install-scion-with-the-scion-app" title="Permanent link">&para;</a></h4>
 <p>Once the SCION App has been installed, open it and run the following command within the Terminal (Wifi connection recommended):</p>
-<div class="codehilite"><pre>./install
-</pre></div>
+<pre class="codehilite"><code class="language-shell">./install</code></pre>
 
 
 <p>That’s it! The process takes a while but is fully automatic. At the end, a dialog opens which asks to select the ‘gen’ folder from internal memory. Select it to continue.</p>
@@ -1030,11 +1047,11 @@
 <p>That means of course, that the ‘gen’ folder needs to be readily available on the internal memory. Download it directly or push it onto the device with ADB.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>SCION for Android currently only supports a SCION endhost configuration, as described <a href="../../general_scion_configuration/setup_endhost/">in this tutorial</a></p>
+<p>SCION for Android currently only supports a SCION endhost configuration, as described <a href="/general_scion_configuration/setup_endhost/">in this tutorial</a></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described <a href="../../native_setup/android/#changes-to-gen-folder">here</a></p>
+<p>SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described <a href="/native_setup/android/#changes-to-gen-folder">here</a></p>
 </div>
 <h2 id="manual-setup">Manual setup<a class="headerlink" href="#manual-setup" title="Permanent link">&para;</a></h2>
 <p>To setup SCION on Android manually, the <a href="https://play.google.com/store/apps/details?id=com.termux">Termux app</a> needs to be installed from the Google Play Store.</p>
@@ -1046,146 +1063,131 @@
 <a href="https://glow.li/technology/2016/9/20/access-termux-via-usb/">Access Termux via USB</a></p>
 <h3 id="install-necessary-packages">Install necessary packages<a class="headerlink" href="#install-necessary-packages" title="Permanent link">&para;</a></h3>
 <p>Install the required packages from within Termux:</p>
-<div class="codehilite"><pre>apt update <span class="o">&amp;&amp;</span> apt upgrade
-pkg install -y termux-exec git python python2 clang make python-dev libffi-dev openssl-dev openssl-tool curl
-</pre></div>
+<pre class="codehilite"><code class="language-shell">apt update &amp;&amp; apt upgrade
+pkg install -y termux-exec git python python2 clang make python-dev libffi-dev openssl-dev openssl-tool curl</code></pre>
 
 
 <p>To access the SD card from Termux, it is required to run <code>termux-setup-storage</code> from the Termux console.</p>
 <h3 id="configure-go-workspace">Configure Go workspace<a class="headerlink" href="#configure-go-workspace" title="Permanent link">&para;</a></h3>
 <p>SCION requires a specific Go version. The Termux Go package may be ahead of that version. The following repository offers prebuilt golang packages in the required version for both ARMv7 &amp; ARMv8/aarch64 architectures:</p>
 <p>For ARMv7:</p>
-<div class="codehilite"><pre>curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/arm/golang-doc_2%3A1.9.4_arm.deb
+<pre class="codehilite"><code class="language-shell">curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/arm/golang-doc_2%3A1.9.4_arm.deb
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/arm/golang_2%3A1.9.4_arm.deb
-dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb
-</pre></div>
+dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb</code></pre>
 
 
 <p>For aarch64:</p>
-<div class="codehilite"><pre>curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/aarch64/golang-doc_2%3A1.9.4_aarch64.deb
+<pre class="codehilite"><code class="language-shell">curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/aarch64/golang-doc_2%3A1.9.4_aarch64.deb
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/aarch64/golang_2%3A1.9.4_aarch64.deb
-dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb
-</pre></div>
+dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb</code></pre>
 
 
 <p>Setup the Go workspace and add it to your path:</p>
-<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export GOPATH=&quot;$HOME/go&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-mkdir -p <span class="s2">&quot;</span>$<span class="s2">GOPATH/bin&quot;</span>
-<span class="nb">echo</span> <span class="s1">&#39;PATH=$PATH:$GOPATH/bin&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export GOPATH=&quot;$HOME/go&quot;' &gt;&gt; ~/.profile
+source ~/.profile
+mkdir -p &quot;$GOPATH/bin&quot;
+echo 'PATH=$PATH:$GOPATH/bin' &gt;&gt; ~/.profile
+source ~/.profile</code></pre>
 
 
 <h2 id="install-scion">Install SCION<a class="headerlink" href="#install-scion" title="Permanent link">&para;</a></h2>
 <h3 id="step-one-clone-the-scion-repository">Step One &ndash; clone the SCION repository<a class="headerlink" href="#step-one-clone-the-scion-repository" title="Permanent link">&para;</a></h3>
 <p>After the Go workspace has been configured, we can checkout SCION with the required Termux modifications from Github and apply a required patch using the following commands:</p>
-<div class="codehilite"><pre>mkdir -p <span class="s2">&quot;</span>$<span class="s2">GOPATH/src/github.com/scionproto/scion&quot;</span>
-<span class="nb">cd</span> <span class="s2">&quot;</span>$<span class="s2">GOPATH/src/github.com/scionproto/scion&quot;</span>
+<pre class="codehilite"><code class="language-shell">mkdir -p &quot;$GOPATH/src/github.com/scionproto/scion&quot;
+cd &quot;$GOPATH/src/github.com/scionproto/scion&quot;
 git config --global url.https://github.com/.insteadOf git@github.com:
 git clone --recursive -b termux-modifications git@github.com:stschwar/scion .
 
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/lwip-contrib.patch
 patch sub/lwip-contrib/ports/unix/proj/scion/Makefile lwip-contrib.patch
-rm lwip-contrib.patch
-</pre></div>
+rm lwip-contrib.patch</code></pre>
 
 
 <p>This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable <code>SC</code> that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:</p>
-<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export SC=&quot;$GOPATH/src/github.com/scionproto/scion&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-<span class="nb">cd</span> $SC
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export SC=&quot;$GOPATH/src/github.com/scionproto/scion&quot;' &gt;&gt; ~/.profile
+source ~/.profile
+cd $SC</code></pre>
 
 
 <h3 id="step-two-configure-python-path-variable">Step Two &ndash; configure Python path variable<a class="headerlink" href="#step-two-configure-python-path-variable" title="Permanent link">&para;</a></h3>
 <p>Some SCION components like SCIONviz require Python libraries which are located in the SCION root directory. In order to make them accessible, the <code>PYTHONPATH</code> environment variable needs to be exported:</p>
-<div class="codehilite"><pre><span class="nb">echo</span> <span class="s1">&#39;export PYTHONPATH=&quot;$SC/python:$SC&quot;&#39;</span> &gt;&gt; ~/.profile
-<span class="nb">source</span> ~/.profile
-</pre></div>
+<pre class="codehilite"><code class="language-shell">echo 'export PYTHONPATH=&quot;$SC/python:$SC&quot;' &gt;&gt; ~/.profile
+source ~/.profile</code></pre>
 
 
 <h3 id="step-three-install-required-packagespatches">Step Three &ndash; install required packages/patches<a class="headerlink" href="#step-three-install-required-packagespatches" title="Permanent link">&para;</a></h3>
 <p>SCION has an install script to install all necessary dependencies. In the Termux environment, however, this is not yet working. So the dependencies have to be installed manually.</p>
 <h4 id="capn-proto">Cap'n Proto<a class="headerlink" href="#capn-proto" title="Permanent link">&para;</a></h4>
 <p>To install <a href="https://capnproto.org/">Cap'n Proto</a> in Termux run the following commands in the <code>home/</code> directory:</p>
-<div class="codehilite"><pre>curl -O https://capnproto.org/capnproto-c++-0.6.1.tar.gz
+<pre class="codehilite"><code class="language-shell">curl -O https://capnproto.org/capnproto-c++-0.6.1.tar.gz
 tar zxf capnproto-c++-0.6.1.tar.gz
-<span class="nb">cd</span> capnproto-c++-0.6.1
-</pre></div>
+cd capnproto-c++-0.6.1</code></pre>
 
 
 <p>On Termux Cap'n Proto requires some patching to compile:</p>
-<div class="codehilite"><pre><span class="nb">cd</span> src/kj/
+<pre class="codehilite"><code class="language-shell">cd src/kj/
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/capnproto-c++-0.6.1/debug.c++.patch
 patch debug.c++ debug.c++.patch
-rm debug.c++.patch
-</pre></div>
+rm debug.c++.patch</code></pre>
 
 
 <p>Back in the <code>capnproto-c++-0.6.1/</code> root directory run:</p>
-<div class="codehilite"><pre>./configure --prefix<span class="o">=</span>$PREFIX <span class="nv">TMPDIR</span><span class="o">=</span>$PREFIX/tmp
+<pre class="codehilite"><code class="language-shell">./configure --prefix=$PREFIX TMPDIR=$PREFIX/tmp
 make 
-make install
-</pre></div>
+make install</code></pre>
 
 
 <h4 id="zlog">zlog<a class="headerlink" href="#zlog" title="Permanent link">&para;</a></h4>
 <p>Install <a href="https://github.com/HardySimpson/zlog">zlog</a> by following its install instructions mostly. It requires some more patching and the installation of <code>libandroid-glob-dev</code>:</p>
-<div class="codehilite"><pre>curl https://codeload.github.com/HardySimpson/zlog/tar.gz/latest-stable --output zlog-latest-stable.tar.gz
+<pre class="codehilite"><code class="language-shell">curl https://codeload.github.com/HardySimpson/zlog/tar.gz/latest-stable --output zlog-latest-stable.tar.gz
 tar -zxf zlog-latest-stable.tar.gz
-<span class="nb">cd</span> zlog-latest-stable/
+cd zlog-latest-stable/
 curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/zlog-makefile.patch
 patch src/makefile zlog-makefile.patch
 rm zlog-makefile.patch
 
 pkg install -y libandroid-glob-dev
-make <span class="nv">PREFIX</span><span class="o">=</span>$PREFIX
-make <span class="nv">PREFIX</span><span class="o">=</span>$PREFIX install
-</pre></div>
+make PREFIX=$PREFIX
+make PREFIX=$PREFIX install</code></pre>
 
 
 <h4 id="uthash">uthash<a class="headerlink" href="#uthash" title="Permanent link">&para;</a></h4>
 <p>Install the <a href="https://troydhanson.github.io/uthash/">uthash</a> library from your <code>home/</code> directory:</p>
-<div class="codehilite"><pre>curl -o uthash-master.zip https://codeload.github.com/troydhanson/uthash/zip/master
+<pre class="codehilite"><code class="language-shell">curl -o uthash-master.zip https://codeload.github.com/troydhanson/uthash/zip/master
 unzip uthash-master.zip
 cp uthash-master/src/*.h $PREFIX/include
-rm -rf uthash-master/
-</pre></div>
+rm -rf uthash-master/</code></pre>
 
 
 <h4 id="scion-python-dependencies">SCION Python dependencies<a class="headerlink" href="#scion-python-dependencies" title="Permanent link">&para;</a></h4>
 <p>Most of the Python dependencies can easily be installed through <code>pip</code>:</p>
-<div class="codehilite"><pre><span class="nb">cd</span> $SC
+<pre class="codehilite"><code class="language-shell">cd $SC
 pip2 install -r env/pip2/requirements.txt
 pip3 install -r env/pip3/requirements.txt
-<span class="nv">TMPDIR</span><span class="o">=</span>$PREFIX/tmp pip3 install lz4 PyNaCl PyYAML Pygments
-</pre></div>
+TMPDIR=$PREFIX/tmp pip3 install lz4 PyNaCl PyYAML Pygments</code></pre>
 
 
 <div class="admonition warning">
 <p class="admonition-title">Supervisor</p>
 <p>In case the pip installation of the package "Supervisor" fails, you can install it manually:</p>
 </div>
-<div class="codehilite"><pre>curl -O https://pypi.python.org/packages/44/60/698e54b4a4a9b956b2d709b4b7b676119c833d811d53ee2500f1b5e96dc3/supervisor-3.3.4.tar.gz
+<pre class="codehilite"><code class="language-shell">curl -O https://pypi.python.org/packages/44/60/698e54b4a4a9b956b2d709b4b7b676119c833d811d53ee2500f1b5e96dc3/supervisor-3.3.4.tar.gz
 tar -xzf supervisor-3.3.4.tar.gz
-<span class="nb">cd</span> supervisor-3.3.4/
-python2 setup.py install
-</pre></div>
+cd supervisor-3.3.4/
+python2 setup.py install</code></pre>
 
 
 <h4 id="scion-go-dependencies">SCION Go dependencies<a class="headerlink" href="#scion-go-dependencies" title="Permanent link">&para;</a></h4>
 <p>With Go correctly installed it is easy to install the SCION dependencies as well:</p>
-<div class="codehilite"><pre><span class="nb">cd</span> $SC/env/go
-./deps
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd $SC/env/go
+./deps</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:</p>
 <ol>
-<li><a href="../../general_scion_configuration/local_top/">Running a local network topology</a> &ndash; Generate a sample topology and run SCION locally</li>
-<li><a href="../../general_scion_configuration/setup_endhost/">Connecting to SCIONLab as an endhost</a> &ndash; Connect to the already running SCION topology as a mobile endhost through an existing SCION setup.</li>
+<li><a href="/general_scion_configuration/local_top/">Running a local network topology</a> &ndash; Generate a sample topology and run SCION locally</li>
+<li><a href="/general_scion_configuration/setup_endhost/">Connecting to SCIONLab as an endhost</a> &ndash; Connect to the already running SCION topology as a mobile endhost through an existing SCION setup.</li>
 </ol>
 <h4 id="changes-to-gen-folder">Changes to gen folder<a class="headerlink" href="#changes-to-gen-folder" title="Permanent link">&para;</a></h4>
 <p>Note that in <code>gen/ISDx/AS10xx/supervisord.conf</code> the path of the SCION Deamon socket needs to be changed as follows: <code>"--api-addr" "/data/data/com.termux/files/run/shm/sciond/sdX-10XX.sock"</code>. </p>
@@ -1201,6 +1203,8 @@ VPN app</a> can be installed to connect to SCIONLab via VPN. The <code>client.co
               
               
                 
+
+
               
             </article>
           </div>
@@ -1209,6 +1213,42 @@ VPN app</a> can be installed to connect to SCIONLab via VPN. The <code>client.co
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../image_builder/" title="Images for ARM minicomputers" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Images for ARM minicomputers
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../general_scion_configuration/local_top/" title="Running SCION on a local topology" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Running SCION on a local topology
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -1218,16 +1258,15 @@ VPN app</a> can be installed to connect to SCIONLab via VPN. The <code>client.co
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
         
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="https://www.scion-architecture.net/" class="md-footer-social__link fa fa-globe"></a>
     
@@ -1242,9 +1281,9 @@ VPN app</a> can be installed to connect to SCIONLab via VPN. The <code>client.co
       
     </div>
     
-      <script src="../../assets/javascripts/application-84693e5e49.js"></script>
+      <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     

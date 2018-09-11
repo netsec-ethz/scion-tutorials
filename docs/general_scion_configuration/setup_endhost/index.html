@@ -21,6 +21,10 @@
       
         <meta name="lang:search.language" content="en">
       
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
         <meta name="lang:search.result.none" content="No matching documents">
       
         <meta name="lang:search.result.one" content="1 matching document">
@@ -29,10 +33,8 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      
-        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.0.1">
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -40,24 +42,26 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/application-13fe57a5cd.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.c974ac60.css">
+      
       
     
     
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
       
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
   </head>
   
-    <body>
+    <body dir="ltr">
   
     <svg class="md-svg">
       <defs>
@@ -65,9 +69,14 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#set-up-scion-endhost-and-connect-to-local-as-infrastructure" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -80,34 +89,36 @@
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
-                <span class="md-header-nav__parent">
-                  Connecting to SCION
-                </span>
-              
+              <span class="md-header-nav__topic">
+                SCION Tutorials
+              </span>
+              <span class="md-header-nav__topic">
+                Set up SCION endhost and connect to local AS
+              </span>
             
-            Set up SCION endhost and connect to local AS
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
             
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
-      <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -131,6 +142,9 @@
     
     <div class="md-container">
       
+        
+      
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -139,12 +153,12 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="SCION Tutorials" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
-    </span>
+    </a>
     SCION Tutorials
   </label>
   
@@ -360,12 +374,12 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         Set up SCION endhost and connect to local AS
       </label>
     
@@ -380,7 +394,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -458,6 +472,8 @@
   </a>
   
 </li>
+      
+      
       
       
       
@@ -706,7 +722,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -787,6 +803,8 @@
       
       
       
+      
+      
     </ul>
   
 </nav>
@@ -818,17 +836,16 @@ This is useful in situations where your host can take advantage of an existing l
 <p><img alt="SCION running natively" src="../../images/native_endhost_setup.png" /></p>
 <p>The installation steps for this setup is described in the following tutorial pages:</p>
 <ul>
-<li><a href="../../native_setup/ubuntu_x86_build/">Installing SCION on Ubuntu 16.04 x86 machine</a></li>
-<li><a href="../../native_setup/rpi_ubuntu/">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></li>
-<li><a href="../../general_scion_configuration/public_ip/">Configuring AS and connecting to SCION network for devices with public static IP</a></li>
-<li><a href="../../general_scion_configuration/public_ip_nat/">Configuring AS and connecting to SCION network for devices with public static IP behind a NAT</a></li>
-<li><a href="../../general_scion_configuration/vpn_setup/">Configuring AS and connecting to SCION network using OpenVPN</a></li>
+<li><a href="/native_setup/ubuntu_x86_build/">Installing SCION on Ubuntu 16.04 x86 machine</a></li>
+<li><a href="/native_setup/rpi_ubuntu/">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></li>
+<li><a href="/general_scion_configuration/public_ip/">Configuring AS and connecting to SCION network for devices with public static IP</a></li>
+<li><a href="/general_scion_configuration/public_ip_nat/">Configuring AS and connecting to SCION network for devices with public static IP behind a NAT</a></li>
+<li><a href="/general_scion_configuration/vpn_setup/">Configuring AS and connecting to SCION network using OpenVPN</a></li>
 </ul>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Throughout this setup we will use host and endhost IP addresses on both machines. In order to make everything easier to follow it is necessary to create two environment variables <code>HOST_IP</code> and <code>ENDHOST_IP</code> with respective addresses on <strong>both machines</strong> as they will be used throughout this setup. Execute following commands replacing correct IP addresses with correct ones:</p>
-<div class="codehilite"><pre><span class="nb">export</span> <span class="nv">HOST_IP</span><span class="o">=</span><span class="s2">&quot;10.42.0.1&quot;</span>
-<span class="nb">export</span> <span class="nv">ENDHOST_IP</span><span class="o">=</span><span class="s2">&quot;10.42.0.180&quot;</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">export HOST_IP=&quot;10.42.0.1&quot;
+export ENDHOST_IP=&quot;10.42.0.180&quot;</code></pre>
 
 
 <h2 id="step-one-installing-scion-on-endhost">Step One - Installing SCION on endhost<a class="headerlink" href="#step-one-installing-scion-on-endhost" title="Permanent link">&para;</a></h2>
@@ -840,45 +857,38 @@ This is useful in situations where your host can take advantage of an existing l
 <p>Also, SCION VMs can be configured to be used as endhost.</p>
 <h2 id="step-two-copy-initial-configuration">Step Two - Copy initial configuration<a class="headerlink" href="#step-two-copy-initial-configuration" title="Permanent link">&para;</a></h2>
 <p>After the SCION environment is successfully installed on your endhost device, we can start the configuration process. First of all, we need to stop the currently running SCION environment and remove the old <code>gen</code> directory.</p>
-<div class="codehilite"><pre><span class="nb">cd</span> $SC
+<pre class="codehilite"><code class="language-shell">cd $SC
 ./scion.sh stop
-rm -rf gen
-</pre></div>
+rm -rf gen</code></pre>
 
 
 <p>The next step is to make sure both endhost and SCION AS share the same AS configuration, i.e., the same <code>gen</code> directory. This can be done in several ways, but the easiest is to copy it directly from the AS system. </p>
 <p>Executing the following command from <strong>SCION AS</strong> copies the complete <code>gen</code> directory to endhost. Note that you will need to replace <strong>endhost_user</strong> with appropriate user name on the endhost.</p>
-<div class="codehilite"><pre>scp -r <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/gen endhost_user@<span class="si">${</span><span class="nv">ENDHOST_IP</span><span class="si">}</span>:/home/endhost_user/go/src/github.com/scionproto/scion/gen
-</pre></div>
+<pre class="codehilite"><code class="language-shell">scp -r ${SC}/gen endhost_user@${ENDHOST_IP}:/home/endhost_user/go/src/github.com/scionproto/scion/gen</code></pre>
 
 
 <h2 id="step-three-remove-unnecessary-services">Step Three - Remove unnecessary services<a class="headerlink" href="#step-three-remove-unnecessary-services" title="Permanent link">&para;</a></h2>
 <p>The next step is to disable unnecessary SCION services, like the border router, beacon server, etc., on the endhost device. This can be done by editing configuration file on the <strong>endhost's system</strong>:</p>
-<div class="codehilite"><pre><span class="x">vim </span><span class="p">$</span><span class="nv">SC</span><span class="x">/gen/ISD</span><span class="err">{</span><span class="x">ISD_NUMBER}/AS</span><span class="err">{</span><span class="x">AS_NUMBER}/supervisord.conf</span>
-</pre></div>
+<pre class="codehilite"><code>vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/supervisord.conf</code></pre>
 
 
 <p>It is sufficient to remove last 2 lines that look similar to this:</p>
-<div class="codehilite"><pre><span class="k">[group:as1-1029]</span>
-<span class="na">programs</span> <span class="o">=</span> <span class="s">br1-1029-1,bs1-1029-1,cs1-1029-1,ps1-1029-1,sd1-1029</span>
-</pre></div>
+<pre class="codehilite"><code>[group:as1-1029]
+programs = br1-1029-1,bs1-1029-1,cs1-1029-1,ps1-1029-1,sd1-1029</code></pre>
 
 
 <p>In the same file edit following line:</p>
-<div class="codehilite"><pre>command = bash -c &#39;exec bin/sciond &quot;--api-addr&quot; &quot;/run/shm/sciond/....
-</pre></div>
+<pre class="codehilite"><code>command = bash -c 'exec bin/sciond &quot;--api-addr&quot; &quot;/run/shm/sciond/....</code></pre>
 
 
 <p>By adding additional <code>addr</code> argument to look like this:</p>
-<div class="codehilite"><pre>command = bash -c &#39;exec bin/sciond &quot;--addr&quot; &quot;10.42.0.180&quot; &quot;--api-addr&quot; &quot;/run/shm/sciond/
-</pre></div>
+<pre class="codehilite"><code>command = bash -c 'exec bin/sciond &quot;--addr&quot; &quot;10.42.0.180&quot; &quot;--api-addr&quot; &quot;/run/shm/sciond/</code></pre>
 
 
 <p><strong>Make sure you replace <code>10.42.0.180</code> to correct endhost's IP address.</strong></p>
 <p>Next we need to remove all directories except <code>endhost</code> from <code>$SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/</code> directory. </p>
-<div class="codehilite"><pre><span class="nb">cd</span> $SC/gen/ISD<span class="o">{</span>ISD_NUMBER<span class="o">}</span>/AS<span class="o">{</span>AS_NUMBER<span class="o">}</span>
-rm -rf *-*
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}
+rm -rf *-*</code></pre>
 
 
 <h2 id="step-four-iptable-rules">Step Four - Iptable rules<a class="headerlink" href="#step-four-iptable-rules" title="Permanent link">&para;</a></h2>
@@ -887,19 +897,17 @@ rm -rf *-*
 <p><strong>This step is only necessary if you are running the AS SCION infrastructure inside a Virtual Machine</strong>. If this is not the case, proceed to step five.</p>
 </div>
 <p>Configuration files we copied from VM in first step contain address <code>10.0.2.15</code>. This address is not accessible outside the VM and we need to rewrite it to the host's IP address, so that packets get routed correctly. This can be done with iptables.</p>
-<div class="codehilite"><pre>sudo apt install netfilter-persistent iptables-persistent
+<pre class="codehilite"><code class="language-shell">sudo apt install netfilter-persistent iptables-persistent
 
-sudo iptables -t nat -A OUTPUT -m udp -p udp -d 10.0.2.15 -j DNAT --to-destination <span class="si">${</span><span class="nv">HOST_IP</span><span class="si">}</span>
+sudo iptables -t nat -A OUTPUT -m udp -p udp -d 10.0.2.15 -j DNAT --to-destination ${HOST_IP}
 
-sudo netfilter-persistent save
-</pre></div>
+sudo netfilter-persistent save</code></pre>
 
 
 <h2 id="step-five-restart-scion">Step Five - Restart SCION<a class="headerlink" href="#step-five-restart-scion" title="Permanent link">&para;</a></h2>
 <p>Last step is to reload configuration and restart SCION on your endhost system.</p>
-<div class="codehilite"><pre>~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run
-</pre></div>
+<pre class="codehilite"><code class="language-shell">~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
+./scion.sh run</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
@@ -915,6 +923,8 @@ sudo netfilter-persistent save
               
               
                 
+
+
               
             </article>
           </div>
@@ -923,6 +933,42 @@ sudo netfilter-persistent save
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../vpn_setup/" title="Set up an AS and connect to the SCION network via VPN" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Set up an AS and connect to the SCION network via VPN
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../sample_projects/fetch_sensor_readings/" title="Read a temperature sensor over the SCION network" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Read a temperature sensor over the SCION network
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -932,16 +978,15 @@ sudo netfilter-persistent save
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
         
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="https://www.scion-architecture.net/" class="md-footer-social__link fa fa-globe"></a>
     
@@ -956,9 +1001,9 @@ sudo netfilter-persistent save
       
     </div>
     
-      <script src="../../assets/javascripts/application-84693e5e49.js"></script>
+      <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     
