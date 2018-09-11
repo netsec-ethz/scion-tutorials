@@ -21,6 +21,10 @@
       
         <meta name="lang:search.language" content="en">
       
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
         <meta name="lang:search.result.none" content="No matching documents">
       
         <meta name="lang:search.result.one" content="1 matching document">
@@ -29,10 +33,8 @@
       
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
-      
-        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      
-      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-2.0.1">
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -40,24 +42,26 @@
       
     
     
-      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
-    
-    
-      <link rel="stylesheet" href="../../assets/stylesheets/application-13fe57a5cd.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.c974ac60.css">
+      
       
     
     
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
       
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
   </head>
   
-    <body>
+    <body dir="ltr">
   
     <svg class="md-svg">
       <defs>
@@ -65,49 +69,56 @@
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#installing-scion-on-an-android-device" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="" title="SCION Tutorials" class="md-header-nav__button md-logo">
+        <a href="../.." title="SCION Tutorials" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
-                <span class="md-header-nav__parent">
-                  How to install SCION manually on different platforms
-                </span>
-              
+              <span class="md-header-nav__topic">
+                SCION Tutorials
+              </span>
+              <span class="md-header-nav__topic">
+                Android devices
+              </span>
             
-            Android devices
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
             
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
-      <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
@@ -131,6 +142,9 @@
     
     <div class="md-container">
       
+        
+      
+      
       <main class="md-main">
         <div class="md-main__inner md-grid" data-md-component="container">
           
@@ -139,12 +153,12 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="SCION Tutorials" class="md-nav__button md-logo">
       
         <i class="md-icon"></i>
       
-    </span>
+    </a>
     SCION Tutorials
   </label>
   
@@ -156,7 +170,7 @@
 
 
   <li class="md-nav__item">
-    <a href="" title="Home" class="md-nav__link">
+    <a href="../.." title="Home" class="md-nav__link">
       Home
     </a>
   </li>
@@ -187,7 +201,7 @@
 
 
   <li class="md-nav__item">
-    <a href="virtual_machine_setup/dynamic_ip/" title="Virtual machine with VPN" class="md-nav__link">
+    <a href="../../virtual_machine_setup/dynamic_ip/" title="Virtual machine with VPN" class="md-nav__link">
       Virtual machine with VPN
     </a>
   </li>
@@ -199,7 +213,7 @@
 
 
   <li class="md-nav__item">
-    <a href="virtual_machine_setup/static_ip/" title="Virtual machine with static public IP" class="md-nav__link">
+    <a href="../../virtual_machine_setup/static_ip/" title="Virtual machine with static public IP" class="md-nav__link">
       Virtual machine with static public IP
     </a>
   </li>
@@ -237,7 +251,7 @@
 
 
   <li class="md-nav__item">
-    <a href="native_setup/ubuntu_x86_build/" title="Ubuntu 16.04 x86-64" class="md-nav__link">
+    <a href="../ubuntu_x86_build/" title="Ubuntu 16.04 x86-64" class="md-nav__link">
       Ubuntu 16.04 x86-64
     </a>
   </li>
@@ -249,7 +263,7 @@
 
 
   <li class="md-nav__item">
-    <a href="native_setup/rpi_ubuntu/" title="Ubuntu MATE Raspberry PI" class="md-nav__link">
+    <a href="../rpi_ubuntu/" title="Ubuntu MATE Raspberry PI" class="md-nav__link">
       Ubuntu MATE Raspberry PI
     </a>
   </li>
@@ -261,7 +275,7 @@
 
 
   <li class="md-nav__item">
-    <a href="native_setup/image_builder/" title="Images for ARM minicomputers" class="md-nav__link">
+    <a href="../image_builder/" title="Images for ARM minicomputers" class="md-nav__link">
       Images for ARM minicomputers
     </a>
   </li>
@@ -276,16 +290,16 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
+      <label class="md-nav__link md-nav__link--active" for="__toc">
         Android devices
       </label>
     
-    <a href="native_setup/android/" title="Android devices" class="md-nav__link md-nav__link--active">
+    <a href="./" title="Android devices" class="md-nav__link md-nav__link--active">
       Android devices
     </a>
     
@@ -296,7 +310,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -475,6 +489,8 @@
     </nav>
   
 </li>
+      
+      
       
       
       
@@ -515,7 +531,7 @@
 
 
   <li class="md-nav__item">
-    <a href="general_scion_configuration/local_top/" title="Running SCION on a local topology" class="md-nav__link">
+    <a href="../../general_scion_configuration/local_top/" title="Running SCION on a local topology" class="md-nav__link">
       Running SCION on a local topology
     </a>
   </li>
@@ -527,7 +543,7 @@
 
 
   <li class="md-nav__item">
-    <a href="general_scion_configuration/public_ip/" title="Set up an AS and connect to the SCION network" class="md-nav__link">
+    <a href="../../general_scion_configuration/public_ip/" title="Set up an AS and connect to the SCION network" class="md-nav__link">
       Set up an AS and connect to the SCION network
     </a>
   </li>
@@ -539,7 +555,7 @@
 
 
   <li class="md-nav__item">
-    <a href="general_scion_configuration/public_ip_nat/" title="Set up an AS and connect to the SCION network behind a NAT" class="md-nav__link">
+    <a href="../../general_scion_configuration/public_ip_nat/" title="Set up an AS and connect to the SCION network behind a NAT" class="md-nav__link">
       Set up an AS and connect to the SCION network behind a NAT
     </a>
   </li>
@@ -551,7 +567,7 @@
 
 
   <li class="md-nav__item">
-    <a href="general_scion_configuration/vpn_setup/" title="Set up an AS and connect to the SCION network via VPN" class="md-nav__link">
+    <a href="../../general_scion_configuration/vpn_setup/" title="Set up an AS and connect to the SCION network via VPN" class="md-nav__link">
       Set up an AS and connect to the SCION network via VPN
     </a>
   </li>
@@ -563,7 +579,7 @@
 
 
   <li class="md-nav__item">
-    <a href="general_scion_configuration/setup_endhost/" title="Set up SCION endhost and connect to local AS" class="md-nav__link">
+    <a href="../../general_scion_configuration/setup_endhost/" title="Set up SCION endhost and connect to local AS" class="md-nav__link">
       Set up SCION endhost and connect to local AS
     </a>
   </li>
@@ -599,7 +615,7 @@
 
 
   <li class="md-nav__item">
-    <a href="sample_projects/fetch_sensor_readings/" title="Read a temperature sensor over the SCION network" class="md-nav__link">
+    <a href="../../sample_projects/fetch_sensor_readings/" title="Read a temperature sensor over the SCION network" class="md-nav__link">
       Read a temperature sensor over the SCION network
     </a>
   </li>
@@ -611,7 +627,7 @@
 
 
   <li class="md-nav__item">
-    <a href="sample_projects/access_camera/" title="Access a video camera over the SCION network" class="md-nav__link">
+    <a href="../../sample_projects/access_camera/" title="Access a video camera over the SCION network" class="md-nav__link">
       Access a video camera over the SCION network
     </a>
   </li>
@@ -623,7 +639,7 @@
 
 
   <li class="md-nav__item">
-    <a href="sample_projects/bwtester/" title="Bandwidth tester application" class="md-nav__link">
+    <a href="../../sample_projects/bwtester/" title="Bandwidth tester application" class="md-nav__link">
       Bandwidth tester application
     </a>
   </li>
@@ -635,7 +651,7 @@
 
 
   <li class="md-nav__item">
-    <a href="as_visualization/running_asviz/" title="Running AS Visualizations" class="md-nav__link">
+    <a href="../../as_visualization/running_asviz/" title="Running AS Visualizations" class="md-nav__link">
       Running AS Visualizations
     </a>
   </li>
@@ -647,7 +663,7 @@
 
 
   <li class="md-nav__item">
-    <a href="as_visualization/browser_asviz/" title="Browser AS Visualization" class="md-nav__link">
+    <a href="../../as_visualization/browser_asviz/" title="Browser AS Visualization" class="md-nav__link">
       Browser AS Visualization
     </a>
   </li>
@@ -659,7 +675,7 @@
 
 
   <li class="md-nav__item">
-    <a href="as_visualization/command_asviz/" title="Command-line AS Visualization" class="md-nav__link">
+    <a href="../../as_visualization/command_asviz/" title="Command-line AS Visualization" class="md-nav__link">
       Command-line AS Visualization
     </a>
   </li>
@@ -695,7 +711,7 @@
 
 
   <li class="md-nav__item">
-    <a href="general_scion_configuration/verifying_scion_installation/" title="Verifying the installation" class="md-nav__link">
+    <a href="../../general_scion_configuration/verifying_scion_installation/" title="Verifying the installation" class="md-nav__link">
       Verifying the installation
     </a>
   </li>
@@ -707,7 +723,7 @@
 
 
   <li class="md-nav__item">
-    <a href="scion_tricks/setup_startup/" title="Running SCION on system boot" class="md-nav__link">
+    <a href="../../scion_tricks/setup_startup/" title="Running SCION on system boot" class="md-nav__link">
       Running SCION on system boot
     </a>
   </li>
@@ -719,7 +735,7 @@
 
 
   <li class="md-nav__item">
-    <a href="scion_tricks/changing_gen_dir/" title="Updating gen directory" class="md-nav__link">
+    <a href="../../scion_tricks/changing_gen_dir/" title="Updating gen directory" class="md-nav__link">
       Updating gen directory
     </a>
   </li>
@@ -731,7 +747,7 @@
 
 
   <li class="md-nav__item">
-    <a href="scion_tricks/updating_scion/" title="Updating SCION" class="md-nav__link">
+    <a href="../../scion_tricks/updating_scion/" title="Updating SCION" class="md-nav__link">
       Updating SCION
     </a>
   </li>
@@ -743,7 +759,7 @@
 
 
   <li class="md-nav__item">
-    <a href="scion_tricks/wireshark/" title="Adding Wireshark dissector" class="md-nav__link">
+    <a href="../../scion_tricks/wireshark/" title="Adding Wireshark dissector" class="md-nav__link">
       Adding Wireshark dissector
     </a>
   </li>
@@ -779,7 +795,7 @@
 
 
   <li class="md-nav__item">
-    <a href="scionbox/scionbox/" title="SCION box first steps" class="md-nav__link">
+    <a href="../../scionbox/scionbox/" title="SCION box first steps" class="md-nav__link">
       SCION box first steps
     </a>
   </li>
@@ -807,7 +823,7 @@
     
   
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -986,6 +1002,8 @@
     </nav>
   
 </li>
+      
+      
       
       
       
@@ -1185,6 +1203,8 @@ VPN app</a> can be installed to connect to SCIONLab via VPN. The <code>client.co
               
               
                 
+
+
               
             </article>
           </div>
@@ -1193,6 +1213,42 @@ VPN app</a> can be installed to connect to SCIONLab via VPN. The <code>client.co
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../image_builder/" title="Images for ARM minicomputers" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Images for ARM minicomputers
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../general_scion_configuration/local_top/" title="Running SCION on a local topology" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Running SCION on a local topology
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
@@ -1202,16 +1258,15 @@ VPN app</a> can be installed to connect to SCIONLab via VPN. The <code>client.co
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
         
   <div class="md-footer-social">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
     
       <a href="https://www.scion-architecture.net/" class="md-footer-social__link fa fa-globe"></a>
     
@@ -1226,7 +1281,7 @@ VPN app</a> can be installed to connect to SCIONLab via VPN. The <code>client.co
       
     </div>
     
-      <script src="../../assets/javascripts/application-84693e5e49.js"></script>
+      <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
       <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
