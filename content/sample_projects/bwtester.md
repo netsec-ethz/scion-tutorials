@@ -1,14 +1,14 @@
 
 # The bwtester application
 
-The [bandwidth testing application `bwtester`](https://github.com/perrig/scionlab/) enables a variety of bandwidth tests on the SCION network. Installation and usage are described below. Documentation of the code and protocol are described in the [bwtester README](https://github.com/perrig/scionlab/blob/master/bwtester/README.md).
+The [bandwidth testing application `bwtester`](https://github.com/netsec-ethz/scion-apps/) enables a variety of bandwidth tests on the SCION network. Installation and usage are described below. Documentation of the code and protocol are described in the [bwtester README](https://github.com/netsec-ethz/scion-apps/blob/master/bwtester/README.md).
 
 ## bwtestclient
 
 To install bwtestclient and get dependencies as listed in vendor file:
 ```shell
-go get github.com/perrig/scionlab/bwtester/bwtestclient
-cd $GOPATH/src/github.com/perrig/scionlab/
+go get github.com/netsec-ethz/scion-apps/bwtester/bwtestclient
+cd $GOPATH/src/github.com/netsec-ethz/scion-apps/
 govendor sync
 ```
 
@@ -48,8 +48,8 @@ For more information run the application without arguments to print its usage.
 
 To install bwtestserver and get dependencies as listed in vendor file:
 ```shell
-go get github.com/perrig/scionlab/bwtester/bwtestserver
-cd $GOPATH/src/github.com/perrig/scionlab/
+go get github.com/netsec-ethz/scion-apps/bwtester/bwtestserver
+cd $GOPATH/src/github.com/netsec-ethz/scion-apps/
 govendor sync
 ```
 
