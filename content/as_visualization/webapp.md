@@ -8,7 +8,7 @@ experiment with SCIONLab test apps on a virtual machine.
 To install the SCIONLab `webapp`:
 
 ```shell
-go get github.com/perrig/scionlab/webapp
+go get github.com/netsec-ethz/scion-apps/webapp
 ```
 
 ### Local Infrastructure
@@ -52,12 +52,12 @@ After installation you can `cd` to the `webapp.go` directory and webapp will be 
 and rerun every time you save your source file changes, with or without command arguments.
 
 ```shell
-cd ~/go/src/github.com/perrig/scionlab/webapp
+cd ~/go/src/github.com/netsec-ethz/scion-apps/webapp
 watcher -a 0.0.0.0 -p 8080 -r ..
 ```
 or
 ```shell
-cd ~/go/src/github.com/perrig/scionlab/webapp
+cd ~/go/src/github.com/netsec-ethz/scion-apps/webapp
 watcher
 ```
 
@@ -65,7 +65,7 @@ watcher
 
 This Go web server wraps several SCION test client apps and provides an interface
 for any text and/or image output received.
-[SCIONLab Apps](http://github.com/perrig/scionlab) are on Github.
+[SCIONLab Apps](http://github.com/netsec-ethz/scion-apps) are on Github.
 
 Two functional server tests are included to test the networks without needing
 specific sensor or camera hardware, `imagetest` and `statstest`.
@@ -109,7 +109,7 @@ This hardware-independent test will echo some remote machine stats from the Pyth
 On your remote SCION server node run (substituting your own address parameters):
 
 ```shell
-cd $GOPATH/src/github.com/perrig/scionlab/webapp/tests/statstest/statsserver
+cd $GOPATH/src/github.com/netsec-ethz/scion-apps/webapp/tests/statstest/statsserver
 python3 local-stats.py | sensorserver -s 1-15,[127.0.0.5]:35555
 ```
 
@@ -131,7 +131,7 @@ go get golang.org/x/image
 On your remote SCION server node run (substituting your own address parameters):
 
 ```shell
-cd $GOPATH/src/github.com/perrig/scionlab/webapp/tests/imgtest/imgserver
+cd $GOPATH/src/github.com/netsec-ethz/scion-apps/webapp/tests/imgtest/imgserver
 go build
 ./imgserver | imageserver -s 1-18,[127.0.0.8]:38887
 ```
