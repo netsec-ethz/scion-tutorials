@@ -6,7 +6,7 @@ The SCION infrastructure can also be run on IoT devices like a Raspberry Pi. Bui
 
 ## Prerequisites
 
-In this tutorial, we assume that you already have a Raspberry Pi running Ubuntu MATE (or similar Ubuntu Xenial based distribution). In order to install Ubuntu MATE, please follow the [installation guide](https://ubuntu-mate.org/raspberry-pi/).
+In this tutorial, we assume that you already have a Raspberry Pi running Ubuntu MATE (or similar Ubuntu Xenial based distribution). In order to install Ubuntu MATE, please follow the [installation guide](https://ubuntu-mate.org/raspberry-pi.md).
 
 !!! note "Update packages to latest version"
     It is recommended to update all packages before starting the installation process of SCION:
@@ -148,7 +148,7 @@ sudo cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
 After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:
 
 1. [Configure SCION to run on system boot](/scion_tricks/setup_startup.md) &ndash; Use systemd to run SCION and SCION-viz when the system is started.
-1. [Running a local network topology](/general_scion_configuration/local_top/) &ndash; Generate a sample topology and run SCION locally
-1. [Connecting to SCIONLab with a static public IP address](/general_scion_configuration/public_ip/) &ndash; Connect to the already running SCION topology.
-1. [Connecting to SCIONLab with a static public IP address, but behind a NAT](/general_scion_configuration/public_ip_nat/)
-1. [Connecting to SCIONLab without a static public IP address](/general_scion_configuration/vpn_setup/) &ndash; Connect to the already running SCION topology through an OpenVPN tunnel.
+1. [Running a local network topology](/general_scion_configuration/local_top.md) &ndash; Generate a sample topology and run SCION locally
+1. [Connecting to SCIONLab with a static public IP address](/general_scion_configuration/public_ip.md) &ndash; Connect to the already running SCION topology.
+1. [Connecting to SCIONLab with a static public IP address, but behind a NAT](/general_scion_configuration/public_ip_nat.md)
+1. [Connecting to SCIONLab without a static public IP address](/general_scion_configuration/vpn_setup.md) &ndash; Connect to the already running SCION topology through an OpenVPN tunnel.

@@ -145,6 +145,6 @@ After the installation, to start the VM, you can use `vagrant up`, followed by `
 
 ## Almost Done: Validate and More
 
-After running SCION infrastructure it is necessary to verify that it is running properly. This is covered in tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation/).
+After running SCION infrastructure it is necessary to verify that it is running properly. This is covered in tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation.md).
 
-When the infrastructure is properly running, you have established your SCION AS, congratulations! You can now follow the tutorials listed on the [main page](https://netsec-ethz.github.io/scion-tutorials/) under "Using SCION in projects".
+When the infrastructure is properly running, you have established your SCION AS, congratulations! You can now follow the tutorials listed on the [main page](/index.md#using-scion-in-projects) under "Using SCION in projects".
