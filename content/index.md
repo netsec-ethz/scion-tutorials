@@ -22,8 +22,8 @@ After installation, we suggest exploring the tips and tricks section below to le
 
 The easiest way to run SCION is by running a preconfigured SCION Virtual Machine on a commodity OS (MacOS, Windows). The following tutorials are covering the necessary steps.
 
-* [1) Running SCION VM over OpenVPN](/virtual_machine_setup/dynamic_ip/)
-* [2) Running SCION VM with static public IP](/virtual_machine_setup/static_ip/)
+* [1) Running SCION VM over OpenVPN](/virtual_machine_setup/dynamic_ip.md)
+* [2) Running SCION VM with static public IP](/virtual_machine_setup/static_ip.md)
 
 ## Configuring SCION infrastructure manually
 
@@ -31,17 +31,17 @@ The following tutorials cover how to install, configure, and run a SCION infrast
 
 ### 1. Installing SCION on different platforms:
 
-* [3) Installing SCION on Ubuntu 16.04 x86](native_setup/ubuntu_x86_build/)
-* [4) Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](native_setup/rpi_ubuntu/)
-* [5) Installing SCION on ARM minicomputers using prebuilt images](native_setup/image_builder/)
-* [6) Installing SCION on an Android device](native_setup/android/)
+* [3) Installing SCION on Ubuntu 16.04 x86](/native_setup/ubuntu_x86_build.md)
+* [4) Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](/native_setup/rpi_ubuntu.md)
+* [5) Installing SCION on ARM minicomputers using prebuilt images](/native_setup/image_builder.md)
+* [6) Installing SCION on an Android device](/native_setup/android.md)
 
 ### 2. Setting up SCION topology
 
-* [Configuring local topology](/general_scion_configuration/local_top/)
-* [Configuring AS and connecting to SCION network for devices with public static IP](/general_scion_configuration/public_ip/)
-* [Configuring AS and connecting to SCION network for devices with public static IP behind a NAT](/general_scion_configuration/public_ip_nat/)
-* [Configuring AS and connecting to SCION network using OpenVPN](/general_scion_configuration/vpn_setup/)
+* [Configuring local topology](/general_scion_configuration/local_top.md)
+* [Configuring AS and connecting to SCION network for devices with public static IP](/general_scion_configuration/public_ip.md)
+* [Configuring AS and connecting to SCION network for devices with public static IP behind a NAT](/general_scion_configuration/public_ip_nat.md)
+* [Configuring AS and connecting to SCION network using OpenVPN](/general_scion_configuration/vpn_setup.md)
 * [Configuring SCION endhost](/general_scion_configuration/setup_endhost.md)
 
 ## Using SCION in projects

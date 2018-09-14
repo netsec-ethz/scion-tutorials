@@ -26,11 +26,11 @@ In the second way, the SCION AS is executing natively on a host machine. The fol
 
 The installation steps for this setup is described in the following tutorial pages:
 
-- [Installing SCION on Ubuntu 16.04 x86 machine](/native_setup/ubuntu_x86_build/)
-- [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](/native_setup/rpi_ubuntu/)
-- [Configuring AS and connecting to SCION network for devices with public static IP](/general_scion_configuration/public_ip/)
-- [Configuring AS and connecting to SCION network for devices with public static IP behind a NAT](/general_scion_configuration/public_ip_nat/)
-- [Configuring AS and connecting to SCION network using OpenVPN](/general_scion_configuration/vpn_setup/)
+- [Installing SCION on Ubuntu 16.04 x86 machine](/native_setup/ubuntu_x86_build.md)
+- [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](/native_setup/rpi_ubuntu.md)
+- [Configuring AS and connecting to SCION network for devices with public static IP](/general_scion_configuration/public_ip.md)
+- [Configuring AS and connecting to SCION network for devices with public static IP behind a NAT](/general_scion_configuration/public_ip_nat.md)
+- [Configuring AS and connecting to SCION network using OpenVPN](/general_scion_configuration/vpn_setup.md)
 
 ## Prerequisites
 

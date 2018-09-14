@@ -6,7 +6,7 @@ This tutorial will guide you through the steps required to generate a local topo
 
 ## Prerequisites
 
-This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow [How to build SCION on Ubuntu 16.04 x86-64](/native_setup/ubuntu_x86_build/) or [How to build SCION on Raspberry PI](/native_setup/rpi_ubuntu/).
+This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow [How to build SCION on Ubuntu 16.04 x86-64](/native_setup/ubuntu_x86_build.md) or [How to build SCION on Raspberry PI](/native_setup/rpi_ubuntu.md).
 
 ## Generating topology
 
@@ -31,7 +31,7 @@ The SCION installation comes with a command to generate the local topology from 
 	```
 
 !!! tip "Reset runtime environment after topology changes"
-    Every time a new topology is instantiated, the SCION runtime environment needs to be reset as described [here](/scion_tricks/changing_gen_dir/#restarting-scion-infrastructure).
+    Every time a new topology is instantiated, the SCION runtime environment needs to be reset as described [here](/scion_tricks/changing_gen_dir.md#restarting-scion-infrastructure).
 
 To generate the default topology, you can run
 
@@ -98,4 +98,4 @@ Testing the infrastructure:
 
 ## Next steps
 
-After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation/).
+After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation.md).

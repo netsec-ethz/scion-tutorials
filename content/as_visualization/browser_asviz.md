@@ -1,7 +1,7 @@
 # Browser AS Visualizations
 
 ## Starting the Visualization
-After [updating the latest source code and starting the server](/as_visualization/running_asviz/), point your browser to <a href="http://127.0.0.1:8000" target="_blank">http://127.0.0.1:8000</a> to launch the AS Visualization. Even if you run SCION-viz within a VM, you can use the regular browser on your host operating system (Mac or Windows).
+After [updating the latest source code and starting the server](/as_visualization/running_asviz.md), point your browser to <a href="http://127.0.0.1:8000" target="_blank">http://127.0.0.1:8000</a> to launch the AS Visualization. Even if you run SCION-viz within a VM, you can use the regular browser on your host operating system (Mac or Windows).
 
 Then, enter the "Source AS" ISD-AS pair of your AS. You can find out your ISD and AS number as described in the tutorial [Fetching sensor readings or time stamps](/sample_projects/fetch_sensor_readings.md). Press "Request Data" to fetch updated data.
 
