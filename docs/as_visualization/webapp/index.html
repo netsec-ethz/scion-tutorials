@@ -861,7 +861,7 @@
 <p>Webapp is a Go application that will serve up a static web portal to make it easy to
 experiment with SCIONLab test apps on a virtual machine.</p>
 <p>To install the SCIONLab <code>webapp</code>:</p>
-<div class="codehilite"><pre><span></span>go get github.com/perrig/scionlab/webapp
+<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/webapp
 </pre></div>
 
 
@@ -896,13 +896,13 @@ go install github.com/canthefason/go-watcher/cmd/watcher
 
 <p>After installation you can <code>cd</code> to the <code>webapp.go</code> directory and webapp will be rebuilt
 and rerun every time you save your source file changes, with or without command arguments.</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/go/src/github.com/perrig/scionlab/webapp
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/go/src/github.com/netsec-ethz/scion-apps/webapp
 watcher -a <span class="m">0</span>.0.0.0 -p <span class="m">8080</span> -r ..
 </pre></div>
 
 
 <p>or</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/go/src/github.com/perrig/scionlab/webapp
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/go/src/github.com/netsec-ethz/scion-apps/webapp
 watcher
 </pre></div>
 
@@ -910,7 +910,7 @@ watcher
 <h2 id="webapp-features">Webapp Features<a class="headerlink" href="#webapp-features" title="Permanent link">&para;</a></h2>
 <p>This Go web server wraps several SCION test client apps and provides an interface
 for any text and/or image output received.
-<a href="http://github.com/perrig/scionlab">SCIONLab Apps</a> are on Github.</p>
+<a href="http://github.com/netsec-ethz/scion-apps">SCIONLab Apps</a> are on Github.</p>
 <p>Two functional server tests are included to test the networks without needing
 specific sensor or camera hardware, <code>imagetest</code> and <code>statstest</code>.</p>
 <p>Supported client applications include <code>camerapp</code>, <code>sensorapp</code>, and <code>bwtester</code>.
@@ -935,7 +935,7 @@ to keep one value constant.</p>
 <p>This hardware-independent test will echo some remote machine stats from the Python script
 <code>local-stats.py</code>, which is piped to the server for transmission to clients.
 On your remote SCION server node run (substituting your own address parameters):</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/perrig/scionlab/webapp/tests/statstest/statsserver
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz/scion-apps/webapp/tests/statstest/statsserver
 python3 local-stats.py <span class="p">|</span> sensorserver -s <span class="m">1</span>-15,<span class="o">[</span><span class="m">127</span>.0.0.5<span class="o">]</span>:35555
 </pre></div>
 
@@ -952,7 +952,7 @@ the Go app <code>local-image.go</code>, which will be saved locally for transmis
 
 
 <p>On your remote SCION server node run (substituting your own address parameters):</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/perrig/scionlab/webapp/tests/imgtest/imgserver
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz/scion-apps/webapp/tests/imgtest/imgserver
 go build
 ./imgserver <span class="p">|</span> imageserver -s <span class="m">1</span>-18,<span class="o">[</span><span class="m">127</span>.0.0.8<span class="o">]</span>:38887
 </pre></div>
