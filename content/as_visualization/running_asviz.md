@@ -36,7 +36,8 @@ This step applies to all uses Local and SCIONLab VM. Update the source for the `
 ./scion.sh clean
 cd $SC
 git pull
-./scion.sh run
+./scion.sh build
+./scion.sh run nobuild
 cd sub/scion-viz
 git pull
 ```
