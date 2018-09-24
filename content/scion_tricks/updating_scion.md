@@ -93,7 +93,7 @@ mv ./go/vendor/vendor.json /tmp/ && rm -r ./go/vendor/* && mv /tmp/vendor.json .
 Your SCION installation should be now up to date. Once SCION is built without problems, we can start the AS services again:
 
 ```shell
-./scion.sh start
+./scion.sh start nobuild
 ```
 
 !!! hint "if running services fails"
