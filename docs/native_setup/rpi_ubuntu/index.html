@@ -967,6 +967,7 @@ git config user.email johndoe@example.com
 sudo chmod <span class="m">600</span> /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
+<span class="nb">echo</span> <span class="s1">&#39;/swapfile swap swap defaults 0 0&#39;</span> <span class="p">|</span> sudo tee -a /etc/fstab
 free -h
 </pre></div>
 
