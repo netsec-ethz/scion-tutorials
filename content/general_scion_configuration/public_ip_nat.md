@@ -27,7 +27,7 @@ The fourth step re-maps the IP address of the SCION infrastructure devices to th
 
 For this, you can execute the following command from your main SCION directory (`cd $SC` to get there), replacing `192.168.1.24` with the internal IPv4 address of your host.
 ```shell
-BIND_IP=192.168.1.24; sed -e '/"Bind"/{n;n;s/: ".*"/: "'${BIND_IP}'"/}' -i ./gen/*/*/*/topology.json
+BIND_IP=192.168.1.24; sed -e '/"Bind"/{:x n;s/\("Addr": \)".*"/\1"'${BIND_IP}'"/;Tx}' -i ./gen/*/*/*/topology.json
 ```
 
 This completes the installation! You can restart the infrastructure in the following way:
