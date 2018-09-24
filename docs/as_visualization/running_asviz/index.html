@@ -779,7 +779,8 @@ python3 ./manage.py migrate
 ./scion.sh clean
 <span class="nb">cd</span> <span class="nv">$SC</span>
 git pull
-./scion.sh run
+./scion.sh build
+./scion.sh run nobuild
 <span class="nb">cd</span> sub/scion-viz
 git pull
 </pre></div>
