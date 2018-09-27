@@ -4,7 +4,7 @@
 
 This website provides step-by-step instructions on how to install and run the SCION infrastructure. It also provides a list of interesting projects that are using the SCION infrastructure for communication.
 
-To get in touch:
+### To get in touch:
 
 * For questions and general comments on SCION-related topics, visit our [SCION community Google group](https://groups.google.com/forum/#!forum/scion-community)
 * For bug reports, please post them on the [scion-coord github site](https://github.com/netsec-ethz/scion-coord)
