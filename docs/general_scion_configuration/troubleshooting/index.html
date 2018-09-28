@@ -1,0 +1,1249 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="A collection of tutorial pages for SCION">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Troubleshooting - SCION Tutorials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.e8d24b3b.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#troubleshooting-a-scionlab-installation" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="SCION Tutorials" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                SCION Tutorials
+              </span>
+              <span class="md-header-nav__topic">
+                Troubleshooting
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="SCION Tutorials" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    SCION Tutorials
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      How to run SCION VM
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        How to run SCION VM
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../virtual_machine_setup/dynamic_ip/" title="Virtual machine with VPN" class="md-nav__link">
+      Virtual machine with VPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../virtual_machine_setup/static_ip/" title="Virtual machine with static public IP" class="md-nav__link">
+      Virtual machine with static public IP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      How to install SCION manually on different platforms
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        How to install SCION manually on different platforms
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../native_setup/ubuntu_x86_build/" title="Ubuntu 16.04 x86-64" class="md-nav__link">
+      Ubuntu 16.04 x86-64
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../native_setup/rpi_ubuntu/" title="Ubuntu MATE Raspberry PI" class="md-nav__link">
+      Ubuntu MATE Raspberry PI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../native_setup/image_builder/" title="Images for ARM minicomputers" class="md-nav__link">
+      Images for ARM minicomputers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../native_setup/android/" title="Android devices" class="md-nav__link">
+      Android devices
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Connecting to SCION
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Connecting to SCION
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../local_top/" title="Running SCION on a local topology" class="md-nav__link">
+      Running SCION on a local topology
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../public_ip/" title="Set up an AS and connect to the SCION network" class="md-nav__link">
+      Set up an AS and connect to the SCION network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../public_ip_nat/" title="Set up an AS and connect to the SCION network behind a NAT" class="md-nav__link">
+      Set up an AS and connect to the SCION network behind a NAT
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../vpn_setup/" title="Set up an AS and connect to the SCION network via VPN" class="md-nav__link">
+      Set up an AS and connect to the SCION network via VPN
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setup_endhost/" title="Set up SCION endhost and connect to local AS" class="md-nav__link">
+      Set up SCION endhost and connect to local AS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      How to use
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        How to use
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sample_projects/fetch_sensor_readings/" title="Read a temperature sensor over the SCION network" class="md-nav__link">
+      Read a temperature sensor over the SCION network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sample_projects/access_camera/" title="Access a video camera over the SCION network" class="md-nav__link">
+      Access a video camera over the SCION network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sample_projects/bwtester/" title="Bandwidth tester application" class="md-nav__link">
+      Bandwidth tester application
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../as_visualization/webapp/" title="SCIONLab Apps Web Visualization" class="md-nav__link">
+      SCIONLab Apps Web Visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../as_visualization/running_asviz/" title="Running AS Visualizations" class="md-nav__link">
+      Running AS Visualizations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../as_visualization/browser_asviz/" title="Browser AS Visualization" class="md-nav__link">
+      Browser AS Visualization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../as_visualization/command_asviz/" title="Command-line AS Visualization" class="md-nav__link">
+      Command-line AS Visualization
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      SCION tips and tricks
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        SCION tips and tricks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../verifying_scion_installation/" title="Verifying the installation" class="md-nav__link">
+      Verifying the installation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Troubleshooting
+      </label>
+    
+    <a href="./" title="Troubleshooting" class="md-nav__link md-nav__link--active">
+      Troubleshooting
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-have-configured-a-virtual-machine-with-vpn" title="I have configured a Virtual Machine with VPN" class="md-nav__link">
+    I have configured a Virtual Machine with VPN
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-tarball-file-and-contents" title="Check Tarball File and Contents" class="md-nav__link">
+    Check Tarball File and Contents
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-virtual-machine" title="Run the Virtual Machine" class="md-nav__link">
+    Run the Virtual Machine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-in-the-virtual-machine" title="Log in the Virtual Machine" class="md-nav__link">
+    Log in the Virtual Machine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-vpn" title="Check VPN" class="md-nav__link">
+    Check VPN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-scion-is-running" title="Check SCION is running" class="md-nav__link">
+    Check SCION is running
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-request-paths" title="Check Request Paths." class="md-nav__link">
+    Check Request Paths.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-scion-connectivity" title="Check SCION Connectivity" class="md-nav__link">
+    Check SCION Connectivity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scion_tricks/setup_startup/" title="Running SCION on system boot" class="md-nav__link">
+      Running SCION on system boot
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scion_tricks/changing_gen_dir/" title="Updating gen directory" class="md-nav__link">
+      Updating gen directory
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scion_tricks/updating_scion/" title="Updating SCION" class="md-nav__link">
+      Updating SCION
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scion_tricks/wireshark/" title="Adding Wireshark dissector" class="md-nav__link">
+      Adding Wireshark dissector
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      SCION box
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        SCION box
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../scionbox/scionbox/" title="SCION box first steps" class="md-nav__link">
+      SCION box first steps
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-have-configured-a-virtual-machine-with-vpn" title="I have configured a Virtual Machine with VPN" class="md-nav__link">
+    I have configured a Virtual Machine with VPN
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-tarball-file-and-contents" title="Check Tarball File and Contents" class="md-nav__link">
+    Check Tarball File and Contents
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#run-the-virtual-machine" title="Run the Virtual Machine" class="md-nav__link">
+    Run the Virtual Machine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#log-in-the-virtual-machine" title="Log in the Virtual Machine" class="md-nav__link">
+    Log in the Virtual Machine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-vpn" title="Check VPN" class="md-nav__link">
+    Check VPN
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-scion-is-running" title="Check SCION is running" class="md-nav__link">
+    Check SCION is running
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-request-paths" title="Check Request Paths." class="md-nav__link">
+    Check Request Paths.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-scion-connectivity" title="Check SCION Connectivity" class="md-nav__link">
+    Check SCION Connectivity
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="troubleshooting-a-scionlab-installation">Troubleshooting a SCIONLab installation<a class="headerlink" href="#troubleshooting-a-scionlab-installation" title="Permanent link">&para;</a></h1>
+<p>To reduce frustration from our users and to allow anybody to attempt to identify issues at their own pace, we have compiled this small troubleshooting guide. If it does not help you solve all the problems, and you have followed the steps, please <a href="#contact">contact us</a></p>
+<p>The simplest case to configure, and the one we treat here, is configuring an AS within a VM, using VPN. If you are testing a different case, please try first with this one and then attempt troubleshooting your specific configuration.</p>
+<h2 id="i-have-configured-a-virtual-machine-with-vpn">I have configured a Virtual Machine with VPN<a class="headerlink" href="#i-have-configured-a-virtual-machine-with-vpn" title="Permanent link">&para;</a></h2>
+<p>We will first check if the Coordinator has given you the appropriate contents, then run the Virtual Machine, log into it, check that the VPN is okay, that SCION is running, has connectivity, and finally, that we are able to request paths.</p>
+<h4 id="check-tarball-file-and-contents">Check Tarball File and Contents<a class="headerlink" href="#check-tarball-file-and-contents" title="Permanent link">&para;</a></h4>
+<p>After uncompressing your tar file you should see a structure like below. The <code>17-ffaa_1_64</code> is the AS ID we are configuring, in your case it will be another one:</p>
+<div class="codehilite"><pre><span></span>$ tar xf scion_lab_user@example.com_17-ffaa_1_64.tar.gz
+$ ls
+user@example.com_17-ffaa_1_64  scion_lab_user@example.com_17-ffaa_1_64.tar.gz
+$ <span class="nb">cd</span> user@example.com_17-ffaa_1_64/
+$ <span class="nb">pwd</span>
+/home/user/Downloads/user@example.com_17-ffaa_1_64/
+$ ls 
+client.conf  gen  README.md  run.sh  scion.service  scionupgrade.service  
+scionupgrade.sh  scionupgrade.timer  scion-viz.service  Vagrantfile
+</pre></div>
+
+
+<p>The <code>pwd</code> command indicates in which directory the terminal prompt is working (the <em>working directory</em>). In your case it will be something different than <code>/home/user/Downloads/user@example.com_17-ffaa_1_64/</code> but ending in a directory that represents your user and the AS ID you configured (<code>user@example.com_17-ffaa_1_64</code>).
+Pay attention to the contents of the directory. In particular, if the <code>client.conf</code>, <code>Vagrantfile</code> files or the <code>gen</code> directory are missing, double check that you have configured the AS as a Virtual Machine using VPN, and click on "Update and Download SCIONLab AS Configuration". If after this you still do not see the mentioned files, please <a href="#contact">open a bug report</a></p>
+<h4 id="run-the-virtual-machine">Run the Virtual Machine<a class="headerlink" href="#run-the-virtual-machine" title="Permanent link">&para;</a></h4>
+<p>Run the script <code>run.sh</code>. It will output many lines, but you just have to look at the last line:</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">pwd</span>
+/home/user/Downloads/user@example.com_17-ffaa_1_64/
+$ ./run.sh
+ .
+ .
+ .
+ubuntu@ubuntu-xenial:~$
+</pre></div>
+
+
+<p>The last line is the prompt of the virtual machine itself, and seeing it means that we have successfully started the VM, and already logged into it. Skip to step <a href="#check-vpn">Check VPN</a>. If you don't see this and are still in the host machine, run:</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">echo</span> <span class="nv">$?</span>
+<span class="m">0</span>
+</pre></div>
+
+
+<p>Anything different than <code>0</code> means a problem has occurred with running your VM. A <code>0</code> means the virtual machine is now running; skip to step <a href="#Log-in-the-Virtual-Machine">Log in the Virtual Machine</a>. 
+Otherwise, please open your VirtualBox Manager and stop any running virtual machines to continue troubleshooting this step.
+<!-- TODO: use VBoxManage --></p>
+<p>After stopping all running virtual machines, and being in the extracted directory, run:</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">pwd</span>
+/home/user/Downloads/user@example.com_17-ffaa_1_64/
+vagrant destroy -f
+ .
+ .
+ .
+$ <span class="nb">echo</span> <span class="nv">$?</span>
+<span class="m">0</span>
+</pre></div>
+
+
+<p>This destroys your virtual machine so you can recreate it again from scratch. You can go now again to the step <a href="#Run-the-Virtual-Machine">Run the Virtual Machine</a>. If you had tried previously to remove all virtual machines and still see an error running <code>run.sh</code>, please <a href="#contact">contact us</a></p>
+<h4 id="log-in-the-virtual-machine">Log in the Virtual Machine<a class="headerlink" href="#log-in-the-virtual-machine" title="Permanent link">&para;</a></h4>
+<p>After running <code>run.sh</code> you should be presented with the prompt from the virtual machine. If not, you can simply connect to it:</p>
+<div class="codehilite"><pre><span></span>$ vagrant ssh
+ .
+ .
+ .
+ubuntu@ubuntu-xenial:~$
+</pre></div>
+
+
+<p>If you cannot get into the virtual machine, please <a href="#contact">contact us</a>. Otherwise go to the next step.</p>
+<h4 id="check-vpn">Check VPN<a class="headerlink" href="#check-vpn" title="Permanent link">&para;</a></h4>
+<p>Our setup is using VPN to connect to the <em>Attachment Point</em> in the SCIONLab infrastructure. We should be able to see the VPN tunnel interface when inside the VM:</p>
+<div class="codehilite"><pre><span></span>ubuntu@ubuntu-xenial:~$ ip a
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">02</span>:b9:83:f0:a4:db brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.2.15/24 brd <span class="m">10</span>.0.2.255 scope global enp0s3
+       valid_lft forever preferred_lft forever
+    inet6 fe80::b9:83ff:fef0:a4db/64 scope link 
+       valid_lft forever preferred_lft forever
+<span class="m">3</span>: tun0: &lt;POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UNKNOWN group default qlen <span class="m">100</span>
+    link/none 
+    inet <span class="m">10</span>.0.8.8/24 brd <span class="m">10</span>.0.8.255 scope global tun0
+       valid_lft forever preferred_lft forever
+</pre></div>
+
+
+<p>The lines we are interested in are the last ones, that refer to the <code>tun0</code> interface. We can read them again:</p>
+<div class="codehilite"><pre><span></span><span class="m">3</span>: tun0: &lt;POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UNKNOWN group default qlen <span class="m">100</span>
+    link/none 
+    inet <span class="m">10</span>.0.8.8/24 brd <span class="m">10</span>.0.8.255 scope global tun0
+       valid_lft forever preferred_lft forever
+</pre></div>
+
+
+<p>It tells us that the virtual machine has a <code>tun0</code> interface with IP address <code>10.0.8.8</code>. If you don't see this <code>tun0</code> interface, <a href="#contact">contact us</a>.</p>
+<p>Now, we will verify that the IP address obtained here corresponds to the one the Coordinator believes this VM should obtain. We will simply check the topology file and look for this IP address. Let's look at one topology file. For completeness we show the whole file here, but we only need to find the string containing the <code>tun0</code> address; from our previous example we look for <code>10.0.8.8</code>. We find it inside the <code>BourderRouters</code> block as both the <code>Public</code> and <code>Bind</code> address for the only border router interface we have, as expected.</p>
+<div class="codehilite"><pre><span></span><span class="err">ubuntu@ubuntu-xenial:~$</span> <span class="err">cat</span> <span class="err">$SC/gen/ISD</span><span class="mi">17</span><span class="err">/ASffaa_</span><span class="mi">1</span><span class="err">_</span><span class="mi">64</span><span class="err">/cs</span><span class="mi">17</span><span class="err">-ffaa_</span><span class="mi">1</span><span class="err">_</span><span class="mi">64-1</span><span class="err">/topology.json</span> 
+<span class="p">{</span>
+  <span class="nt">&quot;PathService&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;ps17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31044</span><span class="p">,</span>
+          <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;Core&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nt">&quot;CertificateService&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;cs17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31043</span><span class="p">,</span>
+          <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;BeaconService&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;bs17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31041</span><span class="p">,</span>
+          <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;ZookeeperService&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">2181</span><span class="p">,</span>
+      <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;Overlay&quot;</span><span class="p">:</span> <span class="s2">&quot;UDP/IPv4&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;MTU&quot;</span><span class="p">:</span> <span class="mi">1472</span><span class="p">,</span>
+  <span class="nt">&quot;SibraService&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;sb17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31045</span><span class="p">,</span>
+          <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;BorderRouters&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;br17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;Interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;Bandwidth&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+          <span class="nt">&quot;Remote&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">50015</span><span class="p">,</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.8.1&quot;</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;InternalAddrIdx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="nt">&quot;LinkTo&quot;</span><span class="p">:</span> <span class="s2">&quot;PARENT&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;Bind&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.8.8&quot;</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;MTU&quot;</span><span class="p">:</span> <span class="mi">1472</span><span class="p">,</span>
+          <span class="nt">&quot;Overlay&quot;</span><span class="p">:</span> <span class="s2">&quot;UDP/IPv4&quot;</span><span class="p">,</span>
+          <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.8.8&quot;</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;ISD_AS&quot;</span><span class="p">:</span> <span class="s2">&quot;17-ffaa:0:1107&quot;</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;InternalAddrs&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31042</span><span class="p">,</span>
+              <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;ISD_AS&quot;</span><span class="p">:</span> <span class="s2">&quot;17-ffaa:1:64&quot;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>If you find your <code>tun0</code> IP address to be the same as in the <code>Bind</code> and <code>Public</code> parts of the <code>BorderRouter</code> blocks, please continue to step <a href="#check-scion-is-running">Check SCION is running</a>. If you did not find the <code>tun0</code> IP address in your topology file, we will destroy the existing virtual machine and remove its settings by first logging out of it and running:</p>
+<div class="codehilite"><pre><span></span>$ <span class="nb">pwd</span>
+/home/user/Downloads/user@example.com_17-ffaa_1_64/
+$ vagrant destroy -f
+ .
+ .
+ .
+$ <span class="nb">echo</span> <span class="nv">$?</span>
+<span class="m">0</span>
+$ <span class="nb">cd</span> ..
+$ <span class="nb">pwd</span>
+/home/user/Downloads/
+$ rm -r user@example.com_17-ffaa_1_64
+</pre></div>
+
+
+<p>Now check <a href="https://www.scionlab.org">in the Coordinator webpage</a> that your AS is correctly attached to your AP of choice, and that you are using the right tarball file. If in doubt, you can always click on <em>Re-download my SCIONLab AS Configuration</em> to get it again. <em>Re-download</em> does not configure the AS, but returns the latest configuration the Coordinator has for it. Wait 15 minutes (the reason being sometimes the attachment point needs 15 minutes to process your request). You should have received an email stating the success of your request. In the hopefully successful state, start again from <a href="#check-tarball-file-and-contents">the checking tarbal step</a>. If after waiting these 15 minutes you did not receive the success email, or you received it but still don't see the same IP address in the <code>tun0</code> interface as in the topology file, <a href="#contact">contact us</a>.</p>
+<h4 id="check-scion-is-running">Check SCION is running<a class="headerlink" href="#check-scion-is-running" title="Permanent link">&para;</a></h4>
+<p>We are goint to check now that all SCION processes are running. Once logged in the VM, run this:</p>
+<div class="codehilite"><pre><span></span>ubuntu@ubuntu-xenial:~$ <span class="nb">cd</span> <span class="nv">$SC</span>
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./scion.sh status
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ 
+</pre></div>
+
+
+<p>As a general rule, <code>scion.sh status</code> should not print any messages. Output from that command indicates problems with the SCION services. If your execution returned a message, there is probably a problem. Stop and start SCION again to retry just once more:</p>
+<div class="codehilite"><pre><span></span>ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./scion.sh stop
+Terminating this run of the SCION infrastructure
+dispatcher: stopped
+as17-ffaa_1_64:sd17-ffaa_1_64: stopped
+as17-ffaa_1_64:br17-ffaa_1_64-1: stopped
+as17-ffaa_1_64:cs17-ffaa_1_64-1: stopped
+as17-ffaa_1_64:ps17-ffaa_1_64-1: stopped
+as17-ffaa_1_64:bs17-ffaa_1_64-1: stopped
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./scion.sh start
+Compiling...
+Running the network...
+dispatcher: started
+as17-ffaa_1_64:sd17-ffaa_1_64: started
+as17-ffaa_1_64:br17-ffaa_1_64-1: started
+as17-ffaa_1_64:bs17-ffaa_1_64-1: started
+as17-ffaa_1_64:cs17-ffaa_1_64-1: started
+as17-ffaa_1_64:ps17-ffaa_1_64-1: started
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./scion.sh status
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ 
+</pre></div>
+
+
+<p>If now the <code>scion.sh status</code> command still prints messages (wether the same or different ones than before), please <a href="#contact">contact us</a>, copying that output on the message.
+You should at this stage check the AS ID in the virtual machine, and ensure it corresponds to the one you expect. In our case, we expect to see the AS ID <code>17-ffaa_1_64</code>:</p>
+<div class="codehilite"><pre><span></span>ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ cat <span class="nv">$SC</span>/gen/ia
+<span class="m">17</span>-ffaa_1_64ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$
+</pre></div>
+
+
+<p>The output indicates <code>17-ffaa_1_64</code>, which is okay, because the <code>ia</code> file replaces <code>:</code> with <code>_</code>. If not, you probably ran the virtual machine from the wrong uncompressed tarball. Check again starting in step <a href="#check-tarball-file-and-contents">Check Tarball File and Contents</a>. Otherwise, <a href="#contact">contact us</a>.</p>
+<p>The last step is only for sanity: SCION services communicate among themselves using socket files. The following <code>default.sock</code> files should be present in your VM, as shown below:</p>
+<div class="codehilite"><pre><span></span>ubuntu@ubuntu-xenial:~$ ll /run/shm/
+total <span class="m">0</span>
+drwxrwxrwt  <span class="m">5</span> root      root       <span class="m">100</span> Sep <span class="m">27</span> <span class="m">15</span>:53 ./
+drwxr-xr-x <span class="m">16</span> root      root      <span class="m">3620</span> Sep <span class="m">27</span> <span class="m">15</span>:53 ../
+drwxr-xr-x  <span class="m">3</span> ubuntu    ubuntu      <span class="m">80</span> Sep <span class="m">28</span> <span class="m">09</span>:32 dispatcher/
+drwxr-xr-x  <span class="m">3</span> zookeeper zookeeper   <span class="m">60</span> Sep <span class="m">27</span> <span class="m">15</span>:53 host-zk/
+drwxr-xr-x  <span class="m">2</span> ubuntu    ubuntu      <span class="m">60</span> Sep <span class="m">28</span> <span class="m">09</span>:32 sciond/
+ubuntu@ubuntu-xenial:~$ ll /run/shm/sciond/
+total <span class="m">0</span>
+drwxr-xr-x <span class="m">2</span> ubuntu ubuntu  <span class="m">60</span> Sep <span class="m">28</span> <span class="m">09</span>:32 ./
+drwxrwxrwt <span class="m">5</span> root   root   <span class="m">100</span> Sep <span class="m">27</span> <span class="m">15</span>:53 ../
+srwxr-xr-x <span class="m">1</span> ubuntu ubuntu   <span class="m">0</span> Sep <span class="m">28</span> <span class="m">09</span>:32 default.sock<span class="o">=</span>
+ubuntu@ubuntu-xenial:~$ ll /run/shm/dispatcher/
+total <span class="m">0</span>
+drwxr-xr-x <span class="m">3</span> ubuntu ubuntu  <span class="m">80</span> Sep <span class="m">28</span> <span class="m">09</span>:32 ./
+drwxrwxrwt <span class="m">5</span> root   root   <span class="m">100</span> Sep <span class="m">27</span> <span class="m">15</span>:53 ../
+srwxr-xr-x <span class="m">1</span> ubuntu ubuntu   <span class="m">0</span> Sep <span class="m">28</span> <span class="m">09</span>:32 default.sock<span class="o">=</span>
+drwxr-xr-x <span class="m">2</span> ubuntu ubuntu  <span class="m">60</span> Sep <span class="m">28</span> <span class="m">09</span>:32 lwip/
+ubuntu@ubuntu-xenial:~$ 
+</pre></div>
+
+
+<p>If there are no <code>sciond</code> or <code>dispatcher</code> directories, or if they don't contain a <code>default.sock</code> file, please <a href="#contact">contact us</a>.</p>
+<h4 id="check-request-paths">Check Request Paths.<a class="headerlink" href="#check-request-paths" title="Permanent link">&para;</a></h4>
+<p>Every AS should be able to reach any other AS if there exist at least a path. We will start by checking that your VM running the services for your AS is able to obtain paths to some well-known ASes:</p>
+<div class="codehilite"><pre><span></span>ubuntu@ubuntu-xenial:~$ <span class="nb">cd</span> <span class="nv">$SC</span>
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./bin/showpaths -srcIA <span class="m">17</span>-ffaa:1:64 -dstIA <span class="m">17</span>-ffaa:0:1101
+INFO<span class="o">[</span><span class="m">09</span>-28<span class="p">|</span><span class="m">12</span>:47:16<span class="o">]</span> Started                                  <span class="nv">id</span><span class="o">=</span>595ed707 <span class="nv">goroutine</span><span class="o">=</span>dispatcher_bck
+Available paths to <span class="m">17</span>-ffaa:0:1101
+<span class="o">[</span> <span class="m">0</span><span class="o">]</span> Hops: <span class="o">[</span><span class="m">17</span>-ffaa:1:64 <span class="m">1</span>&gt;16 <span class="m">17</span>-ffaa:0:1107 <span class="m">1</span>&gt;4 <span class="m">17</span>-ffaa:0:1102 <span class="m">2</span>&gt;2 <span class="m">17</span>-ffaa:0:1103 <span class="m">4</span>&gt;8 <span class="m">17</span>-ffaa:0:1101<span class="o">]</span> Mtu: <span class="m">1472</span>
+<span class="o">[</span> <span class="m">1</span><span class="o">]</span> Hops: <span class="o">[</span><span class="m">17</span>-ffaa:1:64 <span class="m">1</span>&gt;16 <span class="m">17</span>-ffaa:0:1107 <span class="m">1</span>&gt;4 <span class="m">17</span>-ffaa:0:1102 <span class="m">3</span>&gt;3 <span class="m">17</span>-ffaa:0:1103 <span class="m">4</span>&gt;8 <span class="m">17</span>-ffaa:0:1101<span class="o">]</span> Mtu: <span class="m">1472</span>
+</pre></div>
+
+
+<p>Replace <code>17-ffaa:1:64</code> with the IA of your AS (the normal IA contains <code>:</code>, not <code>_</code>). You can check paths to reach <code>17-ffaa:0:1101</code> because it is an important AS and should always be present in the network. There must always be at least one path. </p>
+<p>If you don't see paths, go to <a href="#check-scion-connectivity">step Check SCION Connectivity</a> and repeat this check about getting paths afterwards.</p>
+<p>On the other hand, if you were able to obtain paths, using the control plane to send <em>echo</em> messages should work:</p>
+<div class="codehilite"><pre><span></span>ubuntu@ubuntu-xenial:~$ <span class="nb">cd</span> <span class="nv">$SC</span>
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./bin/scmp <span class="nb">echo</span> -local <span class="m">17</span>-ffaa:1:64,<span class="o">[</span><span class="m">127</span>.0.0.1<span class="o">]</span> -remote <span class="m">17</span>-ffaa:0:1101,<span class="o">[</span><span class="m">127</span>.0.0.1<span class="o">]</span>
+INFO<span class="o">[</span><span class="m">09</span>-28<span class="p">|</span><span class="m">12</span>:54:01<span class="o">]</span> Started                                  <span class="nv">id</span><span class="o">=</span>1ead82ed <span class="nv">goroutine</span><span class="o">=</span>dispatcher_bck
+Using path:
+  Hops: <span class="o">[</span><span class="m">17</span>-ffaa:1:64 <span class="m">1</span>&gt;16 <span class="m">17</span>-ffaa:0:1107 <span class="m">1</span>&gt;4 <span class="m">17</span>-ffaa:0:1102 <span class="m">2</span>&gt;2 <span class="m">17</span>-ffaa:0:1103 <span class="m">4</span>&gt;8 <span class="m">17</span>-ffaa:0:1101<span class="o">]</span> Mtu: <span class="m">1472</span>
+<span class="m">120</span> bytes from <span class="m">17</span>-ffaa:0:1101,<span class="o">[</span><span class="m">127</span>.0.0.1<span class="o">]</span> <span class="nv">scmp_seq</span><span class="o">=</span><span class="m">0</span> <span class="nv">time</span><span class="o">=</span><span class="m">10</span>.765ms
+<span class="m">120</span> bytes from <span class="m">17</span>-ffaa:0:1101,<span class="o">[</span><span class="m">127</span>.0.0.1<span class="o">]</span> <span class="nv">scmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">time</span><span class="o">=</span><span class="m">10</span>.973ms
+<span class="m">120</span> bytes from <span class="m">17</span>-ffaa:0:1101,<span class="o">[</span><span class="m">127</span>.0.0.1<span class="o">]</span> <span class="nv">scmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">time</span><span class="o">=</span><span class="m">10</span>.164ms
+^C
+--- <span class="m">17</span>-ffaa:0:1101,<span class="o">[</span><span class="m">127</span>.0.0.1<span class="o">]</span> statistics ---
+<span class="m">3</span> packets transmitted, <span class="m">3</span> received, <span class="m">0</span>% packet loss, <span class="nb">time</span> <span class="m">2</span>.382946s
+</pre></div>
+
+
+<p>Replace <code>17-ffaa:1:64</code> with the IA of your AS. If the echo does not work but you still saw paths to reach the AS from your own, please <a href="#contact">contact us</a>. If you saw this step working, congratulations, you have fixed the issues preventing your AS to function, and now you should be able to use your VM as you wish. If you think that the problems you faced could have been prevented by doing something in a different way, please <a href="#contact">get in touch with us</a> with your suggestions.</p>
+<h4 id="check-scion-connectivity">Check SCION Connectivity<a class="headerlink" href="#check-scion-connectivity" title="Permanent link">&para;</a></h4>
+<p>So in terms of the VM structure, IDs and processes everything seems to be alright. But our applications still don't work. We need to go a bit more low level and find out what the problem is. In this check we will test if the connection between the VM and the attachment point seems okay or not.</p>
+<p>Because the tunnel interface <code>tun0</code> is established (double check you still see the <code>tun0</code> interface when running <code>ip a</code>), we should be able to reach the other end. Recalling the topology file we showed in the <a href="#check-vpn">Check VPN step</a>, we look at the <code>BorderRouter</code> block, <code>Remote</code> part:</p>
+<div class="codehilite"><pre><span></span>          <span class="s2">&quot;Remote&quot;</span><span class="err">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.8.1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">60010</span>
+          <span class="p">}</span><span class="err">,</span>
+</pre></div>
+
+
+<p>It indicates the other end's IP address is <code>10.0.8.1</code>. It is typically our own VPN IP address (in our examples<code>10.0.8.8</code>) with a <code>1</code> replacing the number after the last dot <code>.</code>, but we are now sure this is the address of the attachment point. We should be able to reach it:</p>
+<div class="codehilite"><pre><span></span>ubuntu@ubuntu-xenial:~$ ping <span class="m">10</span>.0.8.1
+PING <span class="m">10</span>.0.8.1 <span class="o">(</span><span class="m">10</span>.0.8.1<span class="o">)</span> <span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from <span class="m">10</span>.0.8.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.706 ms
+<span class="m">64</span> bytes from <span class="m">10</span>.0.8.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.829 ms
+^C
+--- <span class="m">10</span>.0.8.1 ping statistics ---
+<span class="m">2</span> packets transmitted, <span class="m">2</span> received, <span class="m">0</span>% packet loss, <span class="nb">time</span> 1038ms
+rtt min/avg/max/mdev <span class="o">=</span> <span class="m">0</span>.706/0.767/0.829/0.067 ms
+</pre></div>
+
+
+<p>If your <code>ping</code> command does not succeed, you should <a href="#contact">contact us</a>.
+Now let's check the traffic between our border router and that of the attachment point:</p>
+<div class="codehilite"><pre><span></span>ubuntu@ubuntu-xenial:~$ sudo tcpdump -n -i tun0 
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on tun0, link-type RAW <span class="o">(</span>Raw IP<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">13</span>:01:44.103975 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">936</span>
+<span class="m">13</span>:01:44.107911 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">936</span>
+<span class="m">13</span>:01:44.314913 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:44.718605 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:45.316115 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:45.714413 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:46.320350 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:46.785959 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:47.317784 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">754</span>
+<span class="m">13</span>:01:47.321277 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:47.323658 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">754</span>
+<span class="m">13</span>:01:47.716653 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:48.322318 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:48.717883 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:49.113969 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">933</span>
+<span class="m">13</span>:01:49.116672 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">933</span>
+<span class="m">13</span>:01:49.322994 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:49.719193 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:50.324291 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:50.719704 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:51.325441 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:51.716545 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:52.326759 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:52.720497 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:53.327880 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:53.354712 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">755</span>
+<span class="m">13</span>:01:53.360066 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">755</span>
+<span class="m">13</span>:01:53.722121 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:54.120803 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">936</span>
+<span class="m">13</span>:01:54.123777 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">936</span>
+<span class="m">13</span>:01:54.328698 IP <span class="m">10</span>.0.8.8.50000 &gt; <span class="m">10</span>.0.8.1.50015: UDP, length <span class="m">81</span>
+<span class="m">13</span>:01:54.721604 IP <span class="m">10</span>.0.8.1.50015 &gt; <span class="m">10</span>.0.8.8.50000: UDP, length <span class="m">81</span>
+^C
+<span class="m">32</span> packets captured
+<span class="m">32</span> packets received by filter
+<span class="m">0</span> packets dropped by kernel
+</pre></div>
+
+
+<p>Let's give a quick explanation: we ran <code>tcpdump</code> to print a line every time there is a packet incoming or outgoing in our interface <code>tun0</code>. What we see is just the summary of the packets traversing <code>tun0</code> back and forth. We are interested in packets between the attachment point and our VM, but anyway we should see traffic referring to only these two IP addresses. In our examples they always were <code>10.0.8.8</code> for our VM and <code>10.0.8.1</code> for the AP.</p>
+<p>We need to see essentially two types of packets right now: small ones with <code>length 81</code>, and medium ones that have a variable length. The small ones are sent every 1 second from the AP to our VM, and also from our VM to the AP. If you don't see one of these packets per second, per direction, there is a problem. <a href="#contact">Contact us</a> in this case. The other, medium size packets, are also being sent from the AP to our VM (they are PCBs), and from our VM to the AP (path registrations). The frequency varies, but you should see them, in both directions, at least once every some 5-10 minutes. If not, please <a href="#contact">contact us</a>.</p>
+<p>If you reached this point and still cannot make your <code>showpaths</code> and <code>scmp echo</code> checks pass from the <a href="#check-request-paths">Check Request Step</a>, please <a href="#contact">contact us</a>.</p>
+<h1 id="contact">Contact<a class="headerlink" href="#contact" title="Permanent link">&para;</a></h1>
+<p>Being this a troubleshooting guide, it is possible that you need to contact us to request further support. The easiest and fastest way to get support is through our <a href="https://groups.google.com/forum/#!forum/scion-community">community Google Group</a>. If you want to contact us for other reasons, please choose the appropriate one from this list:</p>
+<ul>
+<li>For questions, further support and general comments on SCION-related topics, visit our <a href="https://groups.google.com/forum/#!forum/scion-community">SCION community Google group</a></li>
+<li>For bug reports, please post them on the <a href="https://github.com/netsec-ethz/scion-coord">scion-coord github site</a></li>
+<li>For suggestion on these pages, please post them on the <a href="https://github.com/netsec-ethz/scion-tutorials">scion-tutorials GitHub site</a></li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy 2018, Network Security Group, ETH Zurich
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://www.scion-architecture.net/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/netsec-ethz/" class="md-footer-social__link fa fa-github-alt"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
+      
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
