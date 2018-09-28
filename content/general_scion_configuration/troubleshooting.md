@@ -5,28 +5,30 @@ To reduce frustration from our users and to allow anybody to attempt to identify
 The simplest case to configure, and the one we treat here, is configuring an AS within a VM, using VPN. If you are testing a different case, please try first with this one and then attempt troubleshooting your specific configuration.
 
 ## I have configured a Virtual Machine with VPN
-
 We will first check if the Coordinator has given you the appropriate contents, then run the Virtual Machine, log into it, check that the VPN is okay, that SCION is running, has connectivity, and finally, that we are able to request paths.
 
-#### Check tarball file and contents
-After uncompressing your tar file you should see a structure like this:
+#### Check Tarball File and Contents
+After uncompressing your tar file you should see a structure like below. The `17-ffaa_1_64` is the AS ID we are configuring, in your case it will be another one:
 ```shell
-$ tar xf scion_lab_user@example.com_19-ffaa_1_c.tar.gz
+$ tar xf scion_lab_user@example.com_17-ffaa_1_64.tar.gz
 $ ls
-user@example.com_19-ffaa_1_c  scion_lab_user@example.com_19-ffaa_1_c.tar.gz
-$ cd user@example.com_19-ffaa_1_c/
+user@example.com_17-ffaa_1_64  scion_lab_user@example.com_17-ffaa_1_64.tar.gz
+$ cd user@example.com_17-ffaa_1_64/
+$ pwd
+/home/user/Downloads/user@example.com_17-ffaa_1_64/
 $ ls 
 client.conf  gen  README.md  run.sh  scion.service  scionupgrade.service  
 scionupgrade.sh  scionupgrade.timer  scion-viz.service  Vagrantfile
 ```
 
-In particular, if the `client.conf`, `Vagrantfile` files or the `gen` directory are missing, double check that you have configured the AS as a Virtual Machine using VPN, and click on "Update and Download SCIONLab AS Configuration". If after this you still do not see the mentioned files, please [open a bug report](#contact)
+The `pwd` command indicates in which directory the terminal prompt is working (the _working directory_). In your case it will be something different than `/home/user/Downloads/user@example.com_17-ffaa_1_64/` but ending in a directory that represents your user and the AS ID you configured (`user@example.com_17-ffaa_1_64`).
+Pay attention to the contents of the directory. In particular, if the `client.conf`, `Vagrantfile` files or the `gen` directory are missing, double check that you have configured the AS as a Virtual Machine using VPN, and click on "Update and Download SCIONLab AS Configuration". If after this you still do not see the mentioned files, please [open a bug report](#contact)
 
 #### Run the Virtual Machine
 Run the script `run.sh`. It will output many lines, but you just have to look at the last line:
 ```shell
 $ pwd
-/home/user/Downloads/user@example.com_19-ffaa_1_c/
+/home/user/Downloads/user@example.com_17-ffaa_1_64/
 $ ./run.sh
  .
  .
@@ -45,7 +47,7 @@ Otherwise, please open your VirtualBox Manager and stop any running virtual mach
 After stopping all running virtual machines, and being in the extracted directory, run:
 ```shell
 $ pwd
-/home/user/Downloads/user@example.com_19-ffaa_1_c/
+/home/user/Downloads/user@example.com_17-ffaa_1_64/
 vagrant destroy -f
  .
  .
@@ -85,118 +87,290 @@ ubuntu@ubuntu-xenial:~$ ip a
        valid_lft forever preferred_lft forever
 3: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 100
     link/none 
-    inet 10.0.8.2/24 brd 10.0.9.255 scope global tun0
+    inet 10.0.8.8/24 brd 10.0.8.255 scope global tun0
        valid_lft forever preferred_lft forever
 ```
 The lines we are interested in are the last ones, that refer to the `tun0` interface. We can read them again:
 ```shell
 3: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 100
     link/none 
-    inet 10.0.8.2/24 brd 10.0.9.255 scope global tun0
+    inet 10.0.8.8/24 brd 10.0.8.255 scope global tun0
        valid_lft forever preferred_lft forever
 ```
-It tells us that the virtual machine has a `tun0` interface with IP address `10.0.8.2`. If you don't see this `tun0` interface, [contact us](#contact).
+It tells us that the virtual machine has a `tun0` interface with IP address `10.0.8.8`. If you don't see this `tun0` interface, [contact us](#contact).
 
-Now, we will verify that the IP address obtained here corresponds to the one the Coordinator believes this VM should obtain. We will simply check the topology file and look for this IP address. Let's look at one topology file here:
+Now, we will verify that the IP address obtained here corresponds to the one the Coordinator believes this VM should obtain. We will simply check the topology file and look for this IP address. Let's look at one topology file. For completeness we show the whole file here, but we only need to find the string containing the `tun0` address; from our previous example we look for `10.0.8.8`. We find it inside the `BourderRouters` block as both the `Public` and `Bind` address for the only border router interface we have, as expected.
+
 ```json
-ubuntu@ubuntu-xenial:~$ cat $SC/gen/ISD61/ASffaa_1_1/cs61-ffaa_1_1-1/topology.json 
+ubuntu@ubuntu-xenial:~$ cat $SC/gen/ISD17/ASffaa_1_64/cs17-ffaa_1_64-1/topology.json 
 {
-  "CertificateService": {
-    "cs61-ffaa_1_1-1": {
+  "PathService": {
+    "ps17-ffaa_1_64-1": {
       "Public": [
         {
-          "Addr": "10.0.2.15",
-          "L4Port": 31043
+          "L4Port": 31044,
+          "Addr": "10.0.2.15"
+        }
+      ]
+    }
+  },
+  "Core": false,
+  "CertificateService": {
+    "cs17-ffaa_1_64-1": {
+      "Public": [
+        {
+          "L4Port": 31043,
+          "Addr": "10.0.2.15"
         }
       ]
     }
   },
   "BeaconService": {
-    "bs61-ffaa_1_1-1": {
+    "bs17-ffaa_1_64-1": {
       "Public": [
         {
-          "Addr": "10.0.2.15",
-          "L4Port": 31041
-        }
-      ]
-    }
-  },
-  "BorderRouters": {
-    "br61-ffaa_1_1-1": {
-      "Interfaces": {
-        "1": {
-          "ISD_AS": "61-ffaa:0:3d02",
-          "Bind": {
-            "Addr": "10.0.9.2",
-            "L4Port": 50000
-          },
-          "Bandwidth": 1000,
-          "InternalAddrIdx": 0,
-          "LinkTo": "PARENT",
-          "Overlay": "UDP/IPv4",
-          "Public": {
-            "Addr": "10.0.9.2",
-            "L4Port": 50000
-          },
-          "Remote": {
-            "Addr": "10.0.9.1",
-            "L4Port": 60010
-          },
-          "MTU": 1472
-        }
-      },
-      "InternalAddrs": [
-        {
-          "Public": [
-            {
-              "Addr": "10.0.2.15",
-              "L4Port": 31042
-            }
-          ]
+          "L4Port": 31041,
+          "Addr": "10.0.2.15"
         }
       ]
     }
   },
   "ZookeeperService": {
     "1": {
-      "Addr": "127.0.0.1",
-      "L4Port": 2181
+      "L4Port": 2181,
+      "Addr": "127.0.0.1"
     }
   },
   "Overlay": "UDP/IPv4",
-  "ISD_AS": "61-ffaa:1:1",
+  "MTU": 1472,
   "SibraService": {
-    "sb61-ffaa_1_1-1": {
+    "sb17-ffaa_1_64-1": {
       "Public": [
         {
-          "Addr": "10.0.2.15",
-          "L4Port": 31045
+          "L4Port": 31045,
+          "Addr": "10.0.2.15"
         }
       ]
     }
   },
-  "PathService": {
-    "ps61-ffaa_1_1-1": {
-      "Public": [
+  "BorderRouters": {
+    "br17-ffaa_1_64-1": {
+      "Interfaces": {
+        "1": {
+          "Bandwidth": 1000,
+          "Remote": {
+            "L4Port": 50015,
+            "Addr": "10.0.8.1"
+          },
+          "InternalAddrIdx": 0,
+          "LinkTo": "PARENT",
+          "Bind": {
+            "L4Port": 50000,
+            "Addr": "10.0.8.8"
+          },
+          "MTU": 1472,
+          "Overlay": "UDP/IPv4",
+          "Public": {
+            "L4Port": 50000,
+            "Addr": "10.0.8.8"
+          },
+          "ISD_AS": "17-ffaa:0:1107"
+        }
+      },
+      "InternalAddrs": [
         {
-          "Addr": "10.0.2.15",
-          "L4Port": 31044
+          "Public": [
+            {
+              "L4Port": 31042,
+              "Addr": "10.0.2.15"
+            }
+          ]
         }
       ]
     }
   },
-  "Core": false,
-  "MTU": 1472
+  "ISD_AS": "17-ffaa:1:64"
 }
 ```
+If you find your `tun0` IP address to be the same as in the `Bind` and `Public` parts of the `BorderRouter` blocks, please continue to step [Check SCION is running](#check-scion-is-running). If you did not find the `tun0` IP address in your topology file, we will destroy the existing virtual machine and remove its settings by first logging out of it and running:
+```shell
+$ pwd
+/home/user/Downloads/user@example.com_17-ffaa_1_64/
+$ vagrant destroy -f
+ .
+ .
+ .
+$ echo $?
+0
+$ cd ..
+$ pwd
+/home/user/Downloads/
+$ rm -r user@example.com_17-ffaa_1_64
+```
 
-#### SCION is running
+Now check [in the Coordinator webpage](https://www.scionlab.org) that your AS is correctly attached to your AP of choice, and that you are using the right tarball file. If in doubt, you can always click on _Re-download my SCIONLab AS Configuration_ to get it again. _Re-download_ does not configure the AS, but returns the latest configuration the Coordinator has for it. Wait 15 minutes (the reason being sometimes the attachment point needs 15 minutes to process your request). You should have received an email stating the success of your request. In the hopefully successful state, start again from [the checking tarbal step](#check-tarball-file-and-contents). If after waiting these 15 minutes you did not receive the success email, or you received it but still don't see the same IP address in the `tun0` interface as in the topology file, [contact us](#contact).
 
-#### SCION connectivity
+#### Check SCION is running
+We are goint to check now that all SCION processes are running. Once logged in the VM, run this:
+```shell
+ubuntu@ubuntu-xenial:~$ cd $SC
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./scion.sh status
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ 
+```
+As a general rule, `scion.sh status` should not print any messages. Output from that command indicates problems with the SCION services. If your execution returned a message, there is probably a problem. Stop and start SCION again to retry just once more:
+```shell
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./scion.sh stop
+Terminating this run of the SCION infrastructure
+dispatcher: stopped
+as17-ffaa_1_64:sd17-ffaa_1_64: stopped
+as17-ffaa_1_64:br17-ffaa_1_64-1: stopped
+as17-ffaa_1_64:cs17-ffaa_1_64-1: stopped
+as17-ffaa_1_64:ps17-ffaa_1_64-1: stopped
+as17-ffaa_1_64:bs17-ffaa_1_64-1: stopped
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./scion.sh start
+Compiling...
+Running the network...
+dispatcher: started
+as17-ffaa_1_64:sd17-ffaa_1_64: started
+as17-ffaa_1_64:br17-ffaa_1_64-1: started
+as17-ffaa_1_64:bs17-ffaa_1_64-1: started
+as17-ffaa_1_64:cs17-ffaa_1_64-1: started
+as17-ffaa_1_64:ps17-ffaa_1_64-1: started
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./scion.sh status
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ 
+```
+If now the `scion.sh status` command still prints messages (wether the same or different ones than before), please [contact us](#contact), copying that output on the message.
+You should at this stage check the AS ID in the virtual machine, and ensure it corresponds to the one you expect. In our case, we expect to see the AS ID `17-ffaa_1_64`:
+```shell
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ cat $SC/gen/ia
+17-ffaa_1_64ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$
+```
+The output indicates `17-ffaa_1_64`, which is okay, because the `ia` file replaces `:` with `_`. If not, you probably ran the virtual machine from the wrong uncompressed tarball. Check again starting in step [Check Tarball File and Contents](#check-tarball-file-and-contents). Otherwise, [contact us](#contact).
 
-#### request paths.
+The last step is only for sanity: SCION services communicate among themselves using socket files. The following `default.sock` files should be present in your VM, as shown below:
 
+```shell
+ubuntu@ubuntu-xenial:~$ ll /run/shm/
+total 0
+drwxrwxrwt  5 root      root       100 Sep 27 15:53 ./
+drwxr-xr-x 16 root      root      3620 Sep 27 15:53 ../
+drwxr-xr-x  3 ubuntu    ubuntu      80 Sep 28 09:32 dispatcher/
+drwxr-xr-x  3 zookeeper zookeeper   60 Sep 27 15:53 host-zk/
+drwxr-xr-x  2 ubuntu    ubuntu      60 Sep 28 09:32 sciond/
+ubuntu@ubuntu-xenial:~$ ll /run/shm/sciond/
+total 0
+drwxr-xr-x 2 ubuntu ubuntu  60 Sep 28 09:32 ./
+drwxrwxrwt 5 root   root   100 Sep 27 15:53 ../
+srwxr-xr-x 1 ubuntu ubuntu   0 Sep 28 09:32 default.sock=
+ubuntu@ubuntu-xenial:~$ ll /run/shm/dispatcher/
+total 0
+drwxr-xr-x 3 ubuntu ubuntu  80 Sep 28 09:32 ./
+drwxrwxrwt 5 root   root   100 Sep 27 15:53 ../
+srwxr-xr-x 1 ubuntu ubuntu   0 Sep 28 09:32 default.sock=
+drwxr-xr-x 2 ubuntu ubuntu  60 Sep 28 09:32 lwip/
+ubuntu@ubuntu-xenial:~$ 
+```
+If there are no `sciond` or `dispatcher` directories, or if they don't contain a `default.sock` file, please [contact us](#contact).
 
+#### Check Request Paths.
+Every AS should be able to reach any other AS if there exist at least a path. We will start by checking that your VM running the services for your AS is able to obtain paths to some well-known ASes:
+```shell
+ubuntu@ubuntu-xenial:~$ cd $SC
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./bin/showpaths -srcIA 17-ffaa:1:64 -dstIA 17-ffaa:0:1101
+INFO[09-28|12:47:16] Started                                  id=595ed707 goroutine=dispatcher_bck
+Available paths to 17-ffaa:0:1101
+[ 0] Hops: [17-ffaa:1:64 1>16 17-ffaa:0:1107 1>4 17-ffaa:0:1102 2>2 17-ffaa:0:1103 4>8 17-ffaa:0:1101] Mtu: 1472
+[ 1] Hops: [17-ffaa:1:64 1>16 17-ffaa:0:1107 1>4 17-ffaa:0:1102 3>3 17-ffaa:0:1103 4>8 17-ffaa:0:1101] Mtu: 1472
+```
+Replace `17-ffaa:1:64` with the IA of your AS (the normal IA contains `:`, not `_`). You can check paths to reach `17-ffaa:0:1101` because it is an important AS and should always be present in the network. There must always be at least one path. 
+
+If you don't see paths, go to [step Check SCION Connectivity](#check-scion-connectivity) and repeat this check about getting paths afterwards.
+
+On the other hand, if you were able to obtain paths, using the control plane to send _echo_ messages should work:
+```shell
+ubuntu@ubuntu-xenial:~$ cd $SC
+ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./bin/scmp echo -local 17-ffaa:1:64,[127.0.0.1] -remote 17-ffaa:0:1101,[127.0.0.1]
+INFO[09-28|12:54:01] Started                                  id=1ead82ed goroutine=dispatcher_bck
+Using path:
+  Hops: [17-ffaa:1:64 1>16 17-ffaa:0:1107 1>4 17-ffaa:0:1102 2>2 17-ffaa:0:1103 4>8 17-ffaa:0:1101] Mtu: 1472
+120 bytes from 17-ffaa:0:1101,[127.0.0.1] scmp_seq=0 time=10.765ms
+120 bytes from 17-ffaa:0:1101,[127.0.0.1] scmp_seq=1 time=10.973ms
+120 bytes from 17-ffaa:0:1101,[127.0.0.1] scmp_seq=2 time=10.164ms
+^C
+--- 17-ffaa:0:1101,[127.0.0.1] statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2.382946s
+```
+Replace `17-ffaa:1:64` with the IA of your AS. If the echo does not work but you still saw paths to reach the AS from your own, please [contact us](#contact). If you saw this step working, congratulations, you have fixed the issues preventing your AS to function, and now you should be able to use your VM as you wish. If you think that the problems you faced could have been prevented by doing something in a different way, please [get in touch with us](#contact) with your suggestions.
+
+#### Check SCION Connectivity
+So in terms of the VM structure, IDs and processes everything seems to be alright. But our applications still don't work. We need to go a bit more low level and find out what the problem is. In this check we will test if the connection between the VM and the attachment point seems okay or not.
+
+Because the tunnel interface `tun0` is established (double check you still see the `tun0` interface when running `ip a`), we should be able to reach the other end. Recalling the topology file we showed in the [Check VPN step](#check-vpn), we look at the `BorderRouter` block, `Remote` part:
+```json
+          "Remote": {
+            "Addr": "10.0.8.1",
+            "L4Port": 60010
+          },
+```
+It indicates the other end's IP address is `10.0.8.1`. It is typically our own VPN IP address (in our examples`10.0.8.8`) with a `1` replacing the number after the last dot `.`, but we are now sure this is the address of the attachment point. We should be able to reach it:
+```shell
+ubuntu@ubuntu-xenial:~$ ping 10.0.8.1
+PING 10.0.8.1 (10.0.8.1) 56(84) bytes of data.
+64 bytes from 10.0.8.1: icmp_seq=1 ttl=64 time=0.706 ms
+64 bytes from 10.0.8.1: icmp_seq=2 ttl=64 time=0.829 ms
+^C
+--- 10.0.8.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1038ms
+rtt min/avg/max/mdev = 0.706/0.767/0.829/0.067 ms
+```
+If your `ping` command does not succeed, you should [contact us](#contact).
+Now let's check the traffic between our border router and that of the attachment point:
+```shell
+ubuntu@ubuntu-xenial:~$ sudo tcpdump -n -i tun0 
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on tun0, link-type RAW (Raw IP), capture size 262144 bytes
+13:01:44.103975 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 936
+13:01:44.107911 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 936
+13:01:44.314913 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 81
+13:01:44.718605 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 81
+13:01:45.316115 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 81
+13:01:45.714413 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 81
+13:01:46.320350 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 81
+13:01:46.785959 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 81
+13:01:47.317784 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 754
+13:01:47.321277 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 81
+13:01:47.323658 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 754
+13:01:47.716653 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 81
+13:01:48.322318 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 81
+13:01:48.717883 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 81
+13:01:49.113969 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 933
+13:01:49.116672 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 933
+13:01:49.322994 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 81
+13:01:49.719193 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 81
+13:01:50.324291 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 81
+13:01:50.719704 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 81
+13:01:51.325441 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 81
+13:01:51.716545 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 81
+13:01:52.326759 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 81
+13:01:52.720497 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 81
+13:01:53.327880 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 81
+13:01:53.354712 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 755
+13:01:53.360066 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 755
+13:01:53.722121 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 81
+13:01:54.120803 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 936
+13:01:54.123777 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 936
+13:01:54.328698 IP 10.0.8.8.50000 > 10.0.8.1.50015: UDP, length 81
+13:01:54.721604 IP 10.0.8.1.50015 > 10.0.8.8.50000: UDP, length 81
+^C
+32 packets captured
+32 packets received by filter
+0 packets dropped by kernel
+```
+Let's give a quick explanation: we ran `tcpdump` to print a line every time there is a packet incoming or outgoing in our interface `tun0`. What we see is just the summary of the packets traversing `tun0` back and forth. We are interested in packets between the attachment point and our VM, but anyway we should see traffic referring to only these two IP addresses. In our examples they always were `10.0.8.8` for our VM and `10.0.8.1` for the AP.
+
+We need to see essentially two types of packets right now: small ones with `length 81`, and medium ones that have a variable length. The small ones are sent every 1 second from the AP to our VM, and also from our VM to the AP. If you don't see one of these packets per second, per direction, there is a problem. [Contact us](#contact) in this case. The other, medium size packets, are also being sent from the AP to our VM (they are PCBs), and from our VM to the AP (path registrations). The frequency varies, but you should see them, in both directions, at least once every some 5-10 minutes. If not, please [contact us](#contact).
+
+If you reached this point and still cannot make your `showpaths` and `scmp echo` checks pass from the [Check Request Step](#check-request-paths), please [contact us](#contact).
 
 # Contact
 Being this a troubleshooting guide, it is possible that you need to contact us to request further support. The easiest and fastest way to get support is through our [community Google Group](https://groups.google.com/forum/#!forum/scion-community). If you want to contact us for other reasons, please choose the appropriate one from this list:
