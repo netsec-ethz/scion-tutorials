@@ -25,7 +25,26 @@ The `pwd` command indicates in which directory the terminal prompt is working (t
 Pay attention to the contents of the directory. In particular, if the `client.conf`, `Vagrantfile` files or the `gen` directory are missing, double check that you have configured the AS as a Virtual Machine using VPN, and click on "Update and Download SCIONLab AS Configuration". If after this you still do not see the mentioned files, please [open a bug report](#contact)
 
 ### Run the Virtual Machine
-Run the script `run.sh`. It will output many lines, but you just have to look at the last line:
+The script `run.sh` will check for you the versions of Virtualbox and Vagrant installed in your system, and install them if needed. Although not necessary, you can perform this step manually if you wish to:
+```shell
+$ vagrant --version
+Vagrant 2.1.1
+```
+If your version is lower than `1.9` or not installed at all, please install it:
+```shell
+$ sudo apt-get install --only-upgrade vagrant
+```
+
+We recommend `virtualbox` version `5.2` with your Ubuntu 16.04 installation. Since it is not available in the default repositories, you would have to uninstall your current virtualbox version (if any) and then install the recommended one:
+```shell
+$ wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+$ wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+$ sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" >> /etc/apt/sources.list.d/virtualbox.list'
+$ sudo apt remove virtualbox virtualbox-5.1
+$ sudo apt-get --no-remove --yes install virtualbox-5.2
+```
+
+To automatically do all this and start your virtual machine, run the script `run.sh`. It will output many lines, but you just have to look at the last line:
 ```shell
 $ pwd
 /home/user/Downloads/user@example.com_17-ffaa_1_64/
