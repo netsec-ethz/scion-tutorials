@@ -54,17 +54,51 @@ $ ./run.sh
  .
 ubuntu@ubuntu-xenial:~$
 ```
-The last line is the prompt of the virtual machine itself, and seeing it means that we have successfully started the VM, and already logged into it. Skip to step [Check VPN](#check-vpn). If you don't see this and are still in the host machine, run:
+The last line is the prompt of the virtual machine itself, and seeing it means that we have successfully started the VM, and already logged into it. Skip to step [Check VPN](#check-vpn).
+
+If you don't see this and are still in the host machine, run:
 ```shell
 $ echo $?
 0
 ```
-Anything different than `0` means a problem has occurred with running your VM. A `0` means the virtual machine is now running; skip to step [Log in the Virtual Machine](#Log-in-the-Virtual-Machine). 
-Otherwise, please open your VirtualBox Manager and stop any running virtual machines to continue troubleshooting this step.
-<!-- TODO: use VBoxManage -->
 
-After stopping all running virtual machines, and being in the extracted directory, run:
+Anything different than `0` means a problem has occurred with running your VM. A `0` means the virtual machine is now running; skip to step [Log in the Virtual Machine](#Log-in-the-Virtual-Machine). 
+
+If you experience an error mentioning that Vagrant cannot forward the specified port, please shut down all of your running virtual machines. Keep reading for more information. The error would look similar to this:
 ```shell
+ $ vagrant up
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Checking if box 'scion/ubuntu-16.04-64-scion' is up to date...
+==> default: Clearing any previously set forwarded ports...
+Vagrant cannot forward the specified ports on this VM, since they
+would collide with some other application that is already listening
+on these ports. The forwarded port to 8000 is already in use
+on the host machine.
+
+To fix this, modify your current project's Vagrantfile to use another
+port. Example, where '1234' would be replaced by a unique host port:
+
+  config.vm.network :forwarded_port, guest: 8000, host: 1234
+
+Sometimes, Vagrant will attempt to auto-correct this for you. In this
+case, Vagrant was unable to. This is usually because the guest machine
+is in a state which doesn't allow modifying port forwarding. You could
+try 'vagrant reload' (equivalent of running a halt followed by an up)
+so vagrant can attempt to auto-correct this upon booting. Be warned
+that any unsaved work might be lost.
+```
+
+To proceed, please open your VirtualBox Manager and stop any running virtual machines to continue troubleshooting this step.
+
+!!! tip
+    Find out how many virtual machines you have running by typing in the terminal `VBoxManage list runningvms`. If you are in doubt on how to stop the running virtual machines, you can always reboot your host machine to ensure none are running.
+
+After stopping all running virtual machines, and being in the extracted directory, 
+<a name="destroy"></a>
+remove your virtual machine completely:
+```shell
+$ VBoxManage list runningvms
+# VBoxManage prints nothing because no VM running
 $ pwd
 /home/user/Downloads/user@example.com_17-ffaa_1_64/
 vagrant destroy -f
@@ -86,7 +120,29 @@ $ vagrant ssh
  .
 ubuntu@ubuntu-xenial:~$
 ```
-If you cannot get into the virtual machine, please [contact us](#contact). Otherwise go to the next step.
+If you cannot get into the virtual machine, please [contact us](#contact). To be sure we will check now the free space on the virtual machine virtual disk:
+```shell
+ubuntu@ubuntu-xenial:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            487M     0  487M   0% /dev
+tmpfs           100M  6.8M   93M   7% /run
+/dev/sda1       9.7G  4.9G  4.8G  51% /
+tmpfs           497M   99M  398M  20% /dev/shm
+tmpfs           5.0M     0  5.0M   0% /run/lock
+tmpfs           497M     0  497M   0% /sys/fs/cgroup
+vagrant         451G   51G  401G  12% /vagrant
+tmpfs           100M     0  100M   0% /run/user/1000
+```
+Interesting for us is the line `/dev/sda1       9.7G  4.9G  4.8G  51% /` because it refers to `/` (last column). Look for a similar entry from your output and check that on the `Avail` column you have at least `2G` (2 gigabytes). Otherwise [destroy your virtual machine](#destroy) and [create a new one](#run-the-virtual-machine).
+
+Your host machine should have enough memory to launch a virtual machine requesting two gigabytes of free memory (we configure SCIONLab virtual machines to use two gigabytes of memory). Ensure that you have enough free memory in your host and that in the VM you see the expected free memory amount:
+```shell
+ubuntu@ubuntu-xenial:~$ free -h
+              total        used        free      shared  buff/cache   available
+Mem:           2.0G        271M        1.2G        3.1M        499M        1.5G
+Swap:            0B          0B          0B
+```
+The line `Mem:           2.0G        271M        1.2G        3.1M        499M        1.5G` tells us that there are two gigabytes of memory in total. If you don't have two gigabytes (and did not edit your `Vagrantfile` yourself), please [contact us](#contact).
 
 ### Check VPN
 Our setup is using VPN to connect to the _Attachment Point_ in the SCIONLab infrastructure. We should be able to see the VPN tunnel interface when inside the VM:
@@ -211,16 +267,13 @@ ubuntu@ubuntu-xenial:~$ cat $SC/gen/ISD17/ASffaa_1_64/cs17-ffaa_1_64-1/topology.
   "ISD_AS": "17-ffaa:1:64"
 }
 ```
-If you find your `tun0` IP address to be the same as in the `Bind` and `Public` parts of the `BorderRouter` blocks, please continue to step [Check SCION is running](#check-scion-is-running). If you did not find the `tun0` IP address in your topology file, we will destroy the existing virtual machine and remove its settings by first logging out of it and running:
+If you find your `tun0` IP address to be the same as in the `Bind` and `Public` parts of the `BorderRouter` blocks, please continue to step [Check SCION is running](#check-scion-is-running). If you did not find the `tun0` IP address in your topology file, we will destroy the existing virtual machine and remove its settings by first logging out of it and then running the steps described in the snippet [vagrant destroy](#destroy). After destroying the virtual machine, we can delete its configuration:
+
 ```shell
-$ pwd
-/home/user/Downloads/user@example.com_17-ffaa_1_64/
 $ vagrant destroy -f
  .
  .
  .
-$ echo $?
-0
 $ cd ..
 $ pwd
 /home/user/Downloads/
