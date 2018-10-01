@@ -172,7 +172,8 @@ The lines we are interested in are the last ones, that refer to the `tun0` inter
     inet 10.0.8.8/24 brd 10.0.8.255 scope global tun0
        valid_lft forever preferred_lft forever
 ```
-It tells us that the virtual machine has a `tun0` interface with IP address `10.0.8.8`. If you don't see this `tun0` interface, [contact us](#contact).
+It tells us that the virtual machine has a `tun0` interface with IP address `10.0.8.8`. If you don't see this `tun0` interface, you are probably behind a firewall that does not allow UDP traffic on port `1194`. Please check your `/var/log/syslog` to find out if there had been a timeout while trying to establish the `openvpn` connection (search for `ovpn-client` in the `/var/log/syslog` file). If you find out that the `tun0` interface was not brought up because timeouts between your client and the VPN server, it is an indication that a firewall is filtering the traffic: please contact your IT service to add an exception for your machine and port `1194`.
+Also, you can [contact us](#contact) to find out if we can do something about that.
 
 Now, we will verify that the IP address obtained here corresponds to the one the Coordinator believes this VM should obtain. We will simply check the topology file and look for this IP address. Let's look at one topology file. For completeness we show the whole file here, but we only need to find the string containing the `tun0` address; from our previous example we look for `10.0.8.8`. We find it inside the `BourderRouters` block as both the `Public` and `Bind` address for the only border router interface we have, as expected.
 
