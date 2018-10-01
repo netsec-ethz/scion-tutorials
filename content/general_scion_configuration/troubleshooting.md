@@ -7,7 +7,7 @@ The simplest case to configure, and the one we treat here, is configuring an AS 
 ## I have configured a Virtual Machine with VPN
 We will first check if the Coordinator has given you the appropriate contents, then run the Virtual Machine, log into it, check that the VPN is okay, that SCION is running, has connectivity, and finally, that we are able to request paths.
 
-#### Check Tarball File and Contents
+### Check Tarball File and Contents
 After uncompressing your tar file you should see a structure like below. The `17-ffaa_1_64` is the AS ID we are configuring, in your case it will be another one:
 ```shell
 $ tar xf scion_lab_user@example.com_17-ffaa_1_64.tar.gz
@@ -24,7 +24,7 @@ scionupgrade.sh  scionupgrade.timer  scion-viz.service  Vagrantfile
 The `pwd` command indicates in which directory the terminal prompt is working (the _working directory_). In your case it will be something different than `/home/user/Downloads/user@example.com_17-ffaa_1_64/` but ending in a directory that represents your user and the AS ID you configured (`user@example.com_17-ffaa_1_64`).
 Pay attention to the contents of the directory. In particular, if the `client.conf`, `Vagrantfile` files or the `gen` directory are missing, double check that you have configured the AS as a Virtual Machine using VPN, and click on "Update and Download SCIONLab AS Configuration". If after this you still do not see the mentioned files, please [open a bug report](#contact)
 
-#### Run the Virtual Machine
+### Run the Virtual Machine
 Run the script `run.sh`. It will output many lines, but you just have to look at the last line:
 ```shell
 $ pwd
@@ -58,7 +58,7 @@ $ echo $?
 This destroys your virtual machine so you can recreate it again from scratch. You can go now again to the step [Run the Virtual Machine](#Run-the-Virtual-Machine). If you had tried previously to remove all virtual machines and still see an error running `run.sh`, please [contact us](#contact)
 
 
-#### Log in the Virtual Machine
+### Log in the Virtual Machine
 After running `run.sh` you should be presented with the prompt from the virtual machine. If not, you can simply connect to it:
 ```shell
 $ vagrant ssh
@@ -69,7 +69,7 @@ ubuntu@ubuntu-xenial:~$
 ```
 If you cannot get into the virtual machine, please [contact us](#contact). Otherwise go to the next step.
 
-#### Check VPN
+### Check VPN
 Our setup is using VPN to connect to the _Attachment Point_ in the SCIONLab infrastructure. We should be able to see the VPN tunnel interface when inside the VM:
 ```shell
 ubuntu@ubuntu-xenial:~$ ip a
@@ -210,7 +210,7 @@ $ rm -r user@example.com_17-ffaa_1_64
 
 Now check [in the Coordinator webpage](https://www.scionlab.org) that your AS is correctly attached to your AP of choice, and that you are using the right tarball file. If in doubt, you can always click on _Re-download my SCIONLab AS Configuration_ to get it again. _Re-download_ does not configure the AS, but returns the latest configuration the Coordinator has for it. Wait 15 minutes (the reason being sometimes the attachment point needs 15 minutes to process your request). You should have received an email stating the success of your request. In the hopefully successful state, start again from [the checking tarbal step](#check-tarball-file-and-contents). If after waiting these 15 minutes you did not receive the success email, or you received it but still don't see the same IP address in the `tun0` interface as in the topology file, [contact us](#contact).
 
-#### Check SCION is running
+### Check SCION is running
 We are goint to check now that all SCION processes are running. Once logged in the VM, run this:
 ```shell
 ubuntu@ubuntu-xenial:~$ cd $SC
@@ -272,7 +272,7 @@ ubuntu@ubuntu-xenial:~$
 ```
 If there are no `sciond` or `dispatcher` directories, or if they don't contain a `default.sock` file, please [contact us](#contact).
 
-#### Check Request Paths.
+### Check Request Paths.
 Every AS should be able to reach any other AS if there exist at least a path. We will start by checking that your VM running the services for your AS is able to obtain paths to some well-known ASes:
 ```shell
 ubuntu@ubuntu-xenial:~$ cd $SC
@@ -302,7 +302,7 @@ Using path:
 ```
 Replace `17-ffaa:1:64` with the IA of your AS. If the echo does not work but you still saw paths to reach the AS from your own, please [contact us](#contact). If you saw this step working, congratulations, you have fixed the issues preventing your AS to function, and now you should be able to use your VM as you wish. If you think that the problems you faced could have been prevented by doing something in a different way, please [get in touch with us](#contact) with your suggestions.
 
-#### Check SCION Connectivity
+### Check SCION Connectivity
 So in terms of the VM structure, IDs and processes everything seems to be alright. But our applications still don't work. We need to go a bit more low level and find out what the problem is. In this check we will test if the connection between the VM and the attachment point seems okay or not.
 
 Because the tunnel interface `tun0` is established (double check you still see the `tun0` interface when running `ip a`), we should be able to reach the other end. Recalling the topology file we showed in the [Check VPN step](#check-vpn), we look at the `BorderRouter` block, `Remote` part:
