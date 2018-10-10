@@ -65,6 +65,7 @@ nav:
       - Set up an AS and connect to the SCION network via VPN: general_scion_configuration/vpn_setup.md
       - Set up SCION endhost and connect to local AS: general_scion_configuration/setup_endhost.md
 
+    - Troubleshooting: general_scion_configuration/troubleshooting.md
 
     - How to use:
       - Read a temperature sensor over the SCION network: sample_projects/fetch_sensor_readings.md
