@@ -46,7 +46,7 @@ It is necessary to set up your [Go workspace](https://golang.org/doc/code.html#G
 echo 'export GOPATH="$HOME/go"' >> ~/.profile
 source ~/.profile
 mkdir -p "$GOPATH/bin"
-echo 'PATH=$PATH:/usr/local/go/bin:$GOPATH/bin' >> ~/.profile
+echo 'PATH=$PATH:$HOME/.local/bin:/usr/local/go/bin:$GOPATH/bin' >> ~/.profile
 source ~/.profile
 ```
 
