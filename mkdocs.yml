@@ -64,6 +64,7 @@ nav:
       - Set up an AS and connect to the SCION network behind a NAT: general_scion_configuration/public_ip_nat.md
       - Set up an AS and connect to the SCION network via VPN: general_scion_configuration/vpn_setup.md
       - Set up SCION endhost and connect to local AS: general_scion_configuration/setup_endhost.md
+      - How to join the SCIONLab Infrastructure: general_scion_configuration/join_infrastructure.md
 
     - Troubleshooting: general_scion_configuration/troubleshooting.md
 
