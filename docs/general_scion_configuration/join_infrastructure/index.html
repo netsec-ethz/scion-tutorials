@@ -792,7 +792,7 @@ We further customized the machine with additional 8G ECC Ram and SSD, but a regu
 <ul>
 <li>Check the requirements. If possible, follow the recommendations.</li>
 <li>Get in contact with us. Send us an email to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#99;&#105;&#111;&#110;&#108;&#97;&#98;&#45;&#97;&#100;&#109;&#105;&#110;&#115;&#64;&#115;&#121;&#109;&#112;&#97;&#46;&#101;&#116;&#104;&#122;&#46;&#99;&#104;">&#115;&#99;&#105;&#111;&#110;&#108;&#97;&#98;&#45;&#97;&#100;&#109;&#105;&#110;&#115;&#64;&#115;&#121;&#109;&#112;&#97;&#46;&#101;&#116;&#104;&#122;&#46;&#99;&#104;</a> telling us you want to join the infrastructure.</li>
-<li>Once the node(s) are ready, you will have to grant the SCIONLab admins <code>ssh</code> access to the machine via a key.</li>
+<li>Once the node(s) are ready, you will have to create a user with the name of <code>scion</code> and grant the SCIONLab admins <code>ssh</code> access to the machine via a key for that <code>scion</code> user.</li>
 <li>The SCIONLab admins will perform some measurements to find the appropriate neighbors to your AS. We will notify you of the result.</li>
 <li>Once the neighboring ASes have been decided, the administrators will install the necessary services of SCION and monitoring. This is typically done by us using <code>Ansible</code>. We deploy the configuration of the node(s) in the AS at the same time.</li>
 <li>Your AS is now connected inside the infrastructure of SCIONLab.</li>

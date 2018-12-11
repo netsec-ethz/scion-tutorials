@@ -39,7 +39,7 @@ We have written this small procedure guide for you to know what the steps you wo
 
 - Check the requirements. If possible, follow the recommendations.
 - Get in contact with us. Send us an email to <scionlab-admins@sympa.ethz.ch> telling us you want to join the infrastructure.
-- Once the node(s) are ready, you will have to grant the SCIONLab admins `ssh` access to the machine via a key.
+- Once the node(s) are ready, you will have to create a user with the name of `scion` and grant the SCIONLab admins `ssh` access to the machine via a key for that `scion` user.
 - The SCIONLab admins will perform some measurements to find the appropriate neighbors to your AS. We will notify you of the result.
 - Once the neighboring ASes have been decided, the administrators will install the necessary services of SCION and monitoring. This is typically done by us using `Ansible`. We deploy the configuration of the node(s) in the AS at the same time.
 - Your AS is now connected inside the infrastructure of SCIONLab.
