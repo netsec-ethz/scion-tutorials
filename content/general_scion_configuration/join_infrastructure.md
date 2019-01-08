@@ -37,7 +37,7 @@ We further customize the machine with additional 8G ECC Ram and SSD, but a regul
 You can connect to the SCIONLab infrastructgure through the following steps:
 
 - Get in contact with us. Send us an email to <scionlab-admins@sympa.ethz.ch> telling us you want to join the infrastructure.
-- Once the node(s) are ready, create a user with the name `scion` and grant the SCIONLab admins `ssh` access to the machine via a key for that `scion` user.
+- Once the node(s) are ready, create a user with the name `scion` and permission to run `sudo`. Grant the SCIONLab admins `ssh` access to the machine via a key for that `scion` user.
 - The SCIONLab admins will perform some measurements to find the appropriate neighbors to your AS. We will notify you of the result.
 - Once the neighboring ASes have been decided, the administrators will install the necessary services of SCION and monitoring. This is typically done by us using `Ansible`. We deploy the configuration of the node(s) in the AS at the same time.
 - Your AS is now connected to the infrastructure of SCIONLab and hosts within your network now have direct access to SCIONLab.
