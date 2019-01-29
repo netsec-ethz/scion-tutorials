@@ -86,9 +86,6 @@ Your SCION installation should be now up to date. Once SCION is built without pr
 
 And the SCION services will start running.
 
-!!! hint "if running services fails"
-    If building SCION succeeded but running the services did not, there might be a misconfiguration in the gen folder. If this was a manual update to support the SCIONLab update done in the summer of 2018, you will probably need to remap the identity of your AS; please contact us and we will assist you in doing so.
-
 
 ## Last step to finish the update
 
