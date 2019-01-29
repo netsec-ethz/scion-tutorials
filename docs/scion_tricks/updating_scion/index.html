@@ -637,16 +637,43 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#manual-steps-to-update" title="Manual steps to update" class="md-nav__link">
-    Manual steps to update
+  <a href="#script-to-update" title="Script to update" class="md-nav__link">
+    Script to update
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rebuild-scion" title="Rebuild SCION" class="md-nav__link">
-    Rebuild SCION
+  <a href="#manual-steps-to-update-experts" title="Manual steps to update (experts)" class="md-nav__link">
+    Manual steps to update (experts)
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-the-source-code" title="Update the source code" class="md-nav__link">
+    Update the source code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebuild-scion-services" title="Rebuild SCION Services" class="md-nav__link">
+    Rebuild SCION Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-updated-configuration" title="Get updated configuration" class="md-nav__link">
+    Get updated configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -658,6 +685,20 @@
         <li class="md-nav__item">
   <a href="#last-step-to-finish-the-update" title="Last step to finish the update" class="md-nav__link">
     Last step to finish the update
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scion-applications" title="SCION Applications" class="md-nav__link">
+    SCION Applications
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact-us" title="Contact us" class="md-nav__link">
+    Contact us
   </a>
   
 </li>
@@ -782,16 +823,43 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#manual-steps-to-update" title="Manual steps to update" class="md-nav__link">
-    Manual steps to update
+  <a href="#script-to-update" title="Script to update" class="md-nav__link">
+    Script to update
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rebuild-scion" title="Rebuild SCION" class="md-nav__link">
-    Rebuild SCION
+  <a href="#manual-steps-to-update-experts" title="Manual steps to update (experts)" class="md-nav__link">
+    Manual steps to update (experts)
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-the-source-code" title="Update the source code" class="md-nav__link">
+    Update the source code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rebuild-scion-services" title="Rebuild SCION Services" class="md-nav__link">
+    Rebuild SCION Services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-updated-configuration" title="Get updated configuration" class="md-nav__link">
+    Get updated configuration
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -803,6 +871,20 @@
         <li class="md-nav__item">
   <a href="#last-step-to-finish-the-update" title="Last step to finish the update" class="md-nav__link">
     Last step to finish the update
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scion-applications" title="SCION Applications" class="md-nav__link">
+    SCION Applications
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact-us" title="Contact us" class="md-nav__link">
+    Contact us
   </a>
   
 </li>
@@ -848,56 +930,84 @@ git rebase origin/scionlab
 <p>We do this to maximize the chances of successfully updating even if you had local changes done on top.
 The automatic process will restart SCION if it detected that we downloaded a new version.</p>
 <h2 id="running-scion-in-a-dedicated-machine">Running SCION in a dedicated machine<a class="headerlink" href="#running-scion-in-a-dedicated-machine" title="Permanent link">&para;</a></h2>
-<p>This type of installations need manual update. If you received an email from us saying that we are going to update the infrastructure, and that the update contains <em>breaking changes</em>, you will need to follow these steps if you want to continue using SCION in ScionLab.</p>
-<h3 id="manual-steps-to-update">Manual steps to update<a class="headerlink" href="#manual-steps-to-update" title="Permanent link">&para;</a></h3>
-<p>We can do manually what we automatically do inside the SCION VMs, and these simple steps will update your installation of SCION.
-As our SCION implementation is hosted on git, updating to the latest version is as simple as <code>pull</code>-ing changes or <code>rebase</code>-ing.
-To download the newest version first navigate to SCION root directory:</p>
+<p>This type of installations need a manual trigger of the update. If you received an email from us saying that we are going to update the infrastructure, and that the update contains <em>breaking changes</em>, you will need to follow these steps if you want to continue using SCION in ScionLab.</p>
+<p>There are essentially two possibilities for dedicated systems:</p>
+<ol>
+<li><a href="#script-to-update">Run a script to update your dedicated systems</a></li>
+<li><a href="#manual-steps-to-update-experts">Completely manually do the steps (experts only)</a></li>
+</ol>
+<p>We recommend the first approach because of its simplicity.</p>
+<h3 id="script-to-update">Script to update<a class="headerlink" href="#script-to-update" title="Permanent link">&para;</a></h3>
+<p>We offer the possibility of a simplified way to update your system. You need to run the following steps in each of your dedicated systems:</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> /tmp
+wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgrade_script.sh -O upgrade.sh
+bash upgrade.sh -m
+</pre></div>
+
+
+<p>The <code>-m</code> parameter is important to indicate you are running the script manually. This should be enough to update your AS.
+If it fails, ensure that you have in <code>$SC</code> a git remote named <code>origin</code> pointing to our repository at https://github.com/netsec-ethz/netsec-scion.git . You can check this by running <code>cd $SC; git remote -v</code></p>
+<p>For reference, we show an example run of the script:</p>
+<div class="codehilite"><pre><span></span><span class="nv">$cd</span> /tmp
+<span class="nv">$wget</span> https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgrade_script.sh -O upgrade.sh
+--2019-01-29 <span class="m">17</span>:10:21--  https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgrade_script.sh
+Resolving raw.githubusercontent.com <span class="o">(</span>raw.githubusercontent.com<span class="o">)</span>... <span class="m">151</span>.101.112.133
+Connecting to raw.githubusercontent.com <span class="o">(</span>raw.githubusercontent.com<span class="o">)</span><span class="p">|</span><span class="m">151</span>.101.112.133<span class="p">|</span>:443... connected.
+HTTP request sent, awaiting response... <span class="m">200</span> OK
+
+...
+
+Done, got response from server:
+SCION IA follows standard.
+Done.
+</pre></div>
+
+
+<h3 id="manual-steps-to-update-experts">Manual steps to update (experts)<a class="headerlink" href="#manual-steps-to-update-experts" title="Permanent link">&para;</a></h3>
+<p>If you choose to perform the update yourself, the steps to manually update your AS involve:</p>
+<ul>
+<li>Update the source code of the SCION implementation.</li>
+<li>Rebuild SCION services.</li>
+<li>Get an updated configuration from the Coordinator</li>
+</ul>
+<h4 id="update-the-source-code">Update the source code<a class="headerlink" href="#update-the-source-code" title="Permanent link">&para;</a></h4>
+<p>Stash all uncommited changes before doing this procedure.</p>
 <div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
+./scion.sh stop
+git stash
+git fetch origin
+git reset --hard origin/scionlab
 </pre></div>
 
 
-<p>then fetch newest changes from remote <code>scionlab</code> branch and rebase:</p>
-<div class="codehilite"><pre><span></span>git fetch origin scionlab
-git rebase origin/scionlab
-</pre></div>
-
-
-<h3 id="rebuild-scion">Rebuild SCION<a class="headerlink" href="#rebuild-scion" title="Permanent link">&para;</a></h3>
-<p>If git reports that new modifications were downloaded when we rebased, it is necessary to restart scion infrastructure:</p>
-<div class="codehilite"><pre><span></span>./scion.sh stop
-~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
+<h4 id="rebuild-scion-services">Rebuild SCION Services<a class="headerlink" href="#rebuild-scion-services" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
+sudo apt-get purge parallel
 ./scion.sh clean
-mv ./go/vendor/vendor.json /tmp/ <span class="o">&amp;&amp;</span> rm -r ./go/vendor/* <span class="o">&amp;&amp;</span> mv /tmp/vendor.json ./go/vendor/
 ./env/deps
 ./scion.sh build
 </pre></div>
 
 
-<div class="admonition hint">
-<p class="admonition-title">If you see an error while running <code>./env/deps</code> regarding <code>apt-get</code> trying to remove a package, like this</p>
-</div>
-<div class="codehilite"><pre><span></span>The following packages will be REMOVED:
-  parallel
-The following NEW packages will be installed:
-  jq libonig2 libpcap-dev libpcap0.8-dev moreutils sqlite3
-<span class="m">0</span> upgraded, <span class="m">6</span> newly installed, <span class="m">1</span> to remove and <span class="m">147</span> not upgraded.
+<h4 id="get-updated-configuration">Get updated configuration<a class="headerlink" href="#get-updated-configuration" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> /tmp
+wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scripts/check_as_config.sh -O check_as_config.sh
+bash check_as_config.sh -f
 </pre></div>
 
 
-<div class="admonition hint">
-<p class="admonition-title"> </p>
-<p>You will need to remove the package manuallly by running <code>sudo apt-get remove parallel</code></p>
-<p>After this, run again <code>./env/deps</code> and continue the steps described <a href="#rebuild-scion">above</a></p>
-</div>
-<p>Your SCION installation should be now up to date. Once SCION is built without problems, we can start the AS services again:</p>
-<div class="codehilite"><pre><span></span>./scion.sh start nobuild
-</pre></div>
-
-
-<p>And the SCION services will start running.</p>
 <h2 id="last-step-to-finish-the-update">Last step to finish the update<a class="headerlink" href="#last-step-to-finish-the-update" title="Permanent link">&para;</a></h2>
-<p>After the update, the applications that are not delivered directly with SCION (e.g. <code>bwtester</code> or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. <code>bwtester</code> has its own tutorial on how to build it.</p>
+<p>Your SCION installation is now up to date. If SCION is built without problems, we now need to reload the configuration and then start SCION:</p>
+<div class="codehilite"><pre><span></span>./supervisor/supervisor.sh reload
+rm ./gen-cache/*
+./scion.sh start nobuild
+</pre></div>
+
+
+<p>And SCION services are running now.</p>
+<h2 id="scion-applications">SCION Applications<a class="headerlink" href="#scion-applications" title="Permanent link">&para;</a></h2>
+<p>After the update, the applications that are not delivered directly with SCION (e.g. <a href="../../sample_projects/bwtester/"><code>bwtester</code></a> or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. <a href="../../sample_projects/bwtester/"><code>bwtester</code></a> has its own tutorial on how to build it.</p>
+<h2 id="contact-us">Contact us<a class="headerlink" href="#contact-us" title="Permanent link">&para;</a></h2>
 <p>If you experience a problem with the update, please contact us in the community mailing list. Visit the <a href="https://groups.google.com/forum/#!forum/scion-community">SCION Community</a> for more details.</p>
                 
                   
