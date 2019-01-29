@@ -29,19 +29,19 @@ The automatic process will restart SCION if it detected that we downloaded a new
 
 ## Running SCION in a dedicated machine
 
-This type of installations need manual trigger of the update. If you received an email from us saying that we are going to update the infrastructure, and that the update contains _breaking changes_, you will need to follow these steps if you want to continue using SCION in ScionLab.
+This type of installations need a manual trigger of the update. If you received an email from us saying that we are going to update the infrastructure, and that the update contains _breaking changes_, you will need to follow these steps if you want to continue using SCION in ScionLab.
 
 There are essentially two possibilities for dedicated systems:
 
 1. [Run a script to update your dedicated systems](#script-to-update)
 2. [Completely manually do the steps (experts only)](#manual-steps-to-update-experts)
 
-We recommend the first approach because its simplicity.
+We recommend the first approach because of its simplicity.
 
 
 ### Script to update
 
-We offer the possibility of a simplified way to update your system. You would have to run the following steps in each of your dedicated systems:
+We offer the possibility of a simplified way to update your system. You need to run the following steps in each of your dedicated systems:
 
 ```shell
 cd /tmp
@@ -49,8 +49,24 @@ wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgr
 bash upgrade.sh -m
 ```
 
-The `-m` parameter is important. This should be enough to update your AS.
+The `-m` parameter is important to indicate you are running the script manually. This should be enough to update your AS.
 If it fails, ensure that you have in `$SC` a git remote named `origin` pointing to our repository at https://github.com/netsec-ethz/netsec-scion.git . You can check this by running `cd $SC; git remote -v`
+
+For reference, we show an example run of the script:
+```shell
+$cd /tmp
+$wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgrade_script.sh -O upgrade.sh
+--2019-01-29 17:10:21--  https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgrade_script.sh
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.112.133
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.112.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+
+...
+
+Done, got response from server:
+SCION IA follows standard.
+Done.
+```
 
 
 ### Manual steps to update (experts)
@@ -90,19 +106,18 @@ bash check_as_config.sh -f
 
 
 ## Last step to finish the update
-Your SCION installation should be now up to date. If SCION is built without problems, we will reload the configuration and then start SCION:
+Your SCION installation is now up to date. If SCION is built without problems, we now need to reload the configuration and then start SCION:
 
 ```shell
 ./supervisor/supervisor.sh reload
 rm ./gen-cache/*
 ./scion.sh start nobuild
 ```
+And SCION services are running now.
 
 ## SCION Applications
 
-SCION services should be running now.
-
-After the update, the applications that are not delivered directly with SCION (e.g. `bwtester` or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. `bwtester` has its own tutorial on how to build it.
+After the update, the applications that are not delivered directly with SCION (e.g. [`bwtester`](/sample_projects/bwtester.md) or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. [`bwtester`](/sample_projects/bwtester.md) has its own tutorial on how to build it.
 
 ## Contact us
 
