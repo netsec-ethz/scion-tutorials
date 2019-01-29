@@ -29,67 +29,81 @@ The automatic process will restart SCION if it detected that we downloaded a new
 
 ## Running SCION in a dedicated machine
 
-This type of installations need manual update. If you received an email from us saying that we are going to update the infrastructure, and that the update contains _breaking changes_, you will need to follow these steps if you want to continue using SCION in ScionLab.
+This type of installations need manual trigger of the update. If you received an email from us saying that we are going to update the infrastructure, and that the update contains _breaking changes_, you will need to follow these steps if you want to continue using SCION in ScionLab.
 
-### Manual steps to update
+There are essentially two possibilities for dedicated systems:
 
-We can do manually what we automatically do inside the SCION VMs, and these simple steps will update your installation of SCION.
-As our SCION implementation is hosted on git, updating to the latest version is as simple as `pull`-ing changes or `rebase`-ing.
-To download the newest version first navigate to SCION root directory:
+1. [Run a script to update your dedicated systems](#script-to-update)
+2. [Completely manually do the steps (experts only)](#manual-steps-to-update-experts)
 
+We recommend the first approach because its simplicity.
+
+
+### Script to update
+
+We offer the possibility of a simplified way to update your system. You would have to run the following steps in each of your dedicated systems:
+
+```shell
+cd /tmp
+wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgrade_script.sh -O upgrade.sh
+bash upgrade.sh -m
+```
+
+The `-m` parameter is important. This should be enough to update your AS.
+If it fails, ensure that you have in `$SC` a git remote named `origin` pointing to our repository at https://github.com/netsec-ethz/netsec-scion.git . You can check this by running `cd $SC; git remote -v`
+
+
+### Manual steps to update (experts)
+
+If you choose to perform the update yourself, the steps to manually update your AS involve:
+
+- Update the source code of the SCION implementation.
+- Rebuild SCION services.
+- Get an updated configuration from the Coordinator
+
+
+#### Update the source code
+Stash all uncommited changes before doing this procedure.
 ```shell
 cd $SC
-```
-
-then fetch newest changes from remote `scionlab` branch and rebase:
-
-```shell
-git fetch origin scionlab
-git rebase origin/scionlab
-```
-
-
-### Rebuild SCION
-
-If git reports that new modifications were downloaded when we rebased, it is necessary to restart scion infrastructure:
-
-```shell
 ./scion.sh stop
-~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
+git stash
+git fetch origin
+git reset --hard origin/scionlab
+```
+
+#### Rebuild SCION Services
+```shell
+cd $SC
+sudo apt-get purge parallel
 ./scion.sh clean
-mv ./go/vendor/vendor.json /tmp/ && rm -r ./go/vendor/* && mv /tmp/vendor.json ./go/vendor/
 ./env/deps
 ./scion.sh build
 ```
 
-!!! hint "If you see an error while running `./env/deps` regarding `apt-get` trying to remove a package, like this"
-    
+#### Get updated configuration
 ```shell
-The following packages will be REMOVED:
-  parallel
-The following NEW packages will be installed:
-  jq libonig2 libpcap-dev libpcap0.8-dev moreutils sqlite3
-0 upgraded, 6 newly installed, 1 to remove and 147 not upgraded.
+cd /tmp
+wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scripts/check_as_config.sh -O check_as_config.sh
+bash check_as_config.sh -f
 ```
-
-!!! hint " "
-    You will need to remove the package manuallly by running `sudo apt-get remove parallel`
-
-    After this, run again `./env/deps` and continue the steps described [above](#rebuild-scion)
-
-
-Your SCION installation should be now up to date. Once SCION is built without problems, we can start the AS services again:
-
-```shell
-./scion.sh start nobuild
-```
-
-And the SCION services will start running.
 
 
 ## Last step to finish the update
+Your SCION installation should be now up to date. If SCION is built without problems, we will reload the configuration and then start SCION:
+
+```shell
+./supervisor/supervisor.sh reload
+rm ./gen-cache/*
+./scion.sh start nobuild
+```
+
+## SCION Applications
+
+SCION services should be running now.
 
 After the update, the applications that are not delivered directly with SCION (e.g. `bwtester` or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. `bwtester` has its own tutorial on how to build it.
 
+## Contact us
 
 If you experience a problem with the update, please contact us in the community mailing list. Visit the [SCION Community](https://groups.google.com/forum/#!forum/scion-community) for more details.
