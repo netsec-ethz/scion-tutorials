@@ -175,100 +175,110 @@ The lines we are interested in are the last ones, that refer to the `tun0` inter
 It tells us that the virtual machine has a `tun0` interface with IP address `10.0.8.8`. If you don't see this `tun0` interface, you are probably behind a firewall that does not allow UDP traffic on port `1194`. Please check your `/var/log/syslog` to find out if there had been a timeout while trying to establish the `openvpn` connection (search for `ovpn-client` in the `/var/log/syslog` file). If you find out that the `tun0` interface was not brought up because timeouts between your client and the VPN server, it is an indication that a firewall is filtering the traffic: please contact your IT service to add an exception for your machine and port `1194`.
 Also, you can [contact us](#contact) to find out if we can do something about that.
 
-Now, we will verify that the IP address obtained here corresponds to the one the Coordinator believes this VM should obtain. We will simply check the topology file and look for this IP address. Let's look at one topology file. For completeness we show the whole file here, but we only need to find the string containing the `tun0` address; from our previous example we look for `10.0.8.8`. We find it inside the `BourderRouters` block as both the `Public` and `Bind` address for the only border router interface we have, as expected.
+Now, we will verify that the IP address obtained here corresponds to the one the Coordinator believes this VM should obtain. We will simply check the topology file and look for this IP address. Let's look at one topology file. For completeness we show the whole file here, but we only need to find the string containing the `tun0` address; from our previous example we look for `10.0.8.8`. We find it inside the `BourderRouters` block as the `PublicOverlay` address for the only border router interface we have, as expected.
 
 ```json
 ubuntu@ubuntu-xenial:~$ cat $SC/gen/ISD17/ASffaa_1_64/cs17-ffaa_1_64-1/topology.json 
 {
   "PathService": {
     "ps17-ffaa_1_64-1": {
-      "Public": [
-        {
-          "L4Port": 31044,
-          "Addr": "10.0.2.15"
+      "Addrs": {
+        "IPv4": {
+          "Public": {
+            "Addr": "10.0.2.15",
+            "L4Port": 31044
+          }
         }
-      ]
+      }
     }
   },
-  "Core": false,
   "CertificateService": {
     "cs17-ffaa_1_64-1": {
-      "Public": [
-        {
-          "L4Port": 31043,
-          "Addr": "10.0.2.15"
+      "Addrs": {
+        "IPv4": {
+          "Public": {
+            "Addr": "10.0.2.15",
+            "L4Port": 31043
+          }
         }
-      ]
+      }
     }
   },
-  "BeaconService": {
-    "bs17-ffaa_1_64-1": {
-      "Public": [
-        {
-          "L4Port": 31041,
-          "Addr": "10.0.2.15"
+  "ISD_AS": "17-ffaa:1:64",
+  "SibraService": {
+    "sb17-ffaa_1_64-1": {
+      "Addrs": {
+        "IPv4": {
+          "Public": {
+            "Addr": "10.0.2.15",
+            "L4Port": 31045
+          }
         }
-      ]
-    }
-  },
-  "ZookeeperService": {
-    "1": {
-      "L4Port": 2181,
-      "Addr": "127.0.0.1"
+      }
     }
   },
   "Overlay": "UDP/IPv4",
+  "DiscoveryService": {},
   "MTU": 1472,
-  "SibraService": {
-    "sb17-ffaa_1_64-1": {
-      "Public": [
-        {
-          "L4Port": 31045,
-          "Addr": "10.0.2.15"
+  "BeaconService": {
+    "bs17-ffaa_1_64-1": {
+      "Addrs": {
+        "IPv4": {
+          "Public": {
+            "Addr": "10.0.2.15",
+            "L4Port": 31041
+          }
         }
-      ]
+      }
+    }
+  },
+  "Core": false,
+  "ZookeeperService": {
+    "1": {
+      "Addr": "127.0.0.1",
+      "L4Port": 2181
     }
   },
   "BorderRouters": {
     "br17-ffaa_1_64-1": {
+      "InternalAddrs": {
+        "IPv4": {
+          "PublicOverlay": {
+            "Addr": "10.0.2.15",
+            "OverlayPort": 31042
+          }
+        }
+      },
+      "CtrlAddr": {
+        "IPv4": {
+          "Public": {
+            "Addr": "10.0.2.15",
+            "L4Port": 30042
+          }
+        }
+      },
       "Interfaces": {
         "1": {
           "Bandwidth": 1000,
-          "Remote": {
-            "L4Port": 50015,
-            "Addr": "10.0.8.1"
-          },
-          "InternalAddrIdx": 0,
-          "LinkTo": "PARENT",
-          "Bind": {
-            "L4Port": 50000,
-            "Addr": "10.0.8.8"
-          },
+          "ISD_AS": "17-ffaa:0:1107",
           "MTU": 1472,
           "Overlay": "UDP/IPv4",
-          "Public": {
-            "L4Port": 50000,
-            "Addr": "10.0.8.8"
+          "PublicOverlay": {
+            "Addr": "10.0.8.8",
+            "OverlayPort": 50000
           },
-          "ISD_AS": "17-ffaa:0:1107"
+          "RemoteOverlay": {
+            "Addr": "10.0.8.1",
+            "OverlayPort": 50202
+          },
+          "LinkTo": "PARENT"
         }
-      },
-      "InternalAddrs": [
-        {
-          "Public": [
-            {
-              "L4Port": 31042,
-              "Addr": "10.0.2.15"
-            }
-          ]
-        }
-      ]
+      }
     }
-  },
-  "ISD_AS": "17-ffaa:1:64"
+  }
 }
 ```
-If you find your `tun0` IP address to be the same as in the `Bind` and `Public` parts of the `BorderRouter` blocks, please continue to step [Check SCION is running](#check-scion-is-running). If you did not find the `tun0` IP address in your topology file, we will destroy the existing virtual machine and remove its settings by first logging out of it and then running the steps described in the snippet [vagrant destroy](#destroy). After destroying the virtual machine, we can delete its configuration:
+If you find your `tun0` IP address to be the same as in the `PublicOverlay` part of the `BorderRouter` blocks, please continue to step [Check SCION is running](#check-scion-is-running). If you did not find the `tun0` IP address in your topology file, we will destroy the existing virtual machine and remove its settings by first logging out of it and then running the steps described in the snippet [vagrant destroy](#destroy). After destroying the virtual machine, we can delete its configuration:
 
 ```shell
 $ vagrant destroy -f
@@ -380,9 +390,9 @@ So in terms of the VM structure, IDs and processes everything seems to be alrigh
 
 Because the tunnel interface `tun0` is established (double check you still see the `tun0` interface when running `ip a`), we should be able to reach the other end. Recalling the topology file we showed in the [Check VPN step](#check-vpn), we look at the `BorderRouter` block, `Remote` part:
 ```json
-          "Remote": {
+          "RemoteOverlay": {
             "Addr": "10.0.8.1",
-            "L4Port": 60010
+            "OverlayPort": 50202
           },
 ```
 It indicates the other end's IP address is `10.0.8.1`. It is typically our own VPN IP address (in our examples`10.0.8.8`) with a `1` replacing the number after the last dot `.`, but we are now sure this is the address of the attachment point. We should be able to reach it:
