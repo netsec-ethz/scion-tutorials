@@ -997,100 +997,110 @@ Swap:            0B          0B          0B
 
 <p>It tells us that the virtual machine has a <code>tun0</code> interface with IP address <code>10.0.8.8</code>. If you don't see this <code>tun0</code> interface, you are probably behind a firewall that does not allow UDP traffic on port <code>1194</code>. Please check your <code>/var/log/syslog</code> to find out if there had been a timeout while trying to establish the <code>openvpn</code> connection (search for <code>ovpn-client</code> in the <code>/var/log/syslog</code> file). If you find out that the <code>tun0</code> interface was not brought up because timeouts between your client and the VPN server, it is an indication that a firewall is filtering the traffic: please contact your IT service to add an exception for your machine and port <code>1194</code>.
 Also, you can <a href="#contact">contact us</a> to find out if we can do something about that.</p>
-<p>Now, we will verify that the IP address obtained here corresponds to the one the Coordinator believes this VM should obtain. We will simply check the topology file and look for this IP address. Let's look at one topology file. For completeness we show the whole file here, but we only need to find the string containing the <code>tun0</code> address; from our previous example we look for <code>10.0.8.8</code>. We find it inside the <code>BourderRouters</code> block as both the <code>Public</code> and <code>Bind</code> address for the only border router interface we have, as expected.</p>
+<p>Now, we will verify that the IP address obtained here corresponds to the one the Coordinator believes this VM should obtain. We will simply check the topology file and look for this IP address. Let's look at one topology file. For completeness we show the whole file here, but we only need to find the string containing the <code>tun0</code> address; from our previous example we look for <code>10.0.8.8</code>. We find it inside the <code>BourderRouters</code> block as the <code>PublicOverlay</code> address for the only border router interface we have, as expected.</p>
 <div class="codehilite"><pre><span></span><span class="err">ubuntu@ubuntu-xenial:~$</span> <span class="err">cat</span> <span class="err">$SC/gen/ISD</span><span class="mi">17</span><span class="err">/ASffaa_</span><span class="mi">1</span><span class="err">_</span><span class="mi">64</span><span class="err">/cs</span><span class="mi">17</span><span class="err">-ffaa_</span><span class="mi">1</span><span class="err">_</span><span class="mi">64-1</span><span class="err">/topology.json</span> 
 <span class="p">{</span>
   <span class="nt">&quot;PathService&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;ps17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-          <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31044</span><span class="p">,</span>
-          <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span>
+      <span class="nt">&quot;Addrs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;IPv4&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31044</span>
+          <span class="p">}</span>
         <span class="p">}</span>
-      <span class="p">]</span>
+      <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">},</span>
-  <span class="nt">&quot;Core&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
   <span class="nt">&quot;CertificateService&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;cs17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-          <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31043</span><span class="p">,</span>
-          <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span>
+      <span class="nt">&quot;Addrs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;IPv4&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31043</span>
+          <span class="p">}</span>
         <span class="p">}</span>
-      <span class="p">]</span>
+      <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">},</span>
-  <span class="nt">&quot;BeaconService&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;bs17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-          <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31041</span><span class="p">,</span>
-          <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span>
+  <span class="nt">&quot;ISD_AS&quot;</span><span class="p">:</span> <span class="s2">&quot;17-ffaa:1:64&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;SibraService&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;sb17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;Addrs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;IPv4&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31045</span>
+          <span class="p">}</span>
         <span class="p">}</span>
-      <span class="p">]</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;ZookeeperService&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">2181</span><span class="p">,</span>
-      <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span>
+      <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="nt">&quot;Overlay&quot;</span><span class="p">:</span> <span class="s2">&quot;UDP/IPv4&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;DiscoveryService&quot;</span><span class="p">:</span> <span class="p">{},</span>
   <span class="nt">&quot;MTU&quot;</span><span class="p">:</span> <span class="mi">1472</span><span class="p">,</span>
-  <span class="nt">&quot;SibraService&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&quot;sb17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-          <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31045</span><span class="p">,</span>
-          <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span>
+  <span class="nt">&quot;BeaconService&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;bs17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;Addrs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;IPv4&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31041</span>
+          <span class="p">}</span>
         <span class="p">}</span>
-      <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;Core&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nt">&quot;ZookeeperService&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">2181</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="nt">&quot;BorderRouters&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;br17-ffaa_1_64-1&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;InternalAddrs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;IPv4&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;PublicOverlay&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;OverlayPort&quot;</span><span class="p">:</span> <span class="mi">31042</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="nt">&quot;CtrlAddr&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;IPv4&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">30042</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
       <span class="nt">&quot;Interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;1&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;Bandwidth&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
-          <span class="nt">&quot;Remote&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">50015</span><span class="p">,</span>
-            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.8.1&quot;</span>
-          <span class="p">},</span>
-          <span class="nt">&quot;InternalAddrIdx&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-          <span class="nt">&quot;LinkTo&quot;</span><span class="p">:</span> <span class="s2">&quot;PARENT&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;Bind&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
-            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.8.8&quot;</span>
-          <span class="p">},</span>
+          <span class="nt">&quot;ISD_AS&quot;</span><span class="p">:</span> <span class="s2">&quot;17-ffaa:0:1107&quot;</span><span class="p">,</span>
           <span class="nt">&quot;MTU&quot;</span><span class="p">:</span> <span class="mi">1472</span><span class="p">,</span>
           <span class="nt">&quot;Overlay&quot;</span><span class="p">:</span> <span class="s2">&quot;UDP/IPv4&quot;</span><span class="p">,</span>
-          <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">50000</span><span class="p">,</span>
-            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.8.8&quot;</span>
+          <span class="nt">&quot;PublicOverlay&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.8.8&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;OverlayPort&quot;</span><span class="p">:</span> <span class="mi">50000</span>
           <span class="p">},</span>
-          <span class="nt">&quot;ISD_AS&quot;</span><span class="p">:</span> <span class="s2">&quot;17-ffaa:0:1107&quot;</span>
+          <span class="nt">&quot;RemoteOverlay&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.8.1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;OverlayPort&quot;</span><span class="p">:</span> <span class="mi">50202</span>
+          <span class="p">},</span>
+          <span class="nt">&quot;LinkTo&quot;</span><span class="p">:</span> <span class="s2">&quot;PARENT&quot;</span>
         <span class="p">}</span>
-      <span class="p">},</span>
-      <span class="nt">&quot;InternalAddrs&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-          <span class="nt">&quot;Public&quot;</span><span class="p">:</span> <span class="p">[</span>
-            <span class="p">{</span>
-              <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">31042</span><span class="p">,</span>
-              <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.2.15&quot;</span>
-            <span class="p">}</span>
-          <span class="p">]</span>
-        <span class="p">}</span>
-      <span class="p">]</span>
+      <span class="p">}</span>
     <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="nt">&quot;ISD_AS&quot;</span><span class="p">:</span> <span class="s2">&quot;17-ffaa:1:64&quot;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<p>If you find your <code>tun0</code> IP address to be the same as in the <code>Bind</code> and <code>Public</code> parts of the <code>BorderRouter</code> blocks, please continue to step <a href="#check-scion-is-running">Check SCION is running</a>. If you did not find the <code>tun0</code> IP address in your topology file, we will destroy the existing virtual machine and remove its settings by first logging out of it and then running the steps described in the snippet <a href="#destroy">vagrant destroy</a>. After destroying the virtual machine, we can delete its configuration:</p>
+<p>If you find your <code>tun0</code> IP address to be the same as in the <code>PublicOverlay</code> part of the <code>BorderRouter</code> blocks, please continue to step <a href="#check-scion-is-running">Check SCION is running</a>. If you did not find the <code>tun0</code> IP address in your topology file, we will destroy the existing virtual machine and remove its settings by first logging out of it and then running the steps described in the snippet <a href="#destroy">vagrant destroy</a>. After destroying the virtual machine, we can delete its configuration:</p>
 <div class="codehilite"><pre><span></span>$ vagrant destroy -f
  .
  .
@@ -1198,9 +1208,9 @@ Using path:
 <h3 id="check-scion-connectivity">Check SCION Connectivity<a class="headerlink" href="#check-scion-connectivity" title="Permanent link">&para;</a></h3>
 <p>So in terms of the VM structure, IDs and processes everything seems to be alright. But our applications still don't work. We need to go a bit more low level and find out what the problem is. In this check we will test if the connection between the VM and the attachment point seems okay or not.</p>
 <p>Because the tunnel interface <code>tun0</code> is established (double check you still see the <code>tun0</code> interface when running <code>ip a</code>), we should be able to reach the other end. Recalling the topology file we showed in the <a href="#check-vpn">Check VPN step</a>, we look at the <code>BorderRouter</code> block, <code>Remote</code> part:</p>
-<div class="codehilite"><pre><span></span>          <span class="s2">&quot;Remote&quot;</span><span class="err">:</span> <span class="p">{</span>
+<div class="codehilite"><pre><span></span>          <span class="s2">&quot;RemoteOverlay&quot;</span><span class="err">:</span> <span class="p">{</span>
             <span class="nt">&quot;Addr&quot;</span><span class="p">:</span> <span class="s2">&quot;10.0.8.1&quot;</span><span class="p">,</span>
-            <span class="nt">&quot;L4Port&quot;</span><span class="p">:</span> <span class="mi">60010</span>
+            <span class="nt">&quot;OverlayPort&quot;</span><span class="p">:</span> <span class="mi">50202</span>
           <span class="p">}</span><span class="err">,</span>
 </pre></div>
 
