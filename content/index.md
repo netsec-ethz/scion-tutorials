@@ -53,6 +53,7 @@ The following tutorials cover how to install, configure, and run a SCION infrast
 * [Running AS Visualization](/as_visualization/running_asviz.md)
 * [Browser AS Visualization](/as_visualization/browser_asviz.md)
 * [Command-line AS Visualization](/as_visualization/command_asviz.md)
+* [SCIONLab SIG testing](/sample_projects/remote_sig.md)
 
 ## SCION tips and tricks
 

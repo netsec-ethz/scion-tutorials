@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
     
     
       
@@ -561,6 +561,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sample_projects/remote_sig/" title="SCIONLab SIG testing" class="md-nav__link">
+      SCIONLab SIG testing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -746,16 +758,16 @@
                 
                 <h1 id="connecting-to-scionlab-where-the-network-has-a-static-public-ip-address-but-the-machine-itself-is-behind-a-network-address-translation-nat-device">Connecting to SCIONLab where the network has a static public IP address, but the machine itself is behind a Network Address Translation (NAT) device<a class="headerlink" href="#connecting-to-scionlab-where-the-network-has-a-static-public-ip-address-but-the-machine-itself-is-behind-a-network-address-translation-nat-device" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>The machine should be set up as described in the <a href="../public_ip/">tutorial of the host with a public IP address</a>. Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.</p>
+<p>The machine should be set up as described in the <a href="/general_scion_configuration/public_ip.md">tutorial of the host with a public IP address</a>. Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
-<p>Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the <a href="../vpn_setup/">OpenVPN connection tutorial</a>.</p>
+<p>Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the <a href="/general_scion_configuration/vpn_setup.md">OpenVPN connection tutorial</a>.</p>
 </div>
 <h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <p>The first step is to find out the internal IP address of your host, as well as the external IP address outside the NAT.</p>
 <p>Several web sites offer a service that displays the external IP address of a host, for instance <a href="http://whatismyip.host/">whatismyip</a>. You will need to provide the displayed IPv4 address on the SCIONLab web site in the second step.</p>
 <p>The internal IPv4 address can be found with <code>ifconfig</code> and spotting the address of the main network connection.</p>
-<p>The second step is to complete Steps 1 and 2 of the installation of the basic system as explained in the earlier <a href="../public_ip/">tutorial of the host with a public IP address</a>, using the external IP address found in the previous step.</p>
+<p>The second step is to complete Steps 1 and 2 of the installation of the basic system as explained in the earlier <a href="/general_scion_configuration/public_ip.md">tutorial of the host with a public IP address</a>, using the external IP address found in the previous step.</p>
 <p>The third step is to install port forwarding, so that the two SCION border routers can communicate. Ideally, you can set up port forwarding on your NAT device for UDP port 50000 to the internal IPv4 address of your system. If you also need to specify the IP address and UDP of the other border router that originates the packets, you can look at the <code>topology.json</code> file in your gen folder, for instance at this location: <code>gen/ISD1/AS1026/br1-1026-1/</code>, adjusting the ISD and AS numbers to your case. In that file, search for the term <code>Remote</code>, which specifies the IP address and UDP port from which the connecting packets originate.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -763,19 +775,17 @@
 </div>
 <p>The fourth step re-maps the IP address of the SCION infrastructure devices to the internal address of your host.</p>
 <p>For this, you can execute the following command from your main SCION directory (<code>cd $SC</code> to get there), replacing <code>192.168.1.24</code> with the internal IPv4 address of your host.</p>
-<div class="codehilite"><pre><span></span><span class="nv">BIND_IP</span><span class="o">=</span><span class="m">192</span>.168.1.24<span class="p">;</span> sed -e <span class="s1">&#39;/&quot;Bind&quot;/{:x n;s/\(&quot;Addr&quot;: \)&quot;.*&quot;/\1&quot;&#39;</span><span class="si">${</span><span class="nv">BIND_IP</span><span class="si">}</span><span class="s1">&#39;&quot;/;Tx}&#39;</span> -i ./gen/*/*/*/topology.json
-</pre></div>
+<pre class="codehilite"><code class="language-shell">BIND_IP=192.168.1.24; sed -e '/&quot;Bind&quot;/{:x n;s/\(&quot;Addr&quot;: \)&quot;.*&quot;/\1&quot;'${BIND_IP}'&quot;/;Tx}' -i ./gen/*/*/*/topology.json</code></pre>
 
 
 <p>This completes the installation! You can restart the infrastructure in the following way:</p>
-<div class="codehilite"><pre><span></span>./scion.sh stop
+<pre class="codehilite"><code class="language-shell">./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run
-</pre></div>
+./scion.sh run</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="../verifying_scion_installation/">Verifying SCION Installation</a>.</p>
+<p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="/general_scion_configuration/verifying_scion_installation.md">Verifying SCION Installation</a>.</p>
                 
                   
                 
@@ -826,7 +836,7 @@
     
       <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
     

@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
     
     
       
@@ -507,6 +507,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sample_projects/remote_sig/" title="SCIONLab SIG testing" class="md-nav__link">
+      SCIONLab SIG testing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -789,9 +801,9 @@ You can then check on the scion-coordinator on your <a href="https://www.scionla
 </div>
 <h2 id="make-use-of-the-device">Make use of the device<a class="headerlink" href="#make-use-of-the-device" title="Permanent link">&para;</a></h2>
 <p>The SCION is running a full AS connected to the SCIONLab infrastructure. This means the device is running the following services: a border router, a beacon server, a certificate server, a path server and a SIBRA server. You can read about the function of each service in the <a href="https://www.scion-architecture.net/pdf/SCION-book.pdf">SCION book</a>.
-In addition, SCION boxes also run ithe SCIONviz server which allows you to visualize the paths you AS knows about. You can connect to SCIONviz by connecting a regular IP device to one of the remaining interfaces. The open the webpage http://172.16.1.1:8000 and the SCIONviz will load. For instructions on how to use SCIONviz, please see the <a href="../../as_visualization/browser_asviz/">SCIONviz tutorial</a> (but make sure to use the address mentioned here).</p>
+In addition, SCION boxes also run ithe SCIONviz server which allows you to visualize the paths you AS knows about. You can connect to SCIONviz by connecting a regular IP device to one of the remaining interfaces. The open the webpage http://172.16.1.1:8000 and the SCIONviz will load. For instructions on how to use SCIONviz, please see the <a href="/as_visualization/browser_asviz.md">SCIONviz tutorial</a> (but make sure to use the address mentioned here).</p>
 <h2 id="setup-an-endhost-and-connect-it-via-the-scion-box">Setup an endhost and connect it via the SCION box<a class="headerlink" href="#setup-an-endhost-and-connect-it-via-the-scion-box" title="Permanent link">&para;</a></h2>
-<p>Setup an endhost and configure it as described in <a href="../../general_scion_configuration/setup_endhost/">Configuring SCION endhost topology</a>.
+<p>Setup an endhost and configure it as described in <a href="/general_scion_configuration/setup_endhost.md">Configuring SCION endhost topology</a>.
 Then connect the machine to one of the secondary interfaces of you SCION box. Your devices will be allocated a local address.</p>
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>Check out the <a href="https://github.com/netsec-ethz/scion/">SCION code base</a> and start contributing.</p>
@@ -845,7 +857,7 @@ Then connect the machine to one of the secondary interfaces of you SCION box. Yo
     
       <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
     
