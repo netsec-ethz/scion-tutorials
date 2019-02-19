@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
     
     
       
@@ -629,6 +629,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sample_projects/remote_sig/" title="SCIONLab SIG testing" class="md-nav__link">
+      SCIONLab SIG testing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -885,27 +897,23 @@
 <p>Webapp is a Go application that will serve up a static web portal to make it easy to
 experiment with SCIONLab test apps on a virtual machine.</p>
 <p>To install the SCIONLab <code>webapp</code>:</p>
-<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/webapp
-</pre></div>
+<pre class="codehilite"><code class="language-shell">go get github.com/netsec-ethz/scion-apps/webapp</code></pre>
 
 
 <h3 id="local-infrastructure">Local Infrastructure<a class="headerlink" href="#local-infrastructure" title="Permanent link">&para;</a></h3>
 <p>To run the Go Web UI at default localhost 127.0.0.1:8000 run:</p>
-<div class="codehilite"><pre><span></span>webapp
-</pre></div>
+<pre class="codehilite"><code class="language-shell">webapp</code></pre>
 
 
 <h3 id="scionlab-virtual-machine">SCIONLab Virtual Machine<a class="headerlink" href="#scionlab-virtual-machine" title="Permanent link">&para;</a></h3>
 <p>Using vagrant, make sure to edit your <code>vagrantfile</code> to provision the additional port
 for the Go web server by adding this line for port 8080 (for example, just choose any forwarding
 port not already in use by vagrant):</p>
-<div class="codehilite"><pre><span></span>config.vm.network &quot;forwarded_port&quot;, guest: 8080, host: 8080, protocol: &quot;tcp&quot;
-</pre></div>
+<pre class="codehilite"><code>config.vm.network &quot;forwarded_port&quot;, guest: 8080, host: 8080, protocol: &quot;tcp&quot;</code></pre>
 
 
 <p>To run the Go Web UI at a specific address (-a) and port (-p) like 0.0.0.0:8080 for a SCIONLabVM use:</p>
-<div class="codehilite"><pre><span></span>webapp -a <span class="m">0</span>.0.0.0 -p <span class="m">8080</span> -r .
-</pre></div>
+<pre class="codehilite"><code class="language-shell">webapp -a 0.0.0.0 -p 8080 -r .</code></pre>
 
 
 <p>Now, open a web browser at http://127.0.0.1:8080, to begin.</p>
@@ -913,22 +921,19 @@ port not already in use by vagrant):</p>
 <p>For developing the web server go code, since it is annoying to make several changes,
 only to have to start and stop the web server each time, a watcher library
 like <code>go-watcher</code> is recommended.</p>
-<div class="codehilite"><pre><span></span>go get github.com/canthefason/go-watcher
-go install github.com/canthefason/go-watcher/cmd/watcher
-</pre></div>
+<pre class="codehilite"><code class="language-shell">go get github.com/canthefason/go-watcher
+go install github.com/canthefason/go-watcher/cmd/watcher</code></pre>
 
 
 <p>After installation you can <code>cd</code> to the <code>webapp.go</code> directory and webapp will be rebuilt
 and rerun every time you save your source file changes, with or without command arguments.</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/go/src/github.com/netsec-ethz/scion-apps/webapp
-watcher -a <span class="m">0</span>.0.0.0 -p <span class="m">8080</span> -r ..
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd ~/go/src/github.com/netsec-ethz/scion-apps/webapp
+watcher -a 0.0.0.0 -p 8080 -r ..</code></pre>
 
 
 <p>or</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/go/src/github.com/netsec-ethz/scion-apps/webapp
-watcher
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd ~/go/src/github.com/netsec-ethz/scion-apps/webapp
+watcher</code></pre>
 
 
 <h2 id="webapp-features">Webapp Features<a class="headerlink" href="#webapp-features" title="Permanent link">&para;</a></h2>
@@ -949,19 +954,18 @@ starting webapp.go.</p>
 <h3 id="bwtester-client">bwtester client<a class="headerlink" href="#bwtester-client" title="Permanent link">&para;</a></h3>
 <p>Simply adjust the dials to the desired level, while the icon lock will allow you
 to keep one value constant.</p>
-<p><img alt="Webapp Bandwidth Test" src="../../images/webapp_bwtester.png?raw=true" title="Webapp Bandwidth Test" /></p>
+<p><img alt="Webapp Bandwidth Test" src="/images/webapp_bwtester.png?raw=true" title="Webapp Bandwidth Test" /></p>
 <h3 id="camerapp-client">camerapp client<a class="headerlink" href="#camerapp-client" title="Permanent link">&para;</a></h3>
 <p>The retrieved image will appear scaled down and can be clicked on to open a larger size.</p>
-<p><img alt="Webapp Image Test" src="../../images/webapp_camerapp.png?raw=true" title="Webapp Image Test" /></p>
+<p><img alt="Webapp Image Test" src="/images/webapp_camerapp.png?raw=true" title="Webapp Image Test" /></p>
 <h3 id="sensorapp-client">sensorapp client<a class="headerlink" href="#sensorapp-client" title="Permanent link">&para;</a></h3>
-<p><img alt="Webapp Stats Test" src="../../images/webapp_sensorapp.png?raw=true" title="Webapp Stats Test" /></p>
+<p><img alt="Webapp Stats Test" src="/images/webapp_sensorapp.png?raw=true" title="Webapp Stats Test" /></p>
 <h3 id="statstest-server">statstest server<a class="headerlink" href="#statstest-server" title="Permanent link">&para;</a></h3>
 <p>This hardware-independent test will echo some remote machine stats from the Python script
 <code>local-stats.py</code>, which is piped to the server for transmission to clients.
 On your remote SCION server node run (substituting your own address parameters):</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz/scion-apps/webapp/tests/statstest/statsserver
-python3 local-stats.py <span class="p">|</span> sensorserver -s <span class="m">1</span>-15,<span class="o">[</span><span class="m">127</span>.0.0.5<span class="o">]</span>:35555
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd $GOPATH/src/github.com/netsec-ethz/scion-apps/webapp/tests/statstest/statsserver
+python3 local-stats.py | sensorserver -s 1-15,[127.0.0.5]:35555</code></pre>
 
 
 <p>Now, from your webapp browser interface running on your virtual client SCION node,
@@ -971,15 +975,13 @@ by clicking on the <code>sensorapp</code> tab.</p>
 <p>This hardware-independent test will generate an image with some remote machine stats from
 the Go app <code>local-image.go</code>, which will be saved locally for transmission to clients.</p>
 <p>You may need golang.org's image package first:</p>
-<div class="codehilite"><pre><span></span>go get golang.org/x/image
-</pre></div>
+<pre class="codehilite"><code class="language-shell">go get golang.org/x/image</code></pre>
 
 
 <p>On your remote SCION server node run (substituting your own address parameters):</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz/scion-apps/webapp/tests/imgtest/imgserver
+<pre class="codehilite"><code class="language-shell">cd $GOPATH/src/github.com/netsec-ethz/scion-apps/webapp/tests/imgtest/imgserver
 go build
-./imgserver <span class="p">|</span> imageserver -s <span class="m">1</span>-18,<span class="o">[</span><span class="m">127</span>.0.0.8<span class="o">]</span>:38887
-</pre></div>
+./imgserver | imageserver -s 1-18,[127.0.0.8]:38887</code></pre>
 
 
 <p>Now, from your webapp browser interface running on your virtual client SCION node,
@@ -1035,7 +1037,7 @@ recently generated remote image by clicking on the <code>camerapp</code> tab.</p
     
       <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
     

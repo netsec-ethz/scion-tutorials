@@ -76,6 +76,7 @@ nav:
       - Running AS Visualizations: as_visualization/running_asviz.md
       - Browser AS Visualization: as_visualization/browser_asviz.md
       - Command-line AS Visualization: as_visualization/command_asviz.md
+      - SCIONLab SIG testing: sample_projects/remote_sig.md
 
     - SCION tips and tricks:
       - Verifying the installation: general_scion_configuration/verifying_scion_installation.md
