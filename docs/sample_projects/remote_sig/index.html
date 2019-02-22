@@ -555,6 +555,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#testing" title="Testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
       
       
       
@@ -725,6 +732,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#testing" title="Testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+      
       
       
       
@@ -746,22 +760,7 @@
 <p>The <a href="https://github.com/netsec-ethz/netsec-scion/tree/scionlab/go/sig">SCION IP Gateway <code>SIG</code></a> enables legacy IP applications to communicate over SCION. This tutorial describes how to set up two SIGs locally to test the SIG can enable any IP application to communicate over SCION.</p>
 <h2 id="environment">Environment<a class="headerlink" href="#environment" title="Permanent link">&para;</a></h2>
 <p>To test the SIG we will make use of the Vagrant configurations provided on <a href="https://scionlab.org/#/login">scionlab.org</a>.
-Login to your account and use the button <code>Generate a new SCIONLab AS</code>.
-Download the configuration and unpack it to your test directory.</p>
-<p>Go to your test directory and run:</p>
-<pre class="codehilite"><code class="language-shell">vagrant up</code></pre>
-
-
-<p>After the initial configuration of the VM, you can ssh into it with</p>
-<pre class="codehilite"><code class="language-shell">vagrant ssh</code></pre>
-
-
-<p>Inside the VM:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC; ./scion.sh run</code></pre>
-
-
-<p>SCION is now running on host A.</p>
-<p>Do the same for a second host B.</p>
+Set up a Vagrant VM on a host A and a host B using the instructions from <a href="https://netsec-ethz.github.io/scion-tutorials/virtual_machine_setup/dynamic_ip/">Virtual machine with VPN</a>.</p>
 <h2 id="configuring-the-two-sigs">Configuring the two SIGs<a class="headerlink" href="#configuring-the-two-sigs" title="Permanent link">&para;</a></h2>
 <p>We will now create the configuration for two SIG instances, one on the AS you started on host A <code>AS A</code> which we will call sigA and one on host B in <code>AS B</code>, which we will call sigB.
 Create the configuration directories for the SIGs, build the SIG binary and set the linux capabilities on the binary:</p>
@@ -793,7 +792,7 @@ sudo sysctl net.ipv4.ip_forward=1</code></pre>
   IA = &quot;${IAd}&quot;
 
   # The bind IP address (required)
-  IP = &quot;172.16.0.11&quot;
+  IP = &quot;10.0.8.A&quot;
 
   # Control data port, e.g. keepalives. (default 10081)
   CtrlPort = 10081
@@ -848,7 +847,9 @@ sudo sysctl net.ipv4.ip_forward=1</code></pre>
 <pre class="codehilite"><code class="language-shell">sed -i &quot;s/\${IA}/${IA}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
 sed -i &quot;s/\${IAd}/${IAd}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
 sed -i &quot;s/\${AS}/${AS}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-sed -i &quot;s/\${ISD}/${ISD}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config</code></pre>
+sed -i &quot;s/\${ISD}/${ISD}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
+export tunIP=$(echo $(ip a | grep &quot;global tun&quot;) | cut --fields=2 --delimiter=&quot; &quot;)
+sed -i &quot;s/10.0.8.A/${tunIP}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config</code></pre>
 
 
 <p>Create the traffic rules for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.json:</p>
@@ -940,7 +941,7 @@ sed -i &quot;s/\${ISD}/${ISD}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sig
 <p>at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.json</p>
 <pre class="codehilite"><code>{
     &quot;ASes&quot;: {
-        &quot;${IAd}&quot;: {
+        &quot;17-ffaa:1:XXX&quot;: {
             &quot;Nets&quot;: [
                 &quot;172.16.12.0/24&quot;
             ],
@@ -957,7 +958,7 @@ sed -i &quot;s/\${ISD}/${ISD}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sig
 }</code></pre>
 
 
-<p>You need to replace the "10.0.8.XXX" IP with the actual IP of the remote host A.</p>
+<p>You need to replace the "10.0.8.XXX" IP with the actual IP of the remote host A and 17-ffaa:1:XXX with the AS id of the remote AS A.</p>
 <p>Since we are running our SIGs in a VM and we do not have spare physical interfaces on which to run them, we will create two dummy interfaces:</p>
 <pre class="codehilite"><code class="language-shell">sudo modprobe dummy</code></pre>
 
@@ -996,6 +997,8 @@ sudo ip route show table 11
 sudo ip route show table 12</code></pre>
 
 
+<h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
+<p>You can test that your SIG configuration works by running some traffic over it.</p>
 <p>Add some server on host B and client on host A:</p>
 <p>Host B:</p>
 <pre class="codehilite"><code class="language-shell">sudo ip link add server type dummy
@@ -1014,6 +1017,9 @@ sudo ip addr add 172.16.11.1/24 brd + dev client label client:0</code></pre>
 <p>Query the server running on host B from host A:</p>
 <p>Host A:</p>
 <pre class="codehilite"><code class="language-shell">curl --interface 172.16.11.1 172.16.12.1:8081/hello.html</code></pre>
+
+
+<p>You should see the "Hello World!" message as output from the last command.</p>
                 
                   
                 

@@ -6,30 +6,7 @@ The [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/netsec-scion/tree/sc
 ## Environment
 
 To test the SIG we will make use of the Vagrant configurations provided on [scionlab.org](https://scionlab.org/#/login).
-Login to your account and use the button `Generate a new SCIONLab AS`.
-Download the configuration and unpack it to your test directory.
-
-Go to your test directory and run:
-
-
-```shell
-vagrant up
-```
-
-After the initial configuration of the VM, you can ssh into it with
-
-```shell
-vagrant ssh
-```
-
-Inside the VM:
-```shell
-cd $SC; ./scion.sh run
-```
-
-SCION is now running on host A.
-
-Do the same for a second host B.
+Set up a Vagrant VM on a host A and a host B using the instructions from [Virtual machine with VPN](https://netsec-ethz.github.io/scion-tutorials/virtual_machine_setup/dynamic_ip/).
 
 ## Configuring the two SIGs
 
@@ -297,6 +274,10 @@ sudo ip route show table 11
 sudo ip route show table 12
 ```
 
+## Testing
+
+You can test that your SIG configuration works by running some traffic over it.
+
 Add some server on host B and client on host A:
 
 Host B:
@@ -323,6 +304,7 @@ Host A:
 curl --interface 172.16.11.1 172.16.12.1:8081/hello.html
 ```
 
+You should see the "Hello World!" message as output from the last command.
 
 
 
