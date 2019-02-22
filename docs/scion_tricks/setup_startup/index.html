@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -800,8 +800,8 @@
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>It is necessary to have SCION successfully installed on your system before proceeding with this tutorial. Necessary steps for installing SCION can be found on following pages:</p>
 <ul>
-<li><a href="/native_setup/ubuntu_x86_build.md">Installing SCION on Ubuntu x86-64</a></li>
-<li><a href="/native_setup/rpi_ubuntu.md">Installing SCION on Raspberry PI Ubuntu</a></li>
+<li><a href="../../native_setup/ubuntu_x86_build/">Installing SCION on Ubuntu x86-64</a></li>
+<li><a href="../../native_setup/rpi_ubuntu/">Installing SCION on Raspberry PI Ubuntu</a></li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -811,21 +811,23 @@
 <p>We will create <a href="https://www.freedesktop.org/wiki/Software/systemd/">systemd</a> service that will be configured to run SCION infrastructure on system boot.</p>
 <h3 id="step-one-get-template-service-files">Step One - Get template service files<a class="headerlink" href="#step-one-get-template-service-files" title="Permanent link">&para;</a></h3>
 <p>To avoid creating service files from scratch, we can download templates from <a href="https://github.com/netsec-ethz/scion-coord/tree/master/vagrant">SCION Lab</a> repository and customize them for current system. Downloaded template files have value <code>_USER_</code> instead of real system user so we will have to adjust it. Complete process can be finished with following commands:</p>
-<pre class="codehilite"><code class="language-shell">mkdir -p /tmp/scion_services
-cd /tmp/scion_services
+<div class="codehilite"><pre><span></span>mkdir -p /tmp/scion_services
+<span class="nb">cd</span> /tmp/scion_services
 
 wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/vagrant/scion.service
 wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/vagrant/scion-viz.service
 
-sed -i &quot;s/_USER_/$USER/g&quot; *.service</code></pre>
+sed -i <span class="s2">&quot;s/_USER_/</span><span class="nv">$USER</span><span class="s2">/g&quot;</span> *.service
+</pre></div>
 
 
 <h3 id="step-two-register-services-with-systemd">Step Two - Register services with systemd<a class="headerlink" href="#step-two-register-services-with-systemd" title="Permanent link">&para;</a></h3>
 <p>We need to copy newly created services to systemd directory and enable them. This can be done with following commands:</p>
-<pre class="codehilite"><code class="language-shell">sudo cp *.service /etc/systemd/system/
+<div class="codehilite"><pre><span></span>sudo cp *.service /etc/systemd/system/
 
-sudo systemctl enable scion.service
-sudo systemctl enable scion-viz.service</code></pre>
+sudo systemctl <span class="nb">enable</span> scion.service
+sudo systemctl <span class="nb">enable</span> scion-viz.service
+</pre></div>
 
 
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
@@ -880,7 +882,7 @@ sudo systemctl enable scion-viz.service</code></pre>
     
       <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     

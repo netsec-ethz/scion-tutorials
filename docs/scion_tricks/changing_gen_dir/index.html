@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -761,21 +761,22 @@
 <p>The complete configuration for SCION infrastructure is stored in <code>gen</code> directory. This includes topology definition, dispatcher, border router and SCION services configuration. It also includes certificates and other unique AS data.</p>
 <p>Content for this directory can be created in several ways:</p>
 <ul>
-<li>Using topology definition from <code>topology</code> directory. <em>Described in <a href="/general_scion_configuration/local_top.md">Running SCION on local topology</a></em></li>
-<li>Downloading from <a href="https://www.scionlab.org/">SCIONLab Coordination Service</a>. <em>Described in <a href="/general_scion_configuration/vpn_setup.md">Configuring SCION Lab with OpenVPN</a>.</em></li>
+<li>Using topology definition from <code>topology</code> directory. <em>Described in <a href="../../general_scion_configuration/local_top/">Running SCION on local topology</a></em></li>
+<li>Downloading from <a href="https://www.scionlab.org/">SCIONLab Coordination Service</a>. <em>Described in <a href="../../general_scion_configuration/vpn_setup/">Configuring SCION Lab with OpenVPN</a>.</em></li>
 <li>Manually creating topology</li>
 </ul>
 <h2 id="restarting-scion-infrastructure">Restarting SCION infrastructure<a class="headerlink" href="#restarting-scion-infrastructure" title="Permanent link">&para;</a></h2>
 <p>Every time <code>gen</code> directory is changed, it is necessary to restart SCION infrastructure so changes will take effect. This is done with following commands:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
 
 ./scion.sh stop
 ~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run</code></pre>
+./scion.sh run
+</pre></div>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>After topology has been updated it is recommended to <a href="/general_scion_configuration/verifying_scion_installation.md">verify that its working correctly</a></p>
+<p>After topology has been updated it is recommended to <a href="../../general_scion_configuration/verifying_scion_installation/">verify that its working correctly</a></p>
                 
                   
                 
@@ -826,7 +827,7 @@
     
       <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     

@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -800,14 +800,15 @@
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>This tutorial will guide you through the steps required to generate a local topology and run a SCION network locally on your system.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow <a href="/native_setup/ubuntu_x86_build.md">How to build SCION on Ubuntu 16.04 x86-64</a> or <a href="/native_setup/rpi_ubuntu.md">How to build SCION on Raspberry PI</a>.</p>
+<p>This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow <a href="../../native_setup/ubuntu_x86_build/">How to build SCION on Ubuntu 16.04 x86-64</a> or <a href="../../native_setup/rpi_ubuntu/">How to build SCION on Raspberry PI</a>.</p>
 <h2 id="generating-topology">Generating topology<a class="headerlink" href="#generating-topology" title="Permanent link">&para;</a></h2>
 <p>Before continuing with the following steps, you should first navigate to the SCION root directory:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
+</pre></div>
 
 
 <p>The SCION installation comes with a command to generate the local topology from 'topo' configuration files. A default topology is defined in <code>topology/Default.topo</code> and it is depicted in the following figure:</p>
-<p><img alt="Default topology" src="/images/default_topology.png" /></p>
+<p><img alt="Default topology" src="../../images/default_topology.png" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Creating a topology overwrites the existing installation</p>
 <p>When running the topology command deletes the current topology, which is stored in the gen folder. We thus advise to back up the current gen directory <strong>before</strong> calling the topology creation command.</p>
@@ -819,14 +820,15 @@ cp -r /vagrant/gen .</code></p>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Reset runtime environment after topology changes</p>
-<p>Every time a new topology is instantiated, the SCION runtime environment needs to be reset as described <a href="/scion_tricks/changing_gen_dir.md#restarting-scion-infrastructure">here</a>.</p>
+<p>Every time a new topology is instantiated, the SCION runtime environment needs to be reset as described <a href="../../scion_tricks/changing_gen_dir/#restarting-scion-infrastructure">here</a>.</p>
 </div>
 <p>To generate the default topology, you can run</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh topology</code></pre>
+<div class="codehilite"><pre><span></span>./scion.sh topology
+</pre></div>
 
 
 <p>This command will generate the topology information in the <code>gen</code> directory. The structure of the <code>gen</code> directory will be:</p>
-<pre class="codehilite"><code> ./gen/ISD{X}/AS{Y}/
+<div class="codehilite"><pre><span></span> ./gen/ISD{X}/AS{Y}/
      {elem}{X}-{Y}-{Z}/
          as.yml
          path_policy.yml
@@ -836,7 +838,8 @@ cp -r /vagrant/gen .</code></p>
              ISD{X}-AS{Y}-V0.crt
              ISD{X}-V0.trc
          keys/
-             as-sig.key</code></pre>
+             as-sig.key
+</pre></div>
 
 
 <div class="admonition warning">
@@ -864,19 +867,22 @@ cp -r /vagrant/gen .</code></p>
 </ul>
 <h3 id="running-scion">Running SCION<a class="headerlink" href="#running-scion" title="Permanent link">&para;</a></h3>
 <p>Running the SCION infrastructure:</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh run</code></pre>
+<div class="codehilite"><pre><span></span>./scion.sh run
+</pre></div>
 
 
 <p>Stopping the SCION infrastructure:</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh stop</code></pre>
+<div class="codehilite"><pre><span></span>./scion.sh stop
+</pre></div>
 
 
 <p>Testing the infrastructure:</p>
-<pre class="codehilite"><code class="language-shell">./scion.sh test</code></pre>
+<div class="codehilite"><pre><span></span>./scion.sh <span class="nb">test</span>
+</pre></div>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
-<p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="/general_scion_configuration/verifying_scion_installation.md">Verifying SCION Installation</a>.</p>
+<p>After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial <a href="../verifying_scion_installation/">Verifying SCION Installation</a>.</p>
                 
                   
                 
@@ -927,7 +933,7 @@ cp -r /vagrant/gen .</code></p>
     
       <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     

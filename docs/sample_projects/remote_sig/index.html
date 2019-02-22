@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -764,96 +764,100 @@ Set up a Vagrant VM on a host A and a host B using the instructions from <a href
 <h2 id="configuring-the-two-sigs">Configuring the two SIGs<a class="headerlink" href="#configuring-the-two-sigs" title="Permanent link">&para;</a></h2>
 <p>We will now create the configuration for two SIG instances, one on the AS you started on host A <code>AS A</code> which we will call sigA and one on host B in <code>AS B</code>, which we will call sigB.
 Create the configuration directories for the SIGs, build the SIG binary and set the linux capabilities on the binary:</p>
-<pre class="codehilite"><code class="language-shell">export IA=$(cat $SC/gen/ia)
-export IAd=$(cat $SC/gen/ia | sed 's/_/\:/g')
-export AS=$(cat $SC/gen/ia | cut --fields=2 --delimiter=&quot;-&quot;)
-export ISD=$(cat $SC/gen/ia | cut --fields=1 --delimiter=&quot;-&quot;)
-mkdir -p ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
-go build -o ${SC}/bin/sig ${SC}/go/sig/main.go
-sudo setcap cap_net_admin+eip ${SC}/bin/sig</code></pre>
+<div class="codehilite"><pre><span></span><span class="nb">export</span> <span class="nv">IA</span><span class="o">=</span><span class="k">$(</span>cat <span class="nv">$SC</span>/gen/ia<span class="k">)</span>
+<span class="nb">export</span> <span class="nv">IAd</span><span class="o">=</span><span class="k">$(</span>cat <span class="nv">$SC</span>/gen/ia <span class="p">|</span> sed <span class="s1">&#39;s/_/\:/g&#39;</span><span class="k">)</span>
+<span class="nb">export</span> <span class="nv">AS</span><span class="o">=</span><span class="k">$(</span>cat <span class="nv">$SC</span>/gen/ia <span class="p">|</span> cut --fields<span class="o">=</span><span class="m">2</span> --delimiter<span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="k">)</span>
+<span class="nb">export</span> <span class="nv">ISD</span><span class="o">=</span><span class="k">$(</span>cat <span class="nv">$SC</span>/gen/ia <span class="p">|</span> cut --fields<span class="o">=</span><span class="m">1</span> --delimiter<span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="k">)</span>
+mkdir -p <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/gen/ISD<span class="si">${</span><span class="nv">ISD</span><span class="si">}</span>/AS<span class="si">${</span><span class="nv">AS</span><span class="si">}</span>/sig<span class="si">${</span><span class="nv">IA</span><span class="si">}</span>-1/
+go build -o <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/bin/sig <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/go/sig/main.go
+sudo setcap cap_net_admin+eip <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/bin/sig
+</pre></div>
 
 
 <p>Enable routing:</p>
-<pre class="codehilite"><code class="language-shell">sudo sysctl net.ipv4.conf.default.rp_filter=0
-sudo sysctl net.ipv4.conf.all.rp_filter=0
-sudo sysctl net.ipv4.ip_forward=1</code></pre>
+<div class="codehilite"><pre><span></span>sudo sysctl net.ipv4.conf.default.rp_filter<span class="o">=</span><span class="m">0</span>
+sudo sysctl net.ipv4.conf.all.rp_filter<span class="o">=</span><span class="m">0</span>
+sudo sysctl net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
+</pre></div>
 
 
 <p>Create the configuration for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config:</p>
 <p>(You need to replace ${AS}, ${IA} and ${IAd} with the actual values on your system in these configuration files.)</p>
-<pre class="codehilite"><code>[sig]
-  # ID of the SIG (required)
-  ID = &quot;sigA&quot;
+<div class="codehilite"><pre><span></span><span class="k">[sig]</span>
+  <span class="c1"># ID of the SIG (required)</span>
+  <span class="na">ID</span> <span class="o">=</span> <span class="s">&quot;sigA&quot;</span>
 
-  # The SIG config json file. (required)
-  SIGConfig = &quot;/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.json&quot;
+  <span class="c1"># The SIG config json file. (required)</span>
+  <span class="na">SIGConfig</span> <span class="o">=</span> <span class="s">&quot;/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.json&quot;</span>
 
-  # The local IA (required)
-  IA = &quot;${IAd}&quot;
+  <span class="c1"># The local IA (required)</span>
+  <span class="na">IA</span> <span class="o">=</span> <span class="s">&quot;${IAd}&quot;</span>
 
-  # The bind IP address (required)
-  IP = &quot;10.0.8.A&quot;
+  <span class="c1"># The bind IP address (required)</span>
+  <span class="na">IP</span> <span class="o">=</span> <span class="s">&quot;10.0.8.A&quot;</span>
 
-  # Control data port, e.g. keepalives. (default 10081)
-  CtrlPort = 10081
+  <span class="c1"># Control data port, e.g. keepalives. (default 10081)</span>
+  <span class="na">CtrlPort</span> <span class="o">=</span> <span class="s">10081</span>
 
-  # Encapsulation data port. (default 10080)
-  EncapPort = 10080
+  <span class="c1"># Encapsulation data port. (default 10080)</span>
+  <span class="na">EncapPort</span> <span class="o">=</span> <span class="s">10080</span>
 
-  # SCION dispatcher path. (default &quot;&quot;)
-  Dispatcher = &quot;&quot;
+  <span class="c1"># SCION dispatcher path. (default &quot;&quot;)</span>
+  <span class="na">Dispatcher</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
 
-  # Name of TUN device to create. (default DefaultTunName)
-  Tun = &quot;sigA&quot;
+  <span class="c1"># Name of TUN device to create. (default DefaultTunName)</span>
+  <span class="na">Tun</span> <span class="o">=</span> <span class="s">&quot;sigA&quot;</span>
 
-  # Id of the routing table (default 11)
-  TunRTableId = 11
+  <span class="c1"># Id of the routing table (default 11)</span>
+  <span class="na">TunRTableId</span> <span class="o">=</span> <span class="s">11</span>
 
-[sd_client]
-  # Sciond path. It defaults to sciond.DefaultSCIONDPath.
-  Path = &quot;/run/shm/sciond/default.sock&quot;
+<span class="k">[sd_client]</span>
+  <span class="c1"># Sciond path. It defaults to sciond.DefaultSCIONDPath.</span>
+  <span class="na">Path</span> <span class="o">=</span> <span class="s">&quot;/run/shm/sciond/default.sock&quot;</span>
 
-  # Maximum time spent attempting to connect to sciond on start. (default 20s)
-  InitialConnectPeriod = &quot;20s&quot;
+  <span class="c1"># Maximum time spent attempting to connect to sciond on start. (default 20s)</span>
+  <span class="na">InitialConnectPeriod</span> <span class="o">=</span> <span class="s">&quot;20s&quot;</span>
 
-[logging]
-[logging.file]
-  # Location of the logging file.
-  Path = &quot;/home/ubuntu/go/src/github.com/scionproto/scion/logs/sig${IA}-1.log&quot;
+<span class="k">[logging]</span>
+<span class="k">[logging.file]</span>
+  <span class="c1"># Location of the logging file.</span>
+  <span class="na">Path</span> <span class="o">=</span> <span class="s">&quot;/home/ubuntu/go/src/github.com/scionproto/scion/logs/sig${IA}-1.log&quot;</span>
 
-  # File logging level (trace|debug|info|warn|error|crit) (default debug)
-  Level = &quot;debug&quot;
+  <span class="c1"># File logging level (trace|debug|info|warn|error|crit) (default debug)</span>
+  <span class="na">Level</span> <span class="o">=</span> <span class="s">&quot;debug&quot;</span>
 
-  # Max size of log file in MiB (default 50)
-  # Size = 50
+  <span class="c1"># Max size of log file in MiB (default 50)</span>
+  <span class="c1"># Size = 50</span>
 
-  # Max age of log file in days (default 7)
-  # MaxAge = 7
+  <span class="c1"># Max age of log file in days (default 7)</span>
+  <span class="c1"># MaxAge = 7</span>
 
-  # How frequently to flush to the log file, in seconds. If 0, all messages
-  # are immediately flushed. If negative, messages are never flushed
-  # automatically. (default 5)
-  FlushInterval = 5
-[logging.console]
-  # Console logging level (trace|debug|info|warn|error|crit) (default crit)
-  Level = &quot;debug&quot;
+  <span class="c1"># How frequently to flush to the log file, in seconds. If 0, all messages</span>
+  <span class="c1"># are immediately flushed. If negative, messages are never flushed</span>
+  <span class="c1"># automatically. (default 5)</span>
+  <span class="na">FlushInterval</span> <span class="o">=</span> <span class="s">5</span>
+<span class="k">[logging.console]</span>
+  <span class="c1"># Console logging level (trace|debug|info|warn|error|crit) (default crit)</span>
+  <span class="na">Level</span> <span class="o">=</span> <span class="s">&quot;debug&quot;</span>
 
-[metrics]
-# The address to export prometheus metrics on. (default 127.0.0.1:1281)
-  Prometheus = &quot;127.0.0.1:1282&quot;</code></pre>
+<span class="k">[metrics]</span>
+<span class="c1"># The address to export prometheus metrics on. (default 127.0.0.1:1281)</span>
+  <span class="na">Prometheus</span> <span class="o">=</span> <span class="s">&quot;127.0.0.1:1282&quot;</span>
+</pre></div>
 
 
 <p>You can do so with the following command:</p>
-<pre class="codehilite"><code class="language-shell">sed -i &quot;s/\${IA}/${IA}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-sed -i &quot;s/\${IAd}/${IAd}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-sed -i &quot;s/\${AS}/${AS}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-sed -i &quot;s/\${ISD}/${ISD}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-export tunIP=$(echo $(ip a | grep &quot;global tun&quot;) | cut --fields=2 --delimiter=&quot; &quot;)
-sed -i &quot;s/10.0.8.A/${tunIP}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config</code></pre>
+<div class="codehilite"><pre><span></span>sed -i <span class="s2">&quot;s/\${IA}/</span><span class="si">${</span><span class="nv">IA</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/gen/ISD<span class="si">${</span><span class="nv">ISD</span><span class="si">}</span>/AS<span class="si">${</span><span class="nv">AS</span><span class="si">}</span>/sig<span class="si">${</span><span class="nv">IA</span><span class="si">}</span>-1/sigA.config
+sed -i <span class="s2">&quot;s/\${IAd}/</span><span class="si">${</span><span class="nv">IAd</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/gen/ISD<span class="si">${</span><span class="nv">ISD</span><span class="si">}</span>/AS<span class="si">${</span><span class="nv">AS</span><span class="si">}</span>/sig<span class="si">${</span><span class="nv">IA</span><span class="si">}</span>-1/sigA.config
+sed -i <span class="s2">&quot;s/\${AS}/</span><span class="si">${</span><span class="nv">AS</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/gen/ISD<span class="si">${</span><span class="nv">ISD</span><span class="si">}</span>/AS<span class="si">${</span><span class="nv">AS</span><span class="si">}</span>/sig<span class="si">${</span><span class="nv">IA</span><span class="si">}</span>-1/sigA.config
+sed -i <span class="s2">&quot;s/\${ISD}/</span><span class="si">${</span><span class="nv">ISD</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/gen/ISD<span class="si">${</span><span class="nv">ISD</span><span class="si">}</span>/AS<span class="si">${</span><span class="nv">AS</span><span class="si">}</span>/sig<span class="si">${</span><span class="nv">IA</span><span class="si">}</span>-1/sigA.config
+<span class="nb">export</span> <span class="nv">tunIP</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="k">$(</span>ip a <span class="p">|</span> grep <span class="s2">&quot;global tun&quot;</span><span class="k">)</span> <span class="p">|</span> cut --fields<span class="o">=</span><span class="m">2</span> --delimiter<span class="o">=</span><span class="s2">&quot; &quot;</span><span class="k">)</span>
+sed -i <span class="s2">&quot;s/10.0.8.A/</span><span class="si">${</span><span class="nv">tunIP</span><span class="si">}</span><span class="s2">/g&quot;</span> <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/gen/ISD<span class="si">${</span><span class="nv">ISD</span><span class="si">}</span>/AS<span class="si">${</span><span class="nv">AS</span><span class="si">}</span>/sig<span class="si">${</span><span class="nv">IA</span><span class="si">}</span>-1/sigA.config
+</pre></div>
 
 
 <p>Create the traffic rules for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.json:</p>
-<pre class="codehilite"><code>{
+<div class="codehilite"><pre><span></span>{
     &quot;ASes&quot;: {
         &quot;17-ffaa:1:XXX&quot;: {
             &quot;Nets&quot;: [
@@ -869,77 +873,79 @@ sed -i &quot;s/10.0.8.A/${tunIP}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
         }
     },
     &quot;ConfigVersion&quot;: 9001
-}</code></pre>
+}
+</pre></div>
 
 
 <p>You need to replace the "10.0.8.XXX" IP with the actual IP of the remote host B and 17-ffaa:1:XXX with the AS id of the remote AS B.</p>
 <p>And similarly the configuration and traffic rules for the sigB:</p>
 <p>at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config</p>
-<pre class="codehilite"><code>[sig]
-  # ID of the SIG (required)
-  ID = &quot;sigB&quot;
+<div class="codehilite"><pre><span></span><span class="k">[sig]</span>
+  <span class="c1"># ID of the SIG (required)</span>
+  <span class="na">ID</span> <span class="o">=</span> <span class="s">&quot;sigB&quot;</span>
 
-  # The SIG config json file. (required)
-  SIGConfig = &quot;/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.json&quot;
+  <span class="c1"># The SIG config json file. (required)</span>
+  <span class="na">SIGConfig</span> <span class="o">=</span> <span class="s">&quot;/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.json&quot;</span>
 
-  # The local IA (required)
-  IA = &quot;${IAd}&quot;
+  <span class="c1"># The local IA (required)</span>
+  <span class="na">IA</span> <span class="o">=</span> <span class="s">&quot;${IAd}&quot;</span>
 
-  # The bind IP address (required)
-  IP = &quot;172.16.0.12&quot;
+  <span class="c1"># The bind IP address (required)</span>
+  <span class="na">IP</span> <span class="o">=</span> <span class="s">&quot;172.16.0.12&quot;</span>
 
-  # Control data port, e.g. keepalives. (default 10081)
-  CtrlPort = 10084
+  <span class="c1"># Control data port, e.g. keepalives. (default 10081)</span>
+  <span class="na">CtrlPort</span> <span class="o">=</span> <span class="s">10084</span>
 
-  # Encapsulation data port. (default 10080)
-  EncapPort = 10083
+  <span class="c1"># Encapsulation data port. (default 10080)</span>
+  <span class="na">EncapPort</span> <span class="o">=</span> <span class="s">10083</span>
 
-  # SCION dispatcher path. (default &quot;&quot;)
-  Dispatcher = &quot;&quot;
+  <span class="c1"># SCION dispatcher path. (default &quot;&quot;)</span>
+  <span class="na">Dispatcher</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
 
-  # Name of TUN device to create. (default DefaultTunName)
-  Tun = &quot;sigB&quot;
+  <span class="c1"># Name of TUN device to create. (default DefaultTunName)</span>
+  <span class="na">Tun</span> <span class="o">=</span> <span class="s">&quot;sigB&quot;</span>
 
-  # Id of the routing table (default 11)
-  TunRTableId = 12
+  <span class="c1"># Id of the routing table (default 11)</span>
+  <span class="na">TunRTableId</span> <span class="o">=</span> <span class="s">12</span>
 
-[sd_client]
-  # Sciond path. It defaults to sciond.DefaultSCIONDPath.
-  Path = &quot;/run/shm/sciond/default.sock&quot;
+<span class="k">[sd_client]</span>
+  <span class="c1"># Sciond path. It defaults to sciond.DefaultSCIONDPath.</span>
+  <span class="na">Path</span> <span class="o">=</span> <span class="s">&quot;/run/shm/sciond/default.sock&quot;</span>
 
-  # Maximum time spent attempting to connect to sciond on start. (default 20s)
-  InitialConnectPeriod = &quot;20s&quot;
+  <span class="c1"># Maximum time spent attempting to connect to sciond on start. (default 20s)</span>
+  <span class="na">InitialConnectPeriod</span> <span class="o">=</span> <span class="s">&quot;20s&quot;</span>
 
-[logging]
-[logging.file]
-  # Location of the logging file.
-  Path = &quot;/home/ubuntu/go/src/github.com/scionproto/scion/logs/sig${IA}-1.log&quot;
+<span class="k">[logging]</span>
+<span class="k">[logging.file]</span>
+  <span class="c1"># Location of the logging file.</span>
+  <span class="na">Path</span> <span class="o">=</span> <span class="s">&quot;/home/ubuntu/go/src/github.com/scionproto/scion/logs/sig${IA}-1.log&quot;</span>
 
-  # File logging level (trace|debug|info|warn|error|crit) (default debug)
-  Level = &quot;debug&quot;
+  <span class="c1"># File logging level (trace|debug|info|warn|error|crit) (default debug)</span>
+  <span class="na">Level</span> <span class="o">=</span> <span class="s">&quot;debug&quot;</span>
 
-  # Max size of log file in MiB (default 50)
-  # Size = 50
+  <span class="c1"># Max size of log file in MiB (default 50)</span>
+  <span class="c1"># Size = 50</span>
 
-  # Max age of log file in days (default 7)
-  # MaxAge = 7
+  <span class="c1"># Max age of log file in days (default 7)</span>
+  <span class="c1"># MaxAge = 7</span>
 
-  # How frequently to flush to the log file, in seconds. If 0, all messages
-  # are immediately flushed. If negative, messages are never flushed
-  # automatically. (default 5)
-  FlushInterval = 5
-[logging.console]
-  # Console logging level (trace|debug|info|warn|error|crit) (default crit)
-  Level = &quot;debug&quot;
+  <span class="c1"># How frequently to flush to the log file, in seconds. If 0, all messages</span>
+  <span class="c1"># are immediately flushed. If negative, messages are never flushed</span>
+  <span class="c1"># automatically. (default 5)</span>
+  <span class="na">FlushInterval</span> <span class="o">=</span> <span class="s">5</span>
+<span class="k">[logging.console]</span>
+  <span class="c1"># Console logging level (trace|debug|info|warn|error|crit) (default crit)</span>
+  <span class="na">Level</span> <span class="o">=</span> <span class="s">&quot;debug&quot;</span>
 
-[metrics]
-# The address to export prometheus metrics on. (default 127.0.0.1:1281)
-  Prometheus = &quot;127.0.0.1:1282&quot;</code></pre>
+<span class="k">[metrics]</span>
+<span class="c1"># The address to export prometheus metrics on. (default 127.0.0.1:1281)</span>
+  <span class="na">Prometheus</span> <span class="o">=</span> <span class="s">&quot;127.0.0.1:1282&quot;</span>
+</pre></div>
 
 
 <p>and </p>
 <p>at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.json</p>
-<pre class="codehilite"><code>{
+<div class="codehilite"><pre><span></span>{
     &quot;ASes&quot;: {
         &quot;17-ffaa:1:XXX&quot;: {
             &quot;Nets&quot;: [
@@ -955,68 +961,80 @@ sed -i &quot;s/10.0.8.A/${tunIP}/g&quot; ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
         }
     },
     &quot;ConfigVersion&quot;: 9001
-}</code></pre>
+}
+</pre></div>
 
 
 <p>You need to replace the "10.0.8.XXX" IP with the actual IP of the remote host A and 17-ffaa:1:XXX with the AS id of the remote AS A.</p>
 <p>Since we are running our SIGs in a VM and we do not have spare physical interfaces on which to run them, we will create two dummy interfaces:</p>
-<pre class="codehilite"><code class="language-shell">sudo modprobe dummy</code></pre>
+<div class="codehilite"><pre><span></span>sudo modprobe dummy
+</pre></div>
 
 
 <p>On host A:</p>
-<pre class="codehilite"><code class="language-shell">sudo ip link set name dummy11 dev dummy0
-sudo ip addr add 172.16.0.11/32 brd + dev dummy11 label dummy11:0</code></pre>
+<div class="codehilite"><pre><span></span>sudo ip link <span class="nb">set</span> name dummy11 dev dummy0
+sudo ip addr add <span class="m">172</span>.16.0.11/32 brd + dev dummy11 label dummy11:0
+</pre></div>
 
 
 <p>On host B:</p>
-<pre class="codehilite"><code>sudo ip link add dummy12 type dummy
-sudo ip addr add 172.16.0.12/32 brd + dev dummy12 label dummy12:0</code></pre>
+<div class="codehilite"><pre><span></span>sudo ip link add dummy12 type dummy
+sudo ip addr add 172.16.0.12/32 brd + dev dummy12 label dummy12:0
+</pre></div>
 
 
 <p>Now we need to add the routing rules for the two SIGs:</p>
 <p>On host A:</p>
-<pre class="codehilite"><code class="language-shell">sudo ip rule add to 172.16.12.0/24 lookup 11 prio 11</code></pre>
+<div class="codehilite"><pre><span></span>sudo ip rule add to <span class="m">172</span>.16.12.0/24 lookup <span class="m">11</span> prio <span class="m">11</span>
+</pre></div>
 
 
 <p>On host B:</p>
-<pre class="codehilite"><code class="language-shell">sudo ip rule add to 172.16.11.0/24 lookup 12 prio 12</code></pre>
+<div class="codehilite"><pre><span></span>sudo ip rule add to <span class="m">172</span>.16.11.0/24 lookup <span class="m">12</span> prio <span class="m">12</span>
+</pre></div>
 
 
 <p>Now start the two SIGs with the following commands:</p>
 <p>On Host A:</p>
-<pre class="codehilite"><code class="language-shell">$SC/bin/sig -config=/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config &gt; $SC/logs/sig${IA}-1.log 2&gt;&amp;1 &amp;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nv">$SC</span>/bin/sig -config<span class="o">=</span>/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD<span class="si">${</span><span class="nv">ISD</span><span class="si">}</span>/AS<span class="si">${</span><span class="nv">AS</span><span class="si">}</span>/sig<span class="si">${</span><span class="nv">IA</span><span class="si">}</span>-1/sigA.config &gt; <span class="nv">$SC</span>/logs/sig<span class="si">${</span><span class="nv">IA</span><span class="si">}</span>-1.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
+</pre></div>
 
 
 <p>and Host B:</p>
-<pre class="codehilite"><code class="language-shell">$SC/bin/sig -config=/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config &gt; $SC/logs/sig${IA}-1.log 2&gt;&amp;1 &amp;</code></pre>
+<div class="codehilite"><pre><span></span><span class="nv">$SC</span>/bin/sig -config<span class="o">=</span>/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD<span class="si">${</span><span class="nv">ISD</span><span class="si">}</span>/AS<span class="si">${</span><span class="nv">AS</span><span class="si">}</span>/sig<span class="si">${</span><span class="nv">IA</span><span class="si">}</span>-1/sigB.config &gt; <span class="nv">$SC</span>/logs/sig<span class="si">${</span><span class="nv">IA</span><span class="si">}</span>-1.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">&amp;</span>
+</pre></div>
 
 
 <p>To show the ip rules and routes, run:</p>
-<pre class="codehilite"><code class="language-shell">sudo ip rule show
-sudo ip route show table 11
-sudo ip route show table 12</code></pre>
+<div class="codehilite"><pre><span></span>sudo ip rule show
+sudo ip route show table <span class="m">11</span>
+sudo ip route show table <span class="m">12</span>
+</pre></div>
 
 
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <p>You can test that your SIG configuration works by running some traffic over it.</p>
 <p>Add some server on host B and client on host A:</p>
 <p>Host B:</p>
-<pre class="codehilite"><code class="language-shell">sudo ip link add server type dummy
-sudo ip addr add 172.16.12.1/24 brd + dev server label server:0
+<div class="codehilite"><pre><span></span>sudo ip link add server <span class="nb">type</span> dummy
+sudo ip addr add <span class="m">172</span>.16.12.1/24 brd + dev server label server:0
 
-mkdir $SC/WWW
-echo &quot;Hello World!&quot; &gt; $SC/WWW/hello.html
-cd $SC/WWW/ &amp;&amp; python3 -m http.server --bind 172.16.12.1 8081 &amp;</code></pre>
+mkdir <span class="nv">$SC</span>/WWW
+<span class="nb">echo</span> <span class="s2">&quot;Hello World!&quot;</span> &gt; <span class="nv">$SC</span>/WWW/hello.html
+<span class="nb">cd</span> <span class="nv">$SC</span>/WWW/ <span class="o">&amp;&amp;</span> python3 -m http.server --bind <span class="m">172</span>.16.12.1 <span class="m">8081</span> <span class="p">&amp;</span>
+</pre></div>
 
 
 <p>Host A:</p>
-<pre class="codehilite"><code class="language-shell">sudo ip link add client type dummy
-sudo ip addr add 172.16.11.1/24 brd + dev client label client:0</code></pre>
+<div class="codehilite"><pre><span></span>sudo ip link add client <span class="nb">type</span> dummy
+sudo ip addr add <span class="m">172</span>.16.11.1/24 brd + dev client label client:0
+</pre></div>
 
 
 <p>Query the server running on host B from host A:</p>
 <p>Host A:</p>
-<pre class="codehilite"><code class="language-shell">curl --interface 172.16.11.1 172.16.12.1:8081/hello.html</code></pre>
+<div class="codehilite"><pre><span></span>curl --interface <span class="m">172</span>.16.11.1 <span class="m">172</span>.16.12.1:8081/hello.html
+</pre></div>
 
 
 <p>You should see the "Hello World!" message as output from the last command.</p>
@@ -1070,7 +1088,7 @@ sudo ip addr add 172.16.11.1/24 brd + dev client label client:0</code></pre>
     
       <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     

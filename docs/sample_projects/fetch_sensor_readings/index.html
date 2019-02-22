@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -758,7 +758,8 @@
 <p>The <a href="https://github.com/netsec-ethz/scion-apps/">sensorapp application</a> contains fetcher and server applications for sensor readings, using the SCION network. The application is very simple, and sends a single packet to request the information, and obtains typically a single packet in response, containing the readings.</p>
 <h2 id="sensorfetcher">sensorfetcher<a class="headerlink" href="#sensorfetcher" title="Permanent link">&para;</a></h2>
 <p>To install sensorfetcher:</p>
-<pre class="codehilite"><code class="language-shell">go get github.com/netsec-ethz/scion-apps/sensorapp/sensorfetcher</code></pre>
+<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/sensorapp/sensorfetcher
+</pre></div>
 
 
 <div class="admonition note">
@@ -773,20 +774,24 @@
 <li><code>17-ffaa:1:13,[192.168.1.111]:42003</code></li>
 </ul>
 <p>Their readings can be fetched as follows (need to replace client address with actual client address, with an arbitrary free port):</p>
-<pre class="codehilite"><code class="language-shell">sensorfetcher -s 17-ffaa:0:1102,[192.33.93.177]:42003 -c 17-ffaa:0:1108,[10.0.2.15]:42001</code></pre>
+<div class="codehilite"><pre><span></span>sensorfetcher -s <span class="m">17</span>-ffaa:0:1102,<span class="o">[</span><span class="m">192</span>.33.93.177<span class="o">]</span>:42003 -c <span class="m">17</span>-ffaa:0:1108,<span class="o">[</span><span class="m">10</span>.0.2.15<span class="o">]</span>:42001
+</pre></div>
 
 
 <h3 id="sensorserver">sensorserver<a class="headerlink" href="#sensorserver" title="Permanent link">&para;</a></h3>
 <p>To install sensorserver:</p>
-<pre class="codehilite"><code class="language-shell">go get github.com/netsec-ethz/scion-apps/sensorapp/sensorserver</code></pre>
+<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/sensorapp/sensorserver
+</pre></div>
 
 
 <p>We use sensors from Tinkerforge, and the <code>sensorreader.py</code> Python application fetches the sensor values and writes them to <code>stdout</code>. The <code>sensorserver</code> application collects the readings, and serves them as a string to client requests. To start, we use the following command:</p>
-<pre class="codehilite"><code class="language-shell">python3 ${GOPATH}/src/github.com/netsec-ethz/scion-apps/sensorapp/sensorserver/sensorreader.py | sensorserver -s 17-ffaa:0:1102,[192.33.93.177]:42003 &amp;</code></pre>
+<div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/sensorapp/sensorserver/sensorreader.py <span class="p">|</span> sensorserver -s <span class="m">17</span>-ffaa:0:1102,<span class="o">[</span><span class="m">192</span>.33.93.177<span class="o">]</span>:42003 <span class="p">&amp;</span>
+</pre></div>
 
 
 <p>If you do not have any sensor information available, then you can use a simple time application that reports the current time on your system:</p>
-<pre class="codehilite"><code class="language-shell">python3 ${GOPATH}/src/github.com/netsec-ethz/scion-apps/sensorapp/sensorserver/timereader.py | sensorserver -s 17-ffaa:0:1102,[192.33.93.177]:42003 &amp;</code></pre>
+<div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/sensorapp/sensorserver/timereader.py <span class="p">|</span> sensorserver -s <span class="m">17</span>-ffaa:0:1102,<span class="o">[</span><span class="m">192</span>.33.93.177<span class="o">]</span>:42003 <span class="p">&amp;</span>
+</pre></div>
                 
                   
                 
@@ -837,7 +842,7 @@
     
       <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     
