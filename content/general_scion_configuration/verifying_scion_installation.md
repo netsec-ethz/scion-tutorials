@@ -60,3 +60,22 @@ Received 13 bytes from 18-ffaa:0:1202,[128.105.21.208]:40002: seq=1 RTT=157.699m
 ```
 
 Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to [the troubleshooting section](/general_scion_configuration/troubleshooting.md).
+
+!!! Note
+
+If while trying to run `pingpong` you receive an error such as:
+```
+squic: Unable to load TLS cert/key
+>      open gen-certs/tls.pem: no such file or directory
+```
+  Just run the following:
+```shell
+cd $SC
+old=$(umask)
+mkdir -p "gen-certs"
+umask 0177
+openssl genrsa -out "gen-certs/tls.key" 2048
+umask "$old"
+openssl req -new -x509 -key "gen-certs/tls.key" -out "gen-certs/tls.pem" -days 3650 -subj /CN=scion_def_srv
+```
+This would have generated the missing `gen-certs/tls.pem` and `key` files. Run again `pingpong` and you shoult not see the error about the missing certificate.
