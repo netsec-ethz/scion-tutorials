@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
     
     
       
@@ -926,15 +926,17 @@ Some of these changes will break compatibility with past releases. In these case
 <p>If you run SCION inside a VM, SCION should be kept up to date automatically. With this automatic process you don't have to worry about the updates. Still, if you are interested in knowing how we do it, read the next subsection.</p>
 <h3 id="how-is-my-scion-vm-kept-up-to-date">How is my SCION VM kept up to date?<a class="headerlink" href="#how-is-my-scion-vm-kept-up-to-date" title="Permanent link">&para;</a></h3>
 <p>You can always check that is the case by listing the running timers and looking for the one upgrading SCION:</p>
-<pre class="codehilite"><code class="language-shell">sudo systemctl list-timers
+<div class="codehilite"><pre><span></span>sudo systemctl list-timers
 NEXT                         LEFT        LAST                         PASSED       UNIT                         ACTIVATES
-Wed 2018-04-18 16:35:24 UTC  8min left   Wed 2018-04-18 16:25:23 UTC  1min 36s ago scionupgrade.timer           scionupgrade.service</code></pre>
+Wed <span class="m">2018</span>-04-18 <span class="m">16</span>:35:24 UTC  8min left   Wed <span class="m">2018</span>-04-18 <span class="m">16</span>:25:23 UTC  1min 36s ago scionupgrade.timer           scionupgrade.service
+</pre></div>
 
 
 <p>This indicates we have the upgrade service installed. The upgrade service is checking every day that the local git repository is up to date with the <code>scionlab</code> branch. This is done by <em>rebasing</em> the local copy on top of the branch:</p>
-<pre class="codehilite"><code class="language-shell">cd $SC
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
 git fetch origin scionlab
-git rebase origin/scionlab</code></pre>
+git rebase origin/scionlab
+</pre></div>
 
 
 <p>We do this to maximize the chances of successfully updating even if you had local changes done on top.
@@ -949,26 +951,28 @@ The automatic process will restart SCION if it detected that we downloaded a new
 <p>We recommend the first approach because of its simplicity.</p>
 <h3 id="script-to-update">Script to update<a class="headerlink" href="#script-to-update" title="Permanent link">&para;</a></h3>
 <p>We offer the possibility of a simplified way to update your system. You need to run the following steps in each of your dedicated systems:</p>
-<pre class="codehilite"><code class="language-shell">cd /tmp
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> /tmp
 wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgrade_script.sh -O upgrade.sh
-bash upgrade.sh -m</code></pre>
+bash upgrade.sh -m
+</pre></div>
 
 
 <p>The <code>-m</code> parameter is important to indicate you are running the script manually. This should be enough to update your AS.
 If it fails, ensure that you have in <code>$SC</code> a git remote named <code>origin</code> pointing to our repository at https://github.com/netsec-ethz/netsec-scion.git . You can check this by running <code>cd $SC; git remote -v</code></p>
 <p>For reference, we show an example run of the script:</p>
-<pre class="codehilite"><code class="language-shell">$cd /tmp
-$wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgrade_script.sh -O upgrade.sh
---2019-01-29 17:10:21--  https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgrade_script.sh
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 151.101.112.133
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|151.101.112.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
+<div class="codehilite"><pre><span></span><span class="nv">$cd</span> /tmp
+<span class="nv">$wget</span> https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgrade_script.sh -O upgrade.sh
+--2019-01-29 <span class="m">17</span>:10:21--  https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scion_upgrade_script.sh
+Resolving raw.githubusercontent.com <span class="o">(</span>raw.githubusercontent.com<span class="o">)</span>... <span class="m">151</span>.101.112.133
+Connecting to raw.githubusercontent.com <span class="o">(</span>raw.githubusercontent.com<span class="o">)</span><span class="p">|</span><span class="m">151</span>.101.112.133<span class="p">|</span>:443... connected.
+HTTP request sent, awaiting response... <span class="m">200</span> OK
 
 ...
 
 Done, got response from server:
 SCION IA follows standard.
-Done.</code></pre>
+Done.
+</pre></div>
 
 
 <h3 id="manual-steps-to-update-experts">Manual steps to update (experts)<a class="headerlink" href="#manual-steps-to-update-experts" title="Permanent link">&para;</a></h3>
@@ -980,37 +984,41 @@ Done.</code></pre>
 </ul>
 <h4 id="update-the-source-code">Update the source code<a class="headerlink" href="#update-the-source-code" title="Permanent link">&para;</a></h4>
 <p>Stash all uncommited changes before doing this procedure.</p>
-<pre class="codehilite"><code class="language-shell">cd $SC
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
 ./scion.sh stop
 git stash
 git fetch origin
-git reset --hard origin/scionlab</code></pre>
+git reset --hard origin/scionlab
+</pre></div>
 
 
 <h4 id="rebuild-scion-services">Rebuild SCION Services<a class="headerlink" href="#rebuild-scion-services" title="Permanent link">&para;</a></h4>
-<pre class="codehilite"><code class="language-shell">cd $SC
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
 sudo apt-get purge parallel
 ./scion.sh clean
 ./env/deps
-./scion.sh build</code></pre>
+./scion.sh build
+</pre></div>
 
 
 <h4 id="get-updated-configuration">Get updated configuration<a class="headerlink" href="#get-updated-configuration" title="Permanent link">&para;</a></h4>
-<pre class="codehilite"><code class="language-shell">cd /tmp
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> /tmp
 wget https://raw.githubusercontent.com/netsec-ethz/scion-coord/master/scripts/check_as_config.sh -O check_as_config.sh
-bash check_as_config.sh -f</code></pre>
+bash check_as_config.sh -f
+</pre></div>
 
 
 <h2 id="last-step-to-finish-the-update">Last step to finish the update<a class="headerlink" href="#last-step-to-finish-the-update" title="Permanent link">&para;</a></h2>
 <p>Your SCION installation is now up to date. If SCION is built without problems, we now need to reload the configuration and then start SCION:</p>
-<pre class="codehilite"><code class="language-shell">./supervisor/supervisor.sh reload
+<div class="codehilite"><pre><span></span>./supervisor/supervisor.sh reload
 rm ./gen-cache/*
-./scion.sh start nobuild</code></pre>
+./scion.sh start nobuild
+</pre></div>
 
 
 <p>And SCION services are running now.</p>
 <h2 id="scion-applications">SCION Applications<a class="headerlink" href="#scion-applications" title="Permanent link">&para;</a></h2>
-<p>After the update, the applications that are not delivered directly with SCION (e.g. <a href="/sample_projects/bwtester.md"><code>bwtester</code></a> or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. <a href="/sample_projects/bwtester.md"><code>bwtester</code></a> has its own tutorial on how to build it.</p>
+<p>After the update, the applications that are not delivered directly with SCION (e.g. <a href="../../sample_projects/bwtester/"><code>bwtester</code></a> or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. <a href="../../sample_projects/bwtester/"><code>bwtester</code></a> has its own tutorial on how to build it.</p>
 <h2 id="contact-us">Contact us<a class="headerlink" href="#contact-us" title="Permanent link">&para;</a></h2>
 <p>If you experience a problem with the update, please contact us in the community mailing list. Visit the <a href="https://groups.google.com/forum/#!forum/scion-community">SCION Community</a> for more details.</p>
                 
@@ -1063,7 +1071,7 @@ rm ./gen-cache/*
     
       <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
       
     
     
