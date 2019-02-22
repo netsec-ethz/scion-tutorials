@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
     
     
       
@@ -616,6 +616,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sample_projects/remote_sig/" title="SCIONLab SIG testing" class="md-nav__link">
+      SCIONLab SIG testing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -861,78 +873,70 @@ This is useful in situations where your host can take advantage of an existing l
 <p>Depending on how the SCION AS is set up, the steps for configuring the endhost will slightly differ.</p>
 <h3 id="running-as-infrastructure-executes-in-a-vm">Running AS infrastructure executes in a VM<a class="headerlink" href="#running-as-infrastructure-executes-in-a-vm" title="Permanent link">&para;</a></h3>
 <p>In the first way, the SCION AS runs inside a virtual machine (VM). The following figure depicts this scenario.</p>
-<p><img alt="SCION AS in virtual machine" src="../../images/vm_endhost_setup.png" /></p>
+<p><img alt="SCION AS in virtual machine" src="/images/vm_endhost_setup.png" /></p>
 <p>The installation steps of the AS are covered in the following tutorials:</p>
 <ul>
-<li><a href="../../virtual_machine_setup/dynamic_ip/">Running SCION VM with dynamic IP</a></li>
-<li><a href="../../virtual_machine_setup/static_ip/">Running SCION VM with static IP</a></li>
+<li><a href="/virtual_machine_setup/dynamic_ip.md">Running SCION VM with dynamic IP</a></li>
+<li><a href="/virtual_machine_setup/static_ip.md">Running SCION VM with static IP</a></li>
 </ul>
 <h3 id="running-as-infrastructure-natively-on-a-system">Running AS infrastructure natively on a system<a class="headerlink" href="#running-as-infrastructure-natively-on-a-system" title="Permanent link">&para;</a></h3>
 <p>In the second way, the SCION AS is executing natively on a host machine. The following figure depicts this scenario.</p>
-<p><img alt="SCION running natively" src="../../images/native_endhost_setup.png" /></p>
+<p><img alt="SCION running natively" src="/images/native_endhost_setup.png" /></p>
 <p>The installation steps for this setup is described in the following tutorial pages:</p>
 <ul>
-<li><a href="../../native_setup/ubuntu_x86_build/">Installing SCION on Ubuntu 16.04 x86 machine</a></li>
-<li><a href="../../native_setup/rpi_ubuntu/">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></li>
-<li><a href="../public_ip/">Configuring AS and connecting to SCION network for devices with public static IP</a></li>
-<li><a href="../public_ip_nat/">Configuring AS and connecting to SCION network for devices with public static IP behind a NAT</a></li>
-<li><a href="../vpn_setup/">Configuring AS and connecting to SCION network using OpenVPN</a></li>
+<li><a href="/native_setup/ubuntu_x86_build.md">Installing SCION on Ubuntu 16.04 x86 machine</a></li>
+<li><a href="/native_setup/rpi_ubuntu.md">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></li>
+<li><a href="/general_scion_configuration/public_ip.md">Configuring AS and connecting to SCION network for devices with public static IP</a></li>
+<li><a href="/general_scion_configuration/public_ip_nat.md">Configuring AS and connecting to SCION network for devices with public static IP behind a NAT</a></li>
+<li><a href="/general_scion_configuration/vpn_setup.md">Configuring AS and connecting to SCION network using OpenVPN</a></li>
 </ul>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Throughout this setup we will use host and endhost IP addresses on both machines. In order to make everything easier to follow it is necessary to create two environment variables <code>HOST_IP</code> and <code>ENDHOST_IP</code> with respective addresses on <strong>both machines</strong> as they will be used throughout this setup. Execute following commands replacing correct IP addresses with correct ones:</p>
-<div class="codehilite"><pre><span></span><span class="nb">export</span> <span class="nv">HOST_IP</span><span class="o">=</span><span class="s2">&quot;10.42.0.1&quot;</span>
-<span class="nb">export</span> <span class="nv">ENDHOST_IP</span><span class="o">=</span><span class="s2">&quot;10.42.0.180&quot;</span>
-</pre></div>
+<pre class="codehilite"><code class="language-shell">export HOST_IP=&quot;10.42.0.1&quot;
+export ENDHOST_IP=&quot;10.42.0.180&quot;</code></pre>
 
 
 <h2 id="step-one-installing-scion-on-endhost">Step One - Installing SCION on endhost<a class="headerlink" href="#step-one-installing-scion-on-endhost" title="Permanent link">&para;</a></h2>
 <p>Any platform that runs SCION can be used as an endhost. To install SCION on different platforms you can follow one of the tutorials:</p>
 <ul>
-<li><a href="../../native_setup/ubuntu_x86_build/">Installing SCION on Ubuntu 16.04 x86 machine</a></li>
-<li><a href="../../native_setup/rpi_ubuntu/">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></li>
+<li><a href="/native_setup/ubuntu_x86_build.md">Installing SCION on Ubuntu 16.04 x86 machine</a></li>
+<li><a href="/native_setup/rpi_ubuntu.md">Installing SCION on Ubuntu MATE 16.04 - Raspberry PI</a></li>
 </ul>
 <p>Also, SCION VMs can be configured to be used as endhost.</p>
 <h2 id="step-two-copy-initial-configuration">Step Two - Copy initial configuration<a class="headerlink" href="#step-two-copy-initial-configuration" title="Permanent link">&para;</a></h2>
 <p>After the SCION environment is successfully installed on your endhost device, we can start the configuration process. First of all, we need to stop the currently running SCION environment and remove the old <code>gen</code> directory.</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
+<pre class="codehilite"><code class="language-shell">cd $SC
 ./scion.sh stop
-rm -rf gen
-</pre></div>
+rm -rf gen</code></pre>
 
 
 <p>The next step is to make sure both endhost and SCION AS share the same AS configuration, i.e., the same <code>gen</code> directory. This can be done in several ways, but the easiest is to copy it directly from the AS system.</p>
 <p>Executing the following command from <strong>SCION AS</strong> copies the complete <code>gen</code> directory to endhost. Note that you will need to replace <strong>endhost_user</strong> with appropriate user name on the endhost.</p>
-<div class="codehilite"><pre><span></span>scp -r <span class="si">${</span><span class="nv">SC</span><span class="si">}</span>/gen endhost_user@<span class="si">${</span><span class="nv">ENDHOST_IP</span><span class="si">}</span>:/home/endhost_user/go/src/github.com/scionproto/scion/gen
-</pre></div>
+<pre class="codehilite"><code class="language-shell">scp -r ${SC}/gen endhost_user@${ENDHOST_IP}:/home/endhost_user/go/src/github.com/scionproto/scion/gen</code></pre>
 
 
 <h2 id="step-three-remove-unnecessary-services">Step Three - Remove unnecessary services<a class="headerlink" href="#step-three-remove-unnecessary-services" title="Permanent link">&para;</a></h2>
 <p>The next step is to disable unnecessary SCION services, like the border router, beacon server, etc., on the endhost device. This can be done by editing configuration file on the <strong>endhost's system</strong>:</p>
-<div class="codehilite"><pre><span></span>vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/supervisord.conf
-</pre></div>
+<pre class="codehilite"><code>vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/supervisord.conf</code></pre>
 
 
 <p>It is sufficient to remove last 2 lines that look similar to this:</p>
-<div class="codehilite"><pre><span></span><span class="k">[group:as1-1029]</span>
-<span class="na">programs</span> <span class="o">=</span> <span class="s">br1-1029-1,bs1-1029-1,cs1-1029-1,ps1-1029-1,sd1-1029</span>
-</pre></div>
+<pre class="codehilite"><code>[group:as1-1029]
+programs = br1-1029-1,bs1-1029-1,cs1-1029-1,ps1-1029-1,sd1-1029</code></pre>
 
 
 <p>In the same file edit following line:</p>
-<div class="codehilite"><pre><span></span>command = bash -c &#39;exec bin/sciond &quot;--api-addr&quot; &quot;/run/shm/sciond/....
-</pre></div>
+<pre class="codehilite"><code>command = bash -c 'exec bin/sciond &quot;--api-addr&quot; &quot;/run/shm/sciond/....</code></pre>
 
 
 <p>By adding additional <code>addr</code> argument to look like this:</p>
-<div class="codehilite"><pre><span></span>command = bash -c &#39;exec bin/sciond &quot;--addr&quot; &quot;10.42.0.180&quot; &quot;--api-addr&quot; &quot;/run/shm/sciond/
-</pre></div>
+<pre class="codehilite"><code>command = bash -c 'exec bin/sciond &quot;--addr&quot; &quot;10.42.0.180&quot; &quot;--api-addr&quot; &quot;/run/shm/sciond/</code></pre>
 
 
 <p><strong>Make sure you replace <code>10.42.0.180</code> to correct endhost's IP address.</strong></p>
 <p>Next we need to remove all directories except <code>endhost</code> from <code>$SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/</code> directory.</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>/gen/ISD<span class="o">{</span>ISD_NUMBER<span class="o">}</span>/AS<span class="o">{</span>AS_NUMBER<span class="o">}</span>
-rm -rf *-*
-</pre></div>
+<pre class="codehilite"><code class="language-shell">cd $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}
+rm -rf *-*</code></pre>
 
 
 <h2 id="step-four-iptable-rules">Step Four - Iptable rules<a class="headerlink" href="#step-four-iptable-rules" title="Permanent link">&para;</a></h2>
@@ -941,28 +945,26 @@ rm -rf *-*
 <p><strong>This step is only necessary if you are running the AS SCION infrastructure inside a Virtual Machine</strong>. If this is not the case, proceed to step five.</p>
 </div>
 <p>Configuration files we copied from VM in first step contain address <code>10.0.2.15</code>. This address is not accessible outside the VM and we need to rewrite it to the host's IP address, so that packets get routed correctly. This can be done with iptables.</p>
-<div class="codehilite"><pre><span></span>sudo apt install netfilter-persistent iptables-persistent
+<pre class="codehilite"><code class="language-shell">sudo apt install netfilter-persistent iptables-persistent
 
-sudo iptables -t nat -A OUTPUT -m udp -p udp -d <span class="m">10</span>.0.2.15 -j DNAT --to-destination <span class="si">${</span><span class="nv">HOST_IP</span><span class="si">}</span>
+sudo iptables -t nat -A OUTPUT -m udp -p udp -d 10.0.2.15 -j DNAT --to-destination ${HOST_IP}
 
-sudo netfilter-persistent save
-</pre></div>
+sudo netfilter-persistent save</code></pre>
 
 
 <h2 id="step-five-restart-scion">Step Five - Restart SCION<a class="headerlink" href="#step-five-restart-scion" title="Permanent link">&para;</a></h2>
 <p>Last step is to reload configuration and restart SCION on your endhost system.</p>
-<div class="codehilite"><pre><span></span>~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run
-</pre></div>
+<pre class="codehilite"><code class="language-shell">~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
+./scion.sh run</code></pre>
 
 
 <h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
 <p>The best way to verify endhost configuration is by running properly is by running some demo applications:</p>
 <ul>
-<li><a href="../../sample_projects/fetch_sensor_readings/">Fetching sensor readings or time stamps</a></li>
-<li><a href="../../sample_projects/access_camera/">Fetching a camera image over the SCION network</a></li>
-<li><a href="../../sample_projects/bwtester/">Running the bandwidthtester application</a></li>
-<li><a href="../../as_visualization/webapp/">SCIONLab Webapp Visualization</a></li>
+<li><a href="/sample_projects/fetch_sensor_readings.md">Fetching sensor readings or time stamps</a></li>
+<li><a href="/sample_projects/access_camera.md">Fetching a camera image over the SCION network</a></li>
+<li><a href="/sample_projects/bwtester.md">Running the bandwidthtester application</a></li>
+<li><a href="/as_visualization/webapp.md">SCIONLab Webapp Visualization</a></li>
 </ul>
                 
                   
@@ -1014,7 +1016,7 @@ sudo netfilter-persistent save
     
       <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
     

@@ -34,7 +34,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-      <meta name="generator" content="mkdocs-1.0.3, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
     
     
       
@@ -507,6 +507,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../sample_projects/remote_sig/" title="SCIONLab SIG testing" class="md-nav__link">
+      SCIONLab SIG testing
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -789,21 +801,19 @@
 <p>After running your SCION infrastructure, it is necessary to verify that it is working correctly.</p>
 <p>There are several methods of doing this. Some of them are described in this post.</p>
 <h2 id="running-scion-viz">Running SCION-viz<a class="headerlink" href="#running-scion-viz" title="Permanent link">&para;</a></h2>
-<p>The recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool <a href="../../as_visualization/running_asviz/">SCION-viz</a>. This user-friendly tool will display paths from your AS to different destinations, verifying the correct function of the control plane.</p>
+<p>The recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool <a href="/as_visualization/running_asviz.md">SCION-viz</a>. This user-friendly tool will display paths from your AS to different destinations, verifying the correct function of the control plane.</p>
 <h2 id="terminal-based">Terminal based<a class="headerlink" href="#terminal-based" title="Permanent link">&para;</a></h2>
 <p>Another approach is to directly verify AS services using the terminal. You will have to log into the machine hosting the SCION services either (with <code>vagrant ssh</code> if it is a virtual machine). If your AS is correctly configured and functioning as expected, the following checks would all pass. You can therefore choose which ones from them to check.</p>
 <h3 id="inspecting-log-files">Inspecting log files<a class="headerlink" href="#inspecting-log-files" title="Permanent link">&para;</a></h3>
 <p>The SCION log files can be accessed with the following command:</p>
-<div class="codehilite"><pre><span></span>tail -f <span class="nv">$SC</span>/logs/bs*.DEBUG
-</pre></div>
+<pre class="codehilite"><code class="language-shell">tail -f $SC/logs/bs*.DEBUG</code></pre>
 
 
 <p>In particular, the beacon server log file should contain lines like</p>
-<div class="codehilite"><pre><span></span><span class="o">[</span>DEBUG<span class="o">]</span> <span class="o">(</span>MainThread<span class="o">)</span> Successfully verified PCB ca8e78c198ca
-</pre></div>
+<pre class="codehilite"><code class="language-shell">[DEBUG] (MainThread) Successfully verified PCB ca8e78c198ca</code></pre>
 
 
-<p>If you don't find any line mentioning the successful verification of PCBs, your AS probably has issues. Please refer to <a href="../troubleshooting/">the troubleshooting section</a>.</p>
+<p>If you don't find any line mentioning the successful verification of PCBs, your AS probably has issues. Please refer to <a href="/general_scion_configuration/troubleshooting.md">the troubleshooting section</a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>If you are running the SCION virtual machine image, you can check the same by running:</p>
@@ -819,17 +829,16 @@
 <li><code>20-ffaa:0:1404,[203.230.60.98]:40002</code></li>
 </ul>
 <p>You can run the <code>pingpong</code> client against any of those servers in the list above. For example, if your AS ID was <code>17-ffaa:1:1</code> and you wanted to verify <code>pingpong</code> against the attachment point in the ISD 18, you would run:</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
-./bin/pingpong -local <span class="m">17</span>-ffaa:1:1,<span class="o">[</span><span class="m">127</span>.0.0.1<span class="o">]</span>:0 -remote <span class="m">18</span>-ffaa:0:1202,<span class="o">[</span><span class="m">128</span>.105.21.208<span class="o">]</span>:40002
+<pre class="codehilite"><code class="language-shell">cd $SC
+./bin/pingpong -local 17-ffaa:1:1,[127.0.0.1]:0 -remote 18-ffaa:0:1202,[128.105.21.208]:40002
 Using path:
-  Hops: <span class="o">[</span><span class="m">17</span>-ffaa:1:1 <span class="m">1</span>&gt;147 <span class="m">17</span>-ffaa:0:1107 <span class="m">1</span>&gt;4 <span class="m">17</span>-ffaa:0:1102 <span class="m">3</span>&gt;3 <span class="m">17</span>-ffaa:0:1103 <span class="m">4</span>&gt;8 <span class="m">17</span>-ffaa:0:1101 <span class="m">5</span>&gt;4 <span class="m">18</span>-ffaa:0:1201 <span class="m">6</span>&gt;1 <span class="m">18</span>-ffaa:0:1202<span class="o">]</span> Mtu: <span class="m">1472</span>
-Received <span class="m">13</span> bytes from <span class="m">18</span>-ffaa:0:1202,<span class="o">[</span><span class="m">128</span>.105.21.208<span class="o">]</span>:40002: <span class="nv">seq</span><span class="o">=</span><span class="m">0</span> <span class="nv">RTT</span><span class="o">=</span><span class="m">156</span>.675ms
-Received <span class="m">13</span> bytes from <span class="m">18</span>-ffaa:0:1202,<span class="o">[</span><span class="m">128</span>.105.21.208<span class="o">]</span>:40002: <span class="nv">seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">RTT</span><span class="o">=</span><span class="m">157</span>.699ms
-...
-</pre></div>
+  Hops: [17-ffaa:1:1 1&gt;147 17-ffaa:0:1107 1&gt;4 17-ffaa:0:1102 3&gt;3 17-ffaa:0:1103 4&gt;8 17-ffaa:0:1101 5&gt;4 18-ffaa:0:1201 6&gt;1 18-ffaa:0:1202] Mtu: 1472
+Received 13 bytes from 18-ffaa:0:1202,[128.105.21.208]:40002: seq=0 RTT=156.675ms
+Received 13 bytes from 18-ffaa:0:1202,[128.105.21.208]:40002: seq=1 RTT=157.699ms
+...</code></pre>
 
 
-<p>Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to <a href="../troubleshooting/">the troubleshooting section</a>.</p>
+<p>Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to <a href="/general_scion_configuration/troubleshooting.md">the troubleshooting section</a>.</p>
                 
                   
                 
@@ -880,7 +889,7 @@ Received <span class="m">13</span> bytes from <span class="m">18</span>-ffaa:0:1
     
       <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
       
-      <script>app.initialize({version:"1.0.3",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
     
