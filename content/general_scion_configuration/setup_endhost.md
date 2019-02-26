@@ -79,23 +79,26 @@ vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/supervisord.conf
 It is sufficient to remove last 2 lines that look similar to this:
 
 ```
-[group:as1-1029]
-programs = br1-1029-1,bs1-1029-1,cs1-1029-1,ps1-1029-1,sd1-1029
+[group:as17-ffaa_1_a]
+programs = br17-ffaa_1_a-1,bs17-ffaa_1_a-1,cs17-ffaa_1_a-1,ps17-ffaa_1_a-1,sd17-ffaa_1_a
 ```
 
-In the same file edit following line:
-
+We need to tell the endhost's `sciond` about its address. For that edit the file on the **endhost's system**:
 ```
-command = bash -c 'exec bin/sciond "--api-addr" "/run/shm/sciond/....
+vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/endhost/sciond.toml
 ```
-
-By adding additional `addr` argument to look like this:
-
+In that file, you will find a section that starts with `[sd]` and looks similar to this:
 ```
-command = bash -c 'exec bin/sciond "--addr" "10.42.0.180" "--api-addr" "/run/shm/sciond/
+[sd]
+Reliable = "/run/shm/sciond/default.sock"
+Public = "17-ffaa:1:a,[127.0.0.1]:0"
+Unix = "/run/shm/sciond/default.unix"
 ```
-
-**Make sure you replace `10.42.0.180` to correct endhost's IP address.**
+In that section add the following line:
+```
+Public = "17-ffaa:1:a,[10.42.0.180]:0"
+```
+Ensure you replace `17-ffaa:1:a` with your AS's IA, and `10.42.0.180` with the correct endhost's IP address.
 
 Next we need to remove all directories except `endhost` from `$SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/` directory.
 
