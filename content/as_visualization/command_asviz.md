@@ -33,7 +33,7 @@ optional arguments:
   -pp          display source path policy
 ```
 
-```shell
+```
 python3 sub/scion-viz/python/as_viewer.py 1-1045 -t
 
 SCION AS Viewer
