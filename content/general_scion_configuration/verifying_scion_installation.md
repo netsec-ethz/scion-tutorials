@@ -59,6 +59,9 @@ Received 13 bytes from 18-ffaa:0:1202,[128.105.21.208]:40002: seq=1 RTT=157.699m
 ...
 ```
 
+!!! Tip
+	If you're running the application on a local topology, make sure to specify the correct socket using the `-sciond` flag, e.g. by adding `-sciond /run/shm/sciond/sd1-ff00_0_110.sock`. You can find the corresponding socket in the `sciond.toml` file of the endhost inside the `gen/` folder.
+
 Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to [the troubleshooting section](/general_scion_configuration/troubleshooting.md).
 
 !!! Note
