@@ -925,22 +925,30 @@ rm -rf gen
 
 
 <p>It is sufficient to remove last 2 lines that look similar to this:</p>
-<div class="codehilite"><pre><span></span><span class="k">[group:as1-1029]</span>
-<span class="na">programs</span> <span class="o">=</span> <span class="s">br1-1029-1,bs1-1029-1,cs1-1029-1,ps1-1029-1,sd1-1029</span>
+<div class="codehilite"><pre><span></span><span class="k">[group:as17-ffaa_1_a]</span>
+<span class="na">programs</span> <span class="o">=</span> <span class="s">br17-ffaa_1_a-1,bs17-ffaa_1_a-1,cs17-ffaa_1_a-1,ps17-ffaa_1_a-1,sd17-ffaa_1_a</span>
 </pre></div>
 
 
-<p>In the same file edit following line:</p>
-<div class="codehilite"><pre><span></span>command = bash -c &#39;exec bin/sciond &quot;--api-addr&quot; &quot;/run/shm/sciond/....
+<p>We need to tell the endhost's <code>sciond</code> about its address. For that edit the file on the <strong>endhost's system</strong>:</p>
+<div class="codehilite"><pre><span></span>vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/endhost/sciond.toml
 </pre></div>
 
 
-<p>By adding additional <code>addr</code> argument to look like this:</p>
-<div class="codehilite"><pre><span></span>command = bash -c &#39;exec bin/sciond &quot;--addr&quot; &quot;10.42.0.180&quot; &quot;--api-addr&quot; &quot;/run/shm/sciond/
+<p>In that file, you will find a section that starts with <code>[sd]</code> and looks similar to this:</p>
+<div class="codehilite"><pre><span></span><span class="k">[sd]</span>
+<span class="na">Reliable</span> <span class="o">=</span> <span class="s">&quot;/run/shm/sciond/default.sock&quot;</span>
+<span class="na">Public</span> <span class="o">=</span> <span class="s">&quot;17-ffaa:1:a,[127.0.0.1]:0&quot;</span>
+<span class="na">Unix</span> <span class="o">=</span> <span class="s">&quot;/run/shm/sciond/default.unix&quot;</span>
 </pre></div>
 
 
-<p><strong>Make sure you replace <code>10.42.0.180</code> to correct endhost's IP address.</strong></p>
+<p>In that section add the following line:</p>
+<div class="codehilite"><pre><span></span>Public = &quot;17-ffaa:1:a,[10.42.0.180]:0&quot;
+</pre></div>
+
+
+<p>Ensure you replace <code>17-ffaa:1:a</code> with your AS's IA, and <code>10.42.0.180</code> with the correct endhost's IP address.</p>
 <p>Next we need to remove all directories except <code>endhost</code> from <code>$SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/</code> directory.</p>
 <div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>/gen/ISD<span class="o">{</span>ISD_NUMBER<span class="o">}</span>/AS<span class="o">{</span>AS_NUMBER<span class="o">}</span>
 rm -rf *-*
