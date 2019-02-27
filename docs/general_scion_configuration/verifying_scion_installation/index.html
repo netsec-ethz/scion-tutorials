@@ -841,6 +841,10 @@ Received <span class="m">13</span> bytes from <span class="m">18</span>-ffaa:0:1
 </pre></div>
 
 
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you're running the application on a local topology, make sure to specify the correct socket using the <code>-sciond</code> flag, e.g. by adding <code>-sciond /run/shm/sciond/sd1-ff00_0_110.sock</code>. You can find the corresponding socket in the <code>sciond.toml</code> file of the endhost inside the <code>gen/</code> folder.</p>
+</div>
 <p>Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to <a href="../troubleshooting/">the troubleshooting section</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
