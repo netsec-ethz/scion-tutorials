@@ -842,6 +842,27 @@ Received <span class="m">13</span> bytes from <span class="m">18</span>-ffaa:0:1
 
 
 <p>Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to <a href="../troubleshooting/">the troubleshooting section</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>If while trying to run <code>pingpong</code> you receive an error such as:</p>
+<div class="codehilite"><pre><span></span><span class="n">squic</span><span class="o">:</span> <span class="n">Unable</span> <span class="n">to</span> <span class="n">load</span> <span class="n">TLS</span> <span class="n">cert</span><span class="o">/</span><span class="n">key</span>
+<span class="o">&gt;</span>      <span class="n">open</span> <span class="n">gen</span><span class="o">-</span><span class="n">certs</span><span class="o">/</span><span class="n">tls</span><span class="o">.</span><span class="na">pem</span><span class="o">:</span> <span class="n">no</span> <span class="n">such</span> <span class="n">file</span> <span class="n">or</span> <span class="n">directory</span>
+</pre></div>
+
+
+<p>Just run the following:</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
+<span class="nv">old</span><span class="o">=</span><span class="k">$(</span><span class="nb">umask</span><span class="k">)</span>
+mkdir -p <span class="s2">&quot;gen-certs&quot;</span>
+<span class="nb">umask</span> <span class="m">0177</span>
+openssl genrsa -out <span class="s2">&quot;gen-certs/tls.key&quot;</span> <span class="m">2048</span>
+<span class="nb">umask</span> <span class="s2">&quot;</span><span class="nv">$old</span><span class="s2">&quot;</span>
+openssl req -new -x509 -key <span class="s2">&quot;gen-certs/tls.key&quot;</span> -out <span class="s2">&quot;gen-certs/tls.pem&quot;</span> -days <span class="m">3650</span> -subj /CN<span class="o">=</span>scion_def_srv
+</pre></div>
+
+
+<p>This would have generated the missing <code>gen-certs/tls.pem</code> and <code>key</code> files. Run again <code>pingpong</code> and you shoult not see the error about the missing certificate.</p>
                 
                   
                 
