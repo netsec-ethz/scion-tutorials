@@ -8,25 +8,28 @@ SCION tutorial pages are written in markdown and they are placed in the `content
 
 The generated HTML website is placed in the `docs` directory.
 
-## Prerequisites
-
-In order to build the website you will need to [install MkDocs](http://www.mkdocs.org/#installation):
-
-```shell
-pip install mkdocs
-```
-
 ## Building pages
 
-In order to generate the website just run:
+In order to build the website you will need to install [MkDocs](http://www.mkdocs.org/). 
+Also, the `pygments` package should be installed to enable syntax highlighting
+of code snippets in the tutorials.
+Note that different versions of mkdocs can generating rather different output. 
+To avoid this issue, prefer to use a virtual python environment and use the
+`requirements.txt` file to install the exact versions of the python packages.
+
+```shell
+virtualenv -p /usr/bin/python2.7 venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+In order to generate the website just run in the activated virtualenv:
 
 ```shell
 mkdocs build
 ```
 
 The newly generated website will be placed in the `docs` directory.
-
-## Development
 
 During the development phase, it is possible to run a local webserver and automatically refresh the website content. To do this, run:
 

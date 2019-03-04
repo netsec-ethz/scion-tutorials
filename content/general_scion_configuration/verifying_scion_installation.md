@@ -8,7 +8,7 @@ There are several methods of doing this. Some of them are described in this post
 
 ## Running SCION-viz
 
-The recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCION-viz](/as_visualization/running_asviz.md). This user-friendly tool will display paths from your AS to different destinations, verifying the correct function of the control plane.
+The recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCION-viz](../as_visualization/running_asviz.md). This user-friendly tool will display paths from your AS to different destinations, verifying the correct function of the control plane.
 
 ## Terminal based
 
@@ -27,7 +27,7 @@ In particular, the beacon server log file should contain lines like
 [DEBUG] (MainThread) Successfully verified PCB ca8e78c198ca
 ```
 
-If you don't find any line mentioning the successful verification of PCBs, your AS probably has issues. Please refer to [the troubleshooting section](/general_scion_configuration/troubleshooting.md).
+If you don't find any line mentioning the successful verification of PCBs, your AS probably has issues. Please refer to [the troubleshooting section](../general_scion_configuration/troubleshooting.md).
 
 !!! Tip
     If you are running the SCION virtual machine image, you can check the same by running:
@@ -62,7 +62,7 @@ Received 13 bytes from 18-ffaa:0:1202,[128.105.21.208]:40002: seq=1 RTT=157.699m
 !!! Tip
 	If you're running the application on a local topology, make sure to specify the correct socket using the `-sciond` flag, e.g. by adding `-sciond /run/shm/sciond/sd1-ff00_0_110.sock`. You can find the corresponding socket in the `sciond.toml` file of the endhost inside the `gen/` folder.
 
-Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to [the troubleshooting section](/general_scion_configuration/troubleshooting.md).
+Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to [the troubleshooting section](../general_scion_configuration/troubleshooting.md).
 
 !!! Note
 

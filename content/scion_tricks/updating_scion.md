@@ -117,7 +117,7 @@ And SCION services are running now.
 
 ## SCION Applications
 
-After the update, the applications that are not delivered directly with SCION (e.g. [`bwtester`](/sample_projects/bwtester.md) or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. [`bwtester`](/sample_projects/bwtester.md) has its own tutorial on how to build it.
+After the update, the applications that are not delivered directly with SCION (e.g. [`bwtester`](../sample_projects/bwtester.md) or your own applications) will need to be rebuilt. You will have to follow the appropriate steps for each one of them reading their own documentation. E.g. [`bwtester`](../sample_projects/bwtester.md) has its own tutorial on how to build it.
 
 ## Contact us
 

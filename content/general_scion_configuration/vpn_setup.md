@@ -7,11 +7,11 @@
 
 This tutorial will cover the steps required for connecting a SCION installation to SCIONLab. In the end, you will be running one SCION autonomous system connected to the SCIONLab network.
 
-For the purpose of this tutorial, we assume that you do not have static public IP address, or that your machine cannot receive UDP traffic on port 50000 from the Internet. If this is not the case, you should consider the tutorial [Connecting to SCION Lab with public IP](/general_scion_configuration/public_ip.md) or [Connecting to SCION Lab with public IP behind a NAT](/general_scion_configuration/public_ip_nat.md).
+For the purpose of this tutorial, we assume that you do not have static public IP address, or that your machine cannot receive UDP traffic on port 50000 from the Internet. If this is not the case, you should consider the tutorial [Connecting to SCION Lab with public IP](../general_scion_configuration/public_ip.md) or [Connecting to SCION Lab with public IP behind a NAT](../general_scion_configuration/public_ip_nat.md).
 
 ## Prerequisites
 
-In order to follow this tutorial, we will assume that you already installed the SCION infrastructure and that you are able to [run a local topology](/general_scion_configuration/local_top.md).
+In order to follow this tutorial, we will assume that you already installed the SCION infrastructure and that you are able to [run a local topology](../general_scion_configuration/local_top.md).
 
 !!! hint
     If you are running one of the SCION Virtual Machine setups, the configuration covered in this tutorial is already implemented in the system image, so you don't need the steps described here.
@@ -35,7 +35,7 @@ In order to download the necessary configuration you must login to [SCION Coordi
 
 After logging in, download a VM configuration by clicking on **Create and Download SCIONLab VM Configuration** as presented in the image below:
 
-![SCIONLab download page](/images/scionlab_download_vm_openvpn_setup.png)
+![SCIONLab download page](../images/scionlab_download_vm_openvpn_setup.png)
 
 Navigate to the download directory and extract the archive content:
 
@@ -131,4 +131,4 @@ After the OpenVPN connection is established and the new configuration is copied,
 
 ## Next steps
 
-After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation.md).
+After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](../general_scion_configuration/verifying_scion_installation.md).

@@ -11,26 +11,26 @@ Depending on how the SCION AS is set up, the steps for configuring the endhost w
 
 In the first way, the SCION AS runs inside a virtual machine (VM). The following figure depicts this scenario.
 
-![SCION AS in virtual machine](/images/vm_endhost_setup.png)
+![SCION AS in virtual machine](../images/vm_endhost_setup.png)
 
 The installation steps of the AS are covered in the following tutorials:
 
-- [Running SCION VM with dynamic IP](/virtual_machine_setup/dynamic_ip.md)
-- [Running SCION VM with static IP](/virtual_machine_setup/static_ip.md)
+- [Running SCION VM with dynamic IP](../virtual_machine_setup/dynamic_ip.md)
+- [Running SCION VM with static IP](../virtual_machine_setup/static_ip.md)
 
 ### Running AS infrastructure natively on a system
 
 In the second way, the SCION AS is executing natively on a host machine. The following figure depicts this scenario.
 
-![SCION running natively](/images/native_endhost_setup.png)
+![SCION running natively](../images/native_endhost_setup.png)
 
 The installation steps for this setup is described in the following tutorial pages:
 
-- [Installing SCION on Ubuntu 16.04 x86 machine](/native_setup/ubuntu_x86_build.md)
-- [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](/native_setup/rpi_ubuntu.md)
-- [Configuring AS and connecting to SCION network for devices with public static IP](/general_scion_configuration/public_ip.md)
-- [Configuring AS and connecting to SCION network for devices with public static IP behind a NAT](/general_scion_configuration/public_ip_nat.md)
-- [Configuring AS and connecting to SCION network using OpenVPN](/general_scion_configuration/vpn_setup.md)
+- [Installing SCION on Ubuntu 16.04 x86 machine](../native_setup/ubuntu_x86_build.md)
+- [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](../native_setup/rpi_ubuntu.md)
+- [Configuring AS and connecting to SCION network for devices with public static IP](../general_scion_configuration/public_ip.md)
+- [Configuring AS and connecting to SCION network for devices with public static IP behind a NAT](../general_scion_configuration/public_ip_nat.md)
+- [Configuring AS and connecting to SCION network using OpenVPN](../general_scion_configuration/vpn_setup.md)
 
 ## Prerequisites
 
@@ -45,8 +45,8 @@ export ENDHOST_IP="10.42.0.180"
 
 Any platform that runs SCION can be used as an endhost. To install SCION on different platforms you can follow one of the tutorials:
 
-* [Installing SCION on Ubuntu 16.04 x86 machine](/native_setup/ubuntu_x86_build.md)
-* [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](/native_setup/rpi_ubuntu.md)
+* [Installing SCION on Ubuntu 16.04 x86 machine](../native_setup/ubuntu_x86_build.md)
+* [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](../native_setup/rpi_ubuntu.md)
 
 Also, SCION VMs can be configured to be used as endhost.
 
@@ -135,7 +135,7 @@ Last step is to reload configuration and restart SCION on your endhost system.
 
 The best way to verify endhost configuration is by running properly is by running some demo applications:
 
-* [Fetching sensor readings or time stamps](/sample_projects/fetch_sensor_readings.md)
-* [Fetching a camera image over the SCION network](/sample_projects/access_camera.md)
-* [Running the bandwidthtester application](/sample_projects/bwtester.md)
-* [SCIONLab Webapp Visualization](/as_visualization/webapp.md)
+* [Fetching sensor readings or time stamps](../sample_projects/fetch_sensor_readings.md)
+* [Fetching a camera image over the SCION network](../sample_projects/access_camera.md)
+* [Running the bandwidthtester application](../sample_projects/bwtester.md)
+* [SCIONLab Webapp Visualization](../as_visualization/webapp.md)

@@ -4,8 +4,8 @@
 
 It is necessary to have SCION successfully installed on your system before proceeding with this tutorial. Necessary steps for installing SCION can be found on following pages:
 
-- [Installing SCION on Ubuntu x86-64](/native_setup/ubuntu_x86_build.md)
-- [Installing SCION on Raspberry PI Ubuntu](/native_setup/rpi_ubuntu.md)
+- [Installing SCION on Ubuntu x86-64](../native_setup/ubuntu_x86_build.md)
+- [Installing SCION on Raspberry PI Ubuntu](../native_setup/rpi_ubuntu.md)
 
 !!! tip
     If you are using SCION VM, SCION is already running on system boot so following steps are not required to be done manually.

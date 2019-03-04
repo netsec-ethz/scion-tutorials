@@ -6,7 +6,7 @@ This tutorial will guide you through the steps required to generate a local topo
 
 ## Prerequisites
 
-This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow [How to build SCION on Ubuntu 16.04 x86-64](/native_setup/ubuntu_x86_build.md) or [How to build SCION on Raspberry PI](/native_setup/rpi_ubuntu.md).
+This tutorial assumes that SCION is already installed on your system. If this is not the case, please follow [How to build SCION on Ubuntu 16.04 x86-64](../native_setup/ubuntu_x86_build.md) or [How to build SCION on Raspberry PI](../native_setup/rpi_ubuntu.md).
 
 ## Generating topology
 
@@ -18,7 +18,7 @@ cd $SC
 
 The SCION installation comes with a command to generate the local topology from 'topo' configuration files. A default topology is defined in `topology/Default.topo` and it is depicted in the following figure:
 
-![Default topology](/images/default_topology.png)
+![Default topology](../images/default_topology.png)
 
 !!! warning "Creating a topology overwrites the existing installation"
     When running the topology command deletes the current topology, which is stored in the gen folder. We thus advise to back up the current gen directory **before** calling the topology creation command.
@@ -31,7 +31,7 @@ The SCION installation comes with a command to generate the local topology from 
 	```
 
 !!! tip "Reset runtime environment after topology changes"
-    Every time a new topology is instantiated, the SCION runtime environment needs to be reset as described [here](/scion_tricks/changing_gen_dir.md#restarting-scion-infrastructure).
+    Every time a new topology is instantiated, the SCION runtime environment needs to be reset as described [here](../scion_tricks/changing_gen_dir.md#restarting-scion-infrastructure).
 
 To generate the default topology, you can run
 
@@ -98,4 +98,4 @@ Testing the infrastructure:
 
 ## Next steps
 
-After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation.md).
+After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](../general_scion_configuration/verifying_scion_installation.md).
