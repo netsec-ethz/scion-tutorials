@@ -87,19 +87,19 @@ starting webapp.go.
 Simply adjust the dials to the desired level, while the icon lock will allow you
 to keep one value constant.
 
-![Webapp Bandwidth Test](/images/webapp_bwtester.png?raw=true "Webapp Bandwidth Test")
+![Webapp Bandwidth Test](../images/webapp_bwtester.png?raw=true "Webapp Bandwidth Test")
 
 
 ### camerapp client
 
 The retrieved image will appear scaled down and can be clicked on to open a larger size.
 
-![Webapp Image Test](/images/webapp_camerapp.png?raw=true "Webapp Image Test")
+![Webapp Image Test](../images/webapp_camerapp.png?raw=true "Webapp Image Test")
 
 
 ### sensorapp client
 
-![Webapp Stats Test](/images/webapp_sensorapp.png?raw=true "Webapp Stats Test")
+![Webapp Stats Test](../images/webapp_sensorapp.png?raw=true "Webapp Stats Test")
 
 
 ### statstest server

@@ -25,7 +25,7 @@ In order to download a VM, you must login to [SCIONLab Coordination Service](htt
 
 After logging in, create a new AS by clicking on *Generate a new SCIONLab AS*, select a desired attachment point, and choose *Install inside a virtual machine*. Choose *Use an OpenVPN connection for this AS*. Then download a VM configuration by clicking on *Create and Download SCIONLab VM Configuration*. A screenshot of the user interface is shown below:
 
-![SCIONLab download page](/images/scionlab_download_vm_openvpn_setup.png)
+![SCIONLab download page](../images/scionlab_download_vm_openvpn_setup.png)
 
 You have downloaded the configuration directory in the form of a compressed tar file (`tgz`). 
 
@@ -145,6 +145,6 @@ After the installation, to start the VM, you can use `vagrant up`, followed by `
 
 ## Almost Done: Validate and More
 
-After running SCION infrastructure it is necessary to verify that it is running properly. This is covered in tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation.md).
+After running SCION infrastructure it is necessary to verify that it is running properly. This is covered in tutorial [Verifying SCION Installation](../general_scion_configuration/verifying_scion_installation.md).
 
-When the infrastructure is properly running, you have established your SCION AS, congratulations! You can now follow the tutorials listed on the [main page](/index.md#using-scion-in-projects) under "Using SCION in projects".
+When the infrastructure is properly running, you have established your SCION AS, congratulations! You can now follow the tutorials listed on the [main page](../index.md#using-scion-in-projects) under "Using SCION in projects".

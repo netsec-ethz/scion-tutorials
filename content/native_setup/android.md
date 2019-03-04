@@ -34,7 +34,7 @@ That’s it! The process takes a while but is fully automatic. At the end, a dia
 That means of course, that the ‘gen’ folder needs to be readily available on the internal memory. Download it directly or push it onto the device with ADB.
 
 !!! warning
-    SCION for Android currently only supports a SCION endhost configuration, as described [in this tutorial](/general_scion_configuration/setup_endhost.md)
+    SCION for Android currently only supports a SCION endhost configuration, as described [in this tutorial](../general_scion_configuration/setup_endhost.md)
 
 !!! warning
     SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described [here](#changes-to-gen-folder)
@@ -213,8 +213,8 @@ cd $SC/env/go
 
 After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:
 
-1. [Running a local network topology](/general_scion_configuration/local_top.md) &ndash; Generate a sample topology and run SCION locally
-1. [Connecting to SCIONLab as an endhost](/general_scion_configuration/setup_endhost.md) &ndash; Connect to the already running SCION topology as a mobile endhost through an existing SCION setup.
+1. [Running a local network topology](../general_scion_configuration/local_top.md) &ndash; Generate a sample topology and run SCION locally
+1. [Connecting to SCIONLab as an endhost](../general_scion_configuration/setup_endhost.md) &ndash; Connect to the already running SCION topology as a mobile endhost through an existing SCION setup.
 
 #### Changes to gen folder
 

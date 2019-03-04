@@ -34,15 +34,15 @@ If the SCION install script is executed without any arguments, SCION will be run
 ./scion_install_script.sh
 ```
 
-For more information, check out [Running the SCION infrastructure on a local topology](/general_scion_configuration/local_top.md).
+For more information, check out [Running the SCION infrastructure on a local topology](../general_scion_configuration/local_top.md).
 
 ### Connecting to SCIONLab
 
 Installing a SCION AS and connecting it to SCIONLab requires that you have already downloaded the necessary configuration from the [SCION Coordination Service](https://www.scionlab.org/). To do so, please follow one of the following options, depending on the network configuration of the system on which SCION will be installed until you have the configuration files:
 
-1. [Connecting to SCIONLab with a static public IP address](/general_scion_configuration/public_ip.md)
-1. [Connecting to SCIONLab with a static IP address, but behind a NAT](/general_scion_configuration/public_ip_nat.md)
-1. [Connecting to SCIONLab via VPN (without a static IP address)](/general_scion_configuration/vpn_setup.md)
+1. [Connecting to SCIONLab with a static public IP address](../general_scion_configuration/public_ip.md)
+1. [Connecting to SCIONLab with a static IP address, but behind a NAT](../general_scion_configuration/public_ip_nat.md)
+1. [Connecting to SCIONLab via VPN (without a static IP address)](../general_scion_configuration/vpn_setup.md)
 
 The configuration downloaded from the [SCION Coordination Service](https://www.scionlab.org/) includes a `gen` folder that needs to be uploaded to the target system and provided as an argument to the install script:
 
@@ -62,7 +62,7 @@ export BIDIR=`pwd`
 
 The `scion_install_script.sh` execution declares new variable definitions (e.g. `$SC`) in `~/.profile`. It is advised to log out and log in again for them to take effect.
 
-After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation.md).
+After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](../general_scion_configuration/verifying_scion_installation.md).
 
 ## Advanced Way (manual installation)
 
@@ -150,8 +150,8 @@ cp docker/zoo.cfg /etc/zookeeper/conf/zoo.cfg
 
 After finishing the installation of SCION, you can run the architecture on several different topologies. The following tutorials will cover this in further detail:
 
-1. [Configure SCION to run on system boot](/scion_tricks/setup_startup.md) &ndash; Use systemd to run SCION and SCION-viz when the system is started.
-1. [Running a local network topology](/general_scion_configuration/local_top.md) &ndash; Generate a sample topology and run SCION locally
-1. [Connecting to SCIONLab with a static public IP address](/general_scion_configuration/public_ip.md) &ndash; Connect to the already running SCION topology.
-1. [Connecting to SCIONLab with a static public IP address, but behind a NAT](/general_scion_configuration/public_ip_nat.md)
-1. [Connecting to SCIONLab without a static public IP address](/general_scion_configuration/vpn_setup.md) &ndash; Connect to the already running SCION topology through an OpenVPN tunnel.
+1. [Configure SCION to run on system boot](../scion_tricks/setup_startup.md) &ndash; Use systemd to run SCION and SCION-viz when the system is started.
+1. [Running a local network topology](../general_scion_configuration/local_top.md) &ndash; Generate a sample topology and run SCION locally
+1. [Connecting to SCIONLab with a static public IP address](../general_scion_configuration/public_ip.md) &ndash; Connect to the already running SCION topology.
+1. [Connecting to SCIONLab with a static public IP address, but behind a NAT](../general_scion_configuration/public_ip_nat.md)
+1. [Connecting to SCIONLab without a static public IP address](../general_scion_configuration/vpn_setup.md) &ndash; Connect to the already running SCION topology through an OpenVPN tunnel.

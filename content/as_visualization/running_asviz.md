@@ -50,4 +50,4 @@ python3 ./manage.py runserver 10.0.2.15:8000
 ```
 
 ## 4. Using
-The AS Visualization can be used from the [browser](/as_visualization/browser_asviz.md) or from the [command line](/as_visualization/command_asviz.md).
+The AS Visualization can be used from the [browser](../as_visualization/browser_asviz.md) or from the [command line](../as_visualization/command_asviz.md).

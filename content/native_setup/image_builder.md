@@ -20,7 +20,7 @@ In order to download an image, you must login to [SCIONLab Coordination Service]
 
 After logging in, create a new AS by clicking on *Generate a new SCIONLab AS*, select a desired attachment point and give it a label (optional). Choose *Install on a dedicated SCION system (for experts)*. Unless your device has a static, public routable IP address (not behind a NAT), choose *Use an OpenVPN connection for this AS*. Otherwise enter the IP address under wich your device can be reached. Then, under *Create SCION image for IoT device* select your device from the dropdown list and click *Build image*. The procedure may take a few minutes. After it finishes a download link appears from which you can download your generated image. A screenshot of the user interface is shown below:
 
-![SCIONLab download page](/images/scionlab_download_image_arm_setup.png)
+![SCIONLab download page](../images/scionlab_download_image_arm_setup.png)
 
 ### Step Two &ndash; installing the image
 
@@ -39,6 +39,6 @@ SCION infrastructer and SCION-viz are started automatically on start up.
 
 ## Next steps
 
-After running SCION infrastructure it is necessary to verify that it is running properly. This is covered in tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation.md).
+After running SCION infrastructure it is necessary to verify that it is running properly. This is covered in tutorial [Verifying SCION Installation](../general_scion_configuration/verifying_scion_installation.md).
 
-When the infrastructure is properly running, you have established your SCION AS, congratulations! You can now follow the tutorials listed on the [main page](/index.md#using-scion-in-projects) under "Using SCION in projects".
+When the infrastructure is properly running, you have established your SCION AS, congratulations! You can now follow the tutorials listed on the [main page](../index.md#using-scion-in-projects) under "Using SCION in projects".

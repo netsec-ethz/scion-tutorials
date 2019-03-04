@@ -7,14 +7,14 @@
 
 This tutorial will cover the steps required for connecting a SCION installation to SCIONLab. In the end, you will be running one SCION autonomous system connected to the SCIONLab network.
 
-For the purpose of this tutorial, we assume that you **have** a static public IP address and that your machine can receive UDP traffic from the Internet on port 50000. If this is not the case, please follow [Connecting to SCION Lab over OpenVPN](/general_scion_configuration/vpn_setup.md)
+For the purpose of this tutorial, we assume that you **have** a static public IP address and that your machine can receive UDP traffic from the Internet on port 50000. If this is not the case, please follow [Connecting to SCION Lab over OpenVPN](../general_scion_configuration/vpn_setup.md)
 
 !!! hint
-    Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the [OpenVPN connection tutorial](/general_scion_configuration/vpn_setup.md).
+    Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the [OpenVPN connection tutorial](../general_scion_configuration/vpn_setup.md).
 
 ## Prerequisites
 
-In order to follow this tutorial, we will assume that you already installed the SCION infrastructure and that you are able to [run a local topology](/general_scion_configuration/local_top.md).
+In order to follow this tutorial, we will assume that you already installed the SCION infrastructure and that you are able to [run a local topology](../general_scion_configuration/local_top.md).
 
 !!! hint
     If you are running one of the SCION Virtual Machine setups, the configuration covered in this tutorial is already implemented in the system image, so you don't need the steps described here.
@@ -28,7 +28,7 @@ In order to download necessary configuration you must login to [SCION Coordinati
 
 After logging in, select "My Host has a static public IP address and can receive traffic at port 50000" checkbox and enter your public IP in the text field. Afterwards click on **Create and Download SCIONLab VM Configuration** as presented in the image below:
 
-![SCIONLab download page](/images/scionlab_download_vm_static_ip_setup.png)
+![SCIONLab download page](../images/scionlab_download_vm_static_ip_setup.png)
 
 Navigate to the download directory and extract the archived content:
 
@@ -85,4 +85,4 @@ After the new configuration is copied, you need to restart the infrastructure in
 
 ## Next steps
 
-After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](/general_scion_configuration/verifying_scion_installation.md).
+After running the SCION infrastructure, it is necessary to verify that it is running properly. This is covered in the tutorial [Verifying SCION Installation](../general_scion_configuration/verifying_scion_installation.md).
