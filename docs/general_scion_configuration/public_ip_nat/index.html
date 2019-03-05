@@ -758,7 +758,8 @@
                 
                 <h1 id="connecting-to-scionlab-where-the-network-has-a-static-public-ip-address-but-the-machine-itself-is-behind-a-network-address-translation-nat-device">Connecting to SCIONLab where the network has a static public IP address, but the machine itself is behind a Network Address Translation (NAT) device<a class="headerlink" href="#connecting-to-scionlab-where-the-network-has-a-static-public-ip-address-but-the-machine-itself-is-behind-a-network-address-translation-nat-device" title="Permanent link">&para;</a></h1>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p>The machine should be set up as described in the <a href="../public_ip/">tutorial of the host with a public IP address</a>. Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.</p>
+<p>If your machine was configured as a VM following the steps described in the <a href="../../virtual_machine_setup/static_ip/">tutorial for a virtual machine with static public IP</a> you don't need to do anything and you can skip this tutorial altogether.</p>
+<p>If your machine is not a VM, it should be set up as described in the <a href="../public_ip/">tutorial of the host with a public IP address</a> and the changes described below need to be applied before doing further changes to the topology (like adding interfaces or border routers). Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.</p>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the <a href="../vpn_setup/">OpenVPN connection tutorial</a>.</p>
@@ -775,7 +776,9 @@
 </div>
 <p>The fourth step re-maps the IP address of the SCION infrastructure devices to the internal address of your host.</p>
 <p>For this, you can execute the following command from your main SCION directory (<code>cd $SC</code> to get there), replacing <code>192.168.1.24</code> with the internal IPv4 address of your host.</p>
-<div class="codehilite"><pre><span></span><span class="nv">BIND_IP</span><span class="o">=</span><span class="m">192</span>.168.1.24<span class="p">;</span> sed -e <span class="s1">&#39;/&quot;Bind&quot;/{:x n;s/\(&quot;Addr&quot;: \)&quot;.*&quot;/\1&quot;&#39;</span><span class="si">${</span><span class="nv">BIND_IP</span><span class="si">}</span><span class="s1">&#39;&quot;/;Tx}&#39;</span> -i ./gen/*/*/*/topology.json
+<div class="codehilite"><pre><span></span><span class="nv">BIND_IP</span><span class="o">=</span><span class="m">192</span>.168.1.24<span class="p">;</span> <span class="k">for</span> f in <span class="k">$(</span>find gen -name topology.json<span class="k">)</span><span class="p">;</span> <span class="k">do</span>
+    jq <span class="s2">&quot;.BorderRouters[].Interfaces[]|=(.BindOverlay={Addr:\&quot;</span><span class="nv">$BIND_IP</span><span class="s2">\&quot;, OverlayPort:.PublicOverlay.OverlayPort})&quot;</span> <span class="nv">$f</span> &gt; <span class="nv">$f</span>.tmp <span class="o">&amp;&amp;</span> mv <span class="nv">$f</span>.tmp <span class="nv">$f</span><span class="p">;</span> 
+<span class="k">done</span>
 </pre></div>
 
 
