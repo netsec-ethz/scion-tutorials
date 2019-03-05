@@ -6,7 +6,7 @@
 
 If your machine was configured as a VM following the steps described in the [tutorial for a virtual machine with static public IP](../virtual_machine_setup/static_ip.md) you don't need to do anything and you can skip this tutorial altogether.
 
-If your machine is not a VM, it should be set up as described in the [tutorial of the host with a public IP address](../general_scion_configuration/public_ip.md) and have its topology files not modified afterwards. Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.
+If your machine is not a VM, it should be set up as described in the [tutorial of the host with a public IP address](../general_scion_configuration/public_ip.md) and the changes described below need to be applied before doing further changes to the topology (like adding interfaces or border routers). Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.
 
 !!! hint
     Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the [OpenVPN connection tutorial](../general_scion_configuration/vpn_setup.md).
