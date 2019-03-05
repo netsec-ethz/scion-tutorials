@@ -3,7 +3,10 @@
 
 ## Introduction
 
-The machine should be set up as described in the [tutorial of the host with a public IP address](../general_scion_configuration/public_ip.md). Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.
+
+If your machine was configured as a VM following the steps described in the [tutorial for a virtual machine with static public IP](../virtual_machine_setup/static_ip.md) you don't need to do anything and you can skip this tutorial altogether.
+
+If your machine is not a VM, it should be set up as described in the [tutorial of the host with a public IP address](../general_scion_configuration/public_ip.md) and the changes described below need to be applied before doing further changes to the topology (like adding interfaces or border routers). Since the machine itself is behind a Network Address Translation (NAT) device, however, some adjustments need to be made.
 
 !!! hint
     Sometimes, providers change the IP address of customers unexpectedly. If the IP address changes, then unfortunately the SCION connection to the border router also fails, and then the connection needs to be torn down and re-established from the SCIONLab.org web site. Another approach is to use the approach using a OpenVPN connection, described in the [OpenVPN connection tutorial](../general_scion_configuration/vpn_setup.md).
@@ -27,7 +30,9 @@ The fourth step re-maps the IP address of the SCION infrastructure devices to th
 
 For this, you can execute the following command from your main SCION directory (`cd $SC` to get there), replacing `192.168.1.24` with the internal IPv4 address of your host.
 ```shell
-BIND_IP=192.168.1.24; sed -e '/"Bind"/{:x n;s/\("Addr": \)".*"/\1"'${BIND_IP}'"/;Tx}' -i ./gen/*/*/*/topology.json
+BIND_IP=192.168.1.24; for f in $(find gen -name topology.json); do
+    jq ".BorderRouters[].Interfaces[]|=(.BindOverlay={Addr:\"$BIND_IP\", OverlayPort:.PublicOverlay.OverlayPort})" $f > $f.tmp && mv $f.tmp $f; 
+done
 ```
 
 This completes the installation! You can restart the infrastructure in the following way:
