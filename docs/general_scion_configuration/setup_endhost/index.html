@@ -943,12 +943,12 @@ rm -rf gen
 </pre></div>
 
 
-<p>In that section add the following line:</p>
+<p>In that section substitute the 'Public' line with the following one:</p>
 <div class="codehilite"><pre><span></span>Public = &quot;17-ffaa:1:a,[10.42.0.180]:0&quot;
 </pre></div>
 
 
-<p>Ensure you replace <code>17-ffaa:1:a</code> with your AS's IA, and <code>10.42.0.180</code> with the correct endhost's IP address.</p>
+<p>Ensure you replace <code>17-ffaa:1:a</code> with your AS's IA, and <code>10.42.0.180</code> with the correct endhost's IP address. As you can see, you just specified the public IP of your endhost.</p>
 <p>Next we need to remove all directories except <code>endhost</code> from <code>$SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/</code> directory.</p>
 <div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>/gen/ISD<span class="o">{</span>ISD_NUMBER<span class="o">}</span>/AS<span class="o">{</span>AS_NUMBER<span class="o">}</span>
 rm -rf *-*
