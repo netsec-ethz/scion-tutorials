@@ -94,11 +94,11 @@ Reliable = "/run/shm/sciond/default.sock"
 Public = "17-ffaa:1:a,[127.0.0.1]:0"
 Unix = "/run/shm/sciond/default.unix"
 ```
-In that section add the following line:
+In that section substitute the 'Public' line with the following one:
 ```
 Public = "17-ffaa:1:a,[10.42.0.180]:0"
 ```
-Ensure you replace `17-ffaa:1:a` with your AS's IA, and `10.42.0.180` with the correct endhost's IP address.
+Ensure you replace `17-ffaa:1:a` with your AS's IA, and `10.42.0.180` with the correct endhost's IP address. As you can see, you just specified the public IP of your endhost.
 
 Next we need to remove all directories except `endhost` from `$SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/` directory.
 
