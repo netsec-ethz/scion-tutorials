@@ -76,12 +76,31 @@ Then query it like so:
 
 For the minimal server:
 ```
-bat -f server:40002/upload foo=bar
+bat server:40002/download
+```
+
+It should produce output similar to this:
+![bat minimal server output](../images/bat_output.png)
+
+```
 bat -f server:40002/upload foo=bar
 ```
+
+Which prints `foo=bar` in the server's console, and
+
+```
+bat -b server:40002/download
+```
+
+which runs a benchmark, producing output like this:
+
+![bat benchmarking output](../images/bat_bench_output.png)
+
 
 For the image server:
 ```
 bat -d server:40002/image
 ```
+
+This places the downloaded image file in your current directory.
 
