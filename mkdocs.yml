@@ -70,8 +70,9 @@ nav:
 
     - How to use:
       - Read a temperature sensor over the SCION network: sample_projects/fetch_sensor_readings.md
-      - Access a video camera over the SCION network: sample_projects/access_camera.md
+      - Access camera images over SCION network: sample_projects/access_camera.md
       - Bandwidth tester application: sample_projects/bwtester.md
+      - bat - cURL-like tool: sample_projects/bat.md
       - SCIONLab Apps Web Visualization: as_visualization/webapp.md
       - Running AS Visualizations: as_visualization/running_asviz.md
       - Browser AS Visualization: as_visualization/browser_asviz.md
