@@ -39,7 +39,7 @@ Method can be any of the regular HTTP methods. It defaults to GET if there is no
 
 IO redirects (`<`, `>`) work as usual.
 
-bat resolves URLs by scanning the `/etc/hosts/` file. New hosts can be added by simply including a line in that file.
+bat accepts both, SCION addresses and hostnames as URLs. Hostnames are resolved by scanning the `/etc/hosts/` file. New hosts can be added by simply including a line in that file.
 Below you see an example:
 
 ```
@@ -56,6 +56,16 @@ fe80:cd00:0:cde:1257:0:211e:729c                        dummy2
 18-ffaa:1:2,[10.0.8.10]	                                host3 
 20-ffaa:c0ff:ee12,[0:0:0ff1:ce00:dead:10cc:baad:f00d]   host4
 ```
+
+Consequently, these two calls are equivalent:
+
+```
+bat https://17-ffaa:0:1,[192.168.1.1]:8080/route
+bat https://host1:8080/route
+```
+
+!!! note
+    The scheme defaults to HTTPS, unencrypted HTTP is not supported
 
 ## Example servers
 
