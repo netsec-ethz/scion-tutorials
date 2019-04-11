@@ -38,7 +38,7 @@
     
     
       
-        <title>Read a temperature sensor over the SCION network - SCION Tutorials</title>
+        <title>bat - cURL-like tool - SCION Tutorials</title>
       
     
     
@@ -73,7 +73,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#read-sensor-readings-over-scion-network" tabindex="1" class="md-skip">
+      <a href="../../#using-bat-for-sending-http-requests-over-scion" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -99,7 +99,7 @@
                 SCION Tutorials
               </span>
               <span class="md-header-nav__topic">
-                Read a temperature sensor over the SCION network
+                bat - cURL-like tool
               </span>
             
           
@@ -429,62 +429,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Read a temperature sensor over the SCION network
-      </label>
-    
-    <a href="./" title="Read a temperature sensor over the SCION network" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../fetch_sensor_readings/" title="Read a temperature sensor over the SCION network" class="md-nav__link">
       Read a temperature sensor over the SCION network
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#sensorfetcher" title="sensorfetcher" class="md-nav__link">
-    sensorfetcher
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sensorserver" title="sensorserver" class="md-nav__link">
-    sensorserver
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -516,11 +465,63 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../bat/" title="bat - cURL-like tool" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        bat - cURL-like tool
+      </label>
+    
+    <a href="./" title="bat - cURL-like tool" class="md-nav__link md-nav__link--active">
       bat - cURL-like tool
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" title="Installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" title="Usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-servers" title="Example servers" class="md-nav__link">
+    Example servers
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -742,22 +743,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sensorfetcher" title="sensorfetcher" class="md-nav__link">
-    sensorfetcher
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#sensorserver" title="sensorserver" class="md-nav__link">
-    sensorserver
+  <a href="#installation" title="Installation" class="md-nav__link">
+    Installation
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#usage" title="Usage" class="md-nav__link">
+    Usage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-servers" title="Example servers" class="md-nav__link">
+    Example servers
+  </a>
   
 </li>
       
@@ -778,44 +780,157 @@
               
                 
                 
-                <h1 id="read-sensor-readings-over-scion-network">Read sensor readings over SCION network<a class="headerlink" href="#read-sensor-readings-over-scion-network" title="Permanent link">&para;</a></h1>
-<p>The <a href="https://github.com/netsec-ethz/scion-apps/">sensorapp application</a> contains fetcher and server applications for sensor readings, using the SCION network. The application is very simple, and sends a single packet to request the information, and obtains typically a single packet in response, containing the readings.</p>
-<h2 id="sensorfetcher">sensorfetcher<a class="headerlink" href="#sensorfetcher" title="Permanent link">&para;</a></h2>
-<p>To install sensorfetcher:</p>
-<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/sensorapp/sensorfetcher
+                <h1 id="using-bat-for-sending-http-requests-over-scion">Using bat for sending HTTP-requests over SCION<a class="headerlink" href="#using-bat-for-sending-http-requests-over-scion" title="Permanent link">&para;</a></h1>
+<p>The <a href="https://github.com/netsec-ethz/scion-apps/">bat application</a> is a cURL-like tool for sending HTTP requests to SCION enabled webservers and retrieve information in a human-readable format. Documentation is available in the <a href="https://github.com/netsec-ethz/scion-apps/blob/master/bat/README.md">README.md</a>.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>To install bat run:</p>
+<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/bat
+</pre></div>
+
+
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<p>The general usage of bat is: <code>bat [flags] [Method] URL [Item]</code></p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-l</td>
+<td>local bind address</td>
+</tr>
+<tr>
+<td>-b</td>
+<td>benchmarking mode</td>
+</tr>
+<tr>
+<td>-b.N</td>
+<td>number of benchmark requests to send (default 1000)</td>
+</tr>
+<tr>
+<td>-b.C</td>
+<td>number of parallel clients in benchmark (default 100)</td>
+</tr>
+<tr>
+<td>-body</td>
+<td>Send raw data as body</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>download mode with progress bar</td>
+</tr>
+<tr>
+<td>-f</td>
+<td>send data <code>application/x-www-form-urlencoded</code> (default false)</td>
+</tr>
+<tr>
+<td>-j</td>
+<td>send data <code>application/json</code> encoded (default true)</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>pretty print JSON respones (default true)</td>
+</tr>
+<tr>
+<td>-print</td>
+<td>A (all), H (request header), B (request body), h (response header), b (response body), andy combination possible</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>show version number</td>
+</tr>
+</tbody>
+</table>
+<p>Method can be any of the regular HTTP methods. It defaults to GET if there is no data to send and to POST otherwise.</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key=value</td>
+<td>JSON/form-encoded key-value pair</td>
+</tr>
+<tr>
+<td>key:value</td>
+<td>custom header</td>
+</tr>
+<tr>
+<td>key=@/path/to/file</td>
+<td>send file content as value</td>
+</tr>
+</tbody>
+</table>
+<p>IO redirects (<code>&lt;</code>, <code>&gt;</code>) work as usual.</p>
+<p>bat accepts both, SCION addresses and hostnames as URLs. Hostnames are resolved by scanning the <code>/etc/hosts/</code> file. New hosts can be added by simply including a line in that file.
+Below you see an example:</p>
+<div class="codehilite"><pre><span></span># regular IPv4 hosts
+127.0.0.1                                               localhost
+123.456.789.0                                           dummy1
+
+# regular IPv6 hosts
+fe80:cd00:0:cde:1257:0:211e:729c                        dummy2
+123:4567:89ab:cdef:123:4567:89ab:cdef                   dummy3
+
+# SCION hosts
+17-ffaa:0:1,[192.168.1.1]                               host1 host2
+18-ffaa:1:2,[10.0.8.10]                                 host3 
+20-ffaa:c0ff:ee12,[0:0:0ff1:ce00:dead:10cc:baad:f00d]   host4
+</pre></div>
+
+
+<p>Consequently, these two calls are equivalent:</p>
+<div class="codehilite"><pre><span></span>bat https://17-ffaa:0:1,[192.168.1.1]:8080/route
+bat https://host1:8080/route
 </pre></div>
 
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you are running SCION in a VM this app is already installed.</p>
+<p>The scheme defaults to HTTPS, unencrypted HTTP is not supported</p>
 </div>
-<p>The <code>sensorfetcher</code> application sends a 0-length SCION UDP packet to the <code>sensorserver</code> application to fetch the sensor readings. A string is returned containing all the sensor readings. To keep the application as simple as possible, no reliability is built in -- in case of packet loss, the user needs to abort and re-try.</p>
-<p>To run the <code>sensorfetcher</code> application, you will need to specify the address of a sensor server, for instance <code>17-ffaa:0:1102,[192.33.93.177]:42003</code>, using the <code>-s</code> flag. Per default the client binds to localhost. You can specify any other client SCION address by providing the <code>-c</code> flag.</p>
-<p>Sample servers are at:</p>
-<ul>
-<li><code>17-ffaa:0:1102,[192.33.93.177]:42003</code></li>
-<li><code>17-ffaa:1:13,[192.168.1.111]:42003</code></li>
-</ul>
-<p>Their readings can be fetched as follows:</p>
-<div class="codehilite"><pre><span></span>sensorfetcher -s <span class="m">17</span>-ffaa:0:1102,<span class="o">[</span><span class="m">192</span>.33.93.177<span class="o">]</span>:42003
+<h2 id="example-servers">Example servers<a class="headerlink" href="#example-servers" title="Permanent link">&para;</a></h2>
+<p>Two example server applications can be found in <a href="https://github.com/netsec-ethz/scion-apps/tree/master/lib/shttp/examples">scion-apps repository</a>.
+<a href="https://github.com/netsec-ethz/scion-apps/tree/master/lib/shttp/examples/minimal">Minimal</a> starts a server which defines two routes: <code>/download</code> downloads a small HTML file from the server. <code>/upload</code> prints the form encoded content of the request body to the console. They show the basic GET and POST capabilities of bat.
+<a href="https://github.com/netsec-ethz/scion-apps/tree/master/lib/shttp/examples/image_server">Image-server</a> has a single route, <code>/image</code> which lets the user download an image from the server and save it to disk. This example shows the download capabilities of bat.</p>
+<p>To start any of the servers, run these commands in the respective folder:</p>
+<div class="codehilite"><pre><span></span>openssl req -x509 -newkey rsa:1024 -keyout key.pem -nodes -out cert.pem -days <span class="m">365</span> -subj <span class="s1">&#39;/CN=server&#39;</span>
+server -local <span class="m">17</span>-ffaa:1:1,<span class="o">[</span><span class="m">10</span>.0.0.15<span class="o">]</span>:40002 -cert cert.pem -key key.pem
 </pre></div>
 
 
-<h3 id="sensorserver">sensorserver<a class="headerlink" href="#sensorserver" title="Permanent link">&para;</a></h3>
-<p>To install sensorserver:</p>
-<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/sensorapp/sensorserver
+<p>Make sure you give your server a name (e.g. server) by adding a line to <code>/etc/hosts</code>.
+Then query it like so:</p>
+<p>For the minimal server:</p>
+<div class="codehilite"><pre><span></span>bat server:40002/download
 </pre></div>
 
 
-<p>We use sensors from Tinkerforge, and the <code>sensorreader.py</code> Python application fetches the sensor values and writes them to <code>stdout</code>. The <code>sensorserver</code> application collects the readings, and serves them as a string to client requests. To start, we use the following command:</p>
-<div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/sensorapp/sensorserver/sensorreader.py <span class="p">|</span> sensorserver -s <span class="m">17</span>-ffaa:0:1102,<span class="o">[</span><span class="m">192</span>.33.93.177<span class="o">]</span>:42003 <span class="p">&amp;</span>
+<p>It should produce output similar to this:
+<img alt="bat minimal server output" src="../../images/bat_output.png" /></p>
+<div class="codehilite"><pre><span></span>bat -f server:40002/upload <span class="nv">foo</span><span class="o">=</span>bar
 </pre></div>
 
 
-<p>If you do not have any sensor information available, then you can use a simple time application that reports the current time on your system:</p>
-<div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/sensorapp/sensorserver/timereader.py <span class="p">|</span> sensorserver -s <span class="m">17</span>-ffaa:0:1102,<span class="o">[</span><span class="m">192</span>.33.93.177<span class="o">]</span>:42003 <span class="p">&amp;</span>
+<p>Which prints <code>foo=bar</code> in the server's console, and</p>
+<div class="codehilite"><pre><span></span>bat -b server:40002/download
 </pre></div>
+
+
+<p>which runs a benchmark, producing output like this:</p>
+<p><img alt="bat benchmarking output" src="../../images/bat_bench_output.png" /></p>
+<p>For the image server:</p>
+<div class="codehilite"><pre><span></span>bat -d server:40002/image
+</pre></div>
+
+
+<p>This places the downloaded image file in your current directory.</p>
                 
                   
                 
