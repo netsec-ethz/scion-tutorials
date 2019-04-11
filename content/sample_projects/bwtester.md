@@ -31,16 +31,16 @@ And at the attachment points:
 * `19-ffaa:0:1303,[10.0.8.1]:30100`
 * `20-ffaa:0:1404,[10.0.8.1]:30100`
 
-You can test the application as follows, replacing the client address with your own address after the `-c` option (you can select any available port number for the client):
+You can test the application as follows (use `-c` to bind to a different address than localhost):
 
 ```shell
-bwtestclient -s 17-ffaa:0:1102,[192.33.93.177]:30100 -c 17-ffaa:1:6,[10.0.2.15]:30102
+bwtestclient -s 17-ffaa:0:1102,[192.33.93.177]:30100
 ```
 
 The application supports specification of the test duration (up to 10 seconds), the packet size to be used (at least 4 bytes), the total number of packets that will be sent, and the target bandwidth. For instance, `5,100,10,1600bps` specifies that 10 packets of size 100 bytes will be sent over 5 seconds, resulting in a bandwidth of 1600bps. The question mark `?` character can be used as wildcard for any of these parameters. Its value is then computed according to the other parameters. The parameters for the test in the client-to-server direction are specified with `-cs`, and the server-to-client direction with `-sc`. So for instance to send 1 Mbps for 10 seconds from the client to the server, and 10 Mbps from the server to the client, you can use this command:
 
 ```shell
-bwtestclient -s 17-ffaa:0:1102,[192.33.93.177]:30100 -c 17-ffaa:1:6,[10.0.2.15]:30102 -cs 10,1000,1250,1Mbps -sc 10,1000,12500,10Mbps
+bwtestclient -s 17-ffaa:0:1102,[192.33.93.177]:30100 -cs 10,1000,1250,1Mbps -sc 10,1000,12500,10Mbps
 ```
 For more information run the application without arguments to print its usage.
 
@@ -55,7 +55,13 @@ govendor sync
 
 For govendor, see note [1].
 
-The server is started as follows, where the address needs to be adjusted as for other applications:
+The server is started as follows:
+
+```shell
+bwtestserver -p 30100 &
+```
+
+This makes the server bind to localhost and listen on port 30100. Alternatively, it can bind to any other SCION address, specified by -s:
 
 ```shell
 bwtestserver -s 17-ffaa:0:1102,[192.33.93.177]:30100 &

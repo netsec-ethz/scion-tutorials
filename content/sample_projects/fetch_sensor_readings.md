@@ -14,17 +14,17 @@ go get github.com/netsec-ethz/scion-apps/sensorapp/sensorfetcher
 
 The `sensorfetcher` application sends a 0-length SCION UDP packet to the `sensorserver` application to fetch the sensor readings. A string is returned containing all the sensor readings. To keep the application as simple as possible, no reliability is built in -- in case of packet loss, the user needs to abort and re-try.
 
-To run the `sensorfetcher` application, you will need to express your local host's address as a SCION address (in the format `ISD-AS,[IPv4]:port`) and specify the address of a sensor server, for instance `17-ffaa:0:1102,[192.33.93.177]:42003`. The local ISD and AS number can be seen for instance from files in the logs directory: `br17-ffaa_0_1102.log` indicates that we are in AS ffaa:0:1102 in ISD 17. Another way is to look at the gen directory, which in this case contains a subdirectory called `ISD17`, which contains subdirectory `ASffaa_0_1102`. The IPv4 address represents the local address the application binds to, and the local port number can be freely selected as any available port.
+To run the `sensorfetcher` application, you will need to specify the address of a sensor server, for instance `17-ffaa:0:1102,[192.33.93.177]:42003`, using the `-s` flag. Per default the client binds to localhost. You can specify any other client SCION address by providing the `-c` flag.
 
 Sample servers are at:
 
 * `17-ffaa:0:1102,[192.33.93.177]:42003`
 * `17-ffaa:1:13,[192.168.1.111]:42003`
 
-Their readings can be fetched as follows (need to replace client address with actual client address, with an arbitrary free port):
+Their readings can be fetched as follows:
 
 ```shell
-sensorfetcher -s 17-ffaa:0:1102,[192.33.93.177]:42003 -c 17-ffaa:0:1108,[10.0.2.15]:42001
+sensorfetcher -s 17-ffaa:0:1102,[192.33.93.177]:42003
 ```
 
 ### sensorserver
