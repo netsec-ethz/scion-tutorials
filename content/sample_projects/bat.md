@@ -14,19 +14,19 @@ go get github.com/netsec-ethz/scion-apps/bat
 
 The general usage of bat is: `bat [flags] [Method] URL [Item]`
 
-| Flag   | Meaning                                                                                                          |
-| ------ | ---------------------------------------------------------------------------------------------------------------- |
-| -l     | local bind address                                                                                               |
-| -b     | benchmarking mode                                                                                                |
-| -b.N   | number of benchmark requests to send (default 1000)                                                              |
-| -b.C   | number of parallel clients in benchmark (default 100)                                                            |
-| -body  | Send raw data as body                                                                                            |
-| -d     | download mode with progress bar                                                                                  |
-| -f     | send data `application/x-www-form-urlencoded` (default false)                                                    |
-| -j     | send data `application/json` encoded (default true)                                                              |
-| -p     | pretty print JSON respones (default true)                                                                        |
-| -print | A (all), H (request header), B (request body), h (response header), b (response body), andy combination possible |
-| -v     | show version number                                                                                              |
+| Flag   | Meaning                                                                                                         |
+| ------ | --------------------------------------------------------------------------------------------------------------- |
+| -l     | local bind address                                                                                              |
+| -b     | benchmarking mode                                                                                               |
+| -b.N   | number of benchmark requests to send (default 1000)                                                             |
+| -b.C   | number of parallel clients in benchmark (default 100)                                                           |
+| -body  | Send raw data as body                                                                                           |
+| -d     | download mode with progress bar                                                                                 |
+| -f     | send data `application/x-www-form-urlencoded` (default false)                                                   |
+| -j     | send data `application/json` encoded (default true)                                                             |
+| -p     | pretty print JSON responses (default true)                                                                      |
+| -print | A (all), H (request header), B (request body), h (response header), b (response body), any combination possible |
+| -v     | show version number                                                                                             |
 
 
 Method can be any of the regular HTTP methods. It defaults to GET if there is no data to send and to POST otherwise.
