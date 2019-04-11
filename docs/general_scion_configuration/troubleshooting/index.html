@@ -1150,7 +1150,7 @@ $ rm -r user@example.com_17-ffaa_1_64
 
 <p>Now check <a href="https://www.scionlab.org">in the Coordinator webpage</a> that your AS is correctly attached to your AP of choice, and that you are using the right tarball file. If in doubt, you can always click on <em>Re-download my SCIONLab AS Configuration</em> to get it again. <em>Re-download</em> does not configure the AS, but returns the latest configuration the Coordinator has for it. Wait 15 minutes (the reason being sometimes the attachment point needs 15 minutes to process your request). You should have received an email stating the success of your request. In the hopefully successful state, start again from <a href="#check-tarball-file-and-contents">the checking tarbal step</a>. If after waiting these 15 minutes you did not receive the success email, or you received it but still don't see the same IP address in the <code>tun0</code> interface as in the topology file, <a href="#contact">contact us</a>.</p>
 <h3 id="check-scion-is-running">Check SCION is running<a class="headerlink" href="#check-scion-is-running" title="Permanent link">&para;</a></h3>
-<p>We are goint to check now that all SCION processes are running. Once logged in the VM, run this:</p>
+<p>We are going to check now that all SCION processes are running. Once logged in the VM, run this:</p>
 <div class="codehilite"><pre><span></span>ubuntu@ubuntu-xenial:~$ <span class="nb">cd</span> <span class="nv">$SC</span>
 ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./scion.sh status
 ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ 
@@ -1180,7 +1180,7 @@ ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$
 </pre></div>
 
 
-<p>If now the <code>scion.sh status</code> command still prints messages (wether the same or different ones than before), please <a href="#contact">contact us</a>, copying that output on the message.
+<p>If now the <code>scion.sh status</code> command still prints messages (whether the same or different ones than before), please <a href="#contact">contact us</a>, copying that output on the message.
 You should at this stage check the AS ID in the virtual machine, and ensure it corresponds to the one you expect. In our case, we expect to see the AS ID <code>17-ffaa_1_64</code>:</p>
 <div class="codehilite"><pre><span></span>ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ cat <span class="nv">$SC</span>/gen/ia
 <span class="m">17</span>-ffaa_1_64ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$

@@ -294,7 +294,7 @@ $ rm -r user@example.com_17-ffaa_1_64
 Now check [in the Coordinator webpage](https://www.scionlab.org) that your AS is correctly attached to your AP of choice, and that you are using the right tarball file. If in doubt, you can always click on _Re-download my SCIONLab AS Configuration_ to get it again. _Re-download_ does not configure the AS, but returns the latest configuration the Coordinator has for it. Wait 15 minutes (the reason being sometimes the attachment point needs 15 minutes to process your request). You should have received an email stating the success of your request. In the hopefully successful state, start again from [the checking tarbal step](#check-tarball-file-and-contents). If after waiting these 15 minutes you did not receive the success email, or you received it but still don't see the same IP address in the `tun0` interface as in the topology file, [contact us](#contact).
 
 ### Check SCION is running
-We are goint to check now that all SCION processes are running. Once logged in the VM, run this:
+We are going to check now that all SCION processes are running. Once logged in the VM, run this:
 ```shell
 ubuntu@ubuntu-xenial:~$ cd $SC
 ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./scion.sh status
@@ -322,7 +322,7 @@ as17-ffaa_1_64:ps17-ffaa_1_64-1: started
 ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ ./scion.sh status
 ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ 
 ```
-If now the `scion.sh status` command still prints messages (wether the same or different ones than before), please [contact us](#contact), copying that output on the message.
+If now the `scion.sh status` command still prints messages (whether the same or different ones than before), please [contact us](#contact), copying that output on the message.
 You should at this stage check the AS ID in the virtual machine, and ensure it corresponds to the one you expect. In our case, we expect to see the AS ID `17-ffaa_1_64`:
 ```shell
 ubuntu@ubuntu-xenial:~/go/src/github.com/scionproto/scion$ cat $SC/gen/ia
