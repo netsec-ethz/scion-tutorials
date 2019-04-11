@@ -75,7 +75,7 @@ Two example server applications can be found in [scion-apps repository](https://
 
 To start any of the servers, run these commands in the respective folder:
 
-```
+```shell
 openssl req -x509 -newkey rsa:1024 -keyout key.pem -nodes -out cert.pem -days 365 -subj '/CN=server'
 server -local 17-ffaa:1:1,[10.0.0.15]:40002 -cert cert.pem -key key.pem
 ```
@@ -85,20 +85,21 @@ Then query it like so:
 
 
 For the minimal server:
-```
+
+```shell
 bat server:40002/download
 ```
 
 It should produce output similar to this:
 ![bat minimal server output](../images/bat_output.png)
 
-```
+```shell
 bat -f server:40002/upload foo=bar
 ```
 
 Which prints `foo=bar` in the server's console, and
 
-```
+```shell
 bat -b server:40002/download
 ```
 
@@ -108,7 +109,8 @@ which runs a benchmark, producing output like this:
 
 
 For the image server:
-```
+
+```shell
 bat -d server:40002/image
 ```
 
