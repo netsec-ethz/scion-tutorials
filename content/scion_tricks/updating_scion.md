@@ -79,7 +79,7 @@ If you choose to perform the update yourself, the steps to manually update your 
 
 
 #### Update the source code
-Stash all uncommited changes before doing this procedure.
+Stash all uncommitted changes before doing this procedure.
 ```shell
 cd $SC
 ./scion.sh stop

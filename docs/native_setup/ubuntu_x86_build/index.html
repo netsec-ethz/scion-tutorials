@@ -1009,7 +1009,7 @@ chmod +x scion_install_script.sh
 </pre></div>
 
 
-<p>In case of connecting to SCIONLab via VPN, the OpenVPN client configurationi (<code>client.conf</code>), that is included in the configuration downloaded from the <a href="https://www.scionlab.org/">SCION Coordination Service</a> needs to be provided as argument additionally:</p>
+<p>In case of connecting to SCIONLab via VPN, the OpenVPN client configuration (<code>client.conf</code>), that is included in the configuration downloaded from the <a href="https://www.scionlab.org/">SCION Coordination Service</a> needs to be provided as argument additionally:</p>
 <div class="codehilite"><pre><span></span><span class="nb">export</span> <span class="nv">BIDIR</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>
 ./scion_install_script.sh -g <span class="nv">$BIDIR</span>/gen/ -v <span class="nv">$BIDIR</span>/client.conf
 </pre></div>

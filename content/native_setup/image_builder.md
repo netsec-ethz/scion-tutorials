@@ -18,7 +18,7 @@ Running SCION consists of several steps: registering an account on [SCIONLab Coo
 
 In order to download an image, you must login to [SCIONLab Coordination Service](https://www.scionlab.org/). In case you don't have an account yet, follow the registration process.
 
-After logging in, create a new AS by clicking on *Generate a new SCIONLab AS*, select a desired attachment point and give it a label (optional). Choose *Install on a dedicated SCION system (for experts)*. Unless your device has a static, public routable IP address (not behind a NAT), choose *Use an OpenVPN connection for this AS*. Otherwise enter the IP address under wich your device can be reached. Then, under *Create SCION image for IoT device* select your device from the dropdown list and click *Build image*. The procedure may take a few minutes. After it finishes a download link appears from which you can download your generated image. A screenshot of the user interface is shown below:
+After logging in, create a new AS by clicking on *Generate a new SCIONLab AS*, select a desired attachment point and give it a label (optional). Choose *Install on a dedicated SCION system (for experts)*. Unless your device has a static, public routable IP address (not behind a NAT), choose *Use an OpenVPN connection for this AS*. Otherwise enter the IP address under which your device can be reached. Then, under *Create SCION image for IoT device* select your device from the dropdown list and click *Build image*. The procedure may take a few minutes. After it finishes a download link appears from which you can download your generated image. A screenshot of the user interface is shown below:
 
 ![SCIONLab download page](../images/scionlab_download_image_arm_setup.png)
 
@@ -35,7 +35,7 @@ Your device is now ready. You can connect to it via SSH like this (where you rep
 ```
 The password for the scion user is *scion*. It's recommended to change it after the first login.
 
-SCION infrastructer and SCION-viz are started automatically on start up.
+SCION infrastructure and SCION-viz are started automatically on start up.
 
 ## Next steps
 

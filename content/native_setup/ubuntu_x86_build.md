@@ -51,7 +51,7 @@ export BIDIR=`pwd`
 ./scion_install_script.sh -g $BIDIR/gen/
 ```
 
-In case of connecting to SCIONLab via VPN, the OpenVPN client configurationi (`client.conf`), that is included in the configuration downloaded from the [SCION Coordination Service](https://www.scionlab.org/) needs to be provided as argument additionally:
+In case of connecting to SCIONLab via VPN, the OpenVPN client configuration (`client.conf`), that is included in the configuration downloaded from the [SCION Coordination Service](https://www.scionlab.org/) needs to be provided as argument additionally:
 
 ```shell
 export BIDIR=`pwd`

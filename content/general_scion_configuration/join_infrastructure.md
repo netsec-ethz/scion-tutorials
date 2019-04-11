@@ -34,7 +34,7 @@ We further customize the machine with additional 8G ECC Ram and SSD, but a regul
 
 ## Procedure
 
-You can connect to the SCIONLab infrastructgure through the following steps:
+You can connect to the SCIONLab infrastructure through the following steps:
 
 - Get in contact with us. Send us an email to <scionlab-admins@sympa.ethz.ch> telling us you want to join the infrastructure.
 - Once the node(s) are ready, create a user with the name `scion` and permission to run `sudo`. Grant the SCIONLab admins `ssh` access to the machine via a key for that `scion` user.
