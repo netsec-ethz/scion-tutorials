@@ -505,6 +505,40 @@
     Usage
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flags" title="Flags" class="md-nav__link">
+    Flags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method" title="Method" class="md-nav__link">
+    Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" title="URL" class="md-nav__link">
+    URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#item" title="Item" class="md-nav__link">
+    Item
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -754,6 +788,40 @@
     Usage
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flags" title="Flags" class="md-nav__link">
+    Flags
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method" title="Method" class="md-nav__link">
+    Method
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" title="URL" class="md-nav__link">
+    URL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#item" title="Item" class="md-nav__link">
+    Item
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -790,6 +858,7 @@
 
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>The general usage of bat is: <code>bat [flags] [Method] URL [Item]</code></p>
+<h3 id="flags">Flags<a class="headerlink" href="#flags" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -844,30 +913,9 @@
 </tr>
 </tbody>
 </table>
-<p>Method can be any of the regular HTTP methods. It defaults to GET if there is no data to send and to POST otherwise.</p>
-<table>
-<thead>
-<tr>
-<th>Item</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key=value</td>
-<td>JSON/form-encoded key-value pair</td>
-</tr>
-<tr>
-<td>key:value</td>
-<td>custom header</td>
-</tr>
-<tr>
-<td>key=@/path/to/file</td>
-<td>send file content as value</td>
-</tr>
-</tbody>
-</table>
-<p>IO redirects (<code>&lt;</code>, <code>&gt;</code>) work as usual.</p>
+<h3 id="method">Method<a class="headerlink" href="#method" title="Permanent link">&para;</a></h3>
+<p>The method can be any of the regular HTTP methods. It defaults to GET if there is no data to send and to POST otherwise.</p>
+<h3 id="url">URL<a class="headerlink" href="#url" title="Permanent link">&para;</a></h3>
 <p>bat accepts both, SCION addresses and hostnames as URLs. Hostnames are resolved by scanning the <code>/etc/hosts/</code> file. New hosts can be added by simply including a line in that file.
 Below you see an example:</p>
 <div class="codehilite"><pre><span></span># regular IPv4 hosts
@@ -895,6 +943,30 @@ bat https://host1:8080/route
 <p class="admonition-title">Note</p>
 <p>The scheme defaults to HTTPS, unencrypted HTTP is not supported</p>
 </div>
+<h3 id="item">Item<a class="headerlink" href="#item" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key=value</td>
+<td>JSON/form-encoded key-value pair</td>
+</tr>
+<tr>
+<td>key:value</td>
+<td>custom header</td>
+</tr>
+<tr>
+<td>key=@/path/to/file</td>
+<td>send file content as value</td>
+</tr>
+</tbody>
+</table>
+<p>IO redirects (<code>&lt;</code>, <code>&gt;</code>) work as usual.</p>
 <h2 id="example-servers">Example servers<a class="headerlink" href="#example-servers" title="Permanent link">&para;</a></h2>
 <p>Two example server applications can be found in <a href="https://github.com/netsec-ethz/scion-apps/tree/master/lib/shttp/examples">scion-apps repository</a>.
 <a href="https://github.com/netsec-ethz/scion-apps/tree/master/lib/shttp/examples/minimal">Minimal</a> starts a server which defines two routes: <code>/download</code> downloads a small HTML file from the server. <code>/upload</code> prints the form encoded content of the request body to the console. They show the basic GET and POST capabilities of bat.

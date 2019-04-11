@@ -124,7 +124,7 @@ echo '/swapfile swap swap defaults 0 0' | sudo tee -a /etc/fstab
 free -h
 ```
 
-In order to instal dependencies, simply issue the following command while in the root directory of the SCION installation:
+In order to install dependencies, simply issue the following command while in the root directory of the SCION installation:
 
 ```shell
 bash -c 'yes | GO_INSTALL=true ./env/deps'

@@ -14,6 +14,8 @@ go get github.com/netsec-ethz/scion-apps/bat
 
 The general usage of bat is: `bat [flags] [Method] URL [Item]`
 
+### Flags
+
 | Flag   | Meaning                                                                                                         |
 | ------ | --------------------------------------------------------------------------------------------------------------- |
 | -l     | local bind address                                                                                              |
@@ -28,16 +30,11 @@ The general usage of bat is: `bat [flags] [Method] URL [Item]`
 | -print | A (all), H (request header), B (request body), h (response header), b (response body), any combination possible |
 | -v     | show version number                                                                                             |
 
+### Method
 
-Method can be any of the regular HTTP methods. It defaults to GET if there is no data to send and to POST otherwise.
+The method can be any of the regular HTTP methods. It defaults to GET if there is no data to send and to POST otherwise.
 
-| Item               |                                  |
-| ------------------ | -------------------------------- |
-| key=value          | JSON/form-encoded key-value pair |
-| key:value          | custom header                    |
-| key=@/path/to/file | send file content as value       |
-
-IO redirects (`<`, `>`) work as usual.
+### URL
 
 bat accepts both, SCION addresses and hostnames as URLs. Hostnames are resolved by scanning the `/etc/hosts/` file. New hosts can be added by simply including a line in that file.
 Below you see an example:
@@ -66,6 +63,16 @@ bat https://host1:8080/route
 
 !!! note
     The scheme defaults to HTTPS, unencrypted HTTP is not supported
+
+### Item
+
+| Item               |                                  |
+| ------------------ | -------------------------------- |
+| key=value          | JSON/form-encoded key-value pair |
+| key:value          | custom header                    |
+| key=@/path/to/file | send file content as value       |
+
+IO redirects (`<`, `>`) work as usual.
 
 ## Example servers
 

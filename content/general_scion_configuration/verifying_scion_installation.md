@@ -81,4 +81,4 @@ openssl genrsa -out "gen-certs/tls.key" 2048
 umask "$old"
 openssl req -new -x509 -key "gen-certs/tls.key" -out "gen-certs/tls.pem" -days 3650 -subj /CN=scion_def_srv
 ```
-This would have generated the missing `gen-certs/tls.pem` and `key` files. Run again `pingpong` and you shoult not see the error about the missing certificate.
+This would have generated the missing `gen-certs/tls.pem` and `key` files. Run again `pingpong` and you should not see the error about the missing certificate.
