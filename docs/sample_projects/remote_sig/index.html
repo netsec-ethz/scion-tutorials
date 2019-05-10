@@ -1038,8 +1038,8 @@ sudo ip route show table <span class="m">12</span>
 
 <h2 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h2>
 <p>You can test that your SIG configuration works by running some traffic over it.</p>
-<p>Add some server on host B and client on host A:</p>
-<p>Host B:</p>
+<p>Add some server on host A and client on host B:</p>
+<p>Host A:</p>
 <div class="codehilite"><pre><span></span>sudo ip link add server <span class="nb">type</span> dummy
 sudo ip addr add <span class="m">172</span>.16.12.1/24 brd + dev server label server:0
 
@@ -1049,14 +1049,14 @@ mkdir <span class="nv">$SC</span>/WWW
 </pre></div>
 
 
-<p>Host A:</p>
+<p>Host B:</p>
 <div class="codehilite"><pre><span></span>sudo ip link add client <span class="nb">type</span> dummy
 sudo ip addr add <span class="m">172</span>.16.11.1/24 brd + dev client label client:0
 </pre></div>
 
 
-<p>Query the server running on host B from host A:</p>
-<p>Host A:</p>
+<p>Query the server running on host A from host B:</p>
+<p>Host B:</p>
 <div class="codehilite"><pre><span></span>curl --interface <span class="m">172</span>.16.11.1 <span class="m">172</span>.16.12.1:8081/hello.html
 </pre></div>
 
