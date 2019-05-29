@@ -477,8 +477,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../as_visualization/webapp/" title="SCIONLab Apps Web Visualization" class="md-nav__link">
-      SCIONLab Apps Web Visualization
+    <a href="../../as_visualization/webapp/" title="Webapp AS Visualization" class="md-nav__link">
+      Webapp AS Visualization
     </a>
   </li>
 
@@ -489,8 +489,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../as_visualization/running_asviz/" title="Running AS Visualizations" class="md-nav__link">
-      Running AS Visualizations
+    <a href="../../as_visualization/webapp_apps/" title="Webapp SCIONLab Apps Visualization" class="md-nav__link">
+      Webapp SCIONLab Apps Visualization
     </a>
   </li>
 
@@ -501,20 +501,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../as_visualization/browser_asviz/" title="Browser AS Visualization" class="md-nav__link">
-      Browser AS Visualization
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../as_visualization/command_asviz/" title="Command-line AS Visualization" class="md-nav__link">
-      Command-line AS Visualization
+    <a href="../../as_visualization/webapp_development/" title="Webapp Development Tips" class="md-nav__link">
+      Webapp Development Tips
     </a>
   </li>
 
@@ -825,7 +813,7 @@ You can then check on the scion-coordinator on your <a href="https://www.scionla
 </div>
 <h2 id="make-use-of-the-device">Make use of the device<a class="headerlink" href="#make-use-of-the-device" title="Permanent link">&para;</a></h2>
 <p>The SCION is running a full AS connected to the SCIONLab infrastructure. This means the device is running the following services: a border router, a beacon server, a certificate server, a path server and a SIBRA server. You can read about the function of each service in the <a href="https://www.scion-architecture.net/pdf/SCION-book.pdf">SCION book</a>.
-In addition, SCION boxes also run ithe SCIONviz server which allows you to visualize the paths you AS knows about. You can connect to SCIONviz by connecting a regular IP device to one of the remaining interfaces. The open the webpage http://172.16.1.1:8000 and the SCIONviz will load. For instructions on how to use SCIONviz, please see the <a href="../../as_visualization/browser_asviz/">SCIONviz tutorial</a> (but make sure to use the address mentioned here).</p>
+In addition, SCION boxes can run the SCIONLab Webapp server which allows you to visualize the paths your AS knows about. You can connect to Webapp by connecting a regular IP device to one of the remaining interfaces. The open the webpage http://172.16.1.1:8000 and the SCIONviz will load. For instructions on how to use Webapp, please see the <a href="../../as_visualization/webapp/">SCIONLab Apps Web Visualization tutorial</a> (but make sure to use the address mentioned here).</p>
 <h2 id="setup-an-endhost-and-connect-it-via-the-scion-box">Setup an endhost and connect it via the SCION box<a class="headerlink" href="#setup-an-endhost-and-connect-it-via-the-scion-box" title="Permanent link">&para;</a></h2>
 <p>Setup an endhost and configure it as described in <a href="../../general_scion_configuration/setup_endhost/">Configuring SCION endhost topology</a>.
 Then connect the machine to one of the secondary interfaces of you SCION box. Your devices will be allocated a local address.</p>

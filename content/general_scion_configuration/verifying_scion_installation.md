@@ -8,7 +8,7 @@ There are several methods of doing this. Some of them are described in this post
 
 ## Running SCION-viz
 
-The recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCION-viz](../as_visualization/running_asviz.md). This user-friendly tool will display paths from your AS to different destinations, verifying the correct function of the control plane.
+The recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCIONLab Apps Web Visualization](../as_visualization/webapp.md). This user-friendly tool will display paths from your AS to different destinations, verifying the correct function of the control plane.
 
 ## Terminal based
 
