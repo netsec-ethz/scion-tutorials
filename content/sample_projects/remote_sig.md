@@ -278,9 +278,9 @@ sudo ip route show table 12
 
 You can test that your SIG configuration works by running some traffic over it.
 
-Add some server on host B and client on host A:
+Add some server on host A and client on host B:
 
-Host B:
+Host A:
 ```shell
 sudo ip link add server type dummy
 sudo ip addr add 172.16.12.1/24 brd + dev server label server:0
@@ -290,16 +290,16 @@ echo "Hello World!" > $SC/WWW/hello.html
 cd $SC/WWW/ && python3 -m http.server --bind 172.16.12.1 8081 &
 ```
 
-Host A:
+Host B:
 ```shell
 sudo ip link add client type dummy
 sudo ip addr add 172.16.11.1/24 brd + dev client label client:0
 ```
 
 
-Query the server running on host B from host A:
+Query the server running on host A from host B:
 
-Host A:
+Host B:
 ```shell
 curl --interface 172.16.11.1 172.16.12.1:8081/hello.html
 ```
