@@ -38,7 +38,7 @@
     
     
       
-        <title>Browser AS Visualization - SCION Tutorials</title>
+        <title>Webapp Development Tips - SCION Tutorials</title>
       
     
     
@@ -73,7 +73,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#browser-as-visualizations" tabindex="1" class="md-skip">
+      <a href="../../#webapp-development-tips" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -99,7 +99,7 @@
                 SCION Tutorials
               </span>
               <span class="md-header-nav__topic">
-                Browser AS Visualization
+                Webapp Development Tips
               </span>
             
           
@@ -479,8 +479,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../webapp/" title="SCIONLab Apps Web Visualization" class="md-nav__link">
-      SCIONLab Apps Web Visualization
+    <a href="../webapp/" title="Webapp AS Visualization" class="md-nav__link">
+      Webapp AS Visualization
     </a>
   </li>
 
@@ -491,8 +491,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../running_asviz/" title="Running AS Visualizations" class="md-nav__link">
-      Running AS Visualizations
+    <a href="../webapp_apps/" title="Webapp SCIONLab Apps Visualization" class="md-nav__link">
+      Webapp SCIONLab Apps Visualization
     </a>
   </li>
 
@@ -512,11 +512,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Browser AS Visualization
+        Webapp Development Tips
       </label>
     
-    <a href="./" title="Browser AS Visualization" class="md-nav__link md-nav__link--active">
-      Browser AS Visualization
+    <a href="./" title="Webapp Development Tips" class="md-nav__link md-nav__link--active">
+      Webapp Development Tips
     </a>
     
       
@@ -530,30 +530,51 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#starting-the-visualization" title="Starting the Visualization" class="md-nav__link">
-    Starting the Visualization
+  <a href="#local-topology" title="Local Topology" class="md-nav__link">
+    Local Topology
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#viewing-the-scion-daemon" title="Viewing the SCION Daemon" class="md-nav__link">
-    Viewing the SCION Daemon
+  <a href="#development-tips" title="Development Tips" class="md-nav__link">
+    Development Tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-visualizations" title="Local Visualizations" class="md-nav__link">
+    Local Visualizations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-scionlab-app-servers" title="Local SCIONLab App Servers" class="md-nav__link">
+    Local SCIONLab App Servers
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sciond-paths" title="SCIOND Paths" class="md-nav__link">
-    SCIOND Paths
+  <a href="#bwtestserver" title="bwtestserver" class="md-nav__link">
+    bwtestserver
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#scion-as-topology" title="SCION AS Topology" class="md-nav__link">
-    SCION AS Topology
+  <a href="#sensorserver" title="sensorserver" class="md-nav__link">
+    sensorserver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imageserver" title="imageserver" class="md-nav__link">
+    imageserver
   </a>
   
 </li>
@@ -564,36 +585,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#viewing-the-scion-local-as" title="Viewing the SCION Local AS" class="md-nav__link">
-    Viewing the SCION Local AS
+  <a href="#related-links" title="Related Links" class="md-nav__link">
+    Related Links
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#local-as-topology" title="Local AS Topology" class="md-nav__link">
-    Local AS Topology
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#local-isd-trust-root-configuration" title="Local ISD Trust Root Configuration" class="md-nav__link">
-    Local ISD Trust Root Configuration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#local-as-certificate" title="Local AS Certificate" class="md-nav__link">
-    Local AS Certificate
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -605,18 +599,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../command_asviz/" title="Command-line AS Visualization" class="md-nav__link">
-      Command-line AS Visualization
-    </a>
   </li>
 
         
@@ -790,30 +772,51 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#starting-the-visualization" title="Starting the Visualization" class="md-nav__link">
-    Starting the Visualization
+  <a href="#local-topology" title="Local Topology" class="md-nav__link">
+    Local Topology
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#viewing-the-scion-daemon" title="Viewing the SCION Daemon" class="md-nav__link">
-    Viewing the SCION Daemon
+  <a href="#development-tips" title="Development Tips" class="md-nav__link">
+    Development Tips
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-visualizations" title="Local Visualizations" class="md-nav__link">
+    Local Visualizations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-scionlab-app-servers" title="Local SCIONLab App Servers" class="md-nav__link">
+    Local SCIONLab App Servers
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#sciond-paths" title="SCIOND Paths" class="md-nav__link">
-    SCIOND Paths
+  <a href="#bwtestserver" title="bwtestserver" class="md-nav__link">
+    bwtestserver
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#scion-as-topology" title="SCION AS Topology" class="md-nav__link">
-    SCION AS Topology
+  <a href="#sensorserver" title="sensorserver" class="md-nav__link">
+    sensorserver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imageserver" title="imageserver" class="md-nav__link">
+    imageserver
   </a>
   
 </li>
@@ -824,36 +827,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#viewing-the-scion-local-as" title="Viewing the SCION Local AS" class="md-nav__link">
-    Viewing the SCION Local AS
+  <a href="#related-links" title="Related Links" class="md-nav__link">
+    Related Links
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#local-as-topology" title="Local AS Topology" class="md-nav__link">
-    Local AS Topology
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#local-isd-trust-root-configuration" title="Local ISD Trust Root Configuration" class="md-nav__link">
-    Local ISD Trust Root Configuration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#local-as-certificate" title="Local AS Certificate" class="md-nav__link">
-    Local AS Certificate
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -874,32 +850,77 @@
               
                 
                 
-                <h1 id="browser-as-visualizations">Browser AS Visualizations<a class="headerlink" href="#browser-as-visualizations" title="Permanent link">&para;</a></h1>
-<h2 id="starting-the-visualization">Starting the Visualization<a class="headerlink" href="#starting-the-visualization" title="Permanent link">&para;</a></h2>
-<p>After <a href="../running_asviz/">updating the latest source code and starting the server</a>, point your browser to <a href="http://127.0.0.1:8000" target="_blank">http://127.0.0.1:8000</a> to launch the AS Visualization. Even if you run SCION-viz within a VM, you can use the regular browser on your host operating system (Mac or Windows).</p>
-<p>Then, enter the "Source AS" ISD-AS pair of your AS. You can find out your ISD and AS number as described in the tutorial <a href="../../sample_projects/fetch_sensor_readings/">Fetching sensor readings or time stamps</a>. Press "Request Data" to fetch updated data.</p>
-<h2 id="viewing-the-scion-daemon">Viewing the SCION Daemon<a class="headerlink" href="#viewing-the-scion-daemon" title="Permanent link">&para;</a></h2>
-<p>The "Data" pull-down menu option "sciond socket" will bind to a socket to communicate with the SCION Daemon. Alternately, you can override the default IP address of the Daemon by entering the address you wish to bind to in the "SCIOND IP Address" text box.</p>
-<h3 id="sciond-paths">SCIOND Paths<a class="headerlink" href="#sciond-paths" title="Permanent link">&para;</a></h3>
-<p>Enter the "Destination AS" ISD-AS pair and the maximum number of paths to retrieve in "Max Paths" and press "Update Paths" to view all announced paths to the destination from the source.
-The announced paths will be displayed in a combined topology in the window.
-To view the details of a specific path expand the path's data by clicking on the path number in the window on right side.
-<img alt="SCIONLab download page" src="../../images/sciond-paths.png" /></p>
-<h3 id="scion-as-topology">SCION AS Topology<a class="headerlink" href="#scion-as-topology" title="Permanent link">&para;</a></h3>
-<p>The composition of services and border routers for the Source AS will be displayed in the AS Topology tab. Click on any circle to view the details of that server or router.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>The big circle can be clicked on as well to view details of the Source AS.</p>
-</div>
-<p><img alt="SCIONLab download page" src="../../images/sciond_astopo.png" /></p>
-<h2 id="viewing-the-scion-local-as">Viewing the SCION Local AS<a class="headerlink" href="#viewing-the-scion-local-as" title="Permanent link">&para;</a></h2>
-<p>The "Data" pull-down menu option "local gen dir" will display data from the local gen directory.</p>
-<h3 id="local-as-topology">Local AS Topology<a class="headerlink" href="#local-as-topology" title="Permanent link">&para;</a></h3>
-<p><img alt="SCIONLab download page" src="../../images/gendir_astopo.png" /></p>
-<h3 id="local-isd-trust-root-configuration">Local ISD Trust Root Configuration<a class="headerlink" href="#local-isd-trust-root-configuration" title="Permanent link">&para;</a></h3>
-<p><img alt="SCIONLab download page" src="../../images/gendir_trc.png" /></p>
-<h3 id="local-as-certificate">Local AS Certificate<a class="headerlink" href="#local-as-certificate" title="Permanent link">&para;</a></h3>
-<p><img alt="SCIONLab download page" src="../../images/gendir_crt.png" /></p>
+                <h1 id="webapp-development-tips">Webapp Development Tips<a class="headerlink" href="#webapp-development-tips" title="Permanent link">&para;</a></h1>
+<p>The <code>webapp</code> tool can be used to test several aspects of any local topology. See <a href="../webapp/">updating the latest source code and starting the server</a> if you have not already.</p>
+<h2 id="local-topology">Local Topology<a class="headerlink" href="#local-topology" title="Permanent link">&para;</a></h2>
+<p>Any local topology can be used with <code>webapp</code>, for example, the wide test topology:</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$SC</span>
+./scion.sh topology -c topology/Wide.topo
+</pre></div>
+
+
+<h2 id="development-tips">Development Tips<a class="headerlink" href="#development-tips" title="Permanent link">&para;</a></h2>
+<p>For developing the <code>webapp</code> application itself, since it is annoying to make several changes, only to have to start and stop the web server each time, a watcher library like <code>go-watcher</code> is recommended.</p>
+<div class="codehilite"><pre><span></span>go get github.com/canthefason/go-watcher
+go install github.com/canthefason/go-watcher/cmd/watcher
+</pre></div>
+
+
+<p>After installation you can <code>cd</code> to the <code>webapp.go</code> directory and webapp will be rebuilt and rerun every time you save your source file changes, with or without command arguments.</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/go/src/github.com/netsec-ethz/scion-apps/webapp
+watcher -a <span class="m">0</span>.0.0.0 -p <span class="m">8080</span> -r ..
+</pre></div>
+
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> ~/go/src/github.com/netsec-ethz/scion-apps/webapp
+watcher
+</pre></div>
+
+
+<h2 id="local-visualizations">Local Visualizations<a class="headerlink" href="#local-visualizations" title="Permanent link">&para;</a></h2>
+<p>You can point the browser to your test locally and view paths, run SCIONLab client apps, examine certificates and more.
+<img alt="SCION Localhost Paths" src="../../images/scion_viz.png?raw=true" title="SCION Localhost Paths" /></p>
+<h2 id="local-scionlab-app-servers">Local SCIONLab App Servers<a class="headerlink" href="#local-scionlab-app-servers" title="Permanent link">&para;</a></h2>
+<p>This Go web server wraps several SCION test client apps and provides an interface for any text and/or image output received. <a href="http://github.com/netsec-ethz/scion-apps">SCIONLab Apps</a> are on Github.</p>
+<p>Some functional server tests are included to test the networks without needing specific sensor or camera hardware, <code>bwtestserver</code> <code>sensorserver</code> and <code>imageserver</code>.</p>
+<p>The server address <code>1-ffaa:0:112,[127.0.0.2]</code> is used below, but any address appropriate to your test will do. More instructions to setup the servers are <a href="https://github.com/perrig/SCIONLab/blob/master/README.md">here</a>. The web interface launched above can be used to run the client-side apps.</p>
+<h3 id="bwtestserver">bwtestserver<a class="headerlink" href="#bwtestserver" title="Permanent link">&para;</a></h3>
+<p>This test will setup a local server to receive requests from the bandwidth tester. </p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/bwtester/bwtestserver
+go install bwtestserver.go
+bwtestserver -s <span class="m">1</span>-ffaa:0:112,<span class="o">[</span><span class="m">127</span>.0.0.2<span class="o">]</span>:30100 -sciondFromIA <span class="p">&amp;</span>
+</pre></div>
+
+
+<p>Now, from your webapp browser interface running on your virtual client SCION node, you can enter both client and server addresses and ask the client for bandwidth measurements.</p>
+<h3 id="sensorserver">sensorserver<a class="headerlink" href="#sensorserver" title="Permanent link">&para;</a></h3>
+<p>This hardware-independent test will echo some remote machine stats from the Python script <code>timereader.py</code>, which is piped to the server for transmission to clients. On your remote SCION server node run (substituting your own address parameters):</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/sensorapp/sensorserver
+go install sensorserver.go
+python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/sensorapp/sensorserver/timereader.py <span class="p">|</span> sensorserver -s <span class="m">1</span>-ffaa:0:112,<span class="o">[</span><span class="m">127</span>.0.0.2<span class="o">]</span>:42003 -sciondFromIA <span class="p">&amp;</span>
+</pre></div>
+
+
+<p>Now, from your webapp browser interface running on your virtual client SCION node, you can enter both client and server addresses and ask the client for remote sensor readings.</p>
+<h3 id="imageserver">imageserver<a class="headerlink" href="#imageserver" title="Permanent link">&para;</a></h3>
+<p>This hardware-independent test will generate an image with some remote machine stats from the Go app <code>local-image.go</code>, which will be saved locally for transmission to clients.</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/camerapp/imageserver
+go install imageserver.go
+go run <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/webapp/tests/imgtest/imgserver/local-image.go <span class="p">&amp;</span>
+imageserver -s <span class="m">1</span>-ffaa:0:112,<span class="o">[</span><span class="m">127</span>.0.0.2<span class="o">]</span>:42002 -sciondFromIA <span class="p">&amp;</span>
+</pre></div>
+
+
+<p>Now, from your webapp browser interface running on your virtual client SCION node, you can enter both client and server addresses and ask the client for the most recently generated remote image.</p>
+<h2 id="related-links">Related Links<a class="headerlink" href="#related-links" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../webapp/">Webapp AS Visualization</a></li>
+<li><a href="../webapp_apps/">Webapp SCIONLab Apps Visualization</a></li>
+<li><a href="../../sample_projects/fetch_sensor_readings/">Fetching sensor readings or time stamps</a></li>
+<li><a href="../../sample_projects/access_camera/">Fetching a camera image over the SCION network</a></li>
+<li><a href="../../sample_projects/bwtester/">Running the bandwidthtester application</a></li>
+</ul>
                 
                   
                 

@@ -73,10 +73,9 @@ nav:
       - Access camera images over SCION network: sample_projects/access_camera.md
       - Bandwidth tester application: sample_projects/bwtester.md
       - bat - cURL-like tool: sample_projects/bat.md
-      - SCIONLab Apps Web Visualization: as_visualization/webapp.md
-      - Running AS Visualizations: as_visualization/running_asviz.md
-      - Browser AS Visualization: as_visualization/browser_asviz.md
-      - Command-line AS Visualization: as_visualization/command_asviz.md
+      - Webapp AS Visualization: as_visualization/webapp.md
+      - Webapp SCIONLab Apps Visualization: as_visualization/webapp_apps.md
+      - Webapp Development Tips: as_visualization/webapp_development.md
       - SCIONLab SIG testing: sample_projects/remote_sig.md
       - Using rains: sample_projects/rains.md
 

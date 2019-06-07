@@ -20,7 +20,7 @@ You can then check on the scion-coordinator on your [user page](https://www.scio
 ## Make use of the device
 
 The SCION is running a full AS connected to the SCIONLab infrastructure. This means the device is running the following services: a border router, a beacon server, a certificate server, a path server and a SIBRA server. You can read about the function of each service in the [SCION book](https://www.scion-architecture.net/pdf/SCION-book.pdf).
-In addition, SCION boxes also run ithe SCIONviz server which allows you to visualize the paths you AS knows about. You can connect to SCIONviz by connecting a regular IP device to one of the remaining interfaces. The open the webpage http://172.16.1.1:8000 and the SCIONviz will load. For instructions on how to use SCIONviz, please see the [SCIONviz tutorial](../as_visualization/browser_asviz.md) (but make sure to use the address mentioned here).
+In addition, SCION boxes can run the SCIONLab Webapp server which allows you to visualize the paths your AS knows about. You can connect to Webapp by connecting a regular IP device to one of the remaining interfaces. The open the webpage http://172.16.1.1:8000 and the SCIONviz will load. For instructions on how to use Webapp, please see the [SCIONLab Apps Web Visualization tutorial](../as_visualization/webapp.md) (but make sure to use the address mentioned here).
 
 ## Setup an endhost and connect it via the SCION box
 
