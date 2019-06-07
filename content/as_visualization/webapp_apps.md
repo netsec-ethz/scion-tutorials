@@ -26,7 +26,7 @@ The retrieved image will appear scaled down and can be clicked on to open a larg
 
 ## Related Links
 * [Webapp AS Visualization](../as_visualization/webapp.md)
-* [Webapp SCIONLab Apps Visualization](../as_visualization/webapp_apps.md)
+* [Webapp Development Tips](../as_visualization/webapp_development.md)
 * [Fetching sensor readings or time stamps](../sample_projects/fetch_sensor_readings.md)
 * [Fetching a camera image over the SCION network](../sample_projects/access_camera.md)
 * [Running the bandwidthtester application](../sample_projects/bwtester.md)
