@@ -3,12 +3,16 @@
 
 The [camerapp application](https://github.com/netsec-ethz/scion-apps/) contains image fetcher and server applications, using the SCION network. Documentation on the code is available in the [README.md](https://github.com/netsec-ethz/scion-apps/blob/master/camerapp/README.md).
 
+## Install
+
+To install `imagefetcher` and `imageserver` (and all [SCIONLab apps](https://github.com/netsec-ethz/scion-apps)) and get dependencies as listed in vendor file:
+```shell
+./deps.sh
+make install
+```
+
 ## imagefetcher
 
-To install imagefetcher:
-```shell
-go get github.com/netsec-ethz/scion-apps/camerapp/imagefetcher
-```
 !!! note
     If you are running SCION in a VM this app is already installed.
 
@@ -25,11 +29,6 @@ The fetched image is then saved in the local directory. A sample image is shown 
 ![Sample image out of the window of office CAB E76](../images/office-20171217.jpg)
 
 ## imageserver
-
-To install imageserver:
-```shell
-go get github.com/netsec-ethz/scion-apps/camerapp/imageserver
-```
 
 The `imageserver` application keeps looking for `.jpg` files in the current directory, and offers them for download to clients on the SCION network. The assumption is that the application is used in conjunction with an application that periodically writes an image to the file system. After an amount of time (currently set to 10 minutes), the image files are deleted to limit the amount of storage used.
 

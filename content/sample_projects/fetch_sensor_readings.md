@@ -3,12 +3,16 @@
 
 The [sensorapp application](https://github.com/netsec-ethz/scion-apps/) contains fetcher and server applications for sensor readings, using the SCION network. The application is very simple, and sends a single packet to request the information, and obtains typically a single packet in response, containing the readings.
 
+## Install
+
+To install `sensorfetcher` and `sensorserver` (and all [SCIONLab apps](https://github.com/netsec-ethz/scion-apps)) and get dependencies as listed in vendor file:
+```shell
+./deps.sh
+make install
+```
+
 ## sensorfetcher
 
-To install sensorfetcher:
-```shell
-go get github.com/netsec-ethz/scion-apps/sensorapp/sensorfetcher
-```
 !!! note
     If you are running SCION in a VM this app is already installed.
 
@@ -19,7 +23,7 @@ To run the `sensorfetcher` application, you will need to specify the address of 
 Sample servers are at:
 
 * `17-ffaa:0:1102,[192.33.93.177]:42003`
-* `17-ffaa:1:13,[192.168.1.111]:42003`
+* `17-ffaa:1:13,[192.168.1.79]:42003`
 
 Their readings can be fetched as follows:
 
@@ -27,12 +31,7 @@ Their readings can be fetched as follows:
 sensorfetcher -s 17-ffaa:0:1102,[192.33.93.177]:42003
 ```
 
-### sensorserver
-
-To install sensorserver:
-```shell
-go get github.com/netsec-ethz/scion-apps/sensorapp/sensorserver
-```
+## sensorserver
 
 We use sensors from Tinkerforge, and the `sensorreader.py` Python application fetches the sensor values and writes them to `stdout`. The `sensorserver` application collects the readings, and serves them as a string to client requests. To start, we use the following command:
 

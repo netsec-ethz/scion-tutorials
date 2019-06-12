@@ -3,19 +3,20 @@
 ## Webapp Setup
 Webapp is a Go application that will serve up a static web portal to make it easy to visualize and experiment with SCIONLab test apps on a virtual machine.
 
-### Install
+### Build
 ```shell
-mkdir ~/go/src/github.com/netsec-ethz
-cd ~/go/src/github.com/netsec-ethz
+mkdir $GOPATH/src/github.com/netsec-ethz
+cd $GOPATH/src/github.com/netsec-ethz
 git clone https://github.com/netsec-ethz/scion-apps.git
+cd scion-apps
 ```
 
-### Build
-Build all [SCIONLab apps](https://github.com/netsec-ethz/scion-apps), including `webapp`:
+### Install
+
+To install `webapp` (and all [SCIONLab apps](https://github.com/netsec-ethz/scion-apps)) and get dependencies as listed in vendor file:
 ```shell
-cd scion-apps
 ./deps.sh
-make
+make install
 ```
 
 ### Run
