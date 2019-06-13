@@ -501,6 +501,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#install" title="Install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" title="Usage" class="md-nav__link">
     Usage
   </a>
@@ -772,6 +779,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#install" title="Install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#usage" title="Usage" class="md-nav__link">
     Usage
   </a>
@@ -839,8 +853,10 @@
                 <h1 id="using-bat-for-sending-http-requests-over-scion">Using bat for sending HTTP-requests over SCION<a class="headerlink" href="#using-bat-for-sending-http-requests-over-scion" title="Permanent link">&para;</a></h1>
 <p>The <a href="https://github.com/netsec-ethz/scion-apps/">bat application</a> is a cURL-like tool for sending HTTP requests to SCION enabled webservers and retrieve information in a human-readable format. Documentation is available in the <a href="https://github.com/netsec-ethz/scion-apps/blob/master/bat/README.md">README.md</a>.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<p>To install bat run:</p>
-<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/bat
+<h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<p>To install <code>bat</code> (and all <a href="https://github.com/netsec-ethz/scion-apps">SCIONLab apps</a>) and get dependencies as listed in vendor file:</p>
+<div class="codehilite"><pre><span></span>./deps.sh
+make install
 </pre></div>
 
 
@@ -916,7 +932,7 @@ fe80:cd00:0:cde:1257:0:211e:729c                        dummy2
 
 # SCION hosts
 17-ffaa:0:1,[192.168.1.1]                               host1 host2
-18-ffaa:1:2,[10.0.8.10]                                 host3 
+18-ffaa:1:2,[10.0.8.10]                                 host3
 20-ffaa:c0ff:ee12,[0:0:0ff1:ce00:dead:10cc:baad:f00d]   host4
 </pre></div>
 

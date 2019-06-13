@@ -514,15 +514,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install" title="Install" class="md-nav__link">
-    Install
+  <a href="#build" title="Build" class="md-nav__link">
+    Build
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#build" title="Build" class="md-nav__link">
-    Build
+  <a href="#install" title="Install" class="md-nav__link">
+    Install
   </a>
   
 </li>
@@ -827,15 +827,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install" title="Install" class="md-nav__link">
-    Install
+  <a href="#build" title="Build" class="md-nav__link">
+    Build
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#build" title="Build" class="md-nav__link">
-    Build
+  <a href="#install" title="Install" class="md-nav__link">
+    Install
   </a>
   
 </li>
@@ -947,18 +947,18 @@
                 <h1 id="webapp-as-visualization">Webapp AS Visualization<a class="headerlink" href="#webapp-as-visualization" title="Permanent link">&para;</a></h1>
 <h2 id="webapp-setup">Webapp Setup<a class="headerlink" href="#webapp-setup" title="Permanent link">&para;</a></h2>
 <p>Webapp is a Go application that will serve up a static web portal to make it easy to visualize and experiment with SCIONLab test apps on a virtual machine.</p>
-<h3 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span>mkdir ~/go/src/github.com/netsec-ethz
-<span class="nb">cd</span> ~/go/src/github.com/netsec-ethz
+<h3 id="build">Build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span>mkdir <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz
+<span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz
 git clone https://github.com/netsec-ethz/scion-apps.git
+<span class="nb">cd</span> scion-apps
 </pre></div>
 
 
-<h3 id="build">Build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
-<p>Build all <a href="https://github.com/netsec-ethz/scion-apps">SCIONLab apps</a>, including <code>webapp</code>:</p>
-<div class="codehilite"><pre><span></span><span class="nb">cd</span> scion-apps
-./deps.sh
-make
+<h3 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h3>
+<p>To install <code>webapp</code> (and all <a href="https://github.com/netsec-ethz/scion-apps">SCIONLab apps</a>) and get dependencies as listed in vendor file:</p>
+<div class="codehilite"><pre><span></span>./deps.sh
+make install
 </pre></div>
 
 
