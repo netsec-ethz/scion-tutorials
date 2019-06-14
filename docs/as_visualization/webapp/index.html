@@ -527,6 +527,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#run" title="Run" class="md-nav__link">
+    Run
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -840,6 +847,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#run" title="Run" class="md-nav__link">
+    Run
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -952,6 +966,8 @@
 <span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz
 git clone https://github.com/netsec-ethz/scion-apps.git
 <span class="nb">cd</span> scion-apps
+./deps.sh
+make install
 </pre></div>
 
 
@@ -962,6 +978,7 @@ make install
 </pre></div>
 
 
+<h3 id="run">Run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>If the old <a href="https://github.com/netsec-ethz/scion-viz">scion-viz</a> web server is running on your SCIONLab VM, port 8000 may still be in use. To remedy this, before <code>vagrant up</code>, make sure to edit your <code>vagrantfile</code> to provision an alternate port for the <code>webapp</code> web server. Add this line for a different port, say 8080 (for example, just choose any forwarding port not already in use by vagrant, and use that port everywhere below):</p>
