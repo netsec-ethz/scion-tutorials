@@ -1,14 +1,18 @@
 # Webapp AS Visualization
 
 ## Webapp Setup
+
 Webapp is a Go application that will serve up a static web portal to make it easy to visualize and experiment with SCIONLab test apps on a virtual machine.
 
 ### Build
+
 ```shell
 mkdir $GOPATH/src/github.com/netsec-ethz
 cd $GOPATH/src/github.com/netsec-ethz
 git clone https://github.com/netsec-ethz/scion-apps.git
 cd scion-apps
+./deps.sh
+make install
 ```
 
 ### Install
@@ -20,6 +24,7 @@ make install
 ```
 
 ### Run
+
 !!! warning
     If the old [scion-viz](https://github.com/netsec-ethz/scion-viz) web server is running on your SCIONLab VM, port 8000 may still be in use. To remedy this, before `vagrant up`, make sure to edit your `vagrantfile` to provision an alternate port for the `webapp` web server. Add this line for a different port, say 8080 (for example, just choose any forwarding port not already in use by vagrant, and use that port everywhere below):
 

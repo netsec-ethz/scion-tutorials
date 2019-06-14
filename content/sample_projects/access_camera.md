@@ -13,9 +13,6 @@ make install
 
 ## imagefetcher
 
-!!! note
-    If you are running SCION in a VM this app is already installed.
-
 To use the image fetcher, you will need specify the address of an image server, for instance `17-ffaa:0:1102,[192.33.93.166]:42002`. Per default the client binds to localhost. You can specify any other client SCION address by providing the -c flag.
 
 A sample image server that can be contacted by any client is set up at `17-ffaa:0:1102,[192.33.93.166]:42002`.

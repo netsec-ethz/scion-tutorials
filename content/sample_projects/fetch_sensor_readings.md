@@ -13,9 +13,6 @@ make install
 
 ## sensorfetcher
 
-!!! note
-    If you are running SCION in a VM this app is already installed.
-
 The `sensorfetcher` application sends a 0-length SCION UDP packet to the `sensorserver` application to fetch the sensor readings. A string is returned containing all the sensor readings. To keep the application as simple as possible, no reliability is built in -- in case of packet loss, the user needs to abort and re-try.
 
 To run the `sensorfetcher` application, you will need to specify the address of a sensor server, for instance `17-ffaa:0:1102,[192.33.93.177]:42003`, using the `-s` flag. Per default the client binds to localhost. You can specify any other client SCION address by providing the `-c` flag.

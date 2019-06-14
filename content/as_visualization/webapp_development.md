@@ -19,12 +19,12 @@ go install github.com/canthefason/go-watcher/cmd/watcher
 After installation you can `cd` to the `webapp.go` directory and webapp will be rebuilt and rerun every time you save your source file changes, with or without command arguments.
 
 ```shell
-cd ~/go/src/github.com/netsec-ethz/scion-apps/webapp
+cd $GOPATH/src/github.com/netsec-ethz/scion-apps/webapp
 watcher -a 0.0.0.0 -p 8080 -r ..
 ```
 or
 ```shell
-cd ~/go/src/github.com/netsec-ethz/scion-apps/webapp
+cd $GOPATH/src/github.com/netsec-ethz/scion-apps/webapp
 watcher
 ```
 
@@ -40,7 +40,7 @@ Some functional server tests are included to test the networks without needing s
 The server address `1-ffaa:0:112,[127.0.0.2]` is used below, but any address appropriate to your test will do. More instructions to setup the servers are [here](https://github.com/perrig/SCIONLab/blob/master/README.md). The web interface launched above can be used to run the client-side apps.
 
 ### bwtestserver
-This test will setup a local server to receive requests from the bandwidth tester. 
+This test will setup a local server to receive requests from the bandwidth tester.
 ```shell
 cd ${GOPATH}/src/github.com/netsec-ethz/scion-apps/bwtester/bwtestserver
 go install bwtestserver.go
