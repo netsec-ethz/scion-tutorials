@@ -482,6 +482,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#install" title="Install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bwtestclient" title="bwtestclient" class="md-nav__link">
     bwtestclient
   </a>
@@ -724,6 +731,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#install" title="Install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bwtestclient" title="bwtestclient" class="md-nav__link">
     bwtestclient
   </a>
@@ -756,23 +770,19 @@
                 
                 <h1 id="the-bwtester-application">The bwtester application<a class="headerlink" href="#the-bwtester-application" title="Permanent link">&para;</a></h1>
 <p>The <a href="https://github.com/netsec-ethz/scion-apps/">bandwidth testing application <code>bwtester</code></a> enables a variety of bandwidth tests on the SCION network. Installation and usage are described below. Documentation of the code and protocol are described in the <a href="https://github.com/netsec-ethz/scion-apps/blob/master/bwtester/README.md">bwtester README</a>.</p>
-<h2 id="bwtestclient">bwtestclient<a class="headerlink" href="#bwtestclient" title="Permanent link">&para;</a></h2>
-<p>To install bwtestclient and get dependencies as listed in vendor file:</p>
-<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/bwtester/bwtestclient
-<span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz/scion-apps/
-govendor sync
+<h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<p>To install <code>bwtestclient</code> and <code>bwtestserver</code> (and all <a href="https://github.com/netsec-ethz/scion-apps">SCIONLab apps</a>) and get dependencies as listed in vendor file:</p>
+<div class="codehilite"><pre><span></span>./deps.sh
+make install
 </pre></div>
 
 
-<p>For govendor, see note [1].</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you are running SCION in a VM this app is already installed.</p>
-</div>
+<p>For govendor issues, see note [1].</p>
+<h2 id="bwtestclient">bwtestclient<a class="headerlink" href="#bwtestclient" title="Permanent link">&para;</a></h2>
 <p>Sample servers are installed at the following locations:</p>
 <ul>
 <li><code>17-ffaa:0:1102,[192.33.93.177]:30100</code></li>
-<li><code>17-ffaa:1:13,[192.168.1.111]:30100</code></li>
+<li><code>17-ffaa:1:13,[192.168.1.79]:30100</code></li>
 <li><code>17-ffaa:1:f,[10.0.2.15]:30100</code></li>
 <li><code>19-ffaa:1:22,[141.44.25.146]:30100</code></li>
 </ul>
@@ -795,14 +805,6 @@ govendor sync
 
 <p>For more information run the application without arguments to print its usage.</p>
 <h2 id="bwtestserver">bwtestserver<a class="headerlink" href="#bwtestserver" title="Permanent link">&para;</a></h2>
-<p>To install bwtestserver and get dependencies as listed in vendor file:</p>
-<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/bwtester/bwtestserver
-<span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz/scion-apps/
-govendor sync
-</pre></div>
-
-
-<p>For govendor, see note [1].</p>
 <p>The server is started as follows:</p>
 <div class="codehilite"><pre><span></span>bwtestserver -p <span class="m">30100</span> <span class="p">&amp;</span>
 </pre></div>

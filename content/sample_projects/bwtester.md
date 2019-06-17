@@ -3,24 +3,22 @@
 
 The [bandwidth testing application `bwtester`](https://github.com/netsec-ethz/scion-apps/) enables a variety of bandwidth tests on the SCION network. Installation and usage are described below. Documentation of the code and protocol are described in the [bwtester README](https://github.com/netsec-ethz/scion-apps/blob/master/bwtester/README.md).
 
-## bwtestclient
+## Install
 
-To install bwtestclient and get dependencies as listed in vendor file:
+To install `bwtestclient` and `bwtestserver` (and all [SCIONLab apps](https://github.com/netsec-ethz/scion-apps)) and get dependencies as listed in vendor file:
 ```shell
-go get github.com/netsec-ethz/scion-apps/bwtester/bwtestclient
-cd $GOPATH/src/github.com/netsec-ethz/scion-apps/
-govendor sync
+./deps.sh
+make install
 ```
 
-For govendor, see note [1].
+For govendor issues, see note [1].
 
-!!! note
-    If you are running SCION in a VM this app is already installed.
+## bwtestclient
 
 Sample servers are installed at the following locations:
 
 * `17-ffaa:0:1102,[192.33.93.177]:30100`
-* `17-ffaa:1:13,[192.168.1.111]:30100`
+* `17-ffaa:1:13,[192.168.1.79]:30100`
 * `17-ffaa:1:f,[10.0.2.15]:30100`
 * `19-ffaa:1:22,[141.44.25.146]:30100`
 
@@ -45,15 +43,6 @@ bwtestclient -s 17-ffaa:0:1102,[192.33.93.177]:30100 -cs 10,1000,1250,1Mbps -sc 
 For more information run the application without arguments to print its usage.
 
 ## bwtestserver
-
-To install bwtestserver and get dependencies as listed in vendor file:
-```shell
-go get github.com/netsec-ethz/scion-apps/bwtester/bwtestserver
-cd $GOPATH/src/github.com/netsec-ethz/scion-apps/
-govendor sync
-```
-
-For govendor, see note [1].
 
 The server is started as follows:
 

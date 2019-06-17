@@ -458,22 +458,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#install" title="Install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sensorfetcher" title="sensorfetcher" class="md-nav__link">
     sensorfetcher
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sensorserver" title="sensorserver" class="md-nav__link">
     sensorserver
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -730,22 +731,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#install" title="Install" class="md-nav__link">
+    Install
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sensorfetcher" title="sensorfetcher" class="md-nav__link">
     sensorfetcher
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sensorserver" title="sensorserver" class="md-nav__link">
     sensorserver
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -768,34 +770,27 @@
                 
                 <h1 id="read-sensor-readings-over-scion-network">Read sensor readings over SCION network<a class="headerlink" href="#read-sensor-readings-over-scion-network" title="Permanent link">&para;</a></h1>
 <p>The <a href="https://github.com/netsec-ethz/scion-apps/">sensorapp application</a> contains fetcher and server applications for sensor readings, using the SCION network. The application is very simple, and sends a single packet to request the information, and obtains typically a single packet in response, containing the readings.</p>
-<h2 id="sensorfetcher">sensorfetcher<a class="headerlink" href="#sensorfetcher" title="Permanent link">&para;</a></h2>
-<p>To install sensorfetcher:</p>
-<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/sensorapp/sensorfetcher
+<h2 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<p>To install <code>sensorfetcher</code> and <code>sensorserver</code> (and all <a href="https://github.com/netsec-ethz/scion-apps">SCIONLab apps</a>) and get dependencies as listed in vendor file:</p>
+<div class="codehilite"><pre><span></span>./deps.sh
+make install
 </pre></div>
 
 
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you are running SCION in a VM this app is already installed.</p>
-</div>
+<h2 id="sensorfetcher">sensorfetcher<a class="headerlink" href="#sensorfetcher" title="Permanent link">&para;</a></h2>
 <p>The <code>sensorfetcher</code> application sends a 0-length SCION UDP packet to the <code>sensorserver</code> application to fetch the sensor readings. A string is returned containing all the sensor readings. To keep the application as simple as possible, no reliability is built in -- in case of packet loss, the user needs to abort and re-try.</p>
 <p>To run the <code>sensorfetcher</code> application, you will need to specify the address of a sensor server, for instance <code>17-ffaa:0:1102,[192.33.93.177]:42003</code>, using the <code>-s</code> flag. Per default the client binds to localhost. You can specify any other client SCION address by providing the <code>-c</code> flag.</p>
 <p>Sample servers are at:</p>
 <ul>
 <li><code>17-ffaa:0:1102,[192.33.93.177]:42003</code></li>
-<li><code>17-ffaa:1:13,[192.168.1.111]:42003</code></li>
+<li><code>17-ffaa:1:13,[192.168.1.79]:42003</code></li>
 </ul>
 <p>Their readings can be fetched as follows:</p>
 <div class="codehilite"><pre><span></span>sensorfetcher -s <span class="m">17</span>-ffaa:0:1102,<span class="o">[</span><span class="m">192</span>.33.93.177<span class="o">]</span>:42003
 </pre></div>
 
 
-<h3 id="sensorserver">sensorserver<a class="headerlink" href="#sensorserver" title="Permanent link">&para;</a></h3>
-<p>To install sensorserver:</p>
-<div class="codehilite"><pre><span></span>go get github.com/netsec-ethz/scion-apps/sensorapp/sensorserver
-</pre></div>
-
-
+<h2 id="sensorserver">sensorserver<a class="headerlink" href="#sensorserver" title="Permanent link">&para;</a></h2>
 <p>We use sensors from Tinkerforge, and the <code>sensorreader.py</code> Python application fetches the sensor values and writes them to <code>stdout</code>. The <code>sensorserver</code> application collects the readings, and serves them as a string to client requests. To start, we use the following command:</p>
 <div class="codehilite"><pre><span></span>python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/sensorapp/sensorserver/sensorreader.py <span class="p">|</span> sensorserver -s <span class="m">17</span>-ffaa:0:1102,<span class="o">[</span><span class="m">192</span>.33.93.177<span class="o">]</span>:42003 <span class="p">&amp;</span>
 </pre></div>

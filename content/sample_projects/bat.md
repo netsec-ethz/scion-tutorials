@@ -3,11 +3,12 @@
 
 The [bat application](https://github.com/netsec-ethz/scion-apps/) is a cURL-like tool for sending HTTP requests to SCION enabled webservers and retrieve information in a human-readable format. Documentation is available in the [README.md](https://github.com/netsec-ethz/scion-apps/blob/master/bat/README.md).
 
-## Installation
+## Install
 
-To install bat run:
+To install `bat` (and all [SCIONLab apps](https://github.com/netsec-ethz/scion-apps)) and get dependencies as listed in vendor file:
 ```shell
-go get github.com/netsec-ethz/scion-apps/bat
+./deps.sh
+make install
 ```
 
 ## Usage
@@ -50,7 +51,7 @@ fe80:cd00:0:cde:1257:0:211e:729c                        dummy2
 
 # SCION hosts
 17-ffaa:0:1,[192.168.1.1]                               host1 host2
-18-ffaa:1:2,[10.0.8.10]	                                host3 
+18-ffaa:1:2,[10.0.8.10]	                                host3
 20-ffaa:c0ff:ee12,[0:0:0ff1:ce00:dead:10cc:baad:f00d]   host4
 ```
 
