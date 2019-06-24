@@ -14,7 +14,7 @@ There are a few requirements for you or your organization to join SCIONLab as an
 - The border router node(s) must have a public static IP.
 - The following ports need to be accessible:
     - For each configured SCION inter-domain connection one UDP port for SCION inter-domain traffic, preferrably in the 50000~50010 range.<br>
-      Preferrably, these ports should be open for any source IP, as this simplifies changes the SCIONLab topology. However, we can provide the specific allowed source IP for each port if necessary.<br>
+      Preferrably, these ports should be open for any source IP, as this simplifies changing the SCIONLab topology. However, we can provide the specific allowed source IP for each port if necessary.<br>
       As the SCION border routers send a continuous trickle of keep-alive messages, it may be enough if a firewall allows return traffic to the same port.
     - SSH access for management of the node by the SCIONLab-team:<br>
       TCP 22: source 192.33.96.0/20, 192.33.88.0/21, 192.33.87.0/24, 54.176.0.0/12
