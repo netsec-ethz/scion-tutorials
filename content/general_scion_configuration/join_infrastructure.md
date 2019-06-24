@@ -9,16 +9,17 @@ If you have decided to join SCIONLab as a permanent node in the infrastructure, 
 There are a few requirements for you or your organization to join SCIONLab as an infrastructure node:
 
 - Infrastructure ASes and nodes are required to be active 24 hours a day, 7 days a week. The SCIONLab administrators can typically handle all SCION related problems, but sometimes they will contact you if they cannot perform certain tasks. An example would be to change a drive if it failed, etc.
-- The machine must have a minimum of 4 Gb of RAM. A VM can suffice, given sufficient resources.
+- The machine should have a minimum of 4 GB of RAM. A VM can suffice, given sufficient resources.
 - Currently the SCION code works with Ubuntu 16.04.
 - The border router node(s) must have a public static IP.
-- The following are the traffic types and the corresponding ports SCIONLab requires at this moment.
-    - SSH: TCP 22: source 192.33.96.0/20, 192.33.88.0/21, 192.33.87.0/24, 54.176.0.0/12
-    - OpenVPN: UDP 1194: source any
-    - HTTP: TCP 8000: source any
-    - Monitoring: TCP 8080,9200,9900: source any
-    - Management: TCP 9100: source any
-    - Scion packet: UDP 50000~50010: source any
+- The following ports need to be accessible:
+    - For each configured SCION inter-domain connection one UDP port for SCION inter-domain traffic, preferrably in the 50000~50010 range.<br>
+      Preferrably, these ports should be open for any source IP, as this simplifies changes the SCIONLab topology. However, we can provide the specific allowed source IP for each port if necessary.<br>
+      As the SCION border routers send a continuous trickle of keep-alive messages, it may be enough if a firewall allows return traffic to the same port.
+    - SSH access for management of the node by the SCIONLab-team:<br>
+      TCP 22: source 192.33.96.0/20, 192.33.88.0/21, 192.33.87.0/24, 54.176.0.0/12
+
+    As an alternative, we can also operate the connections over a tunnel, e.g. OpenVPN, Wireguard or SSH tunnels.
 
 ### Recommendations
 
