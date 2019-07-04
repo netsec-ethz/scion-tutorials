@@ -456,8 +456,8 @@ We need to see essentially two types of packets right now: small ones with `leng
 If you reached this point and still cannot make your `showpaths` and `scmp echo` checks pass from the [Check Request Step](#check-request-paths), please [contact us](#contact).
 
 # Contact
-Being this a troubleshooting guide, it is possible that you need to contact us to request further support. The easiest and fastest way to get support is through our [community Google Group](https://groups.google.com/forum/#!forum/scion-community). If you want to contact us for other reasons, please choose the appropriate one from this list:
+Being this a troubleshooting guide, it is possible that you need to contact us to request further support. The easiest and fastest way to get support is through our [community mailing list](https://lists.inf.ethz.ch/mailman/listinfo/scion). If you want to contact us for other reasons, please choose the appropriate one from this list:
 
-* For questions, further support and general comments on SCION-related topics, visit our [SCION community Google group](https://groups.google.com/forum/#!forum/scion-community)
+* For questions, further support and general comments on SCION-related topics, visit our [SCION community mailing list](https://lists.inf.ethz.ch/mailman/listinfo/scion)
 * For bug reports, please post them on the [scion-coord github site](https://github.com/netsec-ethz/scion-coord)
 * For suggestion on these pages, please post them on the [scion-tutorials GitHub site](https://github.com/netsec-ethz/scion-tutorials)
