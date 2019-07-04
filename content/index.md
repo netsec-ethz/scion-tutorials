@@ -6,7 +6,7 @@ This website provides step-by-step instructions on how to install and run the SC
 
 ### To get in touch:
 
-* For questions and general comments on SCION-related topics, visit our [SCION community Google group](https://groups.google.com/forum/#!forum/scion-community)
+* For questions and general comments on SCION-related topics, visit our [SCION community mailing list](https://lists.inf.ethz.ch/mailman/listinfo/scion)
 * For bug reports, please post them on the [scion-coord github site](https://github.com/netsec-ethz/scion-coord)
 * For suggestion on these pages, please post them on the [scion-tutorials GitHub site](https://github.com/netsec-ethz/scion-tutorials)
 
