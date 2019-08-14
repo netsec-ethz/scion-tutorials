@@ -105,7 +105,7 @@ sed -i "s/\${IA}/${IA}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
 sed -i "s/\${IAd}/${IAd}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
 sed -i "s/\${AS}/${AS}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
 sed -i "s/\${ISD}/${ISD}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-export tunIP=$(echo $(ip a | grep "global tun") | cut --fields=2 --delimiter=" ")
+export tunIP=$(echo $(ip a | grep "global tun") | cut --fields=2 --delimiter=" " | cut --fields=1 --delimiter="/")
 sed -i "s/10.0.8.A/${tunIP}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
 ```
 
