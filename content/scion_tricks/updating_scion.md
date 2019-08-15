@@ -121,4 +121,4 @@ After the update, the applications that are not delivered directly with SCION (e
 
 ## Contact us
 
-If you experience a problem with the update, please contact us in the community mailing list. Visit the [SCION Community](https://groups.google.com/forum/#!forum/scion-community) for more details.
+If you experience a problem with the update, please contact us in the community mailing list. Visit the [SCION Community mailing list](https://lists.inf.ethz.ch/mailman/listinfo/scion) for more details.
