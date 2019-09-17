@@ -64,7 +64,7 @@ sudo rm /etc/systemd/system/scionupgrade.service
 
 ## Developers
 
-As a developer, you probably don't need or want systemd to run and manage the SCION services for you. Stop it by running `sudo systemctl stop scionlab.target` and continue using `supervisord` as before.
+As a developer, you probably don't need or want systemd to run and manage the SCION services for you. Stop it by running `sudo systemctl stop scionlab.target` and continue using `supervisord` as before. To disable the service so it won't run even after rebooting, run `sudo systemctl disable scionlab.target`.
 If you want to update your git clone of SCION, just run `git pull` on your `scionlab` branch, like always. The build process now relies on `bazel`: read more in [scionproto README](https://github.com/scionproto/scion/blob/master/README.md).
 
 
