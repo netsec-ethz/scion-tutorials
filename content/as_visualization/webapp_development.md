@@ -70,7 +70,7 @@ Now, from your webapp browser interface running on your virtual client SCION nod
 ## Related Links
 * [Webapp AS Visualization](../as_visualization/webapp.md)
 * [Webapp SCIONLab Apps Visualization](../as_visualization/webapp_apps.md)
-* [Fetching sensor readings or time stamps](../sample_projects/fetch_sensor_readings.md)
-* [Fetching a camera image over the SCION network](../sample_projects/access_camera.md)
-* [Running the bandwidthtester application](../sample_projects/bwtester.md)
+* [Fetching sensor readings or time stamps](../apps/fetch_sensor_readings.md)
+* [Fetching a camera image over the SCION network](../apps/access_camera.md)
+* [Running the bandwidthtester application](../apps/bwtester.md)
 

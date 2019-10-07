@@ -21,8 +21,7 @@ theme:
       text: Roboto
       code: Roboto Mono
     favicon: assets/images/favicon.ico
-    logo:
-      icon: "\uE80C"
+    logo: assets/images/favicon.ico
 
 markdown_extensions:
     - admonition
@@ -32,7 +31,7 @@ markdown_extensions:
         permalink: true
 
 
-copyright: 'Copyright &copy 2018, Network Security Group, ETH Zurich'
+copyright: 'Copyright &copy 2019, Network Security Group, ETH Zurich'
 
 # Options
 extra:
@@ -48,45 +47,32 @@ extra:
 nav:
     - Home: index.md
 
-    - How to run SCION VM:
-      - Virtual machine with VPN: virtual_machine_setup/dynamic_ip.md
-      - Virtual machine with static public IP: virtual_machine_setup/static_ip.md
+    - Installation:
+      - install/index.md
+      - install/vm.md
+      - install/pkg.md
+      - install/src.md
+      - install/android.md
 
-    - How to install SCION manually on different platforms:
-      - Ubuntu 16.04 x86-64: native_setup/ubuntu_x86_build.md
-      - Ubuntu MATE Raspberry PI: native_setup/rpi_ubuntu.md
-      - Images for ARM minicomputers: native_setup/image_builder.md
-      - Android devices: native_setup/android.md
+    - Configuration:
+      - config/create_as.md
+      - config/check.md
+      - config/setup_endhost.md
+      
+    - Applications:
+      - apps/fetch_sensor_readings.md
+      - apps/access_camera.md
+      - apps/bwtester.md
+      - apps/bat.md
+      - Webapp:
+        - Overview: as_visualization/webapp.md
+        - Visualisation for Apps: as_visualization/webapp_apps.md
+        - Webapp Development Tips: as_visualization/webapp_development.md
+      - apps/remote_sig.md
+      - apps/rains.md
 
-    - Connecting to SCION:
-      - Running SCION on a local topology: general_scion_configuration/local_top.md
-      - Set up an AS and connect to the SCION network: general_scion_configuration/public_ip.md
-      - Set up an AS and connect to the SCION network behind a NAT: general_scion_configuration/public_ip_nat.md
-      - Set up an AS and connect to the SCION network via VPN: general_scion_configuration/vpn_setup.md
-      - Set up SCION endhost and connect to local AS: general_scion_configuration/setup_endhost.md
-      - How to join the SCIONLab Infrastructure: general_scion_configuration/join_infrastructure.md
+    - Tips and Tricks:
+      - tips/troubleshooting.md
+      - tips/wireshark.md
 
-    - Troubleshooting: general_scion_configuration/troubleshooting.md
-
-    - How to use:
-      - Read a temperature sensor over the SCION network: sample_projects/fetch_sensor_readings.md
-      - Access camera images over SCION network: sample_projects/access_camera.md
-      - Bandwidth tester application: sample_projects/bwtester.md
-      - bat - cURL-like tool: sample_projects/bat.md
-      - Webapp AS Visualization: as_visualization/webapp.md
-      - Webapp SCIONLab Apps Visualization: as_visualization/webapp_apps.md
-      - Webapp Development Tips: as_visualization/webapp_development.md
-      - SCIONLab SIG testing: sample_projects/remote_sig.md
-      - Using rains: sample_projects/rains.md
-
-    - SCION tips and tricks:
-      - Verifying the installation: general_scion_configuration/verifying_scion_installation.md
-      - Running SCION on system boot: scion_tricks/setup_startup.md
-      - Updating gen directory: scion_tricks/changing_gen_dir.md
-      - Updating SCION: scion_tricks/updating_scion.md
-      - Adding Wireshark dissector: scion_tricks/wireshark.md
-
-    - SCION box:
-      - SCION box first steps: scionbox/scionbox.md
-
-
+    - join_infrastructure.md

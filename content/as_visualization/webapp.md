@@ -43,7 +43,7 @@ Now, open a web browser at [http://127.0.0.1:8000](http://127.0.0.1:8000), to be
 Several menu options are available at the top of each `webapp` page, which are outlined below. Each of the features below use your SCIONLab IA the the source address.
 
 ### Health
-The Health tab is the landing page for `webapp` that will automatically test your SCIONLab configuration for configuration and communication health. Additional help is available in our [troubleshooting guide](../general_scion_configuration/troubleshooting.md), if needed.
+The Health tab is the landing page for `webapp` that will automatically test your SCIONLab configuration for configuration and communication health. Additional help is available in our [troubleshooting guide](../tips/troubleshooting.md), if needed.
 
 ![SCIONLab download page](../images/scion_healthcheck.png)
 
@@ -81,5 +81,5 @@ The composition of services and border routers for the Source AS will be display
 ## Related Links
 * [Webapp SCIONLab Apps Visualization](../as_visualization/webapp_apps.md)
 * [Webapp Development Tips](../as_visualization/webapp_development.md)
-* [Verifying the installation](../general_scion_configuration/verifying_scion_installation.md)
+* [Verifying the installation](../config/check.md)
 
