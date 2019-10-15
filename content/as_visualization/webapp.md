@@ -2,49 +2,55 @@
 
 !!! TODO
 
-    Check & update
-
     Decide on a name!? ;-)
 
 
-## Webapp Setup
-
 Webapp is a Go application that will serve up a static web portal to make it easy to visualize and experiment with SCIONLab test apps on a virtual machine.
 
-### Build
 
+## Packaged Setup/Run
+For running `webapp` in a packaged environment, like the default [SCIONLab](https://www.scionlab.org) environment, it now uses command-line options for `webapp` to find the tools it requires.
+
+To install from our packages, install `webapp` including its `scion-apps` dependencies:
 ```shell
-mkdir $GOPATH/src/github.com/netsec-ethz
-cd $GOPATH/src/github.com/netsec-ethz
-git clone https://github.com/netsec-ethz/scion-apps.git
-cd scion-apps
-./deps.sh
-make install
+sudo apt install scion-apps-webapp
+```
+Alternatively, the following will install all `scion-apps` repo binaries:
+```shell
+sudo apt install scion-apps-*
 ```
 
-### Install
-
-To install `webapp` (and all [SCIONLab apps](https://github.com/netsec-ethz/scion-apps)) and get dependencies as listed in vendor file:
+Start the `webapp` service:
 ```shell
-./deps.sh
-make install
+sudo systemctl start scion-webapp
 ```
 
-### Run
-
-!!! warning
-    If the old [scion-viz](https://github.com/netsec-ethz/scion-viz) web server is running on your SCIONLab VM, port 8000 may still be in use. To remedy this, before `vagrant up`, make sure to edit your `vagrantfile` to provision an alternate port for the `webapp` web server. Add this line for a different port, say 8080 (for example, just choose any forwarding port not already in use by vagrant, and use that port everywhere below):
-
-    ```
-    config.vm.network "forwarded_port", guest: 8080, host: 8080, protocol: "tcp"
-    ```
-
-To run the Go Web UI at a specific address (-a) and port (-p) like 0.0.0.0:8000 for a SCIONLab VM use:
+Ensure the `webapp` service is running:
 ```shell
-cd webapp
-webapp -a 0.0.0.0 -p 8000
+sudo systemctl status scion-webapp
 ```
+
 Now, open a web browser at [http://127.0.0.1:8000](http://127.0.0.1:8000), to begin.
+
+Logs from `webapp` can be monitored:
+```shell
+journalctl -u scion-webapp -e
+```
+
+You won't need to add all the parameters yourself as the `scion-webapp.service` will do this for you, but as background information the service will run with the following command-line:
+```shell
+scion-webapp \
+-a 0.0.0.0 \
+-p 8000 \
+-r /var/lib/scion/webapp/web/data \
+-srvroot /var/lib/scion/webapp/web \
+-sabin /usr/bin/scion \
+-sroot /etc/scion \
+-sbin /usr/bin \
+-sgen /etc/scion/gen \
+-sgenc /var/lib/scion \
+-slogs /var/log/scion
+```
 
 ## Browser AS Visualizations
 Several menu options are available at the top of each `webapp` page, which are outlined below. Each of the features below use your SCIONLab IA the the source address.
@@ -67,10 +73,8 @@ See the [SCIONLab Apps Visualization](../as_visualization/webapp_apps.md) page f
 ![SCIONLab download page](../images/sciond-paths.png)
 
 ### Files
-The `Files` menu on the page will allow you to navigate and serve any files on the SCIONLab node from the root (-r) directory you specified (if any) when starting webapp.go. To browse the user directory, for example:
-```shell
-webapp -a 0.0.0.0 -p 8000 -r ~
-```
+The `Files` menu on the page will allow you to navigate and serve any files on the SCIONLab node from the read-only (-r) directory you specified (if any) when starting `scion-webapp`.
+
 ### AS Topology
 The composition of services and border routers for the Source AS will be displayed in the AS Topology tab. Click on any circle to view the details of that server or router.
 

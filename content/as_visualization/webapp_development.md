@@ -1,18 +1,73 @@
 # Webapp Development Tips
 
-!!! TODO
-    Update & check
+The `webapp` tool can be used to test several aspects of any local topology.
 
-The `webapp` tool can be used to test several aspects of any local topology. See [updating the latest source code and starting the server](../as_visualization/webapp.md) if you have not already.
+!!! warning
+    Most of the steps on this page are for localhost development only. If you are running a packaged install of SCIONLab, please see the [webapp package tutorial](../as_visualization/webapp.md).
+
+## Development Setup/Run
+For running `webapp` in a development environment for the SCION Infrastructure, follow the SCIONLab development install and run process at [https://github.com/netsec-ethz/netsec-scion](https://github.com/netsec-ethz/netsec-scion).
 
 ## Local Topology
 Any local topology can be used with `webapp`, for example, the wide test topology:
 ```shell
-cd $SC
+cd $GOPATH/src/scionproto/scion
 ./scion.sh topology -c topology/Wide.topo
 ```
 
-## Development Tips
+Then, follow these steps to install SCIONLab Apps to run `webapp` in development.
+
+Development Install:
+```shell
+mkdir ~/go/src/github.com/netsec-ethz
+cd ~/go/src/github.com/netsec-ethz
+git clone https://github.com/netsec-ethz/scion-apps.git
+```
+
+Development Build:
+Install all [SCIONLab apps](https://github.com/netsec-ethz/scion-apps) and dependencies, including `webapp`:
+```shell
+cd scion-apps
+./deps.sh
+make install
+```
+
+Development Run on Test SCION Topology:
+You can alter the defaults on the command line, all of which are listed below:
+```shell
+webapp \
+-a 127.0.0.1 \
+-p 8081 \
+-r . \
+-srvroot $GOPATH/src/github.com/netsec-ethz/scion-apps/webapp/web \
+-sabin $GOPATH/bin \
+-sroot $GOPATH/src/github.com/scionproto/scion \
+-sbin $GOPATH/src/github.com/scionproto/scion/bin \
+-sgen $GOPATH/src/github.com/scionproto/scion/gen \
+-sgenc $GOPATH/src/github.com/scionproto/scion/gen-cache \
+-slogs $GOPATH/src/github.com/scionproto/scion/logs
+```
+or can you run `webapp` like this, which will use the defaults above:
+```shell
+webapp
+```
+
+Development Run on SCIONLab Topology:
+```shell
+webapp \
+-a 0.0.0.0 \
+-p 8080 \
+-r ~/go/src/github.com/netsec-ethz/scion-apps/webapp/web/data \
+-srvroot ~/go/src/github.com/netsec-ethz/scion-apps/webapp/web \
+-sabin $GOPATH/bin \
+-sroot /etc/scion \
+-sbin /usr/bin \
+-sgen /etc/scion/gen \
+-sgenc /var/lib/scion \
+-slogs /var/log/scion
+```
+
+## Development Watcher
 For developing the `webapp` application itself, since it is annoying to make several changes, only to have to start and stop the web server each time, a watcher library like `go-watcher` is recommended.
 ```shell
 go get github.com/canthefason/go-watcher
@@ -29,6 +84,31 @@ or
 ```shell
 cd $GOPATH/src/github.com/netsec-ethz/scion-apps/webapp
 watcher
+```
+
+## Help
+```
+Usage of webapp:
+  -a string
+        Address of server host. (default "127.0.0.1")
+  -p int
+        Port of server host. (default 8000)
+  -r string
+        Root path to read/browse from, CAUTION: read-access granted from -a and -p. (default ".")
+  -sabin string
+        Path to execute the installed scionlab apps binaries (default "/home/ubuntu/go/bin")
+  -sbin string
+        Path to execute SCION bin directory of infrastructure tools (default "/home/ubuntu/go/src/github.com/scionproto/scion/bin")
+  -sgen string
+        Path to read SCION gen directory of infrastructure config (default "/home/ubuntu/go/src/github.com/scionproto/scion/gen")
+  -sgenc string
+        Path to read SCION gen-cache directory of infrastructure run-time config (default "/home/ubuntu/go/src/github.com/scionproto/scion/gen-cache")
+  -slogs string
+        Path to read SCION logs directory of infrastructure logging (default "/home/ubuntu/go/src/github.com/scionproto/scion/logs")
+  -sroot string
+        Path to read SCION root directory of infrastructure (default "/home/ubuntu/go/src/github.com/scionproto/scion")
+  -srvroot string
+        Path to read/write web server files. (default "/home/ubuntu/go/src/github.com/netsec-ethz/scion-apps/webapp/web")
 ```
 
 ## Local Visualizations

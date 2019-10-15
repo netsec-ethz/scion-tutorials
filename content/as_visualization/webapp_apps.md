@@ -6,7 +6,7 @@ This Go web server wraps several SCION test client apps and provides an interfac
 
 Two functional server tests are included to test the networks without needing specific sensor or camera hardware, `imagetest` and `statstest`.
 
-Supported client applications include `camerapp`, `sensorapp`, and `bwtester`. For best results, ensure the desired server-side apps are running and connected to the SCION network first. Instructions to setup the servers are [here](https://github.com/perrig/SCIONLab/blob/master/README.md). The web interface launched above can be used to run the client-side apps.
+Supported client applications include `camerapp`, `sensorapp`, and `bwtester`. For best results, ensure the desired server-side apps are running and connected to the SCION network first. Instructions to setup the servers are [here](https://github.com/netsec-ethz/scion-apps). The web interface launched above can be used to run the client-side apps.
 
 ### bwtester
 
