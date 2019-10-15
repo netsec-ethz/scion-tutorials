@@ -2,18 +2,22 @@
 If you're planning to make modifications to SCION implementation, you can build SCION from sources and run your SCIONLab AS with your own version of SCION.
 For developer's convenience, SCIONLab supports generating configuration that is compatible with the scripts and machinery intended to run SCION in a development environment.
 
-!!! Tip
-    If you only want to develop applications _using_ SCION, you may still rely on the convenience of our [pre-built binary packages](../install/pkg.md).
-
-    The [scion-apps](https://github.com/netsec-ethz/scion-apps/) repository contains examples for applications that run
-    on top of SCION.
-
+Building SCION from sources requires following a lengthy setup procedure and installing various development dependencies.
+The development setup is currently supported/documented for **Ubuntu 16.04 _only_**.
+It is possible to build SCION on other systems, but no guidance is provided. To keep it simple, just run Ubuntu 16.04 in a VM or container if you can't/don't want to set it up on your workstation.
 
 Please follow the instructions in the [GitHub README](https://github.com/netsec-ethz/netsec-scion/) to clone and build SCION.
 
 !!! Note
     SCIONLab runs a version of SCION built from the branch `scionlab` in netsec-ethz/netsec-scion.
     This branch (intenionally) lags behind the scionproto/scion master. As there are still (rarely) breaking changes in the SCION protocol, running `master` may or may not be compatible with `scionlab`.
+
+
+!!! Tip
+    If you only want to develop applications _using_ SCION, you may still rely on the convenience of our [pre-built binary packages](../install/pkg.md).
+
+    The [scion-apps](https://github.com/netsec-ethz/scion-apps/) repository contains examples for applications that run
+    on top of SCION.
 
 
 !!! TODO
