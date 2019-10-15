@@ -1,5 +1,7 @@
-
 # RAINS, Another Internet Naming Service
+
+!!! TODO
+    Update & check
 
 RAINS is an alternate protocol for Internet name resolution, designed as a replacement of the Domain Name System (DNS) and is used in SCIONLab.
 

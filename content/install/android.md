@@ -1,5 +1,8 @@
 # Install on Android
 
+!!! TODO
+    Update & check
+
 ## Introduction
 It is possible to run SCION on an Android device. The easiest way is to install [SCION as an Android app](#scion-app). The other alternative is to [manually install SCION on your Android device](#manual-setup). Both variants are based on [Termux](https://github.com/termux/termux-app), which emulates a Terminal environment with the Linux base system that Android is based upon.
 

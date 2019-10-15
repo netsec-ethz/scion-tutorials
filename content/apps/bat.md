@@ -1,5 +1,8 @@
 # bat ("curl for SCION")
 
+!!! TODO
+    Update & check
+
 The [bat application](https://github.com/netsec-ethz/scion-apps/) is a cURL-like tool for sending HTTP requests to SCION enabled webservers and retrieve information in a human-readable format. Documentation is available in the [README.md](https://github.com/netsec-ethz/scion-apps/blob/master/bat/README.md).
 
 ## Install

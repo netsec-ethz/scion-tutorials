@@ -1,5 +1,8 @@
 # Access camera images over SCION network
 
+!!! TODO
+    Update & check
+
 The [camerapp application](https://github.com/netsec-ethz/scion-apps/) contains image fetcher and server applications, using the SCION network. Documentation on the code is available in the [README.md](https://github.com/netsec-ethz/scion-apps/blob/master/camerapp/README.md).
 
 ## Install

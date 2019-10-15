@@ -1,5 +1,10 @@
 # Set up SCION endhost and connect to local AS infrastructure
 
+
+!!! TODO
+    Check & update or simply rewrite
+
+
 ## Introduction
 
 In this tutorial we will cover the steps necessary to configure a SCION endhost that will connect to an already running SCION AS.

@@ -1,5 +1,12 @@
 # Troubleshooting a SCIONLab installation
 
+!!! TODO
+
+    * Check & update
+    * Remove references to `run.sh`
+    * Reduce clutter
+    * Section on VPN
+
 To reduce frustration from our users and to allow anybody to attempt to identify issues at their own pace, we have compiled this small troubleshooting guide. If it does not help you solve all the problems, and you have followed the steps, please [contact us](#contact)
 
 The simplest case to configure, and the one we treat here, is configuring an AS within a VM, using VPN. If you are testing a different case, please try first with this one and then attempt troubleshooting your specific configuration.

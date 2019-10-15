@@ -1,5 +1,8 @@
 # Sensor reading over SCION
 
+!!! TODO
+    Update & check
+
 The [sensorapp application](https://github.com/netsec-ethz/scion-apps/) contains fetcher and server applications for sensor readings, using the SCION network. The application is very simple, and sends a single packet to request the information, and obtains typically a single packet in response, containing the readings.
 
 ## Install

@@ -1,5 +1,12 @@
 # Webapp AS Visualization
 
+!!! TODO
+
+    Check & update
+
+    Decide on a name!? ;-)
+
+
 ## Webapp Setup
 
 Webapp is a Go application that will serve up a static web portal to make it easy to visualize and experiment with SCIONLab test apps on a virtual machine.
