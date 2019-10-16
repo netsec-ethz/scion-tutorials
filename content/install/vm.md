@@ -63,8 +63,8 @@ https://www.vagrantup.com/docs/cli
 
 ## Configuration
 
-As indicated above, the initial version of the configuration will automatically be provisioned. 
-To update the configuration in an existing VM, the workflow is the same as when running 
+As indicated above, the initial version of the configuration will automatically be provisioned.
+To update the configuration in an existing VM, the workflow is the same as when running
 an [installation from packages](../install/pkg.md#configure); connect to your running VM
 (`vagrant ssh`) and execute
 
@@ -82,5 +82,5 @@ connect to your running VM (`vagrant ssh`) and use the `systemd` commands to sta
 ```
 sudo systemctl start scionlab.target              # Start all SCION services
 sudo systemctl list-dependencies scionlab.target  # Check the status
-sudo systemctl stop scionlab.target               # Stop 
+sudo systemctl stop scionlab.target               # Stop
 ```
