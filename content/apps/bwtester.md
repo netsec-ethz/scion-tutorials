@@ -8,6 +8,7 @@ To install `bwtestclient` and `bwtestserver`:
 ```shell
 sudo apt install scion-apps-bwtester
 ```
+See [Installation](../install/pkg.md#applications) for details.
 
 ## bwtestclient
 

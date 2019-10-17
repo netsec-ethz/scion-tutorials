@@ -1,14 +1,11 @@
-# bat ("curl for SCION")
-
-!!! TODO
-    Update & check
+# bat ("cURL for SCION")
 
 The [bat application](https://github.com/netsec-ethz/scion-apps/) is a cURL-like tool for sending HTTP requests to SCION enabled webservers and retrieve information in a human-readable format. Documentation is available in the [README.md](https://github.com/netsec-ethz/scion-apps/blob/master/bat/README.md).
 
 ## Install
 
 ```shell
-apt-get install scion-apps-bat
+sudo apt install scion-apps-bat
 ```
 See [Installation](../install/pkg.md#applications) for details.
 
@@ -43,24 +40,31 @@ Below you see an example:
 
 ```
 # regular IPv4 hosts
-127.0.0.1                                               localhost
-123.456.789.0                                           dummy1
+# ....
 
 # regular IPv6 hosts
-fe80:cd00:0:cde:1257:0:211e:729c                        dummy2
-123:4567:89ab:cdef:123:4567:89ab:cdef                   dummy3
+# ....
 
 # SCION hosts
+18-ffaa:1:2,[10.0.8.10]	                                localhost
 17-ffaa:0:1,[192.168.1.1]                               host1 host2
-18-ffaa:1:2,[10.0.8.10]	                                host3
 20-ffaa:c0ff:ee12,[0:0:0ff1:ce00:dead:10cc:baad:f00d]   host4
 ```
 
 Consequently, these two calls are equivalent:
 
 ```
-bat https://17-ffaa:0:1,[192.168.1.1]:8080/route
-bat https://host1:8080/route
+scion-bat https://17-ffaa:0:1,[192.168.1.1]:8080/route
+```
+```
+scion-bat https://host1:8080/route
+```
+
+
+If no SCION localhost is defined in the `/etc/hosts` file like above, the local address needs to
+be provided with the `-l` flag. E.g.:
+```
+scion-bat -l 18-ffaa:1:2,[10.0.8.10]:0 https://host1:8080/route
 ```
 
 !!! note
@@ -76,6 +80,11 @@ bat https://host1:8080/route
 
 IO redirects (`<`, `>`) work as usual.
 
+!!! TODO
+    Example servers below still need repo to be checked out.
+    Come up with some ideas for servers to deploy in infrastructure.
+
+
 ## Example servers
 
 Two example server applications can be found in [scion-apps repository](https://github.com/netsec-ethz/scion-apps/tree/master/lib/shttp/examples).
@@ -84,8 +93,10 @@ Two example server applications can be found in [scion-apps repository](https://
 
 To start any of the servers, run these commands in the respective folder:
 
-```shell
+```
 openssl req -x509 -newkey rsa:1024 -keyout key.pem -nodes -out cert.pem -days 365 -subj '/CN=server'
+```
+```
 server -local 17-ffaa:1:1,[10.0.0.15]:40002 -cert cert.pem -key key.pem
 ```
 
@@ -95,21 +106,21 @@ Then query it like so:
 
 For the minimal server:
 
-```shell
-bat server:40002/download
+```
+scion-bat server:40002/download
 ```
 
 It should produce output similar to this:
 ![bat minimal server output](../images/bat_output.png)
 
-```shell
-bat -f server:40002/upload foo=bar
+```
+scion-bat -f server:40002/upload foo=bar
 ```
 
 Which prints `foo=bar` in the server's console, and
 
-```shell
-bat -b server:40002/download
+```
+scion-bat -b server:40002/download
 ```
 
 which runs a benchmark, producing output like this:
@@ -119,8 +130,8 @@ which runs a benchmark, producing output like this:
 
 For the image server:
 
-```shell
-bat -d server:40002/image
+```
+scion-bat -d server:40002/image
 ```
 
 This places the downloaded image file in your current directory.

@@ -12,6 +12,8 @@ To install the `camerapp` package, run:
 sudo apt install scion-apps-camerapp
 
 ```
+See [Installation](../install/pkg.md#applications) for details.
+
 ## imagefetcher
 
 To use the image fetcher, you will need to specify the address of an image server. A sample image server that can be contacted by any client is set up at `17-ffaa:0:1102,[192.33.93.166]:42002`.
