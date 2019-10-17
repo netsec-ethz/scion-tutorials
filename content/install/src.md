@@ -1,6 +1,6 @@
 # Build from Sources
 If you're planning to make modifications to SCION implementation, you can build SCION from sources and run your SCIONLab AS with your own version of SCION.
-For developer's convenience, SCIONLab supports generating configuration that is compatible with the scripts and machinery intended to run SCION in a development environment.
+For developer's convenience, SCIONLab supports generating configurations that are compatible with the scripts and machinery intended to run SCION in a development environment.
 
 Building SCION from sources requires following a lengthy setup procedure and installing various development dependencies.
 The development setup is currently supported/documented for **Ubuntu 16.04 _only_**.

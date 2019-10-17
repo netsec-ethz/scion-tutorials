@@ -31,7 +31,7 @@ To start your VM, run
 vagrant up
 ```
 
-When running you're VM for the first time, this will download the Ubuntu base box
+When running your VM for the first time, this will download the Ubuntu base box
 and then install all the SCION packages and their dependencies.
 
 This will already start the services for your SCIONLab AS.
@@ -45,7 +45,7 @@ vagrant ssh
 
 The directory containing the Vagrant file is synced with the VM where the files
 will appear in the `/vagrant/` directory.
-This is convenient way to share files between your your host machine and your
+This is a convenient way to share files between your host machine and your
 VM, and allows to move data both ways.
 
 To shutdown the VM, run
@@ -58,7 +58,7 @@ To start it back up, just type `vagrant up` again. Finally, if you want to wipe
 your VM, e.g. to start fresh, run `vagrant destroy`.
 
 More information for `vagrant` commands can be found at:
-https://www.vagrantup.com/docs/cli
+<https://www.vagrantup.com/docs/cli>
 
 
 ## Configuration

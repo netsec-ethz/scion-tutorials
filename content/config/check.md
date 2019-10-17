@@ -113,7 +113,7 @@ where a SCION address has the form `ISD-AS,[IP]`. For example, to ping any host 
     rid of this somewhat arcane feature eventually.
 
 !!! Tip
-    Check the topology map on the [SCIONLab homepage](https://www.scionlab.org) for an overview over the existing ASes and they're addresses.
+    Check the topology map on the [SCIONLab homepage](https://www.scionlab.org) for an overview over the existing ASes and their addresses.
 
 !!! Tip
   	If you're running the application on a local topology, make sure to specify the correct socket using the `-sciond` flag, e.g. by adding `-sciond /run/shm/sciond/sd1-ff00_0_110.sock`.
