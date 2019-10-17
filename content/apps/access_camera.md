@@ -45,11 +45,11 @@ The `imageserver` application keeps looking for `.jpg` files in the current dire
 The image server is launched as follows:
 
 ```
-imageserver -s 17-ffaa:1:89,[127.0.0.1]:40002 &
+scion-imageserver -s 17-ffaa:1:89,[127.0.0.1]:40002 &
 ```
 Here `-s` specifies the server. Again, it can be omitted by specifying a SCION localhost like above. The server then
 uses localhost to bind to. In this case, the port can be specified with the `-p` flag.
 
 ```
-imageserver -p 40002 &
+scion-imageserver -p 40002 &
 ```
