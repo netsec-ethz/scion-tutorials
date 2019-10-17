@@ -1,47 +1,55 @@
 # Access camera images over SCION network
 
-!!! TODO
-    Update & check
+The [camerapp application](https://github.com/netsec-ethz/scion-apps/) contains image fetcher and
+server applications which use the SCION network. Documentation on the code is available in the
+[README.md](https://github.com/netsec-ethz/scion-apps/blob/master/camerapp/README.md).
 
-The [camerapp application](https://github.com/netsec-ethz/scion-apps/) contains image fetcher and server applications, using the SCION network. Documentation on the code is available in the [README.md](https://github.com/netsec-ethz/scion-apps/blob/master/camerapp/README.md).
+## Packaged Setup
 
-## Install
-
-To install `imagefetcher` and `imageserver` (and all [SCIONLab apps](https://github.com/netsec-ethz/scion-apps)) and get dependencies as listed in vendor file:
+We provide a `camerapp` Debian package to easily install and run `camerapp` in the [SCIONLab](https://scionlab.org) environment.
+To install the `camerapp` package, run:
 ```shell
-./deps.sh
-make install
-```
+sudo apt install scion-apps-camerapp
 
+```
 ## imagefetcher
 
-To use the image fetcher, you will need specify the address of an image server, for instance `17-ffaa:0:1102,[192.33.93.166]:42002`. Per default the client binds to localhost. You can specify any other client SCION address by providing the -c flag.
+To use the image fetcher, you will need to specify the address of an image server. A sample image server that can be contacted by any client is set up at `17-ffaa:0:1102,[192.33.93.166]:42002`.
 
-A sample image server that can be contacted by any client is set up at `17-ffaa:0:1102,[192.33.93.166]:42002`.
-
-Images can be fetched with:
-```shell
-imagefetcher -s 17-ffaa:0:1102,[192.33.93.166]:42002
+Images can be fetched like this:
+```
+scion-imagefetcher -c 17-ffaa:1:89,[127.0.0.1]:0 -s 17-ffaa:0:1102,[192.33.93.166]:42002
 ```
 
-The fetched image is then saved in the local directory. A sample image is shown below:
-![Sample image out of the window of office CAB E76](../images/office-20171217.jpg)
+Here, `-s` specifies the image server whereas `-c` specifies your machine.
+The `-c` flag can be omitted if a SCION localhost address is configured. To do this, add your
+SCION host to the `/etc/hosts` file. Below you can see an example:
+
+```
+# regular IPv4 hosts
+# ....
+
+# regular IPv6 hosts
+# ....
+
+# SCION hosts
+17-ffaa:0:1,[192.168.1.1]                               localhost
+```
+
+Alternatively, you can run the image fetcher using the [webapp](../as_visualization/webapp_apps.md).
 
 ## imageserver
 
 The `imageserver` application keeps looking for `.jpg` files in the current directory, and offers them for download to clients on the SCION network. The assumption is that the application is used in conjunction with an application that periodically writes an image to the file system. After an amount of time (currently set to 10 minutes), the image files are deleted to limit the amount of storage used.
 
-Included is a simple `paparazzi.py` application, which reads and saves the camera image on a Raspberry Pi. The system is launched as follows:
+The image server is launched as follows:
 
-```shell
-python3 ${GOPATH}/src/github.com/netsec-ethz/scion-apps/camerapp/imageserver/paparazzi.py &
-imageserver -p 42002 &
 ```
+imageserver -s 17-ffaa:1:89,[127.0.0.1]:40002 &
+```
+Here `-s` specifies the server. Again, it can be omitted by specifying a SCION localhost like above. The server then
+uses localhost to bind to. In this case, the port can be specified with the `-p` flag.
 
-This makes the server bind to localhost and listen on port 42002.
-Alternatively, it can bind to any other SCION address, specified by `-s`:
-
-```shell
-python3 ${GOPATH}/src/github.com/netsec-ethz/scion-apps/camerapp/imageserver/paparazzi.py &
-imageserver -s 17-ffaa:0:1102,[192.33.93.166]:42002 &
+```
+imageserver -p 40002 &
 ```
