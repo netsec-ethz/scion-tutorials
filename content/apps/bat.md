@@ -4,6 +4,7 @@ The [bat application](https://github.com/netsec-ethz/scion-apps/) is a cURL-like
 
 ## Install
 
+To install `bat`, run:
 ```shell
 sudo apt install scion-apps-bat
 ```

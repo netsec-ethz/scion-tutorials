@@ -4,7 +4,7 @@ The [bandwidth testing application `bwtester`](https://github.com/netsec-ethz/sc
 
 ## Install
 
-To install `bwtestclient` and `bwtestserver`:
+To install `bwtestclient` and `bwtestserver`, run:
 ```shell
 sudo apt install scion-apps-bwtester
 ```
@@ -66,7 +66,7 @@ The server is started as follows:
 scion-bwtestserver -s 17-ffaa:0:1102,[192.33.93.177]:30100 &
 ```
 
-Here `-s` specifies the server. Again, it can be omitted by specifying a SCION localhost like above. The server then
+Here `-s` specifies your server address. Again, it can be omitted by specifying a SCION localhost like above. The server then
 uses localhost to bind to. In this case, the port can be specified with the `-p` flag.
 
 

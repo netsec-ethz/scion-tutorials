@@ -50,7 +50,7 @@ The image server is launched as follows:
 ```
 scion-imageserver -s 17-ffaa:1:89,[127.0.0.1]:40002 &
 ```
-Here `-s` specifies the server. Again, it can be omitted by specifying a SCION localhost like above. The server then
+Here `-s` specifies your server address. Again, it can be omitted by specifying a SCION localhost like above. The server then
 uses localhost to bind to. In this case, the port can be specified with the `-p` flag.
 
 ```
