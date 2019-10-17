@@ -1,70 +1,123 @@
-# Verifying AS Configuration
-
-
-!!! TODO
-
-    Everything in here needs to be checked and updated.
-
-    pingpong is not packaged (it's just too dumb).
-    Replace this with `scmp echo` / `scmp tr` / `scmp rp`
-
-    Add check for VPN
-    Add other checks (see what webapp does)?
+# Check AS Configuration
 
 
 ## Introduction
 
-After running your SCION infrastructure, it is necessary to verify that it is working correctly.
+After having [configured your AS on the SCIONLab website](../config/create_as.md), [installed SCION](../install/index.md) and, depending on the chosen installation type, installed the configuration on your host you should now have a running SCIONLab AS.
 
-There are several methods of doing this. Some of them are described in this post.
+Follow the steps below to check that it is working as expected.
+
 
 ## Running Webapp
 
-The recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCIONLab Apps Web Visualization](../as_visualization/webapp.md). This browser-based tool serves as a dashboard to your SCIONLab VM and includes various checks.
+If you're running a VM, the simplest and recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCIONLab Apps Web Visualization](../as_visualization/webapp.md).
+This browser-based tool serves as a dashboard to your SCIONLab VM and includes various checks.
+
 
 ## Terminal based
 
-Another approach is to directly verify AS services using the terminal. You will have to log into the machine hosting the SCION services either (with `vagrant ssh` if it is a virtual machine).
+For the following steps, log into the machine hosting the SCION services (with `vagrant ssh` if it is a virtual machine).
+If any of the checks fail, head over to the [Troubleshooting Guide](../tips/troubleshooting.md)
 
-### Inspecting log files
+#### Check VPN tunnel
 
-The SCION log files can be accessed with the following command:
+This only applies if you've configured your as to use an OpenVPN connection to the Attachment Point.
 
-```shell
-tail -f /var/log/scion/bs*.log
-```
-In particular, the beacon server log file should contain lines like
+Check that the tunnel interface exists:
 
-```shell
-[DEBUG] (MainThread) Successfully verified PCB ca8e78c198ca
-```
+    sudo ip address show dev tun0
 
-If you don't find any line mentioning the successful verification of PCBs, your AS probably has issues. Please refer to [the troubleshooting section](../tips/troubleshooting.md).
+Check that `/etc/openvpn/client.conf` exists.
 
+Check that the OpenVPN client is up:
 
-### Run pingpong client
+    sudo systemctl status openvpn@client
 
 
-If your AS is working as expected, you should be able to use a simple data plane application that is delivered with the SCION binaries that sends a small request (_ping_) and waits for its response (_pong_). We run the `pingpong` servers in each of the four official attachment points:
+Check that the IP address in the `topology.json` file matches the IP assigned in the VPN:
+Open any of the `topology.json` files and search the `Interfaces` entry:
 
-* `17-ffaa:0:1107,[192.33.93.195]:40002`
-* `18-ffaa:0:1202,[128.105.21.208]:40002`
-* `19-ffaa:0:1303,[141.44.25.144]:40002`
-* `20-ffaa:0:1404,[203.230.60.98]:40002`
+    $ grep Interfaces -A15 /etc/scion/gen/ISD*/AS*/endhost/topology.json
+        "Interfaces": {
+          "1": {
+            "Bandwidth": 1000,
+            "ISD_AS": "17-ffaa:0:1107",
+            "LinkTo": "PARENT",
+            "MTU": 1472,
+            "Overlay": "UDP/IPv4",
+            "PublicOverlay": {
+              "Addr": "10.0.8.133",
+              "OverlayPort": 50000
+            },
+            "RemoteOverlay": {
+              "Addr": "10.0.8.1",
+              "OverlayPort": 50168
+            }
+          }
 
-You can run the `pingpong` client against any of those servers in the list above. For example, if your AS ID was `17-ffaa:1:1` and you wanted to verify `pingpong` against the attachment point in the ISD 18, you would run:
+In this entry, the `PublicOverlay` address should correspond to the local address on your tunnel interface.
 
-```shell
-cd $SC
-bin/pingpong -local 17-ffaa:1:1,[127.0.0.1]:0 -remote 18-ffaa:0:1202,[128.105.21.208]:40002
-Using path:
-  Hops: [17-ffaa:1:1 1>147 17-ffaa:0:1107 1>4 17-ffaa:0:1102 3>3 17-ffaa:0:1103 4>8 17-ffaa:0:1101 5>4 18-ffaa:0:1201 6>1 18-ffaa:0:1202] Mtu: 1472
-Received 13 bytes from 18-ffaa:0:1202,[128.105.21.208]:40002: seq=0 RTT=156.675ms
-Received 13 bytes from 18-ffaa:0:1202,[128.105.21.208]:40002: seq=1 RTT=157.699ms
-...
-```
+Finally, check that you can ping the address listed in `RemoteOverlay`.
+
+
+#### Check SCION service status
+
+    sudo sytemctl list-dependencies scionlab.target
+
+
+This should show all entries as green. If there are any failed services in this list, start [troubleshooting](../tips/troubleshooting.md#)
+
+!!! Note
+
+    Ignore duplicate entries, this is a known issue in some systemd versions.
+
+
+If you're running a build from sources, you will need to use the developer scripts instead of `systemctl`.
+Run `scion.sh status` or `supervisor/supervisor.sh status`.
+
+
+#### Inspect log files
+
+Log files for the SCION services are located in `/var/log/scion`.
+
+Inspect the beacon server's log file using e.g. `less -f /var/log/scion/bs*.log`, to check that
+
+*   Interfaces are considered `active`:
+
+    Check that the log mentions `Activated interface ...`, not followed by a later `interface went down`.
+
+*   Beacons are received successfully:
+
+    Check that you find entries `Registered beacons ...`.
+
+
+#### Ping
+
+Ping somebody! Run `scmp echo` to send an "SCMP echo request"; this is just like the `ping` command for IP.
+
+The syntax is:
+
+    scmp echo -local [my scion address] -remote [someone else's scion address]
+
+where a SCION address has the form `ISD-AS,[IP]`. For example, to ping any host in the attachment point AS in Korea from my SCIONLab AS, I would run:
+
+    $ scmp echo -local 17-ffaa:1:15b,[127.0.0.1] -remote 20-ffaa:0:1404,[0.0.0.0]
+    Using path:
+      Hops: [17-ffaa:1:15b 1>169 17-ffaa:0:1107 1>4 17-ffaa:0:1102 2>2 17-ffaa:0:1103 4>8 17-ffaa:0:1101 11>3 19-ffaa:0:1302 1>7 19-ffaa:0:1301 3>5 18-ffaa:0:1201 3>5 20-ffaa:0:1401 7>1 20-ffaa:0:1403 3>47 20-ffaa:0:1404] Mtu: 1472
+    200 bytes from 20-ffaa:0:1404,[0.0.0.0] scmp_seq=0 time=383.578ms
+    200 bytes from 20-ffaa:0:1404,[0.0.0.0] scmp_seq=1 time=381.763ms
+
+
+!!! Note
+    Having to enter your own SCION address is a common theme with SCION tools. We hope we'll get
+    rid of this somewhat arcane feature eventually.
 
 !!! Tip
-	If you're running the application on a local topology, make sure to specify the correct socket using the `-sciond` flag, e.g. by adding `-sciond /run/shm/sciond/sd1-ff00_0_110.sock`. You can find the corresponding socket in the `sciond.toml` file of the endhost inside the `gen/` folder.
+    Check the topology map on the [SCIONLab homepage](https://www.scionlab.org) for an overview over the existing ASes and they're addresses.
 
-Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to [the troubleshooting section](../tips/troubleshooting.md).
+!!! Tip
+  	If you're running the application on a local topology, make sure to specify the correct socket using the `-sciond` flag, e.g. by adding `-sciond /run/shm/sciond/sd1-ff00_0_110.sock`.
+
+
+Passing this test is a condition sufficient to say that your AS works as expected.
+If it fails, please refer to [the troubleshooting section](../tips/troubleshooting.md).
