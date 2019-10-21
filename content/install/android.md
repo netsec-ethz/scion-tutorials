@@ -1,12 +1,16 @@
 # Install on Android
 
-!!! TODO
-    Update & check
+
+!!! Warning
+
+    This page has not been updated after the latest changes to SCIONLab and is out of date.
+
 
 ## Introduction
 It is possible to run SCION on an Android device. The easiest way is to install [SCION as an Android app](#scion-app). The other alternative is to [manually install SCION on your Android device](#manual-setup). Both variants are based on [Termux](https://github.com/termux/termux-app), which emulates a Terminal environment with the Linux base system that Android is based upon.
 
 This tutorial is primarily targeted at running a SCION endhost on Android. While it is also possible to run an entire SCION AS, this currently doesn't run stable within Termux, as it requires Apache Zookeeper, which frequently crashes the Termux environment as described [here](#endhost-configuration-vs-full-as).
+
 
 ## Prerequisites
 
@@ -41,6 +45,7 @@ That means of course, that the ‘gen’ folder needs to be readily available on
 
 !!! warning
     SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described [here](#changes-to-gen-folder)
+
 
 ## Manual setup
 
