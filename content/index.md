@@ -1,68 +1,89 @@
 # Welcome to SCION Tutorials
 
+
+This website provides step-by-step instructions on how to run a SCION autonomous system (AS) in [SCIONLab](https://www.scionlab.org).
+It also provides a list of interesting projects that are using the SCION infrastructure for communication.
+
+
+## Quick Start
+
+The following steps describe the quickest path to success to run a SCIONLab AS.
+For more detailed information, follow the instructions in the [Installation](install/index.md) and
+[Configuration](config/create_as.md) sections.
+
+1. Register on the [SCIONLab coordination website](https://www.scionlab.org)
+2. Navigate to `My ASes` and click `Create a new SCIONLab AS`:
+    * Select any of the available attachment points; pick the closest one for shorter latency
+    * Enable `Use VPN` and select the installation type `Run SCION in a Vagrant virtual machine`
+    * Confirm by clicking `Create AS`
+3. Install [Vagrant and VirtualBox](install/vm.md)
+4. Download the generated tarfile, extract the `Vagrantfile` and start the VM by executing `vagrant up`.
+
+
+
 ## Introduction
 
-This website provides step-by-step instructions on how to install and run the SCION infrastructure. It also provides a list of interesting projects that are using the SCION infrastructure for communication.
+### A brief overview of SCION
+SCION (**S**calability, **CO**ntrol and **I**solation on next-generation **N**etworks) is an inter-domain network architecture, designed to provide route control, failure isolation, and explicit trust information for end-to-end communication.
 
-### To get in touch:
+SCION organizes ASes into groups of independent routing planes, called isolation domains (ISDs), which interconnect to provide global connectivity.
 
-* For questions and general comments on SCION-related topics, visit our [SCION community mailing list](https://lists.inf.ethz.ch/mailman/listinfo/scion)
-* For bug reports, please post them on the [scion-coord github site](https://github.com/netsec-ethz/scion-coord)
+Its *path-aware* architecture allows end hosts to learn about available network path segments, and combine them into end-to-end paths that are carried in packet headers. Furthermore, thanks to embedded cryptographic mechanisms, path construction is constrained to the route policies of ISPs and receivers, offering path choice to all the parties: senders, receivers, and ISPs.
+
+These features also enable **multi-path communication**, which is an important approach for:
+
+- **high availability**,
+- **rapid failover** in case of network failures,
+- **increased** end-to-end **bandwidth**,
+- **dynamic traffic optimization**, and
+- **DDoS** attack **resilience**
+
+SCION is designed to interoperate with the existing networking infrastructure. Deployment of SCION can utilize existing internal routing and forwarding infrastructure of an AS, and only require installation or upgrade of a few border routers. A SCION-IP-Gateway (SIG) in the local infrastructure allows legacy end hosts and applications to be unaware of SCION.
+
+#### References
+
+* [SCION Architecture website](https://www.scion-architecture.net)
+* Summary paper: [The SCION Internet Architecture](https://www.scion-architecture.net/pdf/2017-SCION-CACM.pdf)
+* Book: [SCION: A Secure Internet Architecture (Open Access PDF)](https://www.scion-architecture.net/pdf/SCION-book.pdf)
+* Implementation: [scionproto/scion on GitHub](https://github.com/scionproto/scion)
+
+### SCIONLab, the SCION testbed
+SCIONLab is a global research network to test and experiment with the SCION internet architecture. As a participant of SCIONLab, you will be able to create your own ASes that actively participate in the SCION inter-domain routing.
+
+#### Cool, but what is an AS?
+An autonomous system (AS) is a _network_ under the control of a single administrative entity or domain.
+In SCION, ASes are connected only in well defined locations and links are defined by a provider/customer or a peering relation.
+
+Each AS is in charge of providing essential informations to the collection of devices connected to it, called end hosts (e.g Smartphones, Laptops and so on).
+The ASes in SCION are fundamental in the two main phases of the architecture: the *control* plane, which is the process responsible for discovering paths and making those paths available to end hosts; and the *data* plane, which is the process responsible for the transmission of the packets.
+
+For the control plane, each AS hosts different infrastructure services (beacon server, path server, certificate server and possibly others) that actually perform the process.
+For the data plane, the inter-AS traffic is routed through the SCION border routers of the ASes along a path. SCION is agnostic about the intra-AS routing, typically ASes run IP internally.
+
+#### What does it mean to run an AS?
+Running an AS means running the various AS control plane services and running border routers that connect the AS to other ASes.
+
+For the sake of simplicity, a SCIONLab AS network typically consists of only a single host, which is running both all control plane services, border routers and end host applications at the same time.
+
+Practically speaking your AS will be running on your own hardware, under your full control, and it is as simple as bringing up a *Vagrant* VM.
+
+#### What is an attachment point (AP)?
+As already mentioned, the infrastructure of SCIONLab comprises a network of globally connected ASes, and number of these are configured to act as "Attachment Points", and you can choose some as the uplink for your AS. The link between your AS and the attachment point AS is established as an overlay link over the legacy Internet. You can choose whether to instantiate this connection publicly (through a static public IP) or through a VPN offered by the Attachment Point itself (allowing also devices behind a NAT to act as AS).
+Whenever a change is made to the configuration of a SCIONLab AS, the configuration of the attachment point AS is automatically updated.
+
+
+#### What is the relation of SCIONLab and SCION?
+The SCIONLab website serves to simplify and coordinate the setup of experimental SCION ASes.
+SCIONLab is not connected to the production SCION network and all the SCIONLab ASes have AS-IDs specifically set aside for experimentation.
+
+In order to simplify the management of ASes and lower the entry-barrier for participation, the design of SCIONLab deliberately has some restrictions that are not present in the production deployment of SCION:
+
+- SCIONLab centralizes management of the control plane public key infrastructure. In the real deployment of SCION, there is no such single point of failure.
+- Overlay links over the publicly routed Internet are used both in the infrastructure and between the infrastructure and user-owned ASes. Therefore, the security, availability, and performance properties of SCION are not fully realized.
+
+
+## Contact
+
+* For questions on running your SCIONLab AS and general discussion about SCION-related topics, visit our [SCION community mailing list](https://lists.inf.ethz.ch/mailman/listinfo/scion)
+* For bug reports, please post them on the [scionlab GitHub site](https://github.com/netsec-ethz/scionlab)
 * For suggestion on these pages, please post them on the [scion-tutorials GitHub site](https://github.com/netsec-ethz/scion-tutorials)
-
-## Getting started
-
-SCION runs on a variety of platforms and works with different network configurations. We cover all approaches with tutorials. To choose the correct tutorial for your setup, follow the flowchart below to determine the number of the tutorial suited for you.
-
-After installation, we suggest exploring the tips and tricks section below to learn how to use the infrastructure.
-
-![SCION installation Flowchart](images/installation_flowchart.png)
-
-## Running SCION infrastructure in a VM
-
-The easiest way to run SCION is by running a preconfigured SCION Virtual Machine on a commodity OS (MacOS, Windows). The following tutorials are covering the necessary steps.
-
-* [1) Running SCION VM over OpenVPN](virtual_machine_setup/dynamic_ip.md)
-* [2) Running SCION VM with static public IP](virtual_machine_setup/static_ip.md)
-
-## Configuring SCION infrastructure manually
-
-The following tutorials cover how to install, configure, and run a SCION infrastructure in a step-by-step manner on a dedicated host (without a VM).
-
-### 1. Installing SCION on different platforms:
-
-* [3) Installing SCION on Ubuntu 16.04 x86](native_setup/ubuntu_x86_build.md)
-* [4) Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](native_setup/rpi_ubuntu.md)
-* [5) Installing SCION on ARM minicomputers using prebuilt images](native_setup/image_builder.md)
-* [6) Installing SCION on an Android device](native_setup/android.md)
-
-### 2. Setting up SCION topology
-
-* [Configuring local topology](general_scion_configuration/local_top.md)
-* [Configuring AS and connecting to SCION network for devices with public static IP](general_scion_configuration/public_ip.md)
-* [Configuring AS and connecting to SCION network for devices with public static IP behind a NAT](general_scion_configuration/public_ip_nat.md)
-* [Configuring AS and connecting to SCION network using OpenVPN](general_scion_configuration/vpn_setup.md)
-* [Configuring SCION endhost](general_scion_configuration/setup_endhost.md)
-
-## Using SCION in projects
-
-* [Fetching sensor readings or time stamps](sample_projects/fetch_sensor_readings.md)
-* [Fetching a camera image over the SCION network](sample_projects/access_camera.md)
-* [Running the bandwidthtester application](sample_projects/bwtester.md)
-* [Webapp AS Visualization](as_visualization/webapp.md)
-* [Webapp SCIONLab Apps Visualization](as_visualization/webapp_apps.md)
-* [Webapp Development Tips](as_visualization/webapp_development.md)
-* [SCIONLab SIG testing](sample_projects/remote_sig.md)
-* [Using rains](sample_projects/rains.md)
-
-## SCION tips and tricks
-
-* [Verifying the installation](general_scion_configuration/verifying_scion_installation.md)
-* [Updating gen directory](scion_tricks/changing_gen_dir.md)
-* [Updating SCION to a new version](scion_tricks/updating_scion.md)
-* [Adding Wireshark or Tshark dissector plugin](scion_tricks/wireshark.md)
-
-## SCION box specifics
-
-* [SCION box first steps](scionbox/scionbox.md)
-
