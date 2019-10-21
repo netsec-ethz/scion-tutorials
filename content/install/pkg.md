@@ -31,7 +31,6 @@ sudo scionlab-config --host-id=<...> --host-secret=<...>
 ```
 The required `host-id` and `host-secret` will be displayed on the SCIONLab website.
 The script will (re-)start all the configured services (and OpenVPN client, if configured).
-[//]: # (TODO Screenshot)
 The `host-id` and `host-secret` information will be stored in
 `/etc/scion/gen/scionlab-config.json` and will not have to be entered
 again.  To update the configuration after modifying your AS, simply run
@@ -57,8 +56,6 @@ As an alternative to running `scionlab-config`, you can manually download the
 configuration tarfile from the SCIONLab website and unpack it.
 
 1. Download the configuration tarfile from the SCIONLab coordination website.
-
-[//]: # (TODO Screenshot)
 
 2. If using VPN, extract the `client.conf` to `/etc/openvpn/` and (re-)start OpenVPN
 
