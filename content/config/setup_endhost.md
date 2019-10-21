@@ -1,146 +1,95 @@
 # Set up SCION endhost and connect to local AS infrastructure
 
 
-!!! TODO
-    Check & update or simply rewrite
-
-
 ## Introduction
 
-In this tutorial we will cover the steps necessary to configure a SCION endhost that will connect to an already running SCION AS.
-This is useful in situations where your host can take advantage of an existing local SCION infrastructure.
+In this tutorial we will cover the steps necessary to configure a SCION endhost in a SCIONLab AS.
 
-Depending on how the SCION AS is set up, the steps for configuring the endhost will slightly differ.
+An SCION _endhost_ is a simply a computer running SCION applications in a SCION AS, i.e. it is not a router and does not run any infrastructure services for the AS.
+An endhost will communicate with the Path- and Certificate-service of the AS to get paths and certificate information. For communication to hosts in different ASes, traffic will be sent to the SCION border routers of the AS.
+The endhost knows the addresses for these services from a configuration file (`topology.json`).
 
-### Running AS infrastructure executes in a VM
+The software stack for a SCION endhost application consists of the `dispatcher`, responsible for managing sockets and encapsulating/decapsulating SCION packets for IP/UDP overlay,
+and the SCION-daemon `sciond`, which is responsible for fetching, verifying and caching paths and certificate information from the AS services.
 
-In the first way, the SCION AS runs inside a virtual machine (VM). The following figure depicts this scenario.
+Compared to the perhaps more familiar software stack for IP, we can see some rough analogues:
 
-![SCION AS in virtual machine](../images/vm_endhost_setup.png)
+- `dispatcher`: corresponds to the kernels `socket` API
+- `sciond`: similar to a local caching DNS resolver daemon (like e.g. dnsmasq, unbound), except it's for paths and certificates, not for names
 
-The installation steps of the AS are covered in the following tutorials:
 
-- [Running SCION VM with dynamic IP](../virtual_machine_setup/dynamic_ip.md)
-- [Running SCION VM with static IP](../virtual_machine_setup/static_ip.md)
+!!! TODO
+    create `gen-certs` ?
 
-### Running AS infrastructure natively on a system
 
-In the second way, the SCION AS is executing natively on a host machine. The following figure depicts this scenario.
+## 1. Install SCION on endhost
 
-![SCION running natively](../images/native_endhost_setup.png)
+The software stack for a SCION endhost consists of the `dispatcher` and the `sciond`, contained in the `scion-dispatcher` and `scion-daemon` packages.
+Just install an endhost application that you're planning to run.
 
-The installation steps for this setup is described in the following tutorial pages:
+On Ubuntu/Debian, run the following snippet to add the package repository:
+```shell
+sudo apt-get install apt-transport-https
+echo "deb [trusted=yes] https://packages.netsec.inf.ethz.ch/debian all main" | sudo tee /etc/apt/sources.list.d/scionlab.list
+sudo apt-get update
+```
+and then install the packages using:
+```
+sudo apt-get install scionlab scion-apps-* # Just get everything OR
+sudo apt-get install scion-apps-bwtester   # get individual application(s), with only minimal dependencies
+```
 
-- [Installing SCION on Ubuntu 16.04 x86 machine](../native_setup/ubuntu_x86_build.md)
-- [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](../native_setup/rpi_ubuntu.md)
-- [Configuring AS and connecting to SCION network for devices with public static IP](../general_scion_configuration/public_ip.md)
-- [Configuring AS and connecting to SCION network for devices with public static IP behind a NAT](../general_scion_configuration/public_ip_nat.md)
-- [Configuring AS and connecting to SCION network using OpenVPN](../general_scion_configuration/vpn_setup.md)
+Of course you can also use the other [available installation options](../install/index.md).
+When running the VM installation, the steps will be virtually identical with the only difference that they need to be performed in the respective VMs.
+When running SCION built from sources, the directory paths will be different (configuration in `$GOPATH/src/github.com/scionproto/scion` instead of `/etc/scion`) and the `systemctl` commands
 
-## Prerequisites
 
-Throughout this setup we will use host and endhost IP addresses on both machines. In order to make everything easier to follow it is necessary to create two environment variables `HOST_IP` and `ENDHOST_IP` with respective addresses on **both machines** as they will be used throughout this setup. Execute following commands replacing correct IP addresses with correct ones:
+## 2. Modify AS configuration
+
+The configuration downloaded from SCIONLab configures all SCION services to listen only on the localhost address by default.
+To run an endhost on a different host, the services need to bind on an IP that is accessible from the endhost.
+
+On the host running the AS services, locate the `topology.json` files in `/etc/scion/gen/`. In this configuration file, we change the occurrences of IP `127.0.0.1`
+to the hosts IP.
+```
+NODE_IP=#..host IP..# sed -i "s/127\.0\.0\.1/$NODE_IP/" /etc/scion/gen/ISD*/AS*/*/topology.json
+```
+
+!!! Note
+    Only `PathServer`, `CertificateServer` and the `InternalAddrs` of `BorderRouter` _need_ to be accessible for the endhost.
+    Also opening the others is bonus, for the sake of simplicity.
+
+Restart your AS services by running `sudo systemctl restart scionlab.target`.
+
+
+## 3. Extract and adapt endhost configuration
+
+To create the configuration for the endhost, we copy the configuration (modified in the previous step) from the node's `/etc/scion/gen` directory: we'll need the `dispatcher/` and the `ISD*/AS*/endhost` directory.
+
+The following snippet describes one way to achieve this:
 
 ```shell
-export HOST_IP="10.42.0.1"
-export ENDHOST_IP="10.42.0.180"
+cp /etc/scion/gen /tmp/
+rm -r /tmp/gen/ISD*/AS*/{br,bs,ps,cs}*/  # strip config for AS services
 ```
 
-## Step One - Installing SCION on endhost
+Then we need to fix another configuration file:
+the localhost addresses in `/etc/scion/gen/ISD*/AS*/endhost/sd.toml` must be changed to to the endhost's IP address.
+```
+ENDHOST_IP=#..host IP..# sed -i "s/127\.0\.0\.1/$ENDHOST_IP/" /etc/scion/gen/ISD*/AS*/endhost/sd.toml
+```
 
-Any platform that runs SCION can be used as an endhost. To install SCION on different platforms you can follow one of the tutorials:
+Now copy `/tmp/gen` to the endhost (e.g. using `scp`) and install it in the `/etc/scion/` directory.
 
-* [Installing SCION on Ubuntu 16.04 x86 machine](../native_setup/ubuntu_x86_build.md)
-* [Installing SCION on Ubuntu MATE 16.04 - Raspberry PI](../native_setup/rpi_ubuntu.md)
 
-Also, SCION VMs can be configured to be used as endhost.
+## 4. Start SCION on endhost
 
-## Step Two - Copy initial configuration
-
-After the SCION environment is successfully installed on your endhost device, we can start the configuration process. First of all, we need to stop the currently running SCION environment and remove the old `gen` directory.
+Finally we can start the `scion-dispatcher` and `scion-daemon` services:
 
 ```shell
-cd $SC
-./scion.sh stop
-rm -rf gen
+# replace XX and YYYY with your ISD/AS number e.g. scion-daemon@17-ffaa_1_15b.service
+systemctl enable scion-daemon@XX-ffaa_1_YYYY.service
+systemctl start scionlab.target
 ```
 
-The next step is to make sure both endhost and SCION AS share the same AS configuration, i.e., the same `gen` directory. This can be done in several ways, but the easiest is to copy it directly from the AS system.
-
-Executing the following command from **SCION AS** copies the complete `gen` directory to endhost. Note that you will need to replace **endhost_user** with appropriate user name on the endhost.
-
-```shell
-scp -r ${SC}/gen endhost_user@${ENDHOST_IP}:/home/endhost_user/go/src/github.com/scionproto/scion/gen
-```
-
-## Step Three - Remove unnecessary services
-
-The next step is to disable unnecessary SCION services, like the border router, beacon server, etc., on the endhost device. This can be done by editing configuration file on the **endhost's system**:
-
-```
-vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/supervisord.conf
-```
-
-It is sufficient to remove last 2 lines that look similar to this:
-
-```
-[group:as17-ffaa_1_a]
-programs = br17-ffaa_1_a-1,bs17-ffaa_1_a-1,cs17-ffaa_1_a-1,ps17-ffaa_1_a-1,sd17-ffaa_1_a
-```
-
-We need to tell the endhost's `sciond` about its address. For that edit the file on the **endhost's system**:
-```
-vim $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/endhost/sciond.toml
-```
-In that file, you will find a section that starts with `[sd]` and looks similar to this:
-```
-[sd]
-Reliable = "/run/shm/sciond/default.sock"
-Public = "17-ffaa:1:a,[127.0.0.1]:0"
-Unix = "/run/shm/sciond/default.unix"
-```
-In that section substitute the 'Public' line with the following one:
-```
-Public = "17-ffaa:1:a,[10.42.0.180]:0"
-```
-Ensure you replace `17-ffaa:1:a` with your AS's IA, and `10.42.0.180` with the correct endhost's IP address. As you can see, you just specified the public IP of your endhost.
-
-Next we need to remove all directories except `endhost` from `$SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}/` directory.
-
-```shell
-cd $SC/gen/ISD{ISD_NUMBER}/AS{AS_NUMBER}
-rm -rf *-*
-```
-
-## Step Four - Iptable rules
-
-!!! warning
-    **This step is only necessary if you are running the AS SCION infrastructure inside a Virtual Machine**. If this is not the case, proceed to step five.
-
-Configuration files we copied from VM in first step contain address `10.0.2.15`. This address is not accessible outside the VM and we need to rewrite it to the host's IP address, so that packets get routed correctly. This can be done with iptables.
-
-```shell
-sudo apt install netfilter-persistent iptables-persistent
-
-sudo iptables -t nat -A OUTPUT -m udp -p udp -d 10.0.2.15 -j DNAT --to-destination ${HOST_IP}
-
-sudo netfilter-persistent save
-```
-
-## Step Five - Restart SCION
-
-Last step is to reload configuration and restart SCION on your endhost system.
-
-```shell
-~/.local/bin/supervisorctl -c supervisor/supervisord.conf shutdown
-./scion.sh run
-```
-
-## Next steps
-
-The best way to verify endhost configuration is by running properly is by running some demo applications:
-
-* [Fetching sensor readings or time stamps](../apps/fetch_sensor_readings.md)
-* [Fetching a camera image over the SCION network](../apps/access_camera.md)
-* [Running the bandwidthtester application](../apps/bwtester.md)
-* [SCIONLab Webapp Visualization](../as_visualization/webapp.md)
+Test that your connection is working, e.g. by using [`scmp echo`](../config/check.md#ping) and start using the applications as described in the Applications-section.
