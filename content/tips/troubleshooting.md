@@ -93,8 +93,13 @@ If you've configured to use VPN, check the [Border Router fails to start][#borde
 Inspect the logs of the failed services to find details.
 In case of multiple failures, fixing issues in the following order usually works best:
 * dispatcher
+* sciond
 * border routers
 * anything else
+
+
+!!! Tip
+    First clear the `/var/log/scion/` directory and restart. This often helps to find the relevant log messages quicker.
 
 
 #### Not receiving beacons
@@ -108,14 +113,6 @@ sudo systemctl restart scionlab.target
 ```
 
 This may seem silly but there are (at the time of writing) certain failure modes of the border routers that are hard to diagnose and are fixed with a simple restart.
-
-!!! TODO
-
-    Check "active"
-
-    Check network connectivity
-
-    tcpdump
 
 
 ## Getting help

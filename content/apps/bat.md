@@ -81,10 +81,7 @@ scion-bat -l 18-ffaa:1:2,[10.0.8.10]:0 https://host1:8080/route
 
 IO redirects (`<`, `>`) work as usual.
 
-!!! TODO
-    Example servers below still need repo to be checked out.
-    Come up with some ideas for servers to deploy in infrastructure.
-
+[//]: # (TODO Example servers below still built from sources. Come up with some ideas for servers to deploy in infrastructure.)
 
 ## Example servers
 

@@ -1,24 +1,17 @@
 # Webapp AS Visualization
 
-!!! TODO
-
-    Decide on a name!? ;-)
-
 
 Webapp is a Go application that will serve up a static web portal to make it easy to visualize and experiment with SCIONLab test apps on a virtual machine.
 
 
 ## Packaged Setup/Run
-For running `webapp` in a packaged environment, like the default [SCIONLab](https://www.scionlab.org) environment, it now uses command-line options for `webapp` to find the tools it requires.
 
-To install from our packages, install `webapp` including its `scion-apps` dependencies:
+To install `webapp`, run:
 ```shell
 sudo apt install scion-apps-webapp
 ```
-Alternatively, the following will install all `scion-apps` repo binaries:
-```shell
-sudo apt install scion-apps-*
-```
+See [Installation](../install/pkg.md#applications) for details.
+
 
 Start the `webapp` service:
 ```shell

@@ -20,10 +20,6 @@ Please follow the instructions in the [GitHub README](https://github.com/netsec-
     on top of SCION.
 
 
-!!! TODO
-    Update README in our fork to clarify checkout procedure and adding git remote
-
-
 ## Configuration
 
 After having managed to build SCION and after [creating or modifying your AS](../config/create_as.md) in the SCIONLab coordination website, you can deploy the generated configuration to your machine.
