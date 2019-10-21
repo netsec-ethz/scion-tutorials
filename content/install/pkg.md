@@ -89,12 +89,9 @@ If using VPN, ensure that the OpenVPN-client is up **before** starting the SCION
 ```shell
 sudo systemctl start openvpn@client
 ```
-Check that the expected `tun0` tunnel-interface is created before continuing.
+Check that the expected `tun0` tunnel-interface is created before continuing. Please refer to corresponding [troubleshooting](../tips/troubleshooting.md#vpn) page.
 
-!!! TODO
-    This may become obsolete if openvpn@client is included as a dependency for the BRs.
-!!! TODO
-    Link to Troubleshooting#VPN
+[//]: # (TODO This may become obsolete if openvpn@client is included as a dependency for the BRs.)
 
 
 The SCION services are configured as `systemd`-units that are controlled by the target `scionlab.target`.

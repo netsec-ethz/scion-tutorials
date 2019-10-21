@@ -60,24 +60,26 @@ The ASes in SCION are fundamental in the two main phases of the architecture: th
 For the control plane, each AS hosts different infrastructure services (beacon server, path server, certificate server and possibly others) that actually perform the process.
 For the data plane, the inter-AS traffic is routed through the SCION border routers of the ASes along a path. SCION is agnostic about the intra-AS routing, typically ASes run IP internally.
 
-#### What does it mean to run AS?
+#### What does it mean to run an AS?
 Running an AS means running the various AS control plane services and running border routers that connect the AS to other ASes.
 
 For the sake of simplicity, a SCIONLab AS network typically consists of only a single host, which is running both all control plane services, border routers and end host applications at the same time.
 
 Practically speaking your AS will be running on your own hardware, under your full control, and it is as simple as bringing up a *Vagrant* VM.
 
-#### How does SCIONLab work?
-The SCIONLab website serves to simplify and coordinate the setup of experimental ASes.
+#### What is an attachment point (AP)?
+As already mentioned, the infrastructure of SCIONLab comprises a network of globally connected ASes, and number of these are configured to act as "Attachment Points", and you can choose some as the uplink for your AS. The link between your AS and the attachment point AS is established as an overlay link over the legacy Internet. You can choose whether to instantiate this connection publicly (through a static public IP) or through a VPN offered by the Attachment Point itself (allowing also devices behind a NAT to act as AS).
+Whenever a change is made to the configuration of a SCIONLab AS, the configuration of the attachment point AS is automatically updated.
+
+
+#### What is the relation of SCIONLab and SCION?
+The SCIONLab website serves to simplify and coordinate the setup of experimental SCION ASes.
+SCIONLab is not connected to the production SCION network and all the SCIONLab ASes have AS-IDs specifically set aside for experimentation.
+
 In order to simplify the management of ASes and lower the entry-barrier for participation, the design of SCIONLab deliberately has some restrictions that are not present in the production deployment of SCION:
 
 - SCIONLab centralizes management of the control plane public key infrastructure. In the real deployment of SCION, there is no such single point of failure.
 - Overlay links over the publicly routed Internet are used both in the infrastructure and between the infrastructure and user-owned ASes. Therefore, the security, availability, and performance properties of SCION are not fully realized.
-
-
-#### What is an attachment point (AP)?
-As already mentioned, the infrastructure of SCIONLab comprises a network of globally connected ASes, and number of these are configured to act as "Attachment Points", and you can choose some as the uplink for your AS. The link between your AS and the attachment point AS is established as an overlay link over the legacy Internet. You can choose whether to instantiate this connection publicly (through a static public IP) or through a VPN offered by the Attachment Point itself (allowing also devices behind a NAT to act as AS).
-Whenever a change is made to the configuration of a SCIONLab AS, the configuration of the attachment point AS is automatically updated.
 
 
 ## Contact
