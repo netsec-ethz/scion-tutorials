@@ -1,0 +1,756 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="A collection of tutorial pages for SCION">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Access camera images over SCION network - SCION Tutorials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.e8d24b3b.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#access-camera-images-over-scion-network" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="SCION Tutorials" class="md-header-nav__button md-logo">
+          
+            <img src="../../assets/images/favicon.ico" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                SCION Tutorials
+              </span>
+              <span class="md-header-nav__topic">
+                Access camera images over SCION network
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="SCION Tutorials" class="md-nav__button md-logo">
+      
+        <img src="../../assets/images/favicon.ico" width="48" height="48">
+      
+    </a>
+    SCION Tutorials
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Installation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Installation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/" title="Pick an Option" class="md-nav__link">
+      Pick an Option
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/vm/" title="Run a VM" class="md-nav__link">
+      Run a VM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/pkg/" title="Install with a Package Manager" class="md-nav__link">
+      Install with a Package Manager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/src/" title="Build from Sources" class="md-nav__link">
+      Build from Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/android/" title="Install on Android" class="md-nav__link">
+      Install on Android
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Configuration
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../config/create_as/" title="Configure your SCIONLab AS" class="md-nav__link">
+      Configure your SCIONLab AS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../config/check/" title="Check AS Configuration" class="md-nav__link">
+      Check AS Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../config/setup_endhost/" title="Set up an end host" class="md-nav__link">
+      Set up an end host
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Applications
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Applications
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fetch_sensor_readings/" title="Sensor reading over SCION" class="md-nav__link">
+      Sensor reading over SCION
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Access camera images over SCION network
+      </label>
+    
+    <a href="./" title="Access camera images over SCION network" class="md-nav__link md-nav__link--active">
+      Access camera images over SCION network
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#packaged-setup" title="Packaged Setup" class="md-nav__link">
+    Packaged Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imagefetcher" title="imagefetcher" class="md-nav__link">
+    imagefetcher
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imageserver" title="imageserver" class="md-nav__link">
+    imageserver
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bwtester/" title="Bandwidth Tester" class="md-nav__link">
+      Bandwidth Tester
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bat/" title="bat ("cURL for SCION")" class="md-nav__link">
+      bat ("cURL for SCION")
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Webapp
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        Webapp
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../as_visualization/webapp/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../as_visualization/webapp_apps/" title="Visualization for Apps" class="md-nav__link">
+      Visualization for Apps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../as_visualization/webapp_development/" title="Webapp Development Tips" class="md-nav__link">
+      Webapp Development Tips
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../remote_sig/" title="SCION IP Gateway (SIG)" class="md-nav__link">
+      SCION IP Gateway (SIG)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../rains/" title="RAINS, Another Internet Naming Service" class="md-nav__link">
+      RAINS, Another Internet Naming Service
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Tips and Tricks
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Tips and Tricks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/troubleshooting/" title="FAQ and Troubleshooting" class="md-nav__link">
+      FAQ and Troubleshooting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/wireshark/" title="Adding Wireshark and Tshark SCION protocol dissector" class="md-nav__link">
+      Adding Wireshark and Tshark SCION protocol dissector
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../join_infrastructure/" title="Join the SCIONLab Infrastructure" class="md-nav__link">
+      Join the SCIONLab Infrastructure
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#packaged-setup" title="Packaged Setup" class="md-nav__link">
+    Packaged Setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imagefetcher" title="imagefetcher" class="md-nav__link">
+    imagefetcher
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imageserver" title="imageserver" class="md-nav__link">
+    imageserver
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="access-camera-images-over-scion-network">Access camera images over SCION network<a class="headerlink" href="#access-camera-images-over-scion-network" title="Permanent link">&para;</a></h1>
+<p>The <a href="https://github.com/netsec-ethz/scion-apps/">camerapp application</a> contains image fetcher and
+server applications which use the SCION network. Documentation on the code is available in the
+<a href="https://github.com/netsec-ethz/scion-apps/blob/master/camerapp/README.md">README.md</a>.</p>
+<h2 id="packaged-setup">Packaged Setup<a class="headerlink" href="#packaged-setup" title="Permanent link">&para;</a></h2>
+<p>We provide a <code>camerapp</code> Debian package to easily install and run <code>camerapp</code> in the <a href="https://scionlab.org">SCIONLab</a> environment.
+To install the <code>camerapp</code> package, run:</p>
+<div class="codehilite"><pre><span></span>sudo apt install scion-apps-camerapp
+</pre></div>
+
+
+<p>See <a href="../../install/pkg/#applications">Installation</a> for details.</p>
+<h2 id="imagefetcher">imagefetcher<a class="headerlink" href="#imagefetcher" title="Permanent link">&para;</a></h2>
+<p>To use the image fetcher, you will need to specify the address of an image server. A sample image server that can be contacted by any client is set up at <code>17-ffaa:0:1102,[192.33.93.166]:42002</code>.</p>
+<p>Images can be fetched like this:</p>
+<div class="codehilite"><pre><span></span>scion-imagefetcher -c 17-ffaa:1:89,[127.0.0.1]:0 -s 17-ffaa:0:1102,[192.33.93.166]:42002
+</pre></div>
+
+
+<p>Here, <code>-s</code> specifies the image server whereas <code>-c</code> specifies your machine.
+The <code>-c</code> flag can be omitted if a SCION localhost address is configured. To do this, add your
+SCION host to the <code>/etc/hosts</code> file. Below you can see an example:</p>
+<div class="codehilite"><pre><span></span># regular IPv4 hosts
+# ....
+
+# regular IPv6 hosts
+# ....
+
+# SCION hosts
+17-ffaa:0:1,[192.168.1.1]                               localhost
+</pre></div>
+
+
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code>imagefetcher</code> is also available via the <a href="../../as_visualization/webapp_apps/">webapp</a>.</p>
+</div>
+<h2 id="imageserver">imageserver<a class="headerlink" href="#imageserver" title="Permanent link">&para;</a></h2>
+<p>The <code>imageserver</code> application keeps looking for <code>.jpg</code> files in the current directory, and offers them for download to clients on the SCION network. The assumption is that the application is used in conjunction with an application that periodically writes an image to the file system. After an amount of time (currently set to 10 minutes), the image files are deleted to limit the amount of storage used.</p>
+<p>The image server is launched as follows:</p>
+<div class="codehilite"><pre><span></span>scion-imageserver -s 17-ffaa:1:89,[127.0.0.1]:40002 &amp;
+</pre></div>
+
+
+<p>Here <code>-s</code> specifies your server address. Again, it can be omitted by specifying a SCION localhost like above. The server then
+uses localhost to bind to. In this case, the port can be specified with the <code>-p</code> flag.</p>
+<div class="codehilite"><pre><span></span>scion-imageserver -p 40002 &amp;
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy 2019, Network Security Group, ETH Zurich
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://www.scion-architecture.net/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/netsec-ethz/" class="md-footer-social__link fa fa-github-alt"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

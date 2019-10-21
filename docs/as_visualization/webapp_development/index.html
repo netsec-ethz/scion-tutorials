@@ -1,0 +1,974 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="A collection of tutorial pages for SCION">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Webapp Development Tips - SCION Tutorials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.e8d24b3b.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#webapp-development-tips" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="SCION Tutorials" class="md-header-nav__button md-logo">
+          
+            <img src="../../assets/images/favicon.ico" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                SCION Tutorials
+              </span>
+              <span class="md-header-nav__topic">
+                Webapp Development Tips
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="SCION Tutorials" class="md-nav__button md-logo">
+      
+        <img src="../../assets/images/favicon.ico" width="48" height="48">
+      
+    </a>
+    SCION Tutorials
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Installation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Installation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/" title="Pick an Option" class="md-nav__link">
+      Pick an Option
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/vm/" title="Run a VM" class="md-nav__link">
+      Run a VM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/pkg/" title="Install with a Package Manager" class="md-nav__link">
+      Install with a Package Manager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/src/" title="Build from Sources" class="md-nav__link">
+      Build from Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/android/" title="Install on Android" class="md-nav__link">
+      Install on Android
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Configuration
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../config/create_as/" title="Configure your SCIONLab AS" class="md-nav__link">
+      Configure your SCIONLab AS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../config/check/" title="Check AS Configuration" class="md-nav__link">
+      Check AS Configuration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../config/setup_endhost/" title="Set up an end host" class="md-nav__link">
+      Set up an end host
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Applications
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Applications
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/fetch_sensor_readings/" title="Sensor reading over SCION" class="md-nav__link">
+      Sensor reading over SCION
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/access_camera/" title="Access camera images over SCION network" class="md-nav__link">
+      Access camera images over SCION network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/bwtester/" title="Bandwidth Tester" class="md-nav__link">
+      Bandwidth Tester
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/bat/" title="bat ("cURL for SCION")" class="md-nav__link">
+      bat ("cURL for SCION")
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5" checked>
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Webapp
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        Webapp
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../webapp/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../webapp_apps/" title="Visualization for Apps" class="md-nav__link">
+      Visualization for Apps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Webapp Development Tips
+      </label>
+    
+    <a href="./" title="Webapp Development Tips" class="md-nav__link md-nav__link--active">
+      Webapp Development Tips
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#development-setuprun" title="Development Setup/Run" class="md-nav__link">
+    Development Setup/Run
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-topology" title="Local Topology" class="md-nav__link">
+    Local Topology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-watcher" title="Development Watcher" class="md-nav__link">
+    Development Watcher
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help" title="Help" class="md-nav__link">
+    Help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-visualizations" title="Local Visualizations" class="md-nav__link">
+    Local Visualizations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-scionlab-app-servers" title="Local SCIONLab App Servers" class="md-nav__link">
+    Local SCIONLab App Servers
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bwtestserver" title="bwtestserver" class="md-nav__link">
+    bwtestserver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorserver" title="sensorserver" class="md-nav__link">
+    sensorserver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imageserver" title="imageserver" class="md-nav__link">
+    imageserver
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-links" title="Related Links" class="md-nav__link">
+    Related Links
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/remote_sig/" title="SCION IP Gateway (SIG)" class="md-nav__link">
+      SCION IP Gateway (SIG)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/rains/" title="RAINS, Another Internet Naming Service" class="md-nav__link">
+      RAINS, Another Internet Naming Service
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Tips and Tricks
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Tips and Tricks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/troubleshooting/" title="FAQ and Troubleshooting" class="md-nav__link">
+      FAQ and Troubleshooting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/wireshark/" title="Adding Wireshark and Tshark SCION protocol dissector" class="md-nav__link">
+      Adding Wireshark and Tshark SCION protocol dissector
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../join_infrastructure/" title="Join the SCIONLab Infrastructure" class="md-nav__link">
+      Join the SCIONLab Infrastructure
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#development-setuprun" title="Development Setup/Run" class="md-nav__link">
+    Development Setup/Run
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-topology" title="Local Topology" class="md-nav__link">
+    Local Topology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-watcher" title="Development Watcher" class="md-nav__link">
+    Development Watcher
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#help" title="Help" class="md-nav__link">
+    Help
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-visualizations" title="Local Visualizations" class="md-nav__link">
+    Local Visualizations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-scionlab-app-servers" title="Local SCIONLab App Servers" class="md-nav__link">
+    Local SCIONLab App Servers
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bwtestserver" title="bwtestserver" class="md-nav__link">
+    bwtestserver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sensorserver" title="sensorserver" class="md-nav__link">
+    sensorserver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#imageserver" title="imageserver" class="md-nav__link">
+    imageserver
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-links" title="Related Links" class="md-nav__link">
+    Related Links
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="webapp-development-tips">Webapp Development Tips<a class="headerlink" href="#webapp-development-tips" title="Permanent link">&para;</a></h1>
+<p>The <code>webapp</code> tool can be used to test several aspects of any local topology.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Most of the steps on this page are for localhost development only. If you are running a packaged install of SCIONLab, please see the <a href="../webapp/">webapp package tutorial</a>.</p>
+</div>
+<h2 id="development-setuprun">Development Setup/Run<a class="headerlink" href="#development-setuprun" title="Permanent link">&para;</a></h2>
+<p>For running <code>webapp</code> in a development environment for the SCION Infrastructure, follow the SCIONLab development install and run process at <a href="https://github.com/netsec-ethz/netsec-scion">https://github.com/netsec-ethz/netsec-scion</a>.</p>
+<h2 id="local-topology">Local Topology<a class="headerlink" href="#local-topology" title="Permanent link">&para;</a></h2>
+<p>Any local topology can be used with <code>webapp</code>, for example, the wide test topology:</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/scionproto/scion
+./scion.sh topology -c topology/Wide.topo
+</pre></div>
+
+
+<p>Then, follow these steps to install SCIONLab Apps to run <code>webapp</code> in development.</p>
+<p>Development Install:</p>
+<div class="codehilite"><pre><span></span>mkdir ~/go/src/github.com/netsec-ethz
+<span class="nb">cd</span> ~/go/src/github.com/netsec-ethz
+git clone https://github.com/netsec-ethz/scion-apps.git
+</pre></div>
+
+
+<p>Development Build:
+Install all <a href="https://github.com/netsec-ethz/scion-apps">SCIONLab apps</a> and dependencies, including <code>webapp</code>:</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> scion-apps
+./deps.sh
+make install
+</pre></div>
+
+
+<p>Development Run on Test SCION Topology:
+You can alter the defaults on the command line, all of which are listed below:</p>
+<div class="codehilite"><pre><span></span>webapp <span class="se">\</span>
+-a <span class="m">127</span>.0.0.1 <span class="se">\</span>
+-p <span class="m">8081</span> <span class="se">\</span>
+-r . <span class="se">\</span>
+-srvroot <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz/scion-apps/webapp/web <span class="se">\</span>
+-sabin <span class="nv">$GOPATH</span>/bin <span class="se">\</span>
+-sroot <span class="nv">$GOPATH</span>/src/github.com/scionproto/scion <span class="se">\</span>
+-sbin <span class="nv">$GOPATH</span>/src/github.com/scionproto/scion/bin <span class="se">\</span>
+-sgen <span class="nv">$GOPATH</span>/src/github.com/scionproto/scion/gen <span class="se">\</span>
+-sgenc <span class="nv">$GOPATH</span>/src/github.com/scionproto/scion/gen-cache <span class="se">\</span>
+-slogs <span class="nv">$GOPATH</span>/src/github.com/scionproto/scion/logs
+</pre></div>
+
+
+<p>or can you run <code>webapp</code> like this, which will use the defaults above:</p>
+<div class="codehilite"><pre><span></span>webapp
+</pre></div>
+
+
+<p>Development Run on SCIONLab Topology:</p>
+<div class="codehilite"><pre><span></span>webapp <span class="se">\</span>
+-a <span class="m">0</span>.0.0.0 <span class="se">\</span>
+-p <span class="m">8080</span> <span class="se">\</span>
+-r ~/go/src/github.com/netsec-ethz/scion-apps/webapp/web/data <span class="se">\</span>
+-srvroot ~/go/src/github.com/netsec-ethz/scion-apps/webapp/web <span class="se">\</span>
+-sabin <span class="nv">$GOPATH</span>/bin <span class="se">\</span>
+-sroot /etc/scion <span class="se">\</span>
+-sbin /usr/bin <span class="se">\</span>
+-sgen /etc/scion/gen <span class="se">\</span>
+-sgenc /var/lib/scion <span class="se">\</span>
+-slogs /var/log/scion
+</pre></div>
+
+
+<h2 id="development-watcher">Development Watcher<a class="headerlink" href="#development-watcher" title="Permanent link">&para;</a></h2>
+<p>For developing the <code>webapp</code> application itself, since it is annoying to make several changes, only to have to start and stop the web server each time, a watcher library like <code>go-watcher</code> is recommended.</p>
+<div class="codehilite"><pre><span></span>go get github.com/canthefason/go-watcher
+go install github.com/canthefason/go-watcher/cmd/watcher
+</pre></div>
+
+
+<p>After installation you can <code>cd</code> to the <code>webapp.go</code> directory and webapp will be rebuilt and rerun every time you save your source file changes, with or without command arguments.</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz/scion-apps/webapp
+watcher -a <span class="m">0</span>.0.0.0 -p <span class="m">8080</span> -r ..
+</pre></div>
+
+
+<p>or</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="nv">$GOPATH</span>/src/github.com/netsec-ethz/scion-apps/webapp
+watcher
+</pre></div>
+
+
+<h2 id="help">Help<a class="headerlink" href="#help" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span>Usage of webapp:
+  -a string
+        Address of server host. (default &quot;127.0.0.1&quot;)
+  -p int
+        Port of server host. (default 8000)
+  -r string
+        Root path to read/browse from, CAUTION: read-access granted from -a and -p. (default &quot;.&quot;)
+  -sabin string
+        Path to execute the installed scionlab apps binaries (default &quot;/home/ubuntu/go/bin&quot;)
+  -sbin string
+        Path to execute SCION bin directory of infrastructure tools (default &quot;/home/ubuntu/go/src/github.com/scionproto/scion/bin&quot;)
+  -sgen string
+        Path to read SCION gen directory of infrastructure config (default &quot;/home/ubuntu/go/src/github.com/scionproto/scion/gen&quot;)
+  -sgenc string
+        Path to read SCION gen-cache directory of infrastructure run-time config (default &quot;/home/ubuntu/go/src/github.com/scionproto/scion/gen-cache&quot;)
+  -slogs string
+        Path to read SCION logs directory of infrastructure logging (default &quot;/home/ubuntu/go/src/github.com/scionproto/scion/logs&quot;)
+  -sroot string
+        Path to read SCION root directory of infrastructure (default &quot;/home/ubuntu/go/src/github.com/scionproto/scion&quot;)
+  -srvroot string
+        Path to read/write web server files. (default &quot;/home/ubuntu/go/src/github.com/netsec-ethz/scion-apps/webapp/web&quot;)
+</pre></div>
+
+
+<h2 id="local-visualizations">Local Visualizations<a class="headerlink" href="#local-visualizations" title="Permanent link">&para;</a></h2>
+<p>You can point the browser to your test locally and view paths, run SCIONLab client apps, examine certificates and more.
+<img alt="SCION Localhost Paths" src="../../images/scion_viz.png?raw=true" title="SCION Localhost Paths" /></p>
+<h2 id="local-scionlab-app-servers">Local SCIONLab App Servers<a class="headerlink" href="#local-scionlab-app-servers" title="Permanent link">&para;</a></h2>
+<p>This Go web server wraps several SCION test client apps and provides an interface for any text and/or image output received. <a href="http://github.com/netsec-ethz/scion-apps">SCIONLab Apps</a> are on Github.</p>
+<p>Some functional server tests are included to test the networks without needing specific sensor or camera hardware, <code>bwtestserver</code> <code>sensorserver</code> and <code>imageserver</code>.</p>
+<p>The server address <code>1-ffaa:0:112,[127.0.0.2]</code> is used below, but any address appropriate to your test will do. More instructions to setup the servers are <a href="https://github.com/perrig/SCIONLab/blob/master/README.md">here</a>. The web interface launched above can be used to run the client-side apps.</p>
+<h3 id="bwtestserver">bwtestserver<a class="headerlink" href="#bwtestserver" title="Permanent link">&para;</a></h3>
+<p>This test will setup a local server to receive requests from the bandwidth tester.</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/bwtester/bwtestserver
+go install bwtestserver.go
+bwtestserver -s <span class="m">1</span>-ffaa:0:112,<span class="o">[</span><span class="m">127</span>.0.0.2<span class="o">]</span>:30100 -sciondFromIA <span class="p">&amp;</span>
+</pre></div>
+
+
+<p>Now, from your webapp browser interface running on your virtual client SCION node, you can enter both client and server addresses and ask the client for bandwidth measurements.</p>
+<h3 id="sensorserver">sensorserver<a class="headerlink" href="#sensorserver" title="Permanent link">&para;</a></h3>
+<p>This hardware-independent test will echo some remote machine stats from the Python script <code>timereader.py</code>, which is piped to the server for transmission to clients. On your remote SCION server node run (substituting your own address parameters):</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/sensorapp/sensorserver
+go install sensorserver.go
+python3 <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/sensorapp/sensorserver/timereader.py <span class="p">|</span> sensorserver -s <span class="m">1</span>-ffaa:0:112,<span class="o">[</span><span class="m">127</span>.0.0.2<span class="o">]</span>:42003 -sciondFromIA <span class="p">&amp;</span>
+</pre></div>
+
+
+<p>Now, from your webapp browser interface running on your virtual client SCION node, you can enter both client and server addresses and ask the client for remote sensor readings.</p>
+<h3 id="imageserver">imageserver<a class="headerlink" href="#imageserver" title="Permanent link">&para;</a></h3>
+<p>This hardware-independent test will generate an image with some remote machine stats from the Go app <code>local-image.go</code>, which will be saved locally for transmission to clients.</p>
+<div class="codehilite"><pre><span></span><span class="nb">cd</span> <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/camerapp/imageserver
+go install imageserver.go
+go run <span class="si">${</span><span class="nv">GOPATH</span><span class="si">}</span>/src/github.com/netsec-ethz/scion-apps/webapp/tests/imgtest/imgserver/local-image.go <span class="p">&amp;</span>
+imageserver -s <span class="m">1</span>-ffaa:0:112,<span class="o">[</span><span class="m">127</span>.0.0.2<span class="o">]</span>:42002 -sciondFromIA <span class="p">&amp;</span>
+</pre></div>
+
+
+<p>Now, from your webapp browser interface running on your virtual client SCION node, you can enter both client and server addresses and ask the client for the most recently generated remote image.</p>
+<h2 id="related-links">Related Links<a class="headerlink" href="#related-links" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../webapp/">Webapp AS Visualization</a></li>
+<li><a href="../webapp_apps/">Webapp SCIONLab Apps Visualization</a></li>
+<li><a href="../../apps/fetch_sensor_readings/">Fetching sensor readings or time stamps</a></li>
+<li><a href="../../apps/access_camera/">Fetching a camera image over the SCION network</a></li>
+<li><a href="../../apps/bwtester/">Running the bandwidthtester application</a></li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy 2019, Network Security Group, ETH Zurich
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://www.scion-architecture.net/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/netsec-ethz/" class="md-footer-social__link fa fa-github-alt"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>

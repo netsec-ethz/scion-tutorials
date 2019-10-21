@@ -1,0 +1,879 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="A collection of tutorial pages for SCION">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Check AS Configuration - SCION Tutorials</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.e8d24b3b.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#check-as-configuration" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="SCION Tutorials" class="md-header-nav__button md-logo">
+          
+            <img src="../../assets/images/favicon.ico" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                SCION Tutorials
+              </span>
+              <span class="md-header-nav__topic">
+                Check AS Configuration
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="SCION Tutorials" class="md-nav__button md-logo">
+      
+        <img src="../../assets/images/favicon.ico" width="48" height="48">
+      
+    </a>
+    SCION Tutorials
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Installation
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Installation
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/" title="Pick an Option" class="md-nav__link">
+      Pick an Option
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/vm/" title="Run a VM" class="md-nav__link">
+      Run a VM
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/pkg/" title="Install with a Package Manager" class="md-nav__link">
+      Install with a Package Manager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/src/" title="Build from Sources" class="md-nav__link">
+      Build from Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../install/android/" title="Install on Android" class="md-nav__link">
+      Install on Android
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Configuration
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Configuration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../create_as/" title="Configure your SCIONLab AS" class="md-nav__link">
+      Configure your SCIONLab AS
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Check AS Configuration
+      </label>
+    
+    <a href="./" title="Check AS Configuration" class="md-nav__link md-nav__link--active">
+      Check AS Configuration
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-webapp" title="Running Webapp" class="md-nav__link">
+    Running Webapp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminal-based" title="Terminal based" class="md-nav__link">
+    Terminal based
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-vpn-tunnel" title="Check VPN tunnel" class="md-nav__link">
+    Check VPN tunnel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-scion-service-status" title="Check SCION service status" class="md-nav__link">
+    Check SCION service status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspect-log-files" title="Inspect log files" class="md-nav__link">
+    Inspect log files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping" title="Ping" class="md-nav__link">
+    Ping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../setup_endhost/" title="Set up an end host" class="md-nav__link">
+      Set up an end host
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Applications
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Applications
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/fetch_sensor_readings/" title="Sensor reading over SCION" class="md-nav__link">
+      Sensor reading over SCION
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/access_camera/" title="Access camera images over SCION network" class="md-nav__link">
+      Access camera images over SCION network
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/bwtester/" title="Bandwidth Tester" class="md-nav__link">
+      Bandwidth Tester
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/bat/" title="bat ("cURL for SCION")" class="md-nav__link">
+      bat ("cURL for SCION")
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Webapp
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        Webapp
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../as_visualization/webapp/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../as_visualization/webapp_apps/" title="Visualization for Apps" class="md-nav__link">
+      Visualization for Apps
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../as_visualization/webapp_development/" title="Webapp Development Tips" class="md-nav__link">
+      Webapp Development Tips
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/remote_sig/" title="SCION IP Gateway (SIG)" class="md-nav__link">
+      SCION IP Gateway (SIG)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../apps/rains/" title="RAINS, Another Internet Naming Service" class="md-nav__link">
+      RAINS, Another Internet Naming Service
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Tips and Tricks
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Tips and Tricks
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/troubleshooting/" title="FAQ and Troubleshooting" class="md-nav__link">
+      FAQ and Troubleshooting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tips/wireshark/" title="Adding Wireshark and Tshark SCION protocol dissector" class="md-nav__link">
+      Adding Wireshark and Tshark SCION protocol dissector
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../join_infrastructure/" title="Join the SCIONLab Infrastructure" class="md-nav__link">
+      Join the SCIONLab Infrastructure
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-webapp" title="Running Webapp" class="md-nav__link">
+    Running Webapp
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terminal-based" title="Terminal based" class="md-nav__link">
+    Terminal based
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-vpn-tunnel" title="Check VPN tunnel" class="md-nav__link">
+    Check VPN tunnel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-scion-service-status" title="Check SCION service status" class="md-nav__link">
+    Check SCION service status
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inspect-log-files" title="Inspect log files" class="md-nav__link">
+    Inspect log files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ping" title="Ping" class="md-nav__link">
+    Ping
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="check-as-configuration">Check AS Configuration<a class="headerlink" href="#check-as-configuration" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>After having <a href="../create_as/">configured your AS on the SCIONLab website</a>, <a href="../../install/">installed SCION</a> and, depending on the chosen installation type, installed the configuration on your host you should now have a running SCIONLab AS.</p>
+<p>Follow the steps below to check that it is working as expected.</p>
+<h2 id="running-webapp">Running Webapp<a class="headerlink" href="#running-webapp" title="Permanent link">&para;</a></h2>
+<p>If you're running a VM, the simplest and recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool <a href="../../as_visualization/webapp/">SCIONLab Apps Web Visualization</a>.
+This browser-based tool serves as a dashboard to your SCIONLab VM and includes various checks.</p>
+<h2 id="terminal-based">Terminal based<a class="headerlink" href="#terminal-based" title="Permanent link">&para;</a></h2>
+<p>For the following steps, log into the machine hosting the SCION services (with <code>vagrant ssh</code> if it is a virtual machine).
+If any of the checks fail, head over to the <a href="../../tips/troubleshooting/">Troubleshooting Guide</a></p>
+<h4 id="check-vpn-tunnel">Check VPN tunnel<a class="headerlink" href="#check-vpn-tunnel" title="Permanent link">&para;</a></h4>
+<p>This only applies if you've configured your as to use an OpenVPN connection to the Attachment Point.</p>
+<p>Check that the tunnel interface exists:</p>
+<div class="codehilite"><pre><span></span>sudo ip address show dev tun0
+</pre></div>
+
+
+<p>Check that <code>/etc/openvpn/client.conf</code> exists.</p>
+<p>Check that the OpenVPN client is up:</p>
+<div class="codehilite"><pre><span></span>sudo systemctl status openvpn@client
+</pre></div>
+
+
+<p>Check that the IP address in the <code>topology.json</code> file matches the IP assigned in the VPN:
+Open any of the <code>topology.json</code> files and search the <code>Interfaces</code> entry:</p>
+<div class="codehilite"><pre><span></span>$ grep Interfaces -A15 /etc/scion/gen/ISD*/AS*/endhost/topology.json
+    <span class="s2">&quot;Interfaces&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;1&quot;</span>: <span class="o">{</span>
+        <span class="s2">&quot;Bandwidth&quot;</span>: <span class="m">1000</span>,
+        <span class="s2">&quot;ISD_AS&quot;</span>: <span class="s2">&quot;17-ffaa:0:1107&quot;</span>,
+        <span class="s2">&quot;LinkTo&quot;</span>: <span class="s2">&quot;PARENT&quot;</span>,
+        <span class="s2">&quot;MTU&quot;</span>: <span class="m">1472</span>,
+        <span class="s2">&quot;Overlay&quot;</span>: <span class="s2">&quot;UDP/IPv4&quot;</span>,
+        <span class="s2">&quot;PublicOverlay&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;Addr&quot;</span>: <span class="s2">&quot;10.0.8.133&quot;</span>,
+          <span class="s2">&quot;OverlayPort&quot;</span>: <span class="m">50000</span>
+        <span class="o">}</span>,
+        <span class="s2">&quot;RemoteOverlay&quot;</span>: <span class="o">{</span>
+          <span class="s2">&quot;Addr&quot;</span>: <span class="s2">&quot;10.0.8.1&quot;</span>,
+          <span class="s2">&quot;OverlayPort&quot;</span>: <span class="m">50168</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+</pre></div>
+
+
+<p>In this entry, the <code>PublicOverlay</code> address should correspond to the local address on your tunnel interface.</p>
+<p>Finally, check that you can ping the address listed in <code>RemoteOverlay</code>.</p>
+<h4 id="check-scion-service-status">Check SCION service status<a class="headerlink" href="#check-scion-service-status" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span>sudo sytemctl list-dependencies scionlab.target
+</pre></div>
+
+
+<p>This should show all entries as green. If there are any failed services in this list, start <a href="../../tips/troubleshooting/">troubleshooting</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ignore duplicate entries, this is a known issue in some systemd versions.</p>
+</div>
+<p>If you're running a build from sources, you will need to use the developer scripts instead of <code>systemctl</code>.
+Run <code>scion.sh status</code> or <code>supervisor/supervisor.sh status</code>.</p>
+<h4 id="inspect-log-files">Inspect log files<a class="headerlink" href="#inspect-log-files" title="Permanent link">&para;</a></h4>
+<p>Log files for the SCION services are located in <code>/var/log/scion</code>.</p>
+<p>Inspect the beacon server's log file using e.g. <code>less -f /var/log/scion/bs*.log</code>, to check that</p>
+<ul>
+<li>
+<p>Interfaces are considered <code>active</code>:</p>
+<p>Check that the log mentions <code>Activated interface ...</code>, not followed by a later <code>interface went down</code>.</p>
+</li>
+<li>
+<p>Beacons are received successfully:</p>
+<p>Check that you find entries <code>Registered beacons ...</code>.</p>
+</li>
+</ul>
+<h4 id="ping">Ping<a class="headerlink" href="#ping" title="Permanent link">&para;</a></h4>
+<p>Ping somebody! Run <code>scmp echo</code> to send an "SCMP echo request"; this is just like the <code>ping</code> command for IP.</p>
+<p>The syntax is:</p>
+<div class="codehilite"><pre><span></span>scmp echo -local [my scion address] -remote [someone else&#39;s scion address]
+</pre></div>
+
+
+<p>where a SCION address has the form <code>ISD-AS,[IP]</code>. For example, to ping any host in the attachment point AS in Korea from my SCIONLab AS, I would run:</p>
+<div class="codehilite"><pre><span></span>$ scmp <span class="nb">echo</span> -local <span class="m">17</span>-ffaa:1:15b,<span class="o">[</span><span class="m">127</span>.0.0.1<span class="o">]</span> -remote <span class="m">20</span>-ffaa:0:1404,<span class="o">[</span><span class="m">0</span>.0.0.0<span class="o">]</span>
+Using path:
+  Hops: <span class="o">[</span><span class="m">17</span>-ffaa:1:15b <span class="m">1</span><span class="p">&amp;</span>gt<span class="p">;</span><span class="m">169</span> <span class="m">17</span>-ffaa:0:1107 <span class="m">1</span><span class="p">&amp;</span>gt<span class="p">;</span><span class="m">4</span> <span class="m">17</span>-ffaa:0:1102 <span class="m">2</span><span class="p">&amp;</span>gt<span class="p">;</span><span class="m">2</span> <span class="m">17</span>-ffaa:0:1103 <span class="m">4</span><span class="p">&amp;</span>gt<span class="p">;</span><span class="m">8</span> <span class="m">17</span>-ffaa:0:1101 <span class="m">11</span><span class="p">&amp;</span>gt<span class="p">;</span><span class="m">3</span> <span class="m">19</span>-ffaa:0:1302 <span class="m">1</span><span class="p">&amp;</span>gt<span class="p">;</span><span class="m">7</span> <span class="m">19</span>-ffaa:0:1301 <span class="m">3</span><span class="p">&amp;</span>gt<span class="p">;</span><span class="m">5</span> <span class="m">18</span>-ffaa:0:1201 <span class="m">3</span><span class="p">&amp;</span>gt<span class="p">;</span><span class="m">5</span> <span class="m">20</span>-ffaa:0:1401 <span class="m">7</span><span class="p">&amp;</span>gt<span class="p">;</span><span class="m">1</span> <span class="m">20</span>-ffaa:0:1403 <span class="m">3</span><span class="p">&amp;</span>gt<span class="p">;</span><span class="m">47</span> <span class="m">20</span>-ffaa:0:1404<span class="o">]</span> Mtu: <span class="m">1472</span>
+<span class="m">200</span> bytes from <span class="m">20</span>-ffaa:0:1404,<span class="o">[</span><span class="m">0</span>.0.0.0<span class="o">]</span> <span class="nv">scmp_seq</span><span class="o">=</span><span class="m">0</span> <span class="nv">time</span><span class="o">=</span><span class="m">383</span>.578ms
+<span class="m">200</span> bytes from <span class="m">20</span>-ffaa:0:1404,<span class="o">[</span><span class="m">0</span>.0.0.0<span class="o">]</span> <span class="nv">scmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">time</span><span class="o">=</span><span class="m">381</span>.763ms
+</pre></div>
+
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Having to enter your own SCION address is a common theme with SCION tools. We hope we'll get
+rid of this somewhat arcane feature eventually.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check the topology map on the <a href="https://www.scionlab.org">SCIONLab homepage</a> for an overview over the existing ASes and their addresses.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you're running the application on a local topology, make sure to specify the correct socket using the <code>-sciond</code> flag, e.g. by adding <code>-sciond /run/shm/sciond/sd1-ff00_0_110.sock</code>.</p>
+</div>
+<p>Passing this test is a condition sufficient to say that your AS works as expected.
+If it fails, please refer to <a href="../../tips/troubleshooting/">the troubleshooting section</a>.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy 2019, Network Security Group, ETH Zurich
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://www.scion-architecture.net/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/netsec-ethz/" class="md-footer-social__link fa fa-github-alt"></a>
+    
+  </div>
+
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.67a6a1d1.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
