@@ -22,7 +22,7 @@ Sample servers are installed at the following locations:
 And at the attachment points:
 
 * `17-ffaa:0:1107,[10.0.8.1]:30100`
-* `18-ffaa:0:1202,[10.0.8.1]:30100`
+* `18-ffaa:0:1206,[10.0.8.1]:30100`
 * `19-ffaa:0:1303,[10.0.8.1]:30100`
 * `20-ffaa:0:1404,[10.0.8.1]:30100`
 
