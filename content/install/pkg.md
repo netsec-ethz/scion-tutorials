@@ -104,7 +104,7 @@ Check the status of the SCION services using
 sudo systemctl list-dependencies scionlab.target
 ```
 
-To stop the servies, run
+To stop the services, run
 ```shell
 sudo systemctl stop scionlab.target
 ```
