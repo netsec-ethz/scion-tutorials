@@ -62,7 +62,7 @@ Finally, check that you can ping the address listed in `RemoteOverlay`.
 
 #### Check SCION service status
 
-    sudo sytemctl list-dependencies scionlab.target
+    sudo systemctl list-dependencies scionlab.target
 
 
 This should show all entries as green. If there are any failed services in this list, start [troubleshooting](../tips/troubleshooting.md#)
