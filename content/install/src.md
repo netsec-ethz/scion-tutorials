@@ -10,7 +10,7 @@ Please follow the instructions in the [GitHub README](https://github.com/netsec-
 
 !!! Note
     SCIONLab runs a version of SCION built from the branch `scionlab` in netsec-ethz/netsec-scion.
-    This branch (intenionally) lags behind the scionproto/scion master. As there are still (rarely) breaking changes in the SCION protocol, running `master` may or may not be compatible with `scionlab`.
+    This branch (intentionally) lags behind the scionproto/scion master. As there are still (rarely) breaking changes in the SCION protocol, running `master` may or may not be compatible with `scionlab`.
 
 
 !!! Tip
