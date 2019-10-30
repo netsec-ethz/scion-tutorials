@@ -788,7 +788,7 @@ sed -i &quot;s/127\.0\.0\.1/$NODE_IP/&quot; /etc/scion/gen/ISD*/AS*/*/topology.j
 This command also changes the address for the <code>BeaconServer</code> and the <code>CtrlAddr</code> of the <code>BorderRouter</code> as a bonus, for the sake of simplicity.</p>
 </div>
 <p>Restart your AS services by running</p>
-<div class="codehilite"><pre><span></span>sudo systemctl restart scion-daemon.service scion-dispatcher.service`
+<div class="codehilite"><pre><span></span>sudo systemctl restart scion-daemon.service scion-dispatcher.service
 </pre></div>
 
 
@@ -800,7 +800,7 @@ rm -r /tmp/gen/ISD*/AS*/<span class="o">{</span>br,bs,ps,cs<span class="o">}</sp
 </pre></div>
 
 
-<p>Configuration of the <code>scion-daemon</code> also needs to be changed in order to use IP address of the end host</p>
+<p>The Configuration of the <code>scion-daemon</code> also needs to be changed in order to use the IP address of the end host</p>
 <div class="codehilite"><pre><span></span>export ENDHOST_IP=example
 sed -i &quot;s/127\.0\.0\.1/$ENDHOST_IP/&quot; /tmp/gen/ISD*/AS*/endhost/sd.toml
 </pre></div>

@@ -61,7 +61,7 @@ sed -i "s/127\.0\.0\.1/$NODE_IP/" /etc/scion/gen/ISD*/AS*/*/topology.json
 Restart your AS services by running
 
 ```
-sudo systemctl restart scion-daemon.service scion-dispatcher.service`
+sudo systemctl restart scion-daemon.service scion-dispatcher.service
 ```
 
 
@@ -76,7 +76,7 @@ cp /etc/scion/gen /tmp/
 rm -r /tmp/gen/ISD*/AS*/{br,bs,ps,cs}*/
 ```
 
-Configuration of the `scion-daemon` also needs to be changed in order to use IP address of the end host
+The Configuration of the `scion-daemon` also needs to be changed in order to use the IP address of the end host
 
 ```
 export ENDHOST_IP=example
