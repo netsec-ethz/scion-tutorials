@@ -1,4 +1,4 @@
-# Configure your SCIONLab AS
+# Creating SCIONLab AS
 
 ## SCIONLab Portal Overview
 

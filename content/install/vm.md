@@ -1,4 +1,4 @@
-# Run a VM
+# Running inside a VM
 
 ## Install Vagrant and Virtualbox
 If you choose to run a SCIONLab virtual machine, you'll only need to install
