@@ -724,10 +724,9 @@
                 
                 <h1 id="running-inside-a-vm">Running inside a VM<a class="headerlink" href="#running-inside-a-vm" title="Permanent link">&para;</a></h1>
 <h2 id="install-vagrant-and-virtualbox">Install Vagrant and Virtualbox<a class="headerlink" href="#install-vagrant-and-virtualbox" title="Permanent link">&para;</a></h2>
-<p>If you choose to run a SCIONLab virtual machine, you'll only need to install
-<a href="https://www.vagrantup.com/">Vagrant</a> and <a href="https://www.virtualbox.org/">VirtualBox</a>.
-These are available for most platforms, including Linux, Windows and macOS.</p>
-<p>On recent Ubuntu or Debian systems, it may be enough to run</p>
+<p>If you choose to run a SCIONLab virtual machine, you need to install <a href="https://www.vagrantup.com/">Vagrant</a> and
+<a href="https://www.virtualbox.org/">VirtualBox</a>. These are available for most platforms, including Linux, Windows and macOS.</p>
+<p>On recent Debian-based systems you can install both using the following command</p>
 <div class="codehilite"><pre><span></span>sudo apt-get install vagrant virtualbox
 </pre></div>
 
@@ -739,18 +738,18 @@ These are available for most platforms, including Linux, Windows and macOS.</p>
 </ul>
 <h2 id="using-vagrant-to-run-the-vm">Using Vagrant to run the VM<a class="headerlink" href="#using-vagrant-to-run-the-vm" title="Permanent link">&para;</a></h2>
 <p>After <a href="../../config/create_as/">creating your AS</a> in the SCIONLab coordination
-website, you will be able to download a tarfile that includes a <code>Vagrantfile</code>
-which includes all that is needed to build your SCIONLab VM.</p>
-<p>Navigate your shell to the directory containing the Vagrantfile.
-Note that all vagrant commands always need to be run in this directory!
-To start your VM, run</p>
+website, you will be able to download a tarfile with <code>Vagrantfile</code> allowing you to easily build your SCIONLab VM.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All the commands below need to be executed from the directory containing the Vagrantfile.</p>
+</div>
+<p>To start your VM, run</p>
 <div class="codehilite"><pre><span></span>vagrant up
 </pre></div>
 
 
-<p>When running your VM for the first time, this will download the Ubuntu base box
-and then install all the SCION packages and their dependencies.</p>
-<p>This will already start the services for your SCIONLab AS.</p>
+<p>When running your VM for the first time, base Ubuntu OS will be installed together with SCIONLab packages and their
+dependencies. After the installation SCIONLab services should be already up and running.</p>
 <p>Once the <code>vagrant up</code> command returns the prompt, you can connect to your VM to
 start exploring:</p>
 <div class="codehilite"><pre><span></span>vagrant ssh
@@ -761,19 +760,19 @@ start exploring:</p>
 will appear in the <code>/vagrant/</code> directory.
 This is a convenient way to share files between your host machine and your
 VM, and allows to move data both ways.</p>
-<p>To shutdown the VM, run</p>
-<div class="codehilite"><pre><span></span>vagrant halt
-</pre></div>
-
-
-<p>To start it back up, just type <code>vagrant up</code> again. Finally, if you want to wipe
-your VM, e.g. to start fresh, run <code>vagrant destroy</code>.</p>
-<p>More information for <code>vagrant</code> commands can be found at:
-<a href="https://www.vagrantup.com/docs/cli">https://www.vagrantup.com/docs/cli</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can use following Vagrant commands to perform various operations with your VM</p>
+<ul>
+<li><code>vagrant halt</code> - stops the VM</li>
+<li><code>vagrant destroy</code> - restores VM to its initial state</li>
+</ul>
+<p>More information about <code>vagrant</code> commands can be found at <a href="https://www.vagrantup.com/docs/cli">https://www.vagrantup.com/docs/cli</a></p>
+</div>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>As indicated above, the initial version of the configuration will automatically be provisioned.
 To update the configuration in an existing VM, the workflow is the same as when running
-an <a href="../pkg/#configure">installation from packages</a>; connect to your running VM
+an <a href="../pkg/">installation from packages</a> -- connect to your running VM
 (<code>vagrant ssh</code>) and execute</p>
 <div class="codehilite"><pre><span></span>sudo scionlab-config
 </pre></div>
@@ -781,8 +780,8 @@ an <a href="../pkg/#configure">installation from packages</a>; connect to your r
 
 <h2 id="running-scion">Running SCION<a class="headerlink" href="#running-scion" title="Permanent link">&para;</a></h2>
 <p>The SCION services are automatically started when the VM boots up.</p>
-<p>To interact with the SCION services, you can use the same tools as when running an <a href="../pkg/#running-scion">installation from packages</a>;
-connect to your running VM (<code>vagrant ssh</code>) and use the <code>systemd</code> commands to start/stop the services</p>
+<p>To interact with the SCION services, you can use the same tools as when running an <a href="../pkg/#running-scion">installation from packages</a> --
+connect to your running VM (<code>vagrant ssh</code>) and use systemd to start and stop the services</p>
 <div class="codehilite"><pre><span></span>sudo systemctl start scionlab.target              # Start all SCION services
 sudo systemctl list-dependencies scionlab.target  # Check the status
 sudo systemctl stop scionlab.target               # Stop
