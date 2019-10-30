@@ -69,7 +69,7 @@ rm -r /tmp/gen/ISD*/AS*/{br,bs,ps,cs}*/  # strip config for AS services
 ```
 
 Then we need to fix another configuration file:
-the localhost addresses in `/etc/scion/gen/ISD*/AS*/end host/sd.toml` must be changed to to the end host's IP address.
+the localhost addresses in `/etc/scion/gen/ISD*/AS*/end host/sd.toml` must be changed to the end host's IP address.
 ```
 ENDHOST_IP=#..host IP..# sed -i "s/127\.0\.0\.1/$ENDHOST_IP/" /etc/scion/gen/ISD*/AS*/end host/sd.toml
 ```

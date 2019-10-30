@@ -732,7 +732,7 @@ rm -r /tmp/gen/ISD*/AS*/<span class="o">{</span>br,bs,ps,cs<span class="o">}</sp
 
 
 <p>Then we need to fix another configuration file:
-the localhost addresses in <code>/etc/scion/gen/ISD*/AS*/end host/sd.toml</code> must be changed to to the end host's IP address.</p>
+the localhost addresses in <code>/etc/scion/gen/ISD*/AS*/end host/sd.toml</code> must be changed to the end host's IP address.</p>
 <div class="codehilite"><pre><span></span>ENDHOST_IP=#..host IP..# sed -i &quot;s/127\.0\.0\.1/$ENDHOST_IP/&quot; /etc/scion/gen/ISD*/AS*/end host/sd.toml
 </pre></div>
 
