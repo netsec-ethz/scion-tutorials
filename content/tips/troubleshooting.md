@@ -88,7 +88,7 @@ The following are common issues or troubleshooting strategies for a SCION AS.
 
 Typically, this indicates a configuration error.
 
-If you've configured to use VPN, check the [Border Router fails to start][#border-router-fails-to-start] entry in the VPN section.
+If you've configured to use VPN, check the "Border Router fails to start" entry in the VPN section above.
 
 Inspect the logs of the failed services to find details.
 In case of multiple failures, fixing issues in the following order usually works best:
