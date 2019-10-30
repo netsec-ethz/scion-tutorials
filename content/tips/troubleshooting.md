@@ -104,16 +104,13 @@ In case of multiple failures, fixing issues in the following order usually works
 
 #### Not receiving beacons
 
-You're beacon server log `/var/logs/scion/bs*.log` does not contain (recent) entries referring to `Registered beacons`.
+Log of the beacon server (`/var/logs/scion/bs*.log`) does not contain recent entries referring to `Registered beacons`.
 
-First thing to try, is to turn it off and on again:
+As at the time of writing there are certain failure modes of the border routers that are hard to diagnose and are fixed with a simple restart, first thing to try is to turn it off and on again:
 
 ```
 sudo systemctl restart scionlab.target
 ```
-
-This may seem silly but there are (at the time of writing) certain failure modes of the border routers that are hard to diagnose and are fixed with a simple restart.
-
 
 ## Getting help
 

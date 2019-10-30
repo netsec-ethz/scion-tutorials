@@ -871,13 +871,12 @@ In case of multiple failures, fixing issues in the following order usually works
 <p>First clear the <code>/var/log/scion/</code> directory and restart. This often helps to find the relevant log messages quicker.</p>
 </div>
 <h4 id="not-receiving-beacons">Not receiving beacons<a class="headerlink" href="#not-receiving-beacons" title="Permanent link">&para;</a></h4>
-<p>You're beacon server log <code>/var/logs/scion/bs*.log</code> does not contain (recent) entries referring to <code>Registered beacons</code>.</p>
-<p>First thing to try, is to turn it off and on again:</p>
+<p>Log of the beacon server (<code>/var/logs/scion/bs*.log</code>) does not contain recent entries referring to <code>Registered beacons</code>.</p>
+<p>As at the time of writing there are certain failure modes of the border routers that are hard to diagnose and are fixed with a simple restart, first thing to try is to turn it off and on again:</p>
 <div class="codehilite"><pre><span></span>sudo systemctl restart scionlab.target
 </pre></div>
 
 
-<p>This may seem silly but there are (at the time of writing) certain failure modes of the border routers that are hard to diagnose and are fixed with a simple restart.</p>
 <h2 id="getting-help">Getting help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h2>
 <p>If your stuck, don't hesitate to <a href="../..#contact">get in contact</a></p>
                 
