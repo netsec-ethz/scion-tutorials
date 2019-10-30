@@ -2,7 +2,7 @@
 
 !!! Note
     You should go through this tutorial if you want to install SCION end host but do not want to run other SCION AS services on that machine.
-    Before proceeding you should already have a SCION AS services available in your network, otherwise end host will not run properly.
+    Before proceeding you should already have SCION AS services available in your network, otherwise end host will not run properly.
 
 ## Introduction
 
