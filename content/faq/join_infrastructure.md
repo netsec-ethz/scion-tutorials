@@ -27,7 +27,7 @@ There are a few requirements for you or your organization to join SCIONLab as an
 - The border router node(s) must have a public static IP. Any other SCION services can run with private static IP.
 - Firewall has to be configured according to the connectivity matrix below.
 
-## Connectivity requirements
+### Connectivity requirements
 
 | Protocol       | Port     | Source     | Comment |
 | :------------- | :----------: | :-----------: | -----------: |
