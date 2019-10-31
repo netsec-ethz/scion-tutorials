@@ -57,8 +57,10 @@ nav:
     - Configuration:
       - config/create_as.md
       - config/check.md
-      - config/setup_endhost.md
-      
+
+    - Advanced:
+      - advanced/setup_endhost.md
+
     - Applications:
       - apps/fetch_sensor_readings.md
       - apps/access_camera.md
@@ -71,8 +73,9 @@ nav:
       - apps/remote_sig.md
       - apps/rains.md
 
-    - Tips and Tricks:
-      - tips/troubleshooting.md
-      - tips/wireshark.md
+    - Frequently asked questions:
+      - faq/troubleshooting.md
+      - faq/join_infrastructure.md
 
-    - join_infrastructure.md
+    - Tools:
+      - tools/wireshark.md

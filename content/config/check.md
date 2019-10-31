@@ -1,11 +1,9 @@
-# Check AS Configuration
+# Checking AS configuration
 
 
 ## Introduction
 
-After having [configured your AS on the SCIONLab website](../config/create_as.md), [installed SCION](../install/index.md) and, depending on the chosen installation type, installed the configuration on your host you should now have a running SCIONLab AS.
-
-Follow the steps below to check that it is working as expected.
+After [configuring your AS on the SCIONLab website](../config/create_as.md) and [installing SCION](../install/index.md) you should now have a running SCIONLab AS. Follow the steps below to check that it is working as expected.
 
 
 ## Running Webapp
@@ -17,9 +15,9 @@ This browser-based tool serves as a dashboard to your SCIONLab VM and includes v
 ## Terminal based
 
 For the following steps, log into the machine hosting the SCION services (with `vagrant ssh` if it is a virtual machine).
-If any of the checks fail, head over to the [Troubleshooting Guide](../tips/troubleshooting.md)
+If any of the checks fail, head over to the [Troubleshooting Guide](../faq/introduction.md)
 
-#### Check VPN tunnel
+### Check VPN tunnel
 
 This only applies if you've configured your as to use an OpenVPN connection to the Attachment Point.
 
@@ -60,23 +58,22 @@ In this entry, the `PublicOverlay` address should correspond to the local addres
 Finally, check that you can ping the address listed in `RemoteOverlay`.
 
 
-#### Check SCION service status
+### Check SCION service status
 
     sudo systemctl list-dependencies scionlab.target
 
 
-This should show all entries as green. If there are any failed services in this list, start [troubleshooting](../tips/troubleshooting.md#)
+This should show all entries as green. If there are any failed services in this list, start [troubleshooting](../faq/troubleshooting.md)
 
 !!! Note
-
-    Ignore duplicate entries, this is a known issue in some systemd versions.
+    Duplicated entries are bug in systemd which is fixed in Ubuntu 18.04. When using older platform, you can simply ignore them.
 
 
 If you're running a build from sources, you will need to use the developer scripts instead of `systemctl`.
 Run `scion.sh status` or `supervisor/supervisor.sh status`.
 
 
-#### Inspect log files
+### Inspect log files
 
 Log files for the SCION services are located in `/var/log/scion`.
 
@@ -91,15 +88,15 @@ Inspect the beacon server's log file using e.g. `less -f /var/log/scion/bs*.log`
     Check that you find entries `Registered beacons ...`.
 
 
-#### Ping
+### Ping
 
 Ping somebody! Run `scmp echo` to send an "SCMP echo request"; this is just like the `ping` command for IP.
 
 The syntax is:
 
-    scmp echo -local [my scion address] -remote [someone else's scion address]
+    scmp echo -local [source SCION address] -remote [destination SCION address]
 
-where a SCION address has the form `ISD-AS,[IP]`. For example, to ping any host in the attachment point AS in Korea from my SCIONLab AS, I would run:
+where a SCION address has the form `ISD-AS,[IP]`. An example of pinging a host in the attachment point AS in Korea would look as follows:
 
     $ scmp echo -local 17-ffaa:1:15b,[127.0.0.1] -remote 20-ffaa:0:1404,[0.0.0.0]
     Using path:
@@ -119,5 +116,4 @@ where a SCION address has the form `ISD-AS,[IP]`. For example, to ping any host 
   	If you're running the application on a local topology, make sure to specify the correct socket using the `-sciond` flag, e.g. by adding `-sciond /run/shm/sciond/sd1-ff00_0_110.sock`.
 
 
-Passing this test is a condition sufficient to say that your AS works as expected.
-If it fails, please refer to [the troubleshooting section](../tips/troubleshooting.md).
+Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to [the troubleshooting section](../faq/troubleshooting.md).

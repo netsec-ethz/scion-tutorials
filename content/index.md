@@ -84,6 +84,7 @@ In order to simplify the management of ASes and lower the entry-barrier for part
 
 ## Contact
 
-* For questions on running your SCIONLab AS and general discussion about SCION-related topics, visit our [SCION community mailing list](https://lists.inf.ethz.ch/mailman/listinfo/scion)
-* For bug reports, please post them on the [scionlab GitHub site](https://github.com/netsec-ethz/scionlab)
-* For suggestion on these pages, please post them on the [scion-tutorials GitHub site](https://github.com/netsec-ethz/scion-tutorials)
+* For questions on running your SCIONLab AS and discussion about SCION-related topics, visit our [SCION community mailing list](https://lists.inf.ethz.ch/mailman/listinfo/scion)
+* For suggestions or bugs on these pages, please post them on the [tutorial GitHub repo](https://github.com/netsec-ethz/scion-tutorials)
+* For bug reports when running SCION, please post them on the [SCIONLab GitHub repo](https://github.com/netsec-ethz/scionlab)
+* SCIONLab NOC is available via email <scionlab-admins@sympa.ethz.ch>

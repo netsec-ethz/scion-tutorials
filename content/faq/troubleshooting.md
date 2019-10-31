@@ -1,9 +1,4 @@
-# FAQ and Troubleshooting
-
-
-This section answers some frequently asked questions and assists with troubleshooting for SCIONLab ASes.
-
-
+# Troubleshooting
 
 ## Virtual Machine
 The following relate to [running a Vagrant Virtual Machine](../install/vm.md).
@@ -49,9 +44,6 @@ If you've lost track of which VMs are running or lost your `Vagrantfile`s, you c
         $ VBoxManage controlvm "SCIONLabVM-ffaa:1:15b" poweroff
         $ VBoxManage list vms
 
-
-
-
 ## VPN
 
 The following relate to AS [configured to use VPN](../config/create_as.md#configure-a-scionlab-as).
@@ -88,7 +80,7 @@ The following are common issues or troubleshooting strategies for a SCION AS.
 
 Typically, this indicates a configuration error.
 
-If you've configured to use VPN, check the [Border Router fails to start][#border-router-fails-to-start] entry in the VPN section.
+If you've configured to use VPN, check the "Border Router fails to start" entry in the VPN section above.
 
 Inspect the logs of the failed services to find details.
 In case of multiple failures, fixing issues in the following order usually works best:
@@ -104,16 +96,13 @@ In case of multiple failures, fixing issues in the following order usually works
 
 #### Not receiving beacons
 
-You're beacon server log `/var/logs/scion/bs*.log` does not contain (recent) entries referring to `Registered beacons`.
+Log of the beacon server (`/var/logs/scion/bs*.log`) does not contain recent entries referring to `Registered beacons`.
 
-First thing to try, is to turn it off and on again:
+As at the time of writing there are certain failure modes of the border routers that are hard to diagnose and are fixed with a simple restart, first thing to try is to turn it off and on again:
 
 ```
 sudo systemctl restart scionlab.target
 ```
-
-This may seem silly but there are (at the time of writing) certain failure modes of the border routers that are hard to diagnose and are fixed with a simple restart.
-
 
 ## Getting help
 

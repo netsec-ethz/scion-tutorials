@@ -1,15 +1,15 @@
-# Install on Android
+# Building from sources (Android)
 
 
-!!! Warning
+!!! Danger "Attention needed"
 
-    This page has not been updated after the latest changes to SCIONLab and is out of date.
+    This page is supposed to be rewritten. Procedures described here are highly outdated and are not guaranteed to work. 
 
 
 ## Introduction
 It is possible to run SCION on an Android device. The easiest way is to install [SCION as an Android app](#scion-app). The other alternative is to [manually install SCION on your Android device](#manual-setup). Both variants are based on [Termux](https://github.com/termux/termux-app), which emulates a Terminal environment with the Linux base system that Android is based upon.
 
-This tutorial is primarily targeted at running a SCION endhost on Android. While it is also possible to run an entire SCION AS, this currently doesn't run stable within Termux, as it requires Apache Zookeeper, which frequently crashes the Termux environment as described [here](#endhost-configuration-vs-full-as).
+This tutorial is primarily targeted at running a SCION end host on Android. While it is also possible to run an entire SCION AS, this currently doesn't run stable within Termux, as it requires Apache Zookeeper, which frequently crashes the Termux environment as described [here](#endhost-configuration-vs-full-as).
 
 
 ## Prerequisites
@@ -41,7 +41,7 @@ That’s it! The process takes a while but is fully automatic. At the end, a dia
 That means of course, that the ‘gen’ folder needs to be readily available on the internal memory. Download it directly or push it onto the device with ADB.
 
 !!! warning
-    SCION for Android currently only supports a SCION endhost configuration, as described [in this tutorial](../config/setup_endhost.md)
+    SCION for Android currently only supports a SCION end host configuration, as described [in this tutorial](../advanced/setup_endhost.md)
 
 !!! warning
     SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described [here](#changes-to-gen-folder)
@@ -222,7 +222,7 @@ cd $SC/env/go
 After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:
 
 1. [Running a local network topology](../general_scion_configuration/local_top.md) &ndash; Generate a sample topology and run SCION locally
-1. [Connecting to SCIONLab as an endhost](../config/setup_endhost.md) &ndash; Connect to the already running SCION topology as a mobile endhost through an existing SCION setup.
+1. [Connecting to SCIONLab as an endhost](../advanced/setup_endhost.md) &ndash; Connect to the already running SCION topology as a mobile end host through an existing SCION setup.
 
 #### Changes to gen folder
 
@@ -233,7 +233,7 @@ Note that in `gen/ISDx/AS10xx/supervisord.conf` the path of the SCION Deamon soc
 Unfortunately, OpenVPN is not currently supported from within the Termux environment. Alternatively, the [Open
 VPN app](https://play.google.com/store/apps/details?id=net.openvpn.openvpn) can be installed to connect to SCIONLab via VPN. The `client.conf` file that is provided by the [SCIONLab coordinator](https://www.scionlab.org/) needs to be renamed to `client.ovpn` before it can be imported into the app. Additionally, the line `route 10.0.8.0/24` needs to be added to the file.
 
-#### Endhost configuration vs. full AS
+#### End host configuration vs. full AS
 
 It is possible to run the full SCION on Android, it is, however, currently not recommended. The full SCION requires a Zookeeper instance which itself is a Java program. While it is possible to install a Java Virtual Machine in Termux, the actual Termux packages have been disabled or removed due to instabilities with high CPU usage.
 

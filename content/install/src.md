@@ -1,4 +1,5 @@
-# Build from Sources
+# Building from sources (Linux)
+
 If you're planning to make modifications to SCION implementation, you can build SCION from sources and run your SCIONLab AS with your own version of SCION.
 For developer's convenience, SCIONLab supports generating configurations that are compatible with the scripts and machinery intended to run SCION in a development environment.
 
@@ -10,7 +11,7 @@ Please follow the instructions in the [GitHub README](https://github.com/netsec-
 
 !!! Note
     SCIONLab runs a version of SCION built from the branch `scionlab` in netsec-ethz/netsec-scion.
-    This branch (intenionally) lags behind the scionproto/scion master. As there are still (rarely) breaking changes in the SCION protocol, running `master` may or may not be compatible with `scionlab`.
+    This branch (intentionally) lags behind the scionproto/scion master. As there are still (rarely) breaking changes in the SCION protocol, running `master` may or may not be compatible with `scionlab`.
 
 
 !!! Tip

@@ -1,11 +1,15 @@
-# Set up an end host
+# Configuring SCION end host
+
+!!! Note
+    You should go through this tutorial if you want to install SCION end host but do not want to run other SCION AS services on that machine.
+    Before proceeding you should already have SCION AS services available in your network, otherwise end host will not run properly.
 
 ## Introduction
 
 In this tutorial we will cover the steps necessary to configure a SCION end host in a SCIONLab AS.
 
-An SCION _end host_ is a simply a computer running SCION applications in a SCION AS, i.e. it is not a router and does not run any infrastructure services for the AS.
-An end host will communicate with the Path- and Certificate-service of the AS to get paths and certificate information. For communication to hosts in different ASes, traffic will be sent to the SCION border routers of the AS.
+A SCION end host is a machine running SCION applications in a SCION AS, i.e. it is not a router and does not run any infrastructure services for the AS.
+An end host will communicate with the path and certificate servers of the AS to get paths and certificate information. For communication to hosts in different ASes, traffic will be sent to the SCION border routers of the AS.
 The end host knows the addresses for these services from a configuration file (`topology.json`).
 
 The software stack for a SCION end host application consists of the `dispatcher`, responsible for managing sockets and encapsulating/decapsulating SCION packets for IP/UDP overlay,
@@ -16,13 +20,12 @@ Compared to the perhaps more familiar software stack for IP, we can see some rou
 - `dispatcher`: corresponds to the kernels `socket` API
 - `sciond`: similar to a local caching DNS resolver daemon (like e.g. dnsmasq, unbound), except it's for paths and certificates, not for names
 
-
 ## 1. Install SCION on end host
 
 The software stack for a SCION end host consists of the `dispatcher` and the `sciond`, contained in the `scion-dispatcher` and `scion-daemon` packages.
 Just install an end host application that you're planning to run.
 
-On Ubuntu/Debian, run the following snippet to add the package repository:
+On Debian-based OS run the following snippet to add the package repository:
 ```shell
 sudo apt-get install apt-transport-https
 echo "deb [trusted=yes] https://packages.netsec.inf.ethz.ch/debian all main" | sudo tee /etc/apt/sources.list.d/scionlab.list
@@ -30,8 +33,7 @@ sudo apt-get update
 ```
 and then install the packages using:
 ```
-sudo apt-get install scionlab scion-apps-* # Just get everything OR
-sudo apt-get install scion-apps-bwtester   # get individual application(s), with only minimal dependencies
+sudo apt-get install scion-daemon scion-dispatcher
 ```
 
 Of course you can also use the other [available installation options](../install/index.md).
@@ -46,35 +48,42 @@ To run an end host on a different host, the services need to bind on an IP that 
 
 On the host running the AS services, locate the `topology.json` files in `/etc/scion/gen/`. In this configuration file, we change the occurrences of IP `127.0.0.1`
 to the hosts IP.
+
 ```
-NODE_IP=#..host IP..# sed -i "s/127\.0\.0\.1/$NODE_IP/" /etc/scion/gen/ISD*/AS*/*/topology.json
+export NODE_IP=example
+sed -i "s/127\.0\.0\.1/$NODE_IP/" /etc/scion/gen/ISD*/AS*/*/topology.json
 ```
 
 !!! Note
-    Only `PathServer`, `CertificateServer` and the `InternalAddrs` of `BorderRouter` _need_ to be accessible for the end host.
+    Only `PathServer`, `CertificateServer` and the `InternalAddrs` of `BorderRouter` need to be accessible for the end host.
     This command also changes the address for the `BeaconServer` and the `CtrlAddr` of the `BorderRouter` as a bonus, for the sake of simplicity.
 
-Restart your AS services by running `sudo systemctl restart scionlab.target`.
+Restart your AS services by running
+
+```
+sudo systemctl restart scion-daemon.service scion-dispatcher.service
+```
 
 
 ## 3. Extract and adapt end host configuration
 
 To create the configuration for the end host, we copy the configuration (modified in the previous step) from the node's `/etc/scion/gen` directory: we'll need the `dispatcher/` and the `ISD*/AS*/end host` directory.
 
-The following snippet describes one way to achieve this:
+The following snippet removes configuration of the SCION services from directory, keeping only the required part
 
 ```shell
 cp /etc/scion/gen /tmp/
-rm -r /tmp/gen/ISD*/AS*/{br,bs,ps,cs}*/  # strip config for AS services
+rm -r /tmp/gen/ISD*/AS*/{br,bs,ps,cs}*/
 ```
 
-Then we need to fix another configuration file:
-the localhost addresses in `/etc/scion/gen/ISD*/AS*/end host/sd.toml` must be changed to to the end host's IP address.
+The Configuration of the `scion-daemon` also needs to be changed in order to use the IP address of the end host
+
 ```
-ENDHOST_IP=#..host IP..# sed -i "s/127\.0\.0\.1/$ENDHOST_IP/" /etc/scion/gen/ISD*/AS*/end host/sd.toml
+export ENDHOST_IP=example
+sed -i "s/127\.0\.0\.1/$ENDHOST_IP/" /tmp/gen/ISD*/AS*/endhost/sd.toml
 ```
 
-Now copy `/tmp/gen` to the end host (e.g. using `scp`) and install it in the `/etc/scion/` directory.
+At this moment `/tmp/gen` contains a full configuration needed for the SCION end host. You can use e.g. `scp` to install it in the `/etc/scion/` directory on the target machine.
 
 
 ## 4. Start SCION on end host
@@ -83,8 +92,8 @@ Finally we can start the `scion-dispatcher` and `scion-daemon` services:
 
 ```shell
 # replace XX and YYYY with your ISD/AS number e.g. scion-daemon@17-ffaa_1_15b.service
-systemctl enable scion-daemon@XX-ffaa_1_YYYY.service
-systemctl start scionlab.target
+systemctl enable --now scion-dispatcher.service
+systemctl enable --now scion-daemon@XX-ffaa_1_YYYY.service
 ```
 
-Test that your connection is working, e.g. by using [`scmp echo`](../config/check.md#ping) and start using the applications as described in the Applications-section.
+Test that your connection is working, e.g. by using `scmp echo` (as described in [checking AS configuration](../config/check.md#ping)) and start using the applications.
