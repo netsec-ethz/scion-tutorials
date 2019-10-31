@@ -85,7 +85,7 @@ If using VPN, ensure that the OpenVPN-client is up **before** starting the SCION
 ```shell
 sudo systemctl start openvpn@client
 ```
-Check that the expected `tun0` tunnel-interface is created before continuing. Please refer to corresponding [troubleshooting](../faq/introduction.md#vpn) page.
+Check that the expected `tun0` tunnel-interface is created before continuing. Please refer to corresponding [troubleshooting](../faq/troubleshooting.md) page.
 
 [//]: # (TODO This may become obsolete if openvpn@client is included as a dependency for the BRs.)
 

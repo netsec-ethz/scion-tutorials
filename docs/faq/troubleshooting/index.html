@@ -525,18 +525,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../introduction/" title="Introduction" class="md-nav__link">
-      Introduction
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -564,6 +552,40 @@
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#virtual-machine" title="Virtual Machine" class="md-nav__link">
+    Virtual Machine
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-is-the-vagrantfile" title="Where is the Vagrantfile?" class="md-nav__link">
+    Where is the Vagrantfile?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vagrant-up-fails-with-port-8000-is-already-in-use" title="vagrant up fails with "Port 8000 is already in use"" class="md-nav__link">
+    vagrant up fails with "Port 8000 is already in use"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manage-vms-without-vagrant" title="Manage VMs without Vagrant" class="md-nav__link">
+    Manage VMs without Vagrant
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#vpn" title="VPN" class="md-nav__link">
@@ -711,6 +733,40 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#virtual-machine" title="Virtual Machine" class="md-nav__link">
+    Virtual Machine
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#where-is-the-vagrantfile" title="Where is the Vagrantfile?" class="md-nav__link">
+    Where is the Vagrantfile?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vagrant-up-fails-with-port-8000-is-already-in-use" title="vagrant up fails with "Port 8000 is already in use"" class="md-nav__link">
+    vagrant up fails with "Port 8000 is already in use"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manage-vms-without-vagrant" title="Manage VMs without Vagrant" class="md-nav__link">
+    Manage VMs without Vagrant
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#vpn" title="VPN" class="md-nav__link">
     VPN
   </a>
@@ -789,6 +845,45 @@
                 
                 
                 <h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h1>
+<h2 id="virtual-machine">Virtual Machine<a class="headerlink" href="#virtual-machine" title="Permanent link">&para;</a></h2>
+<p>The following relate to <a href="../../install/vm/">running a Vagrant Virtual Machine</a>.</p>
+<h4 id="where-is-the-vagrantfile">Where is the <code>Vagrantfile</code>?<a class="headerlink" href="#where-is-the-vagrantfile" title="Permanent link">&para;</a></h4>
+<p>Go to the details page for your AS on <a href="https://www.scionlab.org">SCIONLab</a> and make sure that you've chosen the <code>Installation Type</code> "Run in a Virtual Machine".
+Download the configuration tarfile by clicking the <code>Download Configuration</code> link at the bottom.
+Extract the <code>Vagrantfile</code></p>
+<h4 id="vagrant-up-fails-with-port-8000-is-already-in-use"><code>vagrant up</code> fails with "Port 8000 is already in use"<a class="headerlink" href="#vagrant-up-fails-with-port-8000-is-already-in-use" title="Permanent link">&para;</a></h4>
+<p>The <code>Vagrantfile</code> that we create tries to forward TCP port 8000, mainly to conveniently allow running the <a href="../../as_visualization/webapp/">SCIONLab webapp</a> in the VM.</p>
+<p>The error occurs because another application (could also be another VM instance!) uses this port.
+Either stop the other application (find it using <code>netstat -natp | grep 8000</code>), or follow the instructions provided in the error message (see below) to change the forwarded port.</p>
+<div class="codehilite"><pre><span></span>$ vagrant up
+<span class="o">[</span> ... <span class="o">]</span>
+Vagrant cannot forward the specified ports on this VM, since they
+would collide with some other application that is already listening
+on these ports. The forwarded port to <span class="m">8000</span> is already in use
+on the host machine.
+
+To fix this, modify your current project<span class="s1">&#39;s Vagrantfile to use another</span>
+<span class="s1">port. Example, where &#39;</span><span class="m">1234</span><span class="err">&#39;</span> would be replaced by a unique host port:
+
+  config.vm.network :forwarded_port, guest: <span class="m">8000</span>, host: <span class="m">1234</span>
+
+<span class="o">[</span> ... <span class="o">]</span>
+</pre></div>
+
+
+<h4 id="manage-vms-without-vagrant">Manage VMs without Vagrant<a class="headerlink" href="#manage-vms-without-vagrant" title="Permanent link">&para;</a></h4>
+<p>If you've lost track of which VMs are running or lost your <code>Vagrantfile</code>s, you can use VirtualBox directly to interact with the VMs.</p>
+<ul>
+<li>Use the <code>virtualbox</code> GUI application.</li>
+<li>Use <code>VBoxManage</code> from the commandline, e.g.<div class="codehilite"><pre><span></span>$ VBoxManage list runningvms
+<span class="s2">&quot;SCIONLabVM-ffaa:1:15b&quot;</span> <span class="o">{</span>1f4379a0-03e3-4efe-91e9-314e363b8d0f<span class="o">}</span>
+$ VBoxManage controlvm <span class="s2">&quot;SCIONLabVM-ffaa:1:15b&quot;</span> poweroff
+$ VBoxManage list vms
+</pre></div>
+
+
+</li>
+</ul>
 <h2 id="vpn">VPN<a class="headerlink" href="#vpn" title="Permanent link">&para;</a></h2>
 <p>The following relate to AS <a href="../../config/create_as/#configure-a-scionlab-as">configured to use VPN</a>.</p>
 <h4 id="vpn-connection-fails">VPN connection fails<a class="headerlink" href="#vpn-connection-fails" title="Permanent link">&para;</a></h4>

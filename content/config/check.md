@@ -15,7 +15,7 @@ This browser-based tool serves as a dashboard to your SCIONLab VM and includes v
 ## Terminal based
 
 For the following steps, log into the machine hosting the SCION services (with `vagrant ssh` if it is a virtual machine).
-If any of the checks fail, head over to the [Troubleshooting Guide](../faq/introduction.md)
+If any of the checks fail, head over to the [Troubleshooting Guide](../faq/troubleshooting.md)
 
 ### Check VPN tunnel
 
