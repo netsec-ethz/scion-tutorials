@@ -725,7 +725,25 @@ sudo sysctl net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
 </pre></div>
 
 
-<p>Create the configuration for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config:</p>
+<p>Modify the <code>topology.json</code> files adding the SIG service e.g. right after the empty <code>Discovery</code> declaration:</p>
+<div class="codehilite"><pre><span></span>  &quot;Discovery&quot;: {},
+  &quot;SIG&quot;: {
+    &quot;sig&quot;: {
+      &quot;Addrs&quot;: {
+        &quot;IPv4&quot;: {
+          &quot;Public&quot;: {
+            &quot;Addr&quot;: &quot;127.0.0.1&quot;,
+            &quot;L4Port&quot;: 31056
+          }
+        }
+      }
+    }
+  },
+</pre></div>
+
+
+<p>Remember to modify every existing <code>topology.json</code> file under your ${SC}/gen/ISD${ISD}/AS${AS} directory.</p>
+<p>Next, create the configuration for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config:</p>
 <p>(You need to replace ${AS}, ${IA} and ${IAd} with the actual values on your system in these configuration files.)</p>
 <div class="codehilite"><pre><span></span><span class="k">[sig]</span>
   <span class="c1"># ID of the SIG (required)</span>
