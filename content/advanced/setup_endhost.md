@@ -1,3 +1,9 @@
+---
+title: Configuring SCION end host
+parent: Advanced
+nav_order: 10
+---
+
 # Configuring SCION end host
 
 !!! Note

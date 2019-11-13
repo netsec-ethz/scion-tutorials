@@ -1,3 +1,9 @@
+---
+title: Checking AS configuration
+parent: Configuration
+nav_order: 20
+---
+
 # Checking AS configuration
 
 

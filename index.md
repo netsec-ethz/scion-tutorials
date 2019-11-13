@@ -1,9 +1,20 @@
-# Welcome to SCION Tutorials
+---
+title: Home
+nav_order: 1
+---
 
+# Welcome to SCION Tutorials
+{: .no_toc }
 
 This website provides step-by-step instructions on how to run a SCION autonomous system (AS) in [SCIONLab](https://www.scionlab.org).
 It also provides a list of interesting projects that are using the SCION infrastructure for communication.
 
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## Quick Start
 

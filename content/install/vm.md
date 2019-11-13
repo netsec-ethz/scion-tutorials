@@ -1,3 +1,9 @@
+---
+title: Running inside a VM
+parent: Installation
+nav_order: 10
+---
+
 # Running inside a VM
 
 ## Install Vagrant and Virtualbox

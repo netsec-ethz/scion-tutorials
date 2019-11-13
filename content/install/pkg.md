@@ -1,3 +1,9 @@
+---
+title: Installing packages
+parent: Installation
+nav_order: 20
+---
+
 # Installing packages
 
 ## SCION Services

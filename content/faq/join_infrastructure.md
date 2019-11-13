@@ -1,3 +1,9 @@
+---
+title: Joining the SCIONLab infrastructure
+parent: Frequently Asked Questions
+nav_order: 10
+---
+
 # Joining the SCIONLab infrastructure
 
 If you are part of an organization and/or you are committed to do research with SCION, and using user ASes is not enough for your plans, then you could join SCIONLab with a dedicated host. We have compiled a short guide to document the requirements.

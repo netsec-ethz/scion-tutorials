@@ -1,3 +1,9 @@
+---
+title: Troubleshooting
+parent: Frequently Asked Questions
+nav_order: 20
+---
+
 # Troubleshooting
 
 ## Virtual Machine

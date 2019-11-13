@@ -1,3 +1,9 @@
+---
+title: SCION IP Gateway (SIG)
+parent: Applications
+nav_order: 60
+---
+
 # SCION IP Gateway (SIG)
 
 !!! Warning

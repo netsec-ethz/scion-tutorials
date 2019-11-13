@@ -1,3 +1,10 @@
+---
+title: Visualization for Apps
+parent: AS Visualization
+grand_parent: Applications
+nav_order: 20
+---
+
 # Webapp SCIONLab Apps Visualization
 
 ## Webapp Features

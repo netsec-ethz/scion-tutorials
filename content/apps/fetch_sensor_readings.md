@@ -1,3 +1,9 @@
+---
+title: Sensor reading over SCION
+parent: Applications
+nav_order: 10
+---
+
 # Sensor reading over SCION
 
 The [sensorapp application](https://github.com/netsec-ethz/scion-apps/) contains fetcher and server

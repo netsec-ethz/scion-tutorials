@@ -1,3 +1,9 @@
+---
+title: Building from sources (Android)
+parent: Installation
+nav_order: 40
+---
+
 # Building from sources (Android)
 
 

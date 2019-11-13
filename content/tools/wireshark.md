@@ -1,3 +1,9 @@
+---
+title: Adding Wireshark and Tshark SCION protocol dissector
+parent: Tools
+nav_order: 10
+---
+
 # Adding Wireshark and Tshark SCION protocol dissector
 
 ## Introduction

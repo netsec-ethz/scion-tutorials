@@ -1,3 +1,9 @@
+---
+title: Creating SCIONLab AS
+parent: Configuration
+nav_order: 10
+---
+
 # Creating SCIONLab AS
 
 ## SCIONLab Portal Overview

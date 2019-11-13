@@ -1,0 +1,24 @@
+# === basics ===
+title: SCIONLab Tutorials
+description: A collection of tutorial pages for SCION
+aux_links:
+  "SCIONLab":
+    - "https://scionlab.org/"
+  "SCION home page":
+    - "https://scion-architecture.net/"
+  "NetSec github":
+    - "https://github.com/netsec-ethz/"
+footer_content: 'Copyright &copy 2019, Network Security Group, ETH Zurich'
+
+# === visuals ===
+remote_theme: pmarsceill/just-the-docs
+#logo: /assets/favicon.ico
+
+# === defaults ===
+defaults:
+  - scope: {path: ""}
+    values:
+      layout: default
+
+# === Build settings ===
+exclude: [Gemfile, Gemfile.lock]

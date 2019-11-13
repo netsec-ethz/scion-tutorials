@@ -1,3 +1,9 @@
+---
+title: RAINS, Another Internet Naming Service
+parent: Applications
+nav_order: 70
+---
+
 # RAINS, Another Internet Naming Service
 
 !!! Warning
