@@ -53,8 +53,9 @@ scion-bwtestclient -s 17-ffaa:1:13,[192.168.1.79]:30100 -cs 10,1000,1250,1Mbps -
 ```
 For more information run the application without arguments to print its usage.
 
-!!! Tip
-    `bwtestclient` is also available via the [webapp](../as_visualization/webapp_apps.md).
+{% include alert type="Tip" content="
+`bwtestclient` is also available via the [webapp](../as_visualization/webapp_apps.md).
+" %}
 
 ## bwtestserver
 

@@ -9,9 +9,9 @@ nav_order: 10
 If you are part of an organization and/or you are committed to do research with SCION, and using user ASes is not enough for your plans, then you could join SCIONLab with a dedicated host. We have compiled a short guide to document the requirements.
 You can join the SCIONLab network as an infrastructure AS with one or more machines, or you can start as small as dedicating only a simple commodity PC.
 
-!!! Danger "Attention needed"
-
-    This page is supposed to give you a general overview over joining as a part of the infrastructure. In any case, if you are interested in joining, please [contact us directly](../index.md#contact).
+{% include alert type="danger" title="Attention needed" content="
+This page is supposed to give you a general overview over joining as a part of the infrastructure. In any case, if you are interested in joining, please [contact us directly](../index.md#contact).
+" %}
 
 ## Procedure
 
@@ -41,11 +41,13 @@ There are a few requirements for you or your organization to join SCIONLab as an
 | UDP | 30000 - 35000 | machines in the same SCION AS | SCION intra-AS connectivity |
 | TCP | 22 | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.87.0/24<br> 192.33.88.0/23<br> 192.33.91.0/24<br> 192.33.92.0/24<br> 192.33.93.0/24<br> 192.33.94.0/23<br> 192.33.96.0/21<br> 192.33.104.0/22<br> 192.33.108.0/23<br> 192.33.110.0/24 | Administrative SSH access for configuration management |
 
-!!! note
-    Inter-AS connectivity is required only with the neighbouring ASes. In order to allow dynamic topology adjustments we recommend firewall opening for 0.0.0.0/0. In most cases, after determining the best neighbours for your AS, we can provide a narrowed-down list of networks.
+{% include alert type="note" content="
+Inter-AS connectivity is required only with the neighbouring ASes. In order to allow dynamic topology adjustments we recommend firewall opening for 0.0.0.0/0. In most cases, after determining the best neighbours for your AS, we can provide a narrowed-down list of networks.
+" %}
 
-!!! note
-    As an alternative we can also operate connections over a tunnel, e.g. OpenVPN or Wireguard. However please note this will be done only in a special scenarios, e.g. installing a node in a country with strict network policy regarding connectivity abroad. In that case UDP connectivity can be stricter, but inbound SSH connectivity from networks listed above must work.
+{% include alert type="note" content="
+As an alternative we can also operate connections over a tunnel, e.g. OpenVPN or Wireguard. However please note this will be done only in a special scenarios, e.g. installing a node in a country with strict network policy regarding connectivity abroad. In that case UDP connectivity can be stricter, but inbound SSH connectivity from networks listed above must work.
+" %}
 
 ### Recommendations
 

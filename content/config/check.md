@@ -71,8 +71,9 @@ Finally, check that you can ping the address listed in `RemoteOverlay`.
 
 This should show all entries as green. If there are any failed services in this list, start [troubleshooting](../faq/troubleshooting.md)
 
-!!! Note
-    Duplicated entries are bug in systemd which is fixed in Ubuntu 18.04. When using older platform, you can simply ignore them.
+{% include alert type="note" content="
+Duplicated entries are bug in systemd which is fixed in Ubuntu 18.04. When using older platform, you can simply ignore them.
+" %}
 
 
 If you're running a build from sources, you will need to use the developer scripts instead of `systemctl`.
@@ -111,15 +112,18 @@ where a SCION address has the form `ISD-AS,[IP]`. An example of pinging a host i
     200 bytes from 20-ffaa:0:1404,[0.0.0.0] scmp_seq=1 time=381.763ms
 
 
-!!! Note
-    Having to enter your own SCION address is a common theme with SCION tools. We hope we'll get
-    rid of this somewhat arcane feature eventually.
+{% include alert type="note" content="
+Having to enter your own SCION address is a common theme with SCION tools. We hope we'll get
+rid of this somewhat arcane feature eventually.
+" %}
 
-!!! Tip
-    Check the topology map on the [SCIONLab homepage](https://www.scionlab.org) for an overview over the existing ASes and their addresses.
+{% include alert type="Tip" content="
+Check the topology map on the [SCIONLab homepage](https://www.scionlab.org) for an overview over the existing ASes and their addresses.
+" %}
 
-!!! Tip
-  	If you're running the application on a local topology, make sure to specify the correct socket using the `-sciond` flag, e.g. by adding `-sciond /run/shm/sciond/sd1-ff00_0_110.sock`.
+{% include alert type="Tip" content="
+If you're running the application on a local topology, make sure to specify the correct socket using the `-sciond` flag, e.g. by adding `-sciond /run/shm/sciond/sd1-ff00_0_110.sock`.
+" %}
 
 
 Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to [the troubleshooting section](../faq/troubleshooting.md).

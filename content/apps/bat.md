@@ -74,8 +74,9 @@ be provided with the `-l` flag. E.g.:
 scion-bat -l 18-ffaa:1:2,[10.0.8.10]:0 https://host1:8080/route
 ```
 
-!!! note
-    The scheme defaults to HTTPS, unencrypted HTTP is not supported
+{% include alert type="note" content="
+The scheme defaults to HTTPS, unencrypted HTTP is not supported
+" %}
 
 ### Item
 

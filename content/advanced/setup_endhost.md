@@ -6,9 +6,10 @@ nav_order: 10
 
 # Configuring SCION end host
 
-!!! Note
-    You should go through this tutorial if you want to install SCION end host but do not want to run other SCION AS services on that machine.
-    Before proceeding you should already have SCION AS services available in your network, otherwise end host will not run properly.
+{% include alert type="note" content="
+You should go through this tutorial if you want to install SCION end host but do not want to run other SCION AS services on that machine.
+Before proceeding you should already have SCION AS services available in your network, otherwise end host will not run properly.
+" %}
 
 ## Introduction
 
@@ -60,9 +61,10 @@ export NODE_IP=example
 sed -i "s/127\.0\.0\.1/$NODE_IP/" /etc/scion/gen/ISD*/AS*/*/topology.json
 ```
 
-!!! Note
-    Only `PathServer`, `CertificateServer` and the `InternalAddrs` of `BorderRouter` need to be accessible for the end host.
-    This command also changes the address for the `BeaconServer` and the `CtrlAddr` of the `BorderRouter` as a bonus, for the sake of simplicity.
+{% include alert type="note" content="
+Only `PathServer`, `CertificateServer` and the `InternalAddrs` of `BorderRouter` need to be accessible for the end host.
+This command also changes the address for the `BeaconServer` and the `CtrlAddr` of the `BorderRouter` as a bonus, for the sake of simplicity.
+" %}
 
 Restart your AS services by running
 

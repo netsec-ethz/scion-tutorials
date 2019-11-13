@@ -44,8 +44,9 @@ SCION host to the `/etc/hosts` file. Below you can see an example:
 17-ffaa:0:1,[192.168.1.1]                               localhost
 ```
 
-!!! Tip
-    `imagefetcher` is also available via the [webapp](../as_visualization/webapp_apps.md).
+{% include alert type="Tip" content="
+`imagefetcher` is also available via the [webapp](../as_visualization/webapp_apps.md).
+" %}
 
 ## imageserver
 

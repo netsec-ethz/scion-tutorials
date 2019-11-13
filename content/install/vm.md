@@ -26,8 +26,9 @@ For other platforms, please consult the official installation instructions:
 After [creating your AS](../config/create_as.md) in the SCIONLab coordination
 website, you will be able to download a tarfile with `Vagrantfile` allowing you to easily build your SCIONLab VM.
 
-!!! note
-    All the commands below need to be executed from the directory containing the Vagrantfile.
+{% include alert type="note" content="
+All the commands below need to be executed from the directory containing the Vagrantfile.
+" %}
 
 To start your VM, run
 
@@ -50,14 +51,14 @@ will appear in the `/vagrant/` directory.
 This is a convenient way to share files between your host machine and your
 VM, and allows to move data both ways.
 
-!!! note
-    You can use following Vagrant commands to perform various operations with your VM
-    
-    * `vagrant halt` - stops the VM
-    * `vagrant destroy` - restores VM to its initial state
+{% include alert type="note" content="
+You can use following Vagrant commands to perform various operations with your VM
 
-    More information about `vagrant` commands can be found at <https://www.vagrantup.com/docs/cli>
+* `vagrant halt` - stops the VM
+* `vagrant destroy` - restores VM to its initial state
 
+More information about `vagrant` commands can be found at <https://www.vagrantup.com/docs/cli>
+" %}
 
 ## Configuration
 

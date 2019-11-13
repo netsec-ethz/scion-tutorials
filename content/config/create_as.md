@@ -80,11 +80,11 @@ The following options are the parameters for the overlay link between the border
     If you are in a network behind a NAT (the public IP and local IP are different), fill the `Public IP Address` field with the public IP and the `Bind IP Address` field with the local IP address.
 
 
-    !!! Note
-
-        Currently, IPv6 cannot be used.
-        Even though support for IPv6 is implemented, none of the currently
-        available Attachment Points have an IPv6 address configured.
+{% include alert type="note" content="
+Currently, IPv6 cannot be used.
+Even though support for IPv6 is implemented, none of the currently
+available Attachment Points have an IPv6 address configured.
+" %}
 
 
 *   Public Port, Bind Port:

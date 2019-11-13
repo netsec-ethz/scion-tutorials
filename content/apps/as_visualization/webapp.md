@@ -77,8 +77,9 @@ The `Files` menu on the page will allow you to navigate and serve any files on t
 ### AS Topology
 The composition of services and border routers for the Source AS will be displayed in the AS Topology tab. Click on any circle to view the details of that server or router.
 
-!!! tip
-    The big circle can be clicked on as well to view details of the Source AS.
+{% include alert type="Tip" content="
+The big circle can be clicked on as well to view details of the Source AS.
+" %}
 
 ![SCIONLab download page](../images/sciond_astopo.png)
 

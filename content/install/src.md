@@ -15,16 +15,18 @@ It is possible to build SCION on other systems, but no guidance is provided. To 
 
 Please follow the instructions in the [GitHub README](https://github.com/netsec-ethz/netsec-scion/) to clone and build SCION.
 
-!!! Note
-    SCIONLab runs a version of SCION built from the branch `scionlab` in netsec-ethz/netsec-scion.
-    This branch (intentionally) lags behind the scionproto/scion master. As there are still (rarely) breaking changes in the SCION protocol, running `master` may or may not be compatible with `scionlab`.
+{% include alert type="note" content="
+SCIONLab runs a version of SCION built from the branch `scionlab` in netsec-ethz/netsec-scion.
+This branch (intentionally) lags behind the scionproto/scion master. As there are still (rarely) breaking changes in the SCION protocol, running `master` may or may not be compatible with `scionlab`.
+" %}
 
 
-!!! Tip
-    If you only want to develop applications _using_ SCION, you may still rely on the convenience of our [pre-built binary packages](../install/pkg.md).
+{% include alert type="Tip" content="
+If you only want to develop applications _using_ SCION, you may still rely on the convenience of our [pre-built binary packages](../install/pkg.md).
 
-    The [scion-apps](https://github.com/netsec-ethz/scion-apps/) repository contains examples for applications that run
-    on top of SCION.
+The [scion-apps](https://github.com/netsec-ethz/scion-apps/) repository contains examples for applications that run
+on top of SCION.
+" %}
 
 
 ## Configuration
@@ -48,9 +50,10 @@ After having managed to build SCION and after [creating or modifying your AS](..
         scion.sh start
 
 
-!!! Note
-    The configuration installed with the `scionlab-config` script as used in the [packaged installation](../install/pkg.md#configuration), is *not* directly compatible
-    with `supervisord` and the `scion.sh` machinery.
+{% include alert type="note" content="
+The configuration installed with the `scionlab-config` script as used in the [packaged installation](../install/pkg.md#configuration), is *not* directly compatible
+with `supervisord` and the `scion.sh` machinery.
+" %}
 
 
 ## Running SCION

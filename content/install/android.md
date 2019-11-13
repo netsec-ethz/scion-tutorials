@@ -7,9 +7,10 @@ nav_order: 40
 # Building from sources (Android)
 
 
-!!! Danger "Attention needed"
+{% include alert type="Danger" title="Attention needed" content="
+This page is supposed to be rewritten. Procedures described here are highly outdated and are not guaranteed to work.
+" %}
 
-    This page is supposed to be rewritten. Procedures described here are highly outdated and are not guaranteed to work. 
 
 
 ## Introduction
@@ -24,8 +25,9 @@ It is recommended to make yourself familiar with Termux by reading the [Wiki](ht
 
 ## SCION App
 
-!!! hint
-    The SCION App is currently in testing. With this App we aim to provide an easy way to install SCION on Android, so that the [manual setup](#manual-setup) won't be necessary anymore.
+{% include alert type="hint" content="
+The SCION App is currently in testing. With this App we aim to provide an easy way to install SCION on Android, so that the [manual setup](#manual-setup) won't be necessary anymore.
+" %}
 
 To install the SCION app, please contact [Stefan Schwarz](mailto:stefan_schwarz_de@outlook.com) to get an invite to the App testing group.
 
@@ -40,17 +42,19 @@ Once the SCION App has been installed, open it and run the following command wit
 
 That’s it! The process takes a while but is fully automatic. At the end, a dialog opens which asks to select the ‘gen’ folder from internal memory. Select it to continue.
 
-!!! hint
-    If the folder selection doesn't show up, run the following script to trigger it manually:
-    `./import_folder`
+{% include alert type="hint" content="
+If the folder selection doesn't show up, run the following script to trigger it manually: `./import_folder`
+" %}
 
 That means of course, that the ‘gen’ folder needs to be readily available on the internal memory. Download it directly or push it onto the device with ADB.
 
-!!! warning
-    SCION for Android currently only supports a SCION end host configuration, as described [in this tutorial](../advanced/setup_endhost.md)
+{% include alert type="warning" content="
+SCION for Android currently only supports a SCION end host configuration, as described [in this tutorial](../advanced/setup_endhost.md)
+" %}
 
-!!! warning
-    SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described [here](#changes-to-gen-folder)
+{% include alert type="warning" content="
+SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described [here](#changes-to-gen-folder)
+" %}
 
 
 ## Manual setup
@@ -204,8 +208,8 @@ pip2 install -r env/pip2/requirements.txt
 pip3 install -r env/pip3/requirements.txt
 TMPDIR=$PREFIX/tmp pip3 install lz4 PyNaCl PyYAML Pygments
 ```
-!!! warning "Supervisor"
-    In case the pip installation of the package "Supervisor" fails, you can install it manually:
+{% include alert type="Supervisor" content='
+In case the pip installation of the package "Supervisor" fails, you can install it manually:
 
 ```shell
 curl -O https://pypi.python.org/packages/44/60/698e54b4a4a9b956b2d709b4b7b676119c833d811d53ee2500f1b5e96dc3/supervisor-3.3.4.tar.gz
@@ -213,6 +217,7 @@ tar -xzf supervisor-3.3.4.tar.gz
 cd supervisor-3.3.4/
 python2 setup.py install
 ```
+' %}
 
 #### SCION Go dependencies
 

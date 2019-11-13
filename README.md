@@ -66,6 +66,18 @@ This is my content.
 
 See https://pmarsceill.github.io/just-the-docs/docs/navigation-structure/ for more info about the site navigation.
 
+## Extras
+
+TODO somebody should upstream these one day.
+
+### Alert/Tip/Note box
+
+```
+{% include alert type="Warning" title="DANGER!!1!" content="
+I am _very_ **dangerous**!
+" %}
+```
+
 ## Theme customization
 
 We use the [just-the-docs theme](https://pmarsceill.github.io/just-the-docs/) as a "remote theme", which means that the theme source is not included in this repository. However, by copying individual files from the theme to the same place here, we can override them. The theme is very overriding-friendly: see [just-the-docs customization docs](https://pmarsceill.github.io/just-the-docs/docs/customization/)). 
