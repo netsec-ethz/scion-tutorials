@@ -9,3 +9,4 @@ Gemfile.lock
 
 # jekyll-generated
 _site
+.jekyll-metadata
