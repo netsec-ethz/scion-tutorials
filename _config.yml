@@ -12,7 +12,8 @@ footer_content: 'Copyright &copy 2019, Network Security Group, ETH Zurich'
 
 # === visuals ===
 remote_theme: pmarsceill/just-the-docs
-#logo: /assets/favicon.ico
+logo: /assets/favicon.ico
+logo_title: SCIONLab
 
 # === defaults ===
 defaults:
