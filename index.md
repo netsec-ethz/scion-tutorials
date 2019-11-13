@@ -1,6 +1,7 @@
 ---
 title: Home
 nav_order: 1
+layout: default
 ---
 
 # Welcome to SCION Tutorials

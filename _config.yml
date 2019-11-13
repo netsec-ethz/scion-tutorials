@@ -16,7 +16,7 @@ remote_theme: pmarsceill/just-the-docs
 
 # === defaults ===
 defaults:
-  - scope: {path: ""}
+  - scope: {path: "content"}
     values:
       layout: default
 
