@@ -34,6 +34,7 @@ There are a few requirements for you or your organization to join SCIONLab as an
 | UDP | 50000--50010 | 0.0.0.0/0 | SCION inter-AS connectivity |
 | UDP | 30000 - 35000 | machines in the same SCION AS | SCION intra-AS connectivity |
 | TCP | 22 | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.87.0/24<br> 192.33.88.0/23<br> 192.33.91.0/24<br> 192.33.92.0/24<br> 192.33.93.0/24<br> 192.33.94.0/23<br> 192.33.96.0/21<br> 192.33.104.0/22<br> 192.33.108.0/23<br> 192.33.110.0/24 | Administrative SSH access for configuration management |
+| TCP | 443 | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.87.0/24<br> 192.33.88.0/23<br> 192.33.91.0/24<br> 192.33.92.0/24<br> 192.33.93.0/24<br> 192.33.94.0/23<br> 192.33.96.0/21<br> 192.33.104.0/22<br> 192.33.108.0/23<br> 192.33.110.0/24 | Administrative ILO/MGMT access (for physical machines) |
 
 !!! note
     Inter-AS connectivity is required only with the neighbouring ASes. In order to allow dynamic topology adjustments we recommend firewall opening for 0.0.0.0/0. In most cases, after determining the best neighbours for your AS, we can provide a narrowed-down list of networks.
