@@ -113,4 +113,4 @@ sudo systemctl restart scionlab.target
 
 ## Getting help
 
-If your stuck, don't hesitate to [get in contact](../index.md#contact)
+If you're stuck, don't hesitate to [get in contact](../../#contact).

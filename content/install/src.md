@@ -35,23 +35,20 @@ After having managed to build SCION and after [creating or modifying your AS](..
 
 1. Download the configuration tarfile from the SCIONLab coordination website.
 2. If using VPN, unpack the `client.conf` to `/etc/openvpn/` and start OpenVPN
-
-        #!shell
-        sudo systemctl restart openvpn@client
-
+   ```shell
+   sudo systemctl restart openvpn@client
+   ```
 3. Extract the `gen/` subdirectory to your `$SC` directory.
-
 4. Restart SCION
-
-        #!shell
-        cd $SC
-        scion.sh stop
-        supervisor/supervisor.sh reload  # necessary if supervisor.conf files changed
-        scion.sh start
-
+   ```shell
+   cd $SC
+   scion.sh stop
+   supervisor/supervisor.sh reload  # necessary if supervisor.conf files changed
+   scion.sh start
+   ```
 
 {% include alert type="note" content="
-The configuration installed with the `scionlab-config` script as used in the [packaged installation](../install/pkg.md#configuration), is *not* directly compatible
+The configuration installed with the `scionlab-config` script as used in the [packaged installation](../install/pkg.md#configuration) is *not* directly compatible
 with `supervisord` and the `scion.sh` machinery.
 " %}
 
