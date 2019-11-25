@@ -88,9 +88,3 @@ The big circle can be clicked on as well to view details of the Source AS.
 
 ### AS Certificate
 ![SCIONLab download page](../images/gendir_crt.png)
-
-## Related Links
-* [Webapp SCIONLab Apps Visualization](../as_visualization/webapp_apps.md)
-* [Webapp Development Tips](../as_visualization/webapp_development.md)
-* [Verifying the installation](../config/check.md)
-

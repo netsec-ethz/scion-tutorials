@@ -157,11 +157,3 @@ go run ${GOPATH}/src/github.com/netsec-ethz/scion-apps/webapp/tests/imgtest/imgs
 imageserver -s 1-ffaa:0:112,[127.0.0.2]:42002 -sciondFromIA &
 ```
 Now, from your webapp browser interface running on your virtual client SCION node, you can enter both client and server addresses and ask the client for the most recently generated remote image.
-
-## Related Links
-* [Webapp AS Visualization](../as_visualization/webapp.md)
-* [Webapp SCIONLab Apps Visualization](../as_visualization/webapp_apps.md)
-* [Fetching sensor readings or time stamps](../apps/fetch_sensor_readings.md)
-* [Fetching a camera image over the SCION network](../apps/access_camera.md)
-* [Running the bandwidthtester application](../apps/bwtester.md)
-

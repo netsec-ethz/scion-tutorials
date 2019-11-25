@@ -32,8 +32,7 @@ The retrieved image will appear scaled down and can be clicked on to open a larg
 ![Webapp Stats Test](../images/webapp_sensorapp.png?raw=true "Webapp Stats Test")
 
 ## Related Links
-* [Webapp AS Visualization](../as_visualization/webapp.md)
-* [Webapp Development Tips](../as_visualization/webapp_development.md)
+
 * [Fetching sensor readings or time stamps](../apps/fetch_sensor_readings.md)
 * [Fetching a camera image over the SCION network](../apps/access_camera.md)
 * [Running the bandwidthtester application](../apps/bwtester.md)

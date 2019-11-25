@@ -10,13 +10,11 @@ The [camerapp application](https://github.com/netsec-ethz/scion-apps/) contains 
 server applications which use the SCION network. Documentation on the code is available in the
 [README.md](https://github.com/netsec-ethz/scion-apps/blob/master/camerapp/README.md).
 
-## Packaged Setup
+## Install
 
-We provide a `camerapp` Debian package to easily install and run `camerapp` in the [SCIONLab](https://scionlab.org) environment.
-To install the `camerapp` package, run:
+To install `camerapp`, run:
 ```shell
 sudo apt install scion-apps-camerapp
-
 ```
 See [Installation](../install/pkg.md#applications) for details.
 
