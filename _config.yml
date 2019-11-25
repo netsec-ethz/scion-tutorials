@@ -4,9 +4,9 @@ description: A collection of tutorial pages for SCION
 aux_links:
   "SCIONLab":
     - "https://scionlab.org/"
-  "SCION home page":
+  "SCION Home Page":
     - "https://scion-architecture.net/"
-  "NetSec github":
+  "Our GitHub":
     - "https://github.com/netsec-ethz/"
 footer_content: 'Copyright &copy 2019, Network Security Group, ETH Zurich'
 
