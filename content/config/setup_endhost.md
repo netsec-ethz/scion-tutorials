@@ -1,7 +1,7 @@
 ---
 title: Configuring SCION end host
-parent: Advanced
-nav_order: 10
+parent: Configuration
+nav_order: 30
 ---
 
 # Configuring SCION end host
