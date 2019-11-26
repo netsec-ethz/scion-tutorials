@@ -6,7 +6,7 @@ The `webapp` tool can be used to test several aspects of any local topology.
     Most of the steps on this page are for localhost development only. If you are running a packaged install of SCIONLab, please see the [webapp package tutorial](../as_visualization/webapp.md).
 
 ## Development Setup/Run
-For running `webapp` in a development environment for the SCION Infrastructure, follow the SCIONLab development install and run process at [https://github.com/netsec-ethz/netsec-scion](https://github.com/netsec-ethz/netsec-scion).
+For running `webapp` in a development environment for the SCION Infrastructure, follow the SCIONLab development install and run process at [https://github.com/netsec-ethz/scion](https://github.com/netsec-ethz/scion).
 
 ## Local Topology
 Any local topology can be used with `webapp`, for example, the wide test topology:
