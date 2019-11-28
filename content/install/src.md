@@ -7,10 +7,10 @@ Building SCION from sources requires following a lengthy setup procedure and ins
 The development setup is currently supported/documented for **Ubuntu 16.04 _only_**.
 It is possible to build SCION on other systems, but no guidance is provided. To keep it simple, just run Ubuntu 16.04 in a VM or container if you can't/don't want to set it up on your workstation.
 
-Please follow the instructions in the [GitHub README](https://github.com/netsec-ethz/netsec-scion/) to clone and build SCION.
+Please follow the instructions in the [GitHub README](https://github.com/netsec-ethz/scion/) to clone and build SCION.
 
 !!! Note
-    SCIONLab runs a version of SCION built from the branch `scionlab` in netsec-ethz/netsec-scion.
+    SCIONLab runs a version of SCION built from the branch `scionlab` in netsec-ethz/scion.
     This branch (intentionally) lags behind the scionproto/scion master. As there are still (rarely) breaking changes in the SCION protocol, running `master` may or may not be compatible with `scionlab`.
 
 

@@ -221,7 +221,6 @@ cd $SC/env/go
 
 After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:
 
-1. [Running a local network topology](../general_scion_configuration/local_top.md) &ndash; Generate a sample topology and run SCION locally
 1. [Connecting to SCIONLab as an endhost](../advanced/setup_endhost.md) &ndash; Connect to the already running SCION topology as a mobile end host through an existing SCION setup.
 
 #### Changes to gen folder
