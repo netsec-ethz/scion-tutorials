@@ -17,7 +17,7 @@ Extract the `Vagrantfile`
 
 #### `vagrant up` fails with "Port 8000 is already in use"
 
-The `Vagrantfile` that we create tries to forward TCP port 8000, mainly to conveniently allow running the [SCIONLab webapp](/content/as_visualization/webapp/) in the VM.
+The `Vagrantfile` that we create tries to forward TCP port 8000, mainly to conveniently allow running the [SCIONLab webapp](/content/apps/as_visualization/webapp/) in the VM.
 
 The error occurs because another application (could also be another VM instance!) uses this port.
 Either stop the other application (find it using `netstat -natp | grep 8000`), or follow the instructions provided in the error message (see below) to change the forwarded port.

@@ -43,7 +43,7 @@ SCION host to the `/etc/hosts` file. Below you can see an example:
 ```
 
 {% include alert type="Tip" content="
-`imagefetcher` is also available via the [webapp](/content/as_visualization/webapp_apps/).
+`imagefetcher` is also available via the [webapp](/content/apps/as_visualization/webapp_apps/).
 " %}
 
 ## imageserver

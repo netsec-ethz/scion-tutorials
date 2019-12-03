@@ -14,7 +14,7 @@ After [configuring your AS on the SCIONLab website](/content/config/create_as/) 
 
 ## Running Webapp
 
-If you're running a VM, the simplest and recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCIONLab Apps Web Visualization](/content/as_visualization/webapp/).
+If you're running a VM, the simplest and recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCIONLab Apps Web Visualization](/content/apps/as_visualization/webapp/).
 This browser-based tool serves as a dashboard to your SCIONLab VM and includes various checks.
 
 

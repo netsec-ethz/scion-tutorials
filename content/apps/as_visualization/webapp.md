@@ -67,7 +67,7 @@ The Apps tab provides a portal to SCIONLab Apps, and uses your Source IA and a D
 The announced paths will be displayed in a combined topology in the window. To view the details of a specific path expand the path's data by clicking on the path number in the window on right side. You may also view a global map of selected paths by clicking the `Map` switch.
 
 #### Execute
-See the [SCIONLab Apps Visualization](/content/as_visualization/webapp_apps/) page for details about running SCIONLab Apps.
+See the [SCIONLab Apps Visualization](/content/apps/as_visualization/webapp_apps/) page for details about running SCIONLab Apps.
 
 ![SCIONLab download page](/content/images/sciond-paths.png)
 
