@@ -19,17 +19,17 @@ Supported client applications include `camerapp`, `sensorapp`, and `bwtester`. F
 
 Simply adjust the dials to the desired level, while the icon lock will allow you to keep one value constant.
 
-![Webapp Bandwidth Test](../images/webapp_bwtester.png?raw=true "Webapp Bandwidth Test")
+![Webapp Bandwidth Test](/content/images/webapp_bwtester.png?raw=true "Webapp Bandwidth Test")
 
 ### camerapp
 
 The retrieved image will appear scaled down and can be clicked on to open a larger size.
 
-![Webapp Image Test](../images/webapp_camerapp.png?raw=true "Webapp Image Test")
+![Webapp Image Test](/content/images/webapp_camerapp.png?raw=true "Webapp Image Test")
 
 ### sensorapp
 
-![Webapp Stats Test](../images/webapp_sensorapp.png?raw=true "Webapp Stats Test")
+![Webapp Stats Test](/content/images/webapp_sensorapp.png?raw=true "Webapp Stats Test")
 
 ## Related Links
 

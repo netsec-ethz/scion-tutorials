@@ -121,7 +121,7 @@ Usage of webapp:
 
 ## Local Visualizations
 You can point the browser to your test locally and view paths, run SCIONLab client apps, examine certificates and more.
-![SCION Localhost Paths](../images/scion_viz.png?raw=true "SCION Localhost Paths")
+![SCION Localhost Paths](/content/images/scion_viz.png?raw=true "SCION Localhost Paths")
 
 ## Local SCIONLab App Servers
 This Go web server wraps several SCION test client apps and provides an interface for any text and/or image output received. [SCIONLab Apps](http://github.com/netsec-ethz/scion-apps) are on Github.
