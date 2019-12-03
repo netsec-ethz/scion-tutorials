@@ -33,7 +33,7 @@ The retrieved image will appear scaled down and can be clicked on to open a larg
 
 ## Related Links
 
-* [Fetching sensor readings or time stamps](../apps/fetch_sensor_readings.html)
-* [Fetching a camera image over the SCION network](../apps/access_camera.html)
-* [Running the bandwidthtester application](../apps/bwtester.html)
+* [Fetching sensor readings or time stamps](../fetch_sensor_readings.html)
+* [Fetching a camera image over the SCION network](../access_camera.html)
+* [Running the bandwidthtester application](../bwtester.html)
 
