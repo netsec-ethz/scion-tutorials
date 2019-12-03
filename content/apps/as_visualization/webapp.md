@@ -57,7 +57,7 @@ Several menu options are available at the top of each `webapp` page, which are o
 ### Health
 The Health tab is the landing page for `webapp` that will automatically test your SCIONLab configuration for configuration and communication health. Additional help is available in our [troubleshooting guide](../faq/troubleshooting.md), if needed.
 
-![SCIONLab download page](../images/scion_healthcheck.png)
+![SCIONLab download page](/content/images/scion_healthcheck.png)
 
 
 ### Apps
@@ -69,7 +69,7 @@ The announced paths will be displayed in a combined topology in the window. To v
 #### Execute
 See the [SCIONLab Apps Visualization](../as_visualization/webapp_apps.md) page for details about running SCIONLab Apps.
 
-![SCIONLab download page](../images/sciond-paths.png)
+![SCIONLab download page](/content/images/sciond-paths.png)
 
 ### Files
 The `Files` menu on the page will allow you to navigate and serve any files on the SCIONLab node from the read-only (-r) directory you specified (if any) when starting `scion-webapp`.
@@ -81,10 +81,10 @@ The composition of services and border routers for the Source AS will be display
 The big circle can be clicked on as well to view details of the Source AS.
 " %}
 
-![SCIONLab download page](../images/sciond_astopo.png)
+![SCIONLab download page](/content/images/sciond_astopo.png)
 
 ### ISD TRC
-![SCIONLab download page](../images/gendir_trc.png)
+![SCIONLab download page](/content/images/gendir_trc.png)
 
 ### AS Certificate
-![SCIONLab download page](../images/gendir_crt.png)
+![SCIONLab download page](/content/images/gendir_crt.png)
