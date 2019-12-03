@@ -9,19 +9,19 @@ nav_order: 20
 
 ## Introduction
 
-After [configuring your AS on the SCIONLab website](../config/create_as.md) and [installing SCION](../install/index.md) you should now have a running SCIONLab AS. Follow the steps below to check that it is working as expected.
+After [configuring your AS on the SCIONLab website](../config/create_as.html) and [installing SCION](../install/) you should now have a running SCIONLab AS. Follow the steps below to check that it is working as expected.
 
 
 ## Running Webapp
 
-If you're running a VM, the simplest and recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCIONLab Apps Web Visualization](../apps/as_visualization/webapp.md).
+If you're running a VM, the simplest and recommended way of verifying a correct SCION infrastructure deployment is running the visualization tool [SCIONLab Apps Web Visualization](../apps/as_visualization/webapp.html).
 This browser-based tool serves as a dashboard to your SCIONLab VM and includes various checks.
 
 
 ## Terminal based
 
 For the following steps, log into the machine hosting the SCION services (with `vagrant ssh` if it is a virtual machine).
-If any of the checks fail, head over to the [Troubleshooting Guide](../faq/troubleshooting.md)
+If any of the checks fail, head over to the [Troubleshooting Guide](../faq/troubleshooting.html)
 
 ### Check VPN tunnel
 
@@ -69,7 +69,7 @@ Finally, check that you can ping the address listed in `RemoteOverlay`.
     sudo systemctl list-dependencies scionlab.target
 
 
-This should show all entries as green. If there are any failed services in this list, start [troubleshooting](../faq/troubleshooting.md)
+This should show all entries as green. If there are any failed services in this list, start [troubleshooting](../faq/troubleshooting.html)
 
 {% include alert type="note" content="
 Duplicated entries are bug in systemd which is fixed in Ubuntu 18.04. When using older platform, you can simply ignore them.
@@ -126,4 +126,4 @@ If you're running the application on a local topology, make sure to specify the 
 " %}
 
 
-Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to [the troubleshooting section](../faq/troubleshooting.md).
+Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to [the troubleshooting section](../faq/troubleshooting.html).

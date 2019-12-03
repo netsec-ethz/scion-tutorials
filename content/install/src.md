@@ -21,7 +21,7 @@ This branch (intentionally) lags behind the scionproto/scion master. As there ar
 " %}
 
 {% include alert type="Tip" content="
-If you only want to develop applications _using_ SCION, you may still rely on the convenience of our [pre-built binary packages](../install/pkg.md).
+If you only want to develop applications _using_ SCION, you may still rely on the convenience of our [pre-built binary packages](../install/pkg.html).
 
 The [scion-apps](https://github.com/netsec-ethz/scion-apps/) repository contains examples for applications that run
 on top of SCION.
@@ -30,7 +30,7 @@ on top of SCION.
 
 ## Configuration
 
-After having managed to build SCION and after [creating or modifying your AS](../config/create_as.md) in the SCIONLab coordination website, you can deploy the generated configuration to your machine.
+After having managed to build SCION and after [creating or modifying your AS](../config/create_as.html) in the SCIONLab coordination website, you can deploy the generated configuration to your machine.
 
 1. Download the configuration tarfile from the SCIONLab coordination website.
 2. If using VPN, unpack the `client.conf` to `/etc/openvpn/` and start OpenVPN
@@ -47,7 +47,7 @@ After having managed to build SCION and after [creating or modifying your AS](..
    ```
 
 {% include alert type="note" content="
-The configuration installed with the `scionlab-config` script as used in the [packaged installation](../install/pkg.md#configuration) is *not* directly compatible
+The configuration installed with the `scionlab-config` script as used in the [packaged installation](../install/pkg.html#configuration) is *not* directly compatible
 with `supervisord` and the `scion.sh` machinery.
 " %}
 

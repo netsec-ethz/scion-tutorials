@@ -10,7 +10,7 @@ nav_order: 30
 The `webapp` tool can be used to test several aspects of any local topology.
 
 {% include alert type="warning" content="
-Most of the steps on this page are for localhost development only. If you are running a packaged install of SCIONLab, please see the [webapp package tutorial](../as_visualization/webapp.md).
+Most of the steps on this page are for localhost development only. If you are running a packaged install of SCIONLab, please see the [webapp package tutorial](../as_visualization/webapp.html).
 " %}
 
 ## Development Setup/Run

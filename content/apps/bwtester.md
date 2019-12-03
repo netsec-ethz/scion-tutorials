@@ -14,7 +14,7 @@ To install `bwtestclient` and `bwtestserver`, run:
 ```shell
 sudo apt install scion-apps-bwtester
 ```
-See [Installation](../install/pkg.md#applications) for details.
+See [Installation](../install/pkg.html#applications) for details.
 
 ## bwtestclient
 
@@ -54,7 +54,7 @@ scion-bwtestclient -s 17-ffaa:1:13,[192.168.1.79]:30100 -cs 10,1000,1250,1Mbps -
 For more information run the application without arguments to print its usage.
 
 {% include alert type="Tip" content="
-`bwtestclient` is also available via the [webapp](../apps/as_visualization/webapp_apps.md).
+`bwtestclient` is also available via the [webapp](../apps/as_visualization/webapp_apps.html).
 " %}
 
 ## bwtestserver

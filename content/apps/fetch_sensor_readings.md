@@ -17,7 +17,7 @@ To install `sensorfetcher` and `sensorserver`, run:
 ```shell
 sudo apt install scion-apps-sensorapp
 ```
-See [Installation](../install/pkg.md#applications) for details.
+See [Installation](../install/pkg.html#applications) for details.
 
 
 ## sensorfetcher
