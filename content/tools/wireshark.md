@@ -20,12 +20,10 @@ In order to continue this tutorial, we will assume that you already have Wiresha
 ### Install Wireshark
 
 In order to install Wireshark, follow installation guide on [Wireshark website](https://www.wireshark.org/) for your platform. 
-Alternatively on Ubuntu system you can run following commands:
+On Ubuntu, simply run:
 
 ```shell
-sudo add-apt-repository ppa:wireshark-dev/stable
-sudo apt-get update
-sudo apt-get install wireshark
+sudo apt install wireshark
 ```
 
 ### Install Tshark
@@ -45,10 +43,10 @@ We need to find directory in which Wireshark or Tshark are looking for plugins s
 From **Help** menu select **About Wireshark** and in newly opened window select **Folders** tab. 
 There are paths to global and local plugin directory.
 
-In this tutorial we will use global plugin directory which is usually:
+In this tutorial we will use global lua plugin directory which is usually:
 
 ```
-/usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6
+/usr/lib/x86_64-linux-gnu/wireshark/plugins/
 ```
 
 Plugins from global plugin directory are available to all users, while local is only for currently running user.
@@ -58,22 +56,25 @@ Plugins from global plugin directory are available to all users, while local is 
 In order to find the directory where Tshark is loading plugins from we can run following command:
 
 ```
-tshark -G plugins
+tshark -G folders
 ```
 
 Output will look something like this:
 
 ```
-opcua.so    1.1.0   dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/opcua.so
-irda.so 0.0.6   dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/irda.so
-mate.so 1.0.0a  dissector   /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/mate.so
+...
+Personal Plugins:       /home/user/.local/lib/wireshark/plugins/2.6
+Global Plugins:         /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.6
+Personal Lua Plugins:   /home/user/.local/lib/wireshark/plugins
+Global Lua Plugins:     /usr/lib/x86_64-linux-gnu/wireshark/plugins
+Extcap path:            /usr/lib/x86_64-linux-gnu/wireshark/extcap
 ...
 ```
 
 Examining output we can conclude that plugins are being loaded from 
 
 ```
-/usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/
+/usr/lib/x86_64-linux-gnu/wireshark/plugins/
 ```
 
 So we will use that for our plugin directory.
@@ -87,6 +88,6 @@ It is necessary to download `scion.lua` file and place it in plugin directory ac
 In Ubuntu system this can be done with following command:
 
 ```
-sudo wget -P /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.2.6/ https://raw.githubusercontent.com/scionproto/scion/master/tools/wireshark/scion.lua
+sudo wget -P /usr/lib/x86_64-linux-gnu/wireshark/plugins/ https://raw.githubusercontent.com/scionproto/scion/master/tools/wireshark/scion.lua
 ```
 
