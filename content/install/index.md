@@ -1,4 +1,10 @@
-# Available options
+---
+title: Installation
+nav_order: 2
+has_children: true
+---
+
+# Installation: Available options
 
 SCIONLab supports three main options to run the SCION services that make up a SCION AS
 

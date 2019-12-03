@@ -1,8 +1,14 @@
+---
+title: SCION IP Gateway (SIG)
+parent: Applications
+nav_order: 60
+---
+
 # SCION IP Gateway (SIG)
 
-!!! Warning
-
-    This page has not been updated after the latest changes to SCIONLab and is out of date.
+{% include alert type="warning" content="
+This page has not been updated after the latest changes to SCIONLab and is out of date.
+" %}
 
 The [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/go/sig) enables legacy IP applications to communicate over SCION. This tutorial describes how to set up two SIGs locally to test the SIG can enable any IP application to communicate over SCION.
 

@@ -1,2 +1,12 @@
+# editor files
 *~
-venv
+
+# ruby files
+_vendor
+.bundle
+# ignoring this one because we always want to install the newest versions to match GitHub Pages
+Gemfile.lock
+
+# jekyll-generated
+_site
+.jekyll-metadata

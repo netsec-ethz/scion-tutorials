@@ -1,3 +1,9 @@
+---
+title: Building from sources (Linux)
+parent: Installation
+nav_order: 30
+---
+
 # Building from sources (Linux)
 
 If you're planning to make modifications to SCION implementation, you can build SCION from sources and run your SCIONLab AS with your own version of SCION.
@@ -9,16 +15,17 @@ It is possible to build SCION on other systems, but no guidance is provided. To 
 
 Please follow the instructions in the [GitHub README](https://github.com/netsec-ethz/scion/) to clone and build SCION.
 
-!!! Note
-    SCIONLab runs a version of SCION built from the branch `scionlab` in netsec-ethz/scion.
-    This branch (intentionally) lags behind the scionproto/scion master. As there are still (rarely) breaking changes in the SCION protocol, running `master` may or may not be compatible with `scionlab`.
+{% include alert type="note" content="
+SCIONLab runs a version of SCION built from the branch `scionlab` in netsec-ethz/scion.
+This branch (intentionally) lags behind the scionproto/scion master. As there are still (rarely) breaking changes in the SCION protocol, running `master` may or may not be compatible with `scionlab`.
+" %}
 
+{% include alert type="Tip" content="
+If you only want to develop applications _using_ SCION, you may still rely on the convenience of our [pre-built binary packages](../install/pkg.md).
 
-!!! Tip
-    If you only want to develop applications _using_ SCION, you may still rely on the convenience of our [pre-built binary packages](../install/pkg.md).
-
-    The [scion-apps](https://github.com/netsec-ethz/scion-apps/) repository contains examples for applications that run
-    on top of SCION.
+The [scion-apps](https://github.com/netsec-ethz/scion-apps/) repository contains examples for applications that run
+on top of SCION.
+" %}
 
 
 ## Configuration
@@ -27,24 +34,22 @@ After having managed to build SCION and after [creating or modifying your AS](..
 
 1. Download the configuration tarfile from the SCIONLab coordination website.
 2. If using VPN, unpack the `client.conf` to `/etc/openvpn/` and start OpenVPN
-
-        #!shell
-        sudo systemctl restart openvpn@client
-
+   ```shell
+   sudo systemctl restart openvpn@client
+   ```
 3. Extract the `gen/` subdirectory to your `$SC` directory.
-
 4. Restart SCION
+   ```shell
+   cd $SC
+   scion.sh stop
+   supervisor/supervisor.sh reload  # necessary if supervisor.conf files changed
+   scion.sh start
+   ```
 
-        #!shell
-        cd $SC
-        scion.sh stop
-        supervisor/supervisor.sh reload  # necessary if supervisor.conf files changed
-        scion.sh start
-
-
-!!! Note
-    The configuration installed with the `scionlab-config` script as used in the [packaged installation](../install/pkg.md#configuration), is *not* directly compatible
-    with `supervisord` and the `scion.sh` machinery.
+{% include alert type="note" content="
+The configuration installed with the `scionlab-config` script as used in the [packaged installation](../install/pkg.md#configuration) is *not* directly compatible
+with `supervisord` and the `scion.sh` machinery.
+" %}
 
 
 ## Running SCION

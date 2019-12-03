@@ -1,3 +1,9 @@
+---
+title: Bandwidth Tester
+parent: Applications
+nav_order: 30
+---
+
 # Bandwidth Tester
 
 The [bandwidth testing application `bwtester`](https://github.com/netsec-ethz/scion-apps/) enables a variety of bandwidth tests on the SCION network. Installation and usage are described below. Documentation of the code and protocol are described in the [bwtester README](https://github.com/netsec-ethz/scion-apps/blob/master/bwtester/README.md).
@@ -47,8 +53,9 @@ scion-bwtestclient -s 17-ffaa:1:13,[192.168.1.79]:30100 -cs 10,1000,1250,1Mbps -
 ```
 For more information run the application without arguments to print its usage.
 
-!!! Tip
-    `bwtestclient` is also available via the [webapp](../as_visualization/webapp_apps.md).
+{% include alert type="Tip" content="
+`bwtestclient` is also available via the [webapp](../as_visualization/webapp_apps.md).
+" %}
 
 ## bwtestserver
 

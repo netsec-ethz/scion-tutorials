@@ -1,3 +1,9 @@
+---
+title: Troubleshooting
+parent: Frequently Asked Questions
+nav_order: 20
+---
+
 # Troubleshooting
 
 ## Virtual Machine
@@ -90,8 +96,9 @@ In case of multiple failures, fixing issues in the following order usually works
 * anything else
 
 
-!!! Tip
-    First clear the `/var/log/scion/` directory and restart. This often helps to find the relevant log messages quicker.
+{% include alert type="Tip" content="
+First clear the `/var/log/scion/` directory and restart. This often helps to find the relevant log messages quicker.
+" %}
 
 
 #### Not receiving beacons
@@ -106,4 +113,4 @@ sudo systemctl restart scionlab.target
 
 ## Getting help
 
-If your stuck, don't hesitate to [get in contact](../index.md#contact)
+If you're stuck, don't hesitate to [get in contact](../../#contact).

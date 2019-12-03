@@ -1,3 +1,9 @@
+---
+title: bat ("cURL for SCION")
+parent: Applications
+nav_order: 40
+---
+
 # bat ("cURL for SCION")
 
 The [bat application](https://github.com/netsec-ethz/scion-apps/) is a cURL-like tool for sending HTTP requests to SCION enabled webservers and retrieve information in a human-readable format. Documentation is available in the [README.md](https://github.com/netsec-ethz/scion-apps/blob/master/bat/README.md).
@@ -68,8 +74,9 @@ be provided with the `-l` flag. E.g.:
 scion-bat -l 18-ffaa:1:2,[10.0.8.10]:0 https://host1:8080/route
 ```
 
-!!! note
-    The scheme defaults to HTTPS, unencrypted HTTP is not supported
+{% include alert type="note" content="
+The scheme defaults to HTTPS, unencrypted HTTP is not supported
+" %}
 
 ### Item
 

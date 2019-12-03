@@ -4,67 +4,85 @@ The website is deployed on [Github Pages](https://netsec-ethz.github.io/scion-tu
 
 ## About
 
-SCION tutorial pages are written in markdown and they are placed in the `content` directory. The HTML website is generated using [MkDocs](http://www.mkdocs.org/).
+SCION tutorial pages are written in markdown and they are placed in the `content` directory (with one exception: the home page is in `./index.md`).
 
-The generated HTML website is placed in the `docs` directory.
+The HTML website is generated using [Jekyll](http://www.jekyllrb.com/) with the [just-the-docs theme](https://pmarsceill.github.io/just-the-docs/).
 
 ## Building pages
 
-In order to build the website you will need to install [MkDocs](http://www.mkdocs.org/). 
-Also, the `pygments` package should be installed to enable syntax highlighting
-of code snippets in the tutorials.
-Note that different versions of mkdocs can generating rather different output. 
-To avoid this issue, prefer to use a virtual python environment and use the
-`requirements.txt` file to install the exact versions of the python packages.
+The webpage is rebuilt automatically when you push to GitHub. If you don't want to see the preview before pushing, you can stop reading now. (Using a Markdown-capable editor, such as the online editor online, might work well for this.)
 
+If you want to preview the docs locally, you need to install the `github-pages` gem (installs Jekyll in the same way as it is installed on GitHub pages):
 ```shell
-virtualenv -p /usr/bin/python2.7 venv
-source venv/bin/activate
-pip install -r requirements.txt
+bundle install --path _vendor/bundle
 ```
 
-In order to generate the website just run in the activated virtualenv:
+(You need a working Ruby+bundler install first, install those from your OS's packages.)
+
+In order to generate the website, run in the activated virtualenv:
 
 ```shell
-mkdocs build
+bundle exec jekyll build
 ```
 
-The newly generated website will be placed in the `docs` directory.
+The newly generated website will be placed in the `_site` directory.
 
 During the development phase, it is possible to run a local webserver and automatically refresh the website content. To do this, run:
 
 ```shell
-mkdocs serve
+bundle exec jekyll serve
 ```
 
-## Adding new page
+## Adding a new page
 
-Adding a new page consists of 2 steps:
+Create a `.md` file inside `content` (or an appropriate subdirectory, if it will have sub-pages). This file must have a [YAML front matter](https://jekyllrb.com/docs/front-matter/), which determines the site navigation structure.
 
-1. Add a new markdown file in the `content` directory with the page's content
-2. Add page information into the corresponding category with description in `mkdocs.yml` (at the end of the file)
+### Top-level page
 
-## mkdocs-material customisation
+Create `content/some-topic/index.md` (or just `content/some-topic.md`) with content like:
+```md
+---
+title: Some Topic
+nav_order: 47
+has_children: true  # omit if you don't want second-level pages
+---
 
-The `mkdocs-material` theme is used for the SCION tutorials page.
-To change the color palette used in this theme, the source code has to be edited (https://github.com/squidfunk/mkdocs-material/issues/874).
+This is my content.
+```
 
-Therefore the mkdocs-material source code was added as a git *subtree*, so we can add commits on top:
+### Second level page / child page
 
-    $ git subtree add -P mkdocs-material --squash https://github.com/squidfunk/mkdocs-material.git 3.0.4
+Create `content/some-topic/some-subtopic.md` with content like:
 
-Currently, the following customisations have been applied to the theme:
+```md
+---
+title: Some Subtopic
+parent: Some Topic
+nav_order: 42
+---
 
-  * Change primary/accent colors
-  * Set favicon
-  * Set font size and margin for title in navigation-panel
-  * Remove next/previous navigation links in footer
+This is my content.
+```
 
-Using git subtree will (hopefully) allow to update to newer versions of mkdocs-material if necessary, by running e.g.
+See https://pmarsceill.github.io/just-the-docs/docs/navigation-structure/ for more info about the site navigation.
 
-    $ git subtree pull -P mkdocs-material --squash https://github.com/squidfunk/mkdocs-material.git <tag>
+## Extras
 
-After updating the mkdocs-material version and re-applying the customisations, the theme has to be rebuilt; you'll need `nodejs>=8` and `npm` installed, then simply run `make` and check in the rebuilt `mkdocs-material/material` folder.
+TODO somebody should upstream these one day.
+
+### Alert/Tip/Note box
+
+```
+{% include alert type="Warning" title="DANGER!!1!" content="
+I am _very_ **dangerous**!
+" %}
+```
+
+## Theme customization
+
+We use the [just-the-docs theme](https://pmarsceill.github.io/just-the-docs/) as a "remote theme", which means that the theme source is not included in this repository. However, by copying individual files from the theme to the same place here, we can override them. The theme is very overriding-friendly: see [just-the-docs customization docs](https://pmarsceill.github.io/just-the-docs/docs/customization/)). 
+
+If you are making some generally useful changes, consider opening a PR in the upstream theme instead.
 
 ## Check links
 

@@ -1,3 +1,9 @@
+---
+title: Adding Wireshark and Tshark SCION protocol dissector
+parent: Tools
+nav_order: 10
+---
+
 # Adding Wireshark and Tshark SCION protocol dissector
 
 ## Introduction
@@ -9,8 +15,7 @@ of SCION protocol. You can read more on what protocol dissector does on [Wiresha
 
 In order to continue this tutorial, we will assume that you already have Wireshark or Tshark installed on your system.
 
-!!! tip
-    Running Wireshark is recommended on machines with graphical interface. 
+{% include alert type="Tip" content="Running Wireshark is recommended on machines with graphical interface." %}
 
 ### Install Wireshark
 

@@ -1,16 +1,20 @@
+---
+title: Access camera images over SCION network
+parent: Applications
+nav_order: 20
+---
+
 # Access camera images over SCION network
 
 The [camerapp application](https://github.com/netsec-ethz/scion-apps/) contains image fetcher and
 server applications which use the SCION network. Documentation on the code is available in the
 [README.md](https://github.com/netsec-ethz/scion-apps/blob/master/camerapp/README.md).
 
-## Packaged Setup
+## Install
 
-We provide a `camerapp` Debian package to easily install and run `camerapp` in the [SCIONLab](https://scionlab.org) environment.
-To install the `camerapp` package, run:
+To install `camerapp`, run:
 ```shell
 sudo apt install scion-apps-camerapp
-
 ```
 See [Installation](../install/pkg.md#applications) for details.
 
@@ -38,8 +42,9 @@ SCION host to the `/etc/hosts` file. Below you can see an example:
 17-ffaa:0:1,[192.168.1.1]                               localhost
 ```
 
-!!! Tip
-    `imagefetcher` is also available via the [webapp](../as_visualization/webapp_apps.md).
+{% include alert type="Tip" content="
+`imagefetcher` is also available via the [webapp](../as_visualization/webapp_apps.md).
+" %}
 
 ## imageserver
 

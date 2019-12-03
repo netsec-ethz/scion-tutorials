@@ -1,3 +1,9 @@
+---
+title: Installing packages
+parent: Installation
+nav_order: 20
+---
+
 # Installing packages
 
 ## SCION Services
@@ -42,12 +48,12 @@ website thinks you're running the latest version, e.g. in case you've locally
 modified your configuration and want it to be reset.
 
 
-!!! Note
-    The SCION services will be run as user `scion`.
-    The configuration files for the SCION services are kept in `/etc/scion/`,
-    log files will be placed in `/var/log/scion/`,
-    and state (sqlite db-files) will be placed in `/var/run/scion/`.
-
+{% include alert type="note" content="
+The SCION services will be run as user `scion`.
+The configuration files for the SCION services are kept in `/etc/scion/`,
+log files will be placed in `/var/log/scion/`,
+and state (sqlite db-files) will be placed in `/var/run/scion/`.
+" %}
 
 
 ### Unpack configuration manually
