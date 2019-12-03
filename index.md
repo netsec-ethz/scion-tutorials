@@ -20,15 +20,15 @@ It also provides a list of interesting projects that are using the SCION infrast
 ## Quick Start
 
 The following steps describe the quickest path to success to run a SCIONLab AS.
-For more detailed information, follow the instructions in the [Installation](install/index.md) and
-[Configuration](config/create_as.md) sections.
+For more detailed information, follow the instructions in the [Installation](/content/install/) and
+[Configuration](/content/config/) sections.
 
 1. Register on the [SCIONLab coordination website](https://www.scionlab.org)
 2. Navigate to `My ASes` and click `Create a new SCIONLab AS`:
     * Select any of the available attachment points; pick the closest one for shorter latency
     * Enable `Use VPN` and select the installation type `Run SCION in a Vagrant virtual machine`
     * Confirm by clicking `Create AS`
-3. Install [Vagrant and VirtualBox](install/vm.md)
+3. Install [Vagrant and VirtualBox](/content/install/vm/)
 4. Download the generated tarfile, extract the `Vagrantfile` and start the VM by executing `vagrant up`.
 
 

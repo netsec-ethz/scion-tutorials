@@ -98,7 +98,7 @@ available Attachment Points have an IPv6 address configured.
 
 Finally, select the type of SCION installation for which the configuration should be created.
 
-* Installation Type: please refer to [Installation/Pick an Option](../install/index.md).
+* Installation Type: please refer to [Installation/Pick an Option](/content/install/).
 
 
 ## Download and install configuration
@@ -106,6 +106,6 @@ Finally, select the type of SCION installation for which the configuration shoul
 After creating or modifying your AS as described above, you can deploy the generated configuration to your machine.
 The procedure for this depends on which type of SCION installation you chose. Please follow the instructions on the individual pages.
 
-* [Instructions for `Run SCION in Vagrant virtual machine`](../install/vm.md)
-* [Instructions for `SCION installation from packages`](../install/pkg.md)
-* [Instructions for `SCION installation from sources`](../install/src.md)
+* [Instructions for `Run SCION in Vagrant virtual machine`](/content/install/vm/)
+* [Instructions for `SCION installation from packages`](/content/install/pkg/)
+* [Instructions for `SCION installation from sources`](/content/install/src/)

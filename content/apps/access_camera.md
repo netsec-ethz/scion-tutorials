@@ -16,7 +16,7 @@ To install `camerapp`, run:
 ```shell
 sudo apt install scion-apps-camerapp
 ```
-See [Installation](../install/pkg.md#applications) for details.
+See [Installation](/content/install/pkg/#applications) for details.
 
 ## imagefetcher
 
@@ -43,7 +43,7 @@ SCION host to the `/etc/hosts` file. Below you can see an example:
 ```
 
 {% include alert type="Tip" content="
-`imagefetcher` is also available via the [webapp](../as_visualization/webapp_apps.md).
+`imagefetcher` is also available via the [webapp](/content/as_visualization/webapp_apps/).
 " %}
 
 ## imageserver

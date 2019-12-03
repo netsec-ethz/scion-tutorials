@@ -16,7 +16,7 @@ To install `webapp`, run:
 ```shell
 sudo apt install scion-apps-webapp
 ```
-See [Installation](../install/pkg.md#applications) for details.
+See [Installation](/content/install/pkg/#applications) for details.
 
 
 Start the `webapp` service:
@@ -55,7 +55,7 @@ scion-webapp \
 Several menu options are available at the top of each `webapp` page, which are outlined below. Each of the features below use your SCIONLab IA the the source address.
 
 ### Health
-The Health tab is the landing page for `webapp` that will automatically test your SCIONLab configuration for configuration and communication health. Additional help is available in our [troubleshooting guide](../faq/troubleshooting.md), if needed.
+The Health tab is the landing page for `webapp` that will automatically test your SCIONLab configuration for configuration and communication health. Additional help is available in our [troubleshooting guide](/content/faq/troubleshooting/), if needed.
 
 ![SCIONLab download page](/content/images/scion_healthcheck.png)
 
@@ -67,7 +67,7 @@ The Apps tab provides a portal to SCIONLab Apps, and uses your Source IA and a D
 The announced paths will be displayed in a combined topology in the window. To view the details of a specific path expand the path's data by clicking on the path number in the window on right side. You may also view a global map of selected paths by clicking the `Map` switch.
 
 #### Execute
-See the [SCIONLab Apps Visualization](../as_visualization/webapp_apps.md) page for details about running SCIONLab Apps.
+See the [SCIONLab Apps Visualization](/content/as_visualization/webapp_apps/) page for details about running SCIONLab Apps.
 
 ![SCIONLab download page](/content/images/sciond-paths.png)
 

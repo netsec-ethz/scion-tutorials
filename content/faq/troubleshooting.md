@@ -7,7 +7,7 @@ nav_order: 20
 # Troubleshooting
 
 ## Virtual Machine
-The following relate to [running a Vagrant Virtual Machine](../install/vm.md).
+The following relate to [running a Vagrant Virtual Machine](/content/install/vm/).
 
 #### Where is the `Vagrantfile`?
 
@@ -17,7 +17,7 @@ Extract the `Vagrantfile`
 
 #### `vagrant up` fails with "Port 8000 is already in use"
 
-The `Vagrantfile` that we create tries to forward TCP port 8000, mainly to conveniently allow running the [SCIONLab webapp](../as_visualization/webapp.md) in the VM.
+The `Vagrantfile` that we create tries to forward TCP port 8000, mainly to conveniently allow running the [SCIONLab webapp](/content/as_visualization/webapp/) in the VM.
 
 The error occurs because another application (could also be another VM instance!) uses this port.
 Either stop the other application (find it using `netstat -natp | grep 8000`), or follow the instructions provided in the error message (see below) to change the forwarded port.
@@ -52,7 +52,7 @@ If you've lost track of which VMs are running or lost your `Vagrantfile`s, you c
 
 ## VPN
 
-The following relate to AS [configured to use VPN](../config/create_as.md#configure-a-scionlab-as).
+The following relate to AS [configured to use VPN](/content/config/create_as/#configure-a-scionlab-as).
 
 
 #### VPN connection fails
