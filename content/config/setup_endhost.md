@@ -43,7 +43,7 @@ and then install the packages using:
 sudo apt-get install scion-daemon scion-dispatcher
 ```
 
-Of course you can also use the other [available installation options](/content/install/).
+Of course you can also use the other [available installation options](../install/index.md).
 When running the VM installation, the steps will be virtually identical with the only difference that they need to be performed in the respective VMs.
 When running SCION built from sources, the directory paths will be different (configuration in `$GOPATH/src/github.com/scionproto/scion` instead of `/etc/scion`) and the `systemctl` commands would be replaced with the `scion.sh` script.
 
@@ -104,4 +104,4 @@ systemctl enable --now scion-dispatcher.service
 systemctl enable --now scion-daemon@XX-ffaa_1_YYYY.service
 ```
 
-Test that your connection is working, e.g. by using `scmp echo` (as described in [checking AS configuration](/content/config/check/#ping)) and start using the applications.
+Test that your connection is working, e.g. by using `scmp echo` (as described in [checking AS configuration](../config/check.md#ping)) and start using the applications.

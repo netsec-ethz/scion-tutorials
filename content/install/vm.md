@@ -23,7 +23,7 @@ For other platforms, please consult the official installation instructions:
 
 ## Using Vagrant to run the VM
 
-After [creating your AS](/content/config/create_as/) in the SCIONLab coordination
+After [creating your AS](../config/create_as.md) in the SCIONLab coordination
 website, you will be able to download a tarfile with `Vagrantfile` allowing you to easily build your SCIONLab VM.
 
 {% include alert type="note" content="
@@ -64,7 +64,7 @@ More information about `vagrant` commands can be found at <https://www.vagrantup
 
 As indicated above, the initial version of the configuration will automatically be provisioned.
 To update the configuration in an existing VM, the workflow is the same as when running
-an [installation from packages](/content/install/pkg/) -- connect to your running VM
+an [installation from packages](../install/pkg.md) -- connect to your running VM
 (`vagrant ssh`) and execute
 
 ```shell
@@ -76,7 +76,7 @@ sudo scionlab-config
 
 The SCION services are automatically started when the VM boots up.
 
-To interact with the SCION services, you can use the same tools as when running an [installation from packages](/content/install/pkg/#running-scion) --
+To interact with the SCION services, you can use the same tools as when running an [installation from packages](../install/pkg.md#running-scion) --
 connect to your running VM (`vagrant ssh`) and use systemd to start and stop the services
 ```
 sudo systemctl start scionlab.target              # Start all SCION services

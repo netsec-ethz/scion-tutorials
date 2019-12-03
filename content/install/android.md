@@ -49,7 +49,7 @@ If the folder selection doesn't show up, run the following script to trigger it 
 That means of course, that the ‘gen’ folder needs to be readily available on the internal memory. Download it directly or push it onto the device with ADB.
 
 {% include alert type="warning" content="
-SCION for Android currently only supports a SCION end host configuration, as described [in this tutorial](/content/config/setup_endhost/)
+SCION for Android currently only supports a SCION end host configuration, as described [in this tutorial](../config/setup_endhost.md)
 " %}
 
 {% include alert type="warning" content="
@@ -232,7 +232,7 @@ cd $SC/env/go
 
 After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:
 
-1. [Connecting to SCIONLab as an endhost](/content/config/setup_endhost/) &ndash; Connect to the already running SCION topology as a mobile end host through an existing SCION setup.
+1. [Connecting to SCIONLab as an endhost](../config/setup_endhost.md) &ndash; Connect to the already running SCION topology as a mobile end host through an existing SCION setup.
 
 #### Changes to gen folder
 

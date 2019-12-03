@@ -14,7 +14,7 @@ To install `bat`, run:
 ```shell
 sudo apt install scion-apps-bat
 ```
-See [Installation](/content/install/pkg/#applications) for details.
+See [Installation](../install/pkg.md#applications) for details.
 
 ## Usage
 
