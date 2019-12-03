@@ -1,6 +1,7 @@
 # === basics ===
 title: SCIONLab Tutorials
 description: A collection of tutorial pages for SCION
+permalink: pretty
 aux_links:
   "SCIONLab":
     - "https://scionlab.org/"
