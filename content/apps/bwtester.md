@@ -45,7 +45,7 @@ SCION host to the `/etc/hosts` file. Below you can see an example:
 17-ffaa:0:1,[192.168.1.1]                               localhost
 ```
 
-### Controlling the bandwidth
+## Controlling the bandwidth
 The application supports specification of the test duration (up to 10 seconds), the packet size to be used (at least 4 bytes), the total number of packets that will be sent, and the target bandwidth. For instance, `5,100,10,1600bps` specifies that 10 packets of size 100 bytes will be sent over 5 seconds, resulting in a bandwidth of 1600bps. The question mark `?` character can be used as wildcard for any of these parameters. Its value is then computed according to the other parameters. The parameters for the test in the client-to-server direction are specified with `-cs`, and the server-to-client direction with `-sc`. So for instance to send 1 Mbps for 10 seconds from the client to the server, and 10 Mbps from the server to the client, you can use this command:
 
 ```
@@ -71,4 +71,34 @@ uses localhost to bind to. In this case, the port can be specified with the `-p`
 
 ```
 scion-bwtestserver -p 30100 &
+```
+
+## SCIONLAb Test Servers
+
+There are multiple bandwidth servers deployed inside the SCIONLab infrastructure. Some of them can be reached using the following addresses
+
+```
+16-ffaa:0:1001,[172.31.0.23]:30100
+16-ffaa:0:1002,[172.31.43.7]:30100
+16-ffaa:0:1003,[172.31.19.144]:30100
+16-ffaa:0:1004,[172.31.0.28]:30100
+16-ffaa:0:1005,[172.31.26.94]:30100
+16-ffaa:0:1007,[172.31.21.177]:30100
+17-ffaa:0:1102,[129.132.121.164]:30100
+17-ffaa:0:1102,[192.33.92.68]:30100
+17-ffaa:0:1102,[192.33.93.177]:30100
+17-ffaa:0:1107,[192.33.93.195]:30100
+17-ffaa:0:1108,[195.176.0.237]:30100
+17-ffaa:0:1108,[195.176.28.157]:30100
+18-ffaa:0:1201,[128.237.152.165]:30100
+18-ffaa:0:1201,[128.237.152.180]:30100
+18-ffaa:0:1206,[128.237.153.120]:30100
+19-ffaa:0:1302,[192.168.1.1]:30100
+19-ffaa:0:1302,[192.168.1.2]:30100
+19-ffaa:0:1303,[141.44.25.144]:30100
+19-ffaa:0:1309,[158.42.255.13]:30100
+20-ffaa:0:1401,[134.75.250.114]:30100
+20-ffaa:0:1404,[203.230.60.98]:30100
+26-ffaa:0:2001,[134.75.253.105]:30100
+26-ffaa:0:2002,[134.75.253.20]:30100
 ```
