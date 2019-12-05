@@ -73,7 +73,7 @@ uses localhost to bind to. In this case, the port can be specified with the `-p`
 scion-bwtestserver -p 30100 &
 ```
 
-## SCIONLAb Test Servers
+## SCIONLab Test Servers
 
 There are multiple bandwidth servers deployed inside the SCIONLab infrastructure. Some of them can be reached using the following addresses
 
