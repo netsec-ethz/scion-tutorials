@@ -68,3 +68,4 @@ The following are not requirements, but recommendations:
 
 - The border router should be near (latency-wise) the IP border of your AS or organization.
 - Co-locating the nodes in your datacenter is usually a good idea as it reduces network latency.
+- Given the fact SCIONLab is a research network dedicated mainly for running experiments, you may want to place the SCIONLab node(s) in a DMZ or a dedicated subnet.
