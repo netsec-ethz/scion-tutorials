@@ -57,6 +57,7 @@ The ICMP connectivity is required for diagnosing the state of the network in cas
 " %}
 
 ### Outgoing connectivity requirements
+
 | Protocol       | Port     | Destination     | Comment |
 | :------------- | :----------: | :-----------: | -----------: |
 | ICMP | | 0.0.0.0/0 | Heartbeats |
