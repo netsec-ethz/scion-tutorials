@@ -31,39 +31,9 @@ There are a few requirements for you or your organization to join SCIONLab as an
 - The machine should have a minimum of 4 CPUs, 8 GB of RAM and 40 GB of disk space. In most of the cases a VM can suffice.
 - OS for the SCION infrastructure node must be Ubuntu 18.04.
 - The border router node(s) must have a public static IP. Any other SCION services can run with private static IP.
-- Firewall has to be configured according to the connectivity matrix below.
+- Firewall must be configured according to the [SCION AS connectivity matrix](./as_connectivity.html).
 
-### Incoming connectivity requirements
-
-| Protocol       | Port     | Source     | Comment |
-| :------------- | :----------: | :-----------: | -----------: |
-| ALL | | ESTABLISHED | |
-| ICMP | | 0.0.0.0/0 | Heartbeats |
-| UDP | 50000--50010 | 0.0.0.0/0 | SCION inter-AS connectivity |
-| UDP | 30000 - 35000 | machines in the same SCION AS | SCION intra-AS connectivity |
-| TCP | 22 | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.87.0/24<br> 192.33.88.0/23<br> 192.33.91.0/24<br> 192.33.92.0/24<br> 192.33.93.0/24<br> 192.33.94.0/23<br> 192.33.96.0/21<br> 192.33.104.0/22<br> 192.33.108.0/23<br> 192.33.110.0/24 | Administrative SSH access for configuration management |
-| TCP | 443 | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.87.0/24<br> 192.33.88.0/23<br> 192.33.91.0/24<br> 192.33.92.0/24<br> 192.33.93.0/24<br> 192.33.94.0/23<br> 192.33.96.0/21<br> 192.33.104.0/22<br> 192.33.108.0/23<br> 192.33.110.0/24 | Administrative ILO/MGMT access (for physical machines) |
-
-{% include alert type="note" content="
-Inter-AS connectivity is required only with the neighbouring ASes. In order to allow dynamic topology adjustments we recommend firewall opening for 0.0.0.0/0. In most cases, after determining the best neighbours for your AS, we can provide a narrowed-down list of networks.
-" %}
-
-{% include alert type="note" content="
-As an alternative we can also operate connections over a tunnel, e.g. OpenVPN or Wireguard. However please note this will be done only in a special scenarios, e.g. installing a node in a country with strict network policy regarding connectivity abroad. In that case UDP connectivity can be stricter, but inbound SSH connectivity from networks listed above must work.
-" %}
-
-{% include alert type="note" content="
-The ICMP connectivity is required for diagnosing the state of the network in case of any issues with the node. In case it is not provided, the node will be considered down as soon as it's not reachable via SSH without further investigations.
-" %}
-
-### Outgoing connectivity requirements
-
-| Protocol       | Port     | Destination     | Comment |
-| :------------- | :----------: | :-----------: | -----------: |
-| ICMP | | 0.0.0.0/0 | Heartbeats |
-| IP | ALL | 0.0.0.0/0 | Outside world |
-
-### Recommendations
+## Recommendations
 
 The following are not requirements, but recommendations:
 
