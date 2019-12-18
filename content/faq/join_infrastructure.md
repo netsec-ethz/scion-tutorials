@@ -15,13 +15,13 @@ This page is supposed to give you a general overview over joining as a part of t
 
 ## Procedure
 
-- [Get in contact with us](../../#contact) telling you want to join the infrastructure.
-- Once the node(s) are ready on your side, create a `scionlab` user with full `sudo` rights and access for the SCIONLab team.
-- The SCIONLab admins will perform measurements to find the most appropriate neighbors to your AS. We will notify you of the result.
-- Once the neighboring ASes have been decided, the administrators will install SCION services and configure monitoring for the node(s).
-- Your AS is now connected to the infrastructure of SCIONLab and hosts within your network now have direct access to SCIONLab.
+1. [Get in contact with us](../../#contact) telling you want to join the infrastructure.
+2. Once the node(s) are ready on your side, create a `scionlab` user with full `sudo` rights and access for the SCIONLab team.
+3. The SCIONLab admins will perform measurements to find the most appropriate neighbors to your AS. We will notify you of the result.
+4. Once the neighboring ASes have been decided, the administrators will install SCION services and configure monitoring for the node(s).
+5. Your AS is now connected to the infrastructure of SCIONLab and hosts within your network now have direct access to SCIONLab.
 
-Once the node(s) are part of the SCIONLab infrastructure, their configuration will be centrally managed via Ansible in order to keep the whole infrastructure in the best shape. You will not be required to take any action as long as the machine remains accessible for us.
+Once the node(s) are part of the SCIONLab infrastructure, their configuration will be centrally managed via Ansible in order to keep the whole infrastructure in the best shape. You will not be required to take any action as long as the machine remains accessible to us.
 
 ## Requirements
 
@@ -30,8 +30,8 @@ There are a few requirements for you or your organization to join SCIONLab as an
 - Infrastructure ASes and nodes are required to be active 24 hours a day, 7 days a week. The SCIONLab administrators can typically handle all SCION related problems, but sometimes they will contact you if they cannot perform certain tasks. An example would be to change a drive if it failed, etc.
 - The machine should have a minimum of 4 CPUs, 8 GB of RAM and 40 GB of disk space. In most of the cases a VM can suffice.
 - OS for the SCION infrastructure node must be Ubuntu 18.04.
-- The border router node(s) must have a public static IP. Any other SCION services can run with private static IP.
-- Firewall must be configured according to the [SCION AS connectivity matrix](./as_connectivity.html).
+- The border router node(s) must have a public static IP address. Any other SCION services can run with private static IP addresses.
+- Any firewalls affecting the node must be configured according to the [SCION AS connectivity matrix](./as_connectivity.html).
 
 ## Recommendations
 
