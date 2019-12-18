@@ -1,8 +1,10 @@
 ---
-title: SCION AS connectivity requirements
+title: SCIONLab AS connectivity requirements
 parent: Frequently Asked Questions
 nav_order: 11
 ---
+
+This page lists the connectivity requirements for running a SCIONLab AS. Any firewalls or other network equipment must be configured to allow these.
 
 # Incoming connectivity requirements
 
