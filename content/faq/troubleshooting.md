@@ -59,12 +59,12 @@ The following relate to AS [configured to use VPN](../config/create_as.html#conf
 
 Check the OpenVPN client log for specific information, using `sudo journalctl -e -u openvpn`.
 
-An unspecific timeout typically indicates that your behind a firewall that blocks UDP port 1194. Please contact your network administrators to unblock this port.
+An unspecific timeout typically indicates that you are behind a firewall that blocks UDP port 1194. Please contact your network administrators to unblock this port.
 
 
 #### Border Router fails to start
 
-If you see (e.g. that your border router did not start, it is likely that the border router was trying to start before the VPN tunnel interface was up.
+If you see for example that your border router did not start, it is likely that the border router was trying to start before the VPN tunnel interface was up.
 
 Simply try again;
 
@@ -86,7 +86,7 @@ The following are common issues or troubleshooting strategies for a SCION AS.
 
 Typically, this indicates a configuration error.
 
-If you've configured to use VPN, check the "Border Router fails to start" entry in the VPN section above.
+If you've configured to use a VPN, check the "Border Router fails to start" entry in the VPN section above.
 
 Inspect the logs of the failed services to find details.
 In case of multiple failures, fixing issues in the following order usually works best:
@@ -105,7 +105,7 @@ First clear the `/var/log/scion/` directory and restart. This often helps to fin
 
 Log of the beacon server (`/var/logs/scion/bs*.log`) does not contain recent entries referring to `Registered beacons`.
 
-As at the time of writing there are certain failure modes of the border routers that are hard to diagnose and are fixed with a simple restart, first thing to try is to turn it off and on again:
+As at the time of writing there are certain failure modes of the border routers that are hard to diagnose and are fixed with a simple restart, the first thing to try is to turn it off and on again:
 
 ```
 sudo systemctl restart scionlab.target

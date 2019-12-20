@@ -29,9 +29,9 @@ There are a few requirements for you or your organization to join SCIONLab as an
 
 - Infrastructure ASes and nodes are required to be active 24 hours a day, 7 days a week. The SCIONLab administrators can typically handle all SCION related problems, but sometimes they will contact you if they cannot perform certain tasks. An example would be to change a drive if it failed, etc.
 - The machine should have a minimum of 4 CPUs, 8 GB of RAM and 40 GB of disk space. In most of the cases a VM can suffice.
-- OS for the SCION infrastructure node must be Ubuntu 18.04.
-- The border router node(s) must have a public static IP. Any other SCION services can run with private static IP.
-- Firewall has to be configured according to the connectivity matrix below.
+- The OS for the SCION infrastructure node must be Ubuntu 18.04.
+- The border router node(s) must have a public static IP address. Any other SCION services can run with a private static IP address.
+- The firewall has to be configured according to the connectivity matrix below.
 
 ### Incoming connectivity requirements
 
@@ -45,7 +45,7 @@ There are a few requirements for you or your organization to join SCIONLab as an
 | TCP | 443 | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.87.0/24<br> 192.33.88.0/23<br> 192.33.91.0/24<br> 192.33.92.0/24<br> 192.33.93.0/24<br> 192.33.94.0/23<br> 192.33.96.0/21<br> 192.33.104.0/22<br> 192.33.108.0/23<br> 192.33.110.0/24 | Administrative ILO/MGMT access (for physical machines) |
 
 {% include alert type="note" content="
-Inter-AS connectivity is required only with the neighbouring ASes. In order to allow dynamic topology adjustments we recommend firewall opening for 0.0.0.0/0. In most cases, after determining the best neighbours for your AS, we can provide a narrowed-down list of networks.
+Inter-AS connectivity is required only with the neighbouring ASes. In order to allow dynamic topology adjustments we recommend opening your firewall for 0.0.0.0/0. In most cases, after determining the best neighbours for your AS, we can provide a narrowed-down list of networks.
 " %}
 
 {% include alert type="note" content="
@@ -69,4 +69,4 @@ The following are not requirements, but recommendations:
 
 - The border router should be near (latency-wise) the IP border of your AS or organization.
 - Co-locating the nodes in your datacenter is usually a good idea as it reduces network latency.
-- Given the fact SCIONLab is a research network dedicated mainly for running experiments, you may want to place the SCIONLab node(s) in a DMZ or a dedicated subnet.
+- Given the fact that SCIONLab is a research network dedicated mainly to running experiments, you may want to place the SCIONLab node(s) in a DMZ or a dedicated subnet.
