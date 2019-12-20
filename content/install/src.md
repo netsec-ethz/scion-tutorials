@@ -6,8 +6,8 @@ nav_order: 30
 
 # Building from sources (Linux)
 
-If you're planning to make modifications to SCION implementation, you can build SCION from sources and run your SCIONLab AS with your own version of SCION.
-For developer's convenience, SCIONLab supports generating configurations that are compatible with the scripts and machinery intended to run SCION in a development environment.
+If you're planning to make modifications to the SCION implementation, you can build SCION from sources and run your SCIONLab AS with your own version of SCION.
+For developers' convenience, SCIONLab supports generating configurations that are compatible with the scripts and machinery intended to run SCION in a development environment.
 
 Building SCION from sources requires following a lengthy setup procedure and installing various development dependencies.
 The development setup is currently supported/documented for **Ubuntu 16.04 _only_**.
@@ -33,7 +33,7 @@ on top of SCION.
 After having managed to build SCION and after [creating or modifying your AS](../config/create_as.html) in the SCIONLab coordination website, you can deploy the generated configuration to your machine.
 
 1. Download the configuration tarfile from the SCIONLab coordination website.
-2. If using VPN, unpack the `client.conf` to `/etc/openvpn/` and start OpenVPN
+2. If you plan on using a VPN, unpack the `client.conf` to `/etc/openvpn/` and start OpenVPN
    ```shell
    sudo systemctl restart openvpn@client
    ```
