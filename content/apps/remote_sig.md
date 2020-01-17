@@ -6,16 +6,19 @@ nav_order: 60
 
 # SCION IP Gateway (SIG)
 
-{% include alert type="warning" content="
-This page has not been updated after the latest changes to SCIONLab and is out of date.
-" %}
-
 The [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/go/sig) enables legacy IP applications to communicate over SCION. This tutorial describes how to set up two SIGs locally to test the SIG can enable any IP application to communicate over SCION.
 
 ## Environment
 
 To test the SIG we will make use of the Vagrant configurations provided on [scionlab.org](https://scionlab.org/).
 Set up a Vagrant VM on a host A and a host B using the instructions from [Virtual machine with VPN](https://netsec-ethz.github.io/scion-tutorials/virtual_machine_setup/dynamic_ip/).
+
+Use locations specific to your test:
+
+```shell
+export SC=/etc/scion
+export LOGS=/var/log/scion
+```
 
 ## Configuring the two SIGs
 
@@ -50,13 +53,13 @@ Create the configuration for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
   ID = "sigA"
 
   # The SIG config json file. (required)
-  SIGConfig = "/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.json"
+  SIGConfig = "${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.json"
 
   # The local IA (required)
   IA = "${IAd}"
 
   # The bind IP address (required)
-  IP = "10.0.8.A"
+  IP = "172.16.0.11"
 
   # Control data port, e.g. keepalives. (default 10081)
   CtrlPort = 10081
@@ -83,7 +86,7 @@ Create the configuration for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
 [logging]
 [logging.file]
   # Location of the logging file.
-  Path = "/home/ubuntu/go/src/github.com/scionproto/scion/logs/sig${IA}-1.log"
+  Path = "${LOG}/sig${IA}-1.log"
 
   # File logging level (trace|debug|info|warn|error|crit) (default debug)
   Level = "debug"
@@ -114,8 +117,8 @@ sed -i "s/\${IA}/${IA}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
 sed -i "s/\${IAd}/${IAd}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
 sed -i "s/\${AS}/${AS}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
 sed -i "s/\${ISD}/${ISD}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-export tunIP=$(echo $(ip a | grep "global tun") | cut --fields=2 --delimiter=" " | cut --fields=1 --delimiter="/")
-sed -i "s/10.0.8.A/${tunIP}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
+sed -i "s/\${SC}/${SC}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
+sed -i "s/\${LOG}/${LOG}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
 ```
 
 
@@ -126,7 +129,7 @@ Create the traffic rules for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
     "ASes": {
         "17-ffaa:1:XXX": {
             "Nets": [
-                "172.16.11.0/24"
+                "172.16.12.0/24"
             ],
             "Sigs": {
                 "remote-1": {
@@ -152,7 +155,7 @@ at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
   ID = "sigB"
 
   # The SIG config json file. (required)
-  SIGConfig = "/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.json"
+  SIGConfig = "${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.json"
 
   # The local IA (required)
   IA = "${IAd}"
@@ -185,7 +188,7 @@ at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
 [logging]
 [logging.file]
   # Location of the logging file.
-  Path = "/home/ubuntu/go/src/github.com/scionproto/scion/logs/sig${IA}-1.log"
+  Path = "${LOG}/sig${IA}-1.log"
 
   # File logging level (trace|debug|info|warn|error|crit) (default debug)
   Level = "debug"
@@ -209,7 +212,18 @@ at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
   Prometheus = "127.0.0.1:1282"
 ```
 
-and 
+and
+
+```shell
+sed -i "s/\${IA}/${IA}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+sed -i "s/\${IAd}/${IAd}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+sed -i "s/\${AS}/${AS}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+sed -i "s/\${ISD}/${ISD}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+sed -i "s/\${SC}/${SC}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+sed -i "s/\${LOG}/${LOG}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+```
+
+and
 
 at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.json
 
@@ -218,7 +232,7 @@ at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.json
     "ASes": {
         "17-ffaa:1:XXX": {
             "Nets": [
-                "172.16.12.0/24"
+                "172.16.11.0/24"
             ],
             "Sigs": {
                 "remote-1": {
@@ -242,7 +256,7 @@ sudo modprobe dummy
 
 On host A:
 ```shell
-sudo ip link set name dummy11 dev dummy0
+sudo ip link add dummy11 type dummy
 sudo ip addr add 172.16.0.11/32 brd + dev dummy11 label dummy11:0
 ```
 
@@ -269,11 +283,11 @@ Now start the two SIGs with the following commands:
 
 On Host A:
 ```shell
-$SC/bin/sig -config=/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config > $SC/logs/sig${IA}-1.log 2>&1 &
+$SC/bin/sig -config=${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config > $SC/logs/sig${IA}-1.log 2>&1 &
 ```
 and Host B:
 ```shell
-$SC/bin/sig -config=/home/ubuntu/go/src/github.com/scionproto/scion/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config > $SC/logs/sig${IA}-1.log 2>&1 &
+$SC/bin/sig -config=${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config > $SC/logs/sig${IA}-1.log 2>&1 &
 ```
 
 To show the ip rules and routes, run:
@@ -287,9 +301,9 @@ sudo ip route show table 12
 
 You can test that your SIG configuration works by running some traffic over it.
 
-Add some server on host A and client on host B:
+Add some server on host B and client on host A:
 
-Host A:
+Host B:
 ```shell
 sudo ip link add server type dummy
 sudo ip addr add 172.16.12.1/24 brd + dev server label server:0
@@ -299,23 +313,18 @@ echo "Hello World!" > $SC/WWW/hello.html
 cd $SC/WWW/ && python3 -m http.server --bind 172.16.12.1 8081 &
 ```
 
-Host B:
+Host A:
 ```shell
 sudo ip link add client type dummy
 sudo ip addr add 172.16.11.1/24 brd + dev client label client:0
 ```
 
 
-Query the server running on host A from host B:
+Query the server running on host B from host A:
 
-Host B:
+Host A:
 ```shell
 curl --interface 172.16.11.1 172.16.12.1:8081/hello.html
 ```
 
 You should see the "Hello World!" message as output from the last command.
-
-
-
-
-
