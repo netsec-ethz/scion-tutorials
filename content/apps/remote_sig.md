@@ -31,8 +31,10 @@ export IAd=$(cat $SC/gen/ia | sed 's/_/\:/g')
 export AS=$(cat $SC/gen/ia | cut --fields=2 --delimiter="-")
 export ISD=$(cat $SC/gen/ia | cut --fields=1 --delimiter="-")
 mkdir -p ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
-go build -o ${SC}/bin/sig ${SC}/go/sig/main.go
-sudo setcap cap_net_admin+eip ${SC}/bin/sig
+cd ~
+git clone -b scionlab https://github.com/netsec-ethz/scion
+go build -o $GOPATH/bin/sig ~/scion/go/sig/main.go
+sudo setcap cap_net_admin+eip $GOPATH/bin/sig
 ```
 
 Enable routing:
@@ -283,11 +285,11 @@ Now start the two SIGs with the following commands:
 
 On Host A:
 ```shell
-$SC/bin/sig -config=${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config > $SC/logs/sig${IA}-1.log 2>&1 &
+$GOPATH/bin/sig -config=${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config > $SC/logs/sig${IA}-1.log 2>&1 &
 ```
 and Host B:
 ```shell
-$SC/bin/sig -config=${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config > $SC/logs/sig${IA}-1.log 2>&1 &
+$GOPATH/bin/sig -config=${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config > $SC/logs/sig${IA}-1.log 2>&1 &
 ```
 
 To show the ip rules and routes, run:
