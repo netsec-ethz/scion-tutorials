@@ -45,6 +45,8 @@ sudo sysctl net.ipv4.conf.all.rp_filter=0
 sudo sysctl net.ipv4.ip_forward=1
 ```
 
+### SIG A
+
 Create the configuration for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config:
 
 (You need to replace ${AS}, ${IA} and ${IAd} with the actual values on your system in these configuration files.)
@@ -146,6 +148,31 @@ Create the traffic rules for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
 }
 ```
 You need to replace the "10.0.8.XXX" IP with the actual IP of the remote host B and 17-ffaa:1:XXX with the AS id of the remote AS B.
+
+
+The infrastructure keeps several versions of the file `topology.json` and you will need to edit them. Be sure to only add the section below in these `topology.json` files, without removing other sections:
+```
+  "SIG": {
+     "sig17-ffaa_1_XXX": {
+       "Addrs": {
+         "IPv4": {
+           "Public": {
+             "Addr": "172.16.0.XX",
+             "L4Port": 31056
+           }
+         }
+       }
+     }
+   },
+```
+Make this edit to the following files, then replace the "172.16.0.XX" IP with the actual IP of the remote host B and 17-ffaa_1_XXX with the AS id of the local AS A:
+${SC}/gen/ISD${ISD}/AS${AS}/endhost/topology.json
+${SC}/gen/ISD${ISD}/AS${AS}/br${IA}-1/topology.json
+${SC}/gen/ISD${ISD}/AS${AS}/bs${IA}-1/topology.json
+${SC}/gen/ISD${ISD}/AS${AS}/cs${IA}-1/topology.json
+${SC}/gen/ISD${ISD}/AS${AS}/ps${IA}-1/topology.json
+
+### SIG B
 
 And similarly the configuration and traffic rules for the sigB:
 
@@ -249,6 +276,31 @@ at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.json
 }
 ```
 You need to replace the "10.0.8.XXX" IP with the actual IP of the remote host A and 17-ffaa:1:XXX with the AS id of the remote AS A.
+
+and
+
+```
+  "SIG": {
+     "sig17-ffaa_1_XXX": {
+       "Addrs": {
+         "IPv4": {
+           "Public": {
+             "Addr": "172.16.0.XX",
+             "L4Port": 31056
+           }
+         }
+       }
+     }
+   },
+```
+Make this edit to the following files, then replace the "172.16.0.XX" IP with the actual IP of the remote host A and 17-ffaa_1_XXX with the AS id of the local AS B:
+${SC}/gen/ISD${ISD}/AS${AS}/endhost/topology.json
+${SC}/gen/ISD${ISD}/AS${AS}/br${IA}-1/topology.json
+${SC}/gen/ISD${ISD}/AS${AS}/bs${IA}-1/topology.json
+${SC}/gen/ISD${ISD}/AS${AS}/cs${IA}-1/topology.json
+${SC}/gen/ISD${ISD}/AS${AS}/ps${IA}-1/topology.json
+
+### Create Interfaces and Run
 
 Since we are running our SIGs in a VM and we do not have spare physical interfaces on which to run them, we will create two dummy interfaces:
 
