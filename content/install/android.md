@@ -1,250 +1,58 @@
 ---
-title: Building from sources (Android)
+title: Running as an app (Android)
 parent: Installation
 nav_order: 40
 ---
 
-# Building from sources (Android)
+# Running as an app (Android)
 
-
-{% include alert type="Danger" title="Attention needed" content="
-This page is supposed to be rewritten. Procedures described here are highly outdated and are not guaranteed to work.
-" %}
-
-
-
-## Introduction
-It is possible to run SCION on an Android device. The easiest way is to install [SCION as an Android app](#scion-app). The other alternative is to [manually install SCION on your Android device](#manual-setup). Both variants are based on [Termux](https://github.com/termux/termux-app), which emulates a Terminal environment with the Linux base system that Android is based upon.
-
-This tutorial is primarily targeted at running a SCION end host on Android. While it is also possible to run an entire SCION AS, this currently doesn't run stable within Termux, as it requires Apache Zookeeper, which frequently crashes the Termux environment as described [here](#endhost-configuration-vs-full-as).
-
+{% include alert type="warning" title="Warning: Beta version" content="The SCION Android apps are still in beta and are not guaranteed to work." %}
 
 ## Prerequisites
+- Android device with at least Android 7 (henceforth referred to as “endhost”)
+- Working scion AS with services set up to be reachable via IP from the endhost
+- SCION endhost app, [available on the Play Store](https://play.google.com/store/apps/details?id=org.scionlab.endhost)
+- SCION sensorfetcher app, [available on the Play Store](https://play.google.com/store/apps/details?id=org.scionlab.sensorfetcher) (optional)
 
-It is recommended to make yourself familiar with Termux by reading the [Wiki](https://wiki.termux.com/wiki/Main_Page) to learn how the app can be used comfortably.
+## Import endhost configuration
+1. From your AS' `gen` directory, transfer the `endhost` directory onto your endhost's user accessible storage.
+2. In the endhost's `endhost` directory, find the `sciond.toml` or `sd.toml` file and make the following changes:
+  - In the `[sd]` section's `Public` value, replace your AS' IP address (or `127.0.0.1`) with your endhost's IP address.
+  - Either:
+    - Delete the `[logging.file]` section's entire `Path` assignment.
+    - Or replace the `[logging.file]` section's `Path` value with an absolute path that is accessible to you, e.g. `"/sdcard/logs/sd***.log"`.
+  - Either:
+    - Delete the `[trustDB]`/`[TrustDB]` section's entire `Connection` assignment.
+    - Or replace the `[trustDB]`/`[TrustDB]` section's `Connection` value with an absolute path that is accessible to you.
+  - Either:
+    - Delete the `[sd.PathDB]` section's entire `Connection` assignment.
+    - Or replace the `[sd.PathDB]` section's `Connection` value with an absolute path that is accessible to you.
+3. In the endhost's `endhost` directory, find the `topology.json` file and make sure that the endhost can reach the AS' services.
+This usually entails replacing the AS' IP address (or `127.0.0.1`) with the endhost's IP address.
 
-## SCION App
+## Starting the dispatcher and sciond
+Open the app and push the “Start dispatcher” button. Your notification drawer should now have a new permanent entry called “Dispatcher service”.
+Push the “Set endhost directory” button. In the dialog that appears, navigate to your endhost's `endhost` directory and press “OK”. Your notification drawer should now have a new permanent entry called “Sciond service”.
+The log files (usually) located in `/sdcard/Android/data/org.scionlab.endhost/files/logs/` should now get populated and not contain error messages.
+Apart from the `/sdcard/` prefix, the dispatcher logs are hardcoded to be in the aforementioned directory, while sciond's logs should either be in the aforementioned directory or where they've been configured to be in the previous step.
 
-{% include alert type="hint" content="
-The SCION App is currently in testing. With this App we aim to provide an easy way to install SCION on Android, so that the [manual setup](#manual-setup) won't be necessary anymore.
-" %}
-
-To install the SCION app, please contact [Stefan Schwarz](mailto:stefan_schwarz_de@outlook.com) to get an invite to the App testing group.
-
-Once you have been added to the group, you will receive an email with a link to the SCION App. Note that the SCION App is currently distributed through HockeyApp and thus requires to install it as well. This can be done [through the HockeyApp website](https://hockeyapp.net/apps) (it is not available on the Google Play Store).
-
-#### Install SCION with the SCION App
-
-Once the SCION App has been installed, open it and run the following command within the Terminal (Wifi connection recommended):
-```shell
-./install
+## Testing connectivity with scmp
+In the text box, put in command line parameters for a call to the scmp application. These *have to be* newline-separated.
+It is advised to set the `-c` flag to a non-zero value since there is currently no way to gracefully *interrupt* the scmp process, once started.
+An example configuration would look as follows (mind the newlines!):
 ```
-
-That’s it! The process takes a while but is fully automatic. At the end, a dialog opens which asks to select the ‘gen’ folder from internal memory. Select it to continue.
-
-{% include alert type="hint" content="
-If the folder selection doesn't show up, run the following script to trigger it manually: `./import_folder`
-" %}
-
-That means of course, that the ‘gen’ folder needs to be readily available on the internal memory. Download it directly or push it onto the device with ADB.
-
-{% include alert type="warning" content="
-SCION for Android currently only supports a SCION end host configuration, as described [in this tutorial](../config/setup_endhost.html)
-" %}
-
-{% include alert type="warning" content="
-SCIOND config in the ‘gen’ folder needs a little adjustment on Android, as described [here](#changes-to-gen-folder)
-" %}
-
-
-## Manual setup
-
-To setup SCION on Android manually, the [Termux app](https://play.google.com/store/apps/details?id=com.termux) needs to be installed from the Google Play Store.
-
-To install SCION within Termux it is recommended to access the Termux environment via the Android Debug Bridge (ADB) or via SSH.
-
-### Access Termux via SSH
-
-First install the `openssh` package within Termux with `pkg install openssh`, then start the server with `sshd`. Password authentication is not supported, so you need to add your public key to `$HOME/.ssh/authorized_keys`. The ssh server runs by default on port 8022, so connect to it with `ssh -p 8022 DEVICE_IP`. You can find the device IP address with `ip addr list wlan0`. 
-
-For more information:
-[Run an SSH server on your Android with Termux](https://glow.li/technology/2015/11/06/run-an-ssh-server-on-your-android-with-termux/)
-[Access Termux via USB](https://glow.li/technology/2016/9/20/access-termux-via-usb/)
-
-### Install necessary packages
-
-Install the required packages from within Termux:
-
-```shell
-apt update && apt upgrade
-pkg install -y termux-exec git python python2 clang make python-dev libffi-dev openssl-dev openssl-tool curl
+echo
+-local
+[endhost address]
+-remote
+19-ffaa:0:1303,[0.0.0.0]
+-c
+1
 ```
+Tap the “Start scmp” button to test your endhost's connectivity.
+You should notice movement in your log files.
+With access to your endhost's logcat, you could even see scmp's stdout and stderr outputs.
+If after some seconds, there is a notification titled “Scmp service” mentioning “Scmp returned with value 0”, you have SCION connectivity.
 
-To access the SD card from Termux, it is required to run `termux-setup-storage` from the Termux console.
-
-### Configure Go workspace
-
-SCION requires a specific Go version. The Termux Go package may be ahead of that version. The following repository offers prebuilt golang packages in the required version for both ARMv7 & ARMv8/aarch64 architectures:
-
-For ARMv7:
-```shell
-curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/arm/golang-doc_2%3A1.9.4_arm.deb
-curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/arm/golang_2%3A1.9.4_arm.deb
-dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb
-```
-
-For aarch64:
-```shell
-curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/aarch64/golang-doc_2%3A1.9.4_aarch64.deb
-curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/debian-packages/aarch64/golang_2%3A1.9.4_aarch64.deb
-dpkg -i golang_2%3A1.9.4_aarch64.deb golang-doc_2%3A1.9.4_aarch64.deb
-```
-
-Setup the Go workspace and add it to your path:
-
-```shell
-echo 'export GOPATH="$HOME/go"' >> ~/.profile
-source ~/.profile
-mkdir -p "$GOPATH/bin"
-echo 'PATH=$PATH:$GOPATH/bin' >> ~/.profile
-source ~/.profile
-```
-
-## Install SCION
-
-### Step One &ndash; clone the SCION repository
-
-After the Go workspace has been configured, we can checkout SCION with the required Termux modifications from Github and apply a required patch using the following commands:
-
-```shell
-mkdir -p "$GOPATH/src/github.com/scionproto/scion"
-cd "$GOPATH/src/github.com/scionproto/scion"
-git config --global url.https://github.com/.insteadOf git@github.com:
-git clone --recursive -b termux-modifications git@github.com:stschwar/scion .
-
-curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/lwip-contrib.patch
-patch sub/lwip-contrib/ports/unix/proj/scion/Makefile lwip-contrib.patch
-rm lwip-contrib.patch
-```
-
-This will clone the appropriate SCION directory into your Go workspace. We will create an environment variable `SC` that will point to the SCION root directory. Afterwards it is necessary to navigate to the newly downloaded repository for finishing the configuration:
-
-```shell
-echo 'export SC="$GOPATH/src/github.com/scionproto/scion"' >> ~/.profile
-source ~/.profile
-cd $SC
-```
-
-### Step Two &ndash; configure Python path variable
-
-Some SCION components like SCIONviz require Python libraries which are located in the SCION root directory. In order to make them accessible, the `PYTHONPATH` environment variable needs to be exported:
-
-```shell
-echo 'export PYTHONPATH="$SC/python:$SC"' >> ~/.profile
-source ~/.profile
-```
-
-### Step Three &ndash; install required packages/patches
-
-SCION has an install script to install all necessary dependencies. In the Termux environment, however, this is not yet working. So the dependencies have to be installed manually.
-
-#### Cap'n Proto
-
-To install [Cap'n Proto](https://capnproto.org/) in Termux run the following commands in the `home/` directory:
-
-```shell
-curl -O https://capnproto.org/capnproto-c++-0.6.1.tar.gz
-tar zxf capnproto-c++-0.6.1.tar.gz
-cd capnproto-c++-0.6.1
-```
-On Termux Cap'n Proto requires some patching to compile:
-```shell
-cd src/kj/
-curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/capnproto-c++-0.6.1/debug.c++.patch
-patch debug.c++ debug.c++.patch
-rm debug.c++.patch
-```
-
-Back in the `capnproto-c++-0.6.1/` root directory run:
-```shell
-./configure --prefix=$PREFIX TMPDIR=$PREFIX/tmp
-make 
-make install
-```
-
-#### zlog
-
-Install [zlog](https://github.com/HardySimpson/zlog) by following its install instructions mostly. It requires some more patching and the installation of `libandroid-glob-dev`:
-
-```shell
-curl https://codeload.github.com/HardySimpson/zlog/tar.gz/latest-stable --output zlog-latest-stable.tar.gz
-tar -zxf zlog-latest-stable.tar.gz
-cd zlog-latest-stable/
-curl -O https://raw.githubusercontent.com/stschwar/scion/termux-modifications/patches/zlog-makefile.patch
-patch src/makefile zlog-makefile.patch
-rm zlog-makefile.patch
-
-pkg install -y libandroid-glob-dev
-make PREFIX=$PREFIX
-make PREFIX=$PREFIX install
-```
-
-#### uthash
-
-Install the [uthash](https://troydhanson.github.io/uthash/) library from your `home/` directory:
-```shell
-curl -o uthash-master.zip https://codeload.github.com/troydhanson/uthash/zip/master
-unzip uthash-master.zip
-cp uthash-master/src/*.h $PREFIX/include
-rm -rf uthash-master/
-```
-
-#### SCION Python dependencies
-
-Most of the Python dependencies can easily be installed through `pip`:
-```shell
-cd $SC
-pip2 install -r env/pip2/requirements.txt
-pip3 install -r env/pip3/requirements.txt
-TMPDIR=$PREFIX/tmp pip3 install lz4 PyNaCl PyYAML Pygments
-```
-{% include alert type="Supervisor" content='
-In case the pip installation of the package "Supervisor" fails, you can install it manually:
-
-```shell
-curl -O https://pypi.python.org/packages/44/60/698e54b4a4a9b956b2d709b4b7b676119c833d811d53ee2500f1b5e96dc3/supervisor-3.3.4.tar.gz
-tar -xzf supervisor-3.3.4.tar.gz
-cd supervisor-3.3.4/
-python2 setup.py install
-```
-' %}
-
-#### SCION Go dependencies
-
-With Go correctly installed it is easy to install the SCION dependencies as well:
-
-```shell
-cd $SC/env/go
-./deps
-```
-
-## Next steps
-
-After finishing the installation of SCION, there are different ways of running different topologies. The following tutorials will cover this in further detail:
-
-1. [Connecting to SCIONLab as an endhost](../config/setup_endhost.html) &ndash; Connect to the already running SCION topology as a mobile end host through an existing SCION setup.
-
-#### Changes to gen folder
-
-Note that in `gen/ISDx/AS10xx/supervisord.conf` the path of the SCION Deamon socket needs to be changed as follows: `"--api-addr" "/data/data/com.termux/files/run/shm/sciond/sdX-10XX.sock"`. 
-
-#### VPN Connection to SCIONLab
-
-Unfortunately, OpenVPN is not currently supported from within the Termux environment. Alternatively, the [Open
-VPN app](https://play.google.com/store/apps/details?id=net.openvpn.openvpn) can be installed to connect to SCIONLab via VPN. The `client.conf` file that is provided by the [SCIONLab coordinator](https://www.scionlab.org/) needs to be renamed to `client.ovpn` before it can be imported into the app. Additionally, the line `route 10.0.8.0/24` needs to be added to the file.
-
-#### End host configuration vs. full AS
-
-It is possible to run the full SCION on Android, it is, however, currently not recommended. The full SCION requires a Zookeeper instance which itself is a Java program. While it is possible to install a Java Virtual Machine in Termux, the actual Termux packages have been disabled or removed due to instabilities with high CPU usage.
-
-If you still want to try the full SCION on an Android phone, we suggest to use a remote Zookeeper instance running on another device and configuring the own SCION topology accordingly.
+## Testing connectivity with sensorfetcher
+Besides scmp being built into the SCION endhost app, the `sensorfetcher` has been ported to Android as a separate app. Both the local SCION address of the Android endhost and the remote SCION address of a running `sensorserver` have to be specified, as described [here](../apps/fetch_sensor_readings.html).
