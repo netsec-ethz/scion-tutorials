@@ -6,7 +6,8 @@ nav_order: 10
 
 # Running inside a VM
 
-## Install Vagrant and Virtualbox
+## Installing Vagrant and VirtualBox
+
 If you choose to run a SCIONLab virtual machine, you need to install [Vagrant](https://www.vagrantup.com/) and
 [VirtualBox](https://www.virtualbox.org/). These are available for most platforms, including Linux, Windows and macOS.
 
@@ -24,7 +25,7 @@ For other platforms, please consult the official installation instructions:
 ## Using Vagrant to run the VM
 
 After [creating your AS](../config/create_as.html) in the SCIONLab coordination
-website, you will be able to download a tarfile with `Vagrantfile` allowing you to easily build your SCIONLab VM.
+website, you will be able to download a tarfile containing a `Vagrantfile` which allows you to easily build your SCIONLab VM.
 
 {% include alert type="note" content="
 All the commands below need to be executed from the directory containing the Vagrantfile.
@@ -36,8 +37,9 @@ To start your VM, run
 vagrant up
 ```
 
-When running your VM for the first time, base Ubuntu OS will be installed together with SCIONLab packages and their
-dependencies. After the installation SCIONLab services should be already up and running.
+When running your VM for the first time, the base Ubuntu OS will be installed together with the
+SCIONLab packages and their dependencies. After the installation, SCIONLab services should already
+be up and running.
 
 Once the `vagrant up` command returns the prompt, you can connect to your VM to
 start exploring:
@@ -46,10 +48,10 @@ start exploring:
 vagrant ssh
 ```
 
-The directory containing the Vagrant file is synced with the VM where the files
+The directory containing the Vagrant file is synced with the VM, in which the files
 will appear in the `/vagrant/` directory.
 This is a convenient way to share files between your host machine and your
-VM, and allows to move data both ways.
+VM, and enables moving data both ways.
 
 {% include alert type="note" content="
 You can use following Vagrant commands to perform various operations with your VM

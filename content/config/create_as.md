@@ -10,12 +10,12 @@ nav_order: 10
 
 In order to create a SCIONLab AS you must login on [SCIONLab](https://www.scionlab.org). In case you don't have an account yet, please follow the registration process.
 
-After loggin in, you land on the `My ASes` page.
+After logging in, you will land on the `My ASes` page.
 
 ![Empty SCIONLab MyASes page](../images/scionlab_user_page_empty.png)
 
 * The `My ASes` link in the navbar brings you back to this page when you navigate away.
-* The drop-down menu under the <span class="fa fa-user"></span>-symbol in the navbar contains links to change your password and log-out.
+* The drop-down menu under the <span class="fa fa-user"></span>-symbol in the navbar contains links to change your password and to log out.
 
 This view is initially empty, later you will see a list of your ASes:
 
@@ -24,12 +24,12 @@ This view is initially empty, later you will see a list of your ASes:
 * The columns in this summary refer to the configuration you've made for this AS, as discussed below.
 * The link with the <span class="fa fa-pencil"></span>-symbol in the `AS ID` column  brings you to the edit page for an AS.
 * The link with the <span class="fa fa-download"></span>-symbol in the `Configuration` column lets you download the configuration tarfile for an AS.
-* The tick or cross in the `Active` column indicate whether an AS has been deactivated (using the corresponding button in the edit page).
+* The tick or cross in the `Active` column indicates whether an AS has been deactivated (using the corresponding button on the edit page).
 
 
 ## Configure a SCIONLab AS
 
-The `Create a new SCIONLab AS` button or on the edit link for an existing AS will bring you to the same configuration form.
+The `Create a new SCIONLab AS` button or the edit link for an existing AS will bring you to the same configuration form.
 
 ![Configure ASes form](../images/scionlab_user_as_form.png)
 
@@ -57,7 +57,7 @@ The following options are the parameters for the overlay link between the border
     * you are **behind a NAT or firewall** and you cannot open/forward a chosen UDP port
     * you want to _"just make it work"_, as you'll need to know no further details about your network configuration
 
-    The configuration file will contain an OpenVPN configuration file `client.conf`.
+    The configuration file will contain an OpenVPN configuration file named `client.conf`.
     After extracting this file to `/etc/openvpn/`, you can start the tunnel by running `sudo systemctl start openvpn@client`.
 
 *   Public IP Address, Bind IP Address
@@ -73,11 +73,10 @@ The following options are the parameters for the overlay link between the border
 
 
 
-    If your host has a public IP (the public IP is identical with the local IP), only fill the `Public IP Address` field and
-    leave the `Bind IP Address` field blank.
+    If your host has a public IP (the public IP is identical with the local IP), only fill in the `Public IP Address` field and leave the `Bind IP Address` field blank.
 
 
-    If you are in a network behind a NAT (the public IP and local IP are different), fill the `Public IP Address` field with the public IP and the `Bind IP Address` field with the local IP address.
+    If you are in a network behind a NAT (i.e. the public IP and local IP are different), fill the `Public IP Address` field with the public IP and the `Bind IP Address` field with the local IP address.
 
 
 {% include alert type="note" content="
