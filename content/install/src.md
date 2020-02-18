@@ -6,7 +6,7 @@ nav_order: 30
 
 # Building from sources (Linux)
 
-If you're planning to make modifications to the SCION implementation, you can build SCION from sources and run your SCIONLab AS with your own version of SCION.
+If you are planning to make modifications to the SCION implementation, you can build SCION from sources and run your SCIONLab AS with your own version of SCION.
 For developers' convenience, SCIONLab supports generating configurations that are compatible with the scripts and machinery intended to run SCION in a development environment.
 
 Building SCION from sources requires following a lengthy setup procedure and installing various development dependencies.
