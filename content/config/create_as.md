@@ -4,7 +4,7 @@ parent: Configuration
 nav_order: 10
 ---
 
-# Creating SCIONLab AS
+# Creating a SCIONLab AS
 
 ## SCIONLab Portal Overview
 
@@ -24,7 +24,7 @@ This view is initially empty, later you will see a list of your ASes:
 * The columns in this summary refer to the configuration you've made for this AS, as discussed below.
 * The link with the <span class="fa fa-pencil"></span>-symbol in the `AS ID` column  brings you to the edit page for an AS.
 * The link with the <span class="fa fa-download"></span>-symbol in the `Configuration` column lets you download the configuration tarfile for an AS.
-* The tick or cross in the `Active` column indicates whether an AS has been deactivated (using the corresponding button on the edit page).
+* The tick or cross in the `Active` column indicates whether an AS has been deactivated (using the corresponding button or check-boxes in the edit page).
 
 
 ## Configure a SCIONLab AS
@@ -37,15 +37,20 @@ The `Create a new SCIONLab AS` button or the edit link for an existing AS will b
 
 *   Label: here you can add a short label for your AS that will be displayed on the `My ASes` list page. This label just helps you identify your ASes and doesn't have any other functionality.
 
-*   Attachment Point: this selects the provider AS for your AS. This selection also determines the ISD (isolation domain) which your AS will belong to.
-
-    After creating your AS, you can still change your Attachment Point as often as you want.
-
-    For lower latency, prefer to pick an Attachment Point that is closest to you -- the topology map on the [SCIONLab home page](https://www.scionlab.org) has some hints on the geographical regions in which the ASes are located.
+*   Installation Type: select the way you have installed or will install SCION. Please refer to [Installation/Pick an Option](../install/index.html).
 
 -----
 
-The following options are the parameters for the overlay link between the border router in your AS and the border router in the Attachment Point AS.
+The following options configure the "Provider links" for your AS. For each of your ASes, you can create up to 5 overlay links to provider infrastructure ASes called "Attachment Points".
+Each of these links is a Provider-Customer link in the SCION network topology, which cannot cross ISD (isolation domain) boundaries. Thus, you can create only links to Attachment Point ASes in the same ISD.
+
+The interface is restricted to only add one link at a time. During creation of your AS, you can define (exactly) one "Provider link", later you can modify/add/remove links.
+
+The following options configure each "Provider link", that is, the options define the parameters for the overlay link between the border router in your AS and the border router in an Attachment Point AS.
+
+*   Attachment Point: this selects the provider AS to which a link will be established. This selection also determines the ISD  which your AS will belong to.
+
+    For lower latency, prefer to pick an Attachment Point that is closest to you -- the topology map on the [SCIONLab home page](https://www.scionlab.org) has some hints on the geographical regions in which the ASes are located.
 
 *   Use VPN: if enabled, an OpenVPN tunnel is configured between your AS and the chosen Attachment Point.
 
@@ -92,12 +97,6 @@ available Attachment Points have an IPv6 address configured.
 
     If you are behind a NAT or firewall, make sure to open/forward the chosen port. For this you may need to contact your network administrator.
     If you have a port forwarding rule that rewrites the port number, enter the local port number in the `Bind Port` field, otherwise leave it blank.
-
------
-
-Finally, select the type of SCION installation for which the configuration should be created.
-
-* Installation Type: please refer to [Installation/Pick an Option](../install/index.html).
 
 
 ## Download and install configuration

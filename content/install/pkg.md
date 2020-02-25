@@ -82,8 +82,6 @@ configuration tarfile from the SCIONLab website and unpack it.
         # Start SCION
         sudo systemctl start scionlab.target
 
-[//]: # (TODO mkdocs is broken here, the f*in < renderes as &lt; ffs)
-
 
 ## Running SCION
 
