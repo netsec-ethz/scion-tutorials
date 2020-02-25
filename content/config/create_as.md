@@ -42,12 +42,13 @@ The `Create a new SCIONLab AS` button or the edit link for an existing AS will b
 -----
 
 The following options configure the "Provider links" for your AS. For each of your ASes, you can create up to 5 overlay links to provider infrastructure ASes called "Attachment Points".
-The interface is restricted to only add one link at a time, so during creation of your AS, you can define (exactly) one "Provider link".
-Each of these links is a Provider-Customer link in the SCION network topology, which cannot cross ISD boundaries. Thus, you can create only links to Attachment Point ASes in the same ISD.
+Each of these links is a Provider-Customer link in the SCION network topology, which cannot cross ISD (isolation domain) boundaries. Thus, you can create only links to Attachment Point ASes in the same ISD.
+
+The interface is restricted to only add one link at a time. During creation of your AS, you can define (exactly) one "Provider link", later you can modify/add/remove links.
 
 The following options configure each "Provider link", that is, the options define the parameters for the overlay link between the border router in your AS and the border router in an Attachment Point AS.
 
-*   Attachment Point: this selects the provider AS to which a link will be established. This selection also determines the ISD (isolation domain) which your AS will belong to.
+*   Attachment Point: this selects the provider AS to which a link will be established. This selection also determines the ISD  which your AS will belong to.
 
     For lower latency, prefer to pick an Attachment Point that is closest to you -- the topology map on the [SCIONLab home page](https://www.scionlab.org) has some hints on the geographical regions in which the ASes are located.
 
