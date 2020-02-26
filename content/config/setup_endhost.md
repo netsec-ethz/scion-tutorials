@@ -54,11 +54,12 @@ The configuration downloaded from SCIONLab configures all SCION services to list
 To run an end host on a different host, the services need to bind on an IP that is accessible from the end host.
 
 On the host running the AS services, locate the `topology.json` files in `/etc/scion/gen/`. In this configuration file, we change the occurrences of IP `127.0.0.1`
-to the hosts IP.
+to the hosts IP. In the service configuration toml files, we also replace the QUIC bind IP and omit the Prometheus metrics IP address, if we do not want to expose them.
 
 ```
 export NODE_IP=example
 sed -i "s/127\.0\.0\.1/$NODE_IP/" /etc/scion/gen/ISD*/AS*/*/topology.json
+sed -i "s/Address = \"\[127\.0\.0\.1\]/Address = \"\[$NODE_IP\]/" /etc/scion/gen/ISD*/AS*/*/*.toml
 ```
 
 {% include alert type="note" content="
@@ -69,9 +70,8 @@ This command also changes the address for the `BeaconServer` and the `CtrlAddr` 
 Restart your AS services by running
 
 ```
-sudo systemctl restart scion-daemon.service scion-dispatcher.service
+sudo systemctl restart scionlab.target
 ```
-
 
 ## 3. Extract and adapt end host configuration
 
