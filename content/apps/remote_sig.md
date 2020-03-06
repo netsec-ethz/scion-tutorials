@@ -166,11 +166,13 @@ The infrastructure keeps several versions of the file `topology.json` and you wi
    },
 ```
 Make this edit to the following files, then replace the "172.16.0.XX" IP with the actual IP of the remote host B and 17-ffaa_1_XXX with the AS id of the local AS A:
+```
 ${SC}/gen/ISD${ISD}/AS${AS}/endhost/topology.json
 ${SC}/gen/ISD${ISD}/AS${AS}/br${IA}-1/topology.json
 ${SC}/gen/ISD${ISD}/AS${AS}/bs${IA}-1/topology.json
 ${SC}/gen/ISD${ISD}/AS${AS}/cs${IA}-1/topology.json
 ${SC}/gen/ISD${ISD}/AS${AS}/ps${IA}-1/topology.json
+```
 
 ### SIG B
 
@@ -294,11 +296,13 @@ and
    },
 ```
 Make this edit to the following files, then replace the "172.16.0.XX" IP with the actual IP of the remote host A and 17-ffaa_1_XXX with the AS id of the local AS B:
+```
 ${SC}/gen/ISD${ISD}/AS${AS}/endhost/topology.json
 ${SC}/gen/ISD${ISD}/AS${AS}/br${IA}-1/topology.json
 ${SC}/gen/ISD${ISD}/AS${AS}/bs${IA}-1/topology.json
 ${SC}/gen/ISD${ISD}/AS${AS}/cs${IA}-1/topology.json
 ${SC}/gen/ISD${ISD}/AS${AS}/ps${IA}-1/topology.json
+```
 
 ### Create Interfaces and Run
 
