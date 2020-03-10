@@ -30,7 +30,6 @@ needs to abort and re-try.
 Sample servers are at:
 
 * `17-ffaa:0:1102,[192.33.93.177]:42003`
-* `17-ffaa:1:13,[192.168.1.79]:42003`
 
 Their readings can be fetched as follows:
 
