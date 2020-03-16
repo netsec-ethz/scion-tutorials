@@ -20,7 +20,7 @@ See [Installation](../install/pkg.html#applications) for details.
 
 ## imagefetcher
 
-The `imagefetcher` application requests an image file from the server in an ad-hoc UDP-based protocol. The result is stored to a file (name optionally given on command line, otherwise uses name given by the server).
+The `imagefetcher` application requests an image file from the server in an ad-hoc UDP-based protocol. The result is stored to a file. The name for the output file can be given on command line, otherwise it uses the filename given by the server.
 
 Run the image fetcher application with the command
 
