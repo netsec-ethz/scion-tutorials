@@ -12,14 +12,13 @@ This section describes sample applications with SCION support. These application
 
 All of these applications require a running SCION endhost stack, i.e. a running
 SCION dispatcher and SCION daemon. This can be on the machine running your
-entire SCIONLab AS, or a separate end host in any SCION AS. Please refer to
-setup instructions the [end host configuration section](config/setup_endhost.html).
+entire SCIONLab AS or a separate end host. Please refer to setup instructions
+the [end host configuration section](../config/setup_endhost.html).
 
 ### Hostnames
-All applications allow to specify remote hosts either by full SCION addresses
-of the form `<ISD>-<AS>,[<IP>]` (plus `:<port>`, where applicable), or as a
-hostname.
-Hostnames are resolved by scanning the `/etc/hosts` file and by a RAINS lookup.
+All applications allow to specify remote hosts either by SCION addresses of the
+form `<ISD>-<AS>,[<IP>]`, or as a hostname.
+Hostnames are resolved by scanning the `/etc/hosts` file or by a RAINS lookup.
 
 Hosts can be added to `/etc/hosts` by adding lines like this:
 
@@ -29,9 +28,7 @@ Hosts can be added to `/etc/hosts` by adding lines like this:
 18-ffaa:0:11,[10.0.8.120]	server2
 ```
 
-The RAINS resolver address can be configured in `/etc/scion/rains.cfg`.
-This configuration file needs to contain the SCION address of the RAINS
-resolver, in the form `<ISD>-<AS>,[<IP>]`.
+Please refer to the [section on RAINS](rains.html) on how to configure name resolution using RAINS.
 
 ### Multiple local end host stacks
 

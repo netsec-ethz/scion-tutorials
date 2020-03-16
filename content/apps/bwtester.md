@@ -24,11 +24,10 @@ You can run the bandwidth test client application as follows:
 scion-bwtestclient -s <server-address>
 ```
 
-The `-s` flag specifies the bandwidth server.
 Sample servers are installed at the various locations in the SCIONLab network, [see below](#scionlab-bandwidth-test-servers).
 
 
-## Controlling the bandwidth
+### Controlling the bandwidth
 The application supports specification of the test duration (up to 10 seconds), the packet size to be used (at least 4 bytes), the total number of packets that will be sent, and the target bandwidth. For instance, `5,100,10,1600bps` specifies that 10 packets of size 100 bytes will be sent over 5 seconds, resulting in a bandwidth of 1600bps. The question mark `?` character can be used as wildcard for any of these parameters. Its value is then computed according to the other parameters. The parameters for the test in the client-to-server direction are specified with `-cs`, and the server-to-client direction with `-sc`. So for instance to send 1 Mbps for 10 seconds from the client to the server, and 10 Mbps from the server to the client, you can use this command:
 
 ```
