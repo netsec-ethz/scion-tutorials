@@ -10,25 +10,22 @@ nav_order: 40
 
 ## Prerequisites
 - Android device with at least Android 7 (henceforth referred to as “endhost”)
-- Working scion AS with services set up to be reachable via IP from the endhost
+- Working scion AS with services set up to be reachable via IP from the endhost (c.f. step two in [Configuring a SCION end host](../config/setup_endhost.html#2-modify-as-configuration)).
 - SCION endhost app, [available on the Play Store](https://play.google.com/store/apps/details?id=org.scionlab.endhost)
 - SCION sensorfetcher app, [available on the Play Store](https://play.google.com/store/apps/details?id=org.scionlab.sensorfetcher) (optional)
 
 ## Import endhost configuration
 1. From your AS' `gen` directory, transfer the `endhost` directory onto your endhost's user accessible storage.
-2. In the endhost's `endhost` directory, find the `sciond.toml` or `sd.toml` file and make the following changes:
-  - In the `[sd]` section's `Public` value, replace your AS' IP address (or `127.0.0.1`) with your endhost's IP address.
+2. In the endhost's `endhost` directory, find the `sd.toml` file and make the following changes:
   - Either:
-    - Delete the `[logging.file]` section's entire `Path` assignment.
-    - Or replace the `[logging.file]` section's `Path` value with an absolute path that is accessible to you, e.g. `"/sdcard/logs/sd***.log"`.
+    - Delete the `[log.file]` section entirely
+    - Or replace the `[log.file]` section's `path` value with an absolute path that is accessible to you, e.g. `"/sdcard/logs/sd***.log"`.
   - Either:
-    - Delete the `[trustDB]`/`[TrustDB]` section's entire `Connection` assignment.
-    - Or replace the `[trustDB]`/`[TrustDB]` section's `Connection` value with an absolute path that is accessible to you.
+    - Delete the `[trust_db]` section's entire `connection` assignment.
+    - Or replace the `[trust_db]` section's `connection` value with an absolute path that is accessible to you.
   - Either:
-    - Delete the `[sd.PathDB]` section's entire `Connection` assignment.
-    - Or replace the `[sd.PathDB]` section's `Connection` value with an absolute path that is accessible to you.
-3. In the endhost's `endhost` directory, find the `topology.json` file and make sure that the endhost can reach the AS' services.
-This usually entails replacing the AS' IP address (or `127.0.0.1`) with the endhost's IP address.
+    - Delete the `[path_db]` section's entire `connection` assignment.
+    - Or replace the `[path_db]` section's `connection` value with an absolute path that is accessible to you.
 
 ## Starting the dispatcher and sciond
 Open the app and push the “Start dispatcher” button. Your notification drawer should now have a new permanent entry called “Dispatcher service”.
