@@ -6,7 +6,7 @@ nav_order: 40
 
 # bat ("cURL for SCION")
 
-The [bat application](https://github.com/netsec-ethz/scion-apps/) is a cURL-like tool for sending HTTP requests to SCION enabled webservers and retrieve information in a human-readable format. Documentation is available in the [README.md](https://github.com/netsec-ethz/scion-apps/blob/master/bat/README.md).
+The [scion-apps/bat application](https://github.com/netsec-ethz/scion-apps/bat) is a clone of [astaxie/bat](https://github.com/astaxie/bat), a cURL-like tool for sending HTTP requests to webservers and retrieve information in a human-readable format. Our fork extends `bat` with native SCION support.
 
 ## Install
 
@@ -24,7 +24,6 @@ The general usage of bat is: `bat [flags] [Method] URL [Item]`
 
 | Flag   | Meaning                                                                                                         |
 | ------ | --------------------------------------------------------------------------------------------------------------- |
-| -l     | local bind address                                                                                              |
 | -b     | benchmarking mode                                                                                               |
 | -b.N   | number of benchmark requests to send (default 1000)                                                             |
 | -b.C   | number of parallel clients in benchmark (default 100)                                                           |
@@ -42,41 +41,8 @@ The method can be any of the regular HTTP methods. It defaults to GET if there i
 
 ### URL
 
-bat accepts both, SCION addresses and hostnames as URLs. Hostnames are resolved by scanning the `/etc/hosts/` file. New hosts can be added by simply including a line in that file.
-Below you see an example:
-
-```
-# regular IPv4 hosts
-# ....
-
-# regular IPv6 hosts
-# ....
-
-# SCION hosts
-18-ffaa:1:2,[10.0.8.10]	                                localhost
-17-ffaa:0:1,[192.168.1.1]                               host1 host2
-20-ffaa:c0ff:ee12,[0:0:0ff1:ce00:dead:10cc:baad:f00d]   host4
-```
-
-Consequently, these two calls are equivalent:
-
-```
-scion-bat https://17-ffaa:0:1,[192.168.1.1]:8080/route
-```
-```
-scion-bat https://host1:8080/route
-```
-
-
-If no SCION localhost is defined in the `/etc/hosts` file like above, the local address needs to
-be provided with the `-l` flag. E.g.:
-```
-scion-bat -l 18-ffaa:1:2,[10.0.8.10]:0 https://host1:8080/route
-```
-
-{% include alert type="note" content="
-The scheme defaults to HTTPS, unencrypted HTTP is not supported
-" %}
+bat accepts both, SCION addresses and hostnames in URLs. Hostnames are resolved by a RAINS request or by scanning the `/etc/hosts/` file.
+The scheme defaults to HTTPS, unencrypted HTTP is not supported.
 
 ### Item
 
@@ -86,58 +52,33 @@ The scheme defaults to HTTPS, unencrypted HTTP is not supported
 | key:value          | custom header                    |
 | key=@/path/to/file | send file content as value       |
 
-IO redirects (`<`, `>`) work as usual.
+### Examples
+
+```
+scion-bat https://host1:8080/hello
+scion-bat https://18-ffaa:1:2,[10.0.8.10]:8080/hello
+```
+
+## Example SCION web server
 
 [//]: # (TODO Example servers below still built from sources. Come up with some ideas for servers to deploy in infrastructure.)
 
-## Example servers
+An example SCION http server application can be found in [scion-apps repository](https://github.com/netsec-ethz/scion-apps/tree/master/_examples/shttp/server/).
 
-Two example server applications can be found in [scion-apps repository](https://github.com/netsec-ethz/scion-apps/tree/master/lib/shttp/examples).
-[Minimal](https://github.com/netsec-ethz/scion-apps/tree/master/lib/shttp/examples/minimal) starts a server which defines two routes: `/download` downloads a small HTML file from the server. `/upload` prints the form encoded content of the request body to the console. They show the basic GET and POST capabilities of bat.
-[Image-server](https://github.com/netsec-ethz/scion-apps/tree/master/lib/shttp/examples/image_server) has a single route, `/image` which lets the user download an image from the server and save it to disk. This example shows the download capabilities of bat.
+To build and start the servers, simply run `go run main.go` in the corresponding source code directory. Optionally specify `-p` to set a different port than 443.
 
-To start any of the servers, run these commands in the respective folder:
+This server has the following routes:
 
+* `/hello`, replies with a greeting
+* `/json`, replies with some JSON data
+* `/image`, replies with an image
+* `/form`, extracts POSTed form data and puts it in the reply
+
+Some example invocations. The place-holder `<server>` is to be replaced with the address of the server started above. e.g. `17-ffaa:1:abc,[127.0.0.1]`; if you add this address to your `/etc/hosts` file you can also use a name instead.
 ```
-openssl req -x509 -newkey rsa:1024 -keyout key.pem -nodes -out cert.pem -days 365 -subj '/CN=server'
+scion-bat <server>/hello
+scion-bat <server>/json
+scion-bat -d <server>/image  # writes the downloaded image file to current working dir
+scion-bat -f <server>/form foo=bar
+scion-bat -b <server>/hello  # run a benchmarks
 ```
-```
-server -local 17-ffaa:1:1,[10.0.0.15]:40002 -cert cert.pem -key key.pem
-```
-
-Make sure you give your server a name (e.g. server) by adding a line to `/etc/hosts`.
-Then query it like so:
-
-
-For the minimal server:
-
-```
-scion-bat server:40002/download
-```
-
-It should produce output similar to this:
-![bat minimal server output](../images/bat_output.png)
-
-```
-scion-bat -f server:40002/upload foo=bar
-```
-
-Which prints `foo=bar` in the server's console, and
-
-```
-scion-bat -b server:40002/download
-```
-
-which runs a benchmark, producing output like this:
-
-![bat benchmarking output](../images/bat_bench_output.png)
-
-
-For the image server:
-
-```
-scion-bat -d server:40002/image
-```
-
-This places the downloaded image file in your current directory.
-
