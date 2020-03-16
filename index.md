@@ -69,7 +69,7 @@ In SCION, ASes are connected only in well defined locations and links are define
 Each AS is in charge of providing essential informations to the collection of devices connected to it, called end hosts (e.g Smartphones, Laptops and so on).
 The ASes in SCION are fundamental in the two main phases of the architecture: the *control* plane, which is the process responsible for discovering paths and making those paths available to end hosts; and the *data* plane, which is the process responsible for the transmission of the packets.
 
-For the control plane, each AS hosts different infrastructure services (beacon server, path server, certificate server and possibly others) that actually perform the process.
+For the control plane, each AS hosts different infrastructure services that actually perform the process. Most important is the main "control service" containing the functionality for beaconing, path database, and the control plane public key infrastructure.
 For the data plane, the inter-AS traffic is routed through the SCION border routers of the ASes along a path. SCION is agnostic about the intra-AS routing, typically ASes run IP internally.
 
 #### What does it mean to run an AS?

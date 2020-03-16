@@ -84,7 +84,7 @@ Run `scion.sh status` or `supervisor/supervisor.sh status`.
 
 Log files for the SCION services are located in `/var/log/scion`.
 
-Inspect the beacon server's log file using e.g. `less -f /var/log/scion/bs*.log`, to check that
+Inspect the control service's log file using e.g. `less -f /var/log/scion/cs*.log`, to check that
 
 *   Interfaces are considered `active`:
 
@@ -112,18 +112,8 @@ where a SCION address has the form `ISD-AS,[IP]`. An example of pinging a host i
     200 bytes from 20-ffaa:0:1404,[0.0.0.0] scmp_seq=1 time=381.763ms
 
 
-{% include alert type="note" content="
-Having to enter your own SCION address is a common theme with SCION tools. We hope we'll get
-rid of this somewhat arcane feature eventually.
-" %}
-
 {% include alert type="Tip" content="
 Check the topology map on the [SCIONLab homepage](https://www.scionlab.org) for an overview over the existing ASes and their addresses.
 " %}
-
-{% include alert type="Tip" content="
-If you're running the application on a local topology, make sure to specify the correct socket using the `-sciond` flag, e.g. by adding `-sciond /run/shm/sciond/sd1-ff00_0_110.sock`.
-" %}
-
 
 Passing this test is a condition sufficient to say that your AS works as expected. If it fails, please refer to [the troubleshooting section](../faq/troubleshooting.html).
