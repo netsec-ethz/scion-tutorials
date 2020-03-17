@@ -67,7 +67,7 @@ An autonomous system (AS) is a _network_ under the control of a single administr
 In SCION, ASes are connected only in well defined locations and links are defined by a provider/customer or a peering relation.
 
 Each AS is in charge of operating a set of control services that participate in the inter-domain routing control plane and provide essential path informations to the collection of devices connected to it, called end hosts (e.g Smartphones, Laptops and so on).
-At the same time, an AS is the the granularity of routing in SCION; very roughly, the path information carried in each packet header is described as a sequence of ASes that the packet should traverse to reach its destination.
+At the same time, an AS is the the granularity of routing in SCION; very roughly, the path information carried in each packet header describes a sequence of ASes that the packet must traverse to reach its destination.
 
 
 #### What does it mean to run an AS?
