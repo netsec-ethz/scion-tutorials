@@ -72,7 +72,7 @@ Finally, check that you can ping the address listed in `RemoteOverlay`.
 This should show all entries as green. If there are any failed services in this list, start [troubleshooting](../faq/troubleshooting.html)
 
 {% include alert type="note" content="
-Duplicated entries are bug in systemd which is fixed in Ubuntu 18.04. When using older platform, you can simply ignore them.
+`systemd list-dependencies` lists duplicated lines on Ubuntu 16.04, due to a bug in this systemd version. You can ignore this.
 " %}
 
 
@@ -87,11 +87,9 @@ Log files for the SCION services are located in `/var/log/scion`.
 Inspect the control service's log file using e.g. `less -f /var/log/scion/cs*.log`, to check that
 
 *   Interfaces are considered `active`:
-
     Check that the log mentions `Activated interface ...`, not followed by a later `interface went down`.
 
 *   Beacons are received successfully:
-
     Check that you find entries `Registered beacons ...`.
 
 
