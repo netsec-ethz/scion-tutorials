@@ -66,11 +66,9 @@ SCIONLab is a global research network to test and experiment with the SCION inte
 An autonomous system (AS) is a _network_ under the control of a single administrative entity or domain.
 In SCION, ASes are connected only in well defined locations and links are defined by a provider/customer or a peering relation.
 
-Each AS is in charge of providing essential informations to the collection of devices connected to it, called end hosts (e.g Smartphones, Laptops and so on).
-The ASes in SCION are fundamental in the two main phases of the architecture: the *control* plane, which is the process responsible for discovering paths and making those paths available to end hosts; and the *data* plane, which is the process responsible for the transmission of the packets.
+Each AS is in charge of operating a set of control services that participate in the inter-domain routing control plane and provide essential path informations to the collection of devices connected to it, called end hosts (e.g Smartphones, Laptops and so on).
+At the same time, an AS is the the granularity of routing in SCION; very roughly, the path information carried in each packet header is described as a sequence of ASes that the packet should traverse to reach its destination.
 
-For the control plane, each AS hosts different infrastructure services that actually perform the process. Most important is the main "control service" containing the functionality for beaconing, path database, and the control plane public key infrastructure.
-For the data plane, the inter-AS traffic is routed through the SCION border routers of the ASes along a path. SCION is agnostic about the intra-AS routing, typically ASes run IP internally.
 
 #### What does it mean to run an AS?
 Running an AS means running the various AS control plane services and running border routers that connect the AS to other ASes.
