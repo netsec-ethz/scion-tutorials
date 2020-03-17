@@ -17,15 +17,15 @@ nav_order: 40
 ## Import endhost configuration
 1. From your AS' `gen` directory, transfer the `endhost` directory onto your endhost's user accessible storage.
 2. In the endhost's `endhost` directory, find the `sd.toml` file and make the following changes:
-  - Either:
-    - Delete the `[log.file]` section entirely
-    - Or replace the `[log.file]` section's `path` value with an absolute path that is accessible to you, e.g. `"/sdcard/logs/sd***.log"`.
-  - Either:
-    - Delete the `[trust_db]` section's entire `connection` assignment.
-    - Or replace the `[trust_db]` section's `connection` value with an absolute path that is accessible to you.
-  - Either:
-    - Delete the `[path_db]` section's entire `connection` assignment.
-    - Or replace the `[path_db]` section's `connection` value with an absolute path that is accessible to you.
+    - Either:
+        - Delete the `[log.file]` section entirely
+        - Or replace the `[log.file]` section's `path` value with an absolute path that is accessible to you, e.g. `"/sdcard/logs/sd***.log"`.
+    - Either:
+        - Delete the `[trust_db]` section's entire `connection` assignment.
+        - Or replace the `[trust_db]` section's `connection` value with an absolute path that is accessible to you.
+    - Either:
+        - Delete the `[path_db]` section's entire `connection` assignment.
+        - Or replace the `[path_db]` section's `connection` value with an absolute path that is accessible to you.
 
 ## Starting the dispatcher and sciond
 Open the app and push the “Start dispatcher” button. Your notification drawer should now have a new permanent entry called “Dispatcher service”.
