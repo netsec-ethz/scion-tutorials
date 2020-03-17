@@ -103,13 +103,23 @@ First clear the `/var/log/scion/` directory and restart. This often helps to fin
 
 #### Not receiving beacons
 
-Log of the beacon server (`/var/logs/scion/bs*.log`) does not contain recent entries referring to `Registered beacons`.
+Log of the control service (`/var/logs/scion/bs*.log`) does not contain recent entries referring to `Registered beacons`. This typically happens when the inter-AS links are not working correctly.
 
-As at the time of writing there are certain failure modes of the border routers that are hard to diagnose and are fixed with a simple restart, the first thing to try is to turn it off and on again:
+*   Check that the border router is (still) up
 
-```
-sudo systemctl restart scionlab.target
-```
+    If you are using VPN, a somewhat common issue is that the border router does not deal well with VPN tunnel interface disappearing intermittently. In particular, make sure that the VPN is started _before_ the border router.
+
+*   Double-check that `Public IP` configured for this link in the SCIONLab website is correct
+
+*   Check that the border router interfaces are `active`
+
+    Inspect the log file of control service (`/var/log/scion/cs*.log`) for messages on `Activated interface ...`.
+
+    The mechanism for activating interfaces is based on regular keep-alive messages, sent by the control service at 1s intervals over all configured AS-interfaces.
+    In a packet trace, we should see these keep-alive messages in both directions.
+    It can be useful to use `wireshark` or `tcpdump` to determine whether these packets are sent and received.
+    These small (~190 bytes) and regular packets are usually easy to spot in the packet trace.
+
 
 ## Getting help
 
