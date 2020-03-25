@@ -99,11 +99,11 @@ Ping somebody! Run `scmp echo` to send an "SCMP echo request"; this is just like
 
 The syntax is:
 
-    scmp echo -local [source SCION address] -remote [destination SCION address]
+    scmp echo -remote [destination SCION address]
 
 where a SCION address has the form `ISD-AS,[IP]`. An example of pinging a host in the attachment point AS in Korea would look as follows:
 
-    $ scmp echo -local 17-ffaa:1:15b,[127.0.0.1] -remote 20-ffaa:0:1404,[0.0.0.0]
+    $ scmp echo -remote 20-ffaa:0:1404,[0.0.0.0]
     Using path:
       Hops: [17-ffaa:1:15b 1>169 17-ffaa:0:1107 1>4 17-ffaa:0:1102 2>2 17-ffaa:0:1103 4>8 17-ffaa:0:1101 11>3 19-ffaa:0:1302 1>7 19-ffaa:0:1301 3>5 18-ffaa:0:1201 3>5 20-ffaa:0:1401 7>1 20-ffaa:0:1403 3>47 20-ffaa:0:1404] Mtu: 1472
     200 bytes from 20-ffaa:0:1404,[0.0.0.0] scmp_seq=0 time=383.578ms
