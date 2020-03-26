@@ -30,7 +30,7 @@ export IA=$(cat $SC/gen/ia)
 export IAd=$(cat $SC/gen/ia | sed 's/_/\:/g')
 export AS=$(cat $SC/gen/ia | cut --fields=2 --delimiter="-")
 export ISD=$(cat $SC/gen/ia | cut --fields=1 --delimiter="-")
-mkdir -p ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
+sudo mkdir -p ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
 cd ~
 git clone -b scionlab https://github.com/netsec-ethz/scion
 go build -o $GOPATH/bin/sig ~/scion/go/sig/main.go
@@ -117,12 +117,12 @@ Create the configuration for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
 You can do so with the following command:
 
 ```shell
-sed -i "s/\${IA}/${IA}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-sed -i "s/\${IAd}/${IAd}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-sed -i "s/\${AS}/${AS}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-sed -i "s/\${ISD}/${ISD}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-sed -i "s/\${SC}/${SC}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
-sed -i "s/\${LOG}/${LOG}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
+sudo sed -i "s/\${IA}/${IA}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
+sudo sed -i "s/\${IAd}/${IAd}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
+sudo sed -i "s/\${AS}/${AS}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
+sudo sed -i "s/\${ISD}/${ISD}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
+sudo sed -i "s/\${SC}/\/etc\/scion/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
+sudo sed -i "s/\${LOG}/${LOG}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigA.config
 ```
 
 
@@ -147,13 +147,13 @@ Create the traffic rules for the sigA at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
     "ConfigVersion": 9001
 }
 ```
-You need to replace the "10.0.8.XXX" IP with the actual IP of the remote host B and 17-ffaa:1:XXX with the AS id of the remote AS B.
+You need to replace the "10.0.8.XXX" IP with the openVPN tunnel IP of the remote host B and 17-ffaa:1:XXX with the AS id of the remote AS B.
 
 
 The infrastructure keeps several versions of the file `topology.json` and you will need to edit them. Be sure to only add the section below in these `topology.json` files, without removing other sections:
 ```
   "SIG": {
-     "sig17-ffaa_1_XXX": {
+     "sig17-ffaa_1_XXX-1": {
        "Addrs": {
          "IPv4": {
            "Public": {
@@ -165,7 +165,7 @@ The infrastructure keeps several versions of the file `topology.json` and you wi
      }
    },
 ```
-Make this edit to the following files, then replace the "172.16.0.XX" IP with the actual IP of the remote host B and 17-ffaa_1_XXX with the AS id of the local AS A:
+Make this edit to the following files, then replace the "172.16.0.XX" IP with the openVPN tunnel IP of the local host A and 17-ffaa_1_XXX with the AS id of the local AS A:
 ```
 ${SC}/gen/ISD${ISD}/AS${AS}/endhost/topology.json
 ${SC}/gen/ISD${ISD}/AS${AS}/br${IA}-1/topology.json
@@ -246,12 +246,12 @@ at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
 and
 
 ```shell
-sed -i "s/\${IA}/${IA}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
-sed -i "s/\${IAd}/${IAd}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
-sed -i "s/\${AS}/${AS}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
-sed -i "s/\${ISD}/${ISD}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
-sed -i "s/\${SC}/${SC}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
-sed -i "s/\${LOG}/${LOG}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+sudo sed -i "s/\${IA}/${IA}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+sudo sed -i "s/\${IAd}/${IAd}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+sudo sed -i "s/\${AS}/${AS}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+sudo sed -i "s/\${ISD}/${ISD}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+sudo sed -i "s/\${SC}/${SC}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
+sudo sed -i "s/\${LOG}/${LOG}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.config
 ```
 
 and
@@ -277,7 +277,7 @@ at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/sigB.json
     "ConfigVersion": 9001
 }
 ```
-You need to replace the "10.0.8.XXX" IP with the actual IP of the remote host A and 17-ffaa:1:XXX with the AS id of the remote AS A.
+You need to replace the "10.0.8.XXX" IP with the openVPN tunnel IP of the remote host A and 17-ffaa:1:XXX with the AS id of the remote AS A.
 
 and
 
@@ -295,7 +295,7 @@ and
      }
    },
 ```
-Make this edit to the following files, then replace the "172.16.0.XX" IP with the actual IP of the remote host A and 17-ffaa_1_XXX with the AS id of the local AS B:
+Make this edit to the following files, then replace the "172.16.0.XX" IP with the openVPN tunnel IP of the local host B and 17-ffaa_1_XXX with the AS id of the local AS B:
 ```
 ${SC}/gen/ISD${ISD}/AS${AS}/endhost/topology.json
 ${SC}/gen/ISD${ISD}/AS${AS}/br${IA}-1/topology.json
