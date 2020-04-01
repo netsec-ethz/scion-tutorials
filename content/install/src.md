@@ -10,8 +10,8 @@ If you are planning to make modifications to the SCION implementation, you can b
 For developers' convenience, SCIONLab supports generating configurations that are compatible with the scripts and machinery intended to run SCION in a development environment.
 
 Building SCION from sources requires following a lengthy setup procedure and installing various development dependencies.
-The development setup is currently supported/documented for **Ubuntu 16.04 _only_**.
-It is possible to build SCION on other systems, but no guidance is provided. To keep it simple, just run Ubuntu 16.04 in a VM or container if you can't/don't want to set it up on your workstation.
+The development setup is currently supported/documented for **Ubuntu 16.04 or Ubuntu 18.04**.
+It is possible to build SCION on other systems, but no guidance is provided. To keep it simple, just run Ubuntu in a VM or container if you can't/don't want to set it up on your workstation.
 
 Please follow the instructions in the [GitHub README](https://github.com/netsec-ethz/scion/) to clone and build SCION.
 

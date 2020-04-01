@@ -20,27 +20,17 @@ See [Installation](../install/pkg.html#applications) for details.
 
 ## imagefetcher
 
-To use the image fetcher, you will need to specify the address of an image server. A sample image server that can be contacted by any client is set up at `17-ffaa:0:1102,[192.33.93.166]:42002`.
+The `imagefetcher` application requests an image file from the server in an ad-hoc UDP-based protocol. The result is stored to a file. The name for the output file can be given on command line, otherwise it uses the filename given by the server.
 
-Images can be fetched like this:
-```
-scion-imagefetcher -c 17-ffaa:1:89,[127.0.0.1]:0 -s 17-ffaa:0:1102,[192.33.93.166]:42002
-```
-
-Here, `-s` specifies the image server whereas `-c` specifies your machine.
-The `-c` flag can be omitted if a SCION localhost address is configured. To do this, add your
-SCION host to the `/etc/hosts` file. Below you can see an example:
+Run the image fetcher application with the command
 
 ```
-# regular IPv4 hosts
-# ....
-
-# regular IPv6 hosts
-# ....
-
-# SCION hosts
-17-ffaa:0:1,[192.168.1.1]                               localhost
+scion-imagefetcher -s <server-address> [-output <filename.jpg>]
 ```
+
+Sample servers are at:
+
+* `17-ffaa:0:1102,[192.33.93.166]:42002`
 
 {% include alert type="Tip" content="
 `imagefetcher` is also available via the [webapp](../apps/as_visualization/webapp_apps.html).
@@ -50,14 +40,8 @@ SCION host to the `/etc/hosts` file. Below you can see an example:
 
 The `imageserver` application keeps looking for `.jpg` files in the current directory, and offers them for download to clients on the SCION network. The assumption is that the application is used in conjunction with an application that periodically writes an image to the file system. After an amount of time (currently set to 10 minutes), the image files are deleted to limit the amount of storage used.
 
-The image server is launched as follows:
+Run the image server application with the command
 
 ```
-scion-imageserver -s 17-ffaa:1:89,[127.0.0.1]:40002 &
-```
-Here `-s` specifies your server address. Again, it can be omitted by specifying a SCION localhost like above. The server then
-uses localhost to bind to. In this case, the port can be specified with the `-p` flag.
-
-```
-scion-imageserver -p 40002 &
+scion-imageserver -p <port>
 ```

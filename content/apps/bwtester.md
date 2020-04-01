@@ -21,29 +21,13 @@ See [Installation](../install/pkg.html#applications) for details.
 You can run the bandwidth test client application as follows:
 
 ```
-scion-bwtestclient -c 17-ffaa:1:89,[127.0.0.1]:0 -s <server-address>
+scion-bwtestclient -s <server-address>
 ```
 
-
-The `-s` flag specifies the bandwidth server.
 Sample servers are installed at the various locations in the SCIONLab network, [see below](#scionlab-bandwidth-test-servers).
 
-The `-c` specifies your local address.
-The `-c` flag can be omitted if a SCION localhost address is configured. To do this, add your
-SCION host to the `/etc/hosts` file. Below you can see an example:
 
-```
-# regular IPv4 hosts
-# ....
-
-# regular IPv6 hosts
-# ....
-
-# SCION hosts
-17-ffaa:0:1,[192.168.1.1]                               localhost
-```
-
-## Controlling the bandwidth
+### Controlling the bandwidth
 The application supports specification of the test duration (up to 10 seconds), the packet size to be used (at least 4 bytes), the total number of packets that will be sent, and the target bandwidth. For instance, `5,100,10,1600bps` specifies that 10 packets of size 100 bytes will be sent over 5 seconds, resulting in a bandwidth of 1600bps. The question mark `?` character can be used as wildcard for any of these parameters. Its value is then computed according to the other parameters. The parameters for the test in the client-to-server direction are specified with `-cs`, and the server-to-client direction with `-sc`. So for instance to send 1 Mbps for 10 seconds from the client to the server, and 10 Mbps from the server to the client, you can use this command:
 
 ```
@@ -60,16 +44,11 @@ For more information run the application without arguments to print its usage.
 The server is started as follows:
 
 ```
-scion-bwtestserver -s 17-ffaa:0:1102,[192.33.93.177]:30100 &
+scion-bwtestserver -p 30100
 ```
 
-Here `-s` specifies your server address. Again, it can be omitted by specifying a SCION localhost like above. The server then
-uses localhost to bind to. In this case, the port can be specified with the `-p` flag.
+where `-p` specifies your server port.
 
-
-```
-scion-bwtestserver -p 30100 &
-```
 
 ## SCIONLab Bandwidth Test Servers
 
