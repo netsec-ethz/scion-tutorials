@@ -62,10 +62,10 @@ configuration tarfile from the SCIONLab website and unpack it.
 
 1. Download the configuration tarfile from the SCIONLab coordination website.
 
-2. If using VPN, extract the `client.conf` to `/etc/openvpn/` and (re-)start OpenVPN
+2. If using VPN, extract the `client-scionlab-<attachment point ISD-AS>.conf` to `/etc/openvpn/` and (re-)start OpenVPN
 
         #!shell
-        sudo systemctl restart openvpn@client
+        sudo systemctl restart openvpn@client-scionlab-<attachment point ISD-AS>
 
 3. Extract the `gen/` subdirectory to `/etc/scion/`
 4. Enable the systemd units listed in `scionlab-services.txt` and restart SCION:

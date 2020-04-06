@@ -31,7 +31,7 @@ Check that the tunnel interface exists:
 
     sudo ip address show dev tun0
 
-Check that `/etc/openvpn/client.conf` exists.
+Check that `/etc/openvpn/client-scionlab-<attachment point ISD-AS>.conf` exists.
 
 Check that the OpenVPN client is up:
 
