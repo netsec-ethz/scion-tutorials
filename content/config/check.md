@@ -31,11 +31,11 @@ Check that the tunnel interface exists:
 
     sudo ip address show dev tun0
 
-Check that `/etc/openvpn/client.conf` exists.
+Check that `/etc/openvpn/client-scionlab-${Parent_AS}.conf` exists.
 
 Check that the OpenVPN client is up:
 
-    sudo systemctl status openvpn@client
+    sudo systemctl status openvpn@client-scionlab-${Parent_AS}
 
 
 Check that the IP address in the `topology.json` file matches the IP assigned in the VPN:

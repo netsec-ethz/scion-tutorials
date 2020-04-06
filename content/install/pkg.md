@@ -35,7 +35,7 @@ This script allows to conveniently fetch and install the configuration for your 
 sudo scionlab-config --host-id=<...> --host-secret=<...>
 ```
 The required `host-id` and `host-secret` will be displayed on the SCIONLab website.
-The script will (re-)start all the configured services (and OpenVPN client, if configured).
+The script will (re-)start all the configured services (and OpenVPN client-scionlab-${Parent_AS}, if configured).
 The `host-id` and `host-secret` information will be stored in
 `/etc/scion/gen/scionlab-config.json` and will not have to be entered
 again.  To update the configuration after modifying your AS, simply run
@@ -62,10 +62,10 @@ configuration tarfile from the SCIONLab website and unpack it.
 
 1. Download the configuration tarfile from the SCIONLab coordination website.
 
-2. If using VPN, extract the `client.conf` to `/etc/openvpn/` and (re-)start OpenVPN
+2. If using VPN, extract the `client-scionlab-${Parent_AS}.conf` to `/etc/openvpn/` and (re-)start OpenVPN
 
         #!shell
-        sudo systemctl restart openvpn@client
+        sudo systemctl restart openvpn@client-scionlab-${Parent_AS}
 
 3. Extract the `gen/` subdirectory to `/etc/scion/`
 4. Enable the systemd units listed in `scionlab-services.txt` and restart SCION:
@@ -87,7 +87,7 @@ configuration tarfile from the SCIONLab website and unpack it.
 
 If using VPN, ensure that the OpenVPN-client is up **before** starting the SCION services.
 ```shell
-sudo systemctl start openvpn@client
+sudo systemctl start openvpn@client-scionlab-${Parent_AS}
 ```
 Check that the expected `tun0` tunnel-interface is created before continuing. Please refer to corresponding [troubleshooting](../faq/troubleshooting.html) page.
 

@@ -62,8 +62,8 @@ The following options configure each "Provider link", that is, the options defin
     * you are **behind a NAT or firewall** and you cannot open/forward a chosen UDP port
     * you want to _"just make it work"_, as you'll need to know no further details about your network configuration
 
-    The configuration file will contain an OpenVPN configuration file named `client.conf`.
-    After extracting this file to `/etc/openvpn/`, you can start the tunnel by running `sudo systemctl start openvpn@client`.
+    The configuration file will contain an OpenVPN configuration file named `client-scionlab-${Parent_AS}.conf`.
+    After extracting this file to `/etc/openvpn/`, you can start the tunnel by running `sudo systemctl start openvpn@client-scionlab-${Parent_AS}`.
 
 *   Public IP Address, Bind IP Address
 
