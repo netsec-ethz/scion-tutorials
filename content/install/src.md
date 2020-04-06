@@ -33,9 +33,9 @@ on top of SCION.
 After having managed to build SCION and after [creating or modifying your AS](../config/create_as.html) in the SCIONLab coordination website, you can deploy the generated configuration to your machine.
 
 1. Download the configuration tarfile from the SCIONLab coordination website.
-2. If you plan on using a VPN, unpack the `client-scionlab-${Parent_AS}.conf` to `/etc/openvpn/` and start OpenVPN
+2. If you plan on using a VPN, unpack the `client-scionlab-<attachment point ISD-AS>.conf` to `/etc/openvpn/` and start OpenVPN
    ```shell
-   sudo systemctl restart openvpn@client-scionlab-${Parent_AS}
+   sudo systemctl restart openvpn@client-scionlab-<attachment point ISD-AS>
    ```
 3. Extract the `gen/` subdirectory to your `$SC` directory.
 4. Restart SCION

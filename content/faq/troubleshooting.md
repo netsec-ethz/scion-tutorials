@@ -68,10 +68,10 @@ If you see for example that your border router did not start, it is likely that 
 
 Simply try again;
 
-    sudo systemctl start openvpn@client-scionlab-${Parent_AS}
+    sudo systemctl start openvpn@client-scionlab-<attachment point ISD-AS>
 
     # ... wait a bit ... maybe check the status of the openvpn client
-    sudo systemctl status openvpn@client-scionlab-${Parent_AS}
+    sudo systemctl status openvpn@client-scionlab-<attachment point ISD-AS>
     ip address show dev tun0
 
     sudo systemctl restart scionlab.target
