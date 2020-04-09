@@ -68,7 +68,7 @@ sudo sysctl net.ipv4.ip_forward=1
 
 Create the configuration for the sig at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config:
 
-(You need to replace ${SC}, ${ISD}, ${AS}, ${IA}, ${IAd}, ${sigID}, and ${sigIP} with the actual values on your system in these configuration files. You may define ${sigID} and ${sigIP}, for example ${sigID}="sigA" and ${sigIP}="172.16.0.11" for sigA and ${sigIP}="172.16.0.12 for sigB just ensure that the ${sigIP} value is different on sigA and sigB.)
+*Note:* you need to replace ${SC}, ${ISD}, ${AS}, ${IA}, ${IAd}, ${sigID}, and ${sigIP} with the actual values on your system in these configuration files. You may define ${sigID} and ${sigIP}, for example ${sigID}="sigA" and ${sigIP}="172.16.0.11" for sigA and ${sigIP}="172.16.0.12 for sigB just ensure that the ${sigIP} value is different on sigA and sigB.
 
 ```
 [features]
@@ -197,27 +197,31 @@ Since we are running our SIGs in a VM and we do not have spare physical interfac
 sudo modprobe dummy
 ```
 
-On host A (where ${sigIP}="172.16.0.11"):
+On host A: 
 ```shell
 sudo ip link add dummy11 dev dummy
+# ${sigIP}="172.16.0.11" from sigA.config
 sudo ip addr add ${sigIP}/32 brd + dev dummy11 label dummy11:0
 ```
 
-On host B (where ${sigIP}="172.16.0.12"):
+On host B: 
 ```
 sudo ip link add dummy12 type dummy
+# ${sigIP}="172.16.0.12" from sigB.config
 sudo ip addr add ${sigIP}/32 brd + dev dummy12 label dummy12:0
 ```
 
 Now we need to add the routing rules for the two SIGs:
 
-On host A (where <remote_sig_IPnet>=172.16.12.0/24, from sigA.json):
+On host A:
 ```shell
+# where <remote_sig_IPnet>=172.16.12.0/24 from sigA.json
 sudo ip rule add to <remote_sig_IPnet> lookup 11 prio 11
 ```
 
-On host B (where <remote_sig_IPnet>=172.16.12.0/24, from sigB.json):
+On host B:
 ```shell
+# where <remote_sig_IPnet>=172.16.12.0/24 from sigB.json
 sudo ip rule add to <remote_sig_IPnet> lookup 11 prio 11
 ```
 
@@ -248,6 +252,8 @@ sudo ip addr add 172.16.11.1/24 brd + dev client label client:0
 
 Host B (server):
 ```shell
+sudo ip link add server type dummy
+sudo ip addr add 172.16.12.1/24 brd + dev server label server:0
 sudo mkdir $SC/WWW
 sudo touch $SC/WWW/hello.html
 echo "Hello World!" | sudo tee -a $SC/WWW/hello.html
