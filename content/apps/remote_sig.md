@@ -6,7 +6,7 @@ nav_order: 60
 
 # SCION IP Gateway (SIG)
 
-The [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/go/sig) enables legacy IP applications to communicate over SCION. This tutorial describes how to set up two SIGs locally to test the SIG can enable any IP application to communicate over SCION.
+The [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/go/sig) enables legacy IP applications to communicate over SCION. This tutorial describes how to set up two SIGs locally to test the SIG can enable any IP application to communicate over SCION (this can be extended to support multiple SIG enpoints).
 
 ## Environment
 
@@ -43,8 +43,9 @@ export SC=/etc/scion
 export LOG=/var/log/scion
 export ISD=$(ls /etc/scion/gen/ | grep ISD | awk -F 'ISD' '{ print $2 }')
 export AS=$( ls /etc/scion/gen/ISD${ISD}/ | grep AS | awk -F 'AS' '{ print $2 }')
-export IAd=$(echo $AS | sed 's/_/\:/g')
 export IA=${ISD}-${AS}
+export IAd=$(echo $IA | sed 's/_/\:/g')
+
 
 # Then, create a configuration directory for the SIG
 mkdir -p ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
@@ -126,7 +127,7 @@ Create the configuration for the sig at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/$
     sig_config = "${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.json"
 
     # The local ISD-AS. (required)
-    isd_as = "${ISD}-${IAd}"
+    isd_as = "${IAd}"
 
     # The bind IP address. (required)
     ip = "${sigIP}"
@@ -152,7 +153,7 @@ sudo sed -i "s/\${IAd}/${IAd}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}
 sudo sed -i "s/\${AS}/${AS}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
 sudo sed -i "s/\${ISD}/${ISD}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
 sudo sed -i "s/\${SC}/\/etc\/scion/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
-sudo sed -i "s/\${LOG}/${LOG}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
+sudo sed -i "s/\${LOG}/\/var\/log\/scion/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
 sudo sed -i "s/\${sigID}/${sigID}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
 sudo sed -i "s/\${sigIP}/${sigIP}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
 ```
@@ -172,12 +173,12 @@ Create the traffic rules for the sigs at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
     "ConfigVersion": 9001
 }
 ```
-You need to replace the "<remote_sig_AS>" AS id of the remote AS (for example, on sigA <remote_sig_AS> is the identifier of `AS B` in the format of "${ISD}-${IAd}"). Additionally, you need to replace "<remote_sig_IPnet>" with the subnet for traffic that will be routed on the sig. For this tutorial we are choosing to set this to 172.16.12.0/24 on sigA.json and 172.16.11.0/24 on sigB.json.
+You need to replace the "<remote_sig_AS>" AS id of the remote AS (for example, on sigA <remote_sig_AS> is the identifier of `AS B` in the format of "${IAd}"). Additionally, you need to replace "<remote_sig_IPnet>" with the subnet for traffic that will be routed on the sig. For this tutorial we are choosing to set this to 172.16.12.0/24 on sigA.json and 172.16.11.0/24 on sigB.json. Additional SIG end points can be accomodated by adding additional entries to this file.
 
 Additionally, the topology files need to be updated to include the a sig entry. The following lines need to be added to each topology file (${SC}/gen/ISD${ISD}/AS${AS}/endhost/topology.json, ${SC}/gen/ISD${ISD}/AS${AS}/br${IA}-1/topology.json, and ${SC}/gen/ISD${ISD}/AS${AS}/cs${IA}-1/topology.json) above the line specifying the ISD_AS:
 ```
   "SIG": {
-    "sig${ISD}-${IAd}-1": {
+    "sig${IA}-1": {
       "Addrs": {
         "IPv4": {
           "Public": {
@@ -188,6 +189,11 @@ Additionally, the topology files need to be updated to include the a sig entry. 
       }
     }
   },
+```
+
+For these changes in the topology files to take effect, the scionlab process needs to be restarted. 
+```shell
+sudo systemctl restart scionlab.target
 ```
 
 
