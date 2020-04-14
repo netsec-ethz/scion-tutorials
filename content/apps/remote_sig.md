@@ -13,22 +13,14 @@ The [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/
 To test the SIG we will make use of the Vagrant configurations provided on [scionlab.org](https://scionlab.org/).
 Set up a Vagrant VM on a host A and a host B using the instructions from [Virtual machine with VPN](https://netsec-ethz.github.io/scion-tutorials/virtual_machine_setup/dynamic_ip/).
 
-Building the SIG binary requires go version 1.13. This is newer than many default packages, and can be installed as followed.
-```shell
-export GO_VER="1.13.9"
-cd ~
-curl -O https://dl.google.com/go/go${GO_VER}.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go${GO_VER}.linux-amd64.tar.gz
-echo 'export GOPATH="$HOME/go"' >> ~/.profile
-echo 'export PATH="$HOME/.local/bin:$GOPATH/bin:/usr/local/go/bin:$PATH"' >> ~/.profile
-source ~/.profile
-mkdir -p "$GOPATH"
-```
+First, the SIG binary must be built. Please refer to the `building from source` docs page: https://docs.scionlab.org/content/install/src.html for instructions on setting up the proper environment (in particular setting up the Go workspace and ensuring you have the correct go version).
 
-Additionally, the SIG source files are needed.
+Clone the SIG source files.
 ```shell
 cd ~
 git clone -b scionlab https://github.com/netsec-ethz/scion
+# Needed go version is specified in go.mod
+# The README discusses setting up your Go workspace, setting $GOPATH in .profile
 ```
 
 ## Configuring the two SIGs
@@ -42,7 +34,7 @@ We will walk through creating the configuration directories for the SIGs, buildi
 export SC=/etc/scion
 export LOG=/var/log/scion
 export ISD=$(ls /etc/scion/gen/ | grep ISD | awk -F 'ISD' '{ print $2 }')
-export AS=$( ls /etc/scion/gen/ISD${ISD}/ | grep AS | awk -F 'AS' '{ print $2 }')
+export AS=$(ls /etc/scion/gen/ISD${ISD}/ | grep AS | awk -F 'AS' '{ print $2 }')
 export IA=${ISD}-${AS}
 export IAd=$(echo $IA | sed 's/_/\:/g')
 
