@@ -40,7 +40,7 @@ export IAd=$(echo $IA | sed 's/_/\:/g')
 
 
 # Then, create a configuration directory for the SIG
-mkdir -p ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
+sudo mkdir -p ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
 
 # Next, build the SIG binary
 cd ~/scion/go/sig
@@ -48,7 +48,7 @@ go install
 go build -o ${GOPATH}/bin/sig ~/scion/go/sig/main.go
 
 # Finally, set the linux capabilities required by the SIG binary
-sudo setcap cap_net_admin+eip ${SC}/bin/sig
+sudo setcap cap_net_admin+eip ${GOPATH}/bin/sig
 ```
 
 Additionally, the following need to be set to enable routing:
@@ -61,7 +61,7 @@ sudo sysctl net.ipv4.ip_forward=1
 
 Create the configuration for the sig at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config:
 
-*Note:* you need to replace ${SC}, ${ISD}, ${AS}, ${IA}, ${IAd}, ${sigID}, and ${sigIP} with the actual values on your system in these configuration files. You may define ${sigID} and ${sigIP}, for example ${sigID}="sigA" and ${sigIP}="172.16.0.11" for sigA and ${sigIP}="172.16.0.12 for sigB just ensure that the ${sigIP} value is different on sigA and sigB.
+*Note:* you need to replace ${SC}, ${ISD}, ${AS}, ${IA}, ${IAd}, ${sigID}, and ${sigIP} with the actual values on your system in these configuration files. You may define ${sigID} and ${sigIP}, for example ${sigID}="sigA" and ${sigIP}="172.16.0.11" for sigA and ${sigIP}="172.16.0.12" for sigB just ensure that the ${sigIP} value is different on sigA and sigB.
 
 ```
 [features]
@@ -144,8 +144,8 @@ sudo sed -i "s/\${IA}/${IA}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.c
 sudo sed -i "s/\${IAd}/${IAd}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
 sudo sed -i "s/\${AS}/${AS}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
 sudo sed -i "s/\${ISD}/${ISD}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
-sudo sed -i "s/\${SC}/\/etc\/scion/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
-sudo sed -i "s/\${LOG}/\/var\/log\/scion/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
+sudo sed -i "s%\${SC}%${SC}%g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
+sudo sed -i "s%\${LOG}%${LOG}%g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
 sudo sed -i "s/\${sigID}/${sigID}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
 sudo sed -i "s/\${sigIP}/${sigIP}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
 ```
@@ -197,7 +197,7 @@ sudo modprobe dummy
 
 On host A: 
 ```shell
-sudo ip link add dummy11 dev dummy
+sudo ip link add dummy11 type dummy
 # ${sigIP}="172.16.0.11" from sigA.config
 sudo ip addr add ${sigIP}/32 brd + dev dummy11 label dummy11:0
 ```
@@ -219,7 +219,7 @@ sudo ip rule add to <remote_sig_IPnet> lookup 11 prio 11
 
 On host B:
 ```shell
-# where <remote_sig_IPnet>=172.16.12.0/24 from sigB.json
+# where <remote_sig_IPnet>=172.16.11.0/24 from sigB.json
 sudo ip rule add to <remote_sig_IPnet> lookup 11 prio 11
 ```
 
@@ -252,10 +252,10 @@ Host B (server):
 ```shell
 sudo ip link add server type dummy
 sudo ip addr add 172.16.12.1/24 brd + dev server label server:0
-sudo mkdir $SC/WWW
-sudo touch $SC/WWW/hello.html
-echo "Hello World!" | sudo tee -a $SC/WWW/hello.html
-cd $SC/WWW/ && python3 -m http.server --bind 172.16.12.1 8081 &
+mkdir /tmp/WWW
+touch /tmp/WWW/hello.html
+echo "Hello World!" > /tmp/WWW/hello.html
+cd /tmp/WWW/ && python3 -m http.server --bind 172.16.12.1 8081 &
 ```
 
 
