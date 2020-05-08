@@ -17,7 +17,7 @@ If you want to preview the docs locally, you need to install the `github-pages` 
 bundle install --path _vendor/bundle
 ```
 
-(You need a working Ruby+bundler install first, install those from your OS's packages.)
+(You need a working Ruby+bundler install first, install those from your OS's packages. You might have to install the 2.5 version specifically.)
 
 In order to generate the website, run in the activated virtualenv:
 

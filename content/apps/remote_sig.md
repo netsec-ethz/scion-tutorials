@@ -165,9 +165,9 @@ Create the traffic rules for the sigs at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
     "ConfigVersion": 9001
 }
 ```
-You need to replace the "<remote_sig_AS>" AS id of the remote AS (for example, on sigA <remote_sig_AS> is the identifier of `AS B` in the format of "${IAd}"). Additionally, you need to replace "<remote_sig_IPnet>" with the subnet for traffic that will be routed on the sig. For this tutorial we are choosing to set this to 172.16.12.0/24 on sigA.json and 172.16.11.0/24 on sigB.json. Additional SIG end points can be accomodated by adding additional entries to this file.
+You need to replace the "`<remote_sig_AS>`" AS id of the remote AS (for example, on sigA `<remote_sig_AS>` is the identifier of `AS B` in the format of "`${IAd}`"). Additionally, you need to replace "`<remote_sig_IPnet>`" with the subnet for traffic that will be routed on the sig. For this tutorial we are choosing to set this to `172.16.12.0/24` on `sigA.json` and `172.16.11.0/24` on `sigB.json`. Additional SIG end points can be accomodated by adding additional entries to this file.
 
-Additionally, the topology files need to be updated to include the a sig entry. The following lines need to be added to each topology file (${SC}/gen/ISD${ISD}/AS${AS}/endhost/topology.json, ${SC}/gen/ISD${ISD}/AS${AS}/br${IA}-1/topology.json, and ${SC}/gen/ISD${ISD}/AS${AS}/cs${IA}-1/topology.json) above the line specifying the ISD_AS:
+Additionally, the topology files need to be updated to include the a sig entry. The following lines need to be added to each topology file (`${SC}/gen/ISD${ISD}/AS${AS}/endhost/topology.json`, `${SC}/gen/ISD${ISD}/AS${AS}/br${IA}-1/topology.json`, and `${SC}/gen/ISD${ISD}/AS${AS}/cs${IA}-1/topology.json`) above the line specifying the ISD_AS:
 ```
   "SIG": {
     "sig${IA}-1": {
