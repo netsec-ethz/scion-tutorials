@@ -36,7 +36,7 @@ For more detailed information, follow the instructions in the [Installation](con
 ## Introduction
 
 ### A brief overview of SCION
-SCION (**S**calability, **C**ntrol, and **I**solation **O**n next-generation **N**etworks) is an inter-domain network architecture, designed to provide route control, failure isolation, and explicit trust information for end-to-end communication.
+SCION (**S**calability, **C**ontrol, and **I**solation **O**n Next-Generation **N**etworks) is an inter-domain network architecture, designed to provide route control, failure isolation, and explicit trust information for end-to-end communication.
 
 SCION organizes ASes into groups of independent routing planes, called isolation domains (ISDs), which interconnect to provide global connectivity.
 

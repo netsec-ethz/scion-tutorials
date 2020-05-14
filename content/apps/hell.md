@@ -1,5 +1,5 @@
 ---
-title: Dynamic Links: Hell AP
+title: Dynamic Links&#58; Hell AP
 parent: Applications
 nav_order: 80
 ---
