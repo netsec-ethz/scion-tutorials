@@ -4,7 +4,7 @@ parent: Applications
 nav_order: 60
 ---
 
-# Hell Attachment Point (Hell AP)
+# Degraded Connectivity Testbed (Hell AP)
 
 The attachment point in AS `17-ffaa:0:1113`, short name `Hell AP`, 
 provides selectively degraded connectivity characteristics on the links to its ISD core.
@@ -46,15 +46,15 @@ One would choose the following path:
 
 Of course, you can also attach to an attachment point in a different ISD and 
 run tests against a server running at the Hell AP.
-There is a bwtestserver running at `17-ffaa:0:1113,[129.132.121.185]:30100`.
+There is a [bwtestserver](bwtester.html#scionlab-bandwidth-test-servers) running at `17-ffaa:0:1113,[129.132.121.185]:30100`.
 
 ## Testing
 
-The first example can be tested with an application like the bwtestclient.
+The first example can be tested with an application like the [bwtestclient](bwtester.html).
 Run the bwtestclient on your UserAS against one of the bwtestservers in `17-ffaa:0:1102`:
 >scion-bwtestclient -s 17-ffaa:0:1102,[129.132.121.164]:30100 -cs 101Mbps -i
 
-The expected output is similar to the folowing:
+The expected output is similar to the following:
 
 (Note that the bandwidth limit of 100Mbps on the link is upper limit. Dependent on the load, 
 e.g. other concurrent tests, the actual bandwidth might be lower.)
@@ -109,9 +109,11 @@ Using path:
 
 ## Reproducing the setup locally
 
-In case you need a more specific setup or the range of values you want to test your application with is not provided, 
-you can setup a similar topology locally using tcconfig with the following configurations, 
-while adapting the respective IAs, IPs, ports and interfaces:
+In some cases you might need a more specific setup.
+For instance, the range of values you want to test your application with is not provided.
+In those situations, you can setup a similar topology locally which you fully control.
+You can use the following tcconfig configurations used in `Hades` as template and adapt 
+the respective IAs, IPs, ports and interfaces to your topology:
 
 `17-ffaa:0:1113`:
 ```
