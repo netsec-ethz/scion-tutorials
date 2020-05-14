@@ -1,7 +1,7 @@
 ---
 title: Dynamic Links: Hell AP
 parent: Applications
-nav_order: 60
+nav_order: 80
 ---
 
 # Degraded Connectivity Testbed (Hell AP)
