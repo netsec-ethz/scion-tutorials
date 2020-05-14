@@ -35,7 +35,7 @@ This script allows to conveniently fetch and install the configuration for your 
 sudo scionlab-config --host-id=<...> --host-secret=<...>
 ```
 The required `host-id` and `host-secret` will be displayed on the SCIONLab website.
-The script will (re-)start all the configured services (and OpenVPN client-scionlab-&lt;attachment point ISD-AS&gt;, if configured).
+The script will (re-)start all the configured services (and OpenVPN `client-scionlab-<attachment point ISD-AS>`, if configured).
 The `host-id` and `host-secret` information will be stored in
 `/etc/scion/gen/scionlab-config.json` and will not have to be entered
 again.  To update the configuration after modifying your AS, simply run
