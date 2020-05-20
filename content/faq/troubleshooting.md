@@ -103,7 +103,7 @@ First clear the `/var/log/scion/` directory and restart. This often helps to fin
 
 #### Not receiving beacons
 
-Log of the control service (`/var/logs/scion/bs*.log`) does not contain recent entries referring to `Registered beacons`. This typically happens when the inter-AS links are not working correctly.
+Log of the control service (`/var/logs/scion/cs*.log`) does not contain recent entries referring to `Registered beacons`. This typically happens when the inter-AS links are not working correctly.
 
 *   Check that the border router is (still) up
 
