@@ -1,6 +1,6 @@
 # SCION tutorials page
 
-The website is deployed on [Github Pages](https://netsec-ethz.github.io/scion-tutorials/).
+The website is deployed at [docs.scionlab.org/](https://docs.scionlab.org/) using [GitHub Pages](https://pages.github.com/).
 
 ## About
 
