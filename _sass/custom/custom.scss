@@ -129,3 +129,7 @@ $btn-primary-color: $blue-300;
 //lg: $content-width + $nav-width,
 //xl: 1400px
 //);
+
+// Import font-awesome stylesheets for icons
+// https://fontawesome.com/v4.7.0/get-started/
+@import "https://unpkg.com/font-awesome@4.5.0/css/font-awesome.min.css"
