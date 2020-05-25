@@ -11,7 +11,8 @@ The [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/
 ## Environment
 
 To test the SIG we will make use of the Vagrant configurations provided on [scionlab.org](https://scionlab.org/).
-Set up a Vagrant VM on a host A and a host B using the instructions from [Virtual machine with VPN](https://netsec-ethz.github.io/scion-tutorials/virtual_machine_setup/dynamic_ip/).
+Set up a Vagrant VM on a host A and a host B using the instructions for [running inside a VM]({% link content/install/vm.md %}) and [creating an AS
+ over VPN]({% link content/config/create_as.md %}).
 
 First, the SIG binary must be built. Please refer to the `building from source` docs page: https://docs.scionlab.org/content/install/src.html for instructions on setting up the proper environment (in particular setting up the Go workspace and ensuring you have the correct go version).
 
