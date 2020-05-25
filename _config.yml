@@ -17,7 +17,6 @@ logo: /favicon.ico
 logo_title: SCIONLab
 
 # === markdown options ===
-
 markdown: kramdown
 kramdown:
   toc_levels: 1..3
