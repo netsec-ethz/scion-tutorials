@@ -12,17 +12,18 @@ The HTML website is generated using [Jekyll](http://www.jekyllrb.com/) with the 
 
 The webpage is rebuilt automatically when you push to GitHub. If you don't want to see the preview before pushing, you can stop reading now. (Using a Markdown-capable editor, such as the online editor online, might work well for this.)
 
-If you want to preview the docs locally, you need to install the `github-pages` gem (installs Jekyll in the same way as it is installed on GitHub pages):
+If you want to preview the docs locally, you need to install the `github-pages` and other
+supporting gems (installs Jekyll in the same way as it is installed on GitHub pages):
 ```shell
-bundle install --path _vendor/bundle
+make install
 ```
 
 (You need a working Ruby+bundler install first, install those from your OS's packages. You might have to install the 2.5 version specifically.)
 
-In order to generate the website, run in the activated virtualenv:
+In order to generate the website, run:
 
 ```shell
-bundle exec jekyll build
+make build
 ```
 
 The newly generated website will be placed in the `_site` directory.
@@ -30,7 +31,7 @@ The newly generated website will be placed in the `_site` directory.
 During the development phase, it is possible to run a local webserver and automatically refresh the website content. To do this, run:
 
 ```shell
-bundle exec jekyll serve
+make serve
 ```
 
 ## Adding a new page
@@ -84,12 +85,12 @@ We use the [just-the-docs theme](https://pmarsceill.github.io/just-the-docs/) as
 
 If you are making some generally useful changes, consider opening a PR in the upstream theme instead.
 
-## Check links
+## Check HTML and Links
 
-You can always look for broken links in the tutorials by running:
+You can always look for broken links and correct HTML in the tutorials by running:
 
 ```shell
-wget --spider -r -nd -nv -l 3 -w 0 -o - https://docs.scionlab.org/ | grep -B1 'broken link!'
+make check
 ```
 
 Prior to merge to master it is always nice to check against our own repository. For that you need to enable Github Pages in your clone of `scion-tutorials`, and remembering that Github Pages are available only for the master branch, your commits would have to be pushed to your master. E.g.:
