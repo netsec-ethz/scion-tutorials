@@ -89,7 +89,7 @@ If you are making some generally useful changes, consider opening a PR in the up
 You can always look for broken links in the tutorials by running:
 
 ```shell
-wget --spider -r -nd -nv -l 3 -w 0 -o - https://netsec-ethz.github.io/scion-tutorials/ | grep -B1 'broken link!'
+wget --spider -r -nd -nv -l 3 -w 0 -o - https://docs.scionlab.org/ | grep -B1 'broken link!'
 ```
 
 Prior to merge to master it is always nice to check against our own repository. For that you need to enable Github Pages in your clone of `scion-tutorials`, and remembering that Github Pages are available only for the master branch, your commits would have to be pushed to your master. E.g.:
