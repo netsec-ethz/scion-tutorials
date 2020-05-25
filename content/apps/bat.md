@@ -6,7 +6,7 @@ nav_order: 40
 
 # bat ("cURL for SCION")
 
-The [scion-apps/bat application](https://github.com/netsec-ethz/scion-apps/bat) is a clone of [astaxie/bat](https://github.com/astaxie/bat), a cURL-like tool for sending HTTP requests to webservers and retrieve information in a human-readable format. Our fork extends `bat` with native SCION support.
+The [scion-apps/bat application](https://github.com/netsec-ethz/scion-apps/tree/master/bat) is a clone of [astaxie/bat](https://github.com/astaxie/bat), a cURL-like tool for sending HTTP requests to webservers and retrieve information in a human-readable format. Our fork extends `bat` with native SCION support.
 
 ## Install
 
