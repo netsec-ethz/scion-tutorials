@@ -8,7 +8,7 @@ aux_links:
     - "https://scion-architecture.net/"
   "Our GitHub":
     - "https://github.com/netsec-ethz/"
-footer_content: 'Copyright &copy 2019, Network Security Group, ETH Zurich'
+footer_content: "Copyright &copy; 2020, Network Security Group, ETH Zurich"
 url: https://docs.scionlab.org/
 
 # === visuals ===
