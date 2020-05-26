@@ -9,7 +9,7 @@ aux_links:
   "Our GitHub":
     - "https://github.com/netsec-ethz/"
 footer_content: "Copyright &copy; 2020, Network Security Group, ETH Zurich"
-url: https://docs.scionlab.org/
+url: https://docs.scionlab.org
 
 # === visuals ===
 remote_theme: pmarsceill/just-the-docs
