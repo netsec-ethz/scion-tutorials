@@ -14,7 +14,7 @@ To test the SIG we will make use of the Vagrant configurations provided on [scio
 Set up a Vagrant VM on a host A and a host B using the instructions for [running inside a VM]({% link content/install/vm.md %}) and [creating an AS
  over VPN]({% link content/config/create_as.md %}).
 
-First, the SIG binary must be built. Please refer to the `building from source` docs page: https://docs.scionlab.org/content/install/src.html for instructions on setting up the proper environment (in particular setting up the Go workspace and ensuring you have the correct go version).
+First, the SIG binary must be built. Please refer to [Building from Source]({% link content/install/src.md %}) for instructions on setting up the proper environment (in particular setting up the Go workspace and ensuring you have the correct go version).
 
 Clone the SIG source files.
 ```shell
