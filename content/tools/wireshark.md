@@ -43,7 +43,7 @@ We need to find directory in which Wireshark or Tshark are looking for plugins s
 From **Help** menu select **About Wireshark** and in newly opened window select **Folders** tab. 
 There are paths to global and local plugin directory.
 
-In this tutorial we will use global lua plugin directory which is usually:
+In this tutorial we will use global Lua plugin directory which is usually:
 
 ```
 /usr/lib/x86_64-linux-gnu/wireshark/plugins/
@@ -53,31 +53,13 @@ Plugins from global plugin directory are available to all users, while local is 
 
 ### Tshark
 
-In order to find the directory where Tshark is loading plugins from we can run following command:
+In order to find the directory where Tshark is loading Lua plugins from we can run following command:
 
-```
-tshark -G folders
-```
+    tshark -G folders | grep ^Global.Lua.Plugins | cut -f2
 
-Output will look something like this:
+which should return a path like: 
 
-```
-...
-Personal Plugins:       /home/user/.local/lib/wireshark/plugins/2.6
-Global Plugins:         /usr/lib/x86_64-linux-gnu/wireshark/plugins/2.6
-Personal Lua Plugins:   /home/user/.local/lib/wireshark/plugins
-Global Lua Plugins:     /usr/lib/x86_64-linux-gnu/wireshark/plugins
-Extcap path:            /usr/lib/x86_64-linux-gnu/wireshark/extcap
-...
-```
-
-Examining output we can conclude that plugins are being loaded from 
-
-```
-/usr/lib/x86_64-linux-gnu/wireshark/plugins/
-```
-
-So we will use that for our plugin directory.
+    /usr/lib/x86_64-linux-gnu/wireshark/plugins
 
 ## Step Two - Adding plugin
 
