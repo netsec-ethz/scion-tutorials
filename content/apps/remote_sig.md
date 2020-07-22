@@ -6,153 +6,55 @@ nav_order: 60
 
 # SCION IP Gateway (SIG)
 
-The [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/go/sig) enables legacy IP applications to communicate over SCION. This tutorial describes how to set up two SIGs locally to test the SIG can enable any IP application to communicate over SCION (this can be extended to support multiple SIG enpoints).
+The [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/go/sig) enables legacy IP applications to communicate over SCION.
+This tutorial describes a minimal setup of two SIGs, to test how the SIG can enable any IP application to communicate over SCION. This setup can later be extended to support multiple SIG enpoints.
 
-## Environment
+## Install
 
-To test the SIG we will make use of the Vagrant configurations provided on [scionlab.org](https://scionlab.org/).
-Set up a Vagrant VM on a host A and a host B using the instructions for [running inside a VM]({% link content/install/vm.md %}) and [creating an AS
- over VPN]({% link content/config/create_as.md %}).
-
-First, the SIG binary must be built. Please refer to [Building from Source]({% link content/install/src.md %}) for instructions on setting up the proper environment (in particular setting up the Go workspace and ensuring you have the correct go version).
-
-Clone the SIG source files.
+To install `sig`, run:
 ```shell
-cd ~
-git clone -b scionlab https://github.com/netsec-ethz/scion
-# Needed go version is specified in go.mod
-# The README discusses setting up your Go workspace, setting $GOPATH in .profile
+sudo apt install scion-sig
 ```
+See [Installation](../install/pkg.html#applications) for details.
+
+
+## Prerequisites
+
+You will need two running SCION ASes.
+
+The description below assumes that you're running the "standard" SCIONLab setup with all of the services and routers running on one separate machine for each of your ASes.
+We'll refer to these two ASes as "AS A" and "AS B", and the hosts running them as "host A" and "host B", respectively.
 
 ## Configuring the two SIGs
 
-We will now create the configuration for two SIG instances, one on the AS you started on host A `AS A` which we will call sigA and one on host B in `AS B`, which we will call sigB.
-We will walk through creating the configuration directories for the SIGs, building the SIG binary and seting the linux capabilities on the binary:
+We first create the configuration for two SIG instances, one in AS A, which we will call sigA and one in AS B, which we will call sigB.
 
-
-```shell
-# First, set some variables that will be used throughout this tutorial
-export SC=/etc/scion
-export LOG=/var/log/scion
-export ISD=$(ls /etc/scion/gen/ | grep ISD | awk -F 'ISD' '{ print $2 }')
-export AS=$(ls /etc/scion/gen/ISD${ISD}/ | grep AS | awk -F 'AS' '{ print $2 }')
-export IA=${ISD}-${AS}
-export IAd=$(echo $IA | sed 's/_/\:/g')
-
-
-# Then, create a configuration directory for the SIG
-sudo mkdir -p ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
-
-# Next, build the SIG binary
-cd ~/scion/go/sig
-go install
-go build -o ${GOPATH}/bin/sig ~/scion/go/sig/main.go
-
-# Finally, set the linux capabilities required by the SIG binary
-sudo setcap cap_net_admin+eip ${GOPATH}/bin/sig
-```
-
-Additionally, the following need to be set to enable routing:
+The `scion-sig` package includes configuration file templates.
+First, we copy and fill-in the `sig.toml` template:
 
 ```shell
-sudo sysctl net.ipv4.conf.default.rp_filter=0
-sudo sysctl net.ipv4.conf.all.rp_filter=0
-sudo sysctl net.ipv4.ip_forward=1
+# Set some variables that will be used below:
+sigID=< sigA on host A, sigB on host B >
+sigIP=127.0.0.1  # IP for the SCION address on which this SIG will bind
+ISD=$(ls /etc/scion/gen/ | grep ISD | awk -F 'ISD' '{ print $2 }')
+AS=$(ls /etc/scion/gen/ISD${ISD}/ | grep AS | awk -F 'AS' '{ print $2 }')
+
+# Create a configuration directory for the SIG
+sudo mkdir /etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/
+
+# Expand the placeholders in the sig.toml template and install it:
+sed -e "s/\${ISD}/${ISD}/g;
+        s/\${AS}/${AS}/g;
+        s/\${IA}/${ISD}-${AS}/g;
+        s/\${IAd}/${ISD}-${AS//_/:}/g;
+        s/\${sigID}/${sigID}/g;
+        s/\${sigIP}/${sigIP}/g;" < /usr/share/doc/scion-ip-gateway/templates/sig.config \
+        | sudo tee --output-error=exit /etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/sig.toml
 ```
 
-Create the configuration for the sig at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config:
-
-*Note:* you need to replace ${SC}, ${ISD}, ${AS}, ${IA}, ${IAd}, ${sigID}, and ${sigIP} with the actual values on your system in these configuration files. You may define ${sigID} and ${sigIP}, for example ${sigID}="sigA" and ${sigIP}="172.16.0.11" for sigA and ${sigIP}="172.16.0.12" for sigB just ensure that the ${sigIP} value is different on sigA and sigB.
-
-```
-[features]
-    # Feature flags are various boolean properties as defined in go/lib/env/features.go
-
-[log]
-    [log.file]
-        # Location of the logging file. If not specified, logging to file is disabled.
-        path = "${LOG}/sig${IA}-1.log"
-
-        # File logging level. (trace|debug|info|warn|error|crit) (default debug)
-        level = "debug"
-
-        # Max size of log file in MiB. (default 50)
-        size = 50
-
-        # Max age of log file in days. (default 7)
-        max_age = 7
-
-        # Maximum number of log files to retain. (default 10)
-        max_backups = 10
-
-        # How frequently to flush to the log file, in seconds. If 0, all messages
-        # are immediately flushed. If negative, messages are never flushed
-        # automatically. (default 5)
-        flush_interval = 5
-
-    [log.console]
-        # Console logging level (trace|debug|info|warn|error|crit) (default crit)
-        level = "crit"
-
-[metrics]
-    # The address to export prometheus metrics on (host:port or ip:port or :port).
-    # The prometheus metrics can be found under /metrics, furthermore pprof
-    # endpoints are exposed see (https://golang.org/pkg/net/http/pprof/).
-    # If not set, metrics are not exported. (default "")
-    prometheus = ""
-
-[sciond_connection]
-    # Address of the SCIOND server the client should connect to.
-    address = "127.0.0.1:30255"
-
-    # Maximum time spent attempting to connect to sciond on start. (default 20s)
-    initial_connect_period = "20s"
-
-    # Maximum numer of paths provided by SCIOND.
-    # Zero means that all the paths should be provided. (default 0)
-    path_count = 0
-
-[sig]
-    # ID of the SIG. (required)
-    id = "${sigID}"
-
-    # The SIG config json file. (required)
-    sig_config = "${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.json"
-
-    # The local ISD-AS. (required)
-    isd_as = "${IAd}"
-
-    # The bind IP address. (required)
-    ip = "${sigIP}"
-
-    # Control data port, e.g. keepalives. (default 30256)
-    ctrl_port = 30256
-
-    # Encapsulation data port. (default 30056)
-    encap_port = 30056
-
-    # Name of TUN device to create. (default DefaultTunName)
-    tun = "${sigID}"
-
-    # Id of the routing table. (default 11)
-    tun_routing_table_id = 11
-```
-
-You can do so with the following command:
-
-```shell
-sudo sed -i "s/\${IA}/${IA}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
-sudo sed -i "s/\${IAd}/${IAd}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
-sudo sed -i "s/\${AS}/${AS}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
-sudo sed -i "s/\${ISD}/${ISD}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
-sudo sed -i "s%\${SC}%${SC}%g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
-sudo sed -i "s%\${LOG}%${LOG}%g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
-sudo sed -i "s/\${sigID}/${sigID}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
-sudo sed -i "s/\${sigIP}/${sigIP}/g" ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config
-```
-
-
-Create the traffic rules for the sigs at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.json:
+Each SIG requires traffic rules, in the form of a `json` configuration file.
+This configuration specifies IP prefixes that can be forwarded to a SIG in a remote AS.
+Create the traffic rules for the SIG at `/etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/${sigID}.json`:
 
 ```
 {
@@ -166,12 +68,13 @@ Create the traffic rules for the sigs at ${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/
     "ConfigVersion": 9001
 }
 ```
-You need to replace the "`<remote_sig_AS>`" AS id of the remote AS (for example, on sigA `<remote_sig_AS>` is the identifier of `AS B` in the format of "`${IAd}`"). Additionally, you need to replace "`<remote_sig_IPnet>`" with the subnet for traffic that will be routed on the sig. For this tutorial we are choosing to set this to `172.16.12.0/24` on `sigA.json` and `172.16.11.0/24` on `sigB.json`. Additional SIG end points can be accomodated by adding additional entries to this file.
 
-Additionally, the topology files need to be updated to include the a sig entry. The following lines need to be added to each topology file (`${SC}/gen/ISD${ISD}/AS${AS}/endhost/topology.json`, `${SC}/gen/ISD${ISD}/AS${AS}/br${IA}-1/topology.json`, and `${SC}/gen/ISD${ISD}/AS${AS}/cs${IA}-1/topology.json`) above the line specifying the ISD_AS:
+Here, we need to replace the "`<remote_sig_AS>`" with the ISD-AS number of the remote AS. For example, on sigA `<remote_sig_AS>` is the identifier of `AS B`, in the format `1-ff00:0:a12`. Additionally, you need to replace "`<remote_sig_IPnet>`" with the subnet for traffic that will be routed on the sig. For this tutorial we choose `172.16.12.0/24` in `sigA.json` and `172.16.11.0/24` in `sigB.json`. Additional SIG endpoints can be accomodated by adding additional entries to this file.
+
+Finally, the topology files need to be updated to include a SIG entry. This entry is required so that the border routers can resolve the SIG service address. Insert the following snippet to the topology file of every border router in the AS:
 ```
   "SIG": {
-    "sig${IA}-1": {
+    "sig${ISD}-${AS}-1": {
       "Addrs": {
         "IPv4": {
           "Public": {
@@ -184,58 +87,58 @@ Additionally, the topology files need to be updated to include the a sig entry. 
   },
 ```
 
-For these changes in the topology files to take effect, the scionlab process needs to be restarted. 
+For these changes in the topology files to take effect, the services need to be restarted, e.g. run
 ```shell
 sudo systemctl restart scionlab.target
 ```
 
+## Running the SIGs
 
-Since we are running our SIGs in a VM and we do not have spare physical interfaces on which to run them, we will create two dummy interfaces:
-
+Start the SIG process on both hosts, by executing:
 ```shell
-sudo modprobe dummy
+sudo -u scion sig -config=/etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/sig.toml
 ```
 
-On host A: 
-```shell
-sudo ip link add dummy11 type dummy
-# ${sigIP}="172.16.0.11" from sigA.config
-sudo ip addr add ${sigIP}/32 brd + dev dummy11 label dummy11:0
-```
+{% include alert type="Tip" content="
+Now, you should already have connectivity between the SIGs. You can verify this, e.g. run `ping -I sigA 172.16.11.7` in host A,  and observe the arriving packets with `tcpdump -n -i sigB` on host B. However, there will not be replies to the pings yet.
+" %}
 
-On host B: 
-```
-sudo ip link add dummy12 type dummy
-# ${sigIP}="172.16.0.12" from sigB.config
-sudo ip addr add ${sigIP}/32 brd + dev dummy12 label dummy12:0
-```
+## Configuring Routing (simple)
 
-Now we need to add the routing rules for the two SIGs:
+Now we setup the IP routing on both hosts, that we can _use_ the SIG connection.
+There are a large number of possibilities to set this up; in this section we just describe a simple option without IP routing, where only applications on SIG hosts can make use of the link.
 
 On host A:
 ```shell
-# where <remote_sig_IPnet>=172.16.12.0/24 from sigA.json
-sudo ip rule add to <remote_sig_IPnet> lookup 11 prio 11
+# Assign an address in the range <remote_sig_IPnet> used in sigB.json
+sudo ip address add 172.16.11.1 dev sigA
+# Setup route to <remote_sig_IPnet> in sigA.json
+sudo ip route add 172.16.12.0/24 dev sigA
 ```
 
 On host B:
 ```shell
-# where <remote_sig_IPnet>=172.16.11.0/24 from sigB.json
-sudo ip rule add to <remote_sig_IPnet> lookup 11 prio 11
+# Assign an address in the range <remote_sig_IPnet> used in sigA.json
+sudo ip address add 172.16.12.1 dev sigB
+# Setup route to <remote_sig_IPnet> in sigB.json
+sudo ip route add 172.16.11.0/24 dev sigB
 ```
 
-To show the ip rules and routes, run:
+{% include alert type="Hint" content="
+These address and route settings will only live as long as the sig tunnel device. As soon as the `sig` process terminates, this will be gone.
+" %}
+
+Now you should be able to `ping` the remote host, e.g. run on host A
 ```shell
-sudo ip rule show
-sudo ip route show table 11
+ping 172.16.12.1
 ```
 
-Now start the two SIGs with the following commands:
-
-
+{% include alert type="Warning" content="
+The MTU set on the SIG's tun device is unreliable or just plain wrong. Set a conservative value of e.g. 1200 bytes on both hosts:
 ```shell
-$GOPATH/bin/sig -config=${SC}/gen/ISD${ISD}/AS${AS}/sig${IA}-1/${sigID}.config &
+sudo ip link set mtu 1200 dev ${sigID}
 ```
+" %}
 
 ## Testing
 
@@ -243,29 +146,18 @@ You can test that your SIG configuration works by running some traffic over it.
 
 Add some client on host A and server on host B:
 
-Host A (client):
+Host A (server):
 ```shell
-sudo ip link add client type dummy
-sudo ip addr add 172.16.11.1/24 brd + dev client label client:0
+mkdir /tmp/www
+echo "Hello World!" > /tmp/www/hello
+cd /tmp/www/ && python3 -m http.server --bind 172.16.11.1
 ```
 
-Host B (server):
+Query the web server running on host A from host B:
+
+Host B (client):
 ```shell
-sudo ip link add server type dummy
-sudo ip addr add 172.16.12.1/24 brd + dev server label server:0
-mkdir /tmp/WWW
-touch /tmp/WWW/hello.html
-echo "Hello World!" > /tmp/WWW/hello.html
-cd /tmp/WWW/ && python3 -m http.server --bind 172.16.12.1 8081 &
-```
-
-
-Query the server running on host B from host A:
-
-Host A:
-```shell
-curl --interface 172.16.11.1 172.16.12.1:8081/hello.html
+curl 172.16.11.1:8000/hello
 ```
 
 You should see the "Hello World!" message as output from the last command.
-
