@@ -15,6 +15,7 @@ url: https://docs.scionlab.org
 remote_theme: pmarsceill/just-the-docs
 logo: /favicon.ico
 logo_title: SCIONLab
+color_scheme: scionlab  # makes just-the-docs load theme from _sass/color_schemes/scionlab.scss
 
 # === markdown options ===
 markdown: kramdown
