@@ -81,9 +81,7 @@ I am _very_ **dangerous**!
 
 ## Theme customization
 
-We use the [just-the-docs theme](https://pmarsceill.github.io/just-the-docs/) as a "remote theme", which means that the theme source is not included in this repository. However, by copying individual files from the theme to the same place here, we can override them. The theme is very overriding-friendly: see [just-the-docs customization docs](https://pmarsceill.github.io/just-the-docs/docs/customization/)). 
-
-If you are making some generally useful changes, consider opening a PR in the upstream theme instead.
+We use the [just-the-docs theme](https://pmarsceill.github.io/just-the-docs/) as a "remote theme", which means that the theme source is not included in this repository. The theme can be customized by defining a new color scheme (`_sass/color_schemes/scionlab.scss`) or by adding custom CSS in `_sass/custom/custom.scss`: see [just-the-docs customization docs](https://pmarsceill.github.io/just-the-docs/docs/customization/)).
 
 ## Check HTML and Links
 
