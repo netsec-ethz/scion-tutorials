@@ -100,7 +100,7 @@ sudo -u scion sig -config=/etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/sig
 ```
 
 {% include alert type="Tip" content="
-Now, you should already have connectivity between the SIGs. You can verify this, e.g. run `ping -I sigA 172.16.11.7` in host A,  and observe the arriving packets with `tcpdump -n -i sigB` on host B. However, there will not be replies to the pings yet.
+Now, you should already have connectivity between the SIGs. You can verify this, e.g. run `ping -I sigA 172.16.12.7` in host A,  and observe the arriving packets with `tcpdump -n -i sigB` on host B. However, there will not be replies to the pings yet.
 " %}
 
 ## Configuring Routing (simple)
