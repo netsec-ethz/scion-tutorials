@@ -12,7 +12,7 @@ Prebuilt SCION packages are available for Ubuntu (or other Debian based systems)
 You can install SCION from our `.deb`-packages by running:
 
 ```shell
-sudo apt-get install apt-transport-https
+sudo apt-get install apt-transport-https ca-certificates
 echo "deb [trusted=yes] https://packages.netsec.inf.ethz.ch/debian all main" | sudo tee /etc/apt/sources.list.d/scionlab.list
 sudo apt-get update
 sudo apt-get install scionlab
