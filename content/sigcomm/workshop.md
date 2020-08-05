@@ -1,8 +1,10 @@
----
+<!-- ---
 title: SIGCOMM Workshop Tasks
 parent: SIGCOMM2020 SCION Tutorial
 nav_order: 10
 ---
+uncomment to make it show in the index
+-->
 
 # SCION Tutorial
 ## Preparation
