@@ -17,6 +17,8 @@ To avoid delays due to software downloads and installation during the tutorial a
    * Confirm by clicking `Create AS`.
 4. Download the generated tarfile, extract the `Vagrantfile` and start the VM by executing `vagrant up`.
 
+For further information please refer to the general tutorial [VM installation page](../install/vm.html).
+
 
 ## Troubleshooting
 
