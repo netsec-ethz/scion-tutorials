@@ -18,3 +18,11 @@ To avoid delays due to software downloads and installation during the tutorial a
 4. Download the generated tarfile, extract the `Vagrantfile` and start the VM by executing `vagrant up`.
 
 Relevant troubleshooting information is provided below.
+
+VirtualBox has some issues on MacOS Catalina. If you encounter any of these issues, these remediations may help to get it running:
+- Provide permissions to VirtualBox:
+  - If installation does not seem to progress, open the "System Preferences", select "Security & Privacy" and enable the installer to run (in the "General" tab you can click to permit the installer to execute)
+  - In the "Privacy" tab, provide access to VirtualBox for the following categories: "Full Disk Access", "Accessibility".
+- If running the SCION setup with Vagrant hangs, then reboot the machine (you can also manually kill all the VirtualBox processes), and then start the VirtualBox GUI, click on the SCIONLabVM machine, select "Settings", then select the "System" tab, then select the "Processor" tab. Here, select only a single CPU, instead of the configured 2 CPUs.
+- If all this fails to get VirtualBox to run, we recommend installing the latest version of the old VirtualBox 5.2, which you can obtain here:
+  https://www.virtualbox.org/wiki/Download_Old_Builds_5_2
