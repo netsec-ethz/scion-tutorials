@@ -22,7 +22,7 @@ For further information please refer to the general tutorial [VM installation pa
 
 ## Troubleshooting
 
-VirtualBox has some issues on MacOS Catalina. If you encounter any of these issues, these remediations may help to get it running:
+VirtualBox has some issues on macOS Catalina. If you encounter any of these issues, these remediations may help to get it running:
 - Provide permissions to VirtualBox:
   - If installation does not seem to progress, open the "System Preferences", select "Security & Privacy" and enable the installer to run (in the "General" tab you can click to permit the installer to execute)
   - In the "Privacy" tab, provide access to VirtualBox for the following categories: "Full Disk Access", "Accessibility".
