@@ -16,6 +16,11 @@ To avoid delays due to software downloads and installation during the tutorial a
    * Enable `Use VPN` and select the installation type `Run SCION in a Vagrant virtual machine`.
    * Confirm by clicking `Create AS`.
 4. Download the generated tarfile, extract the `Vagrantfile` and start the VM by executing `vagrant up`.
+5. Check the health of your AS:
+   * Enter the virtual machine with `vagrant ssh`.
+   * Run a SCMP echo (analogous to ICMP echo for SCION) to one of our computers, with <br> `scmp echo -remote 17-ffaa:0:1101,127.0.0.1`.
+   * You should now see reply messages such as <br> `128 bytes from 17-ffaa:0:1101,[127.0.0.1] scmp_seq=0 time=49.45ms`. <br>
+   If not, you can report the problem to us. Be sure to mention you will be part of the SIGCOMM workshop when you [contact us](https://docs.scionlab.org/#contact).
 
 For further information please refer to the general tutorial [VM installation page](../install/vm.html).
 
