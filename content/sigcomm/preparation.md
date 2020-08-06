@@ -16,6 +16,11 @@ To avoid delays due to software downloads and installation during the tutorial a
    * Enable `Use VPN` and select the installation type `Run SCION in a Vagrant virtual machine`.
    * Confirm by clicking `Create AS`.
 4. Download the generated tarfile, extract the `Vagrantfile` and start the VM by executing `vagrant up`.
+5. Using the SCIONLab Webapp, check the health status of your AS:
+   * Enter the virtual machine with `vagrant ssh`.
+   * Install SCIONLab's webapp with `sudo apt-get install scion-apps-webapp`.
+   * Start the daemon with `sudo systemctl start scion-webapp.service`. The SCIONLab Webapp should be running now under port 8000 of the virtual machine. 
+   * In your host machine, outside of the virtual machine, open a browser and navigate to [http://localhost:8000/](http://localhost:8000/). Click on the health tab of the top bar. Every test should be green. If not, you can report the problem to us. Be sure to mention you will be part of the SIGCOMM Workshop when you [contact us](https://docs.scionlab.org/#contact).
 
 For further information please refer to the general tutorial [VM installation page](../install/vm.html).
 
