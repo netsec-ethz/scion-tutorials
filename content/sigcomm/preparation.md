@@ -20,7 +20,7 @@ To avoid delays due to software downloads and installation during the tutorial a
    * Enter the virtual machine with `vagrant ssh`.
    * Run a SCMP echo (analogous to ICMP echo for SCION) to one of our computers, with <br> `scmp echo -remote 17-ffaa:0:1101,127.0.0.1`.
    * You should now see reply messages such as <br> `128 bytes from 17-ffaa:0:1101,[127.0.0.1] scmp_seq=0 time=49.45ms`. <br>
-   If not, you can report the problem to us via the tutorial's [slack channel](https://app.slack.com/client/T0107RGGMU6/C0186E0GY0G) or [contact us](https://docs.scionlab.org/#contact) by email.
+   If not, you can report the problem to us via the tutorial's [slack channel](https://sigcomm.slack.com) or [contact us](https://docs.scionlab.org/#contact) by email.
    In the latter case, please mention that you will be part of the SIGCOMM workshop.
 
 For further information please refer to the general tutorial [VM installation page](../install/vm.html).
