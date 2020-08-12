@@ -10,7 +10,7 @@ nav_order: 10
 
 ### Starting the VM
 
-Open a terminal in your host OS and change the working directory to were the `Vagrantfile` from SCIONLab is. You have to start up the VM, and for that you can execute:
+Open a terminal in your host OS and change the working directory to where the `Vagrantfile` from SCIONLab is located. You have to start up the VM, and for that you can execute:
 
 ```shell
 vagrant up
@@ -26,7 +26,7 @@ vagrant ssh
 
 That will open a shell terminal inside your VM.
 
-At any point you can check if the services are running with `sudo systemctl list-dependencies scionlab.target`. It should list at least 4 services: border router, control service, daemon and dispatcher must be running.
+At any point you can check if the services are running with `sudo systemctl list-dependencies scionlab.target`. It should list at least 4 services: border router, control service, daemon, and dispatcher must be running.
 
 <a name="scmp_echo"></a>
 Now that you have a terminal open in your VM, check connectivity to the infrastructure. We can perform an SCMP echo, which is similar to an ICMP echo but with SCION, by running:
@@ -42,7 +42,7 @@ The command should output the reply packets arriving shortly after, with some mi
 
 #### Using the web application
 
-The easiest way to explore the SCION system and the topology is by using the SCIONLab User AS web application. We are going to install it by login into your VM (`vagrant ssh` as mentioned before), and then running:
+The easiest way to explore the SCION system and the topology is by using the SCIONLab User AS web application. We are going to install it by logging into your VM (`vagrant ssh` as mentioned before), and then running:
 
 ```shell
 sudo apt-get install -y scion-apps-webapp
@@ -92,7 +92,7 @@ You can also set up the apps *imageserver* and *sensorserver* following the inst
 
 #### Configure a second user AS
 
-Configure another user AS in [SCIONLab](https://www.scionlab.org). Download the tar file, uncompress it like you did with your first AS.
+Configure another user AS in [SCIONLab](https://www.scionlab.org). Download the tar file and extract the `Vagrantfile` like you did with your first AS.
 Now, since we are going to run this VM at the same time as we also run the first one, you have to edit the `Vagrantfile` and comment out with a `#` the following line:
 
 ```ruby
