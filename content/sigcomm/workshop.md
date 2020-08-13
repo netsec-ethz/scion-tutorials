@@ -7,7 +7,9 @@ nav_order: 10
 # SCION Tutorial
 
 ## First steps with SCION
+
 ### Contact information
+
 If you experience problems or have doubts during the course of the SIGCOMM2020 SCION tutorial, please contact us on the tutorial's [Slack channel](https://sigcomm.slack.com/archives/C0186E0GY0G). After the tutorial is over, you can [contact us](https://docs.scionlab.org/#contact) by email.
 
 ### Starting the VM
@@ -54,6 +56,7 @@ sudo systemctl start scion-webapp.service
 With that, the web application should be running inside the VM, listening for connections on port `8000`. Because the VM is configured to forward that port, you can already connect from your host machine at [http://localhost:8000]. In this page, the health status of your user AS is displayed. All the sections in the health check should be passing successfully, and displayed in green.
 
 Go to the page *Apps* and select one of the apps (*bwtester*, *camerapp*, *sensorapp*):
+
 + `bwtester` [(link)](../apps/bwtester.html) Tests bandwidth for a given path. If you select this option, please don't overwhelm our routers by using much bandwidth, or running it for longer than some seconds.
 + `camerapp` [(link)](../apps/access_camera.html) Downloads image files from the server. These images can be periodically grabbed from a device, e.g. a camera.
 + `sensorapp` [(link)](../apps/fetch_sensor_readings.html) Downloads sensor information.
@@ -71,70 +74,73 @@ Inside your VM, you can explore several subdirectories:
 
 + The directory `/var/log/scion/` allows you to access logs of the different SCION services. In particular the control service's log `cs*-1.log` can be interesting. Look for thing like path segments requests and responses, or beacon registrations (grep for `segReq`, `segment` or `beacon`).
 + The directory `/etc/scion/gen/` contains configuration files for you AS such as the local topology.
-The topology files are a set of `json` files located under `/etc/scion/gen/` that you can find with `find /etc/scion/gen -name topology.json`. They all are identical in your AS. If you open one, you will see something like:
-```json
-{
-  "Attributes": [],
-  "BorderRouters": {
-    "br17-ffaa_1_13-1": {
-      "CtrlAddr": {
-        "IPv4": {
-          "Public": {
-            "Addr": "127.0.0.1",
-            "L4Port": 30045
++ The topology files are a set of `json` files located under `/etc/scion/gen/` that you can find with `find /etc/scion/gen -name topology.json`. They all are identical in your AS. If you open one, you will see something like:
+
+  ```json
+  {
+    "Attributes": [],
+    "BorderRouters": {
+      "br17-ffaa_1_13-1": {
+        "CtrlAddr": {
+          "IPv4": {
+            "Public": {
+              "Addr": "127.0.0.1",
+              "L4Port": 30045
+            }
           }
-        }
-      },
-      "Interfaces": {
-        "1": {
-          "Bandwidth": 1000,
-          "ISD_AS": "17-ffaa:0:1107",
-          "LinkTo": "PARENT",
-          "MTU": 1472,
-          "Overlay": "UDP/IPv4",
-          "PublicOverlay": {
-            "Addr": "10.1.0.129",
-            "OverlayPort": 50000
-          },
-          "RemoteOverlay": {
-            "Addr": "10.1.0.1",
-            "OverlayPort": 50039
+        },
+        "Interfaces": {
+          "1": {
+            "Bandwidth": 1000,
+            "ISD_AS": "17-ffaa:0:1107",
+            "LinkTo": "PARENT",
+            "MTU": 1472,
+            "Overlay": "UDP/IPv4",
+            "PublicOverlay": {
+              "Addr": "10.1.0.129",
+              "OverlayPort": 50000
+            },
+            "RemoteOverlay": {
+              "Addr": "10.1.0.1",
+              "OverlayPort": 50039
+            }
           }
-        }
-      },
-      "InternalAddrs": {
-        "IPv4": {
-          "PublicOverlay": {
-            "Addr": "127.0.0.1",
-            "OverlayPort": 31045
-          }
-        }
-      }
-    }
-  },
-  "ControlService": {
-    "cs17-ffaa_1_13-1": {
-      "Addrs": {
-        "IPv4": {
-          "Public": {
-            "Addr": "127.0.0.1",
-            "L4Port": 30254
+        },
+        "InternalAddrs": {
+          "IPv4": {
+            "PublicOverlay": {
+              "Addr": "127.0.0.1",
+              "OverlayPort": 31045
+            }
           }
         }
       }
-    }
-  },
-  "ISD_AS": "17-ffaa:1:13",
-  "MTU": 1472,
-  "Overlay": "UDP/IPv4"
-}
-```
+    },
+    "ControlService": {
+      "cs17-ffaa_1_13-1": {
+        "Addrs": {
+          "IPv4": {
+            "Public": {
+              "Addr": "127.0.0.1",
+              "L4Port": 30254
+            }
+          }
+        }
+      }
+    },
+    "ISD_AS": "17-ffaa:1:13",
+    "MTU": 1472,
+    "Overlay": "UDP/IPv4"
+  }
+  ```
+
 This topology defines two services: one control service and one border router. The control service has the address where inside the AS it is listening for requests (such as path retrieval).
 The border router defines, among other things, the interfaces to and from the outside of the AS.
 The interface in the example is a connection to a provider, using an IPv4 overlay, listening at `10.1.0.129:50000` and connecting to `10.1.0.1:50039`.
 We will later on the tutorial work with the topology file when we add a new interface.
 
 Aside from the directories, you can also run from a terminal several SCION related commands, like `showpaths` to show the available paths to a given AS, for example from your user AS to `18-ffaa:0:1201`:
+
 ```shell
 showpaths -dstIA 18-ffaa:0:1201
 ```
@@ -155,7 +161,8 @@ Be sure to visit the general tutorial about some existing SCION applications [lo
 <!-- Using the tool `bat` that works similar to `curl` you can also download the tutorial page running at `1-ff00:0:1,[127.0.0.1]:9090`. Consult the respective tutorial page for details. -->
 
 ### Run your own SCION apps
-Once you have setup one or more of following servers, you can post your IA and port to connect to on the Slack channel(https://sigcomm.slack.com/archives/C0186E0GY0G), so other people can try to connect to it and test it.
+
+Once you have setup one or more of following servers, you can post your IA and port to connect to on the Slack channel(<https://sigcomm.slack.com/archives/C0186E0GY0G>), so other people can try to connect to it and test it.
 
 #### Bandwidth tester
 
@@ -168,51 +175,62 @@ As you do not have sensors or a camera connected to your VM, you need to use dum
 Remember that you can transfer files between your host and your VM using the host's directory where the `Vagrantfile` is located, and that is mirrored inside the VM on `/vagrant`.
 
 Example of script copying an image:
+
 ```shell
 #!/bin/bash
 
 while true
 do
-	cp images/success.jpg `date +"%Y-%m-%d_%k:%M"`_success.jpg
-	sleep 60
+  cp images/success.jpg `date +"%Y-%m-%d_%k:%M"`_success.jpg
+  sleep 60
 done
 ```
 
 Example of script printing system info:
+
 ```shell
 #!/bin/bash
 
 while true
-do 
+do
   echo "hostname: `hostname`, user: `whoami`, current time: `date`"
   sleep 1
 done
 ```
 
 ### Access a web server
+
 #### With SCION
+
 <!-- it should run at scionlab-1201-goldberg -->
 There is a simple web server that runs in a computer under the following address:
+
 ```
 18-ffaa:0:1201,128.237.152.165:4443/
 ```
+
 You can access the webpages manually with the `bat` application. Open a terminal inside your VM with `vagrant ssh` and follow the next steps:
+
 ```shell
 sudo apt-get install scion-apps-bat
 scion-bat 18-ffaa:0:1201,128.237.152.165:4443/
 ```
+
 The last command runs `scion-bat`, which is a `curl` like application that works with the SCION protocol. More information [here](../apps/bat.html).
 
 #### IP regular HTTP server
+
 There is an IP regular http server running on:
+
 ```
 http://128.237.152.165:4443/
 ```
+
 You can access it with your browser or by running curl like:
+
 ```shell
 curl http://128.237.152.165:4443/
 ```
-
 
 ### Set up an additional peering link with your second user AS
 
@@ -356,7 +374,6 @@ When run from `19-ffaa:1:XXXX` looking for `17-ffaa:1:YYYY`.
 
 Many of the applications accept a `-i` switch (interactive) that allows you to select the path manually. Use it with `scmp echo` and observe that the latency is much lower than going upstream and down again.
 
-
 #### Netcat
 
 At any point you can install the scion netcat application with:
@@ -379,16 +396,18 @@ scion-netcat -u <ISD1>-ffaa:1:XXXX,[127.0.0.1]:40002
 
 Where `<ISD1>-ffaa:1:XXXX` is the IA of your other user AS. You can type in any of the running processes, and it will echo it to the other side.
 
-
 ## Partner exercises
 
-Select a partner for the remaining exercises. You can choose any of the following exercises in any order.
+Select a partner for the remaining exercises.
+(If you don't find a partner, you can use your two configured SCIONLab ASes.)
+You can choose any of the following exercises in any order.
 
 ### Connect to the SCION apps of your partner
 
 If you or your partner have set up any of the server apps in your AS, you can access your partner's apps in the same way as you have accessed the ones on the core ASes.
 
 ### Bonus exercise: Set up an additional peering link to your partner's AS
+
 > **Warning** this exercise requires some expertise with your network.
 
 Similarly to the peering exercise above, you can configure a new peering interface to your partner. You will need to know their IA, their public IP and port. For this both you and your partner must have public IP addresses (or the ability to "punch a hole" in the firewall of your network or NAT setup).
