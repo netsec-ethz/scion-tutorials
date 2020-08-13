@@ -189,7 +189,6 @@ do
 done
 ```
 
-<!-- We have prepared two examples: `copy_image.sh` and `systeminfo.sh` that you can adjust to your taste. -->
 
 ### Set up an additional peering link with your second user AS
 
@@ -333,23 +332,8 @@ When run from `19-ffaa:1:XXXX` looking for `17-ffaa:1:YYYY`.
 
 Many of the applications accept a `-i` switch (interactive) that allows you to select the path manually. Use it with `scmp echo` and observe that the latency is much lower than going upstream and down again.
 
-## Partner exercises
 
-Select a partner for the remaining exercises. You can choose any of the following exercises in any order.
-
-### Connect to the SCION apps of your partner
-
-If you or your partner have set up any of the server apps in your AS, you can access your partner's apps in the same way as you have accessed the ones on the core ASes.
-
-### Set up an additional peering link to your partner's AS
-
-Similarly to the peering exercise above, you can configure a new peering interface to your partner. You will need to know their IA, their public IP and port. For this both you and your partner must have public IP addresses (or the ability to "punch a hole" in the firewall of your network or NAT setup).
-
-+ Open the topology file and add a new interface with the correct IA, public IP and port.
-+ Save the modified topology file and copy it into all subdirectories of `/etc/scion/gen/ISD*/AS*/`
-+ Restart SCION by calling `sudo systemctl restart scionlab.target``
-
-### Netcat
+#### Netcat
 
 At any point you can install the scion netcat application with:
 
@@ -370,3 +354,20 @@ scion-netcat -u <ISD1>-ffaa:1:XXXX,[127.0.0.1]:40002
 ```
 
 Where `<ISD1>-ffaa:1:XXXX` is the IA of your other user AS. You can type in any of the running processes, and it will echo it to the other side.
+
+
+## Partner exercises
+
+Select a partner for the remaining exercises. You can choose any of the following exercises in any order.
+
+### Connect to the SCION apps of your partner
+
+If you or your partner have set up any of the server apps in your AS, you can access your partner's apps in the same way as you have accessed the ones on the core ASes.
+
+### Set up an additional peering link to your partner's AS
+
+Similarly to the peering exercise above, you can configure a new peering interface to your partner. You will need to know their IA, their public IP and port. For this both you and your partner must have public IP addresses (or the ability to "punch a hole" in the firewall of your network or NAT setup).
+
++ Open the topology file and add a new interface with the correct IA, public IP and port.
++ Save the modified topology file and copy it into all subdirectories of `/etc/scion/gen/ISD*/AS*/`
++ Restart SCION by calling `sudo systemctl restart scionlab.target``
