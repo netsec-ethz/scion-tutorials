@@ -7,6 +7,8 @@ nav_order: 10
 # SCION Tutorial
 
 ## First steps with SCION
+### Contact information
+If you experience problems or have doubts during the course of the SIGCOMM2020 SCION tutorial, please contact us on the tutorial's [Slack channel](https://sigcomm.slack.com/archives/C0186E0GY0G). After the tutorial is over, you can [contact us](https://docs.scionlab.org/#contact) by email.
 
 ### Starting the VM
 
@@ -49,20 +51,95 @@ sudo apt-get install -y scion-apps-webapp
 sudo systemctl start scion-webapp.service
 ```
 
-With that, the web application should be running inside the VM, listening for connections on port `8000`. Because the VM is configured to forward that port, you can already connect from your host machine at [http://localhost:8000]. In this page, the health status of your user AS is displayed. As mentioned in the [preparation guide](preparation.html), all the sections in the health check should be passing, and displayed in green.
+With that, the web application should be running inside the VM, listening for connections on port `8000`. Because the VM is configured to forward that port, you can already connect from your host machine at [http://localhost:8000]. In this page, the health status of your user AS is displayed. All the sections in the health check should be passing successfully, and displayed in green.
 
-Go to the page *Apps* and select one of the apps (*bwtester*, *camerapp*, *sensorapp*). You should not need to change the source settings but you can select any of the ASes preconfigured in the list as destination or could enter the information of any of your colleagues' ASes.
+Go to the page *Apps* and select one of the apps (*bwtester*, *camerapp*, *sensorapp*):
++ `bwtester` [(link)](../apps/bwtester.html) Tests bandwidth for a given path. If you select this option, please don't overwhelm our routers by using much bandwidth, or running it for longer than some seconds.
++ `camerapp` [(link)](../apps/access_camera.html) Downloads image files from the server. These images can be periodically grabbed from a device, e.g. a camera.
++ `sensorapp` [(link)](../apps/fetch_sensor_readings.html) Downloads sensor information.
+
+You should not need to change the source settings but you can select any of the ASes preconfigured in the list as destination or could enter the information of any of your colleagues' ASes.
 
 You can either directly execute the different apps on the *Execute* tab or explore possible paths to your selected destination on the *Paths* tab. Note that you can explore paths to your colleagues' ASes even if they have not yet set up the selected services.
+You can have an overview of the SCIONLab AS infrastructure [here](https://www.scionlab.org/topology.png).
 
-The web application also allows you to look at the TRC of your ISD as well as your certificate and the SCION services running in your AS
+The web application also allows you to look at the TRC of your ISD as well as your certificate and the SCION services running in your AS. Just copy the contents of the *payload* which are base64 encoded, and decode them online or with the command `base64 -d`. You will see a json object with fields like `"primary_ases"`, etc.
 
 #### From a shell inside your VM
 
 Inside your VM, you can explore several subdirectories:
 
++ The directory `/var/log/scion/` allows you to access logs of the different SCION services. In particular the control service's log `cs*-1.log` can be interesting. Look for thing like path segments requests and responses, or beacon registrations (grep for `segReq`, `segment` or `beacon`).
 + The directory `/etc/scion/gen/` contains configuration files for you AS such as the local topology.
-+ The directory `/var/log/scion/` allows you to access logs of the different SCION services. In particular the control service's log `cs*-1.log` can be interesting.
+The topology files are a set of `json` files located under `/etc/scion/gen/` that you can find with `find /etc/scion/gen -name topology.json`. They all are identical in your AS. If you open one, you will see something like:
+```json
+{
+  "Attributes": [],
+  "BorderRouters": {
+    "br17-ffaa_1_13-1": {
+      "CtrlAddr": {
+        "IPv4": {
+          "Public": {
+            "Addr": "127.0.0.1",
+            "L4Port": 30045
+          }
+        }
+      },
+      "Interfaces": {
+        "1": {
+          "Bandwidth": 1000,
+          "ISD_AS": "17-ffaa:0:1107",
+          "LinkTo": "PARENT",
+          "MTU": 1472,
+          "Overlay": "UDP/IPv4",
+          "PublicOverlay": {
+            "Addr": "10.1.0.129",
+            "OverlayPort": 50000
+          },
+          "RemoteOverlay": {
+            "Addr": "10.1.0.1",
+            "OverlayPort": 50039
+          }
+        }
+      },
+      "InternalAddrs": {
+        "IPv4": {
+          "PublicOverlay": {
+            "Addr": "127.0.0.1",
+            "OverlayPort": 31045
+          }
+        }
+      }
+    }
+  },
+  "ControlService": {
+    "cs17-ffaa_1_13-1": {
+      "Addrs": {
+        "IPv4": {
+          "Public": {
+            "Addr": "127.0.0.1",
+            "L4Port": 30254
+          }
+        }
+      }
+    }
+  },
+  "ISD_AS": "17-ffaa:1:13",
+  "MTU": 1472,
+  "Overlay": "UDP/IPv4"
+}
+```
+This topology defines two services: one control service and one border router. The control service has the address where inside the AS it is listening for requests (such as path retrieval).
+The border router defines, among other things, the interfaces to and from the outside of the AS.
+The interface in the example is a connection to a provider, using an IPv4 overlay, listening at `10.1.0.129:50000` and connecting to `10.1.0.1:50039`.
+We will later on the tutorial work with the topology file when we add a new interface.
+
+Aside from the directories, you can also run from a terminal several SCION related commands, like `showpaths` to show the available paths to a given AS, for example from your user AS to `18-ffaa:0:1201`:
+```shell
+showpaths -dstIA 18-ffaa:0:1201
+```
+
+Run as well `scmp echo` like mentioned [before](#scmp_echo).
 
 You can also run the different SCION apps directly from the shell. For that call either `scion-bwtestclient`, `scion-imagefetcher`, or `scion-sensorfetcher` with the option `-s ISD-AS,[Addr]:Port`.
 The bandwidth tester allows you to explore potential paths by using the *interactive* option `-i`.
@@ -71,21 +148,47 @@ There are already several servers just for testing:
 
 + sensorserver at `17-ffaa:0:1102,[192.33.93.177]:42003`
 + cameraserver at `17-ffaa:0:1102,[192.33.93.166]:42002`
-+ bwtestserver at [list of bwtestservers](http://localhost:4000/content/apps/bwtester.html#scionlab-bandwidth-test-servers)
++ bwtestserver at [list of bwtestservers](../apps/bwtester.html#scionlab-bandwidth-test-servers)
 
 Be sure to visit the general tutorial about some existing SCION applications [located here](../apps/index.html)
 
 <!-- Using the tool `bat` that works similar to `curl` you can also download the tutorial page running at `1-ff00:0:1,[127.0.0.1]:9090`. Consult the respective tutorial page for details. -->
 
 ### Run your own SCION apps
+Once you have setup one or more of following servers, you can post your IA and port to connect to on the Slack channel(https://sigcomm.slack.com/archives/C0186E0GY0G), so other people can try to connect to it and test it.
 
 #### Bandwidth tester
 
-Running the bandwidth test server is straight forward. On the SCION tutorials page go to *How to use* -> *Bandwidth tester application* and follow the instructions there.
+Running the bandwidth test server is straight forward. On the SCION tutorials page go to [its help page](../apps/bwtester.html) and follow the instructions there.
 
 #### Imageserver and sensorserver
 
-You can also set up the apps *imageserver* and *sensorserver* following the instructions on the tutorials website. As you do not have sensors or a camera connected to your VM, you need to use dummy scripts that print some information that you can pipe into *sensorserver* or periodically create jpeg images for *imageserver*.
+You can also set up the apps *imageserver* and *sensorserver* following the instructions on the [tutorials website](../apps/index.html).
+As you do not have sensors or a camera connected to your VM, you need to use dummy scripts that print some information that you can pipe into *sensorserver* or periodically create jpeg images for *imageserver*.
+Remember that you can transfer files between your host and your VM using the host's directory where the `Vagrantfile` is located, and that is mirrored inside the VM on `/vagrant`.
+
+Example of script copying an image:
+```shell
+#!/bin/bash
+
+while true
+do
+	cp images/success.jpg `date +"%Y-%m-%d_%k:%M"`_success.jpg
+	sleep 60
+done
+```
+
+Example of script printing system info:
+```shell
+#!/bin/bash
+
+while true
+do 
+  echo "hostname: `hostname`, user: `whoami`, current time: `date`"
+  sleep 1
+done
+```
+
 <!-- We have prepared two examples: `copy_image.sh` and `systeminfo.sh` that you can adjust to your taste. -->
 
 ### Set up an additional peering link with your second user AS
@@ -163,15 +266,15 @@ sudo vim topology.json
   + Set the `RemoteOverlay` to `10.0.0.20`, port `50001`
   + Set `ISD_AS` to your second user AS ISD and AS ID.
 + Save the modified topology file
-+ Copy the modified topology file into all subdirectories of `/etc/scion/gen/ISD*/AS*/` (all other services need to know the new topology)
++ Copy the modified topology file into all subdirectories of `/etc/scion/gen/ISD*/AS*/` (all other services need to know the new topology) `sudo cp topology.json ../br*/ ; sudo cp topology.json ../cs*/`.
 + Restart SCION by calling `sudo systemctl restart scionlab.target`; you may also have to remove the contents of the directory `/etc/scion/gen-cache/`
 
-The added section to the topology file should look like this (where `ISD2-ffaa:1:YYYY` is the IA of your second user AS);
+The added section to the topology file should look like this (where `<ISD2>-ffaa:1:YYYY` is the IA of your second user AS); **remember to replace** `<ISD2>-ffaa:1:YYYY` with the appropriate ISD-AS ID of your second user AS):
 
 ```json
   "2": {
     "Bandwidth": 1000,
-    "ISD_AS": "ISD2-ffaa:1:YYYY",
+    "ISD_AS": "<ISD2>-ffaa:1:YYYY",
     "LinkTo": "PEER",
     "MTU": 1472,
     "Overlay": "UDP/IPv4",
@@ -189,12 +292,12 @@ The added section to the topology file should look like this (where `ISD2-ffaa:1
 As always, restart services with `sudo systemctl restart scionlab.target` and check connectivity to the infrastructure with [scmp echo](#scmp_echo).
 
 When it's clear that the first AS works fine, adapt the topology files of the second AS. Remember to write the correct IA of the first AS, and to use the correct IPs for the public and remote overlays.
-The section should look like this (where `ISD1-ffaa:1:XXXX` is the IA of your first AS):
+The section should look like this (where `<ISD1>-ffaa:1:XXXX` is the IA of your first AS; **remember to replace** `<ISD1>-ffaa:1:XXXX` with the appropriate ISD-AS ID of your first user AS):
 
 ```json
   "2": {
     "Bandwidth": 1000,
-    "ISD_AS": "ISD1-ffaa:1:XXXX",
+    "ISD_AS": "<ISD1>-ffaa:1:XXXX",
     "LinkTo": "PEER",
     "MTU": 1472,
     "Overlay": "UDP/IPv4",
@@ -216,7 +319,7 @@ Like before, copy the `topology.json` file to all subdirectories of `/etc/scion/
 After waiting some seconds for the beacons to be propagated, you should now be able to use this new path in any application. Let's first find out if the peering path is visible by running:
 
 ```shell
-showpaths -dstIA ISD2-ffaa:1:YYYY
+showpaths -dstIA <ISD2>-ffaa:1:YYYY
 ```
 
 This will print many lines with some of the possible paths from the two ASes. As an example, one of the first lines that you should see would look like:
@@ -262,7 +365,7 @@ scion-netcat -u -l 40002
 And netcat connecting with:
 
 ```shell
-scion-netcat -u ISD1-ffaa:1:XXXX,[127.0.0.1]:40002
+scion-netcat -u <ISD1>-ffaa:1:XXXX,[127.0.0.1]:40002
 ```
 
-Where `ISD1-ffaa:1:XXXX` is the IA of your other user AS. You can type in any of the running processes, and it will echo it to the other side.
+Where `<ISD1>-ffaa:1:XXXX` is the IA of your other user AS. You can type in any of the running processes, and it will echo it to the other side.
