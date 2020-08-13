@@ -189,6 +189,30 @@ do
 done
 ```
 
+### Access a web server
+#### With SCION
+<!-- it should run at scionlab-1201-goldberg -->
+There is a simple web server that runs in a computer under the following address:
+```
+18-ffaa:0:1201,128.237.152.165:4443/
+```
+You can access the webpages manually with the `bat` application. Open a terminal inside your VM with `vagrant ssh` and follow the next steps:
+```shell
+sudo apt-get install scion-apps-bat
+scion-bat 18-ffaa:0:1201,128.237.152.165:4443/
+```
+The last command runs `scion-bat`, which is a `curl` like application that works with the SCION protocol. More information [here](../apps/bat.html).
+
+#### IP regular HTTP server
+There is an IP regular http server running on:
+```
+http://128.237.152.165:4443/
+```
+You can access it with your browser or by running curl like:
+```shell
+curl http://128.237.152.165:4443/
+```
+
 
 ### Set up an additional peering link with your second user AS
 
