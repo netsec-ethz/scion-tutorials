@@ -38,6 +38,5 @@ The ICMP connectivity is required for diagnosing the state of the network in cas
 | UDP            | 50000--50010 | 0.0.0.0/0 | SCION inter-AS connectivity |
 | UDP            | 30000--35000 | machines in the same SCION AS | SCION intra-AS connectivity |
 | TCP            | 80, 443      | 0.0.0.0/0     | Software updates, monitoring |
-| UDP            | 51820        | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.64.0/18 | Administrative access for monitoring |
 
 Additionally, reliable DNS and NTP services must be accessible (but may be provided by the local network).
