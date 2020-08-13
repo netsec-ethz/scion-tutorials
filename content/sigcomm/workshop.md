@@ -268,7 +268,7 @@ sudo vim topology.json
   + Set `ISD_AS` to your second user AS ISD and AS ID.
 + Save the modified topology file
 + Copy the modified topology file into all subdirectories of `/etc/scion/gen/ISD*/AS*/` (all other services need to know the new topology) `sudo cp topology.json ../br*/ ; sudo cp topology.json ../cs*/`.
-+ Restart SCION by calling `sudo systemctl restart scionlab.target`; you may also have to remove the contents of the directory `/etc/scion/gen-cache/`
++ Restart SCION by calling `sudo systemctl restart scionlab.target`; you may also have to remove the contents of the directory `/var/lib/scion/`
 
 The added section to the topology file should look like this (where `<ISD2>-ffaa:1:YYYY` is the IA of your second user AS); **remember to replace** `<ISD2>-ffaa:1:YYYY` with the appropriate ISD-AS ID of your second user AS):
 
