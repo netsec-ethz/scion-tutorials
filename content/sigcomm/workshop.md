@@ -195,7 +195,8 @@ done
 
 #### Configure a second user AS
 
-Configure another user AS in [SCIONLab](https://www.scionlab.org). Download the tar file and extract the `Vagrantfile` like you did with your first AS.
+Configure another user AS in [SCIONLab](https://www.scionlab.org). Use a different attachment point or even ISD than the one you have for your first AS.
+Download the tar file and extract the `Vagrantfile` like you did with your first AS.
 Now, since we are going to run this VM at the same time as we also run the first one, you have to edit the `Vagrantfile` and comment out with a `#` the following line:
 
 ```ruby
