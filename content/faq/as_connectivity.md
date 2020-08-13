@@ -14,8 +14,8 @@ This page lists the connectivity requirements for running a SCIONLab AS. Any fir
 | ICMP, ICMP6    |              | 0.0.0.0/0 | Heartbeats |
 | UDP | 50000--50010 | 0.0.0.0/0 | SCION inter-AS connectivity |
 | UDP | 30000 - 35000 | machines in the same SCION AS | SCION intra-AS connectivity |
-| TCP | 22 | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.87.0/24<br> 192.33.88.0/23<br> 192.33.91.0/24<br> 192.33.92.0/24<br> 192.33.93.0/24<br> 192.33.94.0/23<br> 192.33.96.0/21<br> 192.33.104.0/22<br> 192.33.108.0/23<br> 192.33.110.0/24 | Administrative SSH access for configuration management |
-| TCP | 443 | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.87.0/24<br> 192.33.88.0/23<br> 192.33.91.0/24<br> 192.33.92.0/24<br> 192.33.93.0/24<br> 192.33.94.0/23<br> 192.33.96.0/21<br> 192.33.104.0/22<br> 192.33.108.0/23<br> 192.33.110.0/24 | Administrative ILO/MGMT access (for physical machines) |
+| TCP | 22 | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.64.0/18 | Administrative SSH access for configuration management |
+| TCP | 443 | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.64.0/18 | Administrative ILO/MGMT access (for physical machines) |
 
 {% include alert type="note" content="
 Inter-AS connectivity is required only with the neighbouring ASes. In order to allow dynamic topology adjustments we recommend firewall opening for 0.0.0.0/0. In most cases, after determining the best neighbours for your AS, we can provide a narrowed-down list of networks.
@@ -38,6 +38,5 @@ The ICMP connectivity is required for diagnosing the state of the network in cas
 | UDP            | 50000--50010 | 0.0.0.0/0 | SCION inter-AS connectivity |
 | UDP            | 30000--35000 | machines in the same SCION AS | SCION intra-AS connectivity |
 | TCP            | 80, 443      | 0.0.0.0/0     | Software updates, monitoring |
-| UDP            | 51820        | 82.130.64.0/18<br> 129.132.0.0/16<br> 195.176.96.0/19<br> 192.33.87.0/24<br> 192.33.88.0/23<br> 192.33.91.0/24<br> 192.33.92.0/24<br> 192.33.93.0/24<br> 192.33.94.0/23<br> 192.33.96.0/21<br> 192.33.104.0/22<br> 192.33.108.0/23<br> 192.33.110.0/24 | Administrative access for monitoring |
 
 Additionally, reliable DNS and NTP services must be accessible (but may be provided by the local network).
