@@ -364,7 +364,8 @@ Select a partner for the remaining exercises. You can choose any of the followin
 
 If you or your partner have set up any of the server apps in your AS, you can access your partner's apps in the same way as you have accessed the ones on the core ASes.
 
-### Set up an additional peering link to your partner's AS
+### Bonus exercise: Set up an additional peering link to your partner's AS
+> **Warning** this exercise requires some expertise with your network.
 
 Similarly to the peering exercise above, you can configure a new peering interface to your partner. You will need to know their IA, their public IP and port. For this both you and your partner must have public IP addresses (or the ability to "punch a hole" in the firewall of your network or NAT setup).
 
