@@ -546,6 +546,11 @@ You can choose any of the following exercises in any order.
 
 If you or your partner have set up any of the server apps in your AS, you can access your partner's apps in the same way as you have accessed the ones on the core ASes.
 
+### Bonus exercise: Set up a SIG connection to your partner's AS
+
+You should already have set up a SIG in your AS and should be able to extend the configuration to also tunnel traffic between your AS and your partner's.
+Have a look at the [general SIG tutorial](../apps/remote_sig.html) for further explanations.
+
 ### Bonus exercise: Set up an additional peering link to your partner's AS
 
 > **Warning** this exercise requires some expertise with your network.
