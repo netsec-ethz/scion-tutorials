@@ -480,7 +480,7 @@ sudo systemctl restart scionlab.target
 
 #### Running the SIG and configuring routing
 
-Start the SIG process on both hosts, by executing:
+Start the SIG process:
 
 ```shell
 sudo -u scion sig -config=/etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/sig.toml &
