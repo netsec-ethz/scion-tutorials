@@ -220,17 +220,14 @@ The last command runs `scion-bat`, which is a `curl` like application that works
 
 #### IP regular HTTP server
 
-There is an IP regular http server running on:
+There is an IP regular http server running on a non publicly routeable address:
 
 ```
-http://128.237.152.165:4443/
+http://10.42.0.1:4443/
 ```
 
-You can access it with your browser or by running curl like:
+This server can be accessed using the SIG, as explained in the [SIG task](#sig_task). It's listed here for completeness.
 
-```shell
-curl http://128.237.152.165:4443/
-```
 
 ### Set up an additional peering link with your second user AS
 
@@ -397,6 +394,7 @@ scion-netcat -u <ISD1>-ffaa:1:XXXX,[127.0.0.1]:40002
 Where `<ISD1>-ffaa:1:XXXX` is the IA of your other user AS. You can type in any of the running processes, and it will echo it to the other side.
 
 ### Set up a SCION-IP gateway (SIG)
+<a name="sig_task"></a>
 
 The SCION-IP gateway (SIG) is a mechanism that tunnels IP packets through the SCION network.
 It can be configured to send packets to specified destination prefixes to another SIG in a specified SCION AS, where they are decapsulated and forwarded.
