@@ -174,6 +174,9 @@ You can also set up the apps *imageserver* and *sensorserver* following the inst
 As you do not have sensors or a camera connected to your VM, you need to use dummy scripts that print some information that you can pipe into *sensorserver* or periodically create jpeg images for *imageserver*.
 Remember that you can transfer files between your host and your VM using the host's directory where the `Vagrantfile` is located, and that is mirrored inside the VM on `/vagrant`.
 
+Please set up the `imageserver` on the default port (40002). We have a script constantly trying to fetch images from all ASes.
+You can fetch the combined image using `imagefetcher` from `17-ffaa:1:d9b,127.0.0.1:40002`.
+
 Example of script copying an image:
 
 ```shell
