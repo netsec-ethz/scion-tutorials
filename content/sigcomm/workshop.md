@@ -175,7 +175,7 @@ As you do not have sensors or a camera connected to your VM, you need to use dum
 Remember that you can transfer files between your host and your VM using the host's directory where the `Vagrantfile` is located, and that is mirrored inside the VM on `/vagrant`.
 
 Please set up the `imageserver` on the default port (40002). We have a script constantly trying to fetch images from all ASes.
-You can fetch the combined image using `imagefetcher` from `17-ffaa:1:d9b,127.0.0.1:40002`.
+You can fetch the combined image using `imagefetcher` from `17-ffaa:1:d2a,127.0.0.1:42002`.
 
 Example of script copying an image:
 
