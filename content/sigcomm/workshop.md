@@ -396,6 +396,146 @@ scion-netcat -u <ISD1>-ffaa:1:XXXX,[127.0.0.1]:40002
 
 Where `<ISD1>-ffaa:1:XXXX` is the IA of your other user AS. You can type in any of the running processes, and it will echo it to the other side.
 
+### Set up a SCION-IP gateway (SIG)
+
+The SCION-IP gateway (SIG) is a mechanism that tunnels IP packets through the SCION network.
+It can be configured to send packets to specified destination prefixes to another SIG in a specified SCION AS, where they are decapsulated and forwarded.
+We have set up a SIG in AS `18-ffaa:0:1201` and a standard webserver listening at `10.42.0.1:4443` (a private IP address from RFC 1918 address space that is not globally routable).
+The goal of this exercise is for you to set up a SIG that encapsulates IP packets sent to the prefix `10.42.0.0/24` in SCION packets and sends them to the SIG in AS `18-ffaa:0:1201`, such that you can query the webserver with the standard (non-SCION-aware) `curl` tool.
+
+The following steps are a slightly modified version of the [general SIG tutorial](../apps/remote_sig.html).
+
+#### Install and configure SIG
+
+To install `sig`, run:
+
+```shell
+sudo apt install scion-sig
+```
+
+See [Installation](../install/pkg.html#applications) for details.
+
+The `scion-sig` package includes configuration file templates.
+First, we copy and fill-in the `sig.toml` template:
+
+```shell
+# Set some variables that will be used below:
+sigID=sig1
+sigIP=127.0.0.1  # IP for the SCION address on which this SIG will bind
+ISD=$(ls /etc/scion/gen/ | grep ISD | awk -F 'ISD' '{ print $2 }')
+AS=$(ls /etc/scion/gen/ISD${ISD}/ | grep AS | awk -F 'AS' '{ print $2 }')
+
+# Create a configuration directory for the SIG
+sudo mkdir /etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/
+
+# Expand the placeholders in the sig.toml template and install it:
+sed -e "s/\${ISD}/${ISD}/g;
+        s/\${AS}/${AS}/g;
+        s/\${IA}/${ISD}-${AS}/g;
+        s/\${IAd}/${ISD}-${AS//_/:}/g;
+        s/\${sigID}/${sigID}/g;
+        s/\${sigIP}/${sigIP}/g;" < /usr/share/doc/scion-ip-gateway/templates/sig.config \
+        | sudo tee --output-error=exit /etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/sig.toml
+```
+
+Each SIG requires traffic rules, in the form of a `json` configuration file.
+This configuration specifies IP prefixes that can be forwarded to a SIG in a remote AS.
+Create the traffic rules for the SIG at `/etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/${sigID}.json`:
+
+```json
+{
+    "ASes": {
+        "18-ffaa:0:1201": {
+            "Nets": [
+                "10.42.0.0/24"
+            ]
+        }
+    },
+    "ConfigVersion": 9001
+}
+```
+
+Here, we tell the SIG to send all IP packets addressed to `10.42.0.0/24` to the AS `18-ffaa:0:1201`.
+
+Finally, the topology files need to be updated to include a SIG entry. This entry is required so that the border routers can resolve the SIG service address. Insert the following snippet to the topology file of every border router in the AS (after replacing `${ISD}` and `${AS}` with the appropriate values):
+
+```json
+  "SIG": {
+    "sig${ISD}-${AS}-1": {
+      "Addrs": {
+        "IPv4": {
+          "Public": {
+            "Addr": "127.0.0.1",
+            "L4Port": 31056
+          }
+        }
+      }
+    }
+  },
+```
+
+For these changes in the topology files to take effect, the services need to be restarted:
+
+```shell
+sudo systemctl restart scionlab.target
+```
+
+#### Running the SIG and configuring routing
+
+Start the SIG process on both hosts, by executing:
+
+```shell
+sudo -u scion sig -config=/etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/sig.toml &
+```
+
+Now we need to ensure that packets sent to an address in `10.42.0.0/24` actually pass through the SIG and that replies are also sent through the SIG.
+We have pre-configured the SIG in `18-ffaa:0:1201` with a mapping between the addresses in `172.16.0.0/12` and ASes between `17-ffaa:1:c00` and `20-ffaa:1:fff`.
+For a particular ISD-AS, we have configured a `/24` prefix, where the last 12 bits are obtained as follows:
+
++ The 2 most-significant bits are determined by the ISD (0x0 for ISD17, ..., 0x3 for ISD20)
++ The remaining 10 bits are given by the 10 least-significant bits of the AS
+
+For example, the prefix `172.17.162.0/24` corresponds to the AS `17-ffaa:1:da2`.
+It is a fun exercise to calculate the IP prefix for your AS by hand (or with a custom script), but you can also simply use the following one-liner:
+
+```shell
+a=${AS: -3: -2} b=${AS: -2} c=`echo "($ISD-17) * 4 + $((16#$a)) + 4" | bc` d=$((16#$b)) && echo "172.$c.$d.0/24"
+```
+
+You can set up a simple routing configuration, where only applications on SIG host can make use of the link:
+
+```shell
+# Assign an address in your IP prefix
+sudo ip address add 172.XX.XXX.1 dev ${sigID}
+# Setup route to 10.42.0.0/24 in sigA.json
+sudo ip route add 10.42.0.0/24 dev ${sigID}
+```
+
+{% include alert type="Hint" content="
+These address and route settings will only live as long as the sig tunnel device. As soon as the `sig` process terminates, this will be gone.
+" %}
+
+Now you should be able to `ping` the remote host
+
+```shell
+ping 10.42.0.1
+```
+
+{% include alert type="Warning" content="
+The MTU set on the SIG's tun device is unreliable or just plain wrong. Set a conservative value of, e.g., 1200 bytes:
+
+```shell
+sudo ip link set mtu 1200 dev ${sigID}
+```
+
+" %}
+
+You should now be able to fetch our website using `curl`:
+
+```shell
+curl http://10.42.0.1:4443
+```
+
 ## Partner exercises
 
 Select a partner for the remaining exercises.
@@ -405,6 +545,11 @@ You can choose any of the following exercises in any order.
 ### Connect to the SCION apps of your partner
 
 If you or your partner have set up any of the server apps in your AS, you can access your partner's apps in the same way as you have accessed the ones on the core ASes.
+
+### Bonus exercise: Set up a SIG connection to your partner's AS
+
+You should already have set up a SIG in your AS and should be able to extend the configuration to also tunnel traffic between your AS and your partner's.
+Have a look at the [general SIG tutorial](../apps/remote_sig.html) for further explanations.
 
 ### Bonus exercise: Set up an additional peering link to your partner's AS
 
