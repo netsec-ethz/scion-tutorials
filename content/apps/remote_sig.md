@@ -25,43 +25,27 @@ You will need two running SCION ASes.
 The description below assumes that you're running the "standard" SCIONLab setup with all of the services and routers running on one separate machine for each of your ASes.
 We'll refer to these two ASes as "AS A" and "AS B", and the hosts running them as "host A" and "host B", respectively.
 
-## Configuring the two SIGs
-
-We first create the configuration for two SIG instances, one in AS A, which we will call sigA and one in AS B, which we will call sigB.
-
-The `scion-sig` package includes configuration file templates.
-First, we copy and fill-in the `sig.toml` template:
-
-```shell
-# Set some variables that will be used below:
-sigID=< sigA on host A, sigB on host B >
-sigIP=127.0.0.1  # IP for the SCION address on which this SIG will bind
-ISD=$(ls /etc/scion/gen/ | grep ISD | awk -F 'ISD' '{ print $2 }')
-AS=$(ls /etc/scion/gen/ISD${ISD}/ | grep AS | awk -F 'AS' '{ print $2 }')
-
-# Create a configuration directory for the SIG
-sudo mkdir /etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/
-
-# Expand the placeholders in the sig.toml template and install it:
-sed -e "s/\${ISD}/${ISD}/g;
-        s/\${AS}/${AS}/g;
-        s/\${IA}/${ISD}-${AS}/g;
-        s/\${IAd}/${ISD}-${AS//_/:}/g;
-        s/\${sigID}/${sigID}/g;
-        s/\${sigIP}/${sigIP}/g;" < /usr/share/doc/scion-ip-gateway/templates/sig.config \
-        | sudo tee --output-error=exit /etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/sig.toml
-```
+## Configuring SIG traffic rules
 
 Each SIG requires traffic rules, in the form of a `json` configuration file.
-This configuration specifies IP prefixes that can be forwarded to a SIG in a remote AS.
-Create the traffic rules for the SIG at `/etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/${sigID}.json`:
+This configuration specifies IP prefixes that should be forwarded to SIGs in remote ASes.
 
+
+A skeleton traffic rule configuration file is installed with the `scion-sig` package in `/etc/scion/sig.json`.
+The skeleton file contains one dummy entry with placeholders "`<remote_sig_AS>`" and "`<remote_sig_IPnet>`".
+The `<remote_sig_AS>` needs to be replaced with an AS ID in the form `1-ffaa:1:abc` and `<remote_sig_IPnet>` needs to specify IP networks in CIDR notation.
+Note that multiple remote SIG endpoints can be specified, but in this example we have just one.
+
+We will now create the traffic rules on both host A and host B.
+For this guide, we choose the private IP range `172.16.11.0/24` for AS A and `172.16.12.0/24` for AS B.
+
+Thus, on **host A**, we have the `/etc/scion/sig.json` traffic rules:
 ```
 {
     "ASes": {
-        "<remote_sig_AS>": {
+        "2-ffaa:0:b": { # put your AS B here
             "Nets": [
-                "<remote_sig_IPnet>"
+                "172.16.12.0/24"
             ]
         }
     },
@@ -69,59 +53,56 @@ Create the traffic rules for the SIG at `/etc/scion/gen/ISD${ISD}/AS${AS}/sig${I
 }
 ```
 
-Here, we need to replace the "`<remote_sig_AS>`" with the ISD-AS number of the remote AS. For example, on sigA `<remote_sig_AS>` is the identifier of `AS B`, in the format `1-ff00:0:a12`. Additionally, you need to replace "`<remote_sig_IPnet>`" with the subnet for traffic that will be routed on the sig. For this tutorial we choose `172.16.12.0/24` in `sigA.json` and `172.16.11.0/24` in `sigB.json`. Additional SIG endpoints can be accomodated by adding additional entries to this file.
-
-Finally, the topology files need to be updated to include a SIG entry. This entry is required so that the border routers can resolve the SIG service address. Insert the following snippet to the topology file of every border router in the AS:
+On **host B**:
 ```
-  "SIG": {
-    "sig${ISD}-${AS}-1": {
-      "Addrs": {
-        "IPv4": {
-          "Public": {
-            "Addr": "127.0.0.1",
-            "L4Port": 31056
-          }
+{
+    "ASes": {
+        "1-ffaa:0:a": { # put your AS A here
+            "Nets": [
+                "172.16.11.0/24"
+            ]
         }
-      }
-    }
-  },
+    },
+    "ConfigVersion": 9001
+}
 ```
 
-For these changes in the topology files to take effect, the services need to be restarted, e.g. run
-```shell
-sudo systemctl restart scionlab.target
-```
-
-## Running the SIGs
 
 Start the SIG process on both hosts, by executing:
 ```shell
-sudo -u scion sig -config=/etc/scion/gen/ISD${ISD}/AS${AS}/sig${ISD}-${AS}-1/sig.toml
+sudo -u scion sig -config=/etc/scion/sig.toml
 ```
 
 {% include alert type="Tip" content="
-Now, you should already have connectivity between the SIGs. You can verify this, e.g. run `ping -I sigA 172.16.12.7` in host A,  and observe the arriving packets with `tcpdump -n -i sigB` on host B. However, there will not be replies to the pings yet.
+Now, you should already have connectivity between the SIGs. You can verify this, e.g. run `ping -I sig 172.16.12.7` in host A, and observe the arriving packets with `tcpdump -n -i sig` on host B. However, there will not be replies to the pings yet.
 " %}
 
-## Configuring Routing (simple)
+{% include alert type="Hint" content="
+Apart from the traffic rules `sig.json` file, there is the a `toml` config file where stuff like loggin (default logs to `/var/log/scion/sig.log`) and the name of the tunnel interface can be defined.
+The default `/etc/scion/sig.toml` installed with the `scion-sig` package should work in most cases.
+Run `sig --help-config` for the available options.
+" %}
 
-Now we setup the IP routing on both hosts, that we can _use_ the SIG connection.
-There are a large number of possibilities to set this up; in this section we just describe a simple option without IP routing, where only applications on SIG hosts can make use of the link.
+## Configuring Routing
+
+If you run `ip route`, you will observe that the SIG does not automatically configure any routes.
+In order for the SIG link to be useful, we need to setup the networks in both ASes such that the relevant traffic will be routed over the `sig` interface.
+There are a large number of possibilities to set this up; in this section we just describe a simple option without IP routing, so that only applications on the SIG hosts can make use of the link.
 
 On host A:
 ```shell
-# Assign an address in the range <remote_sig_IPnet> used in sigB.json
-sudo ip address add 172.16.11.1 dev sigA
-# Setup route to <remote_sig_IPnet> in sigA.json
-sudo ip route add 172.16.12.0/24 dev sigA
+# Assign an address in the address range chosen for AS A:
+sudo ip address add 172.16.11.1 dev sig
+# Setup route for <remote_sig_IPnet> in sig.json:
+sudo ip route add 172.16.12.0/24 dev sig
 ```
 
 On host B:
 ```shell
-# Assign an address in the range <remote_sig_IPnet> used in sigA.json
-sudo ip address add 172.16.12.1 dev sigB
-# Setup route to <remote_sig_IPnet> in sigB.json
-sudo ip route add 172.16.11.0/24 dev sigB
+# Assign an address in the address range chosen for AS B:
+sudo ip address add 172.16.12.1 dev sig
+# Setup route for <remote_sig_IPnet> in sig.json:
+sudo ip route add 172.16.11.0/24 dev sig
 ```
 
 {% include alert type="Hint" content="
@@ -136,7 +117,7 @@ ping 172.16.12.1
 {% include alert type="Warning" content="
 The MTU set on the SIG's tun device is unreliable or just plain wrong. Set a conservative value of e.g. 1200 bytes on both hosts:
 ```shell
-sudo ip link set mtu 1200 dev ${sigID}
+sudo ip link set mtu 1200 dev sig
 ```
 " %}
 
