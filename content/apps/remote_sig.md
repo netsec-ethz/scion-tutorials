@@ -7,7 +7,7 @@ nav_order: 60
 # SCION IP Gateway (SIG)
 
 The [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/go/sig) enables legacy IP applications to communicate over SCION.
-This tutorial describes a minimal setup of two SIGs, to test how the SIG can enable any IP application to communicate over SCION. This setup can later be extended to support multiple SIG enpoints.
+This tutorial describes a minimal setup of two SIGs, to test how the SIG can enable any IP application to communicate over SCION. This setup can later be extended to support multiple SIG endpoints.
 
 ## Install
 
@@ -78,9 +78,9 @@ Now, you should already have connectivity between the SIGs. You can verify this,
 " %}
 
 {% include alert type="Hint" content="
-Apart from the traffic rules `sig.json` file, there is the a `toml` config file where stuff like loggin (default logs to `/var/log/scion/sig.log`) and the name of the tunnel interface can be defined.
+Apart from the traffic rules `sig.json` file, there is a `toml` configuration file where things like log levels, connection to sciond, and the name of the tunnel interface can be defined.
 The default `/etc/scion/sig.toml` installed with the `scion-sig` package should work in most cases.
-Run `sig --help-config` for the available options.
+Run `sig --help-config` for information about the available options.
 " %}
 
 ## Configuring Routing
@@ -106,7 +106,7 @@ sudo ip route add 172.16.11.0/24 dev sig
 ```
 
 {% include alert type="Hint" content="
-These address and route settings will only live as long as the sig tunnel device. As soon as the `sig` process terminates, this will be gone.
+These address and route settings will only live as long as the `sig` tunnel device. As soon as the `sig` process terminates, this will be gone.
 " %}
 
 Now you should be able to `ping` the remote host, e.g. run on host A
