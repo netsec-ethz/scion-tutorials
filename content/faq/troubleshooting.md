@@ -120,6 +120,13 @@ Log of the control service (`/var/logs/scion/cs*.log`) does not contain recent e
     It can be useful to use `wireshark` or `tcpdump` to determine whether these packets are sent and received.
     These small (~190 bytes) and regular packets are usually easy to spot in the packet trace.
 
+*   Ensure the system clock is accurate. Drifts over ~15s can cause issues. Use `ntpd` (or resort to `htpdate` if outgoing
+    NTP cannot be unblocked in your infrastructure).
+    
+    If you find this to be the problem, but still have connectivity issues after 
+    resolving it, it might be due to stale entries in the PathDB. It might take a couple of hours until all the paths are invalidated. To accelerate this, stop the SCION services (`systemctl stop scionlab.target`),
+    remove the `/var/lib/scion/*path.db*` files and start the services again (`systemctl start scionlab.target`).
+
 
 ## Getting help
 
