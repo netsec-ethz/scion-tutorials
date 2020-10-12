@@ -35,8 +35,10 @@ The ICMP connectivity is required for diagnosing the state of the network in cas
 | :------------- | :----------: | :-----------: | ---------------: |
 | ALL            |              | ESTABLISHED   |                  |
 | ICMP, ICMP6    |              | 0.0.0.0/0     | Heartbeats       |
+| UDP            | 123          | 0.0.0.0/0     | NTP Time Server Access (or provide an internally accessible NTP server) |
 | UDP            | 50000--50010 | 0.0.0.0/0 | SCION inter-AS connectivity |
 | UDP            | 30000--35000 | machines in the same SCION AS | SCION intra-AS connectivity |
 | TCP            | 80, 443      | 0.0.0.0/0     | Software updates, monitoring |
+
 
 Additionally, reliable DNS and NTP services must be accessible (but may be provided by the local network).
