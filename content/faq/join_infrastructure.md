@@ -16,7 +16,8 @@ This page is supposed to give you a general overview over joining as a part of t
 ## Procedure
 
 1. Tell us that you're interested in joining the SCIONLab infrastructure. Either fill in [this form](https://forms.gle/eZSfKhxnky2bwgFfA) or directly [get in contact with us](../../#contact).
-2. Once the node(s) are ready on your side, create a `scionlab` user with full `sudo` rights and access for the SCIONLab team. In cases where we provide a PCEngine machine, this will have been prepared and you only have to plug it in.
+2. Prepare a machine or a VM that satisfies the requirements detailed below. Once the node(s) are ready on your side, create a `scionlab` user with full `sudo` rights and access for the SCIONLab team.
+   In cases where we provide you with a small form-factor low power server box, you willl only have to plug it in and ensure that the device can be reached over the network.
 3. The SCIONLab admins will perform measurements to find the most appropriate neighbors to your AS. We will notify you of the result.
 4. Once the neighboring ASes have been decided, the administrators will install SCION services and configure monitoring for the node(s).
 5. Your AS is now connected to the infrastructure of SCIONLab and hosts within your network now have direct access to SCIONLab.
