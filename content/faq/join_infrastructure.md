@@ -6,17 +6,17 @@ nav_order: 10
 
 # Joining the SCIONLab infrastructure
 
-If you are part of an organization and/or you are committed to do research with SCION, and using user ASes is not enough for your plans, then you could join SCIONLab with a dedicated host. We have compiled a short guide to document the requirements.
+If you are part of an organization committed to do research with SCION, then you could join the SCIONLab infrastructure with a dedicated host. We have compiled a short guide to document the requirements and procedure.
 You can join the SCIONLab network as an infrastructure AS with one or more machines, or you can start as small as dedicating only a simple commodity PC.
 
 {% include alert type="danger" title="Attention needed" content="
-This page is supposed to give you a general overview over joining as a part of the infrastructure. In any case, if you are interested in joining, please [contact us directly](../../#contact).
+This page is supposed to give you a general overview over joining as a part of the infrastructure. If you are interested in joining, please fill in [this form](https://forms.gle/eZSfKhxnky2bwgFfA) or [contact us directly](../../#contact).
 " %}
 
 ## Procedure
 
-1. [Get in contact with us](../../#contact) telling you want to join the infrastructure.
-2. Once the node(s) are ready on your side, create a `scionlab` user with full `sudo` rights and access for the SCIONLab team.
+1. Tell us that you're interested in joining the SCIONLab infrastructure. Either fill in [this form](https://forms.gle/eZSfKhxnky2bwgFfA) or directly [get in contact with us](../../#contact).
+2. Once the node(s) are ready on your side, create a `scionlab` user with full `sudo` rights and access for the SCIONLab team. In cases where we provide a PCEngine machine, this will have been prepared and you only have to plug it in.
 3. The SCIONLab admins will perform measurements to find the most appropriate neighbors to your AS. We will notify you of the result.
 4. Once the neighboring ASes have been decided, the administrators will install SCION services and configure monitoring for the node(s).
 5. Your AS is now connected to the infrastructure of SCIONLab and hosts within your network now have direct access to SCIONLab.
