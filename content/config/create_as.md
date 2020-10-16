@@ -67,7 +67,7 @@ The following options configure each "Provider link", that is, the options defin
 
 *   Public IP Address, Bind IP Address
 
-    Find your _public IP_ e.g. by visiting [whatsmyip.org](https://www.whatsmyip.org/) or by running
+    Find your _public IP_ e.g. by visiting [checkip.amazonaws.com](https://checkip.amazonaws.com/) or by running
 
         dig +short myip.opendns.com @resolver1.opendns.com
 
