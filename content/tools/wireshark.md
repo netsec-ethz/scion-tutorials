@@ -70,6 +70,6 @@ It is necessary to download `scion.lua` file and place it in plugin directory ac
 In Ubuntu system this can be done with following command:
 
 ```
-sudo wget -P /usr/lib/x86_64-linux-gnu/wireshark/plugins/ https://raw.githubusercontent.com/scionproto/scion/master/tools/wireshark/scion.lua
+sudo wget -P /usr/lib/x86_64-linux-gnu/wireshark/plugins/ https://raw.githubusercontent.com/netsec-ethz/scion/scionlab/tools/wireshark/scion.lua
 ```
 
