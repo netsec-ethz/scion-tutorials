@@ -46,9 +46,7 @@ scion-webapp \
 -sabin /usr/bin/scion \
 -sroot /etc/scion \
 -sbin /usr/bin \
--sgen /etc/scion/gen \
--sgenc /var/lib/scion \
--slogs /var/log/scion
+-sgenc /var/lib/scion
 ```
 
 ## Browser AS Visualizations
@@ -88,3 +86,4 @@ The big circle can be clicked on as well to view details of the Source AS.
 
 ### AS Certificate
 ![SCIONLab download page](/content/images/gendir_crt.png)
+

@@ -35,33 +35,28 @@ Check that `/etc/openvpn/client-scionlab-<attachment point ISD-AS>.conf` exists.
 
 Check that the OpenVPN client is up:
 
-    sudo systemctl status openvpn@client-scionlab-<attachment point ISD-AS>
-
+    sudo systemctl status openvpn@client-scionlab-*
 
 Check that the IP address in the `topology.json` file matches the IP assigned in the VPN:
-Open any of the `topology.json` files and search the `Interfaces` entry:
+Open any of the `topology.json` files and search the `interfaces` entry:
 
-    $ grep Interfaces -A15 /etc/scion/gen/ISD*/AS*/endhost/topology.json
-        "Interfaces": {
+    $ grep interfaces -A10 /etc/scion/topology.json
+        "interfaces": {
           "1": {
-            "Bandwidth": 1000,
-            "ISD_AS": "17-ffaa:0:1107",
-            "LinkTo": "PARENT",
-            "MTU": 1472,
-            "Overlay": "UDP/IPv4",
-            "PublicOverlay": {
-              "Addr": "10.0.8.133",
-              "OverlayPort": 50000
+            "isd_as": "17-ffaa:0:1107",
+            "underlay": {
+              "public": "10.1.0.113:50000"",
+              "remote": "10.1.0.1:50168"
             },
-            "RemoteOverlay": {
-              "Addr": "10.0.8.1",
-              "OverlayPort": 50168
-            }
+            "bandwidth": 1000,
+            "link_to": "PARENT",
+            "mtu": 1472
           }
 
-In this entry, the `PublicOverlay` address should correspond to the local address on your tunnel interface.
 
-Finally, check that you can ping the address listed in `RemoteOverlay`.
+In this entry, the `public` address should correspond to the local address on your tunnel interface.
+
+Check that the VPN tunnel is working, by `ping`ing the address listed in `remote`.
 
 
 ### Check SCION service status
@@ -80,34 +75,60 @@ If you're running a build from sources, you will need to use the developer scrip
 Run `scion.sh status` or `supervisor/supervisor.sh status`.
 
 
-### Inspect log files
+### Check the border router interface status
 
-Log files for the SCION services are located in `/var/log/scion`.
+*   Inspect the border router's log (using `sudo journactl -u scion-border-router@br-1.service`) to check that the bidirectional-forwarding detection (bfd) handshake completed and the interfaces are "active":
+    
+    Check that the log mentions `Transitioned from state ... to state Up`, not followed by a later `... to state Down`.
 
-Inspect the control service's log file using e.g. `less -f /var/log/scion/cs*.log`, to check that
+*   Alternatively, you can check the same information in metrics of the border router, exposed by default on localhost, port 30442.
 
-*   Interfaces are considered `active`:
-    Check that the log mentions `Activated interface ...`, not followed by a later `interface went down`.
+    ```
+    curl -sfS localhost:30442/metrics | grep router_interface_up
 
-*   Beacons are received successfully:
-    Check that you find entries `Registered beacons ...`.
+    # HELP router_interface_up Either zero or one depending on whether the interface is up.
+    # TYPE router_interface_up gauge
+    router_interface_up{interface="1",isd_as="1-ff00:0:112",neighbor_isd_as="1-ff00:0:110"} 1
+    ```
 
+
+### Check that beacons are registered
+
+An AS needs to receive path construction beacons from it's upstream provider AS(es) in order to be able to communicate.
+
+*   Inspect the control service's log (using `sudo journalctl -u scion-control-service@cs-1.service`) to check that beacons are registered successfully.
+
+    Check that you find entries `Registered beacons ...`, with `"count": 1` (any non-zero count).
+
+
+*   Alternatively, you can check the same information in metrics of the control service, exposed by default on localhost, port 30454.
+
+    ```
+    curl --silent localhost:30454/metrics | grep registered_beacons_total
+
+    # HELP bs_beaconing_registered_beacons_total Number of beacons registered
+    # TYPE bs_beaconing_registered_beacons_total counter
+    bs_beaconing_registered_beacons_total{in_if_id="1",result="ok_success",seg_type="down",start_ia="1-ff00:0:110"} 2
+    bs_beaconing_registered_beacons_total{in_if_id="1",result="ok_updated",seg_type="up",start_ia="1-ff00:0:110"} 1
+    ```
+
+    Note: this returns an empty result if no beacons have been recieved.
 
 ### Ping
 
-Ping somebody! Run `scmp echo` to send an "SCMP echo request"; this is just like the `ping` command for IP.
+Ping somebody! Run `scion ping` to send an "SCMP echo request"; this is just like the `ping` command for IP.
 
 The syntax is:
 
-    scmp echo -remote [destination SCION address]
+    scion ping [destination SCION address]
 
-where a SCION address has the form `ISD-AS,[IP]`. An example of pinging a host in the attachment point AS in Korea would look as follows:
+where a SCION address has the form `ISD-AS,IP`. An example of pinging a host in the attachment point AS in Korea would look as follows:
 
-    $ scmp echo -remote 20-ffaa:0:1404,[0.0.0.0]
+    $ scion ping 20-ffaa:0:1404,0.0.0.0
     Using path:
       Hops: [17-ffaa:1:15b 1>169 17-ffaa:0:1107 1>4 17-ffaa:0:1102 2>2 17-ffaa:0:1103 4>8 17-ffaa:0:1101 11>3 19-ffaa:0:1302 1>7 19-ffaa:0:1301 3>5 18-ffaa:0:1201 3>5 20-ffaa:0:1401 7>1 20-ffaa:0:1403 3>47 20-ffaa:0:1404] Mtu: 1472
-    200 bytes from 20-ffaa:0:1404,[0.0.0.0] scmp_seq=0 time=383.578ms
-    200 bytes from 20-ffaa:0:1404,[0.0.0.0] scmp_seq=1 time=381.763ms
+    200 bytes from 20-ffaa:0:1404,0.0.0.0 scmp_seq=0 time=383.578ms
+    200 bytes from 20-ffaa:0:1404,0.0.0.0 scmp_seq=1 time=381.763ms
 
 
 {% include alert type="Tip" content="

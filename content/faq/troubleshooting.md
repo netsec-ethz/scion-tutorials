@@ -95,15 +95,10 @@ In case of multiple failures, fixing issues in the following order usually works
 * border routers
 * anything else
 
+#### No paths / not receiving beacons
 
-{% include alert type="Tip" content="
-First clear the `/var/log/scion/` directory and restart. This often helps to find the relevant log messages quicker.
-" %}
-
-
-#### Not receiving beacons
-
-Log of the control service (`/var/logs/scion/cs*.log`) does not contain recent entries referring to `Registered beacons`. This typically happens when the inter-AS links are not working correctly.
+[If no beacons are registered](../config/check.md#check-that-beacons-are-registered), a host in a SCION AS cannot communicate.
+This typically happens when the inter-AS links are not working correctly.
 
 *   Check that the border router is (still) up
 
@@ -111,14 +106,12 @@ Log of the control service (`/var/logs/scion/cs*.log`) does not contain recent e
 
 *   Double-check that `Public IP` configured for this link in the SCIONLab website is correct
 
-*   Check that the border router interfaces are `active`
+*   Check that the border router interfaces are `active` (c.f. [Check the border router interface status](../config/check.md#check-the-border-router-interface-status)).
 
-    Inspect the log file of control service (`/var/log/scion/cs*.log`) for messages on `Activated interface ...`.
-
-    The mechanism for activating interfaces is based on regular keep-alive messages, sent by the control service at 1s intervals over all configured AS-interfaces.
+    The mechanism for activating interfaces is based on the "bidirectional forwarding detection" protocol -- in essence, the border-routers send keep-alive messages at regular intervals.
     In a packet trace, we should see these keep-alive messages in both directions.
     It can be useful to use `wireshark` or `tcpdump` to determine whether these packets are sent and received.
-    These small (~190 bytes) and regular packets are usually easy to spot in the packet trace.
+    These small (~100 bytes) and regular packets are usually easy to spot in the packet trace.
 
 *   Ensure the system clock is accurate. Drifts over 10s can cause issues. Use `ntpd` (or resort to `htpdate` if outgoing
     NTP cannot be unblocked in your infrastructure).

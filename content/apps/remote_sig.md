@@ -70,7 +70,7 @@ On **host B**:
 
 Start the SIG process on both hosts, by executing:
 ```shell
-sudo -u scion sig -config=/etc/scion/sig.toml
+sudo -u scion sig --config=/etc/scion/sig.toml
 ```
 
 {% include alert type="Tip" content="
