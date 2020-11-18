@@ -22,7 +22,7 @@ The `Vagrantfile` that we create tries to forward TCP port 8000, mainly to conve
 The error occurs because another application (could also be another VM instance!) uses this port.
 Either stop the other application (find it using `netstat -natp | grep 8000`), or follow the instructions provided in the error message (see below) to change the forwarded port.
 
-```none
+```
 $ vagrant up
 [ ... ]
 Vagrant cannot forward the specified ports on this VM, since they

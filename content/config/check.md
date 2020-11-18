@@ -84,8 +84,7 @@ Run `scion.sh status` or `supervisor/supervisor.sh status`.
 *   Alternatively, you can check the same information in metrics of the border router, exposed by default on localhost, port 30442.
 
     ```
-    curl -sfS localhost:30442/metrics | grep router_interface_up
-
+    $ curl -sfS localhost:30442/metrics | grep router_interface_up
     # HELP router_interface_up Either zero or one depending on whether the interface is up.
     # TYPE router_interface_up gauge
     router_interface_up{interface="1",isd_as="1-ff00:0:112",neighbor_isd_as="1-ff00:0:110"} 1
@@ -104,8 +103,7 @@ An AS needs to receive path construction beacons from it's upstream provider AS(
 *   Alternatively, you can check the same information in metrics of the control service, exposed by default on localhost, port 30454.
 
     ```
-    curl --silent localhost:30454/metrics | grep registered_beacons_total
-
+    $ curl --silent localhost:30454/metrics | grep registered_beacons_total
     # HELP bs_beaconing_registered_beacons_total Number of beacons registered
     # TYPE bs_beaconing_registered_beacons_total counter
     bs_beaconing_registered_beacons_total{in_if_id="1",result="ok_success",seg_type="down",start_ia="1-ff00:0:110"} 2
