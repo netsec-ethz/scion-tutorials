@@ -70,7 +70,7 @@ On **host B**:
 
 Start the SIG process on both hosts, by executing:
 ```shell
-sudo -u scion sig -config=/etc/scion/sig.toml
+sudo -u scion scion-ip-gateway --config=/etc/scion/sig.toml
 ```
 
 {% include alert type="Tip" content="
@@ -80,7 +80,7 @@ Now, you should already have connectivity between the SIGs. You can verify this,
 {% include alert type="Hint" content="
 Apart from the traffic rules `sig.json` file, there is a `toml` configuration file where things like log levels, connection to sciond, and the name of the tunnel interface can be defined.
 The default `/etc/scion/sig.toml` installed with the `scion-sig` package should work in most cases.
-Run `sig --help-config` for information about the available options.
+Run `scion-ip-gateway sample config` for information about the available configuration options.
 " %}
 
 ## Configuring Routing
@@ -106,7 +106,7 @@ sudo ip route add 172.16.11.0/24 dev sig
 ```
 
 {% include alert type="Hint" content="
-These address and route settings will only live as long as the `sig` tunnel device. As soon as the `sig` process terminates, this will be gone.
+These address and route settings will only live as long as the `sig` tunnel device. As soon as the `scion-ip-gateway` process terminates, this will be gone.
 " %}
 
 Now you should be able to `ping` the remote host, e.g. run on host A
