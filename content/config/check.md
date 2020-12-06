@@ -103,11 +103,10 @@ An AS needs to receive path construction beacons from it's upstream provider AS(
 *   Alternatively, you can check the same information in metrics of the control service, exposed by default on localhost, port 30454.
 
     ```
-    $ curl --silent localhost:30454/metrics | grep registered_beacons_total
-    # HELP bs_beaconing_registered_beacons_total Number of beacons registered
-    # TYPE bs_beaconing_registered_beacons_total counter
-    bs_beaconing_registered_beacons_total{in_if_id="1",result="ok_success",seg_type="down",start_ia="1-ff00:0:110"} 2
-    bs_beaconing_registered_beacons_total{in_if_id="1",result="ok_updated",seg_type="up",start_ia="1-ff00:0:110"} 1
+    $ curl --sfS localhost:30454/metrics | grep control_beaconing_received_beacons_total
+    # HELP control_beaconing_received_beacons_total Total number of beacons received.
+    # TYPE control_beaconing_received_beacons_total counter
+    control_beaconing_received_beacons_total{ingress_interface="41",neighbor_isd_as="1-ff00:0:110",result="ok_updated"} 38
     ```
 
     Note: this returns an empty result if no beacons have been recieved.
