@@ -4,6 +4,8 @@ parent: Installation
 nav_order: 40
 ---
 
+{% include alert type="warning" content="The SCION android app has not been ported to the latest SCIONLab update yet (2020.12.09)." %}
+
 # Running as an app (Android)
 
 {% include alert type="warning" title="Warning: Beta version" content="The SCION Android app is in beta and has only been tested on selected Android devices." %}

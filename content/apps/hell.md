@@ -86,11 +86,11 @@ Interarrival time variance: 31ms, average interarrival time: 0ms
 Interarrival time min: 0ms, interarrival time max: 31ms
 ```
 
-To test the second example, you can use the `scmp echo` command and select the path from the example.
+To test the second example, you can use the `scion ping` command and select the path from the example.
 
 And expect an output similar to the following:
 ```
-scmp echo -remote 17-ffaa:0:1102,[127.0.0.1] -c 1000 -interval 10ms -i
+scion ping 17-ffaa:0:1102,[127.0.0.1] -c 1000 --interval 10ms -i
 
 Using path:
   Hops: [17-ffaa:1:userAS 1>4 17-ffaa:0:1113 3>6 17-ffaa:0:1112 2>5 17-ffaa:0:1111 3>3 17-ffaa:0:1110 4>1 17-ffaa:0:1102] MTU: 1472, NextHop: 127.0.0.1:30042

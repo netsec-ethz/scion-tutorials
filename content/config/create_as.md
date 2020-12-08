@@ -1,5 +1,5 @@
 ---
-title: Creating SCIONLab AS
+title: Creating a SCIONLab AS
 parent: Configuration
 nav_order: 10
 ---

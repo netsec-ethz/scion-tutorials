@@ -5,6 +5,8 @@ grand_parent: Applications
 nav_order: 10
 ---
 
+{% include alert type="warning" content="The webapp has not been ported to the latest SCIONLab update yet (2020.12.09)." %}
+
 # Overview
 
 Webapp is a Go application that will serve up a static web portal to make it easy to visualize and experiment with SCIONLab test apps on a virtual machine.
@@ -46,9 +48,7 @@ scion-webapp \
 -sabin /usr/bin/scion \
 -sroot /etc/scion \
 -sbin /usr/bin \
--sgen /etc/scion/gen \
--sgenc /var/lib/scion \
--slogs /var/log/scion
+-sgenc /var/lib/scion
 ```
 
 ## Browser AS Visualizations
@@ -88,3 +88,4 @@ The big circle can be clicked on as well to view details of the Source AS.
 
 ### AS Certificate
 ![SCIONLab download page](/content/images/gendir_crt.png)
+
