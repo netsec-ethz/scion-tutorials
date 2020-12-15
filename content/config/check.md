@@ -81,10 +81,10 @@ Run `scion.sh status` or `supervisor/supervisor.sh status`.
     
     Check that the log mentions `Transitioned from state ... to state Up`, not followed by a later `... to state Down`.
 
-*   Alternatively, you can check the same information in metrics of the border router, exposed by default on localhost, port 30442.
+*   Alternatively, you can check the same information in metrics of the border router. For the default SCIONLab User AS setup, this is exposed on localhost, port 30401.
 
     ```
-    $ curl -sfS localhost:30442/metrics | grep router_interface_up
+    $ curl -sfS localhost:30401/metrics | grep router_interface_up
     # HELP router_interface_up Either zero or one depending on whether the interface is up.
     # TYPE router_interface_up gauge
     router_interface_up{interface="1",isd_as="1-ff00:0:112",neighbor_isd_as="1-ff00:0:110"} 1
@@ -103,7 +103,7 @@ An AS needs to receive path construction beacons from it's upstream provider AS(
 *   Alternatively, you can check the same information in metrics of the control service, exposed by default on localhost, port 30454.
 
     ```
-    $ curl --sfS localhost:30454/metrics | grep control_beaconing_received_beacons_total
+    $ curl -sfS localhost:30454/metrics | grep control_beaconing_received_beacons_total
     # HELP control_beaconing_received_beacons_total Total number of beacons received.
     # TYPE control_beaconing_received_beacons_total counter
     control_beaconing_received_beacons_total{ingress_interface="41",neighbor_isd_as="1-ff00:0:110",result="ok_updated"} 38
