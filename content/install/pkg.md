@@ -6,10 +6,28 @@ nav_order: 20
 
 # Installing packages
 
-## SCION Services
-Prebuilt SCION packages are available for Ubuntu (or other Debian based systems) for x86, x86-64, arm32 and arm64 platforms.
+We provide SCION packages for the use with SCIONLab for different Linux package management systems.
 
-You can install SCION from our `.deb`-packages by running:
+* **deb** for Debian, Ubuntu, Mint, Raspbian etc.
+  Packages available for x86, x86-64, arm32 and arm64 platforms.
+
+  This is the primary supported system and is described in detail below.
+
+* **RPM** for RedHat, CentOS, Fedora etc.
+  Packages available for x86, x86-64, arm32 and arm64 platforms.
+
+  We build these packages but they are not currently sufficiently tested and not published on a public repository.
+  Please get in contact if you are interested to tinker with this.
+
+* **AUR**, Arch Linux
+
+  User contribution provided on a best-efforts basis by [benthor](https://github.com/benthor).
+  See [https://aur.archlinux.org/packages/scionlab-git/](https://aur.archlinux.org/packages/scionlab-git/)
+
+
+## Installation on Ubuntu
+
+On Ubuntu, you can install SCION from our `.deb`-packages by running:
 
 ```shell
 sudo apt-get install apt-transport-https ca-certificates
