@@ -21,7 +21,7 @@ We provide SCION packages for the use with SCIONLab for different Linux package 
 
 * **AUR**, Arch Linux
 
-  User contribution provided on a best-efforts basis by [benthor](https://github.com/benthor).
+  User contribution provided on a best-efforts basis by Thorben Krüger.
   See [https://aur.archlinux.org/packages/scionlab-git/](https://aur.archlinux.org/packages/scionlab-git/)
 
 
