@@ -83,6 +83,6 @@ Finally we can start the `scion-dispatcher` and `scion-daemon` services:
 ```shell
 systemctl enable --now scion-dispatcher.service
 systemctl enable --now scion-daemon.service
-``
+```
 
 Test that your connection is working, e.g. by using `scion ping` (as described in [checking AS configuration](../config/check.html#ping)) and start using the applications.
