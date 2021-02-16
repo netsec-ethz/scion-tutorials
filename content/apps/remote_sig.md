@@ -168,7 +168,7 @@ You should see the "Hello World!" message as output from the last command.
 
 
 {% include alert type="Hint" content="
-The SIG appears to perform poorly (abnormally high rate or reordered and
+The SIG appears to perform poorly (abnormally high rate of reordered and
 dropped packets and consequently low throughput with TCP) when running in a
 SCIONLab User AS with a provider link using OpenVPN. The exact cause is unclear,
 likely there is some bad interplay between the two `tun` devices.
