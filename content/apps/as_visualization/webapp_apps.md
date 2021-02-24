@@ -5,8 +5,6 @@ grand_parent: Applications
 nav_order: 20
 ---
 
-{% include alert type="warning" content="The webapp has not been ported to the latest SCIONLab update yet (2020.12.09)." %}
-
 # Webapp SCIONLab Apps Visualization
 
 ## Webapp Features
