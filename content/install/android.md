@@ -34,5 +34,8 @@ To connect to the SCIONLab network with your Android phone, perform the followin
 5.  Once _OpenVPN for Android_ is installed, press the SCION button again. You may have to grant permissions regarding VPN and media storage. Then choose the _.tar.gz_ SCIONLab configuration you have downloaded previously.
 6.  The app will now connect to SCIONLab and ping the given SCION address. To disconnect, press the SCION button again.
 
+## Demo Video
+There is a [demo video](https://youtu.be/yQVDg6egeNg) of the app and its configuration.
+
 ## Troubleshooting
 In the app, you can view all log data from SCION. For more detailed information, have a look at the `/Android/data/org.scionlab.scion/files/` directory in the internal (or, on some devices, external) storage of your phone.
