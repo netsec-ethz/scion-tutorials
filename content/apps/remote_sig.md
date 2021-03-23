@@ -39,41 +39,19 @@ We'll refer to these two ASes as "AS A" and "AS B", and the hosts running them a
 Check that you have basic connectivity between your ASes, e.g. by running `scion showpaths <other AS>` and checking that paths are "alive".
 If this is not the case, please go back to troubleshoot connectivity first.
 
-### Fake address
-The SIG listens on an address that needs to be in the its assigned IP subnet.
-Normally, the SIG will be running on a host with this address on one of its network interfaces.
-We fake this by adding the relevant address to the loopback interface.
-```shell
-sudo ip address add 172.16.11.1 dev lo  # on host A, 172.16.12.1 on host B
-```
 
-{% include alert type="Hint" content="
-This is not persistent between reboots. Make sure to add this address before starting the SIG. If there is no interface with matching address, the SIG may fail to add routing table entries.
+{% include alert type="Warning" content="
+If you're not using a default SCIONLab User AS configuration, ensure that there is an appropriate entry for the SIG in the `topology.json`:
+```json
+\"sigs\": {
+  \"sig-1\": {
+    \"ctrl_addr\": \"127.0.0.1:30256\",
+    \"data_addr\": \"127.0.0.1:30056\"
+  }
+}
+```
 " %}
 
-### SIG address configuration
-This address also needs to be configured both in two configuration files:
-Add the lines for `ctrl_addr` and `data_addr` to the `[gateway]` section in `/etc/scion/sig.toml`:
-```toml
-[gateway]
-ctrl_addr = "172.16.11.1:30256"   # on host A, 172.16.12.1 on host B
-data_addr = "172.16.11.1:30056"   #   ditto
-```
-
-Edit `/etc/scion/topology.json` and set define the same addresses in the `sigs` section:
-```json
-  "sigs": {
-    "sig-1": {
-      "ctrl_addr": "172.16.11.1:30256",  # on host A, 172.16.12.1 on host B
-      "data_addr": "172.16.11.1:30056"   #   ditto
-    }
-  }
-```
-And finally, restart the SCION services after editing the `topology.json` file:
-
-```shell
-sudo systemctl restart scionlab.target
-```
 
 ### SIG traffic rules
 
@@ -112,6 +90,28 @@ On host B:
     "ConfigVersion": 9001
 }
 ```
+
+
+### Fake local IP addresses
+To be able to send and receive IP traffic directly on the SIG host itself, the host will need an IP address in its assigned IP subnet.
+Usually, the SIG will be running on a host with this address on one of its network interfaces.
+We fake this by adding the relevant address to the loopback interface.
+```shell
+sudo ip address add 172.16.11.1 dev lo  # on host A, 172.16.12.1 on host B
+```
+
+{% include alert type="Hint" content="
+This is not persistent between reboots. Make sure to add this address before starting the SIG. If there is no interface with matching address, the SIG may fail to add routing table entries.
+" %}
+
+
+We also configure the SIG to add this address as "source address hint" to its routing table entries.
+Add a `[tunnel]` section with an entry `src_ipv4` to `/etc/scion/sig.toml`:
+```toml
+[tunnel]
+src_ipv4 = "172.16.11.1"  # on host A, 172.16.12.1 on host B
+```
+
 
 ### Startup
 
