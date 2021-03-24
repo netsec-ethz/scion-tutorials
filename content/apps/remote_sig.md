@@ -7,40 +7,64 @@ nav_order: 60
 # SCION IP Gateway (SIG)
 
 The [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/go/posix-gateway) enables legacy IP applications to communicate over SCION.
-This tutorial describes a minimal setup of two SIGs, to test how the SIG can enable any IP application to communicate over SCION. This setup can later be extended to support multiple SIG endpoints.
 
 ## Install
 
-To install `sig`, run:
+To install the SIG, run:
 ```shell
 sudo apt install scion-sig
 ```
 See [Installation](../install/pkg.html#applications) for details.
 
 
-## Prerequisites
+## Tutorial: Set up a SIG tunnel between two ASes
+The SIG forwards IP packets from the IP network in one SCION AS, across the SCION network, to the SIG in a remote SCION AS that contains the destination IP address.
+From the IP perspective, the tunnel between two SIGs looks like any other IP link. The SIGs at either end of the tunnel act as IP routers.
+This tunneling of IP traffic is intended to replace the BGP-based inter-domain IP routing by SCION, without requiring changes to legacy IP hosts and applications.
 
+Each SIG establishes a session to one or multiple remote SIGs.
+They can use statically configured IP routes or configure the routes dynamically using by announcing IP subnets to each other.
+
+In this tutorial, we will create a very basic setup with two SIGs to route between two statically configured private IP networks.
+We choose the private IP range `172.16.11.0/24` for AS A and `172.16.12.0/24` for AS B.
+
+
+### Prerequisites
 You will need two running SCION ASes.
+Connectivity between these ASes needs to be working, but it does not otherwise matter how the ASes are set up.
 
 The description below assumes that you're running the "standard" SCIONLab setup with all of the services and routers running on one separate machine for each of your ASes.
 We'll refer to these two ASes as "AS A" and "AS B", and the hosts running them as "host A" and "host B", respectively.
 
-## Configuring SIG traffic rules
+Check that you have basic connectivity between your ASes, e.g. by running `scion showpaths <other AS>` and checking that paths are "alive".
+If this is not the case, please go back to troubleshoot connectivity first.
 
-Each SIG requires traffic rules, in the form of a `json` configuration file.
+
+{% include alert type="Warning" content="
+If you're not using a default SCIONLab User AS configuration, ensure that there is an appropriate entry for the SIG in the `topology.json`:
+```json
+\"sigs\": {
+  \"sig-1\": {
+    \"ctrl_addr\": \"127.0.0.1:30256\",
+    \"data_addr\": \"127.0.0.1:30056\"
+  }
+}
+```
+" %}
+
+
+### SIG traffic rules
+
+Each SIG requires traffic rules specified in the form of a `json` configuration file.
 This configuration specifies IP prefixes that should be forwarded to SIGs in remote ASes.
-
 
 A skeleton traffic rule configuration file is installed with the `scion-sig` package in `/etc/scion/sig.json`.
 The skeleton file contains one dummy entry with placeholders "`<remote_sig_AS>`" and "`<remote_sig_IPnet>`".
 The `<remote_sig_AS>` needs to be replaced with an AS ID in the form `1-ffaa:1:abc` and `<remote_sig_IPnet>` needs to specify IP networks in CIDR notation.
 Note that multiple remote SIG endpoints can be specified, but in this example we have just one.
 
-We will now create the traffic rules on both host A and host B.
-For this guide, we choose the private IP range `172.16.11.0/24` for AS A and `172.16.12.0/24` for AS B.
-
-Thus, on **host A**, we have the `/etc/scion/sig.json` traffic rules:
-```
+On host A, we have the `/etc/scion/sig.json` traffic rules:
+```json
 {
     "ASes": {
         "2-ffaa:0:b": { # put your AS B here
@@ -53,8 +77,8 @@ Thus, on **host A**, we have the `/etc/scion/sig.json` traffic rules:
 }
 ```
 
-On **host B**:
-```
+On host B:
+```json
 {
     "ASes": {
         "1-ffaa:0:a": { # put your AS A here
@@ -68,51 +92,44 @@ On **host B**:
 ```
 
 
-Start the SIG process on both hosts, by executing:
+### Fake local IP addresses
+To be able to send and receive IP traffic directly on the SIG host itself, the host will need an IP address in its assigned IP subnet.
+Usually, the SIG will be running on a host with this address on one of its network interfaces.
+We fake this by adding the relevant address to the loopback interface.
 ```shell
-sudo -u scion scion-ip-gateway --config=/etc/scion/sig.toml
-```
-
-{% include alert type="Tip" content="
-Now, you should already have connectivity between the SIGs. You can verify this, e.g. run `ping -I sig 172.16.12.7` in host A, and observe the arriving packets with `tcpdump -n -i sig` on host B. However, there will not be replies to the pings yet.
-" %}
-
-{% include alert type="Hint" content="
-Apart from the traffic rules `sig.json` file, there is a `toml` configuration file where things like log levels, connection to sciond, and the name of the tunnel interface can be defined.
-The default `/etc/scion/sig.toml` installed with the `scion-sig` package should work in most cases.
-Run `scion-ip-gateway sample config` for information about the available configuration options.
-" %}
-
-## Configuring Routing
-
-If you run `ip route`, you will observe that the SIG does not automatically configure any routes.
-In order for the SIG link to be useful, we need to setup the networks in both ASes such that the relevant traffic will be routed over the `sig` interface.
-There are a large number of possibilities to set this up; in this section we just describe a simple option without IP routing, so that only applications on the SIG hosts can make use of the link.
-
-On host A:
-```shell
-# Assign an address in the address range chosen for AS A:
-sudo ip address add 172.16.11.1 dev sig
-# Setup route for <remote_sig_IPnet> in sig.json:
-sudo ip route add 172.16.12.0/24 dev sig
-```
-
-On host B:
-```shell
-# Assign an address in the address range chosen for AS B:
-sudo ip address add 172.16.12.1 dev sig
-# Setup route for <remote_sig_IPnet> in sig.json:
-sudo ip route add 172.16.11.0/24 dev sig
+sudo ip address add 172.16.11.1 dev lo  # on host A, 172.16.12.1 on host B
 ```
 
 {% include alert type="Hint" content="
-These address and route settings will only live as long as the `sig` tunnel device. As soon as the `scion-ip-gateway` process terminates, this will be gone.
+This is not persistent between reboots. Make sure to add this address before starting the SIG. If there is no interface with matching address, the SIG may fail to add routing table entries.
 " %}
 
-Now you should be able to `ping` the remote host, e.g. run on host A
-```shell
-ping 172.16.12.1
+
+We also configure the SIG to add this address as "source address hint" to its routing table entries.
+Add a `[tunnel]` section with an entry `src_ipv4` to `/etc/scion/sig.toml`:
+```toml
+[tunnel]
+src_ipv4 = "172.16.11.1"  # on host A, 172.16.12.1 on host B
 ```
+
+
+### Startup
+
+Start the SIG systemd service on both hosts, by executing:
+```shell
+sudo systemctl start scion-ip-gateway.service
+```
+
+Running `ip link list`, you can now see the SIG's `tun` device.
+
+Wait a few seconds after starting the SIG, as session establishment is not immediate.
+In the meantime, you can inspect the status page that the SIG serves on a local diagnostics HTTP endpoint:
+```shell
+curl -sfS localhost:30456/status
+```
+Once the session is established, this page shows the current path and routing table information.
+
+Running `ip route show`, you should now see the routing table entry for the remote IP subnet going over the `sig` tunnel device.
 
 {% include alert type="Warning" content="
 The MTU set on the SIG's tun device is unreliable or just plain wrong. Set a conservative value of e.g. 1200 bytes on both hosts:
@@ -121,24 +138,57 @@ sudo ip link set mtu 1200 dev sig
 ```
 " %}
 
-## Testing
 
-You can test that your SIG configuration works by running some traffic over it.
+### Traffic!
 
-Add some client on host A and server on host B:
+Now, ping the remote IP address to check the connectivity via the SIGs:
 
-Host A (server):
+```shell
+ping 172.16.12.1  # on host A, 172.16.11.1 on host B
+```
+This ping should successfully show echo replies. These IP packets are sent via the `sig` tun interfaces and are transported over SCION.
+Inspect the metrics of the SIG and find e.g. the number of the packets transported:
+```shell
+curl -sfS localhost:30456/metrics | grep gateway_ippkts_
+```
+
+We can also run some actual traffic over the SIG tunnel! Run a webserver on host A:
 ```shell
 mkdir /tmp/www
 echo "Hello World!" > /tmp/www/hello
 cd /tmp/www/ && python3 -m http.server --bind 172.16.11.1
 ```
 
-Query the web server running on host A from host B:
-
-Host B (client):
+And query the web server running on host A from host B:
 ```shell
 curl 172.16.11.1:8000/hello
 ```
 
 You should see the "Hello World!" message as output from the last command.
+
+
+{% include alert type="Hint" content="
+The SIG appears to perform poorly (abnormally high rate of reordered and
+dropped packets and consequently low throughput with TCP) when running in a
+SCIONLab User AS with a provider link using OpenVPN. The exact cause is unclear,
+likely there is some bad interplay between the two `tun` devices.
+" %}
+
+
+### Wrapping up
+
+We've set up statically routed tunnel for legacy IP traffic between two SCION ASes using the SCION-IP-Gateway.
+We've sent some traffic with legacy IP applications and seen that the SIGs tunnel the IP packets from one SIG to another.
+
+What you could do next:
+* Observe the traffic flowing in and out of the SIG tunnel with `sudo tcpdump -i sig`
+* Add a third SIG, in a third AS, with a third IP subnet
+* Setup an actual network that you want to route with the SIG instead of the faked address on the loopback interface.
+  Enable IP forwarding on the SIG host in order to make it act as an IP router.
+
+
+## Additional References
+
+* Built-in help on `sig.toml` configuration: `scion-ip-gateway sample config`
+* [SIG Reference Manual](https://scion.docs.anapaya.net/en/latest/manuals/gateway.html)
+* [SIG Framing Protocol Specification](https://scion.docs.anapaya.net/en/latest/protocols/sig.html)
