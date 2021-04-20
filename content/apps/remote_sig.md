@@ -23,7 +23,7 @@ From the IP perspective, the tunnel between two SIGs looks like any other IP lin
 This tunneling of IP traffic is intended to replace the BGP-based inter-domain IP routing by SCION, without requiring changes to legacy IP hosts and applications.
 
 Each SIG establishes a session to one or multiple remote SIGs.
-They can use statically configured IP routes or configure the routes dynamically using by announcing IP subnets to each other.
+They can use statically configured IP routes or configure the routes dynamically by announcing IP subnets to each other.
 
 In this tutorial, we will create a very basic setup with two SIGs to route between two statically configured private IP networks.
 We choose the private IP range `172.16.11.0/24` for AS A and `172.16.12.0/24` for AS B.
