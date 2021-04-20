@@ -91,12 +91,11 @@ available Attachment Points have an IPv6 address configured.
 " %}
 
 
-*   Public Port, Bind Port:
+*   Public Port:
 
     Choose a UDP port on which your Border Router will be reachable. We typically use ports in the range 50000-51000 by convention, but you're free to choose any other.
 
     If you are behind a NAT or firewall, make sure to open/forward the chosen port. For this you may need to contact your network administrator.
-    If you have a port forwarding rule that rewrites the port number, enter the local port number in the `Bind Port` field, otherwise leave it blank.
 
 
 ## Download and install configuration
