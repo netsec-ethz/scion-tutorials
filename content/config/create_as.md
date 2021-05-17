@@ -41,12 +41,12 @@ The `Create a new SCIONLab AS` button or the edit link for an existing AS will b
 
 *   Make this AS a publicly available Attachment Point: select this if you want your Host to be an Attachment Point
         As an User Attachment Point you are a provider AS, which means that other ASes can use a connection to you to become part of the Scionlab infrastructure. To be shown in the list of available Attachment Points your host will have to run the scionlab-config daemon, in order to refresh its configuration whenever other users create or modify links to your AS
-        You can do so by starting the associated service file. This requires you to have queried the config for your AS at least once..
+        You can do so by starting the associated service file. This requires you to have queried the config for your AS at least once.
         Afterwards you can run `systemctl start scionlab-config.service` to continuously get the latest config. Alternatively you can run `scionlab-config --daemon`.
 
-*   Public ip: enter your Public IP Address that should be used for connections to child ASes. This field is required when the `Make this AS a publicly available Attachment Point` field is selected.
+*   Public IP: enter your Public IP Address that should be used for connections to child ASes. This field is required when the `Make this AS a publicly available Attachment Point` field is selected.
 
-*   provide VPN: select this option if you want other ASes to be able to connect to your Host using an OpenVPN tunnel. 
+*   Provide VPN: select this option if you want other ASes to be able to connect to your Host using an OpenVPN tunnel. 
 
 
 -----
