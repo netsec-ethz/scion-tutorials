@@ -77,7 +77,7 @@ Run `scion.sh status` or `supervisor/supervisor.sh status`.
 
 ### Check the border router interface status
 
-*   Inspect the border router's log (using `sudo journactl -u scion-border-router@br-1.service`) to check that the bidirectional-forwarding detection (bfd) handshake completed and the interfaces are "active":
+*   Inspect the border router's log (using `sudo journalctl -u scion-border-router@br-1.service`) to check that the bidirectional-forwarding detection (bfd) handshake completed and the interfaces are "active":
     
     Check that the log mentions `Transitioned from state ... to state Up`, not followed by a later `... to state Down`.
 
