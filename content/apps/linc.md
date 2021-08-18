@@ -8,11 +8,9 @@ nav_order: 90
 
 The [Low-cost Industrial Network Connectivity (LINC) Gateway](https://www.netsys.ovgu.de/netsys_media/publications/LINC_SIGCOMM21.pdf) is a fork of the [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/go/posix-gateway) specifically tailored to provide secure and highly available connectivity for Industrial Control Systems.
 
-## Install
+## Build
 
-LINC can be installed by building the binary from source. An Ubuntu 18.04 system is required for the build.
-
-### Build from source
+LINC binary should be built from source. An Ubuntu 18.04 system is required for the build.
 
 1. Install go 1.16
 
@@ -42,6 +40,8 @@ LINC can be installed by building the binary from source. An Ubuntu 18.04 system
    ```shell
    sudo setcap cap_net_admin+eip posix-gateway
    ```
+
+Now the `posix-gateway` binary can be used to run the LINC gateway
 
 ## Set up a LINC tunnel between two ASes
 
@@ -109,7 +109,7 @@ On host B:
 
 Operating Modes:
 
-* `Normal` or single path mode: when a path fails the LINC gateway switches to an alternative path as soon as the failure is detected
+* `Normal` or single path mode: when a path fails the LINC gateway switches to an alternative path (if available) as soon as the failure is detected
 * `MultiPath` mode: traffic is continuously transmitted over two or more paths, If one path fails, traffic keeps flowing along the other path(s)
 * `AdaptiveMultiPath` mode: follows a make-before-break approach, i.e. the LINC gateway starts duplicating traffic on an additional path as soon as the performance of the primary path drops below a threshold
 
@@ -198,7 +198,7 @@ ping 172.16.12.1  # on host A, 172.16.11.1 on host B
 
 This ping should successfully show echo replies. These IP packets are sent via the `sig` tun interfaces and are transported over SCION. The connectivity can be further examined using the methods described in the [SIG tutorial](https://docs.scionlab.org/content/apps/remote_sig.html#traffic).
 
-## Remote driving over LINC
+## Remote driving over the LINC tunnel
 
 A [remote driving](https://github.com/tjohn327/self-driving-car-sim) demonstrator was developed to showcase the capabilities of LINC. It has two parts, a remote control and a car driving simulator. The remote control sends control messages to the driving simulator and simulator sends back the video feed from the front facing camera of the car. To run the remote control and the car driving simulator, they require an Ubuntu system with a graphical desktop.
 
