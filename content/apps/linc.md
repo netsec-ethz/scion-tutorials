@@ -16,7 +16,7 @@ LINC can be installed by building the binary from source. An Ubuntu 18.04 system
 
 1. Install go 1.16
 
-    See e.g. https://github.com/golang/go/wiki/Ubuntu
+    See e.g. [https://github.com/golang/go/wiki/Ubuntu](https://github.com/golang/go/wiki/Ubuntu)
 
 1. Clone the LINC fork of SCION repository:
     
