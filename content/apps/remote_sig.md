@@ -192,3 +192,146 @@ What you could do next:
 * Built-in help on `sig.toml` configuration: `scion-ip-gateway sample config`
 * [SIG Reference Manual](https://scion.docs.anapaya.net/en/latest/manuals/gateway.html)
 * [SIG Framing Protocol Specification](https://scion.docs.anapaya.net/en/latest/protocols/sig.html)
+
+## LINC Gateway
+
+The [Low-cost Industrial Network Connectivity (LINC) Gateway](https://www.netsys.ovgu.de/netsys_media/publications/LINC_SIGCOMM21.pdf) is a fork of the [SCION IP Gateway `SIG`](https://github.com/netsec-ethz/scion/tree/scionlab/go/posix-gateway) specifically tailored to provide secure and highly available connectivity for Industrial Control Systems. In addition to the features of SIG, LINC provides high availability through various failover modes and optimal path selection. 
+
+### LINC set up
+After installing and configuring [SIG](../apps/remote_sig.html#install), LINC can be set up to replace SIG with a few additional steps.
+
+1. Build the LINC binary from source: 
+    
+    NB: An Ubuntu 18.04 system is required for the build.
+
+    1. Install go 1.16
+
+        See e.g. [https://github.com/golang/go/wiki/Ubuntu](https://github.com/golang/go/wiki/Ubuntu)
+
+    1. Clone the LINC fork of SCION repository:
+        
+        ```shell
+        git clone https://github.com/tjohn327/scion.git
+        git checkout sig_multipath
+        ```
+
+    1. Change to posix-gateway directory:
+        
+        ```shell
+        cd scion/go/posix-gateway
+        ```
+
+    1. Build:
+    
+        ```shell
+        go build 
+        ```
+
+    1. Set network capabilities of the binary:
+    
+        ```shell
+        sudo setcap cap_net_admin+eip posix-gateway
+        ```
+
+    1. Replace the `SIG` binary with LINC
+
+        ```shell
+        sudo cp posix-gateway /usr/bin/scion-ip-gateway
+        ```
+
+1. Modify the traffic policy file:
+
+    The traffic policy file located at `/etc/scion/sig.json` should be modified to make full use of the features of LINC. Failover mode and path selection preference can be set in the `sig.json` file as show below:
+
+    ```json
+    {
+        "ASes": {
+            "<remote_LINC_AS>": { 
+                "Nets": [
+                    "<remote_LINC_IPnet>"
+                ],
+                "PathCount" : 2,
+                "Mode": "MultiPath",
+                "PathPreference": {
+                    "Latency" : 0.8,
+                    "Bandwidth" : 0.0,
+                    "Jitter" : 0.2,
+                    "DropRate" : 0.0
+                }
+            }
+        },
+        "ConfigVersion": 9001
+    }
+    ```
+
+    Failover Modes:
+
+    * `Normal` or single path mode: when a path fails the LINC gateway switches to an alternative path (if available) as soon as the failure is detected
+    * `MultiPath` mode: traffic is continuously transmitted over two or more paths, If one path fails, traffic keeps flowing along the other path(s)
+    * `AdaptiveMultiPath` mode: follows a make-before-break approach, i.e. the LINC gateway starts duplicating traffic on an additional path as soon as the performance of the primary path drops below a threshold
+
+
+    Path selection preference:
+
+    * The path selection preference can be specified in the corresponding section of the traffic rules configuration file. Weights can be set for each path metric such as latency, bandwidth, jitter and drop rate. The sum of the weights must be 1.0.
+
+### Startup and testing the connection
+
+Restart the SIG systemd service in both hosts:
+
+```shell
+sudo systemctl restart scion-ip-gateway.service
+```
+
+Test the connection by pinging the remote LINC IP:
+
+```shell
+ping 172.16.12.1  # on host A, 172.16.11.1 on host B
+```
+
+### Remote driving over the LINC tunnel
+
+A [remote driving](https://github.com/tjohn327/self-driving-car-sim) demonstrator was developed to showcase the capabilities of LINC. It has two parts, a remote control and a car driving simulator. The remote control sends control messages to the driving simulator and simulator sends back the video feed from the front facing camera of the car. To run the remote control and the car driving simulator, they require an Ubuntu system with a graphical desktop.
+
+Assuming that a LINC tunnel is already established between HOST A and HOST B, here we will set up the remote control on Host A and the car driving simulator on Host B and make them communicate over the LINC gateways.
+
+* Setting up the remote control on HOST A:
+
+    Prerequisites: The remote control requires python3 and the libraries [`opencv-python`](https://pypi.org/project/opencv-python/), [`numpy`](https://pypi.org/project/numpy/), [`pynput`](https://pypi.org/project/pynput/) and [`inputs`](https://pypi.org/project/inputs/).
+
+    1. Clone the repository:
+        ```shell
+        git clone https://github.com/tjohn327/self-driving-car-sim.git
+        cd self-driving-car-sim/controller
+        ```
+
+    1. Run the remote controller:
+        ```shell
+        python3 controller.py
+        ```
+
+* Setting up the car driving simulator on HOST B:
+
+    1. Download and extract the car driving simulator binary:
+        ```shell
+        wget https://github.com/tjohn327/self-driving-car-sim/releases/download/1.5/Linux.zip
+        unzip Linux.zip
+        cd Linux
+        ```
+
+    1. Set binary as executable:
+        ```shell
+        chmod +x car_sim.x86_64
+        ```
+
+    1. Run the car driving simulator:
+        ```shell
+        ./car_sim.x86_64
+        ```
+
+The remote control should now be able to control the car in the simulator. The W,A,S,D keys can be used to drive the car from the remote control. Now you can experiment with the different failover modes and path selection preferences by changing the corresponding field in the `sig.json` file.
+
+### Additional References
+
+* [LINC Demo Paper](https://www.netsys.ovgu.de/netsys_media/publications/LINC_SIGCOMM21.pdf)
+* [Remote driving demo using LINC](https://youtu.be/774zQBsoQmA)
