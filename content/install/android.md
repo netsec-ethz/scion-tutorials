@@ -4,7 +4,6 @@ parent: Installation
 nav_order: 40
 ---
 
-{% include alert type="warning" content="The SCION android app has not been ported to the latest SCIONLab update yet (2020.12.09)." %}
 
 # Running as an app (Android)
 
@@ -14,7 +13,7 @@ The SCION Android app allows you to host a SCION AS on your smartphone. This all
 
 ## Prerequisites
 - Android device with at least Android 7.0
-- SCION app, [available on the Play Store](https://play.google.com/store/apps/details?id=org.scionlab.scion) (source code [available on GitHub](https://github.com/ekuiter/scion-android))
+- SCION app, [available on the Play Store](https://play.google.com/store/apps/details?id=org.scionlab.scion) (source code [available on GitHub](https://github.com/netsys-lab/scion-android))
 
 ## Instructions
 To connect to the SCIONLab network with your Android phone, perform the following steps:
@@ -23,7 +22,7 @@ To connect to the SCIONLab network with your Android phone, perform the followin
 2.  In "[My ASes](https://www.scionlab.org/user/)", create a new SCIONLab AS with the following settings:
     
     *   _Label_: any value (is ignored by the app)
-    *   _Installation type_: Choose **SCION installation from sources**
+    *   _Installation type_: Choose **SCION installation from packages**
     *   _Attachment point_: Choose any attachment point you like, preferably the nearest to your location
     *   _Use VPN_: You **must** check this box
     *   _Public Port_: You **must not** change this from its default value 50000
