@@ -13,7 +13,7 @@ nav_order: 70
 RAINS is an alternate protocol for Internet name resolution, designed as a replacement of the Domain Name System (DNS).
 The current implementation of RAINS can run on SCION, and serve SCION addresses.
 
-All of our apps can make use of RAINS to resolve hostnames, if a resolver is configured.
+~~All of our apps can make use of RAINS to resolve hostnames, if a resolver is configured.~~ (**The support is currently disabled and will be added back later.**)
 
 ~~If you want to run your own RAINS servers, please refer to the documentation in the [READMEs](https://github.com/netsec-ethz/rains).~~
 
