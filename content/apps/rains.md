@@ -6,6 +6,8 @@ nav_order: 70
 
 # RAINS, Another Internet Naming Service
 
+{% include alert type="Info" content="The development of RAINS is now maintained [here](https://github.com/netsys-lab/scion-rains)". To set up and test the latest RAINS manually, please refer to the [instructions](https://github.com/netsys-lab/scion-rains/tree/master/test/manual). %}
+
 {% include alert type="Warning" content="The RAINS infrastructure in SCIONLab is currently NOT available" %}
 
 RAINS is an alternate protocol for Internet name resolution, designed as a replacement of the Domain Name System (DNS).
@@ -13,7 +15,7 @@ The current implementation of RAINS can run on SCION, and serve SCION addresses.
 
 All of our apps can make use of RAINS to resolve hostnames, if a resolver is configured.
 
-If you want to run your own RAINS servers, please refer to the documentation in the [READMEs](https://github.com/netsec-ethz/rains).
+~~If you want to run your own RAINS servers, please refer to the documentation in the [READMEs](https://github.com/netsec-ethz/rains).~~
 
 
 ## Resolver config file
