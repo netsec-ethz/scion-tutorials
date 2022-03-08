@@ -12,38 +12,37 @@ The [netsys-lab/bittorrent-over-scion](https://github.com/netsys-lab/bittorrent-
 
 To install `bittorrent-over-scion`, run:
 ```shell
-go install github.com/netsys-lab/bittorrent-over-scion@v1.0.1
+go install github.com/netsys-lab/bittorrent-over-scion@v1.0.2
 ```
-For build instructions see [readme](https://github.com/netsys-lab/bittorrent-over-scion/readme.md) for details. You may have to ensure that your PATH variable is setup properly to run installed go binaries: `export PATH="${GOPATH}/bin:${PATH}"`
 
 ## Usage
 
-The general usage of bat is: `bittorrent-over-scion [flags]`.
+The general usage of BitTorrent over SCION is: `bittorrent-over-scion [flags]`.
 
 ### Flags
 
 | Flag      | Meaning                                                                                                         |
 | --------- | --------------------------------------------------------------------------------------------------------------- |
 | -inPath   | Source .torrent file                                                                                            |
-| -file     | Source file from which the .torrent file was created                                                            |
+| -file     | Source file from which the .torrent file was created, only for seeder                                           |
 | -seed     | Start as seeder if set to true, otherwise start as leecher                                                      |
-| -local    | The full local SCION address, of format `ISD-AS,[IP]:Port`                                                      |
-| -peer     | The full remote SCION address, of format `ISD-AS,[IP]:Port`                                                     |
-| -outPath  | Destination to which BitTorrent writes the downloaded file                                                      |
-| -logLevel | Specifies the loglevel, can be `DEBUG`,`INFO`,`WARN`,`ERROR`                                              
+| -local    | The full local SCION address, of format `ISD-AS,[IP]:Port`, optional                                            |
+| -peer     | The full remote SCION address, of format `ISD-AS,[IP]:Port`, only for leecher                                   |
+| -outPath  | Destination to which BitTorrent writes the downloaded file, only for leecher                                    |
+| -logLevel | Specifies the loglevel, can be `DEBUG`,`INFO`,`WARN`,`ERROR`, default is `INFO`, optional
 
 At the moment, peers can be either seeders (providing a file) or leechers (requesting a file). 
 
 ### Run a seeder
 The following command runs BitTorrent as a seeder:
 ```sh
-./bittorrent-over-scion -inPath='sample.torrent' -seed=true -file='sample.file' -local="19-ffaa:1:000,[127.0.0.1]:46000"
+./bittorrent-over-scion -inPath='scion-videos.torrent' -seed=true -file='scion-videos.zip' -local="19-ffaa:1:c3f,[141.44.25.148]:43000"
 ```
 
 ### Run a leecher
 The following command runs BitTorrent as a leecher:
 ```sh
-./bittorrent-over-scion -inPath='sample.torrent' -outPath='sample.file' -peer="19-ffaa:1:000,[127.0.0.1]:46000" -seed=false -local="19-ffaa:1:111,[127.0.0.1]:43000" 
+./bittorrent-over-scion -inPath='scion-videos.torrent' -outPath='scion-videos.zip' -peer="19-ffaa:1:c3f,[141.44.25.148]:43000" -seed=false
 ```
 
 ## Example torrents
