@@ -1,0 +1,41 @@
+---
+title: SCION Browser Extension
+parent: Applications
+nav_order: 100
+---
+
+# SCION Browser Extension
+The SCION Browser extension provides access to HTTP(S) resources via SCION by using skip as configured proxy for all SCION-enabled domains.
+
+The following components are required:
+- [SCION Browser Extension](https://github.com/netsys-lab/scion-browser-extensions): Extensions for Chrome (Firefox later) that enable SCION connectivity
+- [Skip](https://github.com/netsys-lab/scion-browser-extensions): SCION forwarding proxy
+
+## Setup
+In alpha stage, the following steps are required to configure the SCION Browser Extension.
+
+### Build and start skip
+To use the SCION Browser Extension, [skip](https://github.com/netsec-ethz/scion-apps/tree/master/skip) must run on the SCION host. 
+
+### Verify host file
+Ensure that the following content is in the `/etc/scion/hosts` or `/etc/hosts` file:
+```
+17-ffaa:0:1101,129.132.121.164 www.scionlab.org
+19-ffaa:1:c3f,141.44.25.148 www.scionlab.chat www.scion-pathguess.game
+```
+
+### Install extension
+**Note:** At the moment we support only chrome, other browsers will follow. 
+To install the browser extension, download the [latest release](https://github.com/netsys-lab/scion-browser-extensions/archive/refs/tags/v0.0.1.zip) and unzip the archive. Then navigate to `Extensions`->`Manage Extensions`. On the upper right corner, enable `Developer Mode`. Then click the `Load unpacked` button and select the `chrome` folder in the unzipped folder. The SCION Browser Extension appears now in your list of extensions.
+
+To get started, just click the SCION Browser Extension icon and enable SCION forwarding. You should now see a list of SCION-enabled domains, containing the ones mentioned below.
+
+**Note:** The error that the manifest is deprecated does not impact the functionality. We will fix this in one of the upcoming versions.
+
+## Usage
+The SCION Browser Extension checks for SCION-enabled domains if it is enabled via the popup clicking on the icon. A domain can be accessed either via an adapted SCION address ("_" instead of ":" and "-" as separator for AS and IP) or via a configured host name.
+
+## SCION-enabled Domains
+- Mirror of scionlab.org: http://www.scionlab.org (http://17-ffaa_0_1101-129.132.121.164/)
+- Sample live chat: http://www.scionlab.chat:9080 (http://19-ffaa_1_c3f-141.44.25.148:9080)
+- SCION path guessing game: http://www.scion-pathguess.game:8080 (http://19-ffaa_1_c3f-141.44.25.148/)
