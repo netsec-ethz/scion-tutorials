@@ -12,7 +12,7 @@ The [netsys-lab/bittorrent-over-scion](https://github.com/netsys-lab/bittorrent-
 
 To install `bittorrent-over-scion`, run:
 ```shell
-go install github.com/netsys-lab/bittorrent-over-scion@v1.0.2
+go install github.com/netsys-lab/bittorrent-over-scion@v1.0.3
 ```
 
 ## Usage
