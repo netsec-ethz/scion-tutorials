@@ -61,6 +61,28 @@ Check the OpenVPN client log for specific information, using `sudo journalctl -e
 
 An unspecific timeout typically indicates that you are behind a firewall that blocks UDP port 1194. Please contact your network administrators to unblock this port.
 
+#### VPN connection is unreliable
+
+If you are experiencing seemingly random packet loss on the VPN link, are not receiving any SCION beacons, or only some,
+then there might be a mismatch with the MTU on the VPN tun interface and the one supported by your physical network.
+
+To debug this, you can (IP) ping the VPN server of the attachment point to which your are connected,
+and manually discover the MTU by sending a ICMP message with a payload
+(of size 1472 bytes with the `-s` flag, setting the do-no-fragment flag with `-M do`) using the following command:
+
+```
+$ ping 10.1.0.1 -W1 -c1 -s1472 -M do
+```
+
+You can lower the MTU (to 1200 bytes, or which ever MTU you discovered as working in the previous step) on the VPN interface using:
+
+```
+$ sudo ip link set dev tun0 mtu 1200
+```
+
+This only happens if MTU discovery in your network or on you system is broken, e.g. ICMP messages get dropped, so only consider this a work-around and
+consider fixing your network configuration.
+
 
 #### Border Router fails to start
 
