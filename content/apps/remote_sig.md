@@ -190,5 +190,5 @@ What you could do next:
 ## Additional References
 
 * Built-in help on `sig.toml` configuration: `scion-ip-gateway sample config`
-* [SIG Reference Manual](https://scion.docs.anapaya.net/en/latest/manuals/gateway.html)
-* [SIG Framing Protocol Specification](https://scion.docs.anapaya.net/en/latest/protocols/sig.html)
+* [SIG Reference Manual](https://docs.scion.org/en/latest/manuals/gateway.html)
+* [SIG Framing Protocol Specification](https://docs.scion.org/en/latest/protocols/sig.html)
