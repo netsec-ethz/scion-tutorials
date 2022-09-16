@@ -21,7 +21,7 @@ To use the SCION Browser Extension, [skip](https://github.com/netsec-ethz/scion-
 Ensure that the following content is in the `/etc/scion/hosts` or `/etc/hosts` file:
 ```
 17-ffaa:0:1101,129.132.121.164 www.scionlab.org
-19-ffaa:1:c3f,141.44.25.148 www.scionlab.chat www.scion-pathguess.game
+19-ffaa:1:c3f,127.0.0.1 netsys.ovgu.de www.netsys.ovgu.de
 ```
 
 ### Install extension
@@ -35,14 +35,6 @@ To get started, click the SCION Browser Extension icon and enable SCION forwardi
 ## Usage
 The SCION Browser Extension checks for SCION-enabled domains if enabled via the popup clicking on the icon. A domain can be accessed via the configured host name.
 
-### SCION enabled domains
-
-Hostnames can be added or removed from the SCION enabled domains list.
-- To add a hostname, type it in the text bar and press the `Add Domain` button.
-- To delete a hostname, check the box next to it and press the `Delete Selected` button.
-
-The list contains the hostnames stated below and any hostname present in the `/etc/scion/hosts` or `/etc/hosts` file. Adding or deleting a hostname will not modify those files. Reloading the extension will reset the hostname list.
-
 ### Geofencing (Whitelisting)
 
 To configure the ISD whitelist, press the `Options` button. SCION traffic will traverse only those ASes that have been enabled using the toggle button.
@@ -53,5 +45,4 @@ For instance, in the image above SCION traffic will be forwarded through ISD-19 
 
 ## SCION-enabled Domains
 - Mirror of scionlab.org: http://www.scionlab.org
-- Sample live chat: http://www.scionlab.chat:9080
-- SCION path guessing game: http://www.scion-pathguess.game:8080
+- Mirror of netsys.ovgu.de: https://www.netsys.ovgu.de
