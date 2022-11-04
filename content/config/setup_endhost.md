@@ -72,7 +72,7 @@ To create the configuration for the end host, we copy the relevant parts of the 
 The following example snippet uses `scp` to copy these files to the target machine:
 ```shell
 cd /etc/scion/
-scp -r topology.json certs/ crypto/ <target-hostname>:/etc/scion/
+scp -r topology.json certs/ <target-hostname>:/etc/scion/
 ```
 
 
