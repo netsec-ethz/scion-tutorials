@@ -44,10 +44,10 @@ For more information run the application without arguments to print its usage.
 The server is started as follows:
 
 ```
-scion-bwtestserver -p 30100
+scion-bwtestserver --listen=:30100
 ```
 
-where `-p` specifies your server port.
+where `--listen` specifies the server (optional address and) port.
 
 
 ## SCIONLab Bandwidth Test Servers
