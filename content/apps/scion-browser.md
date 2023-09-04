@@ -19,7 +19,7 @@ To use the SCION Browser Extension, [skip](https://github.com/netsec-ethz/scion-
 
 ### Install extension
 **Note:** At the moment, we support only chromium based browsers (e.g. Chrome, Brave), other browsers will follow.
-To install the browser extension, download the [latest release](https://github.com/netsys-lab/scion-browser-extensions/archive/refs/tags/v0.0.2.zip) and unzip the archive. Then navigate to `Extensions`->`Manage Extensions`. On the upper right corner, enable `Developer Mode`. Then click the `Load unpacked` button and select the `chrome` folder in the unzipped folder. The SCION Browser Extension appears now in your list of extensions. To get started, enable the SCION Browser Extension icon and enable SCION forwarding. 
+To install the browser extension, download the [latest release](https://github.com/netsys-lab/scion-browser-extensions/archive/refs/tags/v0.0.3.zip) and unzip the archive. Then navigate to `Extensions`->`Manage Extensions`. On the upper right corner, enable `Developer Mode`. Then click the `Load unpacked` button and select the `chrome` folder in the unzipped folder. The SCION Browser Extension appears now in your list of extensions. To get started, enable the SCION Browser Extension icon and enable SCION forwarding. 
 
 **Note:** The error indicating that the manifest is deprecated does not impact the functionality. We will fix this in one of the upcoming versions.
 
