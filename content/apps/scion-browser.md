@@ -8,7 +8,7 @@ nav_order: 100
 The SCION Browser extension provides access to HTTP(S) resources via SCION by using skip as configured proxy for all SCION-enabled domains.
 
 The following components are required:
-- [SCION Browser Extension](https://github.com/netsys-lab/scion-browser-extensions): Extensions for Chrome (Firefox later) that enable SCION connectivity
+- [SCION Browser Extension](https://github.com/netsys-lab/scion-browser-extensions): Extensions for Chromium based browsers (Firefox later) that enable SCION connectivity
 - [Skip](https://github.com/netsec-ethz/scion-apps/tree/master/skip): SCION forwarding proxy
 
 ## Setup
@@ -24,7 +24,7 @@ To install the browser extension, download the [latest release](https://github.c
 **Note:** The error indicating that the manifest is deprecated does not impact the functionality. We will fix this in one of the upcoming versions.
 
 ## Usage
-The SCION Browser Extension may work in two modes: In the default mode, the extension loads resources via SCION for SCION-enabled domains and for the rest, it loads them via BGP/IP.
+The SCION Browser Extension can work in two modes: In the default mode, the extension loads resources via SCION for SCION-enabled domains and for the rest, it loads them via BGP/IP.
 
 ![Default](/content/images/default_extension.png)
 
@@ -41,11 +41,11 @@ To configure the ISD whitelist, press the `Options` button. SCION traffic will t
 For instance, in the image above SCION traffic will be forwarded through ISD-19 in EU and the ISD-17 in Switzerland.
 
 ### Path usage information
-The extension provides path information to the user about the path used during the connection. It provides visual information about the ISD treaversed, the exchanged data amount and detailed information about the traversed ASes.
+The extension provides path information to the user about the path used during the connection. It provides visual information about the ISD traversed, the exchanged data amount and detailed information about the traversed ASes.
 
 ![Path usage](/content/images/path_usage_extension.png)
 
-## SCION-enabled Domains
+## SCION-enabled Domains on the SCIONLab network
 - Mirror of scionlab.org: http://www.scionlab.org
 - Mirror of scion-architecture.net: http://www.scion-architecture.net
 - Mirror of netsys.ovgu.de: https://www.netsys.ovgu.de
