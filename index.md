@@ -11,7 +11,7 @@ This website provides step-by-step instructions on how to run a SCION autonomous
 It also provides a list of interesting projects that are using the SCION infrastructure for communication.
 
 **Note**: SCIONLab is a *testbed* network for SCION with *limited performance* and *intended for developers* only. If you want to 
-connect to normal public SCION network, please refer to the [official website](https://scion.org) or [follow the instruction here](https://docs.scion.org). 
+connect to the normal public SCION network, please refer to the [official website](https://scion.org) or [follow the instruction here](https://docs.scion.org). 
 
 
 ## Table of contents
