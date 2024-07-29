@@ -21,7 +21,7 @@ See [Installation](../install/pkg.html#applications) for details.
 You can run the bandwidth test client application as follows:
 
 ```
-scion-bwtestclient -p <server-address>
+scion-bwtestclient -s <server-address>
 ```
 
 Sample servers are installed at the various locations in the SCIONLab network, [see below](#scionlab-bandwidth-test-servers).
@@ -47,7 +47,7 @@ The server is started as follows:
 scion-bwtestserver --listen=:30100
 ```
 
-where `-p` specifies your server port.
+where `--listen` specifies the server (optional address and) port.
 
 
 ## SCIONLab Bandwidth Test Servers
