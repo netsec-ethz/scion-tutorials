@@ -109,7 +109,7 @@ An AS needs to receive path construction beacons from it's upstream provider AS(
     control_beaconing_received_beacons_total{ingress_interface="41",neighbor_isd_as="1-ff00:0:110",result="ok_updated"} 38
     ```
 
-    Note: this returns an empty result if no beacons have been recieved.
+    Note: this returns an empty result if no beacons have been received.
 
 ### Ping
 
