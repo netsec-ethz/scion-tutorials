@@ -86,3 +86,33 @@ Using selected FABRID policies:
     [18-ffaa:1:1151 ~ZERO~ 1>168 18-ffaa:0:1206  1>8 18-ffaa:0:1201  4>5 17-ffaa:0:1101 ]
 ```
 with the `~ZERO~` policy being enabled for your AS.
+
+## 4. (Optional) Define custom policies
+
+Create a new directory on the path defined in the control service config above, i.e. `/etc/scion/fabrid-policies`.
+For each distinct policy, add a new `yml` file to the folder.
+In this example we define a local policy which can be used for outgoing connections over the interface 1.
+
+Example policy `1-local.yml`:
+```yml
+connections:
+    - ingress:
+          type: wildcard
+      egress:
+          type: interface
+          interface: 1
+      mpls_label: 42
+local: true
+local_identifier: 1001
+local_description: Fabrid Example Policy
+```
+
+After saving the file, restart the control service
+```shell
+sudo systemctl restart scionlab.target
+```
+
+You can now use the policy by specifying it in the `fabridquery`
+```shell
+scion ping 18-ffaa:1:1151,127.0.0.1 --fabridquery 0-0#0,0@L1001
+```
