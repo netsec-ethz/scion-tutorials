@@ -50,7 +50,7 @@ scion-webapp \
 ```
 
 ## Browser AS Visualizations
-Several menu options are available at the top of each `webapp` page, which are outlined below. Each of the features below use your SCIONLab IA the the source address.
+Several menu options are available at the top of each `webapp` page, which are outlined below. Each of the features below use your SCIONLab IA as the source address.
 
 ### Health
 The Health tab is the landing page for `webapp` that will automatically test your SCIONLab configuration for configuration and communication health. Additional help is available in our [troubleshooting guide](../../faq/troubleshooting.html), if needed.

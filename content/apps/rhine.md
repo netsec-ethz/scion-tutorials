@@ -150,7 +150,7 @@ There are several possible causes:
   `scion-bwtestclient` binary does not yet support DNS.
 - Your `scion-sdns` version is not running or misconfigured. Check its
   debug output.
-- The experimental autoritative name servers are both offline. Check if either of them
+- The experimental authoritative name servers are both offline. Check if either of them
   can be reached under their addresses via `scion ping
   "19-ffaa:1:fe4,127.0.0.1"` and `scion ping 17-ffaa:1:1008,[127.0.0.1]` respectively.
 
